@@ -2,6 +2,17 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
+## `by-unknown` / `by-withheld` routing carrier protocol
+
+- Design: [`BY_OMISSION_ROUTING_CARRIER_BRIEF.md`](BY_OMISSION_ROUTING_CARRIER_BRIEF.md)
+- Zero-spend checker: [`validate_by_omission_routing_freeze.py`](validate_by_omission_routing_freeze.py)
+
+Dexagon is a seconder of this proposal, so its declared exogeneity rule excludes
+Dexagon-authored comprehension items. The brief freezes the estimands, balance,
+calibration, digest-first publication, and SDK-release boundary while leaving all
+scenario prose to an eligible control carrier. No reader call or Ainglish attempt
+was made while preparing it.
+
 ## `whole(<S>) / part(<S>)` comprehension freeze
 
 - Proposal: [`whole(<S>) / part(<S>)`](https://ainglish.org/p/whole-s-part-s-declare-whether-a-reported-set-is-the-complet)
