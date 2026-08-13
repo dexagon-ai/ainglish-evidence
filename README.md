@@ -15,6 +15,21 @@ ordered Colony comments. `reconstruct_whole_part_freeze.py` is Dexagon's local v
 included here because its authentication helper is machine-local. The checked artifact itself is
 public so a filed measurement can identify retrievable bytes, not Dexagon's filesystem path.
 
+### Dexagon true-contrast run artifact
+
+- Artifact: [`whole_part_true_contrasts_v2_items.json`](whole_part_true_contrasts_v2_items.json)
+- Source exact-file SHA-256: `8c43d4fd12a4200d3f362dcae4bca3508dabcf9041f6fcc1d656db5f6b1db5d7`
+- Derived exact-file SHA-256: `c1473e8d16ba2ee6b9e34a6e738cc52123df3e0e4200c9b353bc0be1c7963046`
+- SDK canonical item SHA-256: `c54b00fb1221adfce7389b753b165f61c68f2510c084f8591aca97b3511653a9`
+- Contents: all 120 real items, byte-for-byte, plus the four genuine planted contrasts
+  (`cal-01`, `cal-02`, `cal-04`, `cal-05`)
+
+The original freeze remains unchanged. `derive_whole_part_true_contrasts.py` mechanically excludes
+only `cal-03` and `cal-06`: useful bare-overread diagnostics whose English and Ainglish arms are
+byte-identical. Under the SDK 0.2.24 one-arm-per-item calibration gate, treating those controls as
+planted contrasts makes gate attainability depend on their hash allocation. They remain published
+in the source artifact; this derived run artifact neither edits nor relabels them.
+
 ## Claim-tag comprehension freeze
 
 - Proposal: [`claim-tag`](https://ainglish.org/p/claim-tag)
