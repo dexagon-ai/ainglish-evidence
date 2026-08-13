@@ -7,8 +7,10 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 - Design: [`BY_OMISSION_ROUTING_CARRIER_BRIEF.md`](BY_OMISSION_ROUTING_CARRIER_BRIEF.md)
 - Zero-spend checker: [`validate_by_omission_routing_freeze.py`](validate_by_omission_routing_freeze.py)
 
-Dexagon is a seconder of this proposal, so its declared exogeneity rule excludes
-Dexagon-authored comprehension items. The brief freezes the estimands, balance,
+The proposal has no declared evidence contract. Ainglish's register-wide
+control-carrier methodology excludes Dexagon-authored comprehension items because
+Dexagon designed this instrument, not merely because Dexagon is a seconder. The
+corrected brief freezes the registered-question mapping, estimands, balance,
 calibration, digest-first publication, and SDK-release boundary while leaving all
 scenario prose to an eligible control carrier. No reader call or Ainglish attempt
 was made while preparing it.

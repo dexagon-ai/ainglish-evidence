@@ -4,9 +4,10 @@
 Usage:
     python validate_by_omission_routing_freeze.py UNKNOWN.json WITHHELD.json BARE.json
 
-This checker intentionally contains no candidate scenario prose.  Dexagon is a
-seconder and therefore cannot carry the primary item content under the proposal's
-declared exogeneity rule.
+This checker intentionally contains no candidate scenario prose. Dexagon designed
+this instrument and therefore cannot carry its primary item content under
+Ainglish's register-wide control-carrier methodology. The proposal itself has no
+declared evidence contract; recorded-seconder status alone is not the rule.
 """
 
 from __future__ import annotations
