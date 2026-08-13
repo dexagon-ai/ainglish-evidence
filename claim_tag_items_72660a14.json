@@ -1,0 +1,534 @@
+[
+ {
+  "id": "dex-ct-cal-conf-1",
+  "calibration": true,
+  "english": "The archive is complete.",
+  "ainglish": "The archive is complete [c=0.9; ⊥ a committed object is absent].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%",
+   "not stated"
+  ],
+  "answer": "about 90%"
+ },
+ {
+  "id": "dex-ct-cal-conf-2",
+  "calibration": true,
+  "english": "The alarm is spurious.",
+  "ainglish": "The alarm is spurious [c=0.1; ⊥ a sensor independently confirms the condition].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%",
+   "not stated"
+  ],
+  "answer": "about 10%"
+ },
+ {
+  "id": "dex-ct-cal-conf-3",
+  "calibration": true,
+  "english": "The patch is safe to deploy.",
+  "ainglish": "The patch is safe to deploy [c=0.7; ⊥ the canary corrupts a stored row].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%",
+   "not stated"
+  ],
+  "answer": "about 70%"
+ },
+ {
+  "id": "dex-ct-cal-conf-4",
+  "calibration": true,
+  "english": "The sample is representative.",
+  "ainglish": "The sample is representative [c=0.4; ⊥ the pinned sampling frame excludes one region].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%",
+   "not stated"
+  ],
+  "answer": "about 40%"
+ },
+ {
+  "id": "dex-ct-cal-ref-1",
+  "calibration": true,
+  "english": "The snapshot is internally consistent.",
+  "ainglish": "The snapshot is internally consistent [c=0.8; ⊥ two rows encode incompatible ledger heads].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "two rows encode incompatible ledger heads",
+   "a slower run is observed",
+   "a newer artifact is published",
+   "No rejecting outcome was stated"
+  ],
+  "answer": "two rows encode incompatible ledger heads"
+ },
+ {
+  "id": "dex-ct-cal-ref-2",
+  "calibration": true,
+  "english": "The lock prevents concurrent writers.",
+  "ainglish": "The lock prevents concurrent writers [c=0.9; ⊥ two writers hold valid leases at the same instant].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "a slower run is observed",
+   "a newer artifact is published",
+   "No rejecting outcome was stated",
+   "two writers hold valid leases at the same instant"
+  ],
+  "answer": "two writers hold valid leases at the same instant"
+ },
+ {
+  "id": "dex-ct-cal-ref-3",
+  "calibration": true,
+  "english": "The export is lossless.",
+  "ainglish": "The export is lossless [c=0.7; ⊥ an imported field differs from its exported value].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "a newer artifact is published",
+   "No rejecting outcome was stated",
+   "an imported field differs from its exported value",
+   "a slower run is observed"
+  ],
+  "answer": "an imported field differs from its exported value"
+ },
+ {
+  "id": "dex-ct-cal-ref-4",
+  "calibration": true,
+  "english": "The detector has no false negatives in the pinned suite.",
+  "ainglish": "The detector has no false negatives in the pinned suite [c=0.85; ⊥ one labelled positive is classified negative].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "No rejecting outcome was stated",
+   "one labelled positive is classified negative",
+   "a slower run is observed",
+   "a newer artifact is published"
+  ],
+  "answer": "one labelled positive is classified negative"
+ },
+ {
+  "id": "dex-ct-confidence-backup-complete",
+  "english": "The backup contains every committed ledger entry. I assign about 90% confidence to this claim. The observation that would make me reject it is: a committed entry is absent from a restored copy.",
+  "ainglish": "The backup contains every committed ledger entry [c=0.9; ⊥ a committed entry is absent from a restored copy].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 90%"
+ },
+ {
+  "id": "dex-ct-confidence-cache-stale",
+  "english": "The cache entry is stale. I assign about 10% confidence to this claim. The observation that would make me reject it is: the entry version equals the authoritative version.",
+  "ainglish": "The cache entry is stale [c=0.1; ⊥ the entry version equals the authoritative version].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 10%"
+ },
+ {
+  "id": "dex-ct-confidence-dataset-leakage",
+  "english": "The evaluation dataset is free of training leakage. I assign about 10% confidence to this claim. The observation that would make me reject it is: a verbatim evaluation item appears in the training snapshot.",
+  "ainglish": "The evaluation dataset is free of training leakage [c=0.1; ⊥ a verbatim evaluation item appears in the training snapshot].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 10%"
+ },
+ {
+  "id": "dex-ct-confidence-key-propagation",
+  "english": "The rotated key has reached every verifier. I assign about 40% confidence to this claim. The observation that would make me reject it is: a live verifier still accepts only the retired key.",
+  "ainglish": "The rotated key has reached every verifier [c=0.4; ⊥ a live verifier still accepts only the retired key].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 40%"
+ },
+ {
+  "id": "dex-ct-confidence-memory-fix",
+  "english": "The allocator change fixes the memory regression. I assign about 70% confidence to this claim. The observation that would make me reject it is: the pinned workload still exceeds the old peak allocation.",
+  "ainglish": "The allocator change fixes the memory regression [c=0.7; ⊥ the pinned workload still exceeds the old peak allocation].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 70%"
+ },
+ {
+  "id": "dex-ct-confidence-migration-reversible",
+  "english": "The migration can be reversed without data loss. I assign about 40% confidence to this claim. The observation that would make me reject it is: a rollback loses a row present before migration.",
+  "ainglish": "The migration can be reversed without data loss [c=0.4; ⊥ a rollback loses a row present before migration].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 40%"
+ },
+ {
+  "id": "dex-ct-confidence-mirror-digest",
+  "english": "The mirror digest matches the primary artifact. I assign about 90% confidence to this claim. The observation that would make me reject it is: a byte-for-byte comparison produces a different digest.",
+  "ainglish": "The mirror digest matches the primary artifact [c=0.9; ⊥ a byte-for-byte comparison produces a different digest].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 90%"
+ },
+ {
+  "id": "dex-ct-confidence-parser-roundtrip",
+  "english": "The parser preserves the message losslessly. I assign about 90% confidence to this claim. The observation that would make me reject it is: serialising the parsed message changes a semantic field.",
+  "ainglish": "The parser preserves the message losslessly [c=0.9; ⊥ serialising the parsed message changes a semantic field].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 90%"
+ },
+ {
+  "id": "dex-ct-confidence-queue-cutoff",
+  "english": "The queue will drain before the maintenance cutoff. I assign about 70% confidence to this claim. The observation that would make me reject it is: a queued job remains when the cutoff arrives.",
+  "ainglish": "The queue will drain before the maintenance cutoff [c=0.7; ⊥ a queued job remains when the cutoff arrives].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 70%"
+ },
+ {
+  "id": "dex-ct-confidence-quorum-holds",
+  "english": "The quorum remains valid after the membership change. I assign about 90% confidence to this claim. The observation that would make me reject it is: the surviving signers fall below the declared threshold.",
+  "ainglish": "The quorum remains valid after the membership change [c=0.9; ⊥ the surviving signers fall below the declared threshold].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 90%"
+ },
+ {
+  "id": "dex-ct-confidence-race-patch",
+  "english": "The patch removes the dispatch race. I assign about 40% confidence to this claim. The observation that would make me reject it is: the race reproduces under the pinned stress schedule.",
+  "ainglish": "The patch removes the dispatch race [c=0.4; ⊥ the race reproduces under the pinned stress schedule].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 40%"
+ },
+ {
+  "id": "dex-ct-confidence-release-signature",
+  "english": "The release signature was produced by the release bot. I assign about 90% confidence to this claim. The observation that would make me reject it is: the signature verifies under a key never held by the release bot.",
+  "ainglish": "The release signature was produced by the release bot [c=0.9; ⊥ the signature verifies under a key never held by the release bot].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 90%"
+ },
+ {
+  "id": "dex-ct-confidence-report-coverage",
+  "english": "The report covers every eligible deployment. I assign about 10% confidence to this claim. The observation that would make me reject it is: an eligible deployment is missing from the report.",
+  "ainglish": "The report covers every eligible deployment [c=0.1; ⊥ an eligible deployment is missing from the report].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 10%"
+ },
+ {
+  "id": "dex-ct-confidence-service-recovery",
+  "english": "The service will recover without operator intervention. I assign about 70% confidence to this claim. The observation that would make me reject it is: an operator action is required before health checks pass.",
+  "ainglish": "The service will recover without operator intervention [c=0.7; ⊥ an operator action is required before health checks pass].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 70%"
+ },
+ {
+  "id": "dex-ct-confidence-timezone-normalised",
+  "english": "Every timestamp was normalised to UTC. I assign about 40% confidence to this claim. The observation that would make me reject it is: a stored timestamp retains a non-UTC offset.",
+  "ainglish": "Every timestamp was normalised to UTC [c=0.4; ⊥ a stored timestamp retains a non-UTC offset].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 40%"
+ },
+ {
+  "id": "dex-ct-confidence-webhook-duplicate",
+  "english": "The webhook retry produced a duplicate delivery. I assign about 70% confidence to this claim. The observation that would make me reject it is: the receiver log contains only one delivery identifier.",
+  "ainglish": "The webhook retry produced a duplicate delivery [c=0.7; ⊥ the receiver log contains only one delivery identifier].",
+  "question": "How likely does the sender say this claim is?",
+  "options": [
+   "about 10%",
+   "about 40%",
+   "about 70%",
+   "about 90%"
+  ],
+  "answer": "about 70%"
+ },
+ {
+  "id": "dex-ct-refuter-acceptance-complete",
+  "english": "The task satisfies every required acceptance check. I assign about 80% confidence to this claim. The observation that would make me reject it is: one required acceptance check fails on the submitted artifact.",
+  "ainglish": "The task satisfies every required acceptance check [c=0.8; ⊥ one required acceptance check fails on the submitted artifact].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "an optional diagnostic emits a warning",
+   "a required check takes longer than usual",
+   "No rejecting outcome was stated",
+   "one required acceptance check fails on the submitted artifact"
+  ],
+  "answer": "one required acceptance check fails on the submitted artifact"
+ },
+ {
+  "id": "dex-ct-refuter-certificate-valid",
+  "english": "The signing certificate was valid at signing time. I assign about 95% confidence to this claim. The observation that would make me reject it is: the issuing root was revoked before the recorded signing time.",
+  "ainglish": "The signing certificate was valid at signing time [c=0.95; ⊥ the issuing root was revoked before the recorded signing time].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "the issuing root was revoked before the recorded signing time",
+   "the certificate expires after the signing time",
+   "a newer certificate now exists",
+   "No rejecting outcome was stated"
+  ],
+  "answer": "the issuing root was revoked before the recorded signing time"
+ },
+ {
+  "id": "dex-ct-refuter-deploy-cause",
+  "english": "The deployment caused the alert spike. I assign about 55% confidence to this claim. The observation that would make me reject it is: a controlled interval without the deployment shows the same alert spike.",
+  "ainglish": "The deployment caused the alert spike [c=0.55; ⊥ a controlled interval without the deployment shows the same alert spike].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "No rejecting outcome was stated",
+   "a controlled interval without the deployment shows the same alert spike",
+   "the spike begins shortly after deployment",
+   "the deployment changes alert labels"
+  ],
+  "answer": "a controlled interval without the deployment shows the same alert spike"
+ },
+ {
+  "id": "dex-ct-refuter-deterministic-result",
+  "english": "The procedure is deterministic under the pinned seed. I assign about 75% confidence to this claim. The observation that would make me reject it is: a repeat with the same seed and inputs produces a different result.",
+  "ainglish": "The procedure is deterministic under the pinned seed [c=0.75; ⊥ a repeat with the same seed and inputs produces a different result].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "a repeat with the same seed and inputs produces a different result",
+   "a different seed produces a different result",
+   "the repeat runs on faster hardware",
+   "No rejecting outcome was stated"
+  ],
+  "answer": "a repeat with the same seed and inputs produces a different result"
+ },
+ {
+  "id": "dex-ct-refuter-exactly-once",
+  "english": "Each task changes external state exactly once. I assign about 70% confidence to this claim. The observation that would make me reject it is: one task identifier produces two externally visible state changes.",
+  "ainglish": "Each task changes external state exactly once [c=0.7; ⊥ one task identifier produces two externally visible state changes].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "one task identifier produces two externally visible state changes",
+   "two different task identifiers change the same table",
+   "a task is retried before succeeding",
+   "No rejecting outcome was stated"
+  ],
+  "answer": "one task identifier produces two externally visible state changes"
+ },
+ {
+  "id": "dex-ct-refuter-index-complete",
+  "english": "The index contains every accepted record. I assign about 80% confidence to this claim. The observation that would make me reject it is: an accepted record identifier is absent from a full index scan.",
+  "ainglish": "The index contains every accepted record [c=0.8; ⊥ an accepted record identifier is absent from a full index scan].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "the scan completes faster than yesterday",
+   "No rejecting outcome was stated",
+   "an accepted record identifier is absent from a full index scan",
+   "an indexed record is returned twice by pagination"
+  ],
+  "answer": "an accepted record identifier is absent from a full index scan"
+ },
+ {
+  "id": "dex-ct-refuter-latency-budget",
+  "english": "The endpoint stays within its latency budget. I assign about 60% confidence to this claim. The observation that would make me reject it is: the pinned load test reports p95 latency above 300 milliseconds.",
+  "ainglish": "The endpoint stays within its latency budget [c=0.6; ⊥ the pinned load test reports p95 latency above 300 milliseconds].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "the pinned load test reports p95 latency above 300 milliseconds",
+   "median latency rises by one millisecond",
+   "the endpoint returns a larger payload",
+   "No rejecting outcome was stated"
+  ],
+  "answer": "the pinned load test reports p95 latency above 300 milliseconds"
+ },
+ {
+  "id": "dex-ct-refuter-logs-no-pii",
+  "english": "The pinned log sample contains no personal data. I assign about 90% confidence to this claim. The observation that would make me reject it is: a raw email address appears in that pinned sample.",
+  "ainglish": "The pinned log sample contains no personal data [c=0.9; ⊥ a raw email address appears in that pinned sample].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "another log stream contains an email address",
+   "No rejecting outcome was stated",
+   "a raw email address appears in that pinned sample",
+   "the sample contains an opaque user identifier"
+  ],
+  "answer": "a raw email address appears in that pinned sample"
+ },
+ {
+  "id": "dex-ct-refuter-manifest-exhaustive",
+  "english": "The manifest lists every shipped artifact. I assign about 65% confidence to this claim. The observation that would make me reject it is: a valid shipped artifact is absent from the manifest.",
+  "ainglish": "The manifest lists every shipped artifact [c=0.65; ⊥ a valid shipped artifact is absent from the manifest].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "an unshipped draft is absent",
+   "No rejecting outcome was stated",
+   "a valid shipped artifact is absent from the manifest",
+   "the manifest lists an artifact in a different order"
+  ],
+  "answer": "a valid shipped artifact is absent from the manifest"
+ },
+ {
+  "id": "dex-ct-refuter-no-delegation",
+  "english": "The named agent performed the task without delegation. I assign about 90% confidence to this claim. The observation that would make me reject it is: the execution trace names a secondary agent as an executor.",
+  "ainglish": "The named agent performed the task without delegation [c=0.9; ⊥ the execution trace names a secondary agent as an executor].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "the task uses a shared storage service",
+   "No rejecting outcome was stated",
+   "the execution trace names a secondary agent as an executor",
+   "the named agent reads another agent's public note"
+  ],
+  "answer": "the execution trace names a secondary agent as an executor"
+ },
+ {
+  "id": "dex-ct-refuter-order-independent",
+  "english": "The aggregation result is independent of input order. I assign about 60% confidence to this claim. The observation that would make me reject it is: reversing the same inputs changes the aggregate.",
+  "ainglish": "The aggregation result is independent of input order [c=0.6; ⊥ reversing the same inputs changes the aggregate].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "No rejecting outcome was stated",
+   "reversing the same inputs changes the aggregate",
+   "the reversed run takes longer",
+   "two inputs share the same value"
+  ],
+  "answer": "reversing the same inputs changes the aggregate"
+ },
+ {
+  "id": "dex-ct-refuter-provenance-intact",
+  "english": "The artifact provenance chain is intact. I assign about 80% confidence to this claim. The observation that would make me reject it is: a downloaded artifact hash differs from its signed manifest entry.",
+  "ainglish": "The artifact provenance chain is intact [c=0.8; ⊥ a downloaded artifact hash differs from its signed manifest entry].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "the artifact is mirrored in another region",
+   "the signing key has a newer rotation date",
+   "No rejecting outcome was stated",
+   "a downloaded artifact hash differs from its signed manifest entry"
+  ],
+  "answer": "a downloaded artifact hash differs from its signed manifest entry"
+ },
+ {
+  "id": "dex-ct-refuter-replica-convergence",
+  "english": "All replicas converge after synchronisation. I assign about 75% confidence to this claim. The observation that would make me reject it is: two replicas retain different state hashes after the convergence window.",
+  "ainglish": "All replicas converge after synchronisation [c=0.75; ⊥ two replicas retain different state hashes after the convergence window].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "two replicas retain different state hashes after the convergence window",
+   "replicas apply updates in different temporary orders",
+   "one replica synchronises more slowly",
+   "No rejecting outcome was stated"
+  ],
+  "answer": "two replicas retain different state hashes after the convergence window"
+ },
+ {
+  "id": "dex-ct-refuter-retry-safe",
+  "english": "Retrying the transfer is idempotent. I assign about 70% confidence to this claim. The observation that would make me reject it is: the second attempt changes the recipient balance a second time.",
+  "ainglish": "Retrying the transfer is idempotent [c=0.7; ⊥ the second attempt changes the recipient balance a second time].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "the retry uses a different connection",
+   "No rejecting outcome was stated",
+   "the second attempt changes the recipient balance a second time",
+   "the first attempt times out"
+  ],
+  "answer": "the second attempt changes the recipient balance a second time"
+ },
+ {
+  "id": "dex-ct-refuter-scheduler-sequence",
+  "english": "The scheduler prevents the two protected jobs from overlapping. I assign about 90% confidence to this claim. The observation that would make me reject it is: their recorded execution intervals overlap.",
+  "ainglish": "The scheduler prevents the two protected jobs from overlapping [c=0.9; ⊥ their recorded execution intervals overlap].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "the second job starts later than expected",
+   "the jobs run on different workers",
+   "No rejecting outcome was stated",
+   "their recorded execution intervals overlap"
+  ],
+  "answer": "their recorded execution intervals overlap"
+ },
+ {
+  "id": "dex-ct-refuter-tokenizer-roundtrip",
+  "english": "The tokenizer round-trip preserves the source text. I assign about 85% confidence to this claim. The observation that would make me reject it is: decoding the encoded sequence yields different source text.",
+  "ainglish": "The tokenizer round-trip preserves the source text [c=0.85; ⊥ decoding the encoded sequence yields different source text].",
+  "question": "Which outcome would require the recipient to reject the claim under the sender's stated rule?",
+  "options": [
+   "No rejecting outcome was stated",
+   "decoding the encoded sequence yields different source text",
+   "the encoded sequence uses more tokens",
+   "another tokenizer chooses different token boundaries"
+  ],
+  "answer": "decoding the encoded sequence yields different source text"
+ }
+]
