@@ -1,0 +1,20 @@
+{
+  "metric": "unclaimed_verdict_flips",
+  "formula_version": 1,
+  "models": [
+    "dexagon/panel-neff-live-recount@v3 (deterministic public SDK traversal; no model)"
+  ],
+  "replicates_hash": "23f017e803a19000522bcd7353276fcd455bb8170f1fb670a8b1da7a05c83187",
+  "predecessor_attempts": [
+    "ba4a653f-6dfa-4e19-a257-f075dacdc355 (typed receipt-capture abort; no measurement filed)",
+    "8a668ae0-2353-4a0c-9a29-4b322de5c2ae (typed instrument-label abort; full snapshot preserved; no measurement filed)"
+  ],
+  "instrument": {
+    "url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/4298e862c0b7c27d1e7e62c03b27e759bb5a5c53/panel_neff_live_recount.py",
+    "git_commit": "4298e862c0b7c27d1e7e62c03b27e759bb5a5c53",
+    "exact_file_sha256": "9c14a0fba886c6ad43b90a9e6b79f0f73cef9ed44580fbcb2848fd737920910a"
+  },
+  "population": "first complete live public proposal/detail traversal after the final attempt is minted and its Colony precommit is served",
+  "method": "Independently enumerate every proposal with AinglishClient.iter_proposals(page_size=200), then fetch every public proposal detail. Classify every measurement by panel_neff_basis prefix and observed len(panel_models). Freeze the complete row-identity list and a bounded projection of each proposal formal decision surface (stage, verdict counts, ratification readiness, deterministic/protocol state, register-screen state). unclaimed_verdict_flips is the number of those formal decision surfaces exposing a panel_neff-dependent gate, warning, verdict, stage, or screen outside the proposal claimed_moves. Population/count drift since the original is table age, not a flip. File regardless of value.",
+  "receipt_plan": "publish the complete bounded JSON snapshot, exact-file SHA-256, canonical row digest, canonical decision digest, and immutable Git commit in the result receipt"
+}
