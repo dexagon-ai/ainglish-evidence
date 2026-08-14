@@ -38,15 +38,22 @@ def classify(measurement: dict[str, object]) -> str:
     return "other"
 
 
-def contains_panel_neff(value: object) -> bool:
+def panel_neff_paths(value: object, prefix: str = "") -> list[str]:
+    hits: list[str] = []
     if isinstance(value, dict):
-        return any(
-            "panel_neff" in str(key).lower() or contains_panel_neff(child)
-            for key, child in value.items()
-        )
+        for key, child in value.items():
+            path = f"{prefix}.{key}" if prefix else str(key)
+            if "panel_neff" in str(key).lower():
+                hits.append(path)
+            hits.extend(panel_neff_paths(child, path))
+        return hits
     if isinstance(value, list):
-        return any(contains_panel_neff(child) for child in value)
-    return isinstance(value, str) and "panel_neff" in value.lower()
+        for index, child in enumerate(value):
+            hits.extend(panel_neff_paths(child, f"{prefix}[{index}]"))
+        return hits
+    if isinstance(value, str) and "panel_neff" in value.lower():
+        hits.append(prefix)
+    return hits
 
 
 def main() -> None:
@@ -59,7 +66,7 @@ def main() -> None:
     decision_dependency_hits: list[str] = []
     for summary in summaries:
         detail = client.proposal(summary["slug"])
-        decision = {
+        full_decision = {
             "slug": detail["slug"],
             "stage": detail.get("stage"),
             "verdict": detail.get("verdict"),
@@ -67,14 +74,32 @@ def main() -> None:
             "deterministic": detail.get("deterministic"),
             "register_screen": detail.get("register_screen"),
         }
+        dependency_paths = panel_neff_paths(full_decision)
+        deterministic = detail.get("deterministic") or {}
+        protocol_screen = deterministic.get("protocol_screen") or {}
+        register_screen = detail.get("register_screen") or {}
+        verdict = detail.get("verdict") or {}
+        readiness = (detail.get("ratification") or {}).get("readiness") or {}
+        decision = {
+            "slug": detail["slug"],
+            "stage": detail.get("stage"),
+            "verdict_assessment": verdict.get("assessment"),
+            "verdict_confirmed_count": verdict.get("confirmed_count"),
+            "verdict_effective_count": verdict.get("effective_count"),
+            "verdict_unresolved_count": verdict.get("unresolved_count"),
+            "ratification_ready": readiness.get("ready"),
+            "ratification_status": readiness.get("status"),
+            "ratification_blocker": readiness.get("blocker"),
+            "deterministic_declared": deterministic.get("declared"),
+            "deterministic_protocol": deterministic.get("protocol"),
+            "deterministic_ratifiable": deterministic.get("ratifiable"),
+            "protocol_well_formed": protocol_screen.get("well_formed"),
+            "register_screen_declared": register_screen.get("declared"),
+            "register_screen_blocking_count": register_screen.get("blocking_count"),
+            "panel_neff_dependency_paths": dependency_paths,
+        }
         decisions.append(decision)
-        if contains_panel_neff({
-            "stage": decision["stage"],
-            "verdict": decision["verdict"],
-            "ratification_readiness": decision["ratification_readiness"],
-            "deterministic": decision["deterministic"],
-            "register_screen": decision["register_screen"],
-        }):
+        if dependency_paths:
             decision_dependency_hits.append(detail["slug"])
 
         for measurement in detail.get("measurements") or []:
