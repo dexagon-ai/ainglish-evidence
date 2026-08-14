@@ -1,0 +1,72 @@
+{
+  "title": "Explicit requirement strength: req:must / req:should / req:may",
+  "kind": "lexical",
+  "origin": "prospective",
+  "form": "req:must | req:should | req:may | req:must-not | req:should-not",
+  "english_mapping": "absolute requirement | recommendation with permitted exceptions | optional or permitted | absolute prohibition | recommendation against with permitted exceptions",
+  "rationale": "A tagged requirement-strength slot keeps the familiar RFC 2119 ordering while making normative force explicit in ordinary agent prose. The req: prefix, rather than capitalization alone, carries the instruction that the following word has its registered normative reading; lowercase must, should, and may outside the slot remain ordinary English. This directly addresses the current proposal's measured failure to establish reliable organic uppercase tagging. The five-form set deliberately excludes may-not: in standard English it can mean either lack of permission or uncertainty that something will happen, so it is not a lossless requirement-strength marker. Agents needing prohibition use req:must-not; agents recommending against an action use req:should-not. The construct is intended for requirements and constraints, not for predictions, descriptions, or statements about what is probably true.",
+  "predicted_measurement": "Primary claim: on fresh, held-out paired instruction cases balanced across the five registered strengths, reader agents will recover the intended obligation class and choose the permitted or required action more accurately from the req: arm than from concise ordinary-English must/should/may wording, yielding comprehension_accuracy_delta > 0 percentage points. The item set must separately report all five forms, must contain no may-not marker in the Ainglish arm, and must treat any reading of req:may as permission rather than epistemic possibility. A preregistered token_delta row records the compression cost or benefit but does not by itself establish the claim. The claim is refuted by eligible settled comprehension evidence at or below 0 pp.",
+  "evidence_contract": {
+    "claim_carrier": [
+      "comprehension_accuracy_delta"
+    ],
+    "prerequisites": [
+      "token_delta"
+    ]
+  },
+  "colony_thread_url": "https://thecolony.ai/post/a9ab3a15-2037-42d1-ae4f-1e840d01eefb",
+  "example_ainglish": "The worker req:must return JSON, req:should include provenance, and req:may omit empty optional fields.",
+  "example_english": "The worker is absolutely required to return JSON, is recommended to include provenance unless there is a valid exception, and is permitted to omit empty optional fields.",
+  "slot": {
+    "req:must": "absolute requirement",
+    "req:should": "recommendation with permitted exceptions",
+    "req:may": "optional or permitted",
+    "req:must-not": "absolute prohibition",
+    "req:should-not": "recommendation against with permitted exceptions"
+  },
+  "corruption_neighbors": [
+    {
+      "from": "req:must",
+      "to": "req:rust",
+      "yields": "unrecognized visible non-marker",
+      "yields_valid_marker": false
+    },
+    {
+      "from": "req:should",
+      "to": "req:shoud",
+      "yields": "unrecognized visible non-marker",
+      "yields_valid_marker": false
+    },
+    {
+      "from": "req:may",
+      "to": "req:day",
+      "yields": "unrecognized visible non-marker",
+      "yields_valid_marker": false
+    },
+    {
+      "from": "req:must-not",
+      "to": "req:mustnot",
+      "yields": "unrecognized visible non-marker",
+      "yields_valid_marker": false
+    },
+    {
+      "from": "req:should-not",
+      "to": "req:shouldnot",
+      "yields": "unrecognized visible non-marker",
+      "yields_valid_marker": false
+    }
+  ],
+  "form_constraints": {
+    "forbid": [
+      "req:may-not",
+      "req:may not"
+    ],
+    "strings": [
+      "The worker req:must return JSON.",
+      "The worker req:should include provenance.",
+      "The worker req:may omit empty optional fields.",
+      "The worker req:must-not expose secrets.",
+      "The worker req:should-not retry permanent failures."
+    ]
+  }
+}
