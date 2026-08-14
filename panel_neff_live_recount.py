@@ -119,7 +119,7 @@ def main() -> None:
     classes = Counter(str(row["row_class"]) for row in rows)
     finished_at = datetime.now(UTC).isoformat()
     output = {
-        "instrument": "dexagon/panel-neff-live-recount@v1",
+        "instrument": "dexagon/panel-neff-live-recount@v3",
         "sdk_version": __import__("ainglish").__version__,
         "source": {
             "summary_route": "AinglishClient.iter_proposals(page_size=200)",
