@@ -61,7 +61,7 @@ def main() -> None:
     started_at = datetime.now(UTC).isoformat()
     summaries = sorted(client.iter_proposals(page_size=200), key=lambda row: row["slug"])
 
-    rows: list[dict[str, object]] = []
+    served_rows: list[dict[str, object]] = []
     decisions: list[dict[str, object]] = []
     decision_dependency_hits: list[str] = []
     for summary in summaries:
@@ -104,7 +104,7 @@ def main() -> None:
 
         for measurement in detail.get("measurements") or []:
             models = measurement.get("panel_models")
-            rows.append({
+            served_rows.append({
                 "proposal": detail["slug"],
                 "manifest_hash": measurement.get("manifest_hash"),
                 "metric": measurement.get("metric"),
@@ -114,12 +114,34 @@ def main() -> None:
                 "row_class": classify(measurement),
             })
 
-    rows.sort(key=lambda row: (str(row["proposal"]), str(row["manifest_hash"])))
+    served_rows.sort(key=lambda row: (
+        str(row["proposal"]), str(row["manifest_hash"]), str(row["at"])
+    ))
+    grouped: dict[tuple[str, str], list[dict[str, object]]] = {}
+    for row in served_rows:
+        identity = (str(row["proposal"]), str(row["manifest_hash"]))
+        grouped.setdefault(identity, []).append(row)
+
+    rows: list[dict[str, object]] = []
+    duplicate_references: list[dict[str, object]] = []
+    for identity, references in sorted(grouped.items()):
+        first = dict(references[0])
+        first["served_reference_count"] = len(references)
+        first["served_at_values"] = sorted({str(row["at"]) for row in references})
+        first.pop("at", None)
+        rows.append(first)
+        if len(references) > 1:
+            duplicate_references.append({
+                "proposal": identity[0],
+                "manifest_hash": identity[1],
+                "references": references,
+            })
+
     decisions.sort(key=lambda row: str(row["slug"]))
     classes = Counter(str(row["row_class"]) for row in rows)
     finished_at = datetime.now(UTC).isoformat()
     output = {
-        "instrument": "dexagon/panel-neff-live-recount@v3",
+        "instrument": "dexagon/panel-neff-live-recount@v4",
         "sdk_version": __import__("ainglish").__version__,
         "source": {
             "summary_route": "AinglishClient.iter_proposals(page_size=200)",
@@ -129,17 +151,23 @@ def main() -> None:
         },
         "method": (
             "Classify every served measurement by panel_neff_basis prefix and observed "
-            "len(panel_models). Separately freeze each proposal's formal stage, verdict, "
+            "len(panel_models), identifying a measurement by (proposal slug, manifest_hash) "
+            "and publishing duplicate served references rather than counting them twice. "
+            "Separately freeze each proposal's formal stage, verdict, "
             "ratification readiness, deterministic result, and register screen; count any "
             "panel_neff dependency exposed on that public decision surface. Population drift "
             "changes the row-class table but is not itself an unclaimed verdict flip."
         ),
         "proposal_count": len(summaries),
+        "served_measurement_references": len(served_rows),
         "measurement_count": len(rows),
+        "measurement_identity": "(proposal slug, manifest_hash); duplicate served references count once",
+        "duplicate_measurement_references": duplicate_references,
         "row_classes": dict(sorted(classes.items())),
         "decision_dependency_hits": decision_dependency_hits,
         "unclaimed_verdict_flips": len(decision_dependency_hits),
         "rows_sha256": hashlib.sha256(canonical_bytes(rows)).hexdigest(),
+        "served_rows_sha256": hashlib.sha256(canonical_bytes(served_rows)).hexdigest(),
         "decisions_sha256": hashlib.sha256(canonical_bytes(decisions)).hexdigest(),
         "rows": rows,
         "decisions": decisions,
