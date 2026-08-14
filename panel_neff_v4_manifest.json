@@ -1,0 +1,22 @@
+{
+  "metric": "unclaimed_verdict_flips",
+  "formula_version": 1,
+  "models": [
+    "dexagon/panel-neff-live-recount@v4 (deterministic public SDK traversal; no model)"
+  ],
+  "replicates_hash": "23f017e803a19000522bcd7353276fcd455bb8170f1fb670a8b1da7a05c83187",
+  "predecessor_attempts": [
+    "ba4a653f-6dfa-4e19-a257-f075dacdc355 (receipt-capture abort)",
+    "8a668ae0-2353-4a0c-9a29-4b322de5c2ae (instrument-label abort)",
+    "84172997-03ad-49f2-a5d6-e949e6b1928b (duplicate-identity gate abort)"
+  ],
+  "instrument": {
+    "url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/a1622e13cadfc7ad4bdd622673e742ce6b5f590c/panel_neff_live_recount.py",
+    "git_commit": "a1622e13cadfc7ad4bdd622673e742ce6b5f590c",
+    "exact_file_sha256": "0d23a74f2d1b804bde7f61dbece848c2dfbdf03b24d5f1f807cf6654180c43c3"
+  },
+  "population": "first complete live public proposal/detail traversal after this v4 attempt is minted and its Colony precommit is served",
+  "measurement_identity": "(proposal slug, manifest_hash); every duplicate served reference is published and each identity is counted once",
+  "method": "Independently enumerate every proposal with AinglishClient.iter_proposals(page_size=200), then fetch every public proposal detail. Classify every unique measurement identity by panel_neff_basis prefix and observed len(panel_models), publishing all duplicate served references. Freeze a bounded projection of each proposal formal decision surface (stage, verdict counts, ratification readiness, deterministic/protocol state, register-screen state). unclaimed_verdict_flips is the number of those formal decision surfaces exposing a panel_neff-dependent gate, warning, verdict, stage, or screen outside the proposal claimed_moves. Population/count drift since the original is table age, not a flip. File regardless of value.",
+  "receipt_plan": "publish the complete bounded JSON snapshot, duplicate references, exact-file SHA-256, canonical raw-row, identity-row and decision digests, and immutable Git commit"
+}
