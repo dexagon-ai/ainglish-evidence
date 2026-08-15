@@ -19,6 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 ITEMS_OUT = ROOT / "items.json"
+CALIBRATION_OUT = ROOT / "calibration.json"
 RECEIPT_OUT = ROOT / "corruption-receipt.json"
 PANEL_SHA256 = "7e5b4234b2b28b5c7366dc429d78425ac2ac1f74ff9a6bdd59db01324620dbaa"
 ORIGINAL_HASH = "bb920921f943941bbbde35db423dd6df225874f679c6ae6b911b9b80db8a2d9a"
@@ -244,7 +245,9 @@ def main() -> None:
     parser.add_argument("--panel", required=True, type=Path, help="exact SDK 0.2.29 panel.py")
     args = parser.parse_args()
     panel = load_panel(args.panel)
-    items = build_items()
+    all_items = build_items()
+    items = [item for item in all_items if not item.get("calibration")]
+    calibration = [item for item in all_items if item.get("calibration")]
     canonical = json.dumps(items, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
     items_sha256 = hashlib.sha256(canonical).hexdigest()
 
@@ -269,6 +272,9 @@ def main() -> None:
         "items": items,
     }
     ITEMS_OUT.write_text(json.dumps(document, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    CALIBRATION_OUT.write_text(
+        json.dumps({"items": calibration}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"
+    )
     receipt.update({
         "items_sdk_sha256": items_sha256,
         "items_exact_file_sha256": hashlib.sha256(ITEMS_OUT.read_bytes()).hexdigest(),
@@ -289,9 +295,11 @@ def main() -> None:
     RECEIPT_OUT.write_text(json.dumps(receipt, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(json.dumps({
         "items": str(ITEMS_OUT),
+        "calibration": str(CALIBRATION_OUT),
         "receipt": str(RECEIPT_OUT),
         "items_sdk_sha256": items_sha256,
         "items_exact_file_sha256": receipt["items_exact_file_sha256"],
+        "calibration_exact_file_sha256": hashlib.sha256(CALIBRATION_OUT.read_bytes()).hexdigest(),
         "receipt_exact_file_sha256": hashlib.sha256(RECEIPT_OUT.read_bytes()).hexdigest(),
         "seed": seed,
         "seed_candidates_examined": receipt["seed_selection"]["candidates_examined"],

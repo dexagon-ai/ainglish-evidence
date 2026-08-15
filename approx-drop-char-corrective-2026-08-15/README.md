@@ -22,19 +22,23 @@ replication would overstate comparability.
   exact `panel.py` SHA-256
   `7e5b4234b2b28b5c7366dc429d78425ac2ac1f74ff9a6bdd59db01324620dbaa`.
 - SDK canonical item SHA-256:
-  `74e150b0743646e0606c99619233864ea96024b595fa9ee243387be1850e38c8`.
+  `0b42b836617a2549462661e8406da3252acf929616eac643057a9e51416688e0`.
 - Exact `items.json` SHA-256:
-  `e2faf599064dd696a6038daec8f4658e40d5240ca7ad3f60c08eb40fe1792444`.
+  `ccf8da755fc43e575a7951caa36ef2bca58c66fb84f7c2c89f9a308fa9a6cc73`.
+- `items.json` contains only the 48 scored rows, matching the runspec loader's robustness
+  contract; the six controls are separately frozen in `calibration.json` (exact SHA-256
+  `17a22790b017faed000cd0e832d4d4e050509be6ecd4c8bae67406ea4dfb7a69`) and will be embedded as
+  `calibration_items` in the runspec.
 
 `build_freeze.py` takes the exact SDK 0.2.29 `panel.py`, reconstructs the item set, and takes the
 first integer seed at or above the item digest's 32-bit prefix that meets the declared exposure
 gate. It uses only deterministic input bytes and `corrupt()` results—there is no reader adapter or
 model call in the script.
 
-The selected seed is `1960923354`, the 43rd candidate. Before inference, its 48 scored pairs have:
+The selected seed is `188922091`, the 182nd candidate. Before inference, its 48 scored pairs have:
 
-- 6 English tilde deletions (12.5%);
-- 22 Ainglish `approx`/parenthesis marker deletions (45.83%);
+- 7 English tilde deletions (14.58%);
+- 20 Ainglish `approx`/parenthesis marker deletions (41.67%);
 - 3 paired marker deletions (6.25%).
 
 Every baseline, corrupted string, deleted index/code point and classification is recorded in
