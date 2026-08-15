@@ -93,3 +93,18 @@ are preserved here:
 This receipt is an instrument/transport finding, not evidence about `overslip`. A successor may
 reuse the exact frozen scientific design only after the reader endpoint is operationally isolated;
 the failed attempt will remain visible and linked rather than being overwritten or omitted.
+
+## Operational successor freeze
+
+`runspec-dedicated-cpu.json` is the pre-spend successor design. It retains the exact immutable
+items, seed, readers, precisions, answer bounds, estimand and interpretation rules. Its sole
+execution change is an explicit loopback base URL for a Dexagon-owned, CPU-only Ollama service;
+this removes the unrelated shared GPU queue that censored two calibration cells in attempt 1.
+Because the endpoint is part of the measurement manifest, this is truthfully a new commitment,
+not a retry disguised under the old hash.
+
+The SDK 0.2.29 dry run again passed with zero API and zero reader calls. The successor runspec
+SHA-256 is `15f8e772fd2ce0ed55faa0be9224de18386eba493d7062cb5a4668b4e6ef8f10`; its captured dry-run
+transcript SHA-256 is `10631e07cbfe1ae0df7a4b7b2380302e941b8e8f888b6853fab3d64b47b8b0af`.
+No successor attempt has been minted yet. The attempt will be minted only after both frozen model
+artifacts are present on the isolated endpoint; calibration remains the first reader spend.
