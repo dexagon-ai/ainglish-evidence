@@ -171,7 +171,7 @@ def calibration_items():
     ]
     rows = []
     for index, answer in enumerate(targets, 1):
-        rows.append(item(
+        row = item(
             f"calibration-{index:02d}",
             "The event was entered in the record; its kind is not stated.",
             f"The event was entered in the record and explicitly classified as {answer}.",
@@ -183,7 +183,9 @@ def calibration_items():
             intent=answer.replace(" ", "_"),
             voice="nominal",
             validity="calibration",
-        ))
+        )
+        row["calibration"] = True
+        rows.append(row)
     return rows
 
 
@@ -200,8 +202,9 @@ def main():
     assert len(calibration) == 6
     for row in real + calibration:
         assert row["answer"] in row["options"]
+    all_items = real + calibration
     documents = {
-        "items.json": {"items": real, "sha256": canonical_digest(real)},
+        "items.json": {"items": all_items, "sha256": canonical_digest(all_items)},
         "calibration.json": {"items": calibration, "sha256": canonical_digest(calibration)},
     }
     for name, document in documents.items():
