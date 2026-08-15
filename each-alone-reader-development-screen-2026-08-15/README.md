@@ -1,6 +1,6 @@
 # `each-alone / as-one` reader development screen
 
-Status: **frozen before candidate reader calls**.
+Status: **completed; neither candidate qualified**.
 
 This is a non-evidentiary reader-selection screen. It uses only the six generic controls already
 exposed in the failed attempt and post-abort diagnostic. Those controls are now development data;
@@ -27,3 +27,18 @@ The screen runs once on a dedicated GPU-0-only endpoint with a 4,096-token conte
 model and one request at a time. It cannot become proposal evidence. The canonical JSON SHA-256
 of `screen-spec.json` is
 `3ddeb6f9888cb05f1e5a7f4d61f4e7c0ebad2c3d7c9553d9133845b5c48ef740`.
+
+## Result
+
+The one-shot screen completed on 2026-08-15. Both models were loaded with a 4,096-token context,
+and Ollama reported every model layer offloaded to GPU 0. Neither candidate met the frozen
+qualification rule:
+
+- Qwen: 10/12 live exact cells and 4/6 correct explicit cells (1/3 `one`, 3/3 `three`);
+- Mistral: 12/12 live exact cells and 3/6 correct explicit cells (0/3 `one`, 3/3 `three`).
+
+Qwen's two non-exact cells exhausted the output allowance without returning visible answer text.
+Mistral returned `three` for all three explicit `one joint` cases. These candidates therefore
+must not read the fresh held-out successor calibration bank or any proposal-science item. The
+canonical JSON SHA-256 of `screen-results.json` is
+`7d1bf35a8f71bdbcd5ebceb2809986e501e72ccc2f3353e2b23c9ce9289c7bc7`.
