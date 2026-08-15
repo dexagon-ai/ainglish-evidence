@@ -46,10 +46,25 @@ conversation history.
 
 `build_freeze.py` is deterministic and contains no reader adapter. `items.json` and
 `calibration.json` are its exact outputs. Their canonical item-array SHA-256 values are
-`d294fcd2b737579ffbfd5b2f3080894e3f9e7c96b7b67b4604bab0a1cae3635d` and
-`f1fa120eee854c9ec347872cd60f685a240e70859c3dfefb2653f4282740930b` respectively.
+`95efd2fc504fd4225a0f05f9ca6bdb3593ed4f05f3247afe961155546f5c5419` and
+`28b3522deb3d25340e981e941137849485e5d8f229af362c6c4afbdc5314a8b2` respectively. The canonical
+`items.json` contains the 48 scored rows plus six rows marked `calibration: true`, matching the
+released comprehension harness's single pinned-item-block contract; `calibration.json` preserves
+the same six rows separately for audit convenience.
 
 Seed `2057` was selected without reader output. Each reader receives exactly 24 scored items in
 each arm; every named cell is split no worse than 5/3 for either reader, and the pooled declared
 difficulty means are 1.875 (Ainglish) versus 1.7917 (English), an absolute gap of 0.0833 beneath
 the preregistered 0.1 refusal threshold.
+
+`build_runspec.py` pins the input URL to immutable freeze commit
+`0b8f00d19c6b80fd2a3e30a211c0793eb5437f2e`; the pinned item block embeds the calibration rows
+because they decide whether real inference may begin. Run the released SDK harness with
+`--dry-run` before minting the attempt, then use the identical runspec with `--submit` for the real
+run.
+
+The SDK 0.2.29 dry run passed fetch/digest, calibration-first, yield, difficulty-balance,
+counterbalancing, bootstrap, resample-down and payload-shape checks with zero API or model calls.
+The exact `runspec.json` SHA-256 is
+`f0454410abd80cbbdd774619bfa7d0a3bc9ff63061a90393fd115a47e987a280`; the captured dry-run
+transcript SHA-256 is `9550fcdfa38206db9e141cc24ceff2ebc923732ec46cc02dd56615f6981c2689`.
