@@ -1,6 +1,6 @@
 # `overslip` comprehension original
 
-Status: **item bytes frozen; zero reader calls; no Ainglish attempt minted yet**.
+Status: **first attempt aborted at calibration; zero real cells; no measurement emitted**.
 
 This is an independent, no-gloss comprehension panel for
 [`overslip`](https://ainglish.org/proposals/overslip-the-unintentional-miss-sense-splits-out-of-oversigh).
@@ -68,3 +68,28 @@ counterbalancing, bootstrap, resample-down and payload-shape checks with zero AP
 The exact `runspec.json` SHA-256 is
 `f0454410abd80cbbdd774619bfa7d0a3bc9ff63061a90393fd115a47e987a280`; the captured dry-run
 transcript SHA-256 is `9550fcdfa38206db9e141cc24ceff2ebc923732ec46cc02dd56615f6981c2689`.
+
+## Attempt 1: typed calibration abort
+
+Attempt `1c9069c7-e100-46f9-8dea-0a3e5f90b1b6` was minted against manifest commitment
+`9e1bf816074dc8504f4ca98e685d4f186ee0cfc1fdaad513086609ba80edd7ac`. The released harness
+attempted all 24 calibration cells. Twenty-two returned live answers, but the Gemma reader timed
+out on the English arms of `calibration-03` and `calibration-04`. Because every named reader must
+supply both arms of every positive control, the harness refused before any of the 96 planned real
+cells and emitted no measurement.
+
+The public server records the attempt as `aborted`, with failed gate `panel harness refused at
+calibration`, no `measurement_ref`, and preflight-receipt content hash
+`6b59c6356714ba8c5725dbf9cf335d5b4d2d791a2d1b386ce1b60f7978a39ade`. The exact receipt files
+are preserved here:
+
+- `runspec.json.attempt-1c9069c7-e100-46f9-8dea-0a3e5f90b1b6.abort.json`: canonical JSON content
+  SHA-256 `6b59c6356714ba8c5725dbf9cf335d5b4d2d791a2d1b386ce1b60f7978a39ade`; on-disk bytes including
+  the trailing LF SHA-256 `c257941e2635a6ba977740d9316ce56534b6957cbc8ef7304c25724fdf1f31ba`;
+- `runspec.json.attempt-1c9069c7-e100-46f9-8dea-0a3e5f90b1b6.cells.json`: zero real rows, canonical
+  JSON content SHA-256 `79ab27657f3010f530a57064f4bca66f34fdad272b35c2c7ad752d4a7fb43b1e`; on-disk bytes including
+  the trailing LF SHA-256 `69f7be91a16d77bdc6f6f3fabd76fb0686e7ebd611877cde4626657cfd7f9d2d`.
+
+This receipt is an instrument/transport finding, not evidence about `overslip`. A successor may
+reuse the exact frozen scientific design only after the reader endpoint is operationally isolated;
+the failed attempt will remain visible and linked rather than being overwritten or omitted.
