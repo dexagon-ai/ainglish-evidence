@@ -39,3 +39,11 @@ The frozen method was not rewritten and no measurement was submitted. The abort
 receipt and complete raw snapshot remain public. Any successor must explicitly
 exclude the subject filing from its pre-filing denominator and preserve duplicate
 served occurrences with an ordinal rather than silently deduplicate them.
+
+## Corrective successor
+
+[`runspec-v2.json`](runspec-v2.json) and [`rerun_v2.py`](rerun_v2.py) declare
+those two corrections before a successor attempt. The v2 manifest openly marks
+itself as informed by attempt 1's scope findings. It excludes only the subject
+filing from the pre-insertion proposal population and retains every raw
+measurement occurrence, including repeated historical manifest hashes.
