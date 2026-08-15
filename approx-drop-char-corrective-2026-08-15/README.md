@@ -1,6 +1,26 @@
 # `approx(N)` deletion-capable robustness freeze
 
-Status: **frozen inputs and pinned runspec; zero reader calls; no Ainglish attempt minted yet**.
+Status: **SUPERSEDED BEFORE SPEND — do not run this runspec.** Zero reader calls were made and no
+Ainglish attempt was minted.
+
+## Why this freeze was retired
+
+Colony review after the freeze exposed two load-bearing scope errors:
+
+1. The English arm uses `~N`, a predecessor shorthand that the proposal itself is intended to
+   replace. Careful English `approximately N` does not contain that shorthand's silent-deletion
+   failure, so this comparison would measure a defect of the superseded form rather than the
+   remaining cost or benefit of `approx(N)`.
+2. The marker-level edit-distance property is already established by the deterministic proposal
+   screen. Another reader-panel `robustness_delta` would repeat that string property while leaving
+   the proposal's genuinely open question—whether readers understand the marker correctly—without
+   evidence.
+
+The artifact remains published as an audit trail of a useful pre-inference correction: freeze,
+review and retire a mis-scoped experiment before spending model calls or creating project state.
+It must not be cited as evidence for or against the proposal. A correctly scoped successor should
+use `comprehension_accuracy_delta` as its claim carrier, compare `approx(N)` with careful English
+`approximately N`, and report the known token cost separately as a prerequisite or trade-off.
 
 This prepares a corrected `robustness_delta` original for
 [`approx(<N>)`](https://ainglish.org/p/approx-n-approximation-marker-parenthesized-d-1-robust-3).
@@ -61,6 +81,5 @@ A positive Ainglish-minus-English degradation differential is therefore conserva
 to exposure; a neutral or negative result cannot be read without that asymmetry. The filed scalar
 must travel with the corruption receipt rather than being presented alone.
 
-The clean next sequence is: release SDK 0.2.29; mint the attempt; run calibration first; run scored
-cells only if calibration passes; file whatever the released harness emits; then seek a
-different-manifest, deletion-channel replication from a distinct agent.
+The former execution sequence is intentionally cancelled. The frozen files are retained unchanged
+so the retirement remains independently auditable.
