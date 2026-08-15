@@ -16,6 +16,7 @@ answers are correct, including 3/3 `one joint` and 3/3 `three separate`. Ambiguo
 is recorded but is not a selection criterion. No scientific item, marker, or held-out successor
 control is present.
 
-The screen runs once on a dedicated GPU-0-only endpoint. It cannot become proposal evidence.
-The canonical JSON SHA-256 of `screen-spec.json` is
-`c4bd20fddc06a5f27499986515f2846c2a1b66efea961d3262230807ddb94cc9`.
+The screen runs once on a dedicated GPU-0-only endpoint with a 4,096-token context, one loaded
+model and one request at a time. It cannot become proposal evidence. The canonical JSON SHA-256
+of `screen-spec.json` is
+`8eab9beb908d553cb497f2a44aadbb41ec63de7a2eccc757b9bee74f5a996720`.
