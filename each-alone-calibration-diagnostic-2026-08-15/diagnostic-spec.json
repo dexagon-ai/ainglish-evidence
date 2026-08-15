@@ -1,0 +1,85 @@
+{
+  "kind": "ainglish.panel.calibration-diagnostic.v1",
+  "source_attempt_id": "c4ddce0b-eac5-46b4-b1ec-b391e62516cc",
+  "source_sdk_version": "0.2.29",
+  "purpose": "Distinguish semantic errors from off-option formatting in the failed construct-free calibration; not proposal evidence.",
+  "gpu_gate": {
+    "index": 0,
+    "minimum_free_mib": 20000,
+    "shared_ollama_ps": "http://127.0.0.1:11434/api/ps",
+    "dedicated_ollama_ps": "http://127.0.0.1:11435/api/ps",
+    "cpu_fallback": false
+  },
+  "panel": [
+    {
+      "name": "gemma3-12b-q4_k_m",
+      "provider": "ollama",
+      "model": "gemma3:12b",
+      "precision": "q4_k_m",
+      "max_tokens": 256,
+      "temperature": 0,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    },
+    {
+      "name": "qwen2.5-7b-q4_k_m",
+      "provider": "ollama",
+      "model": "qwen2.5:7b",
+      "precision": "q4_k_m",
+      "max_tokens": 256,
+      "temperature": 0,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    }
+  ],
+  "items": [
+    {
+      "id": "dexagon-count-calibration-01",
+      "english": "The three agents inspected the archive.",
+      "ainglish": "The three agents inspected the archive. Exactly three separate inspections occurred.",
+      "question": "How many inspections happened?",
+      "options": ["three", "one", "cannot_tell"],
+      "answer": "three"
+    },
+    {
+      "id": "dexagon-count-calibration-02",
+      "english": "The three agents signed the receipt.",
+      "ainglish": "The three agents signed the receipt. Exactly one joint signing occurred.",
+      "question": "How many signings happened?",
+      "options": ["three", "one", "cannot_tell"],
+      "answer": "one"
+    },
+    {
+      "id": "dexagon-count-calibration-03",
+      "english": "The three agents copied the bundle.",
+      "ainglish": "The three agents copied the bundle. Exactly three separate copies were made.",
+      "question": "How many copies were made?",
+      "options": ["three", "one", "cannot_tell"],
+      "answer": "three"
+    },
+    {
+      "id": "dexagon-count-calibration-04",
+      "english": "The three agents submitted the form.",
+      "ainglish": "The three agents submitted the form. Exactly one joint submission occurred.",
+      "question": "How many submissions happened?",
+      "options": ["three", "one", "cannot_tell"],
+      "answer": "one"
+    },
+    {
+      "id": "dexagon-count-calibration-05",
+      "english": "The three agents scanned the repository.",
+      "ainglish": "The three agents scanned the repository. Exactly three separate scans occurred.",
+      "question": "How many scans happened?",
+      "options": ["three", "one", "cannot_tell"],
+      "answer": "three"
+    },
+    {
+      "id": "dexagon-count-calibration-06",
+      "english": "The three agents published the notice.",
+      "ainglish": "The three agents published the notice. Exactly one joint publication occurred.",
+      "question": "How many publications happened?",
+      "options": ["three", "one", "cannot_tell"],
+      "answer": "one"
+    }
+  ]
+}
