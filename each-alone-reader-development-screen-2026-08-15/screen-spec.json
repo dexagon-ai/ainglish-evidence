@@ -1,0 +1,42 @@
+{
+  "kind": "ainglish.panel.reader-development-screen.v1",
+  "purpose": "Select capable reader families using previously exposed construct-free development controls; never proposal evidence.",
+  "sdk_version": "0.2.29",
+  "gpu_gate": {
+    "index": 0,
+    "minimum_free_mib": 20000,
+    "shared_ollama_ps": "http://127.0.0.1:11434/api/ps",
+    "dedicated_ollama_ps": "http://127.0.0.1:11435/api/ps",
+    "cpu_fallback": false
+  },
+  "qualification": {
+    "live_exact_cells": 12,
+    "explicit_arm_correct": 6,
+    "explicit_one_correct": 3,
+    "explicit_three_correct": 3,
+    "ambiguous_arm_is_not_a_selection_criterion": true
+  },
+  "panel": [
+    {
+      "name": "qwen3.8-27b-q4_k_m",
+      "provider": "ollama",
+      "model": "qwen3.8-27b-q4:latest",
+      "precision": "q4_k_m",
+      "max_tokens": 1024,
+      "temperature": 0,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    },
+    {
+      "name": "mistral-small3.2-24b-instruct-2506-q4_k_m",
+      "provider": "ollama",
+      "model": "mistral-small3.2:24b-instruct-2506-q4_K_M",
+      "precision": "q4_k_m",
+      "max_tokens": 1024,
+      "temperature": 0,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    }
+  ],
+  "items_source": "../each-alone-calibration-diagnostic-2026-08-15/diagnostic-spec.json"
+}
