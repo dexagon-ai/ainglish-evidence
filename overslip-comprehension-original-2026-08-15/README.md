@@ -1,6 +1,7 @@
 # `overslip` comprehension original
 
-Status: **first attempt aborted at calibration; zero real cells; no measurement emitted**.
+Status: **both attempts aborted before real cells; the isolated CPU successor triggered an abrupt
+host restart and must not be retried on this machine**.
 
 This is an independent, no-gloss comprehension panel for
 [`overslip`](https://ainglish.org/proposals/overslip-the-unintentional-miss-sense-splits-out-of-oversigh).
@@ -106,5 +107,36 @@ not a retry disguised under the old hash.
 The SDK 0.2.29 dry run again passed with zero API and zero reader calls. The successor runspec
 SHA-256 is `15f8e772fd2ce0ed55faa0be9224de18386eba493d7062cb5a4668b4e6ef8f10`; its captured dry-run
 transcript SHA-256 is `10631e07cbfe1ae0df7a4b7b2380302e941b8e8f888b6853fab3d64b47b8b0af`.
-No successor attempt has been minted yet. The attempt will be minted only after both frozen model
-artifacts are present on the isolated endpoint; calibration remains the first reader spend.
+Both frozen model artifacts were present and their model-blob SHA-256 values matched their Ollama
+manifests before successor attempt `878cd707-87ab-440e-93c7-82b71e05c553` was minted at
+`2026-08-15T10:56:06Z`, with manifest commitment
+`da58096cd210fb411391f3d2bfbccb1ed9c50444bcc21afb3e1e38375824a0ef`.
+
+The host then failed during the first calibration reader load. Windows records the unexpected
+shutdown at `2026-08-15T11:56:22+01:00`, sixteen seconds after the attempt mint. Its Kernel-Power
+41 record has bugcheck code 0 and no WHEA boot error; no crash dump, Windows resource-exhaustion
+event, Linux OOM, kernel panic, or thermal marker was preserved. Those absences do not rule out
+CPU or memory pressure because the machine stopped abruptly. The panel emitted no attempt sidecar
+or measurement. The calibration-first gate means no real cell was attempted.
+
+The exact local abort receipt is
+`runspec-dedicated-cpu.json.attempt-878cd707-87ab-440e-93c7-82b71e05c553.abort.json`. This is an
+operational host-instability finding, not language evidence. Its canonical content SHA-256 is
+`f07a4feb4e69d29463948a3d1e588fff538a3c341dd2157e6b1f6d1ca0727c3d`, which is also the
+server-side abort receipt hash. The CPU topology must never be retried. Any future successor needs
+a resource-bounded GPU runner and a new manifest; if the GPU is unavailable, the experiment waits
+rather than falling back to CPU.
+
+## GPU successor freeze
+
+`runspec-dedicated-gpu0.json` preserves the frozen items, seed, readers, answer bounds, estimand,
+strata and interpretation rules. Its execution topology is new and explicit: a dedicated RTX 3090
+endpoint pinned with `CUDA_VISIBLE_DEVICES=0`, one loaded model and one request at a time, and no
+CPU fallback. Immediately before minting, GPU 0 must have at least 20 GiB free VRAM, the shared
+Ollama server must report no loaded model, and `nvidia-smi` must report no compute process.
+
+The exact GPU runspec SHA-256 is
+`e28ddd83842a06c67b0c293ad3edc8857aa6db487c85e63184f4e2f782427902`. SDK 0.2.29 dry-run
+validation passed the item digest, calibration-first, cell-yield, balance, bootstrap,
+resample-down, and payload checks with zero API calls and zero reader calls. This is a new
+operational attempt, not a continuation whose hardware change is hidden.

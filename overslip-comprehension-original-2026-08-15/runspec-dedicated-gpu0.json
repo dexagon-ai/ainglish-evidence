@@ -1,0 +1,68 @@
+{
+  "construct": "overslip",
+  "slug": "overslip-the-unintentional-miss-sense-splits-out-of-oversigh",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2057,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "panel_neff": 2,
+  "difficulty_axis": "preregistered ordinal reading difficulty: 1 explicit context, 2 meaning-matched verb, 3 cold or adversarial",
+  "difficulty_balance_max_gap": "0.1",
+  "panel": [
+    {
+      "name": "gemma3-12b-q4_k_m",
+      "provider": "ollama",
+      "model": "gemma3:12b",
+      "precision": "q4_k_m",
+      "max_tokens": 512,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    },
+    {
+      "name": "qwen2.5-7b-q4_k_m",
+      "provider": "ollama",
+      "model": "qwen2.5:7b",
+      "precision": "q4_k_m",
+      "max_tokens": 512,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    }
+  ],
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/0b8f00d19c6b80fd2a3e30a211c0793eb5437f2e/overslip-comprehension-original-2026-08-15/items.json",
+  "items_sha256": "95efd2fc504fd4225a0f05f9ca6bdb3593ed4f05f3247afe961155546f5c5419",
+  "attempt": {
+    "proposal_revision": "overslip-the-unintentional-miss-sense-splits-out-of-oversigh",
+    "estimand": "Operational successor to aborted attempts 1c9069c7-e100-46f9-8dea-0a3e5f90b1b6 and 878cd707-87ab-440e-93c7-82b71e05c553; the frozen items, seed, readers, bounds, estimand and interpretation rules are unchanged. The only manifest change is execution on a dedicated local RTX 3090 endpoint pinned to GPU 0, with one loaded model and one request permitted at a time. This replaces the CPU-only topology that was followed by an abrupt host restart. Original comprehension_accuracy_delta in percentage points over 48 frozen no-gloss items: counterbalanced exact four-way classification, Ainglish minus English. The aggregate travels with separately interpreted anchored, cold-noun, meaning-matched-verb and deliberate-misuse cells from the attempt sidecar.",
+    "admissibility_gates": [
+      "six calibration items execute first; every reader supplies both arms and the planted Ainglish-minus-English accuracy gap is at least 0.5",
+      "readers are generic pretrained local models with no Ainglish fine-tuning, retrieval, system prompt, conversation history or access to the proposal thread",
+      "each reader receives exactly 24 scored items per arm; no named cell is split more unevenly than 5/3",
+      "pooled preregistered difficulty mean differs by no more than 0.1 between arms",
+      "cold-noun, anchored-context, meaning-matched-verb and deliberate-misuse cells remain separately reportable from the saved attempt sidecar",
+      "an aggregate gain confined to cold noun items is not generalized to retirement of every miss sense of oversight",
+      "deliberate-control accidental readings and active/passive differences are reported even if adverse to the aggregate",
+      "both readers execute on the dedicated loopback endpoint at 127.0.0.1:11435, pinned with CUDA_VISIBLE_DEVICES=0, OLLAMA_MAX_LOADED_MODELS=1 and OLLAMA_NUM_PARALLEL=1; CPU fallback is prohibited",
+      "immediately before minting, GPU 0 is an RTX 3090 with at least 20 GiB free VRAM, the shared Ollama server reports no loaded model, and nvidia-smi reports no compute process; a competing workload or GPU-health fault causes a typed abort",
+      "any transport fault, calibration loss or real-cell yield failure remains a typed abort"
+    ],
+    "planned_sample": {
+      "real_items": 48,
+      "calibration_items": 6,
+      "readers": 2,
+      "reader_families": [
+        "Gemma 3",
+        "Qwen 2.5"
+      ],
+      "reader_precision": "both local q4_k_m",
+      "real_cells": 96,
+      "calibration_cells": 24,
+      "strata": {
+        "anchored_ambiguity": 24,
+        "cold_noun_decode": 8,
+        "careful_mapping_verb": 8,
+        "deliberate_false_positive_control": 8
+      },
+      "execution": "dedicated local RTX 3090 GPU 0; CUDA_VISIBLE_DEVICES=0; one loaded model; one request at a time; no CPU fallback; wait rather than run if the GPU is contested"
+    }
+  }
+}
