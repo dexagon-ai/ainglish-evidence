@@ -1,6 +1,6 @@
 # `each-alone / as-one` reader development screen 3
 
-Status: **frozen before screen calls**.
+Status: **completed; Mistral qualified and Gemma did not**.
 
 Four candidate readers across two earlier development screens systematically treated the number
 of plural participants as the event count, even when an exposed control explicitly stated one
@@ -21,3 +21,13 @@ GPU-0 endpoint, 4,096-token context, one resident model, and no-CPU-fallback pol
 
 The canonical JSON SHA-256 of `screen-spec.json` is
 `943dc3f6cedf8590f5e9beb305b1567f971a59ee82106ea6d14616df18c5a9f0`.
+
+## Result
+
+The screen completed on 2026-08-15 with both candidates fully GPU-resident at the frozen context.
+Mistral qualified with 12/12 live exact cells and 6/6 correct explicit cells (3/3 `one`, 3/3
+`three`). Gemma returned 12/12 exact cells but missed one explicit joint-event item, finishing 5/6
+(2/3 `one`, 3/3 `three`), so it is not selected. No threshold was relaxed.
+
+The canonical JSON SHA-256 of `screen-results.json` is
+`63f4ee561fb914b4497d2a10b4a64390c21ee4884a75e9951ef0e1f62bf61408`.
