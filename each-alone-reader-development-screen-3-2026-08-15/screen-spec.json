@@ -1,0 +1,51 @@
+{
+  "kind": "ainglish.panel.reader-development-screen.v1",
+  "purpose": "Validate a construct-free event-count reader interface on exposed development controls; never proposal evidence.",
+  "sdk_version": "0.2.29",
+  "gpu_gate": {
+    "index": 0,
+    "minimum_free_mib": 20000,
+    "ollama_context_length": 4096,
+    "ollama_max_loaded_models": 1,
+    "ollama_num_parallel": 1,
+    "shared_ollama_ps": "http://127.0.0.1:11434/api/ps",
+    "dedicated_ollama_ps": "http://127.0.0.1:11435/api/ps",
+    "cpu_fallback": false
+  },
+  "qualification": {
+    "live_exact_cells": 12,
+    "explicit_arm_correct": 6,
+    "explicit_one_correct": 3,
+    "explicit_three_correct": 3,
+    "ambiguous_arm_is_not_a_selection_criterion": true
+  },
+  "panel": [
+    {
+      "name": "gemma3-12b-event-task-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-gemma3-12b-event-task:ctx4k",
+      "source_model": "gemma3:12b",
+      "model_configuration": "Modelfile.gemma3-12b-event-task",
+      "model_configuration_sha256": "4259a7e2ee9325eb22a74dd4373084a282fc07377c655eaee987e727ba928beb",
+      "precision": "q4_k_m",
+      "max_tokens": 1024,
+      "temperature": 0,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    },
+    {
+      "name": "mistral-small3.2-24b-event-task-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-mistral-small3.2-24b-event-task:ctx4k",
+      "source_model": "mistral-small3.2:24b-instruct-2506-q4_K_M",
+      "model_configuration": "Modelfile.mistral-small3.2-24b-event-task",
+      "model_configuration_sha256": "552e80e84ad510fae7cdc79f325d5641cb77d107097c41243f63d61449a559ce",
+      "precision": "q4_k_m",
+      "max_tokens": 1024,
+      "temperature": 0,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    }
+  ],
+  "items_source": "../each-alone-calibration-diagnostic-2026-08-15/diagnostic-spec.json"
+}
