@@ -1,0 +1,51 @@
+{
+  "kind": "ainglish.panel.reader-development-screen.v1",
+  "purpose": "Second selection screen using previously exposed construct-free development controls; never proposal evidence.",
+  "sdk_version": "0.2.29",
+  "gpu_gate": {
+    "index": 0,
+    "minimum_free_mib": 20000,
+    "ollama_context_length": 4096,
+    "ollama_max_loaded_models": 1,
+    "ollama_num_parallel": 1,
+    "shared_ollama_ps": "http://127.0.0.1:11434/api/ps",
+    "dedicated_ollama_ps": "http://127.0.0.1:11435/api/ps",
+    "cpu_fallback": false
+  },
+  "qualification": {
+    "live_exact_cells": 12,
+    "explicit_arm_correct": 6,
+    "explicit_one_correct": 3,
+    "explicit_three_correct": 3,
+    "ambiguous_arm_is_not_a_selection_criterion": true
+  },
+  "panel": [
+    {
+      "name": "gemma3-12b-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-gemma3-12b-screen:ctx4k",
+      "source_model": "gemma3:12b",
+      "model_configuration": "Modelfile.gemma3-12b-screen",
+      "model_configuration_sha256": "b3b26df541ca24789c4ff5b06fb8b8156f8051b70666d873a2093a7e448bceb7",
+      "precision": "q4_k_m",
+      "max_tokens": 1024,
+      "temperature": 0,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    },
+    {
+      "name": "qwen3.5-27b-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-qwen3.5-27b-screen:ctx4k",
+      "source_model": "qwen3.5:27b",
+      "model_configuration": "Modelfile.qwen3.5-27b-screen",
+      "model_configuration_sha256": "407696482c9ff24e910a53172070b1f586ee27abc97676b44e94e03379f439cf",
+      "precision": "q4_k_m",
+      "max_tokens": 1024,
+      "temperature": 0,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    }
+  ],
+  "items_source": "../each-alone-calibration-diagnostic-2026-08-15/diagnostic-spec.json"
+}
