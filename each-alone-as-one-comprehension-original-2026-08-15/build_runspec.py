@@ -1,0 +1,122 @@
+#!/usr/bin/env python3
+"""Build the immutable-input, GPU-only runspec before any reader call."""
+
+import json
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parent
+FREEZE_COMMIT = "7e28ac7032ea9bad9123126d3a09a6f8909c482c"
+ITEMS_SHA256 = "4040959fc87172d52b9a2eb8d38abfc8d5f13d37874318b93d5579e917ab4ae5"
+SLUG = "each-alone-as-one-distributive-vs-collective-does-the-plural"
+
+
+def main() -> None:
+    spec = {
+        "construct": "each-alone / as-one",
+        "slug": SLUG,
+        "metric": "comprehension_accuracy_delta",
+        "seed": 858,
+        "planted_arm": "ainglish",
+        "calibration_min_gap": 0.5,
+        "panel_neff": 2,
+        "panel": [
+            {
+                "name": "gemma3-12b-q4_k_m",
+                "provider": "ollama",
+                "model": "gemma3:12b",
+                "precision": "q4_k_m",
+                "max_tokens": 256,
+                "api": "openai",
+                "base_url": "http://127.0.0.1:11435/v1",
+            },
+            {
+                "name": "qwen2.5-7b-q4_k_m",
+                "provider": "ollama",
+                "model": "qwen2.5:7b",
+                "precision": "q4_k_m",
+                "max_tokens": 256,
+                "api": "openai",
+                "base_url": "http://127.0.0.1:11435/v1",
+            },
+        ],
+        "items_url": (
+            "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+            f"{FREEZE_COMMIT}/each-alone-as-one-comprehension-original-2026-08-15/items.json"
+        ),
+        "items_sha256": ITEMS_SHA256,
+        "attempt": {
+            "proposal_revision": SLUG,
+            "estimand": (
+                "Original comprehension_accuracy_delta in percentage points over Rosetta's 19 "
+                "frozen action-count rows: counterbalanced exact recovery of three, one, or "
+                "cannot_tell from each-alone/as-one versus underspecified bare plural. All 19 "
+                "scientific source rows are unchanged; six separately disclosed construct-free "
+                "positive controls qualify the two readers under the current calibration-first "
+                "harness. The aggregate travels with separately recomputed each-alone, as-one, "
+                "and bare-control cells from the saved attempt sidecar. This estimates ambiguity "
+                "resolution versus bare plural only; it does not establish non-inferiority to "
+                "full careful English."
+            ),
+            "admissibility_gates": [
+                (
+                    "the public Rosetta source block hashes to "
+                    "4b51b2a0077356a16541e52644c9e3dea934eb0f3a907cdc46a2a88203c96e25; "
+                    "all 19 rows labelled comprehension are retained without field edits"
+                ),
+                (
+                    "six generic positive controls execute first; every reader supplies both "
+                    "arms and the explicit-count-minus-ambiguous-count accuracy gap is at least 0.5"
+                ),
+                (
+                    "readers are generic pretrained local models with no Ainglish fine-tuning, "
+                    "retrieval, system prompt, conversation history or access to the proposal thread"
+                ),
+                (
+                    "seed 858 gives each reader four each-alone and four as-one rows per arm; "
+                    "bare controls split 1/2 in opposite directions and pooled real arms are 19/19"
+                ),
+                (
+                    "each-alone, as-one and byte-identical bare-plural controls remain separately "
+                    "reportable from the saved real-cell sidecar"
+                ),
+                (
+                    "a positive aggregate is interpreted only as ambiguity resolution versus bare "
+                    "plural; careful-English non-inferiority remains untested and is not inferred"
+                ),
+                (
+                    "both readers execute on a dedicated loopback endpoint at 127.0.0.1:11435, "
+                    "pinned with CUDA_VISIBLE_DEVICES=0, OLLAMA_MAX_LOADED_MODELS=1 and "
+                    "OLLAMA_NUM_PARALLEL=1; CPU fallback is prohibited"
+                ),
+                (
+                    "immediately before minting, GPU 0 is an RTX 3090 with at least 20 GiB free "
+                    "VRAM, the shared Ollama server reports no loaded model, and a competing "
+                    "workload or GPU-health fault causes a typed abort"
+                ),
+                "any transport fault, calibration loss or real-cell yield failure remains a typed abort",
+            ],
+            "planned_sample": {
+                "real_items": 19,
+                "calibration_items": 6,
+                "readers": 2,
+                "reader_families": ["Gemma 3", "Qwen 2.5"],
+                "reader_precision": "both local q4_k_m",
+                "real_cells": 38,
+                "calibration_cells": 24,
+                "real_item_classes": {"each_alone": 8, "as_one": 8, "bare": 3},
+                "execution": (
+                    "dedicated local RTX 3090 GPU 0; one loaded model and one request at a time; "
+                    "no CPU fallback; wait rather than run if the GPU is contested"
+                ),
+            },
+        },
+    }
+    (ROOT / "runspec-dedicated-gpu0.json").write_text(
+        json.dumps(spec, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+
+if __name__ == "__main__":
+    main()

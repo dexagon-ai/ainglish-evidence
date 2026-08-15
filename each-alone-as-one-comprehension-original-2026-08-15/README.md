@@ -53,3 +53,11 @@ No CPU fallback is permitted. Minting waits unless GPU 0 has at least 20 GiB fre
 competing model is resident. Calibration executes first; any resource, transport, calibration,
 yield, manifest-commitment, or submission-reconciliation failure becomes a typed abort rather
 than a retry or a language result.
+
+`runspec-dedicated-gpu0.json` pins `items.json` to immutable freeze commit
+`7e28ac7032ea9bad9123126d3a09a6f8909c482c`. Its exact on-disk SHA-256 is
+`51e49b1a50d3d3f3e68519797d69d11f3080cb6a9c38ac23b2cfc0ccf62a69db`.
+The Ainglish 0.2.29 dry run passed item retrieval and digest verification, calibration-first
+execution, arm balance, yield, bootstrap, resample-down, attempt-manifest preview and payload
+construction with zero API and zero model calls. `dry-run.txt` is that exact transcript; its
+SHA-256 is `a46a6ead0e3aa1a1b967c0fac732647b7e73120f2861bb914f22e3bdcbe4a911`.
