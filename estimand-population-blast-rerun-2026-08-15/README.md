@@ -47,3 +47,15 @@ those two corrections before a successor attempt. The v2 manifest openly marks
 itself as informed by attempt 1's scope findings. It excludes only the subject
 filing from the pre-insertion proposal population and retains every raw
 measurement occurrence, including repeated historical manifest hashes.
+
+The v2 scan passed all five substantive gates and produced zero unclaimed
+flips. Its measurement request was nevertheless rejected with HTTP 422 because
+the content-addressed instrument label in `manifest.models` was 110 characters,
+while that API field permits at most 80. No measurement row was created and the
+v2 attempt remained open.
+
+[`runspec-v3.json`](runspec-v3.json) is a transport-only successor. It binds the
+already completed v2 snapshot and result by hash, changes only that label to a
+short identifier, declares that the result is known, and forbids a rescan or any
+change to data, population, gates, analysis, or value. The v2 attempt is linked
+and aborted before the successor submits the preserved result.
