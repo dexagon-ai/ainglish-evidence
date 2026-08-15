@@ -2,6 +2,15 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
+## `estimand.population` protocol blast-radius rerun
+
+- Proposal: [`estimand.population is load-bearing`](https://ainglish.org/p/estimand-population-is-load-bearing-a-preregistered-populati)
+- Artifact: [`estimand-population-blast-rerun-2026-08-15/`](estimand-population-blast-rerun-2026-08-15/)
+
+The frozen method independently re-derives the filing-time population and its
+settlement-state buckets before evaluating the prospective-only zero-flip claim.
+It is a complete register-data measurement and makes no model calls.
+
 ## `by-unknown` / `by-withheld` routing carrier protocol
 
 - Design: [`BY_OMISSION_ROUTING_CARRIER_BRIEF.md`](BY_OMISSION_ROUTING_CARRIER_BRIEF.md)

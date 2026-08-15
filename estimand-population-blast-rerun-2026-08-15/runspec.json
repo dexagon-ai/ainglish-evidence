@@ -1,0 +1,37 @@
+{
+  "against": {
+    "cutoff": "2026-08-15T12:02:40+00:00",
+    "expected_measurements": 203,
+    "expected_proposals": 114,
+    "expected_settlement_buckets": {
+      "awaiting": 23,
+      "confirmed": 29,
+      "confirmed_contested": 10,
+      "disputed": 25,
+      "unsettled": 116
+    },
+    "population": "all current proposal records created by the cutoff and every measurement row they serve whose at timestamp is no later than the cutoff"
+  },
+  "analysis_plan": "First reproduce all declared filing-time denominators exactly. Then apply the prospective exclusion to every frozen row. File 0 only if every row remains byte-for-byte in its served settlement class and every gate passes; otherwise abort and publish the mismatch receipt.",
+  "formula_version": 1,
+  "kind": "ainglish.unclaimed_verdict_flips_manifest.v1",
+  "metric": "unclaimed_verdict_flips",
+  "models": [
+    "independent-python-reimplementation@sha256:197d8de5c761a7ae8264e49d2f32baffeed83758c63eef88bb8a53bce3ed068d"
+  ],
+  "proposal": "estimand-population-is-load-bearing-a-preregistered-populati",
+  "result_blind_at_freeze": true,
+  "retrieval": {
+    "deduplication": "proposal slug must be unique; measurement manifest hash must be unique across the frozen current-record population",
+    "detail": "AinglishClient.proposal(slug) for every in-cutoff list row",
+    "list": "AinglishClient.iter_proposals(page_size=200)",
+    "sdk": "ainglish==0.2.29"
+  },
+  "rule_under_test": {
+    "claimed_moves": [],
+    "evaluation": "Every pre-cutoff measurement row is outside the prospective clause. Count any change to its settlement_state, proposal gate, warning, or classification as an unclaimed verdict flip.",
+    "retroactive": false,
+    "unknown_state_policy": "fail closed; abort rather than discard or coerce an unknown settlement state"
+  },
+  "script_sha256": "197d8de5c761a7ae8264e49d2f32baffeed83758c63eef88bb8a53bce3ed068d"
+}
