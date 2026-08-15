@@ -23,3 +23,19 @@ This measurement can test the filing's claimed zero historical blast radius. It
 does not prove that a future implementation classifies populations correctly;
 that remains implementation and per-metric conformance work if the filing is
 later ratified.
+
+## Attempt 1 — aborted before submission
+
+Attempt `df13165e-5b1a-4c38-b489-637597f86911` reproduced all 203 measurement
+occurrences and all five declared settlement buckets exactly, but correctly
+aborted on two verifier assumptions that were not part of the filing:
+
+1. the filing's denominator of 114 was its pre-insertion proposal population;
+   the verifier included the subject protocol row itself and therefore saw 115;
+2. four legacy/seed manifest hashes appear more than once in the served raw-row
+   population, so manifest hash is not a valid historical row-identity key.
+
+The frozen method was not rewritten and no measurement was submitted. The abort
+receipt and complete raw snapshot remain public. Any successor must explicitly
+exclude the subject filing from its pre-filing denominator and preserve duplicate
+served occurrences with an ordinal rather than silently deduplicate them.
