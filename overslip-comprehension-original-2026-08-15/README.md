@@ -1,7 +1,7 @@
 # `overslip` comprehension original
 
-Status: **both attempts aborted before real cells; the isolated CPU successor triggered an abrupt
-host restart and must not be retried on this machine**.
+Status: **GPU successor completed and filed an adverse/neutral original after two operational
+aborts; no comprehension advantage was observed**.
 
 This is an independent, no-gloss comprehension panel for
 [`overslip`](https://ainglish.org/proposals/overslip-the-unintentional-miss-sense-splits-out-of-oversigh).
@@ -140,3 +140,45 @@ The exact GPU runspec SHA-256 is
 validation passed the item digest, calibration-first, cell-yield, balance, bootstrap,
 resample-down, and payload checks with zero API calls and zero reader calls. This is a new
 operational attempt, not a continuation whose hardware change is hidden.
+
+## GPU result
+
+Attempt `2b1ef318-c80a-4a1b-a30a-bd3fc7e686c7` completed on the frozen GPU topology and filed
+measurement `da58096cd210fb411391f3d2bfbccb1ed9c50444bcc21afb3e1e38375824a0ef`. Calibration
+passed at 1.00 versus 0.00. All 120 calibration-plus-real cells were live, all 96 real cells were
+recorded, and there were zero transport faults, empty answers, unparsed answers, retries, or
+truncations. GPU 0 fully offloaded all model layers; the isolated server was stopped immediately
+after completion.
+
+The headline `comprehension_accuracy_delta` was **-8.33 percentage points** (Ainglish 70.83%,
+English 79.17%), with interval **[-23.2816, 7.0588]**. Both model-family rows pointed negative:
+Gemma 3 12B -4.17pp and Qwen 2.5 7B -12.5pp. Resample-down values remained negative at 75% and
+50% of items (-5.73pp and -11.64pp), although the headline interval includes zero.
+
+The preregistered diagnostic cells were:
+
+| Cell | English | Ainglish | Delta |
+|---|---:|---:|---:|
+| Anchored ambiguity | 15/25 (60.0%) | 13/23 (56.5%) | -3.5pp |
+| Cold noun decode | 7/7 (100.0%) | 6/9 (66.7%) | -33.3pp |
+| Careful mapping verb | 8/8 (100.0%) | 7/8 (87.5%) | -12.5pp |
+| Deliberate false-positive control | 8/8 (100.0%) | 8/8 (100.0%) | 0.0pp |
+
+The cold and careful-English costs were concentrated in Qwen: its cold Ainglish cell was 2/5
+against English 3/3, and its careful-verb cell was 3/4 against 4/4. Gemma was at parity in both.
+The deliberate-use falsifier did not fire. Supervision decoding was poor but identical across arms
+(2/12 in each), while accidental-miss decoding favoured English (28/28 versus 24/28). Thus the
+run provides no support for the proposed comprehension gain and exposes a reader-family-dependent
+learnability cost; it does not establish a population-wide loss because the interval crosses zero
+and the two readers share q4_k_m precision.
+
+Exact receipt files:
+
+- `runspec-dedicated-gpu0.json.attempt-2b1ef318-c80a-4a1b-a30a-bd3fc7e686c7.cells.json`:
+  canonical content SHA-256 `b68154569c25ce7869aee298f47fbdb1327e6419bd12ecbd25e3001b92a87681`;
+- `runspec-dedicated-gpu0.json.attempt-2b1ef318-c80a-4a1b-a30a-bd3fc7e686c7.measurement.json`:
+  canonical content SHA-256 `a86b8e969dc0356090353023be667a97a21be036eb02f2453b6709fbb95b6cee`.
+
+The next evidential action should be a disjoint, different-manifest replication using a fresh item
+set and a reader pool that changes the shared quantization axis. It should preserve the four named
+cells and treat confirmation of the adverse result—not rescue of the word—as a successful outcome.
