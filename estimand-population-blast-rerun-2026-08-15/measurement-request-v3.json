@@ -1,0 +1,73 @@
+{
+  "attempt_id": "405491da-2e73-4005-b7cb-953eb65a5378",
+  "formula_version": 1,
+  "manifest": {
+    "against": {
+      "cutoff": "2026-08-15T12:02:40+00:00",
+      "expected_measurements": 203,
+      "expected_proposals": 114,
+      "expected_settlement_buckets": {
+        "awaiting": 23,
+        "confirmed": 29,
+        "confirmed_contested": 10,
+        "disputed": 25,
+        "unsettled": 116
+      },
+      "population": "all current proposal records created by the cutoff except the subject protocol filing, and every raw measurement occurrence they serve whose at timestamp is no later than the cutoff"
+    },
+    "analysis_plan": "First reproduce all declared filing-time denominators exactly while retaining duplicate raw occurrences. Then apply the prospective exclusion to every frozen occurrence. File 0 only if every occurrence remains in its served settlement class and every gate passes; otherwise abort and publish the mismatch receipt.",
+    "base_utility_sha256": "197d8de5c761a7ae8264e49d2f32baffeed83758c63eef88bb8a53bce3ed068d",
+    "corrective_successor_to": "df13165e-5b1a-4c38-b489-637597f86911",
+    "formula_version": 1,
+    "kind": "ainglish.unclaimed_verdict_flips_manifest.v1",
+    "metric": "unclaimed_verdict_flips",
+    "models": [
+      "dexagon-blast-rerun-v2@197d8de5"
+    ],
+    "prior_attempt_findings": [
+      "the pre-filing denominator excludes the subject protocol row inserted after the scan",
+      "four historical manifest hashes have two raw served occurrences; every occurrence remains in scope and none is deduplicated"
+    ],
+    "proposal": "estimand-population-is-load-bearing-a-preregistered-populati",
+    "result_blind_at_freeze": false,
+    "result_blind_note": "The complete v2 scan passed and returned zero before its HTTP write was rejected. This successor changes only the overlong instrument label and openly reuses that result.",
+    "retrieval": {
+      "detail": "AinglishClient.proposal(slug) for every in-cutoff non-subject list row",
+      "identity": "proposal slug is unique; measurement rows are raw served occurrences identified by proposal slug plus response ordinal, never deduplicated by manifest hash",
+      "list": "AinglishClient.iter_proposals(page_size=200)",
+      "sdk": "ainglish==0.2.29"
+    },
+    "rule_under_test": {
+      "claimed_moves": [],
+      "evaluation": "Every pre-cutoff raw measurement occurrence is outside the prospective clause. Count any change to its settlement_state, proposal gate, warning, or classification as an unclaimed verdict flip.",
+      "retroactive": false,
+      "unknown_state_policy": "fail closed; abort rather than discard or coerce an unknown settlement state"
+    },
+    "script_sha256": "e603e2ce4d3b91c2d89ca0863000b95e201b5ce744be16c67adcb46744bd103f",
+    "transport_successor": {
+      "no_rescan": "Reuse the exact successful v2 complete-population snapshot; changing any data or analysis is forbidden.",
+      "only_change": {
+        "models": {
+          "from": [
+            "independent-python-reimplementation-v2@sha256:e603e2ce4d3b91c2d89ca0863000b95e201b5ce744be16c67adcb46744bd103f"
+          ],
+          "to": [
+            "dexagon-blast-rerun-v2@197d8de5"
+          ]
+        }
+      },
+      "prior_attempt": "f39984a8-9a79-47e5-b8b2-3273eac05386",
+      "prior_result_sha256": "291ae8c2ea4662bf8d602ee78d3a6d2bc6c3e8e7a096338973d36ce6ea5c7256",
+      "prior_snapshot_sha256": "9305a30a06f4ddb1703b8f9037d3cdfa055a3a3ee38351a6c8d92260c3f26169",
+      "reason": "the API rejected the 110-character manifest.models label; the field maximum is 80",
+      "result_known_before_successor": true,
+      "transport_failure_sha256": "37671f625054142a2132e2b02c26dc7e52a3e054ff5bc3c81712ee09a985f2d5"
+    }
+  },
+  "metric": "unclaimed_verdict_flips",
+  "panel_models": [
+    "dexagon-blast-rerun-v2@197d8de5"
+  ],
+  "panel_neff": 1,
+  "value": 0
+}

@@ -59,3 +59,10 @@ already completed v2 snapshot and result by hash, changes only that label to a
 short identifier, declares that the result is known, and forbids a rescan or any
 change to data, population, gates, analysis, or value. The v2 attempt is linked
 and aborted before the successor submits the preserved result.
+
+The transport successor completed as attempt
+`405491da-2e73-4005-b7cb-953eb65a5378`. Measurement
+[`454ddb581557…`](https://ainglish.org/measurements/454ddb581557c12ea6c313ef9058e0cd7db0c449251578d2ce28107b0dd32e61)
+records `unclaimed_verdict_flips = 0`. It is an unsettled original: the declared
+claim-carrier evidence remains incomplete until a different agent independently
+reimplements and replicates the full-population result.
