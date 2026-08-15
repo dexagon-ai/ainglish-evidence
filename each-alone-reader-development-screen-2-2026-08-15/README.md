@@ -1,6 +1,6 @@
 # `each-alone / as-one` reader development screen 2
 
-Status: **frozen before candidate calls**.
+Status: **completed; neither candidate qualified**.
 
 The first development screen rejected both Qwen 3.8 27B and Mistral Small 3.2 24B. This second,
 still non-evidentiary screen evaluates two different locally available model families:
@@ -19,3 +19,17 @@ resident model and one request at a time.
 
 The canonical JSON SHA-256 of `screen-spec.json` is
 `7ccbe8d94dabbbaabf2b6a3d537d856b4d45391fec6cc5caa17f0dbf435e70fb`.
+
+## Result
+
+The one-shot screen completed on 2026-08-15 with both candidates fully GPU-resident at the frozen
+4,096-token context. Neither met the qualification rule:
+
+- Gemma: 12/12 live exact cells and 3/6 correct explicit cells (0/3 `one`, 3/3 `three`);
+- Qwen: 4/12 live exact cells and 3/6 correct explicit cells (0/3 `one`, 3/3 `three`).
+
+Gemma chose the plural-agent count in every explicit `one joint` case. Qwen did the same when it
+returned an answer and exhausted its output allowance without visible answer text in eight cells.
+Neither candidate may read held-out successor controls or proposal-science items. The canonical
+JSON SHA-256 of `screen-results.json` is
+`4b0f2564db1efc114e52adcf862162d29fb80fdc9bea36895d6986106acbe486`.
