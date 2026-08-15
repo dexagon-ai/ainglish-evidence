@@ -1,0 +1,140 @@
+#!/usr/bin/env python3
+"""Build the immutable-input, GPU-only successor runspec before reader calls."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parent
+FREEZE_COMMIT = "54d045004603f1d88670e5deef130e0c1d0b3a43"
+ITEMS_SHA256 = "0e846004836d73f725c2ae285e07c02d64bf519fe1a43f548236080c79cb6548"
+SLUG = "each-alone-as-one-distributive-vs-collective-does-the-plural"
+
+
+def main() -> None:
+    spec = {
+        "construct": "each-alone / as-one",
+        "slug": SLUG,
+        "metric": "comprehension_accuracy_delta",
+        "seed": 35,
+        "planted_arm": "ainglish",
+        "calibration_min_gap": 0.5,
+        "panel_neff": 2,
+        "panel": [
+            {
+                "name": "mistral-small3.2-24b-event-task-q4_k_m",
+                "provider": "ollama",
+                "model": "dexagon-mistral-small3.2-24b-event-task:ctx4k",
+                "precision": "q4_k_m",
+                "max_tokens": 1024,
+                "temperature": 0,
+                "api": "openai",
+                "base_url": "http://127.0.0.1:11435/v1",
+            },
+            {
+                "name": "qwen2.5-7b-event-task-q4_k_m",
+                "provider": "ollama",
+                "model": "dexagon-qwen2.5-7b-event-task:ctx4k",
+                "precision": "q4_k_m",
+                "max_tokens": 1024,
+                "temperature": 0,
+                "api": "openai",
+                "base_url": "http://127.0.0.1:11435/v1",
+            },
+        ],
+        "items_url": (
+            "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+            f"{FREEZE_COMMIT}/each-alone-as-one-comprehension-successor-2026-08-15/items.json"
+        ),
+        "items_sha256": ITEMS_SHA256,
+        "attempt": {
+            "proposal_revision": SLUG,
+            "estimand": (
+                "Successor original comprehension_accuracy_delta in percentage points over "
+                "Rosetta's unchanged 19 action-count rows: counterbalanced exact recovery of "
+                "three, one, or cannot_tell from each-alone/as-one versus underspecified bare "
+                "plural. Twelve fresh construct-free held-out controls qualify two reader "
+                "families selected only on exposed development controls. The aggregate travels "
+                "with separately recomputed each-alone, as-one, and bare cells. This estimates "
+                "ambiguity resolution versus bare plural only; it does not establish "
+                "non-inferiority to full careful English."
+            ),
+            "admissibility_gates": [
+                (
+                    "the public Rosetta source hashes to "
+                    "4b51b2a0077356a16541e52644c9e3dea934eb0f3a907cdc46a2a88203c96e25; "
+                    "all 19 scientific rows are retained without field edits"
+                ),
+                (
+                    "the 12-item held-out bank was authored after reader selection and before "
+                    "any selected-reader call; it has five one, five three and two cannot_tell "
+                    "answers, and participant counts never equal one or three"
+                ),
+                (
+                    "Mistral and Qwen qualified independently on already-exposed generic "
+                    "development controls with 12/12 exact cells and 6/6 explicit semantic cells"
+                ),
+                (
+                    "each reader uses the same transparent construct-free task rule: count "
+                    "action events rather than participants, honor explicit event totals, and "
+                    "use cannot_tell when both joint and per-participant readings remain possible"
+                ),
+                (
+                    "all held-out controls execute first in both arms for both readers; the "
+                    "explicit-minus-ambiguous aggregate accuracy gap must be at least 0.5"
+                ),
+                (
+                    "seed 35 gives each reader four each-alone and four as-one rows in each arm; "
+                    "bare controls split 2/1 and 1/2, leaving pooled real arms exactly 19/19"
+                ),
+                (
+                    "each-alone, as-one and byte-identical bare-plural controls remain separately "
+                    "reportable from the saved real-cell sidecar"
+                ),
+                (
+                    "a positive aggregate is interpreted only as ambiguity resolution versus bare "
+                    "plural; careful-English non-inferiority remains untested and is not inferred"
+                ),
+                (
+                    "both readers execute sequentially on a dedicated loopback endpoint at "
+                    "127.0.0.1:11435, pinned to GPU 0 with one loaded model and one request; "
+                    "all layers must be GPU-resident and CPU fallback is prohibited"
+                ),
+                (
+                    "immediately before minting, GPU 0 must be an RTX 3090 with at least 20 GiB "
+                    "free VRAM and both shared and dedicated Ollama queues must be empty"
+                ),
+                (
+                    "any resource, transport, calibration, yield, commitment or reconciliation "
+                    "failure becomes a typed abort; this successor is not retried in place"
+                ),
+            ],
+            "planned_sample": {
+                "real_items": 19,
+                "calibration_items": 12,
+                "readers": 2,
+                "reader_families": ["Mistral Small 3.2", "Qwen 2.5"],
+                "reader_precision": "both local q4_k_m",
+                "reader_task_configurations": {
+                    "mistral": "Modelfile SHA-256 552e80e84ad510fae7cdc79f325d5641cb77d107097c41243f63d61449a559ce",
+                    "qwen": "Modelfile SHA-256 7b8d19c7d73e02395ff0db643a65f96ccd90093a16353561015beb2a33c50747"
+                },
+                "real_cells": 38,
+                "calibration_cells": 48,
+                "real_item_classes": {"each_alone": 8, "as_one": 8, "bare": 3},
+                "execution": (
+                    "dedicated local RTX 3090 GPU 0; one loaded model and one request at a time; "
+                    "4,096-token context; no CPU fallback; wait if the GPU is contested"
+                ),
+            },
+        },
+    }
+    (ROOT / "runspec-dedicated-gpu0.json").write_text(
+        json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+
+
+if __name__ == "__main__":
+    main()

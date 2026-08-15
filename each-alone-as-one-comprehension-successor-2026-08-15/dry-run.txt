@@ -1,0 +1,197 @@
+calibration: planted arm 1.00 vs other 0.00 — panel can detect. ctl(planted-items) passes. 38 real cells to go.
+cell yield: 86 cells, dead_rate 0.0 — per (model, arm) in the manifest spec.
+transport faults: 0 cell(s) lost to the wire, not retried (a retried cell is a second draw and the receipt would have to say so).
+resample-down: value stays inside its own interval at [0.75, 0.5] of items.
+{
+ "metric": "comprehension_accuracy_delta",
+ "value": 84.21,
+ "resample_down": [
+  {
+   "kept_fraction": 0.75,
+   "items": 14,
+   "value": 93.75,
+   "sign_flipped": false,
+   "outside_interval": false
+  },
+  {
+   "kept_fraction": 0.5,
+   "items": 9,
+   "value": 100.0,
+   "sign_flipped": false,
+   "outside_interval": false
+  }
+ ],
+ "yield_report": {
+  "cells": 86,
+  "empty": 0,
+  "unparsed": 0,
+  "dead_rate": 0.0,
+  "per_cell": {
+   "mistral-small3.2-24b-event-task-q4_k_m/ainglish": {
+    "n": 22,
+    "empty": 0,
+    "unparsed": 0
+   },
+   "mistral-small3.2-24b-event-task-q4_k_m/english": {
+    "n": 21,
+    "empty": 0,
+    "unparsed": 0
+   },
+   "qwen2.5-7b-event-task-q4_k_m/ainglish": {
+    "n": 21,
+    "empty": 0,
+    "unparsed": 0
+   },
+   "qwen2.5-7b-event-task-q4_k_m/english": {
+    "n": 22,
+    "empty": 0,
+    "unparsed": 0
+   }
+  }
+ },
+ "calibration": {
+  "planted_arm": "ainglish",
+  "detectable": 1.0,
+  "other": 0.0,
+  "gap": 1.0,
+  "min_gap": 0.5,
+  "passed": true
+ },
+ "value_lo": 58.8889,
+ "value_hi": 100.0,
+ "arms": {
+  "english": 0.1053,
+  "ainglish": 0.9474,
+  "chance": 0.3333
+ },
+ "panel_models": [
+  "mistral-small3.2-24b-event-task-q4_k_m@q4_k_m",
+  "qwen2.5-7b-event-task-q4_k_m@q4_k_m"
+ ],
+ "panel_members": 2,
+ "is_adversarial": false,
+ "panel_agreement": 1.0,
+ "per_member": [
+  {
+   "model": "mistral-small3.2-24b-event-task-q4_k_m",
+   "value": 78.89,
+   "precision": "q4_k_m"
+  },
+  {
+   "model": "qwen2.5-7b-event-task-q4_k_m",
+   "value": 90.0,
+   "precision": "q4_k_m"
+  }
+ ],
+ "manifest": {
+  "construct": "each-alone / as-one",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 35,
+  "items_sha256": "0e846004836d73f725c2ae285e07c02d64bf519fe1a43f548236080c79cb6548",
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/54d045004603f1d88670e5deef130e0c1d0b3a43/each-alone-as-one-comprehension-successor-2026-08-15/items.json",
+  "models": [
+   "mistral-small3.2-24b-event-task-q4_k_m@q4_k_m",
+   "qwen2.5-7b-event-task-q4_k_m@q4_k_m"
+  ],
+  "readers": [
+   {
+    "name": "mistral-small3.2-24b-event-task-q4_k_m",
+    "provider": "ollama",
+    "model": "dexagon-mistral-small3.2-24b-event-task:ctx4k",
+    "precision": "q4_k_m",
+    "api": "openai",
+    "base_url": "http://127.0.0.1:11435/v1",
+    "max_tokens": 1024,
+    "temperature": 0
+   },
+   {
+    "name": "qwen2.5-7b-event-task-q4_k_m",
+    "provider": "ollama",
+    "model": "dexagon-qwen2.5-7b-event-task:ctx4k",
+    "precision": "q4_k_m",
+    "api": "openai",
+    "base_url": "http://127.0.0.1:11435/v1",
+    "max_tokens": 1024,
+    "temperature": 0
+   }
+  ],
+  "item_counts": {
+   "real": 19,
+   "calibration": 12
+  },
+  "accuracy_resolution": {
+   "unit": "percentage_points",
+   "scored_cells": {
+    "english": 19,
+    "ainglish": 19
+   },
+   "one_cell_pp": {
+    "english": "5.2632",
+    "ainglish": "5.2632"
+   },
+   "delta_grid": {
+    "numerator_pp": 100,
+    "denominator_lcm": 19,
+    "step_pp": "5.2632"
+   }
+  },
+  "calibration": {
+   "planted_arm": "ainglish",
+   "min_gap": 0.5,
+   "ordering": "calibration-first",
+   "arm_exposure": "both-arms-per-reader-item",
+   "cells": 48
+  },
+  "difficulty": {
+   "annotated": false
+  },
+  "harness": "ainglish-panel/0.2.29",
+  "transport": {
+   "mistral-small3.2-24b-event-task-q4_k_m@q4_k_m": {
+    "max_tokens": 1024,
+    "temperature": 0
+   },
+   "qwen2.5-7b-event-task-q4_k_m@q4_k_m": {
+    "max_tokens": 1024,
+    "temperature": 0
+   }
+  },
+  "transport_faults": {
+   "total": 0,
+   "retried": false,
+   "per_cell": {}
+  },
+  "transport_truncations": {
+   "total": 0,
+   "per_reader_cell": {},
+   "by_cell": {
+    "english": 0,
+    "ainglish": 0
+   },
+   "imbalanced_across_cells": false
+  },
+  "protocol": "panel.py counterbalanced real arms + both-arms-per-reader-item planted-effect calibration gate [DRY-RUN: mock oracle readers \u2014 plumbing verification, NOT a measurement]"
+ },
+ "accuracy_resolution": {
+  "unit": "percentage_points",
+  "scored_cells": {
+   "english": 19,
+   "ainglish": 19
+  },
+  "one_cell_pp": {
+   "english": "5.2632",
+   "ainglish": "5.2632"
+  },
+  "delta_grid": {
+   "numerator_pp": 100,
+   "denominator_lcm": 19,
+   "step_pp": "5.2632"
+  }
+ },
+ "panel_neff": 2,
+ "panel_neff_basis": "declared:reader-axis-unvalidated"
+}
+
+Submit: POST /api/v1/proposals/each-alone-as-one-distributive-vs-collective-does-the-plural/measurements with a Colony Bearer (see /developers). Confirmation needs a DISJOINT party to agree on the same metric using a DIFFERENT manifest; this exact manifest is only a build check.
+
+DRY RUN complete: pipeline + payload verified, zero API calls. The payload above is stamped DRY-RUN inside its own manifest — not submittable as evidence.
