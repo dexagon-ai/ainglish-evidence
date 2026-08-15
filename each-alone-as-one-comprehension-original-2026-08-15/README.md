@@ -1,6 +1,7 @@
 # `each-alone / as-one` comprehension original
 
-Status: **item derivation frozen before reader spend; no Ainglish attempt or model call yet**.
+Status: **attempted once; refused at the preregistered calibration gate before any scientific
+cell; no measurement emitted and no rerun performed**.
 
 This instrument tests the seconded proposal
 [`each-alone / as-one`](https://ainglish.org/proposals/each-alone-as-one-distributive-vs-collective-does-the-plural)
@@ -61,3 +62,40 @@ The Ainglish 0.2.29 dry run passed item retrieval and digest verification, calib
 execution, arm balance, yield, bootstrap, resample-down, attempt-manifest preview and payload
 construction with zero API and zero model calls. `dry-run.txt` is that exact transcript; its
 SHA-256 is `a46a6ead0e3aa1a1b967c0fac732647b7e73120f2861bb914f22e3bdcbe4a911`.
+
+## Single-attempt outcome
+
+The pre-reader design above was committed and pushed at
+`f40940d51c2ff8ae2fdbb4dea55578310a28df4b`. On 2026-08-15, the shared Ollama service had no
+loaded model and host GPU 0 (`00000000:24:00.0`, RTX 3090) had 24,308 MiB free immediately before
+minting. A disposable loopback-only Ollama service discovered that physical device as CUDA 8.6;
+the two readers ran there sequentially with no CPU fallback.
+
+Ainglish attempt `c4ddce0b-eac5-46b4-b1ec-b391e62516cc` was minted before the first reader call.
+Its manifest commitment is
+`1b310c29e62fe9440f056a60fc0dff5f82cf990e9435afe79216de1eae652455`.
+
+The harness then refused at calibration:
+
+- all 24 planned calibration cells were attempted;
+- the explicit-count arm scored 7/12 (`0.583333...`), while the ambiguous arm scored 6/12
+  (`0.5`);
+- the observed positive-control gap was therefore only 1/12 (`0.083333...`), below the frozen
+  `0.5` minimum;
+- zero real cells were attempted, no measurement was emitted, and the server records the attempt
+  as `aborted` with no successor.
+
+This is evidence that this reader/control combination did not pass its competence check. It is
+**not** evidence for or against `each-alone / as-one`. In accordance with the one-attempt design,
+the controls were not altered after seeing the result and the experiment was not rerun.
+
+The exact receipts are:
+
+- `runspec-dedicated-gpu0.json.attempt-c4ddce0b-eac5-46b4-b1ec-b391e62516cc.abort.json` — canonical
+  receipt SHA-256 `2334a5a7f09cf9dc5608bda052ceaabb801c721ddb62be52a39fc2523cf431f2`
+  (the server's committed `preflight_receipt_hash`); on-disk SHA-256 including its trailing newline
+  `3ecc0673273b30dd486586bf6a78f8a0af759a28236ce64cdc8d1e41230147cd`;
+- `runspec-dedicated-gpu0.json.attempt-c4ddce0b-eac5-46b4-b1ec-b391e62516cc.cells.json` — canonical
+  receipt SHA-256 `ab823fb22a3d27ad4bd1bfef0ca9874baf45174583f4a87068e4555ec98267b9`;
+  it explicitly contains zero real rows (on-disk SHA-256 including its trailing newline
+  `8cfb443276a404c68460cd9d8eb2680234233edb7718fe4378290162c7e4d190`).
