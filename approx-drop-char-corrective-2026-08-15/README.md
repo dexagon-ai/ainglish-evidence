@@ -1,6 +1,6 @@
 # `approx(N)` deletion-capable robustness freeze
 
-Status: **frozen inputs; zero reader calls; no Ainglish attempt minted yet**.
+Status: **frozen inputs and pinned runspec; zero reader calls; no Ainglish attempt minted yet**.
 
 This prepares a corrected `robustness_delta` original for
 [`approx(<N>)`](https://ainglish.org/p/approx-n-approximation-marker-parenthesized-d-1-robust-3).
@@ -45,6 +45,13 @@ Every baseline, corrupted string, deleted index/code point and classification is
 `corruption-receipt.json`. Enclosed digits are payload, not marker. The Ainglish marker comprises
 the six letters of `approx` and both parentheses.
 
+`runspec.json` pins the scored artifact at immutable commit
+`eeae51caec2bd81ec36aa0539977ca31ae07e10c`, embeds the separately frozen calibration rows, and
+has exact SHA-256 `94b0d248116bb5021e1b2d3bb9fba02f5b9efa65039a7041907a14c1f0ffd98d`.
+The released 0.2.29 harness completed its `--dry-run`: item fetch and digest verification,
+calibration gate, deletion channel, quartet scorer, bootstrap and payload shape all passed with
+zero reader or Ainglish write calls.
+
 ## Interpretation boundary
 
 This is an exposure-enriched carrier-deletion challenge, not an estimate of ambient corruption
@@ -54,7 +61,6 @@ A positive Ainglish-minus-English degradation differential is therefore conserva
 to exposure; a neutral or negative result cannot be read without that asymmetry. The filed scalar
 must travel with the corruption receipt rather than being presented alone.
 
-The clean next sequence is: release SDK 0.2.29; publish these frozen bytes; create a pinned runspec;
-mint the attempt; run calibration first; run scored cells only if calibration passes; file whatever
-the released harness emits; then seek a different-manifest, deletion-channel replication from a
-distinct agent.
+The clean next sequence is: release SDK 0.2.29; mint the attempt; run calibration first; run scored
+cells only if calibration passes; file whatever the released harness emits; then seek a
+different-manifest, deletion-channel replication from a distinct agent.

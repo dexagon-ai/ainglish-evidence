@@ -1,0 +1,114 @@
+{
+ "slug": "approx-n-approximation-marker-parenthesized-d-1-robust-3",
+ "construct": "approx(<N>) — approximation marker (parenthesized, d=1-robust)",
+ "metric": "robustness_delta",
+ "seed": 188922091,
+ "corruption": {
+  "channel": "drop_char"
+ },
+ "panel": [
+  {
+   "name": "Dexagon-local-Gemma3-12B-Q4_K_M",
+   "provider": "ollama",
+   "model": "gemma3:12b",
+   "precision": "q4_k_m",
+   "max_tokens": 1024,
+   "temperature": 0
+  }
+ ],
+ "panel_neff": 1,
+ "planted_arm": "ainglish",
+ "calibration_min_gap": 0.5,
+ "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/eeae51caec2bd81ec36aa0539977ca31ae07e10c/approx-drop-char-corrective-2026-08-15/items.json",
+ "items_sha256": "0b42b836617a2549462661e8406da3252acf929616eac643057a9e51416688e0",
+ "calibration_items": [
+  {
+   "id": "dex-approx-drop-C-01",
+   "calibration": true,
+   "english": "license: 16 seats.",
+   "ainglish": "license: approx(16) seats.",
+   "question": "What did the writer declare about the numeric figure: is it approximate, exact, or was no such declaration made (cannot tell)?",
+   "options": ["approximate", "exact", "cannot tell"],
+   "answer": "approximate"
+  },
+  {
+   "id": "dex-approx-drop-C-02",
+   "calibration": true,
+   "english": "depot: 640 units.",
+   "ainglish": "depot: approx(640) units.",
+   "question": "What did the writer declare about the numeric figure: is it approximate, exact, or was no such declaration made (cannot tell)?",
+   "options": ["exact", "cannot tell", "approximate"],
+   "answer": "approximate"
+  },
+  {
+   "id": "dex-approx-drop-C-03",
+   "calibration": true,
+   "english": "term: 27 months.",
+   "ainglish": "term: approx(27) months.",
+   "question": "What did the writer declare about the numeric figure: is it approximate, exact, or was no such declaration made (cannot tell)?",
+   "options": ["cannot tell", "approximate", "exact"],
+   "answer": "approximate"
+  },
+  {
+   "id": "dex-approx-drop-C-04",
+   "calibration": true,
+   "english": "invoice: 9 lines.",
+   "ainglish": "invoice: exactly 9 lines.",
+   "question": "What did the writer declare about the numeric figure: is it approximate, exact, or was no such declaration made (cannot tell)?",
+   "options": ["approximate", "exact", "cannot tell"],
+   "answer": "exact"
+  },
+  {
+   "id": "dex-approx-drop-C-05",
+   "calibration": true,
+   "english": "vault: 6 keys.",
+   "ainglish": "vault: exactly 6 keys.",
+   "question": "What did the writer declare about the numeric figure: is it approximate, exact, or was no such declaration made (cannot tell)?",
+   "options": ["exact", "cannot tell", "approximate"],
+   "answer": "exact"
+  },
+  {
+   "id": "dex-approx-drop-C-06",
+   "calibration": true,
+   "english": "panel: 11 members.",
+   "ainglish": "panel: exactly 11 members.",
+   "question": "What did the writer declare about the numeric figure: is it approximate, exact, or was no such declaration made (cannot tell)?",
+   "options": ["cannot tell", "approximate", "exact"],
+   "answer": "exact"
+  }
+ ],
+ "attempt": {
+  "proposal_revision": "approx-n-approximation-marker-parenthesized-d-1-robust-3",
+  "estimand": "NEW ORIGINAL robustness_delta under deletion-capable formula v4 for the claim carrier of approx-n-approximation-marker-parenthesized-d-1-robust-3. English is the replaced bare '~N' hedge; Ainglish is 'approx(N)'; surroundings are otherwise identical. Forty-eight fresh terse agent messages each receive one deterministic non-whitespace character deletion per arm. The pre-inference deal contains 7 English tilde hits, 20 Ainglish approx/parenthesis marker hits, and 3 paired marker hits. The value is the mean per-item 100x[(A corrupted - A baseline) - (E corrupted - E baseline)] over non-floor complete quartets, shipped beside its uncensored twin. This is an exposure-enriched carrier-deletion challenge, not an estimate of ambient deletion prevalence. It does not claim to replicate bb920921f943941bbbde35db423dd6df225874f679c6ae6b911b9b80db8a2d9a because that row's substitution channel is a materially different rule. File whatever the released harness emits and report the scalar only with the frozen coverage receipt.",
+  "admissibility_gates": [
+   "the anonymously fetched 48-item artifact has SDK canonical sha256 0b42b836617a2549462661e8406da3252acf929616eac643057a9e51416688e0 and exact-file sha256 ccf8da755fc43e575a7951caa36ef2bca58c66fb84f7c2c89f9a308fa9a6cc73",
+   "the separately frozen six-item calibration artifact has exact-file sha256 17a22790b017faed000cd0e832d4d4e050509be6ecd4c8bae67406ea4dfb7a69 and is embedded byte-for-field as calibration_items",
+   "the exact preregistered corruption receipt has sha256 c79611d0f3570423b856c4fd22c0ebb6547795d6ac25424978c28ef77e0d6dc1 and records every baseline, corrupted string, deleted index, deleted character and marker classification",
+   "seed 188922091 is the first item-digest-prefix candidate meeting the predeclared zero-inference gate: at least 6 English tilde hits, 20 Ainglish approx-marker hits and 3 paired hits; the receipt observes 7, 20 and 3 respectively after 182 candidates",
+   "all 48 real pairs differ only by replacing one '~N' span with 'approx(N)', verified mechanically before publication",
+   "corruption channel is drop_char from ainglish SDK 0.2.29 release commit f03150869bd06cf2fd50f13ce276de556e55ec99, exact panel.py sha256 7e5b4234b2b28b5c7366dc429d78425ac2ac1f74ff9a6bdd59db01324620dbaa",
+   "calibration executes first with three approximate and three exact keys; planted Ainglish-arm gap must be at least 0.5 and every reader must have a live answer on both arms of every calibration item",
+   "the four-class cell-yield guard passes with zero transport faults and no bound truncation; a changed clean-run manifest aborts instead of filing",
+   "reader identity is Gemma 3 12B Q4_K_M via local Ollama, max_tokens 1024, temperature 0, declared as one effective lineage",
+   "no replicates_hash is filed: changing the original row's load-bearing corruption channel from substitution to deletion makes this a new original requiring its own later different-manifest replication",
+   "the result is interpreted as an exposure-enriched carrier-deletion challenge and is reported with the frozen unequal marker-hit coverage, never as ambient deletion prevalence"
+  ],
+  "planned_sample": {
+   "scored_items": 48,
+   "calibration_items": 6,
+   "cells_per_scored_item": 4,
+   "calibration_cells": 12,
+   "reader_calls_if_calibration_passes": 204,
+   "readers": 1,
+   "reader": "gemma3:12b Q4_K_M via local Ollama",
+   "panel_neff": 1,
+   "seed": 188922091,
+   "corruption_channel": "drop_char",
+   "english_tilde_hits": 7,
+   "ainglish_marker_hits": 20,
+   "paired_marker_hits": 3,
+   "sdk_version": "0.2.29",
+   "relationship_to_bb920921": "new_original_changed_channel"
+  }
+ }
+}
