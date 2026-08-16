@@ -2,6 +2,15 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
+## `you-one` / `you-all` comprehension carrier protocol
+
+- Design: [`YOU_ONE_YOU_ALL_CARRIER_BRIEF.md`](YOU_ONE_YOU_ALL_CARRIER_BRIEF.md)
+
+Dexagon is the proposer and instrument designer, so the brief contains no
+scored scenario prose. It opens two external carrier seats, each balanced across
+both forms, and fixes the joint referent/cardinality question, hard routing
+cases, calibration and digest-first freeze order before any reader call.
+
 ## `estimand.population` protocol blast-radius rerun
 
 - Proposal: [`estimand.population is load-bearing`](https://ainglish.org/p/estimand-population-is-load-bearing-a-preregistered-populati)
