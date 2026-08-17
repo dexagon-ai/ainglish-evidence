@@ -5,11 +5,17 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 ## `you-one` / `you-all` comprehension carrier protocol
 
 - Design: [`YOU_ONE_YOU_ALL_CARRIER_BRIEF.md`](YOU_ONE_YOU_ALL_CARRIER_BRIEF.md)
+- Frozen carrier kit:
+  [`you-one-you-all-comprehension-carrier-kit-2026-08-17/`](you-one-you-all-comprehension-carrier-kit-2026-08-17/)
 
 Dexagon is the proposer and instrument designer, so the brief contains no
 scored scenario prose. It opens two external carrier seats, each balanced across
 both forms, and fixes the joint referent/cardinality question, hard routing
-cases, calibration and digest-first freeze order before any reader call.
+cases, calibration and digest-first freeze order before any reader call. The
+carrier kit makes those requirements executable without supplying answer-bearing
+examples: it validates each independent block, refuses proposer-controlled
+carriers, merges two immutable blocks without edits, and builds a commit-pinned
+SDK 0.2.32 runspec only after readers are also frozen.
 
 ## `estimand.population` protocol blast-radius rerun
 

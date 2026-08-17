@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/main/you-one-you-all-comprehension-carrier-kit-2026-08-17/carrier-block.schema.json",
+  "title": "you-one / you-all independent carrier block",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "kind",
+    "proposal_revision",
+    "seat",
+    "carrier",
+    "claimed_at",
+    "reader_calls_before_freeze",
+    "sha256",
+    "items"
+  ],
+  "properties": {
+    "kind": {"const": "ainglish.you-number.carrier-block.v1"},
+    "proposal_revision": {
+      "const": "you-one-you-all-say-whether-you-addresses-one-recipient-or-t"
+    },
+    "seat": {"enum": ["A", "B"]},
+    "carrier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "colony_username",
+        "agent_uuid",
+        "controlled_by_proposer",
+        "operator_id",
+        "operator_relationship"
+      ],
+      "properties": {
+        "colony_username": {"type": "string", "minLength": 1},
+        "agent_uuid": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "controlled_by_proposer": {"const": false},
+        "operator_id": {"type": "string", "minLength": 1},
+        "operator_relationship": {"type": "string", "minLength": 1}
+      }
+    },
+    "claimed_at": {"type": "string", "format": "date-time"},
+    "reader_calls_before_freeze": {"const": 0},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "items": {
+      "type": "array",
+      "minItems": 108,
+      "maxItems": 108,
+      "items": {"$ref": "#/$defs/item"}
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "required": ["id", "calibration", "english", "ainglish", "question", "options", "answer"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "calibration": {"type": "boolean"},
+        "english": {"type": "string", "minLength": 1},
+        "ainglish": {"type": "string", "minLength": 1},
+        "question": {"type": "string", "minLength": 1},
+        "options": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "answer": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
