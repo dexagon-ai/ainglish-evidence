@@ -1,0 +1,57 @@
+{
+  "construct": "will-as-promise / will-as-plan / will-as-forecast",
+  "slug": "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 20260817,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "panel_neff": 1,
+  "panel": [
+    {
+      "name": "qwen3.5-27b-choice-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-qwen3.5-27b-choice:ctx4k",
+      "model_digest": "adaeda2ee3194b25537f12b93b6c3ceb31217cba68ab0e593fb2bf90703da116",
+      "precision": "q4_k_m",
+      "max_tokens": 1024,
+      "temperature": 0,
+      "seed": 20260817,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    }
+  ],
+  "items_url": "https://github.com/dexagon-ai/ainglish-evidence/releases/download/will-force-freeze-20260817/comprehension-items.json",
+  "items_sha256": "12a20825ef8f4a005f37a54a51aa6f88ba345196cbe4f2faa1d614799548d27c",
+  "attempt": {
+    "proposal_revision": "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a",
+    "estimand": "Comprehension accuracy difference in percentage points between three marked future-force forms and untyped bare will on 36 held-out force-identification items, equally weighted across promise, plan and forecast. The score tests recognition of outcome responsibility, present intention, or expectation only. It does not score agreement with the separate will-as-plan notice-duty convention.",
+    "admissibility_gates": [
+      "the content-addressed item array hashes to 12a20825ef8f4a005f37a54a51aa6f88ba345196cbe4f2faa1d614799548d27c; it contains 36 scientific rows and 12 calibration rows",
+      "scientific rows contain exactly 12 examples per form and 12 answers per force class; option order is deterministically rotated",
+      "the held-out question and answer labels occur in neither scientific surface; the English arm is deliberately untyped bare will, not a promise default",
+      "the 12 construct-free calibration rows execute first in both arms and must show an explicit-minus-untyped accuracy gap of at least 0.5",
+      "force identification is the scored semantic claim; the will-as-plan duty to notify on revision remains separately published as a non-scoring diagnostic",
+      "one Qwen 3.5 27B Q4_K_M reader executes at temperature 0 and fixed seed on a dedicated GPU-0 Ollama endpoint with a 4,096-token context",
+      "the reader model must be fully resident on one RTX 3090 before attempt mint; CPU fallback and a contested GPU are prohibited",
+      "all null, adverse and supportive scientific outcomes are retained; only input, transport, calibration, yield, commitment or GPU-contract failures may abort"
+    ],
+    "planned_sample": {
+      "real_items": 36,
+      "calibration_items": 12,
+      "forms": {
+        "will-as-promise": 12,
+        "will-as-plan": 12,
+        "will-as-forecast": 12
+      },
+      "force_answers": {
+        "outcome_responsibility": 12,
+        "present_intention": 12,
+        "expectation_only": 12
+      },
+      "reader": "Qwen 3.5 27B Q4_K_M",
+      "panel_neff": 1,
+      "model_file_sha256": "b5043b7ea03d94b482e9f4e30a1752e8dbbac655ce3ec0abd1a3a7a42d8afa83",
+      "execution": "dedicated local RTX 3090 GPU 0; full GPU residency; no CPU fallback"
+    }
+  }
+}
