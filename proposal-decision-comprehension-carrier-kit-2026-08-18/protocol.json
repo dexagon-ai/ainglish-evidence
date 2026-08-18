@@ -1,0 +1,108 @@
+{
+  "kind": "ainglish.proposal-decision.comprehension-protocol.v1",
+  "proposal_revision": "proposal-by-p-decision-by-a-say-whether-an-option-is-offered",
+  "proposal_public_id": "a-abfbkq5mhjxr5nr7",
+  "frozen_at": "2026-08-18T14:44:11Z",
+  "reader_calls_before_freeze": 0,
+  "carrier_seats": ["A", "B"],
+  "scenarios_per_carrier": 48,
+  "scenarios_per_form_per_carrier": 24,
+  "domains": ["operational", "social", "governance", "scheduling"],
+  "scenarios_per_domain_per_form_per_carrier": 6,
+  "proposal_cases_per_domain": [
+    "ordinary-offer",
+    "ordinary-offer",
+    "high-status-no-selection",
+    "crowd-uptake-no-standing-rule",
+    "broad-agreement-no-selection",
+    "later-authority-resolution"
+  ],
+  "decision_cases_per_domain": [
+    "ordinary-authorized-selection",
+    "ordinary-authorized-selection",
+    "low-status-relay-named-authority",
+    "delegated-collective-rule",
+    "later-superseded",
+    "misapplied-standing"
+  ],
+  "short_styles": {
+    "proposal-by": ["lets", "should", "could", "how-about", "why-not", "suggest"],
+    "decision-by": ["will", "going-with", "plan-is", "using", "it-will-be", "proceed-with"]
+  },
+  "short_style_count_per_carrier": 4,
+  "primary_question": "Choose the only three-part profile supported by the target sentence itself: what happens to alternatives, where does X belong in the coordination ledger, and what duty or permission follows for the recipient?",
+  "primary_options": [
+    "keep comparing alternatives | candidate list only | neither duty nor permission",
+    "execute the current path | current-choice field | neither duty nor permission",
+    "keep comparing alternatives | candidate list only | recipient is required to act",
+    "keep comparing alternatives | candidate list only | recipient is allowed to act",
+    "execute the current path | current-choice field | recipient is required to act",
+    "execute the current path | current-choice field | recipient is allowed to act",
+    "cannot determine | cannot determine | cannot determine"
+  ],
+  "primary_answers": {
+    "proposal-by": "keep comparing alternatives | candidate list only | neither duty nor permission",
+    "decision-by": "execute the current path | current-choice field | neither duty nor permission"
+  },
+  "warrant_question": "Using the role and event ledger, how should the target sentence's status claim be audited?",
+  "warrant_options": [
+    "claim matches the ledger",
+    "claim exceeds the named source's role",
+    "claim attributes the event to the wrong source",
+    "cannot determine"
+  ],
+  "official_comparisons": [
+    "proposal-by-marked-vs-complete-careful-english",
+    "decision-by-marked-vs-complete-careful-english"
+  ],
+  "diagnostic_comparisons": [
+    "proposal-by-marked-vs-natural-short-surface",
+    "decision-by-marked-vs-natural-short-surface",
+    "authority-warrant-marked-vs-complete-careful-english"
+  ],
+  "calibration_items_per_carrier": 4,
+  "calibration_planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "reader_policy": {
+    "minimum_distinct_reader_families": 3,
+    "temperature": 0,
+    "real_items_are_read_once_per_reader": true,
+    "calibration_runs_first_in_both_arms": true,
+    "no_reader_sees_items_before_both_carrier_digests_are_public": true
+  },
+  "analysis_plan": {
+    "primary_unit": "one semantic scenario represented by one exact three-part profile answer",
+    "official_scalar_per_form": "100 * (marked exact-profile accuracy - careful-English exact-profile accuracy)",
+    "official_interval": "the ainglish-panel 0.2.32 bootstrap 95% interval over real scenario items",
+    "short_diagnostic_scalar_per_form": "100 * (marked exact-profile accuracy - natural-short exact-profile accuracy)",
+    "status_error": "chosen profile places X in the wrong candidate/current-path state",
+    "force_false_positive": "chosen profile says the recipient is required or allowed to act",
+    "force_false_positive_delta_per_form": "100 * (marked force-false-positive rate - comparator force-false-positive rate)",
+    "warrant_accuracy": "fraction choosing the frozen role-ledger audit answer",
+    "misapplied_standing_false_credit": "on decision-by/misapplied-standing only, fraction choosing claim matches the ledger",
+    "mandatory_strata": [
+      "form",
+      "carrier",
+      "reader",
+      "domain",
+      "case",
+      "short_style",
+      "arm"
+    ],
+    "pooling_rules": [
+      "proposal-by and decision-by are separate official rows",
+      "carrier strata are reported even when the per-form scalar pools carriers",
+      "primary comprehension and authority warrant are never pooled",
+      "short diagnostics are never submitted as the protocol-v2 English comparator",
+      "a pooled cross-form headline is descriptive and cannot rescue either form"
+    ]
+  },
+  "interpretation": {
+    "never_pool_forms": true,
+    "never_pool_primary_with_warrant": true,
+    "careful_english_noninferiority_margin_pp": -5,
+    "short_surface_support_threshold_pp": 0,
+    "force_false_positive_margin_pp": 5,
+    "valid_outcomes": ["supports", "opposes", "unresolved", "calibration-refusal", "transport-refusal"]
+  }
+}

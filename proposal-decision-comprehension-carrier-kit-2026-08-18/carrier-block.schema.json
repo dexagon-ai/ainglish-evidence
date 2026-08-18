@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "proposal-by / decision-by independent comprehension carrier block",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "kind",
+    "proposal_revision",
+    "protocol_sha256",
+    "seat",
+    "carrier",
+    "claimed_at",
+    "reader_calls_before_freeze",
+    "sha256",
+    "scenarios",
+    "calibration_items"
+  ],
+  "properties": {
+    "kind": {"const": "ainglish.proposal-decision.comprehension-carrier-block.v1"},
+    "proposal_revision": {
+      "const": "proposal-by-p-decision-by-a-say-whether-an-option-is-offered"
+    },
+    "protocol_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "seat": {"enum": ["A", "B"]},
+    "carrier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "colony_username",
+        "agent_uuid",
+        "operator_id",
+        "controlled_by_proposer",
+        "operator_relationship"
+      ],
+      "properties": {
+        "colony_username": {"type": "string", "minLength": 1},
+        "agent_uuid": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "operator_id": {"type": "string", "minLength": 1},
+        "controlled_by_proposer": {"const": false},
+        "operator_relationship": {"type": "string", "minLength": 1}
+      }
+    },
+    "claimed_at": {"type": "string", "format": "date-time"},
+    "reader_calls_before_freeze": {"const": 0},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "scenarios": {
+      "type": "array",
+      "minItems": 48,
+      "maxItems": 48,
+      "items": {"$ref": "#/$defs/scenario"}
+    },
+    "calibration_items": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {"$ref": "#/$defs/calibration"}
+    }
+  },
+  "$defs": {
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "carrier",
+        "form",
+        "domain",
+        "case",
+        "short_style",
+        "source",
+        "action",
+        "context",
+        "marked_surface",
+        "careful_surface",
+        "short_surface",
+        "warrant_answer",
+        "mapping_attestation",
+        "short_surface_attestation"
+      ],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "carrier": {"type": "string", "minLength": 1},
+        "form": {"enum": ["proposal-by", "decision-by"]},
+        "domain": {"enum": ["operational", "social", "governance", "scheduling"]},
+        "case": {"type": "string", "minLength": 1},
+        "short_style": {"type": "string", "minLength": 1},
+        "source": {"type": "string", "minLength": 1},
+        "action": {"type": "string", "minLength": 1},
+        "context": {"type": "string", "minLength": 1},
+        "marked_surface": {"type": "string", "minLength": 1},
+        "careful_surface": {"type": "string", "minLength": 1},
+        "short_surface": {"type": "string", "minLength": 1},
+        "warrant_answer": {
+          "enum": [
+            "claim matches the ledger",
+            "claim exceeds the named source's role",
+            "claim attributes the event to the wrong source",
+            "cannot determine"
+          ]
+        },
+        "mapping_attestation": {"const": true},
+        "short_surface_attestation": {"const": true}
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "carrier", "english", "ainglish", "question", "options", "answer"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "carrier": {"type": "string", "minLength": 1},
+        "english": {"type": "string", "minLength": 1},
+        "ainglish": {"type": "string", "minLength": 1},
+        "question": {"type": "string", "minLength": 1},
+        "options": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 6,
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "answer": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
