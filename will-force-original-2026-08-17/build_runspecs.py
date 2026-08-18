@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-FREEZE_COMMIT = "25ca44178a32dd819bc31b3ee691c829394f2080"
+FREEZE_COMMIT = "73eff3cbfdd63e2c5a193c0583e2b7b0ca1643c9"
 FREEZE_RELEASE = "will-force-freeze-20260817"
 SLUG = "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a-2"
 MODEL = "dexagon-qwen3.5-27b-choice:ctx4k"
@@ -44,8 +44,15 @@ def item_url(name: str) -> str:
     )
 
 
+def commit_item_url(name: str) -> str:
+    return (
+        "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+        f"{FREEZE_COMMIT}/will-force-original-2026-08-17/{name}"
+    )
+
+
 def comprehension() -> dict:
-    document = load_document("comprehension-items.json")
+    document = load_document("comprehension-careful-items.json")
     return {
         "construct": "will-as-promise / will-as-plan / will-as-forecast",
         "slug": SLUG,
@@ -55,29 +62,32 @@ def comprehension() -> dict:
         "calibration_min_gap": 0.5,
         "panel_neff": 1,
         "panel": [reader()],
-        "items_url": item_url("comprehension-items.json"),
+        "items_url": commit_item_url("comprehension-careful-items.json"),
         "items_sha256": document["sha256"],
         "attempt": {
             "proposal_revision": SLUG,
             "estimand": (
                 "Comprehension accuracy difference in percentage points between three marked "
-                "future-force forms and untyped bare will on 36 held-out force-identification "
-                "items, equally weighted across promise, plan and forecast. The score tests "
-                "recognition of outcome responsibility, present intention, or expectation only. "
-                "It does not score agreement with the separate will-as-plan notice-duty convention."
+                "future-force forms and their complete careful-English mappings on 36 held-out "
+                "force-identification items, equally weighted across promise, plan and forecast. "
+                "The score tests recognition of outcome responsibility, present intention, or "
+                "expectation only. It does not score agreement with the separate will-as-plan "
+                "notice-duty convention; marked-versus-bare performance is a separate diagnostic."
             ),
             "admissibility_gates": [
                 (
-                    "the content-addressed item array hashes to " + document["sha256"]
+                    "the commit-pinned content-addressed item array hashes to " + document["sha256"]
                     + "; it contains 36 scientific rows and 12 calibration rows"
                 ),
                 (
                     "scientific rows contain exactly 12 examples per form and 12 answers per "
-                    "force class; option order is deterministically rotated"
+                    "force class; option order is deterministically rotated; forecast rows name "
+                    "events the speaker does not control"
                 ),
                 (
-                    "the held-out question and answer labels occur in neither scientific surface; "
-                    "the English arm is deliberately untyped bare will, not a promise default"
+                    "the marked arm is compared only with its complete careful-English mapping; "
+                    "untyped bare will is excluded from the filed carrier so a large bare-arm gain "
+                    "cannot conceal inferiority to careful English"
                 ),
                 (
                     "the 12 construct-free calibration rows execute first in both arms and must "
@@ -108,6 +118,8 @@ def comprehension() -> dict:
                     "will-as-plan": 12,
                     "will-as-forecast": 12,
                 },
+                "comparison": "marked forms versus complete careful-English mappings",
+                "noninferiority_margin_pp_per_form": -5,
                 "force_answers": {
                     "outcome_responsibility": 12,
                     "present_intention": 12,

@@ -31,7 +31,7 @@ MODEL_DIGEST = "adaeda2ee3194b25537f12b93b6c3ceb31217cba68ab0e593fb2bf90703da116
 RUNSPECS = {
     "comprehension": (
         ROOT / "runspec-comprehension.json",
-        "474e81ecedc8f10a4759f92c46bf6bc573385c649d672695f8d46625bd29b1d1",
+        "685b7a67a0d89df501446d73cfec2558bcce6e1b858d459b8f0e707506a85a21",
     ),
     "robustness": (
         ROOT / "runspec-robustness.json",

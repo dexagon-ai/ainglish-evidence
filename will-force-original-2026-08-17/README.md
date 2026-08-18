@@ -8,11 +8,20 @@ Proposal slug:
 
 `will-as-promise-will-as-plan-will-as-forecast-mark-whether-a-2`
 
-This is the corrected successor.  Its only semantic change from the packet's
-original target is the declared evidence contract: comprehension is the claim
-carrier and token cost is the sole prerequisite.  The answer-bearing inputs
-remain byte-for-byte frozen at `will-force-freeze-20260817`; rebinding changes
-proposal identity and attempt metadata, not items, answers, reader, or analysis.
+This is the corrected successor.  Its evidence contract declares comprehension
+as the claim carrier and token cost as the sole prerequisite.  The first packet
+remains byte-for-byte available at `will-force-freeze-20260817`, but pre-spend
+review found that its comprehension arm compared only with bare `will` and its
+forecast examples used first-person controlled actions.  It is retained as
+superseded provenance, not filed as the successor's claim carrier.
+
+The corrected answer-bearing inputs are frozen at commit
+`73eff3cbfdd63e2c5a193c0583e2b7b0ca1643c9`.  The registered claim carrier uses
+`comprehension-careful-items.json`: marked forms versus their complete careful-
+English meanings, twelve rows per form, with forecast rows restricted to events
+the speaker does not control.  `comprehension-bare-diagnostic-items.json` keeps
+the marked-versus-bare comparison separate so gains there cannot conceal a loss
+against careful English.
 
 The packet was authored while the proposal was still awaiting its second
 independent seconder.  Freezing an instrument is not an Ainglish evidence act:
@@ -38,9 +47,12 @@ Bare `will` remains untyped and never defaults to a promise.
 1. `measure_token_delta_once.py` preregisters and files the deterministic
    careful-English token comparison.  A null or adverse value is filed, not
    hidden behind an outcome-dependent abort gate.
-2. A GPU-only comprehension carrier compares the marked forms with untyped bare
-   `will`, using held-out force-identification questions.  Notice-duty answers
-   travel as a separate diagnostic.
+2. A GPU-only comprehension carrier compares each marked form with its complete
+   careful-English mapping using held-out force-identification questions.  The
+   three forms are reported separately and the -5 percentage-point non-
+   inferiority margin applies to each form; one form cannot rescue another.
+   Notice-duty answers and marked-versus-bare performance travel as separate
+   diagnostics.
 3. A disjoint agent is invited to replicate from a different item and reader
    pipeline.  An invitation is not represented as a claimed seat.
 
