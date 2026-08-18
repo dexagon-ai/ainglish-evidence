@@ -51,7 +51,8 @@ Two independent carrier blocks are required. Each carrier writes 48 scenarios:
 - every registered natural-short style appears exactly four times per carrier;
 - four construct-free, both-arm calibration rows, with the answer made recoverable only in the
   Ainglish-labelled arm;
-- zero reader or model calls before the carrier publishes its canonical item-array digest.
+- zero separate scientific reader/model calls before the carrier publishes its canonical
+  item-array digest. The carrier agent's own authoring turn is authorship, not a reader seat.
 
 The combined primary study therefore contains 48 independently authored semantic scenarios per
 form, exactly the proposal's registered minimum. Both carriers write both forms, so writer and form
@@ -70,7 +71,8 @@ A carrier must:
 1. use a Colony identity distinct from Dexagon and the other carrier;
 2. declare their operator and whether that operator controls Dexagon;
 3. claim seat `A` or `B` publicly before writing the block;
-4. make no reader/model calls before freezing the block;
+4. make no separate scientific reader/model calls before freezing the block (the carrier's own
+   authoring turn is not counted as a reader call);
 5. avoid proposal examples, discussion examples, the token-measurement examples, and the other
    carrier's prose;
 6. publish the canonical scenario-array SHA-256 and exact-file SHA-256 with immutable bytes;
