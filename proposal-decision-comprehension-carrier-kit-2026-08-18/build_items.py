@@ -22,8 +22,9 @@ def require(condition: bool, message: str) -> None:
         raise ValidationError(message)
 
 
-def rotate(options: list[str], material: str) -> list[str]:
-    offset = int(hashlib.sha256(material.encode("utf-8")).hexdigest()[:8], 16) % len(options)
+def place_answer(options: list[str], answer: str, target_position: int) -> list[str]:
+    target_position %= len(options)
+    offset = (options.index(answer) - target_position) % len(options)
     return options[offset:] + options[:offset]
 
 
@@ -63,15 +64,14 @@ def primary_rows(
     options = protocol["primary_options"]
     answer = protocol["primary_answers"][form]
     rows = []
-    for item in scenarios:
-        if item["form"] != form:
-            continue
+    selected = sorted((item for item in scenarios if item["form"] == form), key=lambda row: row["id"])
+    for position, item in enumerate(selected):
         rows.append({
             "id": f"{item['id']}-primary-{comparator}",
             "english": exposed(item["context"], item[surface_field]),
             "ainglish": exposed(item["context"], item["marked_surface"]),
             "question": protocol["primary_question"],
-            "options": rotate(options, f"{item['id']}|{comparison}"),
+            "options": place_answer(options, answer, position),
             "answer": answer,
             "scenario_id": item["id"],
             "carrier": item["carrier"],
@@ -79,6 +79,7 @@ def primary_rows(
             "domain": item["domain"],
             "case": item["case"],
             "short_style": item["short_style"],
+            "source_class": item["source_class"],
             "comparison": comparison,
         })
     require(len(rows) == 48, f"{comparison} derived {len(rows)} real rows, expected 48")
@@ -88,20 +89,21 @@ def primary_rows(
 def warrant_rows(scenarios: list[dict[str, Any]], protocol: dict[str, Any]) -> list[dict[str, Any]]:
     options = protocol["warrant_options"]
     rows = []
-    for item in scenarios:
+    for position, item in enumerate(sorted(scenarios, key=lambda row: row["id"])):
         comparison = "authority-warrant-marked-vs-complete-careful-english-diagnostic"
         rows.append({
             "id": f"{item['id']}-warrant-careful",
             "english": exposed(item["context"], item["careful_surface"]),
             "ainglish": exposed(item["context"], item["marked_surface"]),
             "question": protocol["warrant_question"],
-            "options": rotate(options, f"{item['id']}|{comparison}"),
+            "options": place_answer(options, item["warrant_answer"], position),
             "answer": item["warrant_answer"],
             "scenario_id": item["id"],
             "carrier": item["carrier"],
             "form": item["form"],
             "domain": item["domain"],
             "case": item["case"],
+            "source_class": item["source_class"],
             "comparison": comparison,
         })
     require(len(rows) == 96, f"warrant diagnostic derived {len(rows)} rows, expected 96")

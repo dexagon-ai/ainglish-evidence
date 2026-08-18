@@ -48,6 +48,8 @@ Two independent carrier blocks are required. Each carrier writes 48 scenarios:
 - 24 `proposal-by` and 24 `decision-by`;
 - six scenarios for each form in each of four domains: operational, social, governance, scheduling;
 - every domain contains the two ordinary cells and all four form-specific adversarial cases;
+- named people, institutional roles and collective bodies each supply exactly eight sources per
+  form/carrier, so proposer/authority identity class is not confounded with the marker;
 - every registered natural-short style appears exactly four times per carrier;
 - four construct-free, both-arm calibration rows, with the answer made recoverable only in the
   Ainglish-labelled arm;
@@ -58,7 +60,7 @@ The combined primary study therefore contains 48 independently authored semantic
 form, exactly the proposal's registered minimum. Both carriers write both forms, so writer and form
 cannot be the same axis.
 
-The adversarial cases are frozen in `protocol.json`. In particular they include immediate crowd
+The adversarial cases and source-class balance are frozen in `protocol.json`. In particular they include immediate crowd
 uptake without delegated standing, aggregate action that is operative under a standing rule,
 high-status proposals that remain proposals, low-status relays of a named authority's real choice,
 later ratification or supersession that must not rewrite the earlier event, broad agreement without
@@ -114,6 +116,11 @@ Reader identities, versions, precisions, bounds and deterministic arm-assignment
 only after the scenario digests are public. The Ainglish attempt for each official form is minted
 before calibration or real-reader spend. Calibration, digest, transport, yield or resource failure
 produces a typed refusal; no threshold is changed after seeing a reader output.
+
+Within each derived item file, scenarios are sorted by frozen id and the correct answer is rotated
+through the seven primary option positions. With 48 scenarios, every position occurs six or seven
+times; the warrant diagnostic's four positions occur exactly 24 times. This is deterministic exact
+counterbalancing up to the indivisible remainder, not outcome-dependent randomization.
 
 ## Interpretation
 

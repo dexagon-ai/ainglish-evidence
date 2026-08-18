@@ -40,6 +40,7 @@ SHORT_STYLES = {
     "proposal-by": ("lets", "should", "could", "how-about", "why-not", "suggest"),
     "decision-by": ("will", "going-with", "plan-is", "using", "it-will-be", "proceed-with"),
 }
+SOURCE_CLASSES = ("named-person", "institutional-role", "collective-body")
 WARRANT_OPTIONS = (
     "claim matches the ledger",
     "claim exceeds the named source's role",
@@ -53,6 +54,7 @@ SCENARIO_KEYS = {
     "domain",
     "case",
     "short_style",
+    "source_class",
     "source",
     "action",
     "context",
@@ -145,7 +147,7 @@ def validate_scenario(item: Any, index: int, username: str) -> None:
     require(isinstance(item, dict), f"{label} must be an object")
     require(set(item) == SCENARIO_KEYS,
             f"{label} keys must be exactly {sorted(SCENARIO_KEYS)}; got {sorted(item)}")
-    for key in ("id", "carrier", "form", "domain", "case", "short_style", "source", "action",
+    for key in ("id", "carrier", "form", "domain", "case", "short_style", "source_class", "source", "action",
                 "context", "marked_surface", "careful_surface", "short_surface", "warrant_answer"):
         require(isinstance(item[key], str) and item[key].strip(), f"{label}.{key} must be text")
     require(item["id"].startswith(f"{username}-"),
@@ -157,6 +159,8 @@ def validate_scenario(item: Any, index: int, username: str) -> None:
     require(item["case"] in expected_cases, f"{label}.case is not valid for {item['form']}")
     require(item["short_style"] in SHORT_STYLES[item["form"]],
             f"{label}.short_style is not valid for {item['form']}")
+    require(item["source_class"] in SOURCE_CLASSES,
+            f"{label}.source_class must be one of {SOURCE_CLASSES}")
     require("\n" not in item["source"] and len(item["source"]) <= 80,
             f"{label}.source must be a short one-line name or role")
     require("\n" not in item["action"] and 4 <= len(item["action"]) <= 180,
@@ -300,6 +304,9 @@ def validate_document(document: Any) -> dict[str, Any]:
         require(Counter(item["short_style"] for item in rows)
                 == Counter({style: 4 for style in SHORT_STYLES[form]}),
                 f"{form} must use every short style exactly four times")
+        require(Counter(item["source_class"] for item in rows)
+                == Counter({source_class: 8 for source_class in SOURCE_CLASSES}),
+                f"{form} must use every source class exactly eight times")
 
     content = {"scenarios": scenarios, "calibration_items": calibrations}
     expected_content_sha = canonical_sha(content)

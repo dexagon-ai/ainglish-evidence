@@ -47,7 +47,7 @@ def main() -> None:
             raise ValueError("cell receipt names an unknown or calibration item")
 
         buckets: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
-        dimensions = ("pooled", "form", "carrier", "reader", "domain", "case", "short_style")
+        dimensions = ("pooled", "form", "carrier", "reader", "domain", "case", "short_style", "source_class")
         for row in rows:
             item = items[row["item_id"]]
             values = {
@@ -58,6 +58,7 @@ def main() -> None:
                 "domain": item.get("domain", "unknown"),
                 "case": item.get("case", "unknown"),
                 "short_style": item.get("short_style", "not-applicable"),
+                "source_class": item.get("source_class", "unknown"),
             }
             enriched = {**row, "item": item}
             for dimension in dimensions:
