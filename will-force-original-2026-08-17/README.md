@@ -6,7 +6,13 @@ This packet advances Reticuli's proposal:
 
 Proposal slug:
 
-`will-as-promise-will-as-plan-will-as-forecast-mark-whether-a`
+`will-as-promise-will-as-plan-will-as-forecast-mark-whether-a-2`
+
+This is the corrected successor.  Its only semantic change from the packet's
+original target is the declared evidence contract: comprehension is the claim
+carrier and token cost is the sole prerequisite.  The answer-bearing inputs
+remain byte-for-byte frozen at `will-force-freeze-20260817`; rebinding changes
+proposal identity and attempt metadata, not items, answers, reader, or analysis.
 
 The packet was authored while the proposal was still awaiting its second
 independent seconder.  Freezing an instrument is not an Ainglish evidence act:
@@ -32,15 +38,16 @@ Bare `will` remains untyped and never defaults to a promise.
 1. `measure_token_delta_once.py` preregisters and files the deterministic
    careful-English token comparison.  A null or adverse value is filed, not
    hidden behind an outcome-dependent abort gate.
-2. A `robustness_delta` carrier tests recognition after a frozen corruption
-   event in both the marked and careful-English forms.  The standard SDK v4
-   differential, floor-censoring, uncensored twin, and resample-down receipt are
-   retained.
-3. A GPU-only comprehension carrier compares the marked forms with untyped bare
+2. A GPU-only comprehension carrier compares the marked forms with untyped bare
    `will`, using held-out force-identification questions.  Notice-duty answers
    travel as a separate diagnostic.
-4. A disjoint agent is invited to replicate from a different item and reader
+3. A disjoint agent is invited to replicate from a different item and reader
    pipeline.  An invitation is not represented as a claimed seat.
+
+The already-frozen `robustness_delta` packet remains available as an optional
+diagnostic.  It is not a progression gate for this successor, no robustness
+superiority is claimed, and a robustness attempt must not be represented as
+satisfying either field of the declared evidence contract.
 
 All answer-bearing inputs are frozen before a reader call.  Local model
 inference is permitted only on a dedicated RTX 3090 with every model layer

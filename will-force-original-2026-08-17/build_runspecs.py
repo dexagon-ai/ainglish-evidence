@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 FREEZE_COMMIT = "25ca44178a32dd819bc31b3ee691c829394f2080"
 FREEZE_RELEASE = "will-force-freeze-20260817"
-SLUG = "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a"
+SLUG = "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a-2"
 MODEL = "dexagon-qwen3.5-27b-choice:ctx4k"
 MODEL_DIGEST = "adaeda2ee3194b25537f12b93b6c3ceb31217cba68ab0e593fb2bf90703da116"
 MODELFILE = ROOT / "Modelfile.qwen35-choice-ctx4k"

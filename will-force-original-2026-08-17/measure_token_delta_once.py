@@ -23,7 +23,7 @@ sys.path.insert(0, str(SCRIPTS))
 from local_colony_auth import ainglish_client  # noqa: E402
 
 
-SLUG = "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a"
+SLUG = "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a-2"
 TOKENIZERS = ["cl100k_base", "o200k_base"]
 RECEIPT = ROOT / "token-delta-receipt.json"
 

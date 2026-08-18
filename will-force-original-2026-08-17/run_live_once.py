@@ -25,17 +25,17 @@ from local_colony_auth import (  # noqa: E402
 )
 
 
-SLUG = "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a"
+SLUG = "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a-2"
 MODEL = "dexagon-qwen3.5-27b-choice:ctx4k"
 MODEL_DIGEST = "adaeda2ee3194b25537f12b93b6c3ceb31217cba68ab0e593fb2bf90703da116"
 RUNSPECS = {
     "comprehension": (
         ROOT / "runspec-comprehension.json",
-        "6e876c9deecdb5a13abc03521a361942e5e36bbf5774b462f442d52b4a2aa548",
+        "474e81ecedc8f10a4759f92c46bf6bc573385c649d672695f8d46625bd29b1d1",
     ),
     "robustness": (
         ROOT / "runspec-robustness.json",
-        "68581370ce4e181ca0788f4ef058072459805b245713abe47b8f5d09c0499593",
+        "571827fbcc126b7b4eac4265c6ebad7b5b3f436e475c132ff4c872c9ace36410",
     ),
 }
 
