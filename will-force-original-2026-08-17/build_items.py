@@ -67,6 +67,26 @@ TASKS = {
     ],
 }
 
+# Corrected-successor carrier cases.  These are deliberately separate from
+# TASKS: the first frozen packet remains reproducible as historical provenance,
+# while this successor set fixes two design defects found before any reader
+# call.  The claim carrier compares with complete careful English, and forecast
+# statements use events the speaker does not control.
+FORECAST_CASES = [
+    ("the deployment", "finish by 18:00 UTC"),
+    ("the queue", "clear before dawn"),
+    ("the package", "arrive on Tuesday"),
+    ("the market price", "fall after the auction"),
+    ("the storm", "reach the coast tonight"),
+    ("the replication", "disagree on one item"),
+    ("the cache", "warm after two requests"),
+    ("the reviewer", "reply before the deadline"),
+    ("the download", "complete within an hour"),
+    ("the archive scan", "find one stale link"),
+    ("the final batch", "contain one timeout"),
+    ("the mirror queue", "be empty by morning"),
+]
+
 
 def canonical_sha(value: object) -> str:
     encoded = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
@@ -96,6 +116,68 @@ def comprehension_items() -> list[dict]:
             })
     assert len(items) == 36
     return items
+
+
+def successor_force_cases() -> list[dict]:
+    cases = []
+    for task in TASKS["will-as-promise"]:
+        cases.append({
+            "form": "will-as-promise",
+            "english_bare": f"I will {task}.",
+            "ainglish": f"I will-as-promise {task}.",
+            "english_careful": (
+                f"I undertake to {task}; by saying this I accept responsibility for making "
+                "that result happen."
+            ),
+            "answer": "outcome_responsibility",
+        })
+    for task in TASKS["will-as-plan"]:
+        cases.append({
+            "form": "will-as-plan",
+            "english_bare": f"I will {task}.",
+            "ainglish": f"I will-as-plan {task}.",
+            "english_careful": (
+                f"My chosen course for now is to {task}; I may revise that course later."
+            ),
+            "answer": "present_intention",
+        })
+    for subject, infinitive in FORECAST_CASES:
+        cases.append({
+            "form": "will-as-forecast",
+            "english_bare": f"{subject.capitalize()} will {infinitive}.",
+            "ainglish": f"{subject.capitalize()} will-as-forecast {infinitive}.",
+            "english_careful": (
+                f"I expect {subject} to {infinitive}; I am reporting only what seems likely, "
+                "not undertaking to cause it."
+            ),
+            "answer": "expectation_only",
+        })
+    assert len(cases) == 36
+    assert all(sum(row["form"] == form for row in cases) == 12 for form in ANSWER)
+    return cases
+
+
+def successor_comprehension_items(comparator: str) -> list[dict]:
+    if comparator not in {"careful", "bare"}:
+        raise ValueError(comparator)
+    rows = []
+    for index, case in enumerate(successor_force_cases(), 1):
+        english_key = "english_careful" if comparator == "careful" else "english_bare"
+        rows.append({
+            "id": f"will-force-S-{comparator[0].upper()}-{index:02d}",
+            "english": case[english_key],
+            "ainglish": case["ainglish"],
+            "question": FORCE_QUESTION,
+            "options": rotate_options(index - 1),
+            "answer": case["answer"],
+            "form": case["form"],
+            "comparison": (
+                "marked_vs_complete_careful_english"
+                if comparator == "careful"
+                else "marked_vs_untyped_bare_will_diagnostic"
+            ),
+        })
+    return rows
 
 
 def careful_english(form: str, task: str) -> str:
@@ -218,6 +300,16 @@ def main() -> None:
             "notice-duty-diagnostic.json",
             "ainglish.diagnostic.v1:will-as-plan-notice-duty",
             notice_diagnostic_items(),
+        ),
+        write_packet(
+            "comprehension-careful-items.json",
+            "ainglish.panel.items.v1:will-force-marked-vs-careful-successor",
+            successor_comprehension_items("careful") + calibration_items(),
+        ),
+        write_packet(
+            "comprehension-bare-diagnostic-items.json",
+            "ainglish.panel.items.v1:will-force-marked-vs-bare-successor-diagnostic",
+            successor_comprehension_items("bare") + calibration_items(),
         ),
     ]
     (ROOT / "item-freeze-receipt.json").write_text(
