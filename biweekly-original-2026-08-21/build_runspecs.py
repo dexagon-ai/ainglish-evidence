@@ -93,7 +93,7 @@ def build(form: str, freeze_commit: str) -> dict:
                 "readers": 2,
                 "reader_families": ["Qwen 3.5 27B", "Mistral Small 3.2 24B"],
                 "reader_precision": "both local q4_k_m",
-                "real_cells": 400,
+                "real_cells": 200,
                 "calibration_cells": 48,
                 "execution": "dedicated local RTX 3090 GPU 0; one loaded model and one request at a time; 4,096-token context; no CPU fallback",
             },
@@ -119,4 +119,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
