@@ -14,10 +14,10 @@ SLUG = "twice-weekly-every-two-weeks-split-biweekly-into-its-two-inc"
 BASE_URL = "http://127.0.0.1:11434/v1"
 READERS = [
     {
-        "name": "qwen3.5-27b-choice-q4_k_m",
+        "name": "gemma3-12b-pp-task-q4_k_m",
         "provider": "ollama",
-        "model": "dexagon-qwen3.5-27b-choice:ctx4k",
-        "model_digest": "adaeda2ee3194b25537f12b93b6c3ceb31217cba68ab0e593fb2bf90703da116",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "model_digest": "de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
         "precision": "q4_k_m",
         "max_tokens": 1024,
         "temperature": 0,
@@ -26,10 +26,10 @@ READERS = [
         "base_url": BASE_URL,
     },
     {
-        "name": "mistral-small3.2-24b-instruct-q4_k_m",
+        "name": "mistral-small3.2-24b-pp-task-q4_k_m",
         "provider": "ollama",
-        "model": "mistral-small3.2:24b-instruct-2506-q4_K_M",
-        "model_digest": "5a408ab55df5c1b5cf46533c368813b30bf9e4d8fc39263bf2a3338cfa3b895b",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "model_digest": "6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
         "precision": "q4_k_m",
         "max_tokens": 1024,
         "temperature": 0,
@@ -50,7 +50,7 @@ def build(form: str, freeze_commit: str) -> dict:
         "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
         f"{freeze_commit}/biweekly-original-2026-08-21/{form}-careful-items.json"
     )
-    return {
+    spec = {
         "construct": "twice-weekly / every-two-weeks",
         "slug": SLUG,
         "metric": "comprehension_accuracy_delta",
@@ -58,6 +58,7 @@ def build(form: str, freeze_commit: str) -> dict:
         "planted_arm": "ainglish",
         "calibration_min_gap": 0.5,
         "panel_neff": 2,
+        "instrument_revision": "v2-fixed-option-nonreasoning-readers-after-qwen-truncation",
         "panel": READERS,
         "items_url": url,
         "items_sha256": document["sha256"],
@@ -75,7 +76,7 @@ def build(form: str, freeze_commit: str) -> dict:
                 "the English arm is the proposal's complete careful-English mapping; bare biweekly is excluded from the filed carrier",
                 "count contexts reveal no weekday, calendar date, or clock-time cue that selects the intended cadence independently of the tested form",
                 "the 12 construct-free calibration rows execute first in both arms and must show an explicit-minus-underdetermined accuracy gap of at least 0.5",
-                "Qwen 3.5 27B and Mistral Small 3.2 24B execute sequentially at Q4_K_M, temperature 0, fixed seed, and the pinned model digests",
+                "Gemma 3 12B and Mistral Small 3.2 24B fixed-option aliases execute sequentially at Q4_K_M, temperature 0, fixed seed, and the pinned model digests",
                 "both readers remain fully GPU-resident on the local RTX 3090 pair; CPU fallback, a contested GPU, or a non-empty competing queue aborts",
                 "all null, adverse, ceiling-bound, and supportive scientific outcomes are retained; only input, transport, calibration, yield, commitment, or resource-contract failures may abort",
             ],
@@ -91,7 +92,7 @@ def build(form: str, freeze_commit: str) -> dict:
                 "comparison": "marked form versus complete careful-English mapping",
                 "noninferiority_margin_pp": -5,
                 "readers": 2,
-                "reader_families": ["Qwen 3.5 27B", "Mistral Small 3.2 24B"],
+                "reader_families": ["Gemma 3 12B", "Mistral Small 3.2 24B"],
                 "reader_precision": "both local q4_k_m",
                 "real_cells": 200,
                 "calibration_cells": 48,
@@ -99,6 +100,13 @@ def build(form: str, freeze_commit: str) -> dict:
             },
         },
     }
+    if form == "twice-weekly":
+        spec["redesign_of_attempt"] = "ab49d6d6-e1b0-4823-b4fe-b80518f0d2c8"
+        spec["redesign_reason"] = (
+            "The preregistered Qwen reader exhausted its 1,024-token bound and triggered the "
+            "yield guard; this successor replaces that reader before any new item exposure."
+        )
+    return spec
 
 
 def main() -> None:
