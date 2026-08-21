@@ -115,7 +115,7 @@ def model_roster() -> list[str]:
     return [
         f"cl100k_base@tiktoken-{tiktoken_version}",
         f"o200k_base@tiktoken-{tiktoken_version}",
-        f"google/gemma-4-31b-it@{GEMMA_REVISION}/tokenizer.json#{gemma_hash[:16]}",
+        f"gemma-4-31b-it@{GEMMA_REVISION[:8]}/tokenizer#{gemma_hash[:16]}",
     ]
 
 
