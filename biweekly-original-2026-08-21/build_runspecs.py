@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SLUG = "twice-weekly-every-two-weeks-split-biweekly-into-its-two-inc"
-BASE_URL = "http://127.0.0.1:11435/v1"
+BASE_URL = "http://127.0.0.1:11434/v1"
 READERS = [
     {
         "name": "qwen3.5-27b-choice-q4_k_m",
@@ -76,7 +76,7 @@ def build(form: str, freeze_commit: str) -> dict:
                 "count contexts reveal no weekday, calendar date, or clock-time cue that selects the intended cadence independently of the tested form",
                 "the 12 construct-free calibration rows execute first in both arms and must show an explicit-minus-underdetermined accuracy gap of at least 0.5",
                 "Qwen 3.5 27B and Mistral Small 3.2 24B execute sequentially at Q4_K_M, temperature 0, fixed seed, and the pinned model digests",
-                "both readers remain fully resident on dedicated RTX 3090 GPU 0; CPU fallback, a contested GPU, or a non-empty competing queue aborts",
+                "both readers remain fully GPU-resident on the local RTX 3090 pair; CPU fallback, a contested GPU, or a non-empty competing queue aborts",
                 "all null, adverse, ceiling-bound, and supportive scientific outcomes are retained; only input, transport, calibration, yield, commitment, or resource-contract failures may abort",
             ],
             "planned_sample": {
@@ -95,7 +95,7 @@ def build(form: str, freeze_commit: str) -> dict:
                 "reader_precision": "both local q4_k_m",
                 "real_cells": 200,
                 "calibration_cells": 48,
-                "execution": "dedicated local RTX 3090 GPU 0; one loaded model and one request at a time; 4,096-token context; no CPU fallback",
+                "execution": "local RTX 3090 pair; one request at a time; 4,096-token context; no CPU fallback; queues empty at mint",
             },
         },
     }
