@@ -115,8 +115,10 @@ def real_item(index: int, row: tuple, intent: str) -> dict:
         f"{more_or_fewer} such observations per 1,000."
     )
     english = f"{anchor} The {metric} {direction} {magnitude}%."
-    unit = "percentage points" if intent == "additive" else "% relative"
-    ainglish = f"{anchor} The {metric} {direction} {magnitude} {unit}."
+    marked_change = (
+        f"{magnitude} percentage points" if intent == "additive" else f"{magnitude}% relative"
+    )
+    ainglish = f"{anchor} The {metric} {direction} {marked_change}."
     options = rotate_options(index, intent, additive_final, relative_final)
     answer = f"{fmt(intended_final)}%"
     assert answer in options
