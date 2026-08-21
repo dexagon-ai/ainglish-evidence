@@ -1,0 +1,76 @@
+{
+  "construct": "percentage points, not bare percent",
+  "slug": "percentage-points-not-bare-percent-a-change-to-a-percentage-",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 1231190656,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "panel_neff": 2,
+  "panel": [
+    {
+      "name": "mistral-small3.2-24b-pp-task-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "precision": "q4_k_m",
+      "max_tokens": 128,
+      "temperature": 0,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    },
+    {
+      "name": "gemma3-12b-pp-task-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "precision": "q4_k_m",
+      "max_tokens": 128,
+      "temperature": 0,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    }
+  ],
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/819ad68/percentage-points-opener-replication-2026-08-21/items.json",
+  "items_sha256": "4962794f1223a00dd5603b27c05339f65a621ed8654f005d5a650469659b92ca",
+  "replicates_hash": "f9e78cc01f6725961fc0b9b119ae6f5d09f74d2858b92d81f2f1d8a08fa75c5b",
+  "attempt": {
+    "proposal_revision": "percentage-points-not-bare-percent-a-change-to-a-percentage-",
+    "estimand": "Different-input replication of Reticuli's f9e78cc0 endpoints-absent correctness original: pooled percentage-point difference in exact intended-final-rate accuracy, explicit percentage-points/%-relative arm minus bare-% arm. Thirty-two fresh scenarios are balanced 16 additive/16 relative and 16 rise/16 fall; every message carries an approximate per-1,000 headcount anchor that pins intent while withholding the final percentage. Two independently configured non-Qwen reader families each receive one counterbalanced arm per item. Report absolute arms, per-reader and per-intent cells; file agreement or disagreement without an outcome gate. This estimates correctness only, not endpoint detectability.",
+    "admissibility_gates": [
+      "the anonymously fetched 40-item artifact has exact sha256 141d17b8824cd4980e304ad138838687fb04031285c6ed8d30cfaef9fa17b55e and SDK canonical-items sha256 4962794f1223a00dd5603b27c05339f65a621ed8654f005d5a650469659b92ca",
+      "Reticuli's original artifact verifies as sha256 c7719b1721eaddfcada578485525839f725886fb1fc9c77ccde3ba6177c3c6bf, and the frozen overlap audit reports zero identical complete scientific pairs",
+      "the artifact retains 32 fresh scored rows split 16 additive/16 relative and 16 rise/16 fall, plus 8 genuine both-arm calibration rows",
+      "every scored pair is endpoints-absent and differs only in bare percent versus percentage points or percent-relative; the approximate headcount anchor is identical across arms and pins the intended reading",
+      "seed 1231190656 is the first digest-prefix-increment deal satisfying the frozen balance rule: pooled arms 32/32, intent and direction 14..18 per arm, reader arms 14..18, cross-strata 2..6, option positions 12/10/10 per arm",
+      "both reader configurations expose distinct non-Qwen model digests and the both-arms-per-reader calibration-first gap is at least 0.5",
+      "both readers execute sequentially on dedicated loopback Ollama 127.0.0.1:11435 pinned to RTX 3090 GPU 0 with one loaded model and one request; CPU fallback is prohibited",
+      "any resource, transport, calibration, cell-yield, truncation, commitment, or reconciliation failure becomes a typed abort and is not retried in place",
+      "the panel harness emits a measurement whose filed manifest matches the preregistered commitment"
+    ],
+    "planned_sample": {
+      "scored_items": 32,
+      "calibration_items": 8,
+      "readers": 2,
+      "reader_families": [
+        "Mistral Small 3.2",
+        "Gemma 3"
+      ],
+      "reader_precision": "both local Q4_K_M",
+      "real_cells": 64,
+      "calibration_cells": 32,
+      "intents": {
+        "additive": 16,
+        "relative": 16
+      },
+      "directions": {
+        "rose": 16,
+        "fell": 16
+      },
+      "aggregate_arm_cells": {
+        "english": 32,
+        "ainglish": 32
+      },
+      "seed": 1231190656,
+      "sdk_version": "0.2.32",
+      "execution": "dedicated local RTX 3090 GPU 0; one loaded model and one request at a time; 4096-token context; no CPU fallback"
+    }
+  }
+}
