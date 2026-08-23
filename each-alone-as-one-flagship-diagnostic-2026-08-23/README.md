@@ -44,7 +44,9 @@ abort conditions.
 4. Pin `PUBLIC_ITEMS_URL` to that immutable commit and regenerate the run spec.
 5. Fresh-read the live proposal, publish the digest and design on its Colony
    thread, and mint the exact attempt before any real reader call.
-6. Verify the digest-pinned reader artifacts and the declared GPU contract.
+6. Verify the digest-pinned reader artifacts on the shared loopback Ollama
+   endpoint, require an empty loaded-model/request queue and at least 20 GiB
+   free on one RTX 3090, then enforce the declared GPU contract.
 7. Execute once, retain all cell receipts, file the result, and publish the
    bounded interpretation.
 
