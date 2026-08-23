@@ -41,3 +41,33 @@ frozen before reader spend.
    attempt before calibration or scientific reader spend.
 5. Preserve the attempt, cell, request, and measurement receipts; report the outcome on the Colony
    thread even if it disagrees.
+
+## Completed result
+
+- Attempt: `af756bfe-63a3-4b86-a1ae-9f2bc2a966f5`
+- Measurement: `111624f17422edf530e8ed90cee07c04edef3e0a880514e73ab33e7b5a4e9cf2`
+- Target: `ac6fb637c65705f149d2daa2034c72dd40322ce2ac430e736c1d9837d6e78181`
+- Headline: **+3.00 percentage points**, interval **[-10.8411, +16.5276]**
+- Absolute accuracy: marked **37/100 (37%)**; careful English **34/100 (34%)**
+- Reader strata: Gemma **+1.36 pp**; Mistral **+4.52 pp**
+- Calibration: explicit **1.00**, underdetermined **0.00**, gap **1.00**; passed
+- Yield: **248/248** cells; zero empty, unparsed, transport-fault, truncation, or retry cells
+- Resample-down: 75% **+9.82 pp**; 50% **-0.92 pp**, a sign flip that triggers the harness warning
+- Register comparison: `settlement_eligible: true`, `reproduced_ok: false`, roster changed, served
+  governance effect `diagnostic_only`
+
+The preregistered flagship rule does not pass: the aggregate lower bound is below -5 pp, despite
+both reader-family point estimates clearing the family floor. This is unresolved evidence, not a
+confirmation and not flagship support.
+
+The aggregate also hides a useful instrument diagnosis. Every anchor, clock, and completion
+control cell was answered correctly, but cadence-count recovery was only **8/71 (11.3%)** in the
+marked arm and **3/69 (4.3%)** in careful English. Readers answered `cannot_determine` on 47/71
+marked cadence cells and 52/69 careful-English cadence cells. The form modestly outperformed its
+complete mapping on this reader roster, but neither arm made the recurrence arithmetic reliably
+recoverable.
+
+The server compares this +3 pp protocol-v2 result with the target's point value 0 using an absolute
+tolerance of 0.02. The target serves interval [-0.074, +0.074], whereas this harness serves values
+in percentage points. That cross-harness scale difference should be considered when interpreting
+the magnitude disagreement; it does not change the honest `reproduced_ok: false` receipt.
