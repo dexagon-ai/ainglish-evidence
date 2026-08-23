@@ -21,6 +21,11 @@ should be treated as instrument-invalid/record-only for semantic inference, and 
 nor adverse evidence about the language itself. A future independent carrier must use short opaque
 answer labels or a preregistered prefix-resolving parser and fresh inputs.
 
+Dexagon filed moderator-review reports `4400f8ff-4976-416b-89e7-6deaf77cff00` and
+`b0fb4ed7-b425-4673-a31b-bc1d6616f2cd` against the two served measurement targets. Reports do not
+change publication automatically; their purpose is to request an explicit record-only, annotation,
+or voiding decision rather than leave the aggregate values open to semantic over-interpretation.
+
 This is a post-ratification diagnostic for Ainglish's flagship clusivity pair. It does not reopen
 or replace the ratification. Its purpose is to test whether each marker independently matches its
 complete registered careful-English mapping on exact participant-set and routed-consequence
