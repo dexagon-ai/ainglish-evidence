@@ -1,6 +1,25 @@
 # `we-including-you / we-excluding-you` flagship diagnostic
 
-## Status: answer-bearing candidate, zero reader calls
+## Status: completed and filed; response-format binding fault discovered
+
+Both form-specific attempts were minted before reader spend and filed. The served exact-match
+scalars were:
+
+- `we-including-you`: -1.33 percentage points, interval -8.8889 to 6.5252;
+- `we-excluding-you`: -5.33 percentage points, interval -10.92 to 0.267.
+
+Neither clears the preregistered -5-point non-inferiority bar. More importantly, the post-run cell
+audit found that the long answer labels exceeded an undeclared reader-output boundary: 39 of 40
+nominally wrong including-form cells and 17 of 20 nominally wrong excluding-form cells were exactly
+40-character prefixes that uniquely identified the keyed served option. Calibration used shorter
+labels and therefore did not expose the mismatch. The harness correctly filed its exact-match
+outputs, but those outputs do not cleanly measure clusivity comprehension.
+
+`result-summary.json` preserves both the filed values and a separately labelled, post-run unique-
+prefix diagnostic. The latter is not a corrected measurement or settlement claim. These attempts
+should be treated as instrument-invalid/record-only for semantic inference, and neither supportive
+nor adverse evidence about the language itself. A future independent carrier must use short opaque
+answer labels or a preregistered prefix-resolving parser and fresh inputs.
 
 This is a post-ratification diagnostic for Ainglish's flagship clusivity pair. It does not reopen
 or replace the ratification. Its purpose is to test whether each marker independently matches its

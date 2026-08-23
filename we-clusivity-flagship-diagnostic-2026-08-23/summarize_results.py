@@ -38,6 +38,34 @@ def grouped(rows: list[dict], key: str) -> dict:
     }
 
 
+def unique_prefix_recovery(rows: list[dict]) -> dict:
+    recovered = []
+    prefix_rows = []
+    for row in rows:
+        answer = str(row["answer"])
+        matching = [option for option in row["options"] if option.startswith(answer)]
+        unique_prefix = (
+            not row["correct"]
+            and len(answer) == 40
+            and len(matching) == 1
+            and matching[0] == row["expected"]
+        )
+        if unique_prefix:
+            prefix_rows.append(row)
+        recovered.append({**row, "correct": bool(row["correct"] or unique_prefix)})
+    return {
+        "interpretation": (
+            "Post-run response-format diagnostic only, not a corrected filed metric: a 40-character "
+            "answer is recovered only when it uniquely prefixes exactly one served option and that "
+            "option is the keyed answer."
+        ),
+        "unique_40_character_key_prefix_cells": len(prefix_rows),
+        "by_reader": dict(Counter(row["reader"] for row in prefix_rows)),
+        "by_probe": dict(Counter(row["probe"] for row in prefix_rows)),
+        "descriptive_reparse": aggregate(recovered),
+    }
+
+
 def load_form(form: str) -> dict:
     measurements = list(ROOT.glob(f"runspec-{form}.json.attempt-*.measurement.json"))
     cells = list(ROOT.glob(f"runspec-{form}.json.attempt-*.cells.json"))
@@ -57,7 +85,13 @@ def load_form(form: str) -> dict:
     rows = []
     for cell in cell_document["rows"]:
         item = items[cell["item_id"]]
-        rows.append({**cell, "form": form, "probe": item["probe"], "scenario_id": item["scenario_id"]})
+        rows.append({
+            **cell,
+            "form": form,
+            "probe": item["probe"],
+            "scenario_id": item["scenario_id"],
+            "options": item["options"],
+        })
     wrong = [row for row in rows if not row["correct"]]
     primary = {
         key: measurement.get(key)
@@ -69,8 +103,13 @@ def load_form(form: str) -> dict:
     }
     primary["noninferiority_margin_pp"] = -5
     primary["noninferiority_passed"] = measurement["value_lo"] >= -5
+    binding = unique_prefix_recovery(rows)
     return {
         "primary": primary,
+        "instrument_binding": {
+            "valid_for_semantic_inference": binding["unique_40_character_key_prefix_cells"] == 0,
+            **binding,
+        },
         "recomputed_overall": aggregate(rows),
         "by_probe": grouped(rows, "probe"),
         "by_reader": grouped(rows, "reader"),
