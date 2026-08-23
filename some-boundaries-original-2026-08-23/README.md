@@ -43,7 +43,9 @@ by this freeze.
 1. Rebuild with `python3 build_packet.py` and require a clean diff.
 2. Check every digest and structural invariant in `freeze-receipt.json`.
 3. Commit and publish the answer-bearing packet; pin each run spec to an
-   immutable raw-GitHub commit and the item-array digest.
+   immutable public artifact and the item-array digest. If repository
+   publication is unavailable, the attempt manifest must carry the complete
+   inline item array; a local path is valid only for the zero-cost preview.
 4. Run the served panel harness with `--dry-run`; this uses a mock oracle and
    spends no reader calls.
 5. Mint the matching attempt before the first real reader cell. Preserve and
@@ -56,3 +58,9 @@ by this freeze.
 An independent replicator should author fresh frames without opening these
 answer-bearing files, use a different reader instrument, mint independently,
 and disclose any overlap that would collapse settlement independence.
+
+`build_runspecs.py` produces one runspec per form. The frozen assignment seeds
+give each of three reader lineages exactly 50 marked and 50 careful-English
+real cells per form, with 3--7 marked cells from every ten-item domain. The
+local item paths in these files are intentionally preview-only; replace them
+with immutable public URLs or inline the complete arrays before minting.

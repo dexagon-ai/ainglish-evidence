@@ -1,0 +1,97 @@
+{
+  "construct": "some-or-all / some-but-not-all",
+  "slug": "some-or-all-some-but-not-all-does-some-leave-room-for-all-2",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026140203,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "panel_neff": 3,
+  "panel": [
+    {
+      "name": "mistral-small3.2-24b-pp-task-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "max_tokens": 1024,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026140203
+    },
+    {
+      "name": "gemma3-12b-pp-task-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "max_tokens": 1024,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026140203
+    },
+    {
+      "name": "qwen3.5-27b-choice-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-qwen3.5-27b-choice:ctx4k",
+      "model_digest": "sha256:adaeda2ee3194b25537f12b93b6c3ceb31217cba68ab0e593fb2bf90703da116",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "max_tokens": 1024,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026140203
+    }
+  ],
+  "items_url": "/home/dexagon/codex/dexagon/ainglish-evidence/some-boundaries-original-2026-08-23/some_but_not_all-careful-items.json",
+  "items_sha256": "f785ef085fde9589f34fbe96f9c11dd7908a6bc04f72cd1cbfe1298092d47c38",
+  "attempt": {
+    "proposal_revision": "some-or-all-some-but-not-all-does-some-leave-room-for-all-2",
+    "estimand": "For some-but-not-all alone, the percentage-point difference in exact joint lower- and upper-bound recovery between the marked form and its complete careful-English mapping over 100 held-out, meaning-matched scenarios. The keyed vector says zero is impossible and the full named set is impossible. This estimand is not pooled with the other form and does not use bare some as its confirmatory English arm.",
+    "admissibility_gates": [
+      "the frozen item array hashes to f785ef085fde9589f34fbe96f9c11dd7908a6bc04f72cd1cbfe1298092d47c38; it contains exactly 100 real rows and 16 calibration rows",
+      "all real rows test some-but-not-all against its complete careful-English mapping; no bare-some comparator enters the claim carrier",
+      "the answer requires exact joint recovery of independent lower and upper boundaries; question wording does not repeat the marker or its careful-English quantifiers",
+      "the ten declared domains contribute exactly ten real rows each; endpoint and requirement question polarities contribute fifty each; each answer position occurs twenty-five times",
+      "each of the three distinct reader lineages receives exactly fifty marked and fifty careful-English real cells under the frozen assignment seed; every domain supplies between three and seven marked cells per reader",
+      "all three Q4_K_M reader artifacts must match their declared Ollama digests before attempt mint; temperature and reader seed are fixed and each model's 4,096-token context is baked into its digest-pinned Modelfile",
+      "the construct-free calibration block executes first in both arms for every reader and must show an explicit-minus-unresolved accuracy gap of at least 0.5",
+      "all null, adverse and supportive real outcomes are retained; only frozen-input, instrument-binding, calibration, cell-yield, transport, manifest-commitment, or GPU-contract failures may abort"
+    ],
+    "planned_sample": {
+      "form": "some-but-not-all",
+      "comparison": "marked form versus complete careful-English mapping",
+      "real_items": 100,
+      "calibration_items": 16,
+      "real_reader_cells": 300,
+      "calibration_reader_cells": 96,
+      "domains": 10,
+      "question_polarities": {
+        "endpoint": 50,
+        "requirement": 50
+      },
+      "answer_positions": {
+        "0": 25,
+        "1": 25,
+        "2": 25,
+        "3": 25
+      },
+      "readers": [
+        "mistral-small3.2-24b-pp-task-q4_k_m",
+        "gemma3-12b-pp-task-q4_k_m",
+        "qwen3.5-27b-choice-q4_k_m"
+      ],
+      "reader_lineages": [
+        "Mistral Small 3.2 24B",
+        "Gemma 3 12B",
+        "Qwen 3.5 27B"
+      ],
+      "panel_neff": 3,
+      "noninferiority_margin_pp": -5
+    }
+  }
+}
