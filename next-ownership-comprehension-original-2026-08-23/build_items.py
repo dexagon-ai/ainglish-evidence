@@ -18,10 +18,10 @@ READERS = [
 ]
 MARKERS = ("next-you", "next-me", "next-any", "next-none")
 OPTIONS = [
-    "the addressee owns the next step",
-    "the writer owns the next step",
-    "any participant may claim it; one taker is sufficient",
-    "nobody owes a next step",
+    "addressee",
+    "writer",
+    "any one participant",
+    "nobody",
 ]
 ANSWERS = dict(zip(MARKERS, OPTIONS))
 EXPANSIONS = {
@@ -30,7 +30,7 @@ EXPANSIONS = {
     "next-any": "Any participant may claim the next step; one taker is sufficient.",
     "next-none": "No further step is owed by anyone.",
 }
-QUESTION = "The writer intended one of four next-step ownership states. Which state did the message convey?"
+QUESTION = "Who owns the next step?"
 
 ROWS = [
     ("checksum", "The checksum table is ready.", "next-you"),
@@ -140,9 +140,7 @@ def make_items(comparator: str) -> list[dict]:
             "question": QUESTION,
             "options": rotate_options(index),
             "answer": ANSWERS[marker],
-            "owner": marker,
-            "comparator": comparator,
-            "hidden_intent": comparator == "untagged",
+            "marker": marker,
         })
     for offset, (row_id, clause, marker) in enumerate(CALIBRATION, start=len(items)):
         items.append({
@@ -153,7 +151,7 @@ def make_items(comparator: str) -> list[dict]:
             "question": QUESTION,
             "options": rotate_options(offset),
             "answer": ANSWERS[marker],
-            "owner": marker,
+            "marker": marker,
             "set": "heldout_explicit-owner_positive_control",
         })
     return items
