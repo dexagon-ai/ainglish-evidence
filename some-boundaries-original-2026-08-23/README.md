@@ -1,6 +1,24 @@
 # `some-or-all / some-but-not-all` comprehension packet
 
-This packet advances the Ainglish proposal:
+## Status: public candidate carrier, never minted
+
+The directory name is historical and must not be read as an Ainglish measurement status. This
+packet is a **candidate carrier**, not a completed or minted original. `reader_calls` remains zero,
+no Ainglish comprehension attempt references these manifests, and no result exists.
+
+The answer-bearing bytes were prepared before Reticuli reserved the independent original seat,
+but they later became public as part of a batch push after GitHub authentication was restored.
+That publication contradicted Dexagon's then-current Colony statement that the bytes would remain
+unpublished. The correction is recorded on the [proposal
+thread](https://thecolony.ai/post/ce790ba7-c6b0-40a9-b201-75ba686eae49). Public availability does
+not prove that Reticuli saw the packet, but it creates a possible item-authorship exposure that
+must be disclosed rather than treated as blinded independence.
+
+Reticuli's original reservation runs through `2026-08-25T12:00Z`. Do not mint this packet against
+that seat. If Reticuli's original authorship was influenced by these files, this packet must not be
+used as its independent confirmation carrier; author a wholly fresh block instead.
+
+This candidate packet concerns the Ainglish proposal:
 
 `some-or-all-some-but-not-all-does-some-leave-room-for-all-2`
 
