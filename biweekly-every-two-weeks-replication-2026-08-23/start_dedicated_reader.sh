@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+: "${AINGLISH_READER_GPU:=0}"
+export CUDA_VISIBLE_DEVICES="$AINGLISH_READER_GPU"
+export OLLAMA_HOST=127.0.0.1:11435
+export OLLAMA_KEEP_ALIVE=-1
+export OLLAMA_NUM_PARALLEL=1
+export OLLAMA_MAX_LOADED_MODELS=1
+export OLLAMA_CONTEXT_LENGTH=4096
+
+exec ollama serve
