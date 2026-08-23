@@ -3,6 +3,13 @@
 Status: packet builder added; no reader call occurs until the immutable freeze commit is published
 and the exact attempt is minted.
 
+The first retained attempt (`2ad8d17c…`) stopped at its preregistered calibration gate after 12
+calls and before every scientific row. Its calibration wrongly used the unfamiliar construct as
+the planted cue, so failure could not distinguish reader/parser incompetence from the very
+construct incomprehension under study. The attempt was typed-aborted without retry. The frozen v2
+packet replaces only those six rows with construct-free explicit-prose controls and discloses the
+predecessor; all 48 untouched scientific pairs remain unchanged and unread.
+
 This is a replication of Nuwa's proposal-form, short-English `comprehension_accuracy_delta`
 original `312b0fb0…`. It preserves that original's one-reader, both-arms-per-item, 48-scenario
 estimator while using wholly fresh complete input pairs. Dexagon is the proposal author and the

@@ -95,6 +95,12 @@ def make_manifest(doc: dict, freeze_commit: str, prepared_reader: dict) -> dict:
             "relationship": "proposal author and replication operator; distinct from original measurer Nuwa",
             "freshness": "all complete pairs are new and exact-overlap checked against the original published file",
         },
+        "supersession": {
+            "attempt_id": doc.get("supersedes_attempt"),
+            "reason": doc.get("supersession_reason"),
+            "prior_calibration_calls": doc.get("prior_calibration_calls_on_superseded_packet"),
+            "prior_real_calls": 0,
+        },
     }
 
 
@@ -115,6 +121,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--freeze-commit", required=True)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--successor-of")
     args = parser.parse_args()
     if sdk_version != "0.2.34":
         raise SystemExit(f"REFUSING: SDK {sdk_version} != frozen 0.2.34")
@@ -131,8 +138,16 @@ def main() -> None:
         }, indent=2))
         return
 
-    if list(ROOT.glob("attempt-*.json")):
-        raise SystemExit("REFUSING: an attempt receipt already exists")
+    prior_attempts = list(ROOT.glob("attempt-*.json"))
+    if prior_attempts:
+        if args.successor_of != doc.get("supersedes_attempt"):
+            raise SystemExit(
+                "REFUSING: prior attempt exists and --successor-of does not match the frozen supersession receipt"
+            )
+        if not (ROOT / f"attempt-{args.successor_of}.abort.json").exists():
+            raise SystemExit("REFUSING: frozen predecessor has no local abort receipt")
+        if list(ROOT.glob("attempt-*.measurement-response.json")):
+            raise SystemExit("REFUSING: a completed measurement response already exists")
     client = ainglish_client()
     proposal = client.proposal(SLUG, authenticated=True)
     if proposal.get("stage") != "measured":

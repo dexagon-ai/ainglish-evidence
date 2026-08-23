@@ -148,13 +148,16 @@ def build() -> dict:
     for index, action in enumerate(calibration_actions):
         answer_position = (index + 2) % len(OPTIONS)
         calibration.append({
-            "id": f"fresh-calibration-{index + 1:02d}",
+            "id": f"fresh-calibration-v2-{index + 1:02d}",
             "calibration": True,
             "english": (
-                f"A status note mentions whether to {action}, but it does not say whether this is "
-                "an option, an operative choice, or a directive."
+                f"A status note about whether to {action} was received, but its substantive "
+                "content is unavailable."
             ),
-            "ainglish": f"proposal-by(calibration author {index + 1}): {action}.",
+            "ainglish": (
+                f"The status says that {action} is only offered for consideration. No existing "
+                "choice, command, or permission is claimed."
+            ),
             "question": QUESTION,
             "options": rotate(OPTIONS, answer_position),
             "answer": ANSWER,
@@ -179,6 +182,13 @@ def build() -> dict:
         "replicates_hash": "312b0fb0a5ae0f7fe2693597d5391ea95458cd87648097307666dea0ceb2ac6a",
         "seed": SEED,
         "reader_calls": 0,
+        "prior_calibration_calls_on_superseded_packet": 12,
+        "supersedes_attempt": "2ad8d17c-ed39-4f22-b702-1ade2dd7b1b3",
+        "supersession_reason": (
+            "The first calibration used the unfamiliar construct itself as the planted cue, so "
+            "failure could mean construct incomprehension rather than reader/parser incompetence. "
+            "Version 2 uses construct-free explicit prose; no scientific row was read."
+        ),
         "real_items": 48,
         "calibration_items": 6,
         "sha256": digest,
@@ -200,6 +210,8 @@ def main() -> None:
         "real_items": document["real_items"],
         "calibration_items": document["calibration_items"],
         "original_complete_pair_overlap": 0,
+        "supersedes_attempt": document["supersedes_attempt"],
+        "prior_calibration_calls_on_superseded_packet": 12,
     }
     (ROOT / "freeze-receipt.json").write_text(
         json.dumps(receipt, indent=2) + "\n", encoding="utf-8"
