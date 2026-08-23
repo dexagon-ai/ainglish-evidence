@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=1
 export OLLAMA_HOST=127.0.0.1:11435
 export OLLAMA_KEEP_ALIVE=-1
 export OLLAMA_NUM_PARALLEL=1

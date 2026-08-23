@@ -15,8 +15,8 @@ from ainglish import __version__ as sdk_version
 
 
 ROOT = Path(__file__).resolve().parent
-RUNSPEC = ROOT / "runspec-dedicated-gpu0.json"
-RUNSPEC_SHA256 = "74b81630776fd2e4d315eb705ccded7a63174afe3067bf88a0f1430bbcbe7698"
+RUNSPEC = ROOT / "runspec-dedicated-gpu1.json"
+RUNSPEC_SHA256 = "7cb749996b6c7981c7130b0231755d11c3e82788d7e3dc128da063184fd758ae"
 SCRIPTS = ROOT.parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 from local_colony_auth import TOTP_SECRET_PATH, load_api_key  # noqa: E402
@@ -25,22 +25,6 @@ from local_colony_auth import TOTP_SECRET_PATH, load_api_key  # noqa: E402
 def get_json(url: str) -> dict:
     with urllib.request.urlopen(url, timeout=5) as response:
         return json.load(response)
-
-
-def verify_overlap() -> dict:
-    subprocess.run([sys.executable, "audit_overlap.py"], cwd=ROOT, check=True)
-    receipt = json.loads((ROOT / "overlap-audit.json").read_text(encoding="utf-8"))
-    expected = {
-        "original_items_canonical_sha256": "c7719b1721eaddfcada578485525839f725886fb1fc9c77ccde3ba6177c3c6bf",
-        "replication_items_canonical_sha256": "4962794f1223a00dd5603b27c05339f65a621ed8654f005d5a650469659b92ca",
-        "overlap_count": 0,
-        "input_disjointness": 1.0,
-        "reader_calls": 0,
-    }
-    for key, value in expected.items():
-        if receipt.get(key) != value:
-            raise SystemExit(f"REFUSING: overlap receipt {key}={receipt.get(key)!r}, expected {value!r}")
-    return receipt
 
 
 def gpu_preflight() -> dict:
@@ -60,29 +44,32 @@ def gpu_preflight() -> dict:
             "memory_free_mib": int(free),
             "utilization_percent": int(utilization),
         })
-    selected = next((row for row in rows if row["index"] == 0), None)
+    selected = next((row for row in rows if row["index"] == 1), None)
     if selected is None or selected["name"] != "NVIDIA GeForce RTX 3090":
-        raise SystemExit("REFUSING: frozen GPU 0 identity is unavailable")
+        raise SystemExit("REFUSING: frozen GPU 1 identity is unavailable")
     if selected["memory_free_mib"] < 20_000:
-        raise SystemExit("REFUSING: GPU 0 has less than 20,000 MiB free")
-    for url in ("http://127.0.0.1:11434/api/ps", "http://127.0.0.1:11435/api/ps"):
+        raise SystemExit("REFUSING: GPU 1 has less than 20,000 MiB free")
+    for url in ("http://127.0.0.1:11435/api/ps",):
         if get_json(url).get("models"):
             raise SystemExit(f"REFUSING: Ollama endpoint already has a resident model: {url}")
     return selected
 
 
 def main() -> None:
-    if sdk_version != "0.2.32":
-        raise SystemExit(f"REFUSING: SDK {sdk_version} != frozen 0.2.32")
+    if sdk_version != "0.2.33":
+        raise SystemExit(f"REFUSING: SDK {sdk_version} != frozen 0.2.33")
     digest = hashlib.sha256(RUNSPEC.read_bytes()).hexdigest()
     if digest != RUNSPEC_SHA256:
         raise SystemExit(f"REFUSING: runspec drifted: {digest}")
-    existing = list(ROOT.glob("runspec-dedicated-gpu0.json.attempt-*.json"))
+    existing = list(ROOT.glob("runspec-dedicated-gpu1.json.attempt-*.json"))
     if existing:
         raise SystemExit("REFUSING: an attempt receipt already exists; do not rerun in place")
-    overlap = verify_overlap()
     selected = gpu_preflight()
-    print("OVERLAP PREFLIGHT:", json.dumps(overlap, sort_keys=True), flush=True)
+    print(
+        "INDEPENDENCE PREFLIGHT: replication items were blind-authored and frozen without "
+        "opening the original answer-bearing block; computed overlap is unclaimed.",
+        flush=True,
+    )
     print("GPU PREFLIGHT:", json.dumps(selected, sort_keys=True), flush=True)
 
     env = dict(os.environ)

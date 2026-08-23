@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent
 
 def main() -> None:
     result = subprocess.run(
-        [sys.executable, "-m", "ainglish.panel", "run", "runspec-dedicated-gpu0.json", "--dry-run"],
+        [sys.executable, "-m", "ainglish.panel", "run", "runspec-dedicated-gpu1.json", "--dry-run"],
         cwd=ROOT,
         env=dict(os.environ),
         capture_output=True,

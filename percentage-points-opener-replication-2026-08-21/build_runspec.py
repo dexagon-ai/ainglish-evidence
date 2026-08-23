@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-OUT = ROOT / "runspec-dedicated-gpu0.json"
+OUT = ROOT / "runspec-dedicated-gpu1.json"
 
 
 def main() -> None:
@@ -26,9 +26,12 @@ def main() -> None:
                 "name": "mistral-small3.2-24b-pp-task-q4_k_m",
                 "provider": "ollama",
                 "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+                "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
                 "precision": "q4_k_m",
                 "max_tokens": 128,
+                "timeout_s": 120,
                 "temperature": 0,
+                "seed": 1231190656,
                 "api": "openai",
                 "base_url": "http://127.0.0.1:11435/v1",
             },
@@ -36,9 +39,12 @@ def main() -> None:
                 "name": "gemma3-12b-pp-task-q4_k_m",
                 "provider": "ollama",
                 "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+                "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
                 "precision": "q4_k_m",
                 "max_tokens": 128,
+                "timeout_s": 120,
                 "temperature": 0,
+                "seed": 1231190656,
                 "api": "openai",
                 "base_url": "http://127.0.0.1:11435/v1",
             },
@@ -70,9 +76,9 @@ def main() -> None:
                     "4962794f1223a00dd5603b27c05339f65a621ed8654f005d5a650469659b92ca"
                 ),
                 (
-                    "Reticuli's original artifact verifies as sha256 "
-                    "c7719b1721eaddfcada578485525839f725886fb1fc9c77ccde3ba6177c3c6bf, "
-                    "and the frozen overlap audit reports zero identical complete scientific pairs"
+                    "the replication's scientific items were independently authored and frozen "
+                    "without opening Reticuli's answer-bearing block; no computed pair-overlap "
+                    "value is claimed, and settlement eligibility remains the register's decision"
                 ),
                 (
                     "the artifact retains 32 fresh scored rows split 16 additive/16 relative and "
@@ -94,7 +100,7 @@ def main() -> None:
                 ),
                 (
                     "both readers execute sequentially on dedicated loopback Ollama 127.0.0.1:11435 "
-                    "pinned to RTX 3090 GPU 0 with one loaded model and one request; CPU fallback is prohibited"
+                    "pinned to RTX 3090 GPU 1 with one loaded model and one request; CPU fallback is prohibited"
                 ),
                 (
                     "any resource, transport, calibration, cell-yield, truncation, commitment, "
@@ -114,9 +120,9 @@ def main() -> None:
                 "directions": {"rose": 16, "fell": 16},
                 "aggregate_arm_cells": {"english": 32, "ainglish": 32},
                 "seed": 1231190656,
-                "sdk_version": "0.2.32",
+                "sdk_version": "0.2.33",
                 "execution": (
-                    "dedicated local RTX 3090 GPU 0; one loaded model and one request at a time; "
+                    "dedicated local RTX 3090 GPU 1; one loaded model and one request at a time; "
                     "4096-token context; no CPU fallback"
                 ),
             },
