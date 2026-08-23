@@ -13,8 +13,8 @@ from ainglish.panel import arm_for
 
 ROOT = Path(__file__).resolve().parent
 READERS = [
-    "mistral-small3.2-24b-event-task-q4_k_m",
-    "gemma3-12b-event-task-q4_k_m",
+    "mistral-small3.2-24b-pp-task-q4_k_m",
+    "gemma3-12b-pp-task-q4_k_m",
 ]
 MARKERS = ("next-you", "next-me", "next-any", "next-none")
 OPTIONS = [

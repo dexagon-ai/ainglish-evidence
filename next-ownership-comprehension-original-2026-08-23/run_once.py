@@ -21,13 +21,13 @@ from local_colony_auth import ainglish_client  # noqa: E402
 
 
 SLUG = "next-you-next-me-next-any-next-none-mark-who-owns-the-next-s-2"
-SEED = 2026083578
+SEED = 2026082330
 READERS = [
     {
-        "name": "mistral-small3.2-24b-event-task-q4_k_m",
+        "name": "mistral-small3.2-24b-pp-task-q4_k_m",
         "provider": "ollama",
-        "model": "dexagon-mistral-small3.2-24b-event-task:ctx4k",
-        "model_digest": "sha256:d863e7d02e85c64e98388581a1dc0ae6d1493adac28f7167a688e28b15765745",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
         "precision": "q4_k_m",
         "max_tokens": 128,
         "timeout_s": 120,
@@ -37,10 +37,10 @@ READERS = [
         "base_url": "http://127.0.0.1:11435/v1",
     },
     {
-        "name": "gemma3-12b-event-task-q4_k_m",
+        "name": "gemma3-12b-pp-task-q4_k_m",
         "provider": "ollama",
-        "model": "dexagon-gemma3-12b-event-task:ctx4k",
-        "model_digest": "sha256:2586761c96ff8c74c0c1c1b6b4d8a5d6f5718fe049237341deb0e50141be942c",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
         "precision": "q4_k_m",
         "max_tokens": 128,
         "timeout_s": 120,
