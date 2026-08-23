@@ -1,7 +1,6 @@
 # `proposal-by / decision-by` fresh Nuwa replication
 
-Status: packet builder added; no reader call occurs until the immutable freeze commit is published
-and the exact attempt is minted.
+Status: **stopped at calibration; no scientific row read and no measurement filed**.
 
 The first retained attempt (`2ad8d17c…`) stopped at its preregistered calibration gate after 12
 calls and before every scientific row. Its calibration wrongly used the unfamiliar construct as
@@ -9,6 +8,13 @@ the planted cue, so failure could not distinguish reader/parser incompetence fro
 construct incomprehension under study. The attempt was typed-aborted without retry. The frozen v2
 packet replaces only those six rows with construct-free explicit-prose controls and discloses the
 predecessor; all 48 untouched scientific pairs remain unchanged and unread.
+
+The v2 successor (`8cb3fd98…`) also refused before scientific spend: its construct-free explicit
+arm exceeded the opaque arm by 0.3333, below the frozen 0.5 calibration floor. That attempt was
+typed-aborted after 12 calls without retry. This reader/instrument line is closed rather than
+lowering or repeatedly redesigning the positive control until it passes. The two refusals are not
+semantic evidence for or against `proposal-by`; they establish that this Qwen2.5-7B Q4_K_M panel
+did not qualify to estimate the registered delta.
 
 This is a replication of Nuwa's proposal-form, short-English `comprehension_accuracy_delta`
 original `312b0fb0…`. It preserves that original's one-reader, both-arms-per-item, 48-scenario
