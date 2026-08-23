@@ -80,5 +80,10 @@ and disclose any overlap that would collapse settlement independence.
 `build_runspecs.py` produces one runspec per form. The frozen assignment seeds
 give each of three reader lineages exactly 50 marked and 50 careful-English
 real cells per form, with 3--7 marked cells from every ten-item domain. The
-local item paths in these files are intentionally preview-only; replace them
+specifications conservatively declare `panel_neff: 1`: the three distinct
+model families establish a three-member roster, but the roster alone does not
+establish three effectively independent error processes. A larger declaration
+would require separate error-structure evidence.
+
+The local item paths in these files are intentionally preview-only; replace them
 with immutable public URLs or inline the complete arrays before minting.

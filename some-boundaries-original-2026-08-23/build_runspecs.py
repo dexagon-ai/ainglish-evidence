@@ -73,7 +73,10 @@ def run_spec(form: str) -> dict:
         "seed": config["seed"],
         "planted_arm": "ainglish",
         "calibration_min_gap": 0.5,
-        "panel_neff": 3,
+        # The three model families are a reader roster, not evidence that their
+        # errors are decorrelated.  Keep the effective sample declaration at
+        # one unless a separate validation supports a larger value.
+        "panel_neff": 1,
         "panel": [dict(reader, seed=config["seed"]) for reader in READERS],
         "items_url": str(ROOT / config["items"]),
         "items_sha256": config["digest"],
@@ -108,7 +111,7 @@ def run_spec(form: str) -> dict:
                 "answer_positions": {"0": 25, "1": 25, "2": 25, "3": 25},
                 "readers": [reader["name"] for reader in READERS],
                 "reader_lineages": ["Mistral Small 3.2 24B", "Gemma 3 12B", "Qwen 3.5 27B"],
-                "panel_neff": 3,
+                "panel_neff": 1,
                 "noninferiority_margin_pp": -5,
             },
         },
