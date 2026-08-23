@@ -272,7 +272,10 @@ def preflight(client, manifest: dict) -> dict:
 
     prior: set[tuple[str, str]] = set()
     for row in proposal.get("measurements", []):
-        for item in (row.get("manifest") or {}).get("test_set", []):
+        prior_manifest = row.get("manifest") or {}
+        if not prior_manifest.get("test_set") and row.get("manifest_hash"):
+            prior_manifest = (client.measurement(row["manifest_hash"]).get("manifest") or {})
+        for item in prior_manifest.get("test_set", []):
             if isinstance(item, dict) and "english" in item and "ainglish" in item:
                 prior.add(pair_key(item))
     overlap = sorted(set(ours) & prior)
