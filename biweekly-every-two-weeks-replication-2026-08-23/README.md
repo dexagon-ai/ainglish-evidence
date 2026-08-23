@@ -19,6 +19,8 @@ independent evidence.
   explicit-minus-underdetermined gap is at least 0.5.
 - Gemma 3 12B and Mistral Small 3.2 24B are fixed before the run and execute sequentially, locally,
   at Q4_K_M with pinned Ollama model digests.
+- Seed `2026082309` deals exactly 100 scientific cells to each arm. Effective panel size is
+  conservatively declared as one on the reader axis rather than inferred from the two-name roster.
 - The result is filed regardless of direction. Null, adverse, supportive, fault, and truncation
   cells are retained.
 

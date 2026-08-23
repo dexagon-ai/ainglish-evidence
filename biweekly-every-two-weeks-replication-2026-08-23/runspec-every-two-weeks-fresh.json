@@ -1,0 +1,96 @@
+{
+  "construct": "every-two-weeks",
+  "slug": "twice-weekly-every-two-weeks-split-biweekly-into-its-two-inc",
+  "metric": "comprehension_accuracy_delta",
+  "replicates_hash": "ac6fb637c65705f149d2daa2034c72dd40322ce2ac430e736c1d9837d6e78181",
+  "seed": 2026082309,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "panel_neff": 1,
+  "panel_neff_axis": "reader",
+  "instrument_revision": "fresh-every-two-weeks-v1-family-floor-policy",
+  "panel": [
+    {
+      "name": "gemma3-12b-pp-task-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "max_tokens": 1024,
+      "temperature": 0,
+      "seed": 20260823,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    },
+    {
+      "name": "mistral-small3.2-24b-pp-task-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "precision": "q4_k_m",
+      "max_tokens": 1024,
+      "temperature": 0,
+      "seed": 20260823,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    }
+  ],
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/b02fcdf0eb61c36bf49801ee7b708e01b99d0f92/biweekly-every-two-weeks-replication-2026-08-23/every-two-weeks-fresh-items.json",
+  "items_sha256": "e7b221b5966f8f916a4f57ac77f13e1089148afba3a52e93c85d478cf23fab2c",
+  "input_disjointness_receipt": {
+    "value": 1.0,
+    "comparison": "exact complete (english, ainglish) pairs",
+    "original_items_sha256": "c16a3608ec7139fe1b4a7ac6f290c703cb1052c6b8a108adc50c04256fb71584",
+    "fresh_items_sha256": "e7b221b5966f8f916a4f57ac77f13e1089148afba3a52e93c85d478cf23fab2c",
+    "shared_complete_pairs": 0,
+    "original_complete_pairs": 100,
+    "fresh_complete_pairs": 100
+  },
+  "decision_policy": {
+    "aggregate_noninferiority_margin_pp": -5,
+    "flagship_family_floor_pp": -5,
+    "rule": "Flagship support requires the aggregate eligible interval lower bound to be at least -5 percentage points and no preregistered reader-family point estimate below -5 percentage points. A failing family is exposed, never averaged away."
+  },
+  "attempt": {
+    "proposal_revision": "twice-weekly-every-two-weeks-split-biweekly-into-its-two-inc",
+    "estimand": "Replication of ac6fb637c657...: comprehension_accuracy_delta in percentage points for every-two-weeks versus its complete careful-English mapping over 100 wholly fresh rows: 70 cadence-count consequences and 30 anchor, clock, and completion over-reading controls. Reader-family values remain separate; every finite result files regardless of direction.",
+    "admissibility_gates": [
+      "the commit-pinned item document hashes to e7b221b5966f8f916a4f57ac77f13e1089148afba3a52e93c85d478cf23fab2c and contains exactly 100 scientific rows plus 12 construct-free calibration rows",
+      "the fresh document shares zero exact complete (english, ainglish) pairs with original item digest c16a3608ec7139fe1b4a7ac6f290c703cb1052c6b8a108adc50c04256fb71584",
+      "scientific rows contain exactly 70 cadence-count consequences and 10 each anchor, clock, and completion over-reading controls",
+      "the English arm is the proposal's complete careful-English mapping; bare biweekly appears in neither scientific arm",
+      "count rows bind an external included anchor and half-open window without leaking a calendar date, weekday, or clock time",
+      "the fixed seed deals exactly 100 scientific cells to each arm across the two preregistered readers",
+      "the 12 construct-free calibration rows execute first in both arms and must show an explicit-minus-underdetermined accuracy gap of at least 0.5",
+      "Gemma 3 12B and Mistral Small 3.2 24B execute sequentially at Q4_K_M, temperature 0, fixed seeds, and the pinned model digests",
+      "both readers remain fully GPU-resident on a dedicated local RTX 3090; CPU fallback, a contested GPU, or a non-empty competing queue aborts",
+      "all null, adverse, supportive, fault, and truncation outcomes are retained; only input, transport, calibration, yield, commitment, or resource-contract failures may abort",
+      "the registered aggregate and both reader-family point estimates are reported; the prospective -5 pp family floor is not changed after seeing results"
+    ],
+    "planned_sample": {
+      "form": "every-two-weeks",
+      "replicates_hash": "ac6fb637c65705f149d2daa2034c72dd40322ce2ac430e736c1d9837d6e78181",
+      "real_items": 100,
+      "calibration_items": 12,
+      "probe_counts": {
+        "cadence_count": 70,
+        "anchor_not_supplied": 10,
+        "clock_not_supplied": 10,
+        "completion_not_supplied": 10
+      },
+      "comparison": "marked form versus complete careful-English mapping",
+      "aggregate_noninferiority_margin_pp": -5,
+      "flagship_family_floor_pp": -5,
+      "readers": 2,
+      "reader_families": [
+        "Gemma 3 12B",
+        "Mistral Small 3.2 24B"
+      ],
+      "reader_precision": "both local q4_k_m",
+      "real_cells": 200,
+      "real_cells_per_arm": 100,
+      "calibration_cells": 48,
+      "execution": "dedicated local RTX 3090; readers sequential; 4,096-token context; no CPU fallback; shared and dedicated queues empty at mint"
+    }
+  }
+}

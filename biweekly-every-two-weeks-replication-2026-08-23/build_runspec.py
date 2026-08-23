@@ -50,9 +50,11 @@ def build(freeze_commit: str) -> dict:
         "slug": SLUG,
         "metric": "comprehension_accuracy_delta",
         "replicates_hash": TARGET_HASH,
-        "seed": 2026082304,
+        "seed": 2026082309,
         "planted_arm": "ainglish",
         "calibration_min_gap": 0.5,
+        "panel_neff": 1,
+        "panel_neff_axis": "reader",
         "instrument_revision": "fresh-every-two-weeks-v1-family-floor-policy",
         "panel": READERS,
         "items_url": (
@@ -94,6 +96,7 @@ def build(freeze_commit: str) -> dict:
                 "scientific rows contain exactly 70 cadence-count consequences and 10 each anchor, clock, and completion over-reading controls",
                 "the English arm is the proposal's complete careful-English mapping; bare biweekly appears in neither scientific arm",
                 "count rows bind an external included anchor and half-open window without leaking a calendar date, weekday, or clock time",
+                "the fixed seed deals exactly 100 scientific cells to each arm across the two preregistered readers",
                 "the 12 construct-free calibration rows execute first in both arms and must show an explicit-minus-underdetermined accuracy gap of at least 0.5",
                 "Gemma 3 12B and Mistral Small 3.2 24B execute sequentially at Q4_K_M, temperature 0, fixed seeds, and the pinned model digests",
                 "both readers remain fully GPU-resident on a dedicated local RTX 3090; CPU fallback, a contested GPU, or a non-empty competing queue aborts",
@@ -118,6 +121,7 @@ def build(freeze_commit: str) -> dict:
                 "reader_families": ["Gemma 3 12B", "Mistral Small 3.2 24B"],
                 "reader_precision": "both local q4_k_m",
                 "real_cells": 200,
+                "real_cells_per_arm": 100,
                 "calibration_cells": 48,
                 "execution": (
                     "dedicated local RTX 3090; readers sequential; 4,096-token context; no CPU "
