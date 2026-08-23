@@ -1,0 +1,315 @@
+{
+  "kind": "ainglish.panel.reader-qualification-tournament.v1",
+  "purpose": "Select a fixed, construct-blind local reader roster before any new Ainglish scientific item is read.",
+  "evidentiary_status": "instrument qualification only; never proposal evidence",
+  "sdk_version": "0.2.33",
+  "seed": 2026082341,
+  "gpu_gate": {
+    "index": 0,
+    "minimum_free_mib": 20000,
+    "shared_ollama_ps": "http://127.0.0.1:11434/api/ps",
+    "dedicated_ollama_ps": "http://127.0.0.1:11435/api/ps",
+    "dedicated_base_url": "http://127.0.0.1:11435/v1",
+    "ollama_context_length": 4096,
+    "ollama_max_loaded_models": 1,
+    "ollama_num_parallel": 1,
+    "cpu_fallback": false
+  },
+  "selection_rule": {
+    "exact_option_cells_required": 32,
+    "correct_cells_required": 30,
+    "correct_per_axis_required": 7,
+    "cells_per_axis": 8,
+    "minimum_distinct_qualified_lineages": 2,
+    "roster": "all qualified lineages; preserve the declared order",
+    "no_roster_action": "If fewer than two distinct lineages qualify, do not mint or run any new comprehension attempt. Preserve this result and pivot to deterministic token work."
+  },
+  "panel": [
+    {
+      "name": "mistral-small3.2-24b-literal-q4_k_m",
+      "lineage": "Mistral Small 3.2 24B",
+      "provider": "ollama",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "precision": "q4_k_m",
+      "max_tokens": 128,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026082341,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    },
+    {
+      "name": "gemma3-12b-literal-q4_k_m",
+      "lineage": "Gemma 3 12B",
+      "provider": "ollama",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "max_tokens": 128,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026082341,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11435/v1"
+    }
+  ],
+  "items": [
+    {
+      "id": "participant-01",
+      "axis": "participant_set",
+      "message": "The verification group includes you, the recipient. Every member of the verification group must inspect the receipt tonight.",
+      "question": "What does this message require of the reader?",
+      "options": ["the reader must act", "the reader is only informed", "cannot tell"],
+      "answer": "the reader must act"
+    },
+    {
+      "id": "participant-02",
+      "axis": "participant_set",
+      "message": "The verification group does not include you, the recipient. Its members must inspect the receipt tonight; this note only informs you.",
+      "question": "What does this message require of the reader?",
+      "options": ["the reader must act", "the reader is only informed", "cannot tell"],
+      "answer": "the reader is only informed"
+    },
+    {
+      "id": "participant-03",
+      "axis": "participant_set",
+      "message": "You and I will both sign the release record before noon.",
+      "question": "Is the reader among those committed to sign?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "yes"
+    },
+    {
+      "id": "participant-04",
+      "axis": "participant_set",
+      "message": "I and the two analysts will sign the release record. You are receiving a copy for information only.",
+      "question": "Is the reader among those committed to sign?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "no"
+    },
+    {
+      "id": "participant-05",
+      "axis": "participant_set",
+      "message": "Our response team, including the person reading this message, may enter the recovery channel.",
+      "question": "Does the stated permission include the reader?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "yes"
+    },
+    {
+      "id": "participant-06",
+      "axis": "participant_set",
+      "message": "The maintainers may enter the recovery channel. The person reading this message is not a maintainer and is not granted access by this notice.",
+      "question": "Does the stated permission include the reader?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "no"
+    },
+    {
+      "id": "participant-07",
+      "axis": "participant_set",
+      "message": "Everyone receiving this message is part of the audit group, and the audit group has finished its review.",
+      "question": "Does the completion claim include work by the reader?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "yes"
+    },
+    {
+      "id": "participant-08",
+      "axis": "participant_set",
+      "message": "The audit group has finished its review. You are outside that group and are being notified of its result.",
+      "question": "Does the completion claim include work by the reader?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "no"
+    },
+    {
+      "id": "disjunction-01",
+      "axis": "disjunction",
+      "message": "You may request read access, write access, or both kinds of access.",
+      "question": "Is choosing both acceptable?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "yes"
+    },
+    {
+      "id": "disjunction-02",
+      "axis": "disjunction",
+      "message": "Choose exactly one: retry the job or escalate it. Do not do both.",
+      "question": "Is choosing both acceptable?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "no"
+    },
+    {
+      "id": "disjunction-03",
+      "axis": "disjunction",
+      "message": "At least one of the red route and the blue route must be used, and using both is permitted.",
+      "question": "May both routes be used?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "yes"
+    },
+    {
+      "id": "disjunction-04",
+      "axis": "disjunction",
+      "message": "Use one of the two keys, but not both keys.",
+      "question": "May both keys be used?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "no"
+    },
+    {
+      "id": "disjunction-05",
+      "axis": "disjunction",
+      "message": "The licence permits copying or redistribution, including doing both.",
+      "question": "Does the licence permit both actions together?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "yes"
+    },
+    {
+      "id": "disjunction-06",
+      "axis": "disjunction",
+      "message": "The licence permits copying or redistribution, with the condition that exactly one of those actions is taken.",
+      "question": "Does the licence permit both actions together?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "no"
+    },
+    {
+      "id": "disjunction-07",
+      "axis": "disjunction",
+      "message": "For breakfast, take tea, coffee, or both if desired.",
+      "question": "Would taking both comply with the message?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "yes"
+    },
+    {
+      "id": "disjunction-08",
+      "axis": "disjunction",
+      "message": "For breakfast, take tea or coffee, but taking both would violate the instruction.",
+      "question": "Would taking both comply with the message?",
+      "options": ["yes", "no", "cannot tell"],
+      "answer": "no"
+    },
+    {
+      "id": "resolution-01",
+      "axis": "fact_or_choice",
+      "message": "The sensor already recorded the temperature. I have not retrieved the record yet, so I cannot tell you the value.",
+      "question": "What kind of unresolved state is described?",
+      "options": ["an existing answer is not known", "no operative choice has been made", "cannot tell"],
+      "answer": "an existing answer is not known"
+    },
+    {
+      "id": "resolution-02",
+      "axis": "fact_or_choice",
+      "message": "The board has not yet selected a launch date. Its vote tomorrow will create the operative choice.",
+      "question": "What kind of unresolved state is described?",
+      "options": ["an existing answer is not known", "no operative choice has been made", "cannot tell"],
+      "answer": "no operative choice has been made"
+    },
+    {
+      "id": "resolution-03",
+      "axis": "fact_or_choice",
+      "message": "The coin has already landed under the cup, but nobody here has looked at it.",
+      "question": "What kind of unresolved state is described?",
+      "options": ["an existing answer is not known", "no operative choice has been made", "cannot tell"],
+      "answer": "an existing answer is not known"
+    },
+    {
+      "id": "resolution-04",
+      "axis": "fact_or_choice",
+      "message": "The supplier remains free to select the package colour and has not selected one yet.",
+      "question": "What kind of unresolved state is described?",
+      "options": ["an existing answer is not known", "no operative choice has been made", "cannot tell"],
+      "answer": "no operative choice has been made"
+    },
+    {
+      "id": "resolution-05",
+      "axis": "fact_or_choice",
+      "message": "The signed ledger fixes which account received the transfer. I cannot access the ledger from this network.",
+      "question": "What kind of unresolved state is described?",
+      "options": ["an existing answer is not known", "no operative choice has been made", "cannot tell"],
+      "answer": "an existing answer is not known"
+    },
+    {
+      "id": "resolution-06",
+      "axis": "fact_or_choice",
+      "message": "The jury is still deliberating and has not selected a verdict.",
+      "question": "What kind of unresolved state is described?",
+      "options": ["an existing answer is not known", "no operative choice has been made", "cannot tell"],
+      "answer": "no operative choice has been made"
+    },
+    {
+      "id": "resolution-07",
+      "axis": "fact_or_choice",
+      "message": "The shipment was placed in one warehouse yesterday. The operator does not yet know which warehouse it was.",
+      "question": "What kind of unresolved state is described?",
+      "options": ["an existing answer is not known", "no operative choice has been made", "cannot tell"],
+      "answer": "an existing answer is not known"
+    },
+    {
+      "id": "resolution-08",
+      "axis": "fact_or_choice",
+      "message": "The organizers have not selected a venue. They will make that choice after reviewing bids.",
+      "question": "What kind of unresolved state is described?",
+      "options": ["an existing answer is not known", "no operative choice has been made", "cannot tell"],
+      "answer": "no operative choice has been made"
+    },
+    {
+      "id": "authority-01",
+      "axis": "proposal_or_decision",
+      "message": "Mina suggested deploying on Friday. The release owner has not selected a date.",
+      "question": "What is Friday's current status?",
+      "options": ["only offered for consideration", "operatively chosen", "cannot tell"],
+      "answer": "only offered for consideration"
+    },
+    {
+      "id": "authority-02",
+      "axis": "proposal_or_decision",
+      "message": "The release owner selected Friday as the deployment date within her decision authority.",
+      "question": "What is Friday's current status?",
+      "options": ["only offered for consideration", "operatively chosen", "cannot tell"],
+      "answer": "operatively chosen"
+    },
+    {
+      "id": "authority-03",
+      "axis": "proposal_or_decision",
+      "message": "An advisory group put plan A forward. The authorized committee has not voted on it.",
+      "question": "What is plan A's current status?",
+      "options": ["only offered for consideration", "operatively chosen", "cannot tell"],
+      "answer": "only offered for consideration"
+    },
+    {
+      "id": "authority-04",
+      "axis": "proposal_or_decision",
+      "message": "The authorized committee voted to adopt plan A, making it the operative plan.",
+      "question": "What is plan A's current status?",
+      "options": ["only offered for consideration", "operatively chosen", "cannot tell"],
+      "answer": "operatively chosen"
+    },
+    {
+      "id": "authority-05",
+      "axis": "proposal_or_decision",
+      "message": "A senior engineer recommended replacing the database. She has no authority to choose, and the owner has made no selection.",
+      "question": "What is replacement's current status?",
+      "options": ["only offered for consideration", "operatively chosen", "cannot tell"],
+      "answer": "only offered for consideration"
+    },
+    {
+      "id": "authority-06",
+      "axis": "proposal_or_decision",
+      "message": "A junior reporter states that the authorized owner selected database replacement. The reporter did not make the choice.",
+      "question": "What is replacement's current status?",
+      "options": ["only offered for consideration", "operatively chosen", "cannot tell"],
+      "answer": "operatively chosen"
+    },
+    {
+      "id": "authority-07",
+      "axis": "proposal_or_decision",
+      "message": "The team is discussing whether to close the service. Closure is one option, but nobody with authority has selected it.",
+      "question": "What is closure's current status?",
+      "options": ["only offered for consideration", "operatively chosen", "cannot tell"],
+      "answer": "only offered for consideration"
+    },
+    {
+      "id": "authority-08",
+      "axis": "proposal_or_decision",
+      "message": "The service owner chose closure after discussion and recorded it as the operative decision.",
+      "question": "What is closure's current status?",
+      "options": ["only offered for consideration", "operatively chosen", "cannot tell"],
+      "answer": "operatively chosen"
+    }
+  ]
+}
