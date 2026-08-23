@@ -12,7 +12,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 SLUG = "each-alone-as-one-distributive-vs-collective-does-the-plural"
 ITEMS_PATH = ROOT / "careful-items.json"
-PUBLIC_ITEMS_URL = None  # Set to an immutable raw URL after the answer-bearing freeze commit.
+PUBLIC_ITEMS_URL = (
+    "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+    "bdb9cf226b28a8cdb519dbf9cb911472af5d89b8/"
+    "each-alone-as-one-flagship-diagnostic-2026-08-23/careful-items.json"
+)
 READERS = [
     {
         "name": "mistral-small3.2-24b-event-task-q4_k_m",
