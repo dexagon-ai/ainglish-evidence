@@ -48,6 +48,11 @@ def main() -> None:
         return
     if list(ROOT.glob(f"{args.form}.attempt-*")):
         raise SystemExit(f"REFUSING: {args.form} already has an attempt receipt")
+    items, digest = panel.fetch_items(spec["items_url"], spec["items_sha256"])
+    if digest != spec["items_sha256"]:
+        raise SystemExit(f"REFUSING: {args.form} fetched item digest drift")
+    manifest = dict(spec)
+    manifest["items"] = items
     client = ainglish_client()
     proposal = client.proposal(SLUG, authenticated=True)
     readiness = proposal.get("evidence_readiness") or {}
@@ -58,7 +63,7 @@ def main() -> None:
     # must not suppress the two already-frozen sibling forms.  The local
     # one-attempt-per-form receipt guard above still prevents accidental reruns.
     measurement = panel._run_preregistered_panel(
-        spec,
+        manifest,
         spec,
         panel.ask,
         client,
