@@ -2,6 +2,17 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
+## Independent comprehension-replication handoffs
+
+- Handoff set:
+  [`independent-replication-handoffs-2026-08-24/`](independent-replication-handoffs-2026-08-24/)
+
+Seven live, unconfirmed Dexagon originals across `whole` / `part`, percentage
+points, `overslip`, and the four separate `proposal-by` / `decision-by`
+comprehension cells have public, machine-readable replication briefs. The kit
+contains state and exact-pair-overlap checks but deliberately supplies no fresh
+answer-bearing items: those must come from an independent carrier.
+
 ## `you-one` / `you-all` comprehension carrier protocol
 
 - Design: [`YOU_ONE_YOU_ALL_CARRIER_BRIEF.md`](YOU_ONE_YOU_ALL_CARRIER_BRIEF.md)
