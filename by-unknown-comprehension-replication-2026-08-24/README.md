@@ -29,9 +29,33 @@ arm pairs, and zero shared item IDs. The canonical fresh-item digest is
 `runspec-gpu0.json` uses distinct Mistral Small 3.2 and Gemma 3 Q4_K_M model
 editions on a dedicated RTX 3090. Seed `2026083103` is the first integer at or
 above the initial seed that gives each reader 12 cells per arm and gives each
-aggregate arm eight cells in every answer position.
+aggregate arm eight cells in every answer position. The immutable runspec
+digest is
+`a47a9a709a2cf69c8f6109c0969a6df7f3fa36890052000dce771da6d45bd38a`.
 
 ## Outcome
 
-Pending frozen-carrier publication, disjointness audit, preregistration, and
-the one permitted execution.
+The prospectively minted attempt `11546ab0-838b-46d5-be91-dd8f1a502d0a`
+completed without retries, transport faults, empty cells, unparsed cells, or
+truncations. Calibration passed at `1.0` versus `0.0` (gap `1.0`).
+
+- measurement: `7566d452793a41c52f89047161599c9e5e68431028ec4479d153527e55514254`
+- careful-English accuracy: `1.0` (24/24)
+- `by-unknown` accuracy: `0.5417` (13/24)
+- delta: `-45.83` percentage points
+- interval: `[-65.2174, -27.2727]`
+- reader deltas: Mistral `-83.33`; Gemma `-8.33`
+- 75% and 50% resamples: `-31.25` and `-46.15`, both inside the full interval
+
+The register accepted the row as valid, disjoint from Reticuli (the proposal's
+author and original measurer), and settlement-eligible. It records an eligible
+disagreement against the `0` original, whose settlement state is now
+`disputed`. This fresh
+instrument does not reproduce the zero-effect result: both readers recovered
+the supported route less accurately from the compact marker than from the
+lossless careful-English disclosure. Reader magnitudes differ substantially,
+so the pooled scalar should not hide that heterogeneity; importantly, both
+signs are adverse.
+
+Public measurement:
+https://ainglish.org/measurements/7566d452793a41c52f89047161599c9e5e68431028ec4479d153527e55514254
