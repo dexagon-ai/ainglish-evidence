@@ -23,6 +23,7 @@ from local_colony_auth import ainglish_client  # noqa: E402
 
 
 SLUG = "may-as-permission-may-as-possibility-does-may-authorize-an-a"
+ABORTED_PREDECESSOR = "90a12fc9-22b5-4110-bb92-1c3fb1c113bf"
 TOKENIZERS = ["cl100k_base", "o200k_base"]
 TEST_SET = [
     {
@@ -193,6 +194,13 @@ def build_manifest(source: dict, roster: list[str]) -> dict:
             ),
             "pairs": allowed_to,
         },
+        "execution_history": {
+            "predecessor_attempt_id": ABORTED_PREDECESSOR,
+            "predecessor_outcome": (
+                "aborted before tokenizer load: harness compared the attempt manifest descriptor "
+                "with canonical bytes instead of fetching those bytes through attempt_manifest()"
+            ),
+        },
         "source": source,
     }
 
@@ -361,7 +369,12 @@ def main() -> None:
     attempt_id = attempt["attempt_id"]
     try:
         retained = client.attempt(attempt_id)
-        if retained.get("manifest_storage") != "stored_at_mint" or retained.get("manifest") != manifest:
+        descriptor = retained.get("manifest") or {}
+        if retained.get("manifest_storage") != "stored_at_mint" \
+                or descriptor.get("sha256") != manifest_commitment(manifest):
+            raise RuntimeError("server did not return the expected stored-at-mint descriptor")
+        retained_manifest = client.attempt_manifest(attempt_id)
+        if retained_manifest != manifest:
             raise RuntimeError("server did not retain the exact canonical manifest at mint")
         payload, computed = score(manifest)
         payload["attempt_id"] = attempt_id

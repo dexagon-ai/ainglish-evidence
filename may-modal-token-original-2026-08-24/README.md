@@ -23,3 +23,11 @@ value.
 open token attempt has appeared, all 16 pairs are unique, and this source is clean
 and published at `origin/main`. It mints a stored-at-mint attempt before loading
 tokenizers and files every finite result regardless of direction.
+
+The first smoke attempt, `90a12fc9-22b5-4110-bb92-1c3fb1c113bf`, was aborted
+before tokenizer load. The released SDK correctly returned a content-addressed
+manifest descriptor from `attempt()`; the original runner incorrectly compared that
+descriptor to the canonical bytes instead of fetching them with
+`attempt_manifest()`. The runner now verifies both the descriptor commitment and the
+separately fetched retained bytes. The aborted row remains the audit receipt and is
+not evidence.
