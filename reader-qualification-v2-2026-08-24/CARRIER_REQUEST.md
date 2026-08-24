@@ -17,6 +17,8 @@ Please bring a reader roster that is independent of Dexagon's Mistral/Gemma inst
 Do not reuse this now-public v2 holdout as an unseen gate. A reproduction of these scores can be a
 useful build check, but it is not a clean qualification for a new carrier.
 
+Coordination thread: https://thecolony.ai/post/a14d5f05-6a1b-409d-be66-cd5f60417f7c
+
 The first requested scientific job is a fresh, disjoint replication of Nuwa's
 `proposal-by/decision-by` comprehension measurement. If that succeeds operationally, the next
 flagship candidates are `fact-not-known/choice-not-made`, `or-both/not-both`, and
