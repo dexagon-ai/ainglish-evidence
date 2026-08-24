@@ -1,0 +1,372 @@
+{
+  "kind": "ainglish.panel.reader-qualification-development-tuned.v3",
+  "result_kind": "ainglish.panel.reader-qualification-development-tuned-result.v3",
+  "purpose": "Test the sole construct-blind reader configuration revision on the exposed development controls before any holdout exists.",
+  "evidentiary_status": "instrument development only; never proposal evidence or a qualification result",
+  "sdk_version": "0.2.34",
+  "sdk_commit": "aac3ea50d48d76ce41b96c9f762d5c05dc53b4b5",
+  "sdk_panel_path": "/home/dexagon/codex/dexagon/worktrees/sdk-attempt-manifest-v2-20260823/src/ainglish/panel.py",
+  "answer_protocol": "opaque-choice-v1",
+  "axes": [
+    "quantifier_force",
+    "set_membership",
+    "negation_scope",
+    "disjunction",
+    "conditional",
+    "reference_resolution"
+  ],
+  "items_per_axis": 4,
+  "forbidden_construct_terms": [
+    "some-or-all",
+    "some-but-not-all",
+    "we-including-you",
+    "we-excluding-you",
+    "proposal-by",
+    "decision-by",
+    "or-both",
+    "not-both",
+    "fact-not-known",
+    "choice-not-made",
+    "ainglish"
+  ],
+  "disjoint_from_specs": [
+    "/home/dexagon/codex/dexagon/ainglish-evidence/reader-qualification-tournament-2026-08-23/spec.json",
+    "/home/dexagon/codex/dexagon/ainglish-evidence/reader-qualification-v2-2026-08-24/development.json",
+    "/home/dexagon/codex/dexagon/ainglish-evidence/reader-qualification-v2-2026-08-24/holdout.json"
+  ],
+  "gpu_gate": {
+    "ollama_base_url": "http://127.0.0.1:11434",
+    "ollama_ps": "http://127.0.0.1:11434/api/ps",
+    "minimum_total_free_mib": 36000,
+    "maximum_utilization_percent": 30
+  },
+  "selection_rule": {
+    "exact_code_cells_required": 24,
+    "correct_cells_required": 22,
+    "correct_per_axis_required": 3,
+    "minimum_distinct_qualified_lineages": 1,
+    "status": "development diagnostic only; final qualification is frozen separately on an untouched holdout"
+  },
+  "panel": [
+    {
+      "name": "qwen3.8-27b-screen-bound1024-q4_k_m",
+      "lineage": "Qwen 3.8 27B",
+      "provider": "ollama",
+      "model": "dexagon-qwen3.8-27b-screen:ctx4k",
+      "model_digest": "sha256:97a12d32a43050d86486d7d3a4253036603e5209ae717da488f95b46c704df47",
+      "precision": "q4_k_m",
+      "max_tokens": 1024,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026082403,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11434/v1"
+    },
+    {
+      "name": "qwen2.5-7b-entailment-v3-q4_k_m",
+      "lineage": "Qwen 2.5 7B",
+      "provider": "ollama",
+      "model": "dexagon-qwen2.5-7b-entailment-v3:ctx4k",
+      "model_digest": "sha256:fbffa558f9909a4681e595204a0661648ba631fd4024ae3fbc0be86ff2f6247a",
+      "precision": "q4_k_m",
+      "max_tokens": 16,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026082403,
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11434/v1"
+    }
+  ],
+  "items": [
+    {
+      "id": "v3-dev-quantifier_force-01",
+      "axis": "quantifier_force",
+      "message": "Some of the eight checks passed; the note gives no further count.",
+      "question": "Did all eight checks pass?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell"
+    },
+    {
+      "id": "v3-dev-quantifier_force-02",
+      "axis": "quantifier_force",
+      "message": "Every listed signer approved the waiver.",
+      "question": "Is any listed signer still unapproved?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "v3-dev-quantifier_force-03",
+      "axis": "quantifier_force",
+      "message": "Exactly three of the five valves were inspected.",
+      "question": "Were all five valves inspected?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "v3-dev-quantifier_force-04",
+      "axis": "quantifier_force",
+      "message": "Not every invoice was reconciled.",
+      "question": "Was at least one invoice left unreconciled?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes"
+    },
+    {
+      "id": "v3-dev-set_membership-05",
+      "axis": "set_membership",
+      "message": "Asha, you as the reader, and Lin are assigned to inspect the archive.",
+      "question": "Is the reader assigned to inspect the archive?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes"
+    },
+    {
+      "id": "v3-dev-set_membership-06",
+      "axis": "set_membership",
+      "message": "The maintainers will rotate the key. You are an observer, not a maintainer.",
+      "question": "Is the reader expected to rotate the key?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "v3-dev-set_membership-07",
+      "axis": "set_membership",
+      "message": "Everyone addressed on the memo must reply. The memo is addressed to Dana and to you.",
+      "question": "Must the reader reply?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes"
+    },
+    {
+      "id": "v3-dev-set_membership-08",
+      "axis": "set_membership",
+      "message": "Only members of the red team may approve the release. The reader's team is not stated.",
+      "question": "May the reader approve the release?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell"
+    },
+    {
+      "id": "v3-dev-negation_scope-09",
+      "axis": "negation_scope",
+      "message": "Do not archive either draft.",
+      "question": "Does archiving one draft comply?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "v3-dev-negation_scope-10",
+      "axis": "negation_scope",
+      "message": "It is not required that both reviewers sign.",
+      "question": "Does this sentence forbid both reviewers from signing?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "v3-dev-negation_scope-11",
+      "axis": "negation_scope",
+      "message": "No reviewer except Mina may edit the ledger.",
+      "question": "May a reviewer other than Mina edit the ledger?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "v3-dev-negation_scope-12",
+      "axis": "negation_scope",
+      "message": "The report does not say that Kim failed the check.",
+      "question": "Did Kim fail the check?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell"
+    },
+    {
+      "id": "v3-dev-disjunction-13",
+      "axis": "disjunction",
+      "message": "Run pump A or pump B, possibly both.",
+      "question": "Would running both pumps comply?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes"
+    },
+    {
+      "id": "v3-dev-disjunction-14",
+      "axis": "disjunction",
+      "message": "Run either pump A or pump B, but not both.",
+      "question": "Would running both pumps comply?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "v3-dev-disjunction-15",
+      "axis": "disjunction",
+      "message": "At least one of the two mirrors must be checked.",
+      "question": "Must exactly one mirror be checked?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "v3-dev-disjunction-16",
+      "axis": "disjunction",
+      "message": "Choose one of the two migration windows and use only that window.",
+      "question": "May both windows be used?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "v3-dev-conditional-17",
+      "axis": "conditional",
+      "message": "If the checksum fails, rerun the transfer. The checksum failed.",
+      "question": "Is a rerun required?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes"
+    },
+    {
+      "id": "v3-dev-conditional-18",
+      "axis": "conditional",
+      "message": "Rerun the transfer only if the checksum fails. The checksum passed.",
+      "question": "Is a rerun permitted by this rule?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "v3-dev-conditional-19",
+      "axis": "conditional",
+      "message": "Unless approval arrives, pause the rollout. The message does not say whether approval arrived.",
+      "question": "Must the rollout be paused?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell"
+    },
+    {
+      "id": "v3-dev-conditional-20",
+      "axis": "conditional",
+      "message": "If the alarm fires, the door unlocks. The door unlocked.",
+      "question": "Did the alarm necessarily fire?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "v3-dev-reference_resolution-21",
+      "axis": "reference_resolution",
+      "message": "Maya sent Lio the report. Lio archived it.",
+      "question": "Who archived the report?",
+      "options": [
+        "Maya",
+        "cannot tell",
+        "Lio"
+      ],
+      "answer": "Lio"
+    },
+    {
+      "id": "v3-dev-reference_resolution-22",
+      "axis": "reference_resolution",
+      "message": "The amber file and the blue file were compared. The latter was deleted.",
+      "question": "Which file was deleted?",
+      "options": [
+        "the blue file",
+        "the amber file",
+        "cannot tell"
+      ],
+      "answer": "the blue file"
+    },
+    {
+      "id": "v3-dev-reference_resolution-23",
+      "axis": "reference_resolution",
+      "message": "Nora told Priya that her badge had expired.",
+      "question": "Whose badge had expired?",
+      "options": [
+        "Nora's",
+        "cannot tell",
+        "Priya's"
+      ],
+      "answer": "cannot tell"
+    },
+    {
+      "id": "v3-dev-reference_resolution-24",
+      "axis": "reference_resolution",
+      "message": "Sam reviewed the old policy and the replacement policy. The former was withdrawn.",
+      "question": "Which policy was withdrawn?",
+      "options": [
+        "the replacement policy",
+        "cannot tell",
+        "the old policy"
+      ],
+      "answer": "the old policy"
+    }
+  ],
+  "development_round_one_result_sha256": "91856788967d910569ab7a8e9fc6bcc99c73c315580c575d9c08657eee89af41",
+  "revision_policy": "same exposed development items; no scientific or holdout item exists; no further revision after this round"
+}
