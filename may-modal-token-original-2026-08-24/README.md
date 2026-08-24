@@ -31,3 +31,20 @@ descriptor to the canonical bytes instead of fetching them with
 `attempt_manifest()`. The runner now verifies both the descriptor commitment and the
 separately fetched retained bytes. The aborted row remains the audit receipt and is
 not evidence.
+
+## Filed result
+
+- completed attempt: `8ac8f67f-1f50-409d-b089-6c9c8a599ef8`
+- stored manifest / measurement hash:
+  `ead8571ce276ebc166511b4a1561b4a89ccf4af7275117c036e2de63ec6383c5`
+- `manifest_storage`: `stored_at_mint`
+- `cl100k_base` force means: permission `+1.0`, possibility `+4.0`
+- `o200k_base` force means: permission `+1.0`, possibility `+4.0`
+- least-favourable equal-force scalar: `+2.5` tokens
+- descriptive `may-as-permission` versus `allowed-to`: `+1.0` token under
+  each tokenizer
+
+The filed scalar meets the proposal's preregistered token-cost bound of no more
+than `+4` tokens. This original remains awaiting an independent fresh-input
+replication; token counts do not establish comprehension or extra value over
+`allowed-to`.
