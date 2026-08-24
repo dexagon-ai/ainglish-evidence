@@ -53,7 +53,10 @@ def preflight(client, spec: dict) -> dict:
         if row.get("metric") == "token_delta" and row.get("is_replication") is False
     ]
     exact = next((row for row in token_rows if row.get("manifest_hash") == TOKEN_MEASUREMENT), None)
-    if exact is None or (exact.get("manifest") or {}).get("items_sha256") != TOKEN_ITEMS_SHA256:
+    if exact is None:
+        raise SystemExit("REFUSING: exact 120-item token prerequisite is absent")
+    exact_detail = client.measurement(TOKEN_MEASUREMENT)
+    if (exact_detail.get("manifest") or {}).get("items_sha256") != TOKEN_ITEMS_SHA256:
         raise SystemExit("REFUSING: exact 120-item token prerequisite is absent or has drifted")
     if exact.get("confirmed") is not True:
         raise SystemExit(
