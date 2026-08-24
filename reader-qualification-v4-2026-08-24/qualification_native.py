@@ -67,6 +67,15 @@ def validate(spec: dict) -> dict:
         raise SystemExit("REFUSING: answer protocol is not opaque-choice-v1")
     if spec.get("transport") != {"adapter": "ollama-native-chat-v1", "think": False}:
         raise SystemExit("REFUSING: native transport declaration drifted")
+    development_path = spec.get("development_result_path")
+    if development_path:
+        development = json.loads(Path(development_path).read_text())
+        if canonical_sha(development) != spec.get("development_result_sha256"):
+            raise SystemExit("REFUSING: development result digest drifted")
+        developed = [reader["name"] for reader in development.get("fixed_roster", [])]
+        declared = [reader["name"] for reader in spec["panel"]]
+        if declared != developed:
+            raise SystemExit("REFUSING: holdout roster differs from the developed roster")
     items = spec["items"]
     axes = sorted({item["axis"] for item in items})
     if axes != sorted(spec["axes"]):
