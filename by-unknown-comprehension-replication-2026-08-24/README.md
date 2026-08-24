@@ -20,6 +20,17 @@ answer-bearing carrier is downloaded for an overlap audit or an attempt is
 minted. The eventual finite result is filed regardless of sign; agreement is
 not an admissibility gate.
 
+The carrier was frozen and pushed at commit `4882a6bf...` before the original
+answer-bearing artifact was downloaded. `audit_original.py` pins both carriers
+and found zero exact scientific `english+ainglish+question` triples, zero exact
+arm pairs, and zero shared item IDs. The canonical fresh-item digest is
+`21396eaa6dd0593c767b79f0da4c6f8f2063303229d87a4bacbdcf2d01abd5cb`.
+
+`runspec-gpu0.json` uses distinct Mistral Small 3.2 and Gemma 3 Q4_K_M model
+editions on a dedicated RTX 3090. Seed `2026083103` is the first integer at or
+above the initial seed that gives each reader 12 cells per arm and gives each
+aggregate arm eight cells in every answer position.
+
 ## Outcome
 
 Pending frozen-carrier publication, disjointness audit, preregistration, and
