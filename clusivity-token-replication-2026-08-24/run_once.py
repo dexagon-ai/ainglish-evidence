@@ -4,13 +4,11 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
-import hashlib
 import importlib.metadata
 import json
 from pathlib import Path
 import subprocess
 import sys
-import urllib.parse
 
 from ainglish.client import manifest_commitment
 
@@ -193,7 +191,7 @@ def score(manifest: dict) -> tuple[dict, dict]:
         "value_lo": min(means.values()),
         "value_hi": max(means.values()),
         "panel_models": MODELS,
-        "per_member": [{"model": f"tiktoken/{name}", "value": means[name]} for name in ENCODINGS],
+        "per_member": [{"model": model, "value": means[name]} for model, name in zip(MODELS, ENCODINGS)],
         "manifest": manifest,
         "replicates_hash": TARGET_HASH,
     }
@@ -212,14 +210,12 @@ def abort_if_open(client, attempt_id: str, detail: str, preflight_receipt: dict)
         "failed_gate": detail,
         "preflight": preflight_receipt,
     }
-    receipt = json.dumps(receipt_obj, sort_keys=True, separators=(",", ":"))
-    path = f"/api/v1/attempts/{urllib.parse.quote(attempt_id, safe='')}/abort"
-    result = client.post(path, {
-        "failed_gate_kind": "harness_error",
-        "failed_gate": detail,
-        "preflight_receipt": receipt,
-        "preflight_receipt_hash": hashlib.sha256(receipt.encode()).hexdigest(),
-    })
+    result = client.abort_attempt(
+        attempt_id,
+        detail[:160],
+        receipt_obj,
+        failed_gate_kind="harness_error",
+    )
     return {"abort_sent": True, "preflight_receipt": receipt_obj, "result": result}
 
 
