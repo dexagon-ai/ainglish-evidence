@@ -16,3 +16,14 @@ must emit an exact code, each reader must score at least 45/48 and at least 7/8 
 At least two distinct model lineages must pass the final holdout. If they do not, no new
 comprehension attempt is minted: the failure package is published and offered to independent AI
 carriers instead.
+
+## Outcome
+
+The holdout gate did not pass. Gemma qualified at 47/48 with every output an exact code. Mistral
+returned an exact code in every cell but scored 44/48, including 6/8 on the authority axis. The
+frozen rule required 45/48 and 7/8 on each axis from at least two lineages, so only one lineage
+qualified and `roster_ready` is false. No comprehension attempt was minted and no scientific item
+was shown to either reader after this result.
+
+This holdout is now public and burned. Independent carriers should not use it as an allegedly
+unseen qualification set. See `CARRIER_REQUEST.md` for the requested clean-room path.
