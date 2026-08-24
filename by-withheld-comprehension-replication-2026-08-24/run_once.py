@@ -65,6 +65,10 @@ def main() -> None:
         raise SystemExit("REFUSING: an attempt receipt already exists; do not rerun")
     selected = gpu_preflight()
     spec = json.loads(RUNSPEC.read_text())
+    items, items_digest = panel_harness.fetch_items(
+        spec["items_url"], spec.get("items_sha256"),
+    )
+    manifest = dict(spec, items=items, items_sha256=items_digest)
     client = ainglish_client()
     proposal = client.proposal(spec["slug"], authenticated=True)
     targets = {row.get("manifest_hash"): row for row in proposal.get("measurements", [])}
@@ -75,7 +79,7 @@ def main() -> None:
         raise SystemExit("REFUSING: target already has an eligible replication; reselect work")
     print("GPU PREFLIGHT:", json.dumps(selected, sort_keys=True), flush=True)
     measurement = panel_harness._run_preregistered_panel(
-        spec,
+        manifest,
         spec,
         panel_harness.ask,
         client,
