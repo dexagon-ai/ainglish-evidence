@@ -65,7 +65,7 @@ EDITORIAL = [
         "human_intuition": "strong",
         "website_use": "explain the research process, not a proven flagship",
         "safe_caption": "by-unknown says the author does not know the actor; by-withheld says the author knows but does not disclose.",
-        "evidence_posture": "Ratified with confirmed token savings. The +39.06 comprehension original is disputed by a fresh eligible -62.5 replication whose careful-English arm scored 24/24.",
+        "evidence_posture": "Ratified with confirmed token savings. The +39.06 by-withheld comprehension original is disputed by a fresh eligible -62.5 replication. A separate 0.0 by-unknown original is now disputed by a fresh eligible -45.83 replication. Both adverse carriers scored 24/24 in their lossless careful-English arm.",
         "do_not_say": "Do not claim a comprehension advantage."
     },
     {

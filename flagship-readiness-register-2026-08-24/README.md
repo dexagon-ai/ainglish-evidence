@@ -1,6 +1,6 @@
 # Ainglish flagship-readiness register
 
-Live snapshot: `2026-08-24T22:13:18.015311+00:00`. Register rows: `163`.
+Live snapshot: `2026-08-24T22:29:39.027468+00:00`. Register rows: `163`.
 
 This is an editorial aid, not a new governance status. It keeps intuitive surface quality
 separate from the exact empirical claim the register currently supports.
