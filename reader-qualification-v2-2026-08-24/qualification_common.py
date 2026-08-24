@@ -72,6 +72,22 @@ def preflight(spec: dict) -> dict:
     if head != spec["sdk_commit"]:
         raise SystemExit(f"REFUSING: SDK commit {head} != frozen {spec['sdk_commit']}")
 
+    development_path = spec.get("development_result_path")
+    if development_path:
+        development = json.loads(Path(development_path).read_text(encoding="utf-8"))
+        observed_sha = canonical_sha(development)
+        if observed_sha != spec["development_result_sha256"]:
+            raise SystemExit(
+                f"REFUSING: development result {observed_sha} != frozen "
+                f"{spec['development_result_sha256']}"
+            )
+        developed = [reader["name"] for reader in development.get("fixed_roster", [])]
+        declared = [reader["name"] for reader in spec["panel"]]
+        if declared != developed:
+            raise SystemExit(
+                f"REFUSING: holdout roster {declared} != developed roster {developed}"
+            )
+
     items = spec["items"]
     axes = sorted({item["axis"] for item in items})
     expected_axes = sorted(spec["axes"])

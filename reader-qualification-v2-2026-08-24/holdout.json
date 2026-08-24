@@ -1,0 +1,92 @@
+{
+  "kind": "ainglish.panel.reader-qualification-holdout.v2",
+  "result_kind": "ainglish.panel.reader-qualification-holdout-result.v2",
+  "purpose": "Qualify the development-selected, construct-blind local reader roster once on untouched ordinary-English controls.",
+  "evidentiary_status": "instrument qualification only; never proposal evidence",
+  "sdk_version": "0.2.34",
+  "sdk_commit": "aac3ea50d48d76ce41b96c9f762d5c05dc53b4b5",
+  "sdk_panel_path": "/home/dexagon/codex/dexagon/worktrees/sdk-attempt-manifest-v2-20260823/src/ainglish/panel.py",
+  "answer_protocol": "opaque-choice-v1",
+  "development_result_path": "/home/dexagon/codex/dexagon/ainglish-evidence/reader-qualification-v2-2026-08-24/development-result.json",
+  "development_result_sha256": "25474b9a0b5fb3a4f11dabca89deae2767fb531e89c25ade3ae2a6c3f6e16fa7",
+  "axes": ["participant_set", "disjunction", "fact_or_choice", "proposal_or_decision", "permission_or_possibility", "obligation_or_prediction"],
+  "items_per_axis": 8,
+  "forbidden_construct_terms": ["we-including-you", "we-excluding-you", "or-both", "not-both", "fact-not-known", "choice-not-made", "proposal-by", "decision-by", "may-as-permission", "may-as-possibility"],
+  "disjoint_from_specs": [
+    "/home/dexagon/codex/dexagon/ainglish-evidence/reader-qualification-tournament-2026-08-23/spec.json",
+    "/home/dexagon/codex/dexagon/ainglish-evidence/reader-qualification-v2-2026-08-24/development.json"
+  ],
+  "gpu_gate": {
+    "ollama_base_url": "http://127.0.0.1:11434",
+    "ollama_ps": "http://127.0.0.1:11434/api/ps",
+    "minimum_total_free_mib": 36000,
+    "maximum_utilization_percent": 30
+  },
+  "selection_rule": {
+    "exact_code_cells_required": 48,
+    "correct_cells_required": 45,
+    "correct_per_axis_required": 7,
+    "minimum_distinct_qualified_lineages": 2,
+    "roster": "all qualified lineages in the development-selected order",
+    "no_roster_action": "If fewer than two distinct lineages qualify, do not mint or run any new comprehension attempt. Publish the failure package and invite independent AI carriers."
+  },
+  "panel": [
+    {"name": "mistral-small3.2-24b-literal-q4_k_m", "lineage": "Mistral Small 3.2 24B", "provider": "ollama", "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k", "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de", "precision": "q4_k_m", "max_tokens": 16, "timeout_s": 120, "temperature": 0, "seed": 2026082401, "api": "openai", "base_url": "http://127.0.0.1:11434/v1"},
+    {"name": "gemma3-12b-literal-q4_k_m", "lineage": "Gemma 3 12B", "provider": "ollama", "model": "dexagon-gemma3-12b-pp-task:ctx4k", "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f", "precision": "q4_k_m", "max_tokens": 16, "timeout_s": 120, "temperature": 0, "seed": 2026082401, "api": "openai", "base_url": "http://127.0.0.1:11434/v1"}
+  ],
+  "items": [
+    {"id":"hold-participant-01","axis":"participant_set","message":"Asha, you, and I are the three people assigned to inspect the archive.","question":"Is the reader assigned to inspect the archive?","options":["no","yes","cannot tell"],"answer":"yes"},
+    {"id":"hold-participant-02","axis":"participant_set","message":"Asha and I are assigned to inspect the archive. You are explicitly not assigned.","question":"Is the reader assigned to inspect the archive?","options":["yes","cannot tell","no"],"answer":"no"},
+    {"id":"hold-participant-03","axis":"participant_set","message":"Every addressee of this message, including the person reading it now, must reset a password.","question":"Must the reader reset a password?","options":["cannot tell","no","yes"],"answer":"yes"},
+    {"id":"hold-participant-04","axis":"participant_set","message":"Only database operators must reset a password. You are a customer, not a database operator.","question":"Must the reader reset a password?","options":["no","yes","cannot tell"],"answer":"no"},
+    {"id":"hold-participant-05","axis":"participant_set","message":"You are one of the auditors named in this notice, and all named auditors may view the ledger.","question":"May the reader view the ledger?","options":["yes","no","cannot tell"],"answer":"yes"},
+    {"id":"hold-participant-06","axis":"participant_set","message":"You are the liaison, not one of the auditors. Only the auditors may view the ledger.","question":"May the reader view the ledger?","options":["cannot tell","no","yes"],"answer":"no"},
+    {"id":"hold-participant-07","axis":"participant_set","message":"The speaker and the recipient jointly own the cleanup task. This message is addressed to you.","question":"Does the reader share ownership of the task?","options":["no","cannot tell","yes"],"answer":"yes"},
+    {"id":"hold-participant-08","axis":"participant_set","message":"The speaker and the deployment crew own the cleanup task. The recipient is excluded from that crew.","question":"Does the reader share ownership of the task?","options":["yes","no","cannot tell"],"answer":"no"},
+
+    {"id":"hold-disjunction-01","axis":"disjunction","message":"Store the backup in the north region, the south region, or both regions if desired.","question":"Is using both regions allowed?","options":["no","yes","cannot tell"],"answer":"yes"},
+    {"id":"hold-disjunction-02","axis":"disjunction","message":"Store the backup in exactly one region, north or south, and never in both.","question":"Is using both regions allowed?","options":["yes","cannot tell","no"],"answer":"no"},
+    {"id":"hold-disjunction-03","axis":"disjunction","message":"The pass covers the bus, the tram, and any combination of the two.","question":"Does the pass cover using both?","options":["cannot tell","no","yes"],"answer":"yes"},
+    {"id":"hold-disjunction-04","axis":"disjunction","message":"Present one badge only. Presenting both badges invalidates entry.","question":"Does presenting both comply?","options":["no","yes","cannot tell"],"answer":"no"},
+    {"id":"hold-disjunction-05","axis":"disjunction","message":"At least one cooling pump must run; running both pumps is also acceptable.","question":"Does running both comply?","options":["yes","no","cannot tell"],"answer":"yes"},
+    {"id":"hold-disjunction-06","axis":"disjunction","message":"Run either pump A or pump B, exclusively. Do not run the pair together.","question":"Does running both comply?","options":["cannot tell","no","yes"],"answer":"no"},
+    {"id":"hold-disjunction-07","axis":"disjunction","message":"The meal includes soup, salad, or both at the diner's choice.","question":"May the diner choose both?","options":["no","cannot tell","yes"],"answer":"yes"},
+    {"id":"hold-disjunction-08","axis":"disjunction","message":"Choose a single dessert: cake or fruit. A two-dessert choice is not permitted.","question":"May the diner choose both?","options":["yes","no","cannot tell"],"answer":"no"},
+
+    {"id":"hold-resolution-01","axis":"fact_or_choice","message":"The die has already been rolled inside the covered tray, but nobody has seen its face.","question":"What is missing now?","options":["a choice has not been made","knowledge of an existing fact","cannot tell"],"answer":"knowledge of an existing fact"},
+    {"id":"hold-resolution-02","axis":"fact_or_choice","message":"The panel will select a vendor tomorrow and has not selected one yet.","question":"What is missing now?","options":["knowledge of an existing fact","cannot tell","a choice has not been made"],"answer":"a choice has not been made"},
+    {"id":"hold-resolution-03","axis":"fact_or_choice","message":"The sealed thermometer already has a reading; I cannot see the display.","question":"What is missing now?","options":["cannot tell","a choice has not been made","knowledge of an existing fact"],"answer":"knowledge of an existing fact"},
+    {"id":"hold-resolution-04","axis":"fact_or_choice","message":"The captain remains free to select either route and has selected neither.","question":"What is missing now?","options":["a choice has not been made","knowledge of an existing fact","cannot tell"],"answer":"a choice has not been made"},
+    {"id":"hold-resolution-05","axis":"fact_or_choice","message":"A label already fixes the package's destination, but the label is hidden from us.","question":"What is missing now?","options":["knowledge of an existing fact","a choice has not been made","cannot tell"],"answer":"knowledge of an existing fact"},
+    {"id":"hold-resolution-06","axis":"fact_or_choice","message":"The grants committee has not allocated the final award. Its meeting will create the allocation.","question":"What is missing now?","options":["cannot tell","a choice has not been made","knowledge of an existing fact"],"answer":"a choice has not been made"},
+    {"id":"hold-resolution-07","axis":"fact_or_choice","message":"The exam was graded yesterday, so the score exists, but the student has not been told it.","question":"What is missing now?","options":["a choice has not been made","cannot tell","knowledge of an existing fact"],"answer":"knowledge of an existing fact"},
+    {"id":"hold-resolution-08","axis":"fact_or_choice","message":"The editor has not chosen a title and is still considering three candidates.","question":"What is missing now?","options":["knowledge of an existing fact","a choice has not been made","cannot tell"],"answer":"a choice has not been made"},
+
+    {"id":"hold-authority-01","axis":"proposal_or_decision","message":"The working group suggests a quota of ten, but the authorized board has not considered it.","question":"What status does the quota have?","options":["an operative decision","a proposal awaiting authority","cannot tell"],"answer":"a proposal awaiting authority"},
+    {"id":"hold-authority-02","axis":"proposal_or_decision","message":"The authorized board set the quota at ten, and that binding rule is now in force.","question":"What status does the quota have?","options":["a proposal awaiting authority","cannot tell","an operative decision"],"answer":"an operative decision"},
+    {"id":"hold-authority-03","axis":"proposal_or_decision","message":"A draft recommends retrying the job, while the incident commander is still deciding.","question":"Is retrying currently authorized as the chosen action?","options":["cannot tell","yes, it is decided","no, it is only proposed"],"answer":"no, it is only proposed"},
+    {"id":"hold-authority-04","axis":"proposal_or_decision","message":"The incident commander ordered a retry under her authority, making it the chosen action.","question":"Is retrying currently authorized as the chosen action?","options":["yes, it is decided","no, it is only proposed","cannot tell"],"answer":"yes, it is decided"},
+    {"id":"hold-authority-05","axis":"proposal_or_decision","message":"The adviser nominates room 4, but the venue owner has not approved any room.","question":"What is room 4 at this stage?","options":["a final choice","a recommendation","cannot tell"],"answer":"a recommendation"},
+    {"id":"hold-authority-06","axis":"proposal_or_decision","message":"The venue owner approved and booked room 4, so that room is the final choice.","question":"What is room 4 at this stage?","options":["a recommendation","cannot tell","a final choice"],"answer":"a final choice"},
+    {"id":"hold-authority-07","axis":"proposal_or_decision","message":"An engineer offered a migration plan to the council, which is still deliberating.","question":"Is the plan binding now?","options":["cannot tell","no","yes"],"answer":"no"},
+    {"id":"hold-authority-08","axis":"proposal_or_decision","message":"The council formally approved the migration plan, so teams are now bound to follow it.","question":"Is the plan binding now?","options":["no","yes","cannot tell"],"answer":"yes"},
+
+    {"id":"hold-modal-01","axis":"permission_or_possibility","message":"The site rules allow guests to park beside the east gate.","question":"What does this state?","options":["a possibility inferred from facts","permission under a rule","cannot tell"],"answer":"permission under a rule"},
+    {"id":"hold-modal-02","axis":"permission_or_possibility","message":"The open gate means an intruder could have entered, although entry was forbidden.","question":"What does this state?","options":["permission under a rule","cannot tell","a possibility inferred from facts"],"answer":"a possibility inferred from facts"},
+    {"id":"hold-modal-03","axis":"permission_or_possibility","message":"The account owner authorizes you to delete the unused snapshot.","question":"Is this authorization or uncertainty about what could happen?","options":["cannot tell","uncertainty about what could happen","authorization"],"answer":"authorization"},
+    {"id":"hold-modal-04","axis":"permission_or_possibility","message":"Despite the damage, the file could still be recoverable; recovery is not authorized yet.","question":"Is this authorization or uncertainty about what could happen?","options":["uncertainty about what could happen","authorization","cannot tell"],"answer":"uncertainty about what could happen"},
+    {"id":"hold-modal-05","axis":"permission_or_possibility","message":"Your permit allows you to use the laboratory after 18:00.","question":"What kind of claim is made?","options":["permission","factual possibility","cannot tell"],"answer":"permission"},
+    {"id":"hold-modal-06","axis":"permission_or_possibility","message":"The forecast indicates that the river could freeze tonight; no rule is granting anything.","question":"What kind of claim is made?","options":["factual possibility","cannot tell","permission"],"answer":"factual possibility"},
+    {"id":"hold-modal-07","axis":"permission_or_possibility","message":"The supervisor grants Elena permission to skip the optional meeting.","question":"Does the message grant an entitlement?","options":["cannot tell","yes","no"],"answer":"yes"},
+    {"id":"hold-modal-08","axis":"permission_or_possibility","message":"The diagnosis could be wrong, but altering the record is prohibited.","question":"Does the message grant an entitlement to alter the record?","options":["yes","no","cannot tell"],"answer":"no"},
+
+    {"id":"hold-force-01","axis":"obligation_or_prediction","message":"The statute requires the agency to publish a report each April.","question":"What force does this statement have?","options":["a prediction","an obligation","cannot tell"],"answer":"an obligation"},
+    {"id":"hold-force-02","axis":"obligation_or_prediction","message":"The delivery model predicts that the report will arrive in April, but imposes no duty.","question":"What force does this statement have?","options":["an obligation","cannot tell","a prediction"],"answer":"a prediction"},
+    {"id":"hold-force-03","axis":"obligation_or_prediction","message":"The service agreement obliges the vendor to respond within an hour.","question":"Is this normative or predictive?","options":["cannot tell","predictive","normative"],"answer":"normative"},
+    {"id":"hold-force-04","axis":"obligation_or_prediction","message":"The queue estimate says the vendor is likely to respond within an hour; it creates no requirement.","question":"Is this normative or predictive?","options":["predictive","normative","cannot tell"],"answer":"predictive"},
+    {"id":"hold-force-05","axis":"obligation_or_prediction","message":"Under the review rules, each editor must disclose conflicts.","question":"Is this a duty or a forecast?","options":["a duty","a forecast","cannot tell"],"answer":"a duty"},
+    {"id":"hold-force-06","axis":"obligation_or_prediction","message":"The analyst forecasts that each editor will disclose conflicts, without requiring them to do so.","question":"Is this a duty or a forecast?","options":["a duty","cannot tell","a forecast"],"answer":"a forecast"},
+    {"id":"hold-force-07","axis":"obligation_or_prediction","message":"The manager directs the operator to shut the system down at midnight.","question":"Does this prescribe action or predict an event?","options":["predict an event","cannot tell","prescribe action"],"answer":"prescribe action"},
+    {"id":"hold-force-08","axis":"obligation_or_prediction","message":"The sensor trend predicts that the system will shut down at midnight; nobody is instructed to act.","question":"Does this prescribe action or predict an event?","options":["predict an event","prescribe action","cannot tell"],"answer":"predict an event"}
+  ]
+}
