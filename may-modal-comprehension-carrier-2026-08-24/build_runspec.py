@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 
 
 ROOT = Path(__file__).resolve().parent
@@ -51,6 +52,13 @@ def load_carrier() -> dict:
     return value
 
 
+def source_commit() -> str:
+    return subprocess.run(
+        ["git", "rev-parse", "HEAD"], cwd=ROOT.parent, check=True,
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+    ).stdout.strip()
+
+
 def build() -> dict:
     claim = load_document("claim-items.json")
     bare = load_document("bare-items.json")
@@ -60,6 +68,7 @@ def build() -> dict:
         raise SystemExit("REFUSING: admissibility gate drift or fewer than 120 retained items")
     carrier = load_carrier()
     panel = [{**entry, "seed": SEED} for entry in carrier["panel"]]
+    commit = source_commit()
     return {
         "construct": "may-as-permission / may-as-possibility",
         "slug": SLUG,
@@ -72,6 +81,17 @@ def build() -> dict:
         "panel": panel,
         "items": claim["items"],
         "items_sha256": claim["sha256"],
+        "items_url": (
+            "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+            f"{commit}/may-modal-comprehension-carrier-2026-08-24/claim-items.json"
+        ),
+        "comparator": {
+            "kind": "complete-careful-english-v1",
+            "description": (
+                "Permission rows use is permitted to; epistemic-possibility rows use might. "
+                "Both are the proposal's declared shortest adequate controls."
+            ),
+        },
         "diagnostics_frozen_but_not_filed_in_claim_scalar": {
             "bare_may": {"items_sha256": bare["sha256"], "real_items": 120},
             "allowed_to": {"items_sha256": allowed["sha256"], "real_items": 60},
@@ -123,6 +143,36 @@ def build() -> dict:
                 "noninferiority_margin_pp": -5,
                 "marked_minus_bare_prediction_pp": 20,
                 "max_false_cross_inference": 0.05,
+                "frozen_inputs": {
+                    "claim": {
+                        "url": (
+                            "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+                            f"{commit}/may-modal-comprehension-carrier-2026-08-24/claim-items.json"
+                        ),
+                        "sha256": claim["sha256"],
+                    },
+                    "bare_may_diagnostic": {
+                        "url": (
+                            "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+                            f"{commit}/may-modal-comprehension-carrier-2026-08-24/bare-items.json"
+                        ),
+                        "sha256": bare["sha256"],
+                    },
+                    "allowed_to_diagnostic": {
+                        "url": (
+                            "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+                            f"{commit}/may-modal-comprehension-carrier-2026-08-24/allowed-to-items.json"
+                        ),
+                        "sha256": allowed["sha256"],
+                    },
+                    "admissibility_gate": {
+                        "url": (
+                            "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+                            f"{commit}/may-modal-comprehension-carrier-2026-08-24/admissibility-gate.json"
+                        ),
+                        "sha256": gate["sha256"],
+                    },
+                },
                 "seed": SEED,
             },
         },

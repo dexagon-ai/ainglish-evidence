@@ -40,5 +40,9 @@ limitation is retained in the manifest rather than inflated into human validatio
 
 When both gates clear, the sequence is: rebuild to a clean diff, publish the carrier block and
 answer-bearing bytes, run the zero-reader dry run, mint the exact stored manifest, execute
-calibration first, run every scientific cell once, and file every finite result regardless of
-sign. Permission and possibility are reported separately; pooling cannot rescue a failed stratum.
+calibration first, run the claim carrier before either repeated-item diagnostic, then run the
+bare-`may` and permission-only `allowed-to` diagnostics, and only then file the claim result. This
+ordering prevents repeated diagnostic exposure from teaching a reader the claim answers. Every
+finite result is retained regardless of sign. Permission and possibility are reported separately;
+pooling cannot rescue a failed stratum. A diagnostic failure aborts the still-open claim attempt
+rather than leaving the declared bare/alias comparisons silently unmeasured.

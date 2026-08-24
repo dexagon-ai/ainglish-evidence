@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -11,6 +12,7 @@ import sys
 
 from ainglish import __version__ as sdk_version
 from ainglish import panel as panel_harness
+from ainglish.client import AinglishError, manifest_commitment
 
 
 ROOT = Path(__file__).resolve().parent
@@ -63,6 +65,162 @@ def preflight(client, spec: dict) -> dict:
     }
 
 
+def diagnostic_spec(spec: dict, mode: str) -> dict:
+    filename = {"bare": "bare-items.json", "allowed-to": "allowed-to-items.json"}[mode]
+    document = json.loads((ROOT / filename).read_text(encoding="utf-8"))
+    derived = json.loads(json.dumps(spec))
+    derived["items"] = document["items"]
+    derived["items_sha256"] = document["sha256"]
+    commit = git_output("rev-parse", "HEAD")
+    derived["items_url"] = (
+        "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+        f"{commit}/may-modal-comprehension-carrier-2026-08-24/{filename}"
+    )
+    if mode == "bare":
+        derived["comparator"] = {
+            "kind": "bare-may-v1",
+            "description": "Neutral bare may with the same contexts, later facts, questions, and keyed writer intent.",
+        }
+    else:
+        derived["comparator"] = {
+            "kind": "ratified-allowed-to-v1",
+            "description": "Permission-only practical comparison against the ratified allowed-to surface.",
+        }
+    derived.pop("attempt", None)
+    return derived
+
+
+def write_json_once(path: Path, value: object) -> None:
+    if path.exists():
+        raise SystemExit(f"REFUSING: receipt already exists at {path}")
+    path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def abort(client, attempt_id: str, kind: str, gate: str, details: dict) -> None:
+    panel_harness._abort_panel_attempt(
+        client, attempt_id, SLUG, kind, gate, details,
+        receipt_dir=str(ROOT), receipt_stem="may-modal-claim",
+    )
+
+
+def run_after_mint(client, spec: dict, attempt_id: str, planned: dict) -> dict | None:
+    main_cells: list[dict] = []
+    main_calibration: list[dict] = []
+    try:
+        main_measurement = panel_harness.run_panel(
+            spec, ask_fn=panel_harness.ask,
+            cell_results=main_cells, calibration_results=main_calibration,
+        )
+    except (Exception, SystemExit) as exc:
+        abort(client, attempt_id, "harness_error", "claim panel raised before measurement emission", {
+            "exception": type(exc).__name__, "message": str(exc),
+            "completed_real_cells": len(main_cells),
+            "completed_calibration_cells": len(main_calibration),
+        })
+        raise
+    main_calibration_receipt = panel_harness._write_cell_results(
+        attempt_id, SLUG, main_calibration, str(ROOT), "may-modal-claim", stage="calibration",
+    )
+    main_cell_receipt = panel_harness._write_cell_results(
+        attempt_id, SLUG, main_cells, str(ROOT), "may-modal-claim",
+    )
+    if main_measurement is None or panel_harness._is_panel_refusal(main_measurement):
+        refusal = main_measurement or {"stage": "unknown", "reason": "no measurement"}
+        kind = (
+            panel_harness._panel_refusal_failed_gate_kind(refusal)
+            if main_measurement is not None else "no_measurement"
+        )
+        abort(client, attempt_id, kind, "claim panel refused before diagnostics", {
+            "refusal": refusal,
+            "calibration_cell_results": main_calibration_receipt,
+            "cell_results": main_cell_receipt,
+        })
+        return None
+    if manifest_commitment(main_measurement["manifest"]) != manifest_commitment(planned):
+        abort(client, attempt_id, "preflight_mismatch", "claim manifest diverged from preregistration", {
+            "expected": manifest_commitment(planned),
+            "actual": manifest_commitment(main_measurement["manifest"]),
+            "calibration_cell_results": main_calibration_receipt,
+            "cell_results": main_cell_receipt,
+        })
+        return None
+
+    diagnostic_receipts = {}
+    for mode in ("bare", "allowed-to"):
+        diag = diagnostic_spec(spec, mode)
+        cells: list[dict] = []
+        calibration: list[dict] = []
+        try:
+            result = panel_harness.run_panel(
+                diag, ask_fn=panel_harness.ask,
+                cell_results=cells, calibration_results=calibration,
+            )
+        except (Exception, SystemExit) as exc:
+            abort(client, attempt_id, "harness_error", f"{mode} diagnostic raised", {
+                "exception": type(exc).__name__, "message": str(exc),
+                "completed_real_cells": len(cells),
+                "completed_calibration_cells": len(calibration),
+                "claim_cell_results": main_cell_receipt,
+            })
+            raise
+        cal_receipt = panel_harness._write_cell_results(
+            attempt_id, SLUG, calibration, str(ROOT), f"may-modal-{mode}", stage="calibration",
+        )
+        cell_receipt = panel_harness._write_cell_results(
+            attempt_id, SLUG, cells, str(ROOT), f"may-modal-{mode}",
+        )
+        if result is None or panel_harness._is_panel_refusal(result):
+            refusal = result or {"stage": "unknown", "reason": "no measurement"}
+            kind = (
+                panel_harness._panel_refusal_failed_gate_kind(refusal)
+                if result is not None else "no_measurement"
+            )
+            abort(client, attempt_id, kind, f"{mode} diagnostic refused", {
+                "refusal": refusal, "calibration_cell_results": cal_receipt,
+                "cell_results": cell_receipt, "claim_cell_results": main_cell_receipt,
+            })
+            return None
+        result_path = ROOT / f"may-modal-{mode}.attempt-{attempt_id}.diagnostic.json"
+        write_json_once(result_path, result)
+        diagnostic_receipts[mode] = {
+            "result_path": str(result_path),
+            "result_sha256": hashlib.sha256(result_path.read_bytes()).hexdigest(),
+            "calibration_cell_results": cal_receipt,
+            "cell_results": cell_receipt,
+            "value": result.get("value"),
+            "arms": result.get("arms"),
+        }
+
+    write_json_once(ROOT / f"diagnostics.attempt-{attempt_id}.receipt.json", {
+        "kind": "ainglish.may-modal.preregistered-diagnostics.v1",
+        "attempt_id": attempt_id,
+        "claim_items_sha256": spec["items_sha256"],
+        "diagnostics": diagnostic_receipts,
+        "reader_calls_before_attempt_mint": 0,
+        "claim_executed_before_repeated_diagnostic_items": True,
+    })
+    main_measurement["attempt_id"] = attempt_id
+    panel_harness._write_measurement_request(
+        attempt_id, main_measurement, str(ROOT), "may-modal-claim",
+    )
+    response = None
+    for submission in range(2):
+        try:
+            response = client.measure(SLUG, main_measurement)
+            break
+        except AinglishError as exc:
+            if exc.error not in ("transport_error", "invalid_response"):
+                raise
+            state = client.attempt(attempt_id)
+            if state.get("state") == "completed":
+                response = {"attempt": state, "recovered_after_lost_response": True}
+                break
+            if state.get("state") != "open" or submission == 1:
+                raise
+    print("SUBMITTED:", json.dumps(response, ensure_ascii=False)[:400])
+    return main_measurement
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
@@ -85,10 +243,29 @@ def main() -> None:
     client = ainglish_client()
     receipt = preflight(client, spec)
     print("PREFLIGHT", json.dumps(receipt, ensure_ascii=False))
-    measurement = panel_harness._run_preregistered_panel(
-        spec, spec, panel_harness.ask, client,
-        receipt_dir=str(ROOT), receipt_stem="may-modal-claim",
+    for pattern in ("may-modal-claim.attempt-*", "diagnostics.attempt-*", "may-modal-bare.attempt-*", "may-modal-allowed-to.attempt-*"):
+        if list(ROOT.glob(pattern)):
+            raise SystemExit(f"REFUSING: prior receipt matches {pattern}")
+    settings = panel_harness._attempt_settings(spec["attempt"])
+    panel_harness._validate_real_reader_configuration(spec, panel_harness.ask)
+    planned = panel_harness._planned_panel_manifest(spec)
+    opened = client.mint_attempt(
+        SLUG, planned,
+        estimand=settings["estimand"],
+        admissibility_gates=settings["admissibility_gates"],
+        planned_sample=settings["planned_sample"],
+        proposal_revision=settings["proposal_revision"],
     )
+    attempt_id = opened["attempt"]["attempt_id"]
+    expected = manifest_commitment(planned)
+    retained = client.attempt_manifest(attempt_id)
+    if manifest_commitment(retained) != expected:
+        abort(client, attempt_id, "preflight_mismatch", "server retained different manifest bytes", {
+            "expected": expected, "actual": manifest_commitment(retained),
+        })
+        raise SystemExit(1)
+    print(f"ATTEMPT MINTED BEFORE READER SPEND: {attempt_id} (manifest {expected})")
+    measurement = run_after_mint(client, spec, attempt_id, planned)
     if measurement is None:
         raise SystemExit(1)
     print(json.dumps({
