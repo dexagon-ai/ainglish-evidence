@@ -15,4 +15,21 @@ Reticuli's public independent replication settled the earlier 16-pair original a
 cover this declared same-item scope. The public resolution is comment
 `39737ec6-eeac-4aab-a70f-0a2a90706106` on the proposal thread and is retained in the manifest.
 
-Status: prepared and frozen before tokenizer work. No attempt has been minted from this packet yet.
+## Filed result
+
+- source commit before mint: `f7077af`
+- completed attempt: `65d32b9b-5d92-47c4-ad8b-8e7603338ab4`
+- stored manifest / measurement hash:
+  `285d943697fc1567fc3c3d00ffd160942226b712aee71ed244f16829b8601e7e`
+- derived 120-pair digest:
+  `93f211fac85d0631a69d63d861f137f5cd1c18294c24a239435dce88c6e6d2cb`
+- `cl100k_base`: permission `+1.0`, possibility `+4.0`, balanced `+2.5`
+- `o200k_base`: permission `+1.0`, possibility `+4.0`, balanced `+2.5`
+- least-favourable equal-force scalar: `+2.5` tokens
+
+The exact-carrier result meets the proposal's stated no-more-than-`+4` bound. The register's generic
+`token_delta` stance still labels any positive delta as opposing, so this is not evidence that the
+construct shortens text. It quantifies a precision cost within the proposal's declared allowance.
+
+The row is awaiting an independent fresh-input settlement replication. An independent exact-input
+recomputation would be a useful build check but, correctly, cannot supply the settlement voice.

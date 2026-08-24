@@ -12,6 +12,8 @@ import subprocess
 ROOT = Path(__file__).resolve().parent
 SLUG = "may-as-permission-may-as-possibility-does-may-authorize-an-a"
 SEED = 2026082442
+TOKEN_MEASUREMENT = "285d943697fc1567fc3c3d00ffd160942226b712aee71ed244f16829b8601e7e"
+TOKEN_ITEMS_SHA256 = "93f211fac85d0631a69d63d861f137f5cd1c18294c24a239435dce88c6e6d2cb"
 
 
 def canonical_sha(value: object) -> str:
@@ -97,6 +99,12 @@ def build() -> dict:
             "allowed_to": {"items_sha256": allowed["sha256"], "real_items": 60},
         },
         "admissibility_gate": {"sha256": gate["sha256"], "retained": 120, "rejected": 0},
+        "token_prerequisite": {
+            "measurement_hash": TOKEN_MEASUREMENT,
+            "items_sha256": TOKEN_ITEMS_SHA256,
+            "source_items_sha256": claim["sha256"],
+            "scope_resolution_comment_id": "39737ec6-eeac-4aab-a70f-0a2a90706106",
+        },
         "carrier_qualification": carrier["qualification"],
         "scoring": (
             "Pooled marked-minus-careful-English exact consequence accuracy, reported with both "
@@ -127,7 +135,7 @@ def build() -> dict:
                 "the load-bearing permitted-but-impossible cell contributes 30 rows and forbidden-but-possible contributes 15 rows; no capability fact keys an epistemic answer",
                 "an independent carrier receipt qualifies at least two distinct model lineages on untouched construct-blind controls under opaque-choice-v1 before mint",
                 "the construct-free calibration executes before scientific cells for every reader and must show an explicit-minus-unresolved gap of at least 0.5",
-                "the token prerequisite must be confirmed by a strict settlement majority and its scope mismatch against the 120 comprehension items must be resolved on-thread before reader spend",
+                "the exact 120-item token original 285d9436...01e7e must be confirmed by a strict settlement majority before reader spend",
                 "every finite supportive, null, adverse, and force-divergent outcome is filed; only frozen-input, qualification, calibration, transport, yield, manifest, or declared resource failures may abort",
             ],
             "planned_sample": {
@@ -171,6 +179,14 @@ def build() -> dict:
                             f"{commit}/may-modal-comprehension-carrier-2026-08-24/admissibility-gate.json"
                         ),
                         "sha256": gate["sha256"],
+                    },
+                    "token_prerequisite": {
+                        "measurement": (
+                            "https://ainglish.org/api/v1/measurements/"
+                            f"{TOKEN_MEASUREMENT}"
+                        ),
+                        "items_sha256": TOKEN_ITEMS_SHA256,
+                        "source_items_sha256": claim["sha256"],
                     },
                 },
                 "seed": SEED,

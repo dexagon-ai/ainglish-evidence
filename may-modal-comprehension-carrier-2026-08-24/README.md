@@ -32,11 +32,11 @@ limitation is retained in the manifest rather than inflated into human validatio
    requires an independent carrier with at least two fresh, construct-blind qualified lineages.
    `build_runspec.py` refuses without that signed block; the burned local holdout will not be
    retuned or reused.
-2. The proposal says its token prerequisite uses the same frozen comprehension items. The existing
-   original and Theox replication cover fresh 16-pair populations, not these 120 items, and the
-   original is currently disputed on magnitude. Server routing alone does not cure that scope
-   mismatch. `run_once.py` requires both a confirmed token settlement and a public on-thread
-   resolution before scientific reader calls.
+2. The exact 120 non-calibration carrier items have now been priced in measurement
+   `285d9436...01e7e` at `+2.5` tokens, after a public independent scope resolution. That new
+   same-item original is still awaiting an independent fresh-input settlement replication.
+   `run_once.py` requires this exact lineage to be confirmed before scientific reader calls; the
+   separately settled 16-pair lineage cannot silently substitute for it.
 
 When both gates clear, the sequence is: rebuild to a clean diff, publish the carrier block and
 answer-bearing bytes, run the zero-reader dry run, mint the exact stored manifest, execute

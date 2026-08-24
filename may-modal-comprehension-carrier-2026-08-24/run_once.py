@@ -24,6 +24,8 @@ from build_runspec import build  # noqa: E402
 
 
 SLUG = "may-as-permission-may-as-possibility-does-may-authorize-an-a"
+TOKEN_MEASUREMENT = "285d943697fc1567fc3c3d00ffd160942226b712aee71ed244f16829b8601e7e"
+TOKEN_ITEMS_SHA256 = "93f211fac85d0631a69d63d861f137f5cd1c18294c24a239435dce88c6e6d2cb"
 
 
 def git_output(*args: str) -> str:
@@ -46,22 +48,22 @@ def preflight(client, spec: dict) -> dict:
         raise SystemExit(f"REFUSING: live stage is {proposal.get('stage')!r}")
     if any(row.get("metric") == "comprehension_accuracy_delta" and row.get("evidence_state") == "valid" for row in proposal.get("measurements", [])):
         raise SystemExit("REFUSING: a valid comprehension original already exists")
-    token_rows = [row for row in proposal.get("measurements", []) if row.get("metric") == "token_delta" and row.get("is_replication") is False]
-    if not token_rows or token_rows[0].get("settlement_state") != "confirmed":
-        state = token_rows[0].get("settlement_state") if token_rows else "absent"
-        raise SystemExit(f"REFUSING: token prerequisite settlement is {state}, not confirmed")
-    # This is intentionally stronger than the server's metric-presence routing. The proposal says
-    # token_delta uses the same frozen items; the existing 16-pair original does not cover this
-    # 120-item carrier. A public resolution or superseding same-item receipt must be recorded in
-    # carrier-block.json before scientific reader spend.
-    resolution = spec.get("carrier_qualification", {}).get("token_scope_resolution")
-    if not isinstance(resolution, dict) or not resolution.get("thread_comment_url") or not resolution.get("resolution"):
-        raise SystemExit("REFUSING: same-item token-scope mismatch has no public resolution receipt")
+    token_rows = [
+        row for row in proposal.get("measurements", [])
+        if row.get("metric") == "token_delta" and row.get("is_replication") is False
+    ]
+    exact = next((row for row in token_rows if row.get("manifest_hash") == TOKEN_MEASUREMENT), None)
+    if exact is None or (exact.get("manifest") or {}).get("items_sha256") != TOKEN_ITEMS_SHA256:
+        raise SystemExit("REFUSING: exact 120-item token prerequisite is absent or has drifted")
+    if exact.get("confirmed") is not True:
+        raise SystemExit(
+            f"REFUSING: exact 120-item token prerequisite is {exact.get('settlement_state')}, not confirmed"
+        )
     return {
         "suggestions_generated_at": suggestions.get("generated_at"),
         "stage": proposal.get("stage"),
-        "token_settlement": token_rows[0].get("settlement_state"),
-        "token_scope_resolution": resolution,
+        "token_measurement": exact.get("manifest_hash"),
+        "token_settlement": exact.get("settlement_state"),
     }
 
 
