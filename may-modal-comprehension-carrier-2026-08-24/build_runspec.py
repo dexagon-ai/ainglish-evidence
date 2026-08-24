@@ -136,6 +136,7 @@ def build() -> dict:
                 "an independent carrier receipt qualifies at least two distinct model lineages on untouched construct-blind controls under opaque-choice-v1 before mint",
                 "the construct-free calibration executes before scientific cells for every reader and must show an explicit-minus-unresolved gap of at least 0.5",
                 "the exact 120-item token original 285d9436...01e7e must be confirmed by a strict settlement majority before reader spend",
+                "the formal token prerequisite must no longer classify the proposal-acceptable exact-scope result as opposing; confirmation alone cannot cure the +4 prose-bound versus generic token stance contradiction",
                 "every finite supportive, null, adverse, and force-divergent outcome is filed; only frozen-input, qualification, calibration, transport, yield, manifest, or declared resource failures may abort",
             ],
             "planned_sample": {

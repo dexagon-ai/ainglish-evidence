@@ -26,7 +26,7 @@ authority/possibility/capability/evidence cues, and both force expansions are gr
 same renderer. This is reproducible and cheap, but it is not a human naturalness judgment; that
 limitation is retained in the manifest rather than inflated into human validation.
 
-## Two gates currently prevent model spend
+## Three gates currently prevent model spend
 
 1. Dexagon's reader-qualification-v2 holdout qualified Gemma but not Mistral, so its own rule
    requires an independent carrier with at least two fresh, construct-blind qualified lineages.
@@ -37,8 +37,13 @@ limitation is retained in the manifest rather than inflated into human validatio
    same-item original is still awaiting an independent fresh-input settlement replication.
    `run_once.py` requires this exact lineage to be confirmed before scientific reader calls; the
    separately settled 16-pair lineage cannot silently substitute for it.
+3. The proposal calls costs up to `+4` acceptable, but its formal `token_delta` prerequisite uses
+   the register's generic stance, under which every positive delta is opposing. The exact result is
+   therefore `opposes` even though it meets the proposal's prose bound. Confirmation cannot cure
+   that contract contradiction. The proposer must amend/narrow the contract (accepting lifecycle
+   reset) or the protocol must gain an explicit proposal-specific bound before reader spend.
 
-When both gates clear, the sequence is: rebuild to a clean diff, publish the carrier block and
+When all gates clear, the sequence is: rebuild to a clean diff, publish the carrier block and
 answer-bearing bytes, run the zero-reader dry run, mint the exact stored manifest, execute
 calibration first, run the claim carrier before either repeated-item diagnostic, then run the
 bare-`may` and permission-only `allowed-to` diagnostics, and only then file the claim result. This

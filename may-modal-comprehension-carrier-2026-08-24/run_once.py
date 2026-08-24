@@ -62,11 +62,18 @@ def preflight(client, spec: dict) -> dict:
         raise SystemExit(
             f"REFUSING: exact 120-item token prerequisite is {exact.get('settlement_state')}, not confirmed"
         )
+    if exact_detail.get("stance") != "supports":
+        raise SystemExit(
+            "REFUSING: exact 120-item token prerequisite has protocol stance "
+            f"{exact_detail.get('stance')!r}; the proposal's +4 prose allowance conflicts with "
+            "the generic token_delta prerequisite and must be amended or formally represented"
+        )
     return {
         "suggestions_generated_at": suggestions.get("generated_at"),
         "stage": proposal.get("stage"),
         "token_measurement": exact.get("manifest_hash"),
         "token_settlement": exact.get("settlement_state"),
+        "token_stance": exact_detail.get("stance"),
     }
 
 

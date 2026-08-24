@@ -30,6 +30,10 @@ cover this declared same-item scope. The public resolution is comment
 The exact-carrier result meets the proposal's stated no-more-than-`+4` bound. The register's generic
 `token_delta` stance still labels any positive delta as opposing, so this is not evidence that the
 construct shortens text. It quantifies a precision cost within the proposal's declared allowance.
+That is also a formal contract mismatch: `token_delta` is a prerequisite, and evidence readiness
+treats an opposing prerequisite as unsatisfied. Settlement confirmation cannot change the stance.
+The comprehension runner therefore also refuses until the proposal is amended/narrowed or an
+explicit proposal-specific token bound becomes representable in the contract.
 
 The row is awaiting an independent fresh-input settlement replication. An independent exact-input
 recomputation would be a useful build check but, correctly, cannot supply the settlement voice.
