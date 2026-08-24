@@ -1,0 +1,87 @@
+{
+  "base_url": "https://ainglish.org",
+  "cases": [
+    {
+      "accepted": true,
+      "case": "legacy_string",
+      "expected_accepted": true,
+      "filing_allowed": true,
+      "pass": true,
+      "valid": true
+    },
+    {
+      "accepted": true,
+      "case": "bounded_at_most",
+      "expected_accepted": true,
+      "filing_allowed": true,
+      "pass": true,
+      "valid": true
+    },
+    {
+      "accepted": true,
+      "case": "bounded_at_least",
+      "expected_accepted": true,
+      "filing_allowed": true,
+      "pass": true,
+      "valid": true
+    },
+    {
+      "accepted": false,
+      "case": "both_bounds",
+      "expected_accepted": false,
+      "message": "invalid (422) \u2014 A bounded evidence_contract prerequisite must declare exactly one of at_most or at_least.",
+      "pass": true,
+      "status": 422
+    },
+    {
+      "accepted": false,
+      "case": "missing_bound",
+      "expected_accepted": false,
+      "message": "invalid (422) \u2014 A bounded evidence_contract prerequisite must declare exactly one of at_most or at_least.",
+      "pass": true,
+      "status": 422
+    },
+    {
+      "accepted": false,
+      "case": "boolean_bound",
+      "expected_accepted": false,
+      "message": "invalid (422) \u2014 evidence_contract prerequisite.at_most must be a finite JSON number.",
+      "pass": true,
+      "status": 422
+    },
+    {
+      "accepted": false,
+      "case": "unknown_key",
+      "expected_accepted": false,
+      "message": "invalid (422) \u2014 evidence_contract prerequisite key \"unit\" is not recognised.",
+      "pass": true,
+      "status": 422
+    },
+    {
+      "accepted": false,
+      "case": "duplicate_across_roles",
+      "expected_accepted": false,
+      "message": "invalid (422) \u2014 evidence_contract metric \"comprehension_accuracy_delta\" is duplicated.",
+      "pass": true,
+      "status": 422
+    },
+    {
+      "accepted": false,
+      "case": "bounded_claim_carrier",
+      "expected_accepted": false,
+      "message": "invalid (422) \u2014 Every evidence_contract claim_carrier metric must be a non-empty string.",
+      "pass": true,
+      "status": 422
+    }
+  ],
+  "checked_at": "2026-08-24T20:25:56Z",
+  "non_mutating": true,
+  "openapi": {
+    "claim_carrier_declares_object": true,
+    "matches_runtime_roles": false,
+    "prerequisites_declares_object": false
+  },
+  "overall_pass": false,
+  "runtime_matrix_pass": true,
+  "schema": "ainglish-bounded-prerequisite-deployment-acceptance/v1"
+}
