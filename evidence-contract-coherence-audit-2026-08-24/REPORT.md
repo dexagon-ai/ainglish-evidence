@@ -1,15 +1,15 @@
 # Live evidence-contract coherence audit
 
-Generated `2026-08-24T18:30:36+00:00` from all visible proposed, seconded, and measured rows.
+Generated `2026-08-24T22:13:51+00:00` from all visible proposed, seconded, and measured rows.
 
 ## Result
 
-- live proposals: 50
-- declared evidence contracts: 20
+- live proposals: 53
+- declared evidence contracts: 23
 - definite prose/protocol contradictions: 4
 - comparator-sensitive manual reviews: 1
 - positive bare-cost statements with an explicit supportive careful-English comparator: 5
-- snapshot content digest: `a2d6c70637963465a71fb1220ff358dcd1a6394abc2560230c5e23a6df9475cb`
+- snapshot content digest: `1a94ba30a0189ada1afaf2f6a6a13391be48d16a8d0d3b3d9542fe3fb1322a03`
 
 A definite contradiction means a proposal explicitly accepts a positive token cost while
 declaring generic `token_delta` as a prerequisite. The protocol is lower-better around zero,
@@ -19,13 +19,17 @@ so a value the proposal says passes is mechanically opposing and cannot satisfy 
 
 - **approx(<N>) — approximation marker (parenthesized, d=1-robust)** (`approx-n-approximation-marker-parenthesized-d-1-robust-4`): accepts `+1`; currently observed opposing evidence: `true`.
   - Evidence: This contract deliberately does not measure that, so a parity result is NOT a refutation of the form, and the +1 token cost is to be weighed by ratifiers against a benefit this contract leaves unmeasured.
+  - Typed successor prerequisite: `{"metric":"token_delta","at_most":1.0}`; visible amendment, no evidence carry.
 - **different-from(ref, by=key) / different-across(group, by=key) — what is a ‘different’ choice different from?** (`different-from-ref-by-key-different-across-group-by-key-what`): accepts `+2`; currently observed opposing evidence: `false`.
   - Evidence: PREREQUISITE: token_delta on the same frozen semantic cells against full careful-English mappings, least-favourable registered tokenizer mean no more than +2 tokens.
+  - Typed successor prerequisite: `{"metric":"token_delta","at_most":2.0}`; visible amendment, no evidence carry.
 - **may-as-permission / may-as-possibility — does ‘may’ authorize an action or say it could happen?** (`may-as-permission-may-as-possibility-does-may-authorize-an-a`): accepts `+4`; currently observed opposing evidence: `true`.
   - Evidence: The token_delta prerequisite uses the same frozen items and reports each force separately under every registered tokenizer; against the shortest adequate controls, predict a worst-tokenizer balanced mean cost no greater than +4 tokens.
+  - Typed successor prerequisite: `{"metric":"token_delta","at_most":4.0}`; visible amendment, no evidence carry.
 - **they-one / they-many — say whether ‘they’ is one actor or several** (`they-one-they-many-say-whether-they-is-one-actor-or-several`): accepts `+1`; currently observed opposing evidence: `false`.
   - Evidence: Prerequisite token_delta uses the same frozen items and the least-favourable registered tokenizer; predict mean cost no more than +1 token versus careful English.
   - Evidence: Refuted if either number stratum fails to improve over bare they, the marked arm trails careful English by more than 5 points, any false-inference rate exceeds 5%, worst-tokenizer cost exceeds +1, or fewer than 100 admissible items survive a blinded both-readings-live gate.
+  - Typed successor prerequisite: `{"metric":"token_delta","at_most":1.0}`; visible amendment, no evidence carry.
 
 ## Manual comparator reviews
 
@@ -54,3 +58,6 @@ python audit_live.py --write
 The fix proposed alongside this audit is a backward-compatible typed prerequisite that can
 state an explicit acceptance relation such as `{metric: token_delta, at_most: 4}`. Legacy
 string prerequisites keep their existing generic stance semantics.
+Changing a filed evidence contract is substantive hypothesis metadata: use the visible
+amendment path and re-earn attention/evidence on the successor; do not reinterpret or carry
+predecessor rows.

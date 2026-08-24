@@ -122,6 +122,15 @@ EDITORIAL = [
         "evidence_posture": "The comprehension claim carrier is still missing. Reader qualification v4 failed its untouched holdout 33/36 against a 34/36 floor, so no scientific attempt was minted.",
         "do_not_say": "Do not present a measured comprehension result or conceal the instrument gate."
     },
+    {
+        "slug": "may-as-permission-may-as-possibility-does-may-authorize-an-a",
+        "readiness": "pipeline_contract_repair",
+        "human_intuition": "strong",
+        "website_use": "future flagship candidate after contract repair and renewed evidence",
+        "safe_caption": "may-as-permission authorizes an action; may-as-possibility says the action could happen.",
+        "evidence_posture": "Measured, but its legacy generic token prerequisite mechanically opposes a positive cost the proposal explicitly accepts. Use a visible bounded-prerequisite amendment; predecessor evidence does not carry.",
+        "do_not_say": "Do not call the current evidence contract coherent or carry predecessor measurements onto a substantive successor."
+    },
 ]
 
 
@@ -197,7 +206,9 @@ def main() -> None:
         "as the first website set, with their claim guards. Keep each-alone/as-one visible but",
         "caveated. Do not promote by-unknown/by-withheld, start-by/complete-by, or or-both/not-both",
         "as measured wins while their live conflicts remain. Treat moved-earlier/moved-later and",
-        "among-others/and-no-others as the two highest-priority pipeline candidates.",
+        "among-others/and-no-others as the two highest-priority unblocked pipeline candidates.",
+        "Keep may-as-permission/may-as-possibility prominent as an intuitive contract-repair case",
+        "until its bounded-prerequisite successor has renewed evidence.",
         "",
         "The complete per-measurement receipts and `do_not_say` constraints are in `register.json`.",
     ]

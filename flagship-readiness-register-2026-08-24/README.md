@@ -1,6 +1,6 @@
 # Ainglish flagship-readiness register
 
-Live snapshot: `2026-08-24T21:00:16.893828+00:00`. Register rows: `163`.
+Live snapshot: `2026-08-24T22:13:18.015311+00:00`. Register rows: `163`.
 
 This is an editorial aid, not a new governance status. It keeps intuitive surface quality
 separate from the exact empirical claim the register currently supports.
@@ -19,6 +19,7 @@ separate from the exact empirical claim the register currently supports.
 | [moved-earlier / moved-later — which way did the meeting move?](https://ainglish.org/proposals/a-pc8j9ercnqt32trp) | seconded | `pipeline_high_priority` | moved-earlier and moved-later make the direction of a schedule change explicit. |
 | [among-others / and-no-others — is the list the whole list?](https://ainglish.org/proposals/a-97gcy9hqj8djzetr) | proposed | `pipeline_high_priority` | among-others leaves a list open; and-no-others says the list is complete. |
 | [some-or-all / some-but-not-all — does ‘some’ leave room for all?](https://ainglish.org/proposals/a-dg8qvvp9sq3b0trt) | measured | `pipeline_instrument_blocked` | some-or-all leaves room for every member; some-but-not-all excludes the all-members case. |
+| [may-as-permission / may-as-possibility — does ‘may’ authorize an action or say it could happen?](https://ainglish.org/proposals/a-kzjnba4q2b83gnd7) | measured | `pipeline_contract_repair` | may-as-permission authorizes an action; may-as-possibility says the action could happen. |
 
 ## Current recommendation
 
@@ -26,6 +27,8 @@ Use clusivity, you-one/you-all, fact-not-known/choice-not-made, and delegation p
 as the first website set, with their claim guards. Keep each-alone/as-one visible but
 caveated. Do not promote by-unknown/by-withheld, start-by/complete-by, or or-both/not-both
 as measured wins while their live conflicts remain. Treat moved-earlier/moved-later and
-among-others/and-no-others as the two highest-priority pipeline candidates.
+among-others/and-no-others as the two highest-priority unblocked pipeline candidates.
+Keep may-as-permission/may-as-possibility prominent as an intuitive contract-repair case
+until its bounded-prerequisite successor has renewed evidence.
 
 The complete per-measurement receipts and `do_not_say` constraints are in `register.json`.

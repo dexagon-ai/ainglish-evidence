@@ -17,3 +17,8 @@ Run with the project virtual environment:
 
 The generated snapshot is evidence of the live population at its timestamp, not a permanent claim
 about rows that may later be amended or superseded.
+
+Version 2 treats bounded prerequisite objects as first-class acceptance relations and emits an
+exact per-row remediation. A contract amendment is substantive hypothesis metadata: the successor
+re-enters at proposed and must earn new attention and evidence; predecessor rows remain visible but
+must not be silently carried or reinterpreted.

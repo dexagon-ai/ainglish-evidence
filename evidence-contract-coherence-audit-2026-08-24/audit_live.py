@@ -93,7 +93,11 @@ def audit(client: AinglishClient) -> dict:
             },
         }
         contracts.append(row)
-        bounds = positive_token_bounds(predicted) if "token_delta" in prerequisites else []
+        legacy_token_prerequisite = any(
+            prerequisite == "token_delta" for prerequisite in prerequisites
+            if isinstance(prerequisite, str)
+        )
+        bounds = positive_token_bounds(predicted) if legacy_token_prerequisite else []
         for bound in bounds:
             key = (proposal["slug"], bound["bound"])
             finding = definite_by_key.setdefault(key, {
@@ -115,9 +119,15 @@ def audit(client: AinglishClient) -> dict:
                     "become satisfied at a result the proposal says should pass."
                 ),
                 "currently_observed": "token_delta" in readiness.get("opposing_evidence", []),
+                "remediation": {
+                    "prerequisite": {"metric": "token_delta", "at_most": bound["bound"]},
+                    "requires_visible_amendment": True,
+                    "evidence_carry": False,
+                    "note": "Hypothesis metadata changed; the successor re-enters at proposed and must earn fresh attention and evidence.",
+                },
             })
             finding["evidence_sentences"].append(bound["sentence"])
-        if "token_delta" in prerequisites and not bounds:
+        if legacy_token_prerequisite and not bounds:
             hits = [sentence for sentence in sentences(predicted) if POSITIVE_EXPECTATION.search(sentence)]
             for sentence in hits:
                 finding = {
@@ -142,7 +152,7 @@ def audit(client: AinglishClient) -> dict:
     definite = list(definite_by_key.values())
     generated = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     payload = {
-        "kind": "ainglish.evidence-contract-coherence-audit.v1",
+        "kind": "ainglish.evidence-contract-coherence-audit.v2",
         "generated_at": generated,
         "source": {
             "register": "https://ainglish.org",
@@ -169,6 +179,7 @@ def audit(client: AinglishClient) -> dict:
             "The automatic rule is intentionally narrow and does not claim to understand arbitrary prose.",
             "A positive cost against bare ambiguous English can coexist with a negative cost against a careful-English comparator; those rows stay manual_review unless an accepted positive bound is explicit.",
             "This audit diagnoses representational coherence. It does not change ballot eligibility or reinterpret historical evidence.",
+            "Bounded prerequisite objects carry their own acceptance relation and are not classified through the generic metric stance.",
         ],
     }
     payload["content_sha256"] = hashlib.sha256(canonical_bytes(payload)).hexdigest()
@@ -198,10 +209,13 @@ def markdown(report: dict) -> str:
         "",
     ]
     for row in report["definite_contradictions"]:
+        remediation = row["remediation"]["prerequisite"]
         lines.extend([
             f"- **{row['title']}** (`{row['slug']}`): accepts `+{row['accepted_positive_bound']:g}`; "
             f"currently observed opposing evidence: `{str(row['currently_observed']).lower()}`.",
             *[f"  - Evidence: {sentence}" for sentence in row["evidence_sentences"]],
+            f"  - Typed successor prerequisite: `{json.dumps(remediation, separators=(',', ':'))}`; "
+            "visible amendment, no evidence carry.",
         ])
     lines.extend(["", "## Manual comparator reviews", ""])
     for row in report["manual_reviews"]:
@@ -226,6 +240,9 @@ def markdown(report: dict) -> str:
         "The fix proposed alongside this audit is a backward-compatible typed prerequisite that can",
         "state an explicit acceptance relation such as `{metric: token_delta, at_most: 4}`. Legacy",
         "string prerequisites keep their existing generic stance semantics.",
+        "Changing a filed evidence contract is substantive hypothesis metadata: use the visible",
+        "amendment path and re-earn attention/evidence on the successor; do not reinterpret or carry",
+        "predecessor rows.",
         "",
     ])
     return "\n".join(lines)
