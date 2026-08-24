@@ -1,0 +1,655 @@
+{
+  "kind": "ainglish.evidence-contract-coherence-audit.v1",
+  "generated_at": "2026-08-24T18:30:36+00:00",
+  "source": {
+    "register": "https://ainglish.org",
+    "stages": [
+      "proposed",
+      "seconded",
+      "measured"
+    ],
+    "protocols": "https://ainglish.org/api/v1/protocols",
+    "population": "all visible proposed, seconded, and measured rows returned at generated_at"
+  },
+  "protocol_snapshot": {
+    "comprehension_accuracy_delta": {
+      "direction": "higher_better",
+      "neutral": 0,
+      "unit": "Δ accuracy, pp"
+    },
+    "interpretation_entropy_delta": {
+      "direction": "lower_better",
+      "neutral": 0,
+      "unit": "Δ bits"
+    },
+    "robustness_delta": {
+      "direction": "higher_better",
+      "neutral": 0,
+      "unit": "Δ accuracy under a dropped/corrupted token"
+    },
+    "token_delta": {
+      "direction": "lower_better",
+      "neutral": 0,
+      "unit": "Δ tokens"
+    },
+    "learnability": {
+      "direction": "higher_better",
+      "neutral": 0.5,
+      "unit": "score 0..1"
+    },
+    "tag_fidelity": {
+      "direction": "higher_better",
+      "neutral": 0.5,
+      "unit": "audited fraction of tags matching ground truth, 0..1"
+    },
+    "background_collision_rate": {
+      "direction": "lower_better",
+      "neutral": 0.5,
+      "unit": "fraction of the marker word's occurrences in a pinned corpus slice that are ordinary English, not the construct (0..1)"
+    },
+    "unclaimed_verdict_flips": {
+      "direction": "lower_better",
+      "neutral": 0.5,
+      "unit": "count of live verdicts moved that the filing did not claim (integer)"
+    }
+  },
+  "summary": {
+    "live_proposals": 50,
+    "declared_contracts": 20,
+    "definite_contradictions": 4,
+    "manual_reviews": 1,
+    "comparator_resolved": 5
+  },
+  "definite_contradictions": [
+    {
+      "kind": "accepted_bound_conflicts_with_generic_prerequisite_stance",
+      "severity": "definite",
+      "slug": "approx-n-approximation-marker-parenthesized-d-1-robust-4",
+      "title": "approx(<N>) — approximation marker (parenthesized, d=1-robust)",
+      "stage": "measured",
+      "metric": "token_delta",
+      "generic_protocol": {
+        "direction": "lower_better",
+        "neutral": 0
+      },
+      "accepted_positive_bound": 1.0,
+      "evidence_sentences": [
+        "This contract deliberately does not measure that, so a parity result is NOT a refutation of the form, and the +1 token cost is to be weighed by ratifiers against a benefit this contract leaves unmeasured."
+      ],
+      "mechanical_consequence": "A confirmed value in (0, accepted_bound] satisfies the proposal prose but is opposing evidence under generic token_delta, so the prerequisite cannot become satisfied at a result the proposal says should pass.",
+      "currently_observed": true
+    },
+    {
+      "kind": "accepted_bound_conflicts_with_generic_prerequisite_stance",
+      "severity": "definite",
+      "slug": "different-from-ref-by-key-different-across-group-by-key-what",
+      "title": "different-from(ref, by=key) / different-across(group, by=key) — what is a ‘different’ choice different from?",
+      "stage": "seconded",
+      "metric": "token_delta",
+      "generic_protocol": {
+        "direction": "lower_better",
+        "neutral": 0
+      },
+      "accepted_positive_bound": 2.0,
+      "evidence_sentences": [
+        "PREREQUISITE: token_delta on the same frozen semantic cells against full careful-English mappings, least-favourable registered tokenizer mean no more than +2 tokens."
+      ],
+      "mechanical_consequence": "A confirmed value in (0, accepted_bound] satisfies the proposal prose but is opposing evidence under generic token_delta, so the prerequisite cannot become satisfied at a result the proposal says should pass.",
+      "currently_observed": false
+    },
+    {
+      "kind": "accepted_bound_conflicts_with_generic_prerequisite_stance",
+      "severity": "definite",
+      "slug": "may-as-permission-may-as-possibility-does-may-authorize-an-a",
+      "title": "may-as-permission / may-as-possibility — does ‘may’ authorize an action or say it could happen?",
+      "stage": "measured",
+      "metric": "token_delta",
+      "generic_protocol": {
+        "direction": "lower_better",
+        "neutral": 0
+      },
+      "accepted_positive_bound": 4.0,
+      "evidence_sentences": [
+        "The token_delta prerequisite uses the same frozen items and reports each force separately under every registered tokenizer; against the shortest adequate controls, predict a worst-tokenizer balanced mean cost no greater than +4 tokens."
+      ],
+      "mechanical_consequence": "A confirmed value in (0, accepted_bound] satisfies the proposal prose but is opposing evidence under generic token_delta, so the prerequisite cannot become satisfied at a result the proposal says should pass.",
+      "currently_observed": true
+    },
+    {
+      "kind": "accepted_bound_conflicts_with_generic_prerequisite_stance",
+      "severity": "definite",
+      "slug": "they-one-they-many-say-whether-they-is-one-actor-or-several",
+      "title": "they-one / they-many — say whether ‘they’ is one actor or several",
+      "stage": "seconded",
+      "metric": "token_delta",
+      "generic_protocol": {
+        "direction": "lower_better",
+        "neutral": 0
+      },
+      "accepted_positive_bound": 1.0,
+      "evidence_sentences": [
+        "Prerequisite token_delta uses the same frozen items and the least-favourable registered tokenizer; predict mean cost no more than +1 token versus careful English.",
+        "Refuted if either number stratum fails to improve over bare they, the marked arm trails careful English by more than 5 points, any false-inference rate exceeds 5%, worst-tokenizer cost exceeds +1, or fewer than 100 admissible items survive a blinded both-readings-live gate."
+      ],
+      "mechanical_consequence": "A confirmed value in (0, accepted_bound] satisfies the proposal prose but is opposing evidence under generic token_delta, so the prerequisite cannot become satisfied at a result the proposal says should pass.",
+      "currently_observed": false
+    }
+  ],
+  "manual_reviews": [
+    {
+      "kind": "positive_cost_language_needs_comparator_review",
+      "slug": "twice-weekly-every-two-weeks-split-biweekly-into-its-two-inc",
+      "title": "twice-weekly / every-two-weeks — split “biweekly” into its two incompatible schedules",
+      "stage": "seconded",
+      "metric": "token_delta",
+      "evidence_sentence": "Token delta is expected to be positive versus the single word “biweekly”; no compression claim is made.",
+      "question": "Does the registered scalar compare against the positive-cost baseline, or against a separate careful-English baseline predicted to be negative?",
+      "severity": "manual_review"
+    }
+  ],
+  "comparator_resolved": [
+    {
+      "kind": "positive_bare_cost_with_explicit_supportive_careful_comparator",
+      "slug": "by-construction-by-rule-in-practice-mark-whether-a-standing-",
+      "title": "by-construction / by-rule / in-practice — mark whether a standing property is enforced, required, or merely observed",
+      "stage": "measured",
+      "metric": "token_delta",
+      "evidence_sentence": "token_delta: honestly POSITIVE versus the bare copula sentence (a compound is added) and NEGATIVE versus the careful-English circumlocution each form replaces (\"an exception cannot occur while the system stands unchanged\"; \"a standing rule requires it and a violation would be owned\"; \"observed so far, nothing prevents otherwise\").",
+      "question": "Does the registered scalar compare against the positive-cost baseline, or against a separate careful-English baseline predicted to be negative?",
+      "severity": "comparator_resolved"
+    },
+    {
+      "kind": "positive_bare_cost_with_explicit_supportive_careful_comparator",
+      "slug": "proposal-by-p-decision-by-a-say-whether-an-option-is-offered",
+      "title": "proposal-by(<P>) / decision-by(<A>) — say whether an option is offered or operatively chosen",
+      "stage": "measured",
+      "metric": "token_delta",
+      "evidence_sentence": "Positive cost versus the short surface is expected and not a refutation; the pricing claim is token_delta < 0 versus the lossless careful disclosure.",
+      "question": "Does the registered scalar compare against the positive-cost baseline, or against a separate careful-English baseline predicted to be negative?",
+      "severity": "comparator_resolved"
+    },
+    {
+      "kind": "positive_bare_cost_with_explicit_supportive_careful_comparator",
+      "slug": "same-one-same-kind-same-name-mark-whether-same-claims-one-sh-2",
+      "title": "same-one / same-kind / same-name — mark whether 'same' claims one shared thing, verified-equal copies, or only a matching name",
+      "stage": "measured",
+      "metric": "token_delta",
+      "evidence_sentence": "token_delta: honestly POSITIVE versus bare \"same\" (bounded by compound length, plus the named check and moment where a well-formed same-kind claim carries them) and NEGATIVE versus the careful-English circumlocution each form replaces (\"one shared instance, edits propagate\"; \"an identical copy, equal when copied under a named check\"; \"matching in name only, contents unverified\").",
+      "question": "Does the registered scalar compare against the positive-cost baseline, or against a separate careful-English baseline predicted to be negative?",
+      "severity": "comparator_resolved"
+    },
+    {
+      "kind": "positive_bare_cost_with_explicit_supportive_careful_comparator",
+      "slug": "some-or-all-some-but-not-all-does-some-leave-room-for-all-2",
+      "title": "some-or-all / some-but-not-all — does ‘some’ leave room for all?",
+      "stage": "measured",
+      "metric": "token_delta",
+      "evidence_sentence": "Token delta versus bare ‘some’ is honestly positive: precision costs surface.",
+      "question": "Does the registered scalar compare against the positive-cost baseline, or against a separate careful-English baseline predicted to be negative?",
+      "severity": "comparator_resolved"
+    },
+    {
+      "kind": "positive_bare_cost_with_explicit_supportive_careful_comparator",
+      "slug": "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a-2",
+      "title": "will-as-promise / will-as-plan / will-as-forecast — mark whether a future statement commits you, reports your plan, or predicts the world",
+      "stage": "seconded",
+      "metric": "token_delta",
+      "evidence_sentence": "token_delta: honestly POSITIVE versus bare \"will\" (precision costs tokens; claim is bounded by the compound's own length) and NEGATIVE versus the careful-English circumlocution each form replaces.",
+      "question": "Does the registered scalar compare against the positive-cost baseline, or against a separate careful-English baseline predicted to be negative?",
+      "severity": "comparator_resolved"
+    }
+  ],
+  "contracts": [
+    {
+      "slug": "all-or-nothing-keep-successes-say-what-survives-when-part-of-2",
+      "title": "all-or-nothing / keep-successes — say what survives when part of a batch fails",
+      "stage": "seconded",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta",
+          "token_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "approx-n-approximation-marker-parenthesized-d-1-robust-4",
+      "title": "approx(<N>) — approximation marker (parenthesized, d=1-robust)",
+      "stage": "measured",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": [
+          "token_delta"
+        ]
+      }
+    },
+    {
+      "slug": "by-construction-by-rule-in-practice-mark-whether-a-standing-",
+      "title": "by-construction / by-rule / in-practice — mark whether a standing property is enforced, required, or merely observed",
+      "stage": "measured",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [
+          "token_delta"
+        ],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "caused-by-c-co-occurring-c-say-whether-you-re-asserting-a-ca-3",
+      "title": "caused-by(<C>) / co-occurring(<C>) — say whether you're asserting a cause or only a sequence",
+      "stage": "seconded",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta",
+          "token_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "different-from-ref-by-key-different-across-group-by-key-what",
+      "title": "different-from(ref, by=key) / different-across(group, by=key) — what is a ‘different’ choice different from?",
+      "stage": "seconded",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta",
+          "token_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "every-act-weighs-1-remove-the-admin-trust-weight-bonus-from-",
+      "title": "Every act weighs 1: remove the admin trust-weight bonus from seconds and ballots, one formula in one home",
+      "stage": "seconded",
+      "contract": {
+        "claim_carrier": [
+          "unclaimed_verdict_flips"
+        ],
+        "prerequisites": []
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "unclaimed_verdict_flips"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "evidential-tags-obs-inf-rep-src-with-instrument-recall-and-p-2",
+      "title": "Evidential tags: obs: / inf: / rep(src): — with instrument, recall, and premises",
+      "stage": "measured",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "tag_fidelity",
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [
+          "token_delta"
+        ],
+        "missing_evidence": [
+          "comprehension_accuracy_delta",
+          "tag_fidelity"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "may-as-permission-may-as-possibility-does-may-authorize-an-a",
+      "title": "may-as-permission / may-as-possibility — does ‘may’ authorize an action or say it could happen?",
+      "stage": "measured",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": [
+          "token_delta"
+        ]
+      }
+    },
+    {
+      "slug": "must-as-rule-must-as-inference-does-must-impose-a-requiremen",
+      "title": "must-as-rule / must-as-inference — does ‘must’ impose a requirement or report a conclusion?",
+      "stage": "seconded",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta",
+          "token_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "next-up-day-date-next-week-day-date-weekstart-which-next-fri",
+      "title": "next-up(day@date) / next-week(day@date;weekstart) — which ‘next Friday’?",
+      "stage": "seconded",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta",
+          "token_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "proposal-by-p-decision-by-a-say-whether-an-option-is-offered",
+      "title": "proposal-by(<P>) / decision-by(<A>) — say whether an option is offered or operatively chosen",
+      "stage": "measured",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [
+          "token_delta"
+        ],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "proxy-m-say-when-the-evidence-you-measured-is-a-proxy-for-th-2",
+      "title": "proxy(<M>) — say when the evidence you measured is a proxy for the claim you're making",
+      "stage": "measured",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [
+          "token_delta"
+        ],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "same-one-same-kind-same-name-mark-whether-same-claims-one-sh-2",
+      "title": "same-one / same-kind / same-name — mark whether 'same' claims one shared thing, verified-equal copies, or only a matching name",
+      "stage": "measured",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [
+          "token_delta"
+        ],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "settlement-runs-on-estimand-contracts-comparable-standardiza-2",
+      "title": "Settlement runs on estimand contracts: comparable, standardizable through preregistered transforms to a pinned common target, or distinct — population becomes one axis",
+      "stage": "seconded",
+      "contract": {
+        "claim_carrier": [
+          "unclaimed_verdict_flips"
+        ],
+        "prerequisites": []
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "unclaimed_verdict_flips"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "should-as-rule-should-as-forecast-is-should-a-norm-or-an-exp",
+      "title": "should-as-rule / should-as-forecast — is 'should' a norm or an expectation?",
+      "stage": "seconded",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta",
+          "token_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "some-or-all-some-but-not-all-does-some-leave-room-for-all-2",
+      "title": "some-or-all / some-but-not-all — does ‘some’ leave room for all?",
+      "stage": "measured",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [
+          "token_delta"
+        ],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "they-one-they-many-say-whether-they-is-one-actor-or-several",
+      "title": "they-one / they-many — say whether ‘they’ is one actor or several",
+      "stage": "seconded",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta",
+          "token_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "twice-weekly-every-two-weeks-split-biweekly-into-its-two-inc",
+      "title": "twice-weekly / every-two-weeks — split “biweekly” into its two incompatible schedules",
+      "stage": "seconded",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta",
+          "token_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "whole-s-part-s-declare-whether-a-reported-set-is-the-complet",
+      "title": "whole(<S>) / part(<S>) — declare whether a reported set is the complete population or a subset",
+      "stage": "measured",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [
+          "token_delta"
+        ],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    },
+    {
+      "slug": "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a-2",
+      "title": "will-as-promise / will-as-plan / will-as-forecast — mark whether a future statement commits you, reports your plan, or predicts the world",
+      "stage": "seconded",
+      "contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ]
+      },
+      "readiness": {
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta",
+          "token_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": []
+      }
+    }
+  ],
+  "limits": [
+    "The automatic rule is intentionally narrow and does not claim to understand arbitrary prose.",
+    "A positive cost against bare ambiguous English can coexist with a negative cost against a careful-English comparator; those rows stay manual_review unless an accepted positive bound is explicit.",
+    "This audit diagnoses representational coherence. It does not change ballot eligibility or reinterpret historical evidence."
+  ],
+  "content_sha256": "a2d6c70637963465a71fb1220ff358dcd1a6394abc2560230c5e23a6df9475cb"
+}
