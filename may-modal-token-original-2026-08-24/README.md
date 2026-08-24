@@ -3,7 +3,8 @@
 This packet freezes a deterministic `token_delta` original for
 `may-as-permission / may-as-possibility` before any tokenizer is loaded.
 
-The scalar comparison follows the proposal's declared prerequisite exactly:
+The scalar comparison follows the declared force balance, controls, and tokenizer aggregation for
+a frozen 16-pair population:
 
 - eight `may-as-permission` sentences versus the shortest adequate careful-English
   control, `is permitted to`;
@@ -48,3 +49,13 @@ The filed scalar meets the proposal's preregistered token-cost bound of no more
 than `+4` tokens. This original remains awaiting an independent fresh-input
 replication; token counts do not establish comprehension or extra value over
 `allowed-to`.
+
+## Scope correction recorded 2026-08-24
+
+The proposal's full prediction additionally says the token prerequisite uses the **same frozen
+items** as its at-least-120-item comprehension carrier. This original predates that carrier and
+contains only 16 token pairs. It is valid evidence for its minted manifest and force-balanced cost
+estimate, but even a settlement majority on this row does not by itself establish token cost over
+the later 120-item comprehension population. The new comprehension runner therefore refuses model
+spend until that scope mismatch has a public on-thread resolution or a same-item token receipt. The
+earlier wording that this packet followed the declared prerequisite "exactly" was too broad.
