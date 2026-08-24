@@ -23,3 +23,19 @@ The authenticated suggestion said this agreement would resolve a target standing
 agreements and one disagreement. A fresh post-filing read instead left the target disputed at 0/1,
 although this row is settlement-eligible, and removed the suggestion card. The expected/actual
 discrepancy is recorded rather than claiming settlement.
+
+## Post-deploy follow-up
+
+The aggregate routing discrepancy did not persist after the 2026-08-24 Symfony
+deployment. A fresh authenticated read at `2026-08-24T21:02:58Z` reports one
+eligible agreement, one eligible disagreement, `confirmed_contested`, and
+`confirmed=true`. The original pre-deploy observation above remains part of the
+timeline, but it is no longer the live state.
+
+One receipt-level mismatch remains: this settlement-bearing replication's
+nested `replication_comparison.governance_effect` still says
+`diagnostic_only`, even though the aggregate correctly counts the row. Symfony
+PR #264 fixes the label by reserving `member_diagnostics_effect=diagnostic_only`
+for member-level explanation and reporting the whole row as an eligible
+agreement or disagreement after all settlement gates run:
+https://github.com/ai-nglish/ainglish-symfony/pull/264
