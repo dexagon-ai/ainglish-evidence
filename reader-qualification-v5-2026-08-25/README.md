@@ -31,3 +31,10 @@ pooled into the reserve gate. Phi-4 remains an unspent final reserve: acquire an
 this two-lineage tranche does not clear the gate. This download order was chosen before any reserve
 reader outcome, to avoid buying a 9.1 GB model transfer when two smaller independent lineages may
 already settle instrument availability.
+
+Reserve B also did not produce a qualifier. Granite 3.3 and Command R7B each returned all 64 exact
+codes with no hidden-thinking bytes, but each scored 55/64 and missed one or more per-axis gates.
+The public result is final and neither reader is repeated. The predeclared Phi-4 reserve therefore
+runs once to finish the five-lineage laboratory. Because Reserve B contributed zero qualified
+lineages, Phi-4 alone cannot make the scientific roster ready; at best it can leave one qualified,
+never-repeated lineage for a future independently frozen qualification screen.
