@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Freeze the three unspent reserve reader lineages after phase A failed."""
+"""Freeze the Granite/Command reserve tranche after phase A failed."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ import urllib.request
 
 ROOT = Path(__file__).resolve().parent
 BASE = runpy.run_path(str(ROOT / "build_spec.py"))
-MODELS = BASE["MODELS"][2:]
+MODELS = BASE["MODELS"][3:]
 ROWS = BASE["ROWS"]
 canonical = BASE["canonical"]
 choices = BASE["choices"]
@@ -50,12 +50,13 @@ def main() -> None:
                 "options": choices(answer, index % 3), "answer": answer,
             })
     spec = {
-        "kind": "ainglish.panel.reader-qualification-holdout.v5-reserve",
-        "result_kind": "ainglish.panel.reader-qualification-holdout-result.v5-reserve",
+        "kind": "ainglish.panel.reader-qualification-holdout.v5-reserve-b",
+        "result_kind": "ainglish.panel.reader-qualification-holdout-result.v5-reserve-b",
         "phase": {
-            "name": "reserve", "trigger": "published phase-A result did not yield two qualified lineages",
+            "name": "reserve-b", "trigger": "published phase-A result did not yield two qualified lineages",
             "phase_a_result_sha256": phase_a["content_sha256"],
             "independence": "No reserve model was called during phase A; failed phase-A readers are not repeated.",
+            "final_reserve_action": "Run the still-unspent Phi-4 lineage only if this tranche does not yield two qualified lineages.",
         },
         "evidentiary_status": "instrument qualification only; never proposal evidence",
         "answer_protocol": "opaque-choice-v1",
@@ -77,7 +78,7 @@ def main() -> None:
         "selection_rule": {
             "exact_code_cells_required": 64, "correct_cells_required": 60,
             "correct_per_axis_required": 7, "minimum_distinct_qualified_lineages": 2,
-            "no_roster_action": "Publish every result; if fewer than two reserve lineages qualify, mint no scientific reader campaign.",
+            "no_roster_action": "Publish every result; if fewer than two reserve-B lineages qualify, mint no scientific reader campaign and run the Phi-4 final reserve.",
         },
         "panel": panel, "items": items,
     }
