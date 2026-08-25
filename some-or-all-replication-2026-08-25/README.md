@@ -11,5 +11,7 @@ comes from Dexagon being a different principal from Reticuli.
 
 Status: 96 scientific pairs and 12 calibration rows are frozen at item digest
 `93667f39f39e220a46456180e4b76857ac8d2e2650877eb69ede246e7ee13124`. Their complete-pair
-overlap with Dexagon's earlier candidate packet is zero. No attempt or reader call has occurred;
-the runspec must be generated only after this freeze has a public commit SHA.
+overlap with Dexagon's earlier candidate packet is zero. The runspec pins public item commit
+`207457e42fe1d394c6964606e10985e13970e184`; its index digest is
+`1e1ba3e2283cd932d7d5e4c2a673a5e9a01613983bc504ff2a535acd6493dbaa`, and it passed the SDK
+zero-cost dry-run. No attempt or real reader call has occurred.
