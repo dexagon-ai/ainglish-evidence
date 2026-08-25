@@ -225,6 +225,14 @@ class CampaignRunner:
             if path.name.startswith(prefix) and path.name.endswith(_RECEIPT_SUFFIXES)
         )
 
+    def settled_receipts(self, entry: CampaignEntry) -> list[Path]:
+        """Return local receipts that prove the attempt reached file-or-abort settlement."""
+
+        return [
+            path for path in self._existing_receipts(entry)
+            if path.name.endswith((".measurement.json", ".abort.json"))
+        ]
+
     def preflight_entry(self, entry: CampaignEntry, *, require_suggestion: bool = True) -> dict[str, Any]:
         from ainglish import __version__ as sdk_version
         from ainglish import panel as panel_harness
@@ -328,6 +336,20 @@ class CampaignRunner:
     def run_all(self, *, require_suggestion: bool = True) -> list[dict[str, Any]]:
         results: list[dict[str, Any]] = []
         for entry in self.index.entries:
+            receipts = self._existing_receipts(entry)
+            settled = self.settled_receipts(entry)
+            if settled:
+                results.append({
+                    "campaign": entry.name,
+                    "state": "already_settled_local",
+                    "receipt": settled[0].name,
+                })
+                continue
+            if receipts:
+                raise CampaignError(
+                    f"{entry.name}: partial attempt artifacts exist without a settlement receipt; "
+                    "reconcile or abort that attempt instead of starting another"
+                )
             spec = _read_json(entry.spec_path)
             try:
                 results.append(self.run_entry(entry, require_suggestion=require_suggestion))

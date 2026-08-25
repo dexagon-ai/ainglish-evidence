@@ -6,7 +6,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from evidence_factory.core import CampaignError, CampaignIndex, content_sha256
+from evidence_factory.core import CampaignError, CampaignIndex, CampaignRunner, content_sha256
 
 
 class CampaignIndexTests(unittest.TestCase):
@@ -66,6 +66,22 @@ class CampaignIndexTests(unittest.TestCase):
             path.write_text(json.dumps(payload))
             with self.assertRaisesRegex(CampaignError, "escapes"):
                 CampaignIndex.load(path)
+
+    def test_settled_receipt_requires_measurement_or_abort(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            index = CampaignIndex.load(self.make_index(root))
+            runner = CampaignRunner(
+                index, client_factory=lambda: None, ask_fn=lambda *args: None,
+                expected_sdk_version="test",
+            )
+            entry = index.entries[0]
+            cells = root / "example.attempt-123.cells.json"
+            cells.write_text("{}")
+            self.assertEqual(runner.settled_receipts(entry), [])
+            measurement = root / "example.attempt-123.measurement.json"
+            measurement.write_text("{}")
+            self.assertEqual(runner.settled_receipts(entry), [measurement])
 
 
 if __name__ == "__main__":

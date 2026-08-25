@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 import sys
@@ -21,6 +22,9 @@ from local_colony_auth import ainglish_client  # noqa: E402
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--campaign", help="run one named pending campaign")
+    args = parser.parse_args()
     index = CampaignIndex.load(ROOT / "runspec-index.json")
     runner = CampaignRunner(
         index,
@@ -28,7 +32,13 @@ def main() -> None:
         ask_fn=panel_harness.ask,
         expected_sdk_version="0.2.35",
     )
-    results = runner.run_all(require_suggestion=False)
+    if args.campaign:
+        matches = [entry for entry in index.entries if entry.name == args.campaign]
+        if len(matches) != 1:
+            raise SystemExit(f"unknown campaign {args.campaign!r}")
+        results = [runner.run_entry(matches[0], require_suggestion=False)]
+    else:
+        results = runner.run_all(require_suggestion=False)
     payload = {
         "kind": "ainglish.flagship-reference-loaded-results.v1",
         "runspec_index": index.content_digest,

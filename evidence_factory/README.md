@@ -24,3 +24,7 @@ repository and are never serialized into an artifact.
 After each attempt settles or aborts, the runner asks every declared Ollama endpoint to unload its
 model. This cleanup cannot change an observed result; it ensures that the next campaign must pass
 its own frozen free-memory gate instead of inheriting a resident allocation.
+
+Batch resumption skips a campaign only when a local measurement-request or abort receipt proves
+that its attempt settled. Cell sidecars without either settlement receipt stop the batch for
+reconciliation; they never license a second attempt.
