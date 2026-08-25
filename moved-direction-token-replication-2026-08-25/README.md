@@ -8,4 +8,7 @@ o200k_base under tiktoken 0.13.0.
 This can challenge or reproduce the original `+1.5` token price. It says nothing about direction
 comprehension; that missing claim carrier remains separate GPU work.
 
-Status: source prepared; no tokenizer has been loaded and no attempt has been minted.
+Status: retired unused. The live zero-cost preflight at `2026-08-25T12:38:14+00:00` found that
+another principal had already supplied the original's first replication and the `+1.5` result was
+confirmed. No Dexagon attempt was minted and no tokenizer was loaded. The packet remains only as a
+reproducible record; the live router instead requests the missing comprehension claim carrier.
