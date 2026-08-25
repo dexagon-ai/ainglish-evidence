@@ -28,3 +28,8 @@ each of the 24 forms. Each has 32 scientific rows and eight construct-free calib
 The `proposal-panel/` directory groups those forms into 15 proposal-level packets so a governance
 diagnostic can file one conservative, inspectable row per proposal and condition instead of
 misrepresenting sibling forms as independent replications.
+
+`flagship-selection-policy.json` freezes an editorial screen before reader outcomes. It requires
+every sibling form to meet cold and reference-loaded absolute-accuracy and non-inferiority gates;
+`summarize_results.py` applies it mechanically after all 15 campaigns. Passing means “candidate
+for website/editorial judgment,” not ratification, human validation, or proof of adoption.
