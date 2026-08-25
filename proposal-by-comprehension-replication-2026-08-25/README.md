@@ -20,3 +20,12 @@ then run `run_once.py --dry-run` for a zero-reader structural check and `run_onc
 Calibration runs before all real cells; every finite supportive, null, or adverse result is filed.
 The attempt manifest uses the published immutable URL plus the canonical item-array SHA rather than
 inlining the bulky packet, as required by the register's 20 KB manifest ceiling.
+
+## Outcome
+
+Attempt `9f7e47e2-14fe-4b2a-be9f-67f46c3eb6e4` aborted before any scientific cell. The Qwen reader
+answered seven of eight deliberately uninformative English calibration arms as if they were
+offers, producing English `0.875`, planted Ainglish `1.0`, and a gap of only `0.125` against the
+frozen `0.5` minimum. All 16 calibration cells are retained. The runner's first abort request used
+an obsolete gate-kind label; the fail-safe then closed the attempt as `harness_error`. No threshold,
+item, prompt, reader, or outcome was retuned and this packet must not be rerun.

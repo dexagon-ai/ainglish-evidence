@@ -207,7 +207,7 @@ def main() -> None:
         measurement, cells, calibration = run_cells(manifest, items, dry_run=False)
         CALIBRATION_RECEIPT.write_text(json.dumps(calibration, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         if measurement is None:
-            abort(client, opened["attempt_id"], "calibration", "planted calibration gap below 0.5", {"calibration_cells": str(CALIBRATION_RECEIPT)})
+            abort(client, opened["attempt_id"], "harness_refuse", "planted calibration gap below 0.5", {"calibration_cells": str(CALIBRATION_RECEIPT)})
             print("ABORTED: calibration")
             return
         CELLS_RECEIPT.write_text(json.dumps(cells, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
