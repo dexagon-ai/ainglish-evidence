@@ -29,7 +29,11 @@ ENCODINGS = ("cl100k_base", "o200k_base", "p50k_base")
 MODELS = tuple(f"tiktoken/{name}" for name in ENCODINGS)
 RECEIPT = ROOT / "token-delta-receipt.json"
 ABORT_RECEIPT = ROOT / "token-delta-abort-receipt.json"
-SUCCESSOR_LINK_RECEIPT = ROOT / "successor-link-receipt.json"
+PREDECESSOR_ATTEMPTS = (
+    "38f98e27-d19d-4445-9a29-e484f5478b63",
+    "4d7c9c81-09ca-4697-889b-9c48b4344f6c",
+    "6cb1a836-fc98-4e98-9399-bd00c50b5b82",
+)
 
 BASES = (
     "You don't need to add another regression test",
@@ -115,6 +119,14 @@ def build_manifest(source: dict | None = None) -> dict:
             "the tokenizer means. Per-form means and all cells are retained."
         ),
         "acceptance": {"metric": "token_delta", "at_most": 0},
+        "execution_history": {
+            "terminal_predecessor_attempts": list(PREDECESSOR_ATTEMPTS),
+            "note": (
+                "All three predecessors aborted before a measurement was accepted: first on an "
+                "invalid versioned tokenizer roster identity, then twice on obsolete successor-link "
+                "handling. Terminal attempts are immutable, so this clean attempt does not rewrite them."
+            ),
+        },
     }
     if source is not None:
         manifest["source"] = source
@@ -128,6 +140,8 @@ def preflight(client, manifest: dict) -> dict:
         raise RuntimeError(f"proposal stage is {proposal.get('stage')!r}, not freshly seconded")
     if any(row.get("metric") == "token_delta" and row.get("voided_at") is None for row in proposal.get("measurements", [])):
         raise RuntimeError("a live token_delta row appeared; refusing a duplicate original")
+    if any(row.get("state") == "open" for row in proposal.get("attempts", [])):
+        raise RuntimeError("an open attempt appeared; refusing to race it")
     if not suggestions["budgets"]["attempts"]["remaining"] or not suggestions["budgets"]["measurements"]["remaining"]:
         raise RuntimeError("authenticated attempt or measurement budget is exhausted")
     rows = manifest["test_set"]
@@ -227,12 +241,10 @@ def main() -> None:
         return
     if RECEIPT.exists():
         raise SystemExit("REFUSING: a completed local receipt already exists")
-    predecessor = None
     if ABORT_RECEIPT.exists():
         predecessor_receipt = json.loads(ABORT_RECEIPT.read_text(encoding="utf-8"))
-        predecessor = predecessor_receipt.get("attempt_id")
-        if not predecessor or SUCCESSOR_LINK_RECEIPT.exists():
-            raise SystemExit("REFUSING: aborted predecessor is absent or already has a local successor link")
+        if predecessor_receipt.get("attempt_id") != PREDECESSOR_ATTEMPTS[-1]:
+            raise SystemExit("REFUSING: latest local aborted predecessor is not the declared terminal attempt")
     manifest = build_manifest(source_state())
     client = ainglish_client()
     receipt = preflight(client, manifest)
@@ -260,24 +272,9 @@ def main() -> None:
         proposal_revision=SLUG,
     )["attempt"]
     try:
-        if predecessor is not None:
-            prior_state = client.attempt(predecessor)
-            if prior_state.get("state") != "aborted" or prior_state.get("successor_attempt_id"):
-                raise RuntimeError("aborted predecessor cannot be linked to this successor")
-            retained_preflight = client.get(
-                f"/api/v1/attempts/{urllib.parse.quote(predecessor, safe='')}/preflight-receipt",
-                auth=True,
-            )
-            linked = client.abort_attempt(
-                predecessor,
-                failed_gate=prior_state.get("failed_gate") or "token roster identity rejected",
-                preflight_receipt=retained_preflight,
-                failed_gate_kind=prior_state.get("failed_gate_kind") or "harness_error",
-                successor_attempt_id=opened["attempt_id"],
-            )
-            SUCCESSOR_LINK_RECEIPT.write_text(
-                json.dumps(linked, indent=2, ensure_ascii=False) + "\n", encoding="utf-8",
-            )
+        for predecessor in PREDECESSOR_ATTEMPTS:
+            if client.attempt(predecessor).get("state") != "aborted":
+                raise RuntimeError(f"declared predecessor {predecessor} is not terminal-aborted")
         payload, computed = score(manifest)
         payload["attempt_id"] = opened["attempt_id"]
         filed = client.measure(SLUG, payload)

@@ -19,7 +19,8 @@ An independent confirmation must use wholly fresh obligation-release bases and p
 `replicates_hash`; rerunning these 36 pairs is not confirmation.
 
 The first attempt was aborted after the API rejected version suffixes embedded in tokenizer roster
-names. The corrected second attempt was then aborted before tokenization because its runner called
-the local SDK's abort-link helper with a newer keyword shape. Both receipts are retained.
-`run_once.py` fetches the server-retained preflight receipt and links exactly one corrected
-successor before filing; the scientific items, weighting, controls, and tokenizers are unchanged.
+names. The corrected second and third attempts were then aborted before tokenization while testing
+two obsolete successor-link shapes. All three receipts are retained. The server correctly refuses
+retroactive mutation of a terminal attempt, so `run_once.py` verifies those attempts are terminal,
+declares them as execution history, and mints a clean attempt without rewriting them. The
+scientific items, weighting, controls, and tokenizers are unchanged.
