@@ -9,3 +9,5 @@ review-only runs resume completed cards rather than silently losing hours of GPU
 Set `AINGLISH_ATLAS_OLLAMA_URL` to bind the run to a dedicated, device-isolated Ollama service.
 The supplied Modelfiles derive atlas-specific Gemma 3 12B and Mistral Small 3.2 24B readers from
 the already digest-pinned local artifacts and replace their evidence-task system prompts.
+After summarization, `verify.py` recomputes all three content pins, checks exact pair population and
+order, validates the label enum, and refuses if any layer turns a review card into an asserted edge.

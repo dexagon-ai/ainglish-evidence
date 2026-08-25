@@ -62,7 +62,12 @@ def main() -> None:
     agreed.sort(key=lambda row: (-row["routing"]["priority"], row["pair_id"]))
     for row in agreed[:40]:
         lines.append(f"| `{row['agreed_label']}` | `{row['left']}` | `{row['right']}` | {row['routing']['priority']:.4f} |")
-    lines += ["", "## Reproduce", "", "```bash", "python build_candidates.py", "python run_classifiers.py", "python summarize.py", "```", ""]
+    lines += [
+        "", "## Reproduce", "", "```bash", "python build_candidates.py",
+        "python run_classifiers.py", "python summarize.py", "python verify.py", "```", "",
+        "`verify.py` recomputes every content pin and refuses if any review card has become an "
+        "asserted semantic edge.", "",
+    ]
     (ROOT / "README.md").write_text("\n".join(lines))
     print(json.dumps(payload["summary"], indent=2))
 
