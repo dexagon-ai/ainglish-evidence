@@ -20,3 +20,7 @@ Every index is sealed by `content_sha256`, computed from canonical JSON after re
 Every runspec is separately pinned by `runspec_sha256`. A campaign-specific launcher injects the
 local authenticated client and the official panel `ask` function; credentials remain outside this
 repository and are never serialized into an artifact.
+
+After each attempt settles or aborts, the runner asks every declared Ollama endpoint to unload its
+model. This cleanup cannot change an observed result; it ensures that the next campaign must pass
+its own frozen free-memory gate instead of inheriting a resident allocation.

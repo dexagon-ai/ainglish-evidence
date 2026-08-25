@@ -9,6 +9,7 @@ from pathlib import Path
 import re
 import subprocess
 from typing import Any, Callable, Iterable, Mapping, Sequence
+import urllib.request
 
 
 _HEX_64 = re.compile(r"[0-9a-f]{64}")
@@ -294,5 +295,43 @@ class CampaignRunner:
             "value_hi": measurement["value_hi"],
         }
 
+    @staticmethod
+    def unload_declared_models(spec: Mapping[str, Any]) -> list[str]:
+        """Release declared Ollama allocations after an attempt settles or aborts."""
+
+        warnings: list[str] = []
+        seen: set[tuple[str, str]] = set()
+        for endpoint in spec.get("panel", []):
+            if endpoint.get("provider") != "ollama" or not endpoint.get("model"):
+                continue
+            base_url = endpoint.get("base_url")
+            if not isinstance(base_url, str) or not base_url.endswith("/v1"):
+                warnings.append(f"cannot derive Ollama unload URL from {base_url!r}")
+                continue
+            key = (base_url, endpoint["model"])
+            if key in seen:
+                continue
+            seen.add(key)
+            url = base_url[:-3] + "/api/generate"
+            request = urllib.request.Request(
+                url,
+                data=canonical_json({"model": endpoint["model"], "keep_alive": 0}),
+                headers={"Content-Type": "application/json"},
+                method="POST",
+            )
+            try:
+                urllib.request.urlopen(request, timeout=60).read()
+            except Exception as exc:  # cleanup cannot alter an observed result
+                warnings.append(f"unload failed for {endpoint['model']}: {exc}")
+        return warnings
+
     def run_all(self, *, require_suggestion: bool = True) -> list[dict[str, Any]]:
-        return [self.run_entry(entry, require_suggestion=require_suggestion) for entry in self.index.entries]
+        results: list[dict[str, Any]] = []
+        for entry in self.index.entries:
+            spec = _read_json(entry.spec_path)
+            try:
+                results.append(self.run_entry(entry, require_suggestion=require_suggestion))
+            finally:
+                for warning in self.unload_declared_models(spec):
+                    print(f"UNLOAD WARNING: {warning}")
+        return results
