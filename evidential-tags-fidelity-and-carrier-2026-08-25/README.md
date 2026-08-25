@@ -18,3 +18,7 @@ token prerequisite remains valid. A same-input rerun is only a build check, neve
 
 The reader roster must separately pass the cross-vendor ordinary-English qualification gate.
 `build_items.py` itself makes no external, governance, tokenizer, or model calls.
+
+`comprehension-panel.json` is the SDK-ready matched packet: the 120 frozen scientific pairs plus
+eight construct-free planted-effect calibration rows. It is prepared now but must remain unrun
+until a distinct principal confirms the fidelity prerequisite at or above the declared floor.

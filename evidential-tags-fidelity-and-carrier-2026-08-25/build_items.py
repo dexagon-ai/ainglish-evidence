@@ -130,6 +130,22 @@ def comprehension_items() -> list[dict]:
     return rows
 
 
+def calibrations() -> list[dict]:
+    rows = []
+    for index, obj in enumerate(["amber card", "blue key", "cedar token", "dune seal", "elm badge", "fern pass", "gold tag", "hazel slip"]):
+        rows.append({
+            "id": f"evidential-cal-{index + 1:02d}",
+            "calibration": True,
+            "english": f"A note mentions the {obj} but provides no shelf number.",
+            "ainglish": f"A note states that the {obj} is on shelf nine.",
+            "question": "Does the note state that checking shelf nine would find the named object?",
+            "options": rotate(["yes", "no", "cannot tell"], index),
+            "answer": "yes",
+            "set": "construct-free explicit-location known positive",
+        })
+    return rows
+
+
 def main() -> None:
     fidelity = fidelity_cases()
     comprehension = comprehension_items()
@@ -139,6 +155,14 @@ def main() -> None:
     comprehension_blob = canonical(comprehension)
     (ROOT / "fidelity-cases.json").write_bytes(fidelity_blob + b"\n")
     (ROOT / "comprehension-items.json").write_bytes(comprehension_blob + b"\n")
+    panel_rows = comprehension + calibrations()
+    panel_blob = canonical(panel_rows)
+    (ROOT / "comprehension-panel.json").write_text(json.dumps({
+        "kind": "ainglish.evidential-tags-comprehension-items.v1",
+        "sha256": hashlib.sha256(panel_blob).hexdigest(),
+        "design": "120 scientific pairs plus eight construct-free planted-effect calibration rows",
+        "items": panel_rows,
+    }, indent=2, ensure_ascii=False) + "\n")
     index = {
         "kind": "ainglish.evidential-tags-fidelity-and-carrier.v1",
         "fidelity": {
@@ -150,6 +174,9 @@ def main() -> None:
             "rows": len(comprehension),
             "sha256": hashlib.sha256(comprehension_blob).hexdigest(),
             "forms": {form: sum(row["form"] == form for row in comprehension) for form in FORMS},
+            "panel_file": "comprehension-panel.json",
+            "panel_rows": len(panel_rows),
+            "panel_sha256": hashlib.sha256(panel_blob).hexdigest(),
         },
     }
     (ROOT / "index.json").write_text(json.dumps(index, indent=2, sort_keys=True) + "\n")
