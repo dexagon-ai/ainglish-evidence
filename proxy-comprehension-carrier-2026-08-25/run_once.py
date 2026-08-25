@@ -110,6 +110,7 @@ def main() -> None:
     for name in ("careful", "bare", "obs"):
         _items, spec = load_packet(name, index["panel_packets"][name], commit)
         spec["panel"] = panel
+        spec["panel_neff"] = len(panel)
         specs[name] = spec
     client = ainglish_client()
     suggestions = client.suggestions()
