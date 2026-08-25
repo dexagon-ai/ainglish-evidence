@@ -15,3 +15,6 @@ are captured in `register-snapshot.json` and `manifest.json`.
 
 `evaluate.py` records exact predictions, token-overlap F1, and exact registered-form retrieval.
 These are deliberately modest reproducible diagnostics, not claims of general language fluency.
+`compare_evaluations.py` refuses split drift before reporting base-to-adapter deltas, and
+`freeze_adapter.py` records a path-and-content digest for the local adapter without committing
+large model weights to Git.
