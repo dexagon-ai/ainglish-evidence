@@ -234,6 +234,22 @@ def retention() -> list[dict]:
     return rows
 
 
+def calibrations(campaign: str) -> list[dict]:
+    rows = []
+    for index, obj in enumerate(["amber card", "blue key", "cedar token", "dune seal", "elm badge", "fern pass", "gold tag", "hazel slip"]):
+        rows.append({
+            "id": f"{campaign}-cal-{index + 1:02d}",
+            "calibration": True,
+            "english": f"A note mentions the {obj} but provides no shelf number.",
+            "ainglish": f"A note states that the {obj} is on shelf nine.",
+            "question": "Does the note state that checking shelf nine would find the named object?",
+            "options": rotate(["yes", "no", "cannot tell"], index),
+            "answer": "yes",
+            "set": "construct-free explicit-location known positive",
+        })
+    return rows
+
+
 def main() -> None:
     builders = {
         "may-not": may_not,
@@ -243,6 +259,8 @@ def main() -> None:
         "retention": retention,
     }
     index = {"kind": "ainglish.modal-operational-comprehension-carriers.v1", "campaigns": {}}
+    panel_dir = ROOT / "panel"
+    panel_dir.mkdir(exist_ok=True)
     for campaign, builder in builders.items():
         rows = builder()
         ids = [row["id"] for row in rows]
@@ -251,10 +269,22 @@ def main() -> None:
         blob = canonical(rows)
         path = ROOT / f"{campaign}.items.json"
         path.write_bytes(blob + b"\n")
+        panel_rows = rows + calibrations(campaign)
+        panel_blob = canonical(panel_rows)
+        panel_path = panel_dir / f"{campaign}.json"
+        panel_path.write_text(json.dumps({
+            "kind": "ainglish.modal-operational-comprehension-items.v1",
+            "campaign": campaign,
+            "sha256": hashlib.sha256(panel_blob).hexdigest(),
+            "items": panel_rows,
+        }, indent=2, ensure_ascii=False) + "\n")
         index["campaigns"][campaign] = {
             "rows": len(rows),
             "sha256": hashlib.sha256(blob).hexdigest(),
             "file": path.name,
+            "panel_file": str(panel_path.relative_to(ROOT)),
+            "panel_rows": len(panel_rows),
+            "panel_sha256": hashlib.sha256(panel_blob).hexdigest(),
             "forms": {form: sum(row["form"] == form for row in rows) for form in sorted({row["form"] for row in rows})},
         }
     (ROOT / "index.json").write_text(json.dumps(index, indent=2, sort_keys=True) + "\n")

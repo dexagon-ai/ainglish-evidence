@@ -23,3 +23,5 @@ gate. A null, adverse, or unresolved prerequisite leaves its carrier dormant rat
 changing the population.
 
 `index.json` records canonical SHA-256 commitments for the five generated packets.
+The `panel/` directory contains SDK-ready versions with the same scientific rows plus eight
+construct-free planted-effect calibration rows per campaign.
