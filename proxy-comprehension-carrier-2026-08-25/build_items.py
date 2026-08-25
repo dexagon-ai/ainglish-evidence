@@ -56,6 +56,23 @@ def canonical(value: object) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
 
 
+def calibrations() -> list[dict]:
+    rows = []
+    objects = ["amber card", "blue key", "cedar token", "dune seal", "elm badge", "fern pass", "gold tag", "hazel slip"]
+    for index, obj in enumerate(objects):
+        rows.append({
+            "id": f"proxy-cal-{index + 1:02d}",
+            "calibration": True,
+            "english": f"A note mentions the {obj} but gives no locker number.",
+            "ainglish": f"A note states that the {obj} is in locker seven.",
+            "question": "Does the note state that opening locker seven would find the named object?",
+            "options": rotate(["yes", "no", "cannot tell"], index),
+            "answer": "yes",
+            "set": "construct-free explicit-location known positive",
+        })
+    return rows
+
+
 def main() -> None:
     rows = []
     for index in range(96):
@@ -86,6 +103,30 @@ def main() -> None:
     assert all(row["answer"] in row["options"] for row in rows)
     blob = canonical(rows)
     (ROOT / "items.json").write_bytes(blob + b"\n")
+    receipt = {}
+    for comparison, right_arm in (("careful", "careful_english"), ("bare", "bare"), ("obs", "obs")):
+        scientific = [{
+            "id": row["id"],
+            "scenario_id": row["scenario_id"],
+            "english": row["arms"][right_arm],
+            "ainglish": row["arms"]["proxy"],
+            "question": row["question"],
+            "options": row["options"],
+            "answer": row["answer"],
+            "strata": dict(row["strata"], comparator=right_arm),
+        } for row in rows]
+        panel_rows = scientific + calibrations()
+        panel_blob = canonical(panel_rows)
+        payload = {
+            "kind": "ainglish.proxy-comprehension-items.v1",
+            "comparison": comparison,
+            "sha256": hashlib.sha256(panel_blob).hexdigest(),
+            "design": "96 scientific pairs plus eight construct-free planted-effect calibration rows",
+            "items": panel_rows,
+        }
+        panel_path = ROOT / f"{comparison}-items.json"
+        panel_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
+        receipt[comparison] = {"file": panel_path.name, "rows": len(panel_rows), "scientific": 96, "calibration": 8, "items_sha256": payload["sha256"]}
     index = {
         "kind": "ainglish.proxy-comprehension-carrier.v1",
         "rows": len(rows),
@@ -93,6 +134,7 @@ def main() -> None:
         "items_sha256": hashlib.sha256(blob).hexdigest(),
         "question_frames": len(FRAMES),
         "domains": len(CELLS),
+        "panel_packets": receipt,
     }
     (ROOT / "index.json").write_text(json.dumps(index, indent=2, sort_keys=True) + "\n")
     print(json.dumps(index, indent=2, sort_keys=True))

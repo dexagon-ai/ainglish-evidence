@@ -18,3 +18,8 @@ The complete-English arm is the confirmatory comparator for the non-inferiority 
 `obs` arms are descriptive distinctiveness diagnostics and must not replace that comparator.
 The public item commitment precedes all reader calls. A run remains gated on a qualifying roster
 with at least two genuinely distinct model lineages.
+
+`careful-items.json`, `bare-items.json`, and `obs-items.json` are SDK-ready paired packets. Each
+contains the same 96 frozen scientific scenarios plus eight construct-free planted-effect
+calibration rows. Only the careful comparison is the governance claim carrier; the two other files
+are diagnostics and are retained even when they disagree with the carrier.
