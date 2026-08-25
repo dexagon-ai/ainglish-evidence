@@ -26,9 +26,10 @@ from local_colony_auth import ainglish_client  # noqa: E402
 SLUG = "rather-not-fine-either-way-would-welcome-you-don-t-have-to-s"
 TOKENIZER_VERSION = "0.13.0"
 ENCODINGS = ("cl100k_base", "o200k_base", "p50k_base")
-MODELS = tuple(f"tiktoken/{name}@{TOKENIZER_VERSION}" for name in ENCODINGS)
+MODELS = tuple(f"tiktoken/{name}" for name in ENCODINGS)
 RECEIPT = ROOT / "token-delta-receipt.json"
 ABORT_RECEIPT = ROOT / "token-delta-abort-receipt.json"
+SUCCESSOR_LINK_RECEIPT = ROOT / "successor-link-receipt.json"
 
 BASES = (
     "You don't need to add another regression test",
@@ -99,6 +100,7 @@ def build_manifest(source: dict | None = None) -> dict:
         "formula_version": 1,
         "construct": "rather-not / fine-either-way / would-welcome",
         "models": list(MODELS),
+        "environment": {"library": "tiktoken", "version": TOKENIZER_VERSION},
         "test_set": rows,
         "seed": "none — deterministic tokenizer counts, no sampling",
         "population": "twelve operational releases from obligation crossed with all three preference states",
@@ -223,8 +225,14 @@ def main() -> None:
             "per_form": 12,
         }, indent=2))
         return
-    if RECEIPT.exists() or ABORT_RECEIPT.exists():
-        raise SystemExit("REFUSING: a terminal local receipt already exists")
+    if RECEIPT.exists():
+        raise SystemExit("REFUSING: a completed local receipt already exists")
+    predecessor = None
+    if ABORT_RECEIPT.exists():
+        predecessor_receipt = json.loads(ABORT_RECEIPT.read_text(encoding="utf-8"))
+        predecessor = predecessor_receipt.get("attempt_id")
+        if not predecessor or SUCCESSOR_LINK_RECEIPT.exists():
+            raise SystemExit("REFUSING: aborted predecessor is absent or already has a local successor link")
     manifest = build_manifest(source_state())
     client = ainglish_client()
     receipt = preflight(client, manifest)
@@ -252,6 +260,19 @@ def main() -> None:
         proposal_revision=SLUG,
     )["attempt"]
     try:
+        if predecessor is not None:
+            prior_state = client.attempt(predecessor)
+            if prior_state.get("state") != "aborted" or prior_state.get("successor_attempt_id"):
+                raise RuntimeError("aborted predecessor cannot be linked to this successor")
+            linked = client.abort_attempt(
+                predecessor,
+                failed_gate=prior_state.get("failed_gate") or "token roster identity rejected",
+                preflight_receipt_hash=prior_state.get("preflight_receipt_hash"),
+                successor_attempt_id=opened["attempt_id"],
+            )
+            SUCCESSOR_LINK_RECEIPT.write_text(
+                json.dumps(linked, indent=2, ensure_ascii=False) + "\n", encoding="utf-8",
+            )
         payload, computed = score(manifest)
         payload["attempt_id"] = opened["attempt_id"]
         filed = client.measure(SLUG, payload)
