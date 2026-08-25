@@ -124,19 +124,32 @@ def census() -> dict:
     }
 
 
-def reader_phase_a() -> dict:
+def reader_qualification() -> dict:
     root = "reader-qualification-v5-2026-08-25"
-    spec = load(f"{root}/phase-a-holdout.json")
-    sealed = dict(spec); expected = sealed.pop("content_sha256")
-    assert digest(sealed) == expected
-    result = load(f"{root}/phase-a-result.json")
-    sealed_result = dict(result); result_expected = sealed_result.pop("content_sha256")
-    assert digest(sealed_result) == result_expected
-    assert result["spec_sha256"] == expected
-    assert not result["roster_ready"] and not result["fixed_roster"]
+    phases = []
+    for name in ("phase-a", "reserve", "phi-reserve"):
+        spec = load(f"{root}/{name}-holdout.json")
+        sealed = dict(spec); spec_expected = sealed.pop("content_sha256")
+        assert digest(sealed) == spec_expected
+        result = load(f"{root}/{name}-result.json")
+        sealed_result = dict(result); result_expected = sealed_result.pop("content_sha256")
+        assert digest(sealed_result) == result_expected
+        assert result["spec_sha256"] == spec_expected
+        phases.append({
+            "phase": name, "spec_sha256": spec_expected, "result_sha256": result_expected,
+            "roster_ready": result["roster_ready"], "qualification": result["qualification"],
+        })
+    selected = load(f"{root}/selected-result.json")
+    sealed_selected = dict(selected); selected_expected = sealed_selected.pop("content_sha256")
+    assert digest(sealed_selected) == selected_expected
+    assert selected["source_results"] == [
+        {"file": f"{row['phase']}-result.json", "content_sha256": row["result_sha256"]}
+        for row in phases
+    ]
+    assert not selected["roster_ready"] and not selected["fixed_roster"]
     return {
-        "spec_sha256": expected, "result_sha256": result_expected,
-        "roster_ready": result["roster_ready"], "qualification": result["qualification"],
+        "phases": phases, "selection_sha256": selected_expected,
+        "roster_ready": selected["roster_ready"], "fixed_roster": selected["fixed_roster"],
     }
 
 
@@ -144,7 +157,7 @@ def main() -> None:
     report = {
         "kind": "ainglish.five-workstream-integrity-report.v1",
         "network_calls": 0, "model_calls": 0, "governance_calls": 0, "status": "passed",
-        "reader_phase_a": reader_phase_a(), "modal_tokens": modal_tokens(),
+        "reader_qualification": reader_qualification(), "modal_tokens": modal_tokens(),
         "modal_carriers": modal_carriers(), "proxy": proxy(), "evidential": evidential(), "census": census(),
     }
     report["content_sha256"] = digest(report)

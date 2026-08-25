@@ -38,3 +38,10 @@ The public result is final and neither reader is repeated. The predeclared Phi-4
 runs once to finish the five-lineage laboratory. Because Reserve B contributed zero qualified
 lineages, Phi-4 alone cannot make the scientific roster ready; at best it can leave one qualified,
 never-repeated lineage for a future independently frozen qualification screen.
+
+Phi-4 did not qualify: it returned 56/64 exact codes, scored 49/64, and missed several per-axis
+gates. `selected-result.json` binds all three published phase receipts and records
+`roster_ready: false` with an empty fixed roster. No proxy, evidential-tag, modal/operational, or
+ratified-census scientific attempt may use this laboratory. Their public frozen inputs remain a
+handoff for a future independently qualified roster; this adverse instrument result is not a
+reason to lower the gates or repeat any reader cell.
