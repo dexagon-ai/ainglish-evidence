@@ -102,11 +102,12 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--phase-a", action="store_true")
     parser.add_argument("--reserve", action="store_true")
+    parser.add_argument("--phi-reserve", action="store_true")
     args = parser.parse_args()
-    if args.phase_a and args.reserve:
+    if sum((args.phase_a, args.reserve, args.phi_reserve)) > 1:
         raise SystemExit("choose at most one phase")
-    result_name = "phase-a-result.json" if args.phase_a else "reserve-result.json" if args.reserve else "result.json"
-    spec_name = "phase-a-holdout.json" if args.phase_a else "reserve-holdout.json" if args.reserve else "holdout.json"
+    result_name = "phase-a-result.json" if args.phase_a else "reserve-result.json" if args.reserve else "phi-reserve-result.json" if args.phi_reserve else "result.json"
+    spec_name = "phase-a-holdout.json" if args.phase_a else "reserve-holdout.json" if args.reserve else "phi-reserve-holdout.json" if args.phi_reserve else "holdout.json"
     result_path = ROOT / result_name
     if result_path.exists():
         raise SystemExit("REFUSING: result exists; never rerun")

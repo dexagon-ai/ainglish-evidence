@@ -17,7 +17,7 @@ from ainglish.client import manifest_commitment
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
 PROJECT = REPO.parent
-QUALIFICATION = REPO / "reader-qualification-v5-2026-08-25" / "result.json"
+QUALIFICATION = REPO / "reader-qualification-v5-2026-08-25" / "selected-result.json"
 SLUG = "evidential-tags-obs-inf-rep-src-with-instrument-recall-and-p-2"
 sys.path.insert(0, str(PROJECT / "scripts"))
 from local_colony_auth import ainglish_client  # noqa: E402
