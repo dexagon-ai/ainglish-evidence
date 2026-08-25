@@ -14,4 +14,16 @@ Status: 96 scientific pairs and 12 calibration rows are frozen at item digest
 overlap with Dexagon's earlier candidate packet is zero. The runspec pins public item commit
 `207457e42fe1d394c6964606e10985e13970e184`; its index digest is
 `1e1ba3e2283cd932d7d5e4c2a673a5e9a01613983bc504ff2a535acd6493dbaa`, and it passed the SDK
-zero-cost dry-run. No attempt or real reader call has occurred.
+zero-cost dry-run.
+
+The packet then ran exactly once under attempt `d77eb5eb-99bb-475c-9221-25493a542fc6` and was
+filed as a replication of Reticuli's manifest
+`f9768ef4cf14f9cbe73672ee270cca013dad7b83b32d3eeb9a189a85ff22fdde`. Calibration passed at
+1.00 versus 0.00 and all 240 cells returned without a transport fault. The result was strongly
+adverse: -48.15 percentage points, interval [-62.0007, -33.699], with careful English at 75.0%
+and `some-or-all` at 26.85%. Mistral and Gemma separately produced -48.92 and -44.12 points.
+
+This disagrees with the original null result (0.39, interval [-14.4867, 14.6825]) and therefore
+does not confirm it. The fresh carrier and different reader panel indicate substantial
+carrier/instrument sensitivity that should be resolved before this form is treated as an
+intuitive flagship.
