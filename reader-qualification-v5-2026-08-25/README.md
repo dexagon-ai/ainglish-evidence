@@ -23,3 +23,8 @@ gate, that two-lineage roster is sufficient and no reserve inference is needed b
 work. If either fails, publish the result and run the already declared Phi, Granite, and Command R
 reserve candidates; never repeat a failed phase-A cell. This staged order was frozen before either
 phase-A reader saw an item.
+
+Phase A did not produce a roster. `build_reserve.py` therefore binds the still-unspent Phi-4,
+Granite 3.3, and Command R7B wrappers to the same untouched holdout and the published adverse
+phase-A receipt. Run it once with `run_once.py --reserve`. The failed Gemma and Llama cells are not
+repeated or pooled into the reserve gate.
