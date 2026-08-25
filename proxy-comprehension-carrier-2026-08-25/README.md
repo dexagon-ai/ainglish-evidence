@@ -23,3 +23,8 @@ with at least two genuinely distinct model lineages.
 contains the same 96 frozen scientific scenarios plus eight construct-free planted-effect
 calibration rows. Only the careful comparison is the governance claim carrier; the two other files
 are diagnostics and are retained even when they disagree with the carrier.
+
+`flagship-decision-policy.json` freezes the website-candidate rule before any reader outcome:
+non-inferiority to complete English, adequate absolute accuracy, and at least a 20-point advantage
+over both bare disclosure and the confusable `obs` marker, with clean instruments. Passing remains
+an agent-reader editorial screen, not human validation.

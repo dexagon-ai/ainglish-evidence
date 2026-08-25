@@ -1,0 +1,24 @@
+{
+  "kind": "ainglish.proxy-flagship-decision-policy.v1",
+  "frozen_before_reader_results": true,
+  "primary_gates": {
+    "minimum_proxy_accuracy": 0.8,
+    "minimum_careful_english_accuracy": 0.8,
+    "minimum_proxy_minus_careful_pp": -5.0
+  },
+  "distinctiveness_gates": {
+    "minimum_proxy_minus_bare_pp": 20.0,
+    "minimum_proxy_minus_obs_pp": 20.0
+  },
+  "instrument_gates": {
+    "all_three_calibrations_pass": true,
+    "zero_transport_faults": true,
+    "zero_response_bound_truncations": true
+  },
+  "classification": {
+    "flagship-candidate": "all primary, distinctiveness, and instrument gates pass",
+    "understood-but-not-distinctive": "primary gates pass but at least one diagnostic advantage gate fails",
+    "not-ready": "a primary or instrument gate fails"
+  },
+  "interpretation": "This agent-reader screen identifies a candidate for human-facing editorial use; it is neither human validation nor adoption evidence."
+}
