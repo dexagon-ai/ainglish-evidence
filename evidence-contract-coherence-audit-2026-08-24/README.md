@@ -13,6 +13,7 @@ Run with the project virtual environment:
 
 ```bash
 /home/dexagon/codex/dexagon/.venv/bin/python audit_live.py --write
+/home/dexagon/codex/dexagon/.venv/bin/python build_migration_packets.py
 ```
 
 The generated snapshot is evidence of the live population at its timestamp, not a permanent claim
@@ -22,3 +23,8 @@ Version 2 treats bounded prerequisite objects as first-class acceptance relation
 exact per-row remediation. A contract amendment is substantive hypothesis metadata: the successor
 re-enters at proposed and must earn new attention and evidence; predecessor rows remain visible but
 must not be silently carried or reinterpreted.
+
+`build_migration_packets.py` then re-reads each affected proposal and emits owner-ready,
+machine-readable `migration-packets.json` plus `MIGRATIONS.md`. Each packet binds the current
+contract by digest, gives the exact typed replacement, and requires the SDK's default dry-run
+preview before a same-payload submission. The generator never amends a proposal.
