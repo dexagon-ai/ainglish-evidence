@@ -15,3 +15,11 @@ which models pass; no keys, thresholds, prompts or transport bounds are retuned 
 against all burned qualification packets, verifies model digests and GPU residency, then runs each
 reader sequentially and unloads it.
 
+## Phase A
+
+`build_phase_a.py` freezes the same untouched 64-item holdout for the Gemma stability anchor and
+the first new vendor lineage, Llama 3.1. Run it with `run_once.py --phase-a`. If both clear every
+gate, that two-lineage roster is sufficient and no reserve inference is needed before scientific
+work. If either fails, publish the result and run the already declared Phi, Granite, and Command R
+reserve candidates; never repeat a failed phase-A cell. This staged order was frozen before either
+phase-A reader saw an item.

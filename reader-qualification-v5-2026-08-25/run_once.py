@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import datetime
 import hashlib
 import json
@@ -98,10 +99,14 @@ def prompt(row: dict) -> tuple[str, dict[str, str]]:
 
 
 def main() -> None:
-    result_path = ROOT / "result.json"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--phase-a", action="store_true")
+    args = parser.parse_args()
+    result_path = ROOT / ("phase-a-result.json" if args.phase_a else "result.json")
     if result_path.exists():
         raise SystemExit("REFUSING: result exists; never rerun")
-    spec = json.loads((ROOT / "holdout.json").read_text(encoding="utf-8"))
+    spec_path = ROOT / ("phase-a-holdout.json" if args.phase_a else "holdout.json")
+    spec = json.loads(spec_path.read_text(encoding="utf-8"))
     preflight = validate(spec)
     rows = []
     started = datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -165,4 +170,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
