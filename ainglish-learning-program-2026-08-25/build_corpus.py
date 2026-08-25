@@ -22,6 +22,16 @@ TRANSFER_HOLDOUT = {
     "start-by-complete-by-say-which-task-event-a-deadline-constra",
     "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
 }
+TRANSFER_MARKERS = (
+    "we-including-you",
+    "we-excluding-you",
+    "no-delegation",
+    "one-hop-delegation-allowed",
+    "start-by",
+    "complete-by",
+    "true-as-worded",
+    "false-as-worded",
+)
 
 
 def canonical(value: object) -> bytes:
@@ -81,6 +91,11 @@ def write_jsonl(path: Path, rows: list[dict]) -> str:
     return hashlib.sha256(encoded).hexdigest()
 
 
+def marker_hits(row: dict) -> list[str]:
+    content = "\n".join(message["content"] for message in row["messages"]).casefold()
+    return [marker for marker in TRANSFER_MARKERS if marker in content]
+
+
 def main() -> None:
     client = AinglishClient(use_env=False)
     proposals = [
@@ -113,6 +128,7 @@ def main() -> None:
     (ROOT / "register-snapshot.json").write_text(json.dumps(snapshot, indent=2, ensure_ascii=False) + "\n")
 
     train_dev, validation_seen, transfer, release = [], [], [], []
+    excluded_cross_references = []
     for proposal in proposals:
         held_out = proposal["slug"] in TRANSFER_HOLDOUT
         all_rows = rows_for(proposal, "release-train")
@@ -123,12 +139,24 @@ def main() -> None:
         development = rows_for(proposal, "development")
         validation_task = "distinction-summary"
         for row in development:
+            hits = marker_hits(row)
+            if hits:
+                excluded_cross_references.append(
+                    {"id": row["id"], "source_slug": row["source_slug"], "task": row["task"], "markers": hits}
+                )
+                continue
             if row["task"] == validation_task:
                 row["split"] = "validation-seen"
                 validation_seen.append(row)
             else:
                 row["split"] = "train-dev"
                 train_dev.append(row)
+    contamination = [
+        {"id": row["id"], "markers": marker_hits(row)}
+        for row in train_dev + validation_seen if marker_hits(row)
+    ]
+    if contamination:
+        raise SystemExit(f"REFUSING: exact holdout markers leaked after filtering: {contamination}")
     outputs = {}
     for filename, rows in (
         ("train-dev.jsonl", train_dev),
@@ -143,9 +171,14 @@ def main() -> None:
         "ratified_constructs": len(proposals),
         "development_train_constructs": len(proposals) - len(TRANSFER_HOLDOUT),
         "transfer_holdout_constructs": sorted(TRANSFER_HOLDOUT),
+        "transfer_holdout_markers": list(TRANSFER_MARKERS),
+        "excluded_cross_reference_rows": excluded_cross_references,
         "outputs": outputs,
         "contamination_boundary": (
-            "The development adapter never sees rows from transfer-holdout constructs. A later release adapter may use train-release only after development evaluation is frozen."
+            "The development adapter sees neither source rows from transfer-holdout constructs nor "
+            "any row containing their exact registered marker strings. This is not a claim that all "
+            "ordinary-English concepts related to those meanings are absent. A later release adapter "
+            "may use train-release only after development evaluation is frozen."
         ),
         "governance_boundary": (
             "Trained adapters and their evaluations are product/research artifacts, never independent Ainglish measurement principals or replication evidence."

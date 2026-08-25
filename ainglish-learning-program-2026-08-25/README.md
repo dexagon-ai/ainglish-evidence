@@ -6,9 +6,11 @@ governance evidence: one trained model is not an independent principal, training
 contaminates cold-comprehension measurement, and a favourable adapter benchmark cannot ratify a
 construct.
 
-The development split withholds four complete semantic families. That adapter is evaluated for
-format/generalization on seen constructs and transfer on the unseen families. Only after those
-results are frozen may a separate release adapter train on all 19 ratified surfaces.
+The development split withholds every source row from four construct families and filters any
+remaining row that contains one of their exact registered marker strings. That adapter is
+evaluated for format/generalization on seen constructs and transfer on those unseen registered
+surfaces. This is not a claim that all related ordinary-English concepts are absent. Only after
+those results are frozen may a separate release adapter train on all 19 ratified surfaces.
 
 Base model: `Qwen/Qwen2.5-7B-Instruct` (Apache-2.0). Dataset contribution terms and source digests
 are captured in `register-snapshot.json` and `manifest.json`.

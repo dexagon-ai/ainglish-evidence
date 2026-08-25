@@ -88,6 +88,14 @@ def main() -> None:
     random.seed(2026082515)
     tokenizer = AutoTokenizer.from_pretrained(MODEL, use_fast=True)
     tokenizer.pad_token = tokenizer.eos_token
+    dataset = ChatDataset(source, tokenizer, args.max_length)
+    # Force every row through tokenization before allocating the quantized base
+    # model. A truncation or source-drift error is a zero-cost refusal, not a GPU outcome.
+    for index in range(len(dataset)):
+        dataset[index]
+    refreshed_manifest = json.loads((ROOT / "manifest.json").read_text())
+    if refreshed_manifest["outputs"][source.name]["sha256"] != expected or file_sha256(source) != expected:
+        raise SystemExit("REFUSING: training source or manifest drifted during preflight")
     quantization = BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_quant_type="nf4",
@@ -102,11 +110,6 @@ def main() -> None:
         r=16, lora_alpha=32, lora_dropout=0.05, bias="none", task_type="CAUSAL_LM",
         target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
     ))
-    dataset = ChatDataset(source, tokenizer, args.max_length)
-    # Force every row through tokenization before allocating the quantized base
-    # model. A truncation design error is a zero-cost refusal, not a GPU outcome.
-    for index in range(len(dataset)):
-        dataset[index]
     trainer = Trainer(
         model=model,
         args=TrainingArguments(
