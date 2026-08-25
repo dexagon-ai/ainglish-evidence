@@ -21,7 +21,7 @@ Freeze and execution order:
 
 Current status: 512 scientific pairs and 64 calibration rows are frozen with receipt digest
 `ce3a221afb1dd5b124b8b04e5529c3b2a5ab46b068bce1182ee7071d626991fc`. The eight runspecs bind
-those bytes to public item commit `35745cd1ff65cf7c70c7f1caf48b24fdb71dc594` and their sealed
+those bytes to public item commit `35745cd7fc47e08e6ff4ef14e781d1a91f84d2e2` and their sealed
 index has digest `d1745ef072bc60bfe68eb17dd43d27514d90e63ab73bba7b889c7da535ffff8e`.
 All eight passed the released SDK's zero-cost dry-run. No real reader call or attempt mint has
 occurred.
