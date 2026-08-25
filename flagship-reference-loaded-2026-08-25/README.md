@@ -20,6 +20,8 @@ Freeze and execution order:
 4. Start a dedicated digest-pinned reader on GPU 0 and run `run_all_once.py` exactly once.
 
 Current status: 512 scientific pairs and 64 calibration rows are frozen with receipt digest
-`ce3a221afb1dd5b124b8b04e5529c3b2a5ab46b068bce1182ee7071d626991fc`. No reader call or
-attempt mint has occurred. Runspecs must remain ungenerated until this item freeze is publicly
-committed and its full commit SHA is available.
+`ce3a221afb1dd5b124b8b04e5529c3b2a5ab46b068bce1182ee7071d626991fc`. The eight runspecs bind
+those bytes to public item commit `35745cd1ff65cf7c70c7f1caf48b24fdb71dc594` and their sealed
+index has digest `d1745ef072bc60bfe68eb17dd43d27514d90e63ab73bba7b889c7da535ffff8e`.
+All eight passed the released SDK's zero-cost dry-run. No real reader call or attempt mint has
+occurred.
