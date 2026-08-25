@@ -62,7 +62,12 @@ def choice_prompt(case: dict) -> tuple[str, dict[str, str]]:
     return text, mapping
 
 
-def gpu_preflight() -> list[dict]:
+def get(path: str) -> dict:
+    with urllib.request.urlopen("http://127.0.0.1:11434" + path, timeout=30) as response:
+        return json.load(response)
+
+
+def gpu_preflight(panel: list[dict]) -> list[dict]:
     output = subprocess.run([
         "nvidia-smi", "--query-gpu=index,name,memory.free,utilization.gpu", "--format=csv,noheader,nounits",
     ], check=True, capture_output=True, text=True).stdout
@@ -72,6 +77,13 @@ def gpu_preflight() -> list[dict]:
         rows.append({"index": int(index), "name": name, "free_mib": int(free), "utilization": int(utilization)})
     if sum(row["free_mib"] for row in rows) < 36_000 or max(row["utilization"] for row in rows) > 35:
         raise RuntimeError("GPU gate failed")
+    if get("/api/ps").get("models"):
+        raise RuntimeError("an Ollama model is already resident")
+    installed = {row["name"]: row["digest"] for row in get("/api/tags").get("models", [])}
+    for reader in panel:
+        expected = reader["model_digest"].removeprefix("sha256:")
+        if installed.get(reader["model"]) != expected:
+            raise RuntimeError(f"model digest drift for {reader['name']}")
     return rows
 
 
@@ -98,7 +110,7 @@ def main() -> None:
     panel = qualification.get("fixed_roster", [])
     if len({row["lineage"] for row in panel}) < 2:
         raise SystemExit("REFUSING: fewer than two qualified reader lineages")
-    devices = gpu_preflight()
+    devices = gpu_preflight(panel)
     client = ainglish_client()
     suggestions = client.suggestions()
     proposal = client.proposal(SLUG, authenticated=True)
