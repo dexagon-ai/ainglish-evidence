@@ -7,8 +7,10 @@ and 768 fresh scenarios (32 per form).
 Each scenario freezes three answer-bearing arms:
 
 - `cold_ainglish`: the registered form without a supplied definition;
-- `reference_loaded_ainglish`: the same message preceded by the exact concise reference frozen in
-  the row;
+- `reference_loaded_ainglish`: the same marked message preceded by the exact concise reference
+  frozen in the row;
+- `reference_loaded_english`: the complete-English message preceded by that byte-identical
+  reference card, preventing unequal context from masquerading as a marker effect;
 - `careful_english`: a complete ordinary-English rendering of the same facts.
 
 The primary diagnostic is absolute held-out consequence accuracy per form and condition. Cold and
@@ -20,3 +22,6 @@ is retained and reported as a post-ratification diagnostic.
 `build_items.py` makes no network, model, tokenizer, or governance calls. `index.json` commits the
 canonical packet and exact form counts. Reader spend remains gated on the separately frozen
 cross-vendor ordinary-English qualification tournament.
+
+The `panel/` directory contains 48 SDK-ready packets: cold and reference-loaded comparisons for
+each of the 24 forms. Each has 32 scientific rows and eight construct-free calibration rows.

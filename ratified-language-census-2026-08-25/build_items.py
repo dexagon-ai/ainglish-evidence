@@ -75,6 +75,33 @@ REFERENCES = {
     "by-withheld": "by-withheld says the author knows the doer and deliberately chooses not to name them.",
 }
 
+SLUGS = {
+    "passed-not-applied": "passed-not-applied-robust-word-based-form-of-passed-applied-2",
+    "human_needed": "human-needed-why-the-escalation-pin-when-a-human-must-decide-2",
+    "stopped": "stopped-done-under-c-complete-for-r-say-which-claim-your-don",
+    "done-under": "stopped-done-under-c-complete-for-r-say-which-claim-your-don",
+    "complete-for": "stopped-done-under-c-complete-for-r-say-which-claim-your-don",
+    "claim-tag": "claim-tag",
+    "ctl-control": "ctl-control-declare-whether-a-null-result-could-have-been-ot-3",
+    "ctl-none": "ctl-control-declare-whether-a-null-result-could-have-been-ot-3",
+    "force-suspended": "force-suspended-mention-a-line-without-issuing-its-claims-re-3",
+    "eta": "eta-t-the-report-back-pin-silence-into-expectation-2",
+    "still": "still-the-liveness-marker-was-true-at-last-check-not-re-chec",
+    "or-both": "or-both-not-both-english-or-never-says-whether-both-is-allow",
+    "not-both": "or-both-not-both-english-or-never-says-whether-both-is-allow",
+    "start-by": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+    "complete-by": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+    "each-alone": "each-alone-as-one-distributive-vs-collective-does-the-plural",
+    "as-one": "each-alone-as-one-distributive-vs-collective-does-the-plural",
+    "text-fixed": "text-fixed-ref-meaning-fixed-ref-declare-which-invariants-a-",
+    "meaning-fixed": "text-fixed-ref-meaning-fixed-ref-declare-which-invariants-a-",
+    "grader-is-graded": "grader-is-graded-robust-word-based-form-of-grader-graded-2",
+    "true-as-worded": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+    "false-as-worded": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+    "by-unknown": "by-unknown-by-withheld-typed-doer-omission-why-mistakes-were-3",
+    "by-withheld": "by-unknown-by-withheld-typed-doer-omission-why-mistakes-were-3",
+}
+
 
 def rotate(values: list[str], index: int) -> list[str]:
     shift = index % len(values)
@@ -240,6 +267,7 @@ def make(form: str, index: int) -> dict:
         "scenario_id": f"{form}-cell-{index + 1:03d}",
         "cold_ainglish": marker,
         "reference_loaded_ainglish": f"Reference: {REFERENCES[form]}\nMessage: {marker}",
+        "reference_loaded_english": f"Reference: {REFERENCES[form]}\nMessage: {english}",
         "careful_english": english,
         "reference": REFERENCES[form],
         "question": question,
@@ -253,6 +281,23 @@ def canonical(value: object) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
 
 
+def calibrations(form: str) -> list[dict]:
+    rows = []
+    objects = ["amber card", "blue key", "cedar token", "dune seal", "elm badge", "fern pass", "gold tag", "hazel slip"]
+    for index, obj in enumerate(objects):
+        rows.append({
+            "id": f"{form}-cal-{index + 1:02d}",
+            "calibration": True,
+            "english": f"A note mentions the {obj} but states no shelf.",
+            "ainglish": f"A note states that the {obj} is on shelf nine.",
+            "question": "Does the message state that checking shelf nine would find the named object?",
+            "options": rotate(["yes", "no", "cannot tell"], index),
+            "answer": "yes",
+            "set": "construct-free explicit-location known positive",
+        })
+    return rows
+
+
 def main() -> None:
     rows = [make(form, index) for form in FORMS for index in range(32)]
     assert len(rows) == len(FORMS) * 32
@@ -260,15 +305,54 @@ def main() -> None:
     assert all(row["answer"] in row["options"] for row in rows)
     blob = canonical(rows)
     (ROOT / "items.json").write_bytes(blob + b"\n")
+    panel_dir = ROOT / "panel"
+    panel_dir.mkdir(exist_ok=True)
+    packets = {}
+    for form in FORMS:
+        form_rows = [row for row in rows if row["proposal_form"] == form]
+        for condition in ("cold", "reference"):
+            scientific = []
+            for row in form_rows:
+                scientific.append({
+                    "id": row["id"],
+                    "scenario_id": row["scenario_id"],
+                    "english": row["careful_english"] if condition == "cold" else row["reference_loaded_english"],
+                    "ainglish": row["cold_ainglish"] if condition == "cold" else row["reference_loaded_ainglish"],
+                    "question": row["question"],
+                    "options": row["options"],
+                    "answer": row["answer"],
+                    "strata": dict(row["strata"], condition=condition, form=form),
+                })
+            panel_rows = scientific + calibrations(form)
+            panel_blob = canonical(panel_rows)
+            payload = {
+                "kind": "ainglish.ratified-language-census-items.v1",
+                "form": form,
+                "condition": condition,
+                "sha256": hashlib.sha256(panel_blob).hexdigest(),
+                "items": panel_rows,
+            }
+            path = panel_dir / f"{form}-{condition}.json"
+            path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
+            packets[f"{form}:{condition}"] = {
+                "file": str(path.relative_to(ROOT)),
+                "form": form,
+                "condition": condition,
+                "slug": SLUGS[form],
+                "scientific": 32,
+                "calibration": 8,
+                "items_sha256": payload["sha256"],
+            }
     index = {
         "kind": "ainglish.ratified-language-census.v1",
         "proposals": 15,
         "forms": len(FORMS),
         "rows": len(rows),
         "rows_per_form": 32,
-        "arms": ["cold_ainglish", "reference_loaded_ainglish", "careful_english"],
+        "arms": ["cold_ainglish", "reference_loaded_ainglish", "careful_english", "reference_loaded_english"],
         "items_sha256": hashlib.sha256(blob).hexdigest(),
         "form_counts": {form: sum(row["proposal_form"] == form for row in rows) for form in FORMS},
+        "panel_packets": packets,
     }
     (ROOT / "index.json").write_text(json.dumps(index, indent=2, sort_keys=True) + "\n")
     print(json.dumps(index, indent=2, sort_keys=True))
