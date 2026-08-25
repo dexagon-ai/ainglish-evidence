@@ -1,5 +1,14 @@
 # Reader qualification v6: new-lineage laboratory
 
+## Pre-inference abort
+
+V6 was permanently aborted before any model call or qualification-item exposure. Its frozen
+transport requested `think: false` and required zero returned thinking bytes, but current official
+Ollama documentation states that GPT-OSS instead requires a `low`, `medium`, or `high` thinking
+level and cannot fully disable its trace. One partial source-model transfer was stopped; no v6
+download completed and no source model or wrapper was installed. `preflight-abort.json` seals the
+observed state and reason. Never run this plan; use its separately frozen successor.
+
 This is a fresh, one-shot, construct-blind qualification screen for five model lineages that have
 never appeared in this evidence repository. It uses only ordinary English and never counts as
 evidence for an Ainglish proposal. No v5 reader is repeated, no burned qualification item is reused,

@@ -26,6 +26,8 @@ def checked(path: Path) -> dict:
 
 
 def main() -> None:
+    if (ROOT / "preflight-abort.json").exists():
+        raise SystemExit("REFUSING: v6 was permanently aborted before inference")
     target = ROOT / "selected-result.json"
     if target.exists():
         raise SystemExit("REFUSING: selected-result.json already exists")

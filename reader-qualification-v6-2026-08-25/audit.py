@@ -48,6 +48,20 @@ def main() -> None:
         "selected": None,
         "status": "passed",
     }
+    abort_path = ROOT / "preflight-abort.json"
+    if abort_path.exists():
+        abort = checked(abort_path)
+        if abort["plan_sha256"] != plan["content_sha256"]:
+            raise SystemExit("REFUSING: preflight abort belongs to another plan")
+        if any((ROOT / name).exists() for pair in PHASES for name in pair) or (ROOT / "selected-result.json").exists():
+            raise SystemExit("REFUSING: an aborted plan has phase or selected artifacts")
+        report["abort"] = {
+            "file": abort_path.name,
+            "content_sha256": abort["content_sha256"],
+            "model_calls": abort["model_calls"],
+            "qualification_items_exposed": abort["qualification_items_exposed"],
+        }
+        report["status"] = "aborted-before-inference"
     prior_accumulated = []
     for spec_name, result_name in PHASES:
         spec_path = ROOT / spec_name

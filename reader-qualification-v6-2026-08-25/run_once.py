@@ -159,6 +159,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--phase", required=True, choices=PHASES)
     args = parser.parse_args()
+    if (ROOT / "preflight-abort.json").exists():
+        raise SystemExit("REFUSING: v6 was permanently aborted before inference")
     result_path = ROOT / RESULT_FILES[args.phase]
     if result_path.exists():
         raise SystemExit("REFUSING: result exists; never rerun")
