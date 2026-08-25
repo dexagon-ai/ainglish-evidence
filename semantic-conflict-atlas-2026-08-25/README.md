@@ -6,3 +6,4 @@ treated as a register relation. The final atlas will keep every row `review_requ
 
 The classifier writes one fsynced review card per pair to `classifier-ledger.jsonl`; interrupted
 review-only runs resume completed cards rather than silently losing hours of GPU routing work.
+Set `AINGLISH_ATLAS_OLLAMA_URL` to bind the run to a dedicated, device-isolated Ollama service.

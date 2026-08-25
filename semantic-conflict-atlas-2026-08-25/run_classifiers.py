@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / "candidates.json"
 TARGET = ROOT / "classifier-results.json"
 LEDGER = ROOT / "classifier-ledger.jsonl"
-BASE_URL = "http://127.0.0.1:11434"
+BASE_URL = os.environ.get("AINGLISH_ATLAS_OLLAMA_URL", "http://127.0.0.1:11434").rstrip("/")
 MODELS = ["qwen2.5:7b", "gemma3:12b"]
 LABELS = {
     "duplicate",
