@@ -15,4 +15,16 @@ The items are frozen at canonical array digest
 `ebe65906e980140cdb1c47ddf4ee681d92e980f5a5698a662fb9b72ebc814038` and public commit
 `11f627d7b1d3abac0953446567323a01065f49a9`. The sealed runspec index has digest
 `f86d1320950dd936cfe3edaf1dc25f6ee20410b29042e74308c109596d8f4db8` and passed the released
-SDK's zero-cost dry-run. No attempt has yet been minted and no real reader has been called.
+SDK's zero-cost dry-run.
+
+The live attempt `03fca106-a7fa-4b52-9641-74752f861582` then stopped correctly at calibration,
+before any of the 128 scientific cells ran. The planted arm scored 1.00, but the neutral arm
+scored 0.625, leaving a 0.375 gap below the preregistered 0.5 floor. Mistral's gap was 0.5 and
+Gemma's was 0.25. No measurement was emitted.
+
+The failure is informative about the control design, not the construct. Two neutral-arm question
+stems (`before the required decision exists` and `what decision status`) themselves imply enough
+of the expected answer that readers can answer without the planted disclosure. The abort and all
+32 calibration cells are retained. This packet must not be rerun or cited as comprehension
+evidence; a later successor needs newly frozen, construct-free controls whose questions do not
+presuppose the planted boundary.
