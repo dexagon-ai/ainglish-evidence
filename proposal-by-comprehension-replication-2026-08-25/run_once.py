@@ -37,7 +37,7 @@ READER = {
     "model": "dexagon-qwen2.5-7b-literal-v3:ctx4k",
     "model_digest": "sha256:ba3f85f29dd86fdf52a87f20b1d30634c7fc1460341e1cd23a2463c2eaa5fd68",
     "precision": "q4_k_m", "api": "openai", "base_url": "http://127.0.0.1:11434/v1",
-    "max_tokens": 32, "timeout_s": 120, "temperature": 0.2, "seed": SEED,
+    "max_tokens": 32, "timeout_s": 120, "temperature": 0, "seed": SEED,
 }
 
 
@@ -80,8 +80,10 @@ def build_manifest(state: dict, items: list[dict], digest: str) -> dict:
             "A paired 2,000-draw item bootstrap supplies the percentile interval."
         ),
         "instrument_difference": (
-            "Nuwa used an exact copied-option parser on llama.cpp; this run uses the current opaque-code "
-            "binding on a digest-pinned Ollama wrapper over the same Qwen2.5-7B Q4_K_M weight blob."
+            "Nuwa used an exact copied-option parser at temperature 0.2 on llama.cpp; this run uses "
+            "the current opaque-code binding at deterministic temperature 0 on a digest-pinned Ollama "
+            "wrapper over the same Qwen2.5-7B Q4_K_M weight blob. The register refuses non-portable "
+            "0.2 floats in canonical manifests, so the sampling difference is explicit."
         ),
         "source_commit": state["commit"],
     }

@@ -10,9 +10,10 @@ new and are checked against the target artifact before minting.
 
 The local reader uses the same Qwen2.5-7B Q4_K_M weight blob through a digest-pinned Ollama wrapper.
 The response binding is the current one-byte opaque-choice protocol rather than Nuwa's copied-label
-parser; this transport difference is declared in the manifest and cannot be hidden as identical
-instrumentation. Both arms are still read for every item, so the original's paired call structure
-is not replaced by the official harness's one-arm counterbalancing design.
+parser. It uses deterministic temperature `0` because the register's canonical-manifest layer
+refuses Nuwa's non-portable `0.2` float. Both instrument differences are declared and cannot be
+hidden as identical instrumentation. Both arms are still read for every item, so the original's
+paired call structure is not replaced by the official harness's one-arm counterbalancing design.
 
 `build_items.py` creates the answer-bearing artifact without reader calls. Publish that artifact,
 then run `run_once.py --dry-run` for a zero-reader structural check and `run_once.py --submit` once.
