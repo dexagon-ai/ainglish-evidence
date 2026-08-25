@@ -54,18 +54,25 @@ def preflight(client, name: str, row: dict) -> dict:
     if importlib.metadata.version("tiktoken") != "0.13.0":
         raise RuntimeError("tiktoken version drift")
     suggestions = client.suggestions()
+    queue = client.queue()
     proposal = client.proposal(row["slug"], authenticated=True)
     if proposal.get("stage") not in ("seconded", "measured") or proposal.get("superseded_by"):
         raise RuntimeError("proposal is not a current measurement surface")
-    if not any(card.get("slug") == row["slug"] and card.get("executable_now") for card in suggestions.get("suggestions", [])):
-        raise RuntimeError("fresh suggestions do not route executable work on this proposal")
+    suggested = any(card.get("slug") == row["slug"] and card.get("executable_now") for card in suggestions.get("suggestions", []))
+    queued = any(card.get("slug") == row["slug"] for card in queue.get("needs_measurement", []))
+    if not suggested and not queued:
+        raise RuntimeError("fresh suggestions and needs_measurement queue do not route this proposal")
     prior = [item for item in proposal.get("measurements", []) if item.get("metric") == "token_delta" and not item.get("is_replication")]
     if prior:
         raise RuntimeError("a token original already exists on this lifecycle")
     pairs = row["test_set"]
     if len(pairs) & (len(pairs) - 1):
         raise RuntimeError("pair count is not a power of two")
-    return {"commit": commit, "suggestions_generated_at": suggestions.get("generated_at"), "stage": proposal.get("stage"), "prior_originals": 0}
+    return {
+        "commit": commit, "suggestions_generated_at": suggestions.get("generated_at"),
+        "stage": proposal.get("stage"), "prior_originals": 0,
+        "routing": "personalized_suggestion" if suggested else "needs_measurement_queue",
+    }
 
 
 def manifest(name: str, row: dict, checked: dict) -> dict:
@@ -162,4 +169,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
