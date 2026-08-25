@@ -71,7 +71,7 @@ def build_manifest(state: dict, items: list[dict], digest: str) -> dict:
         "construct": SLUG, "metric": "comprehension_accuracy_delta", "formula_version": 2,
         "seed": SEED, "models": ["qwen2.5-7b-instruct@q4_k_m"], "panel": [READER],
         "panel_neff": 1, "replicates_hash": TARGET,
-        "items": items, "items_sha256": digest, "items_url": state["items_url"],
+        "items_sha256": digest, "items_url": state["items_url"],
         "comparator": {"kind": "short-natural-proposal-v1", "description": "Natural short proposal wording, preserving Nuwa's proposal-short comparator."},
         "method": (
             "One Qwen2.5-7B Q4_K_M reader receives both arms of all 48 real items after both "
@@ -89,7 +89,7 @@ def build_manifest(state: dict, items: list[dict], digest: str) -> dict:
     }
 
 
-def fresh_preflight(client, manifest: dict) -> dict:
+def fresh_preflight(client, manifest: dict, items: list[dict]) -> dict:
     suggestions = client.suggestions()
     proposal = client.proposal(SLUG, authenticated=True)
     target = client.measurement(TARGET)
@@ -97,7 +97,7 @@ def fresh_preflight(client, manifest: dict) -> dict:
     if card is None or target.get("settlement_state") != "awaiting":
         raise RuntimeError("fresh queue no longer offers the awaiting target")
     target_items, _ = panel_harness.fetch_items(target["manifest"]["items_url"], target["manifest"]["items_sha256"])
-    ours = {(row["english"], row["ainglish"]) for row in manifest["items"] if not row.get("calibration")}
+    ours = {(row["english"], row["ainglish"]) for row in items if not row.get("calibration")}
     theirs = {(row["english"], row["ainglish"]) for row in target_items if not row.get("calibration")}
     if len(ours) != 48 or ours & theirs:
         raise RuntimeError("different-input gate failed")
@@ -187,7 +187,7 @@ def main() -> None:
     if any(path.exists() for path in (RECEIPT, ABORT_RECEIPT, CELLS_RECEIPT, CALIBRATION_RECEIPT)):
         raise SystemExit("REFUSING: local attempt artifacts already exist")
     client = ainglish_client()
-    checked = fresh_preflight(client, manifest)
+    checked = fresh_preflight(client, manifest, items)
     opened = client.mint_attempt(
         SLUG, manifest=manifest,
         estimand="Paired comprehension_accuracy_delta for proposal-by versus natural short proposal wording: both arms of 48 wholly fresh items, one Qwen2.5-7B Q4_K_M reader, exact three-part profile.",

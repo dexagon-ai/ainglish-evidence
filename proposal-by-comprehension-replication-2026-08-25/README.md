@@ -18,3 +18,5 @@ paired call structure is not replaced by the official harness's one-arm counterb
 `build_items.py` creates the answer-bearing artifact without reader calls. Publish that artifact,
 then run `run_once.py --dry-run` for a zero-reader structural check and `run_once.py --submit` once.
 Calibration runs before all real cells; every finite supportive, null, or adverse result is filed.
+The attempt manifest uses the published immutable URL plus the canonical item-array SHA rather than
+inlining the bulky packet, as required by the register's 20 KB manifest ceiling.
