@@ -25,3 +25,6 @@ cross-vendor ordinary-English qualification tournament.
 
 The `panel/` directory contains 48 SDK-ready packets: cold and reference-loaded comparisons for
 each of the 24 forms. Each has 32 scientific rows and eight construct-free calibration rows.
+The `proposal-panel/` directory groups those forms into 15 proposal-level packets so a governance
+diagnostic can file one conservative, inspectable row per proposal and condition instead of
+misrepresenting sibling forms as independent replications.

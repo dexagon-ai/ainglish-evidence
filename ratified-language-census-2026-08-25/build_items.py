@@ -102,6 +102,24 @@ SLUGS = {
     "by-withheld": "by-unknown-by-withheld-typed-doer-omission-why-mistakes-were-3",
 }
 
+CAMPAIGNS = {
+    "passed-not-applied": ["passed-not-applied"],
+    "human-needed": ["human_needed"],
+    "completion-state": ["stopped", "done-under", "complete-for"],
+    "claim-tag": ["claim-tag"],
+    "control": ["ctl-control", "ctl-none"],
+    "force-suspended": ["force-suspended"],
+    "eta": ["eta"],
+    "still": ["still"],
+    "disjunction": ["or-both", "not-both"],
+    "deadline": ["start-by", "complete-by"],
+    "multiplicity": ["each-alone", "as-one"],
+    "invariant": ["text-fixed", "meaning-fixed"],
+    "grader": ["grader-is-graded"],
+    "polarity-answer": ["true-as-worded", "false-as-worded"],
+    "doer-omission": ["by-unknown", "by-withheld"],
+}
+
 
 def rotate(values: list[str], index: int) -> list[str]:
     shift = index % len(values)
@@ -343,6 +361,39 @@ def main() -> None:
                 "calibration": 8,
                 "items_sha256": payload["sha256"],
             }
+    proposal_dir = ROOT / "proposal-panel"
+    proposal_dir.mkdir(exist_ok=True)
+    proposal_packets = {}
+    for campaign, forms in CAMPAIGNS.items():
+        slugs = {SLUGS[form] for form in forms}
+        assert len(slugs) == 1
+        slug = slugs.pop()
+        campaign_rows = [row for row in rows if row["proposal_form"] in forms]
+        for condition in ("cold", "reference"):
+            scientific = [{
+                "id": row["id"],
+                "scenario_id": row["scenario_id"],
+                "english": row["careful_english"] if condition == "cold" else row["reference_loaded_english"],
+                "ainglish": row["cold_ainglish"] if condition == "cold" else row["reference_loaded_ainglish"],
+                "question": row["question"],
+                "options": row["options"],
+                "answer": row["answer"],
+                "strata": dict(row["strata"], condition=condition, form=row["proposal_form"]),
+            } for row in campaign_rows]
+            panel_rows = scientific + calibrations(campaign)
+            panel_blob = canonical(panel_rows)
+            payload = {
+                "kind": "ainglish.ratified-language-proposal-census-items.v1",
+                "campaign": campaign, "forms": forms, "condition": condition,
+                "slug": slug, "sha256": hashlib.sha256(panel_blob).hexdigest(), "items": panel_rows,
+            }
+            path = proposal_dir / f"{campaign}-{condition}.json"
+            path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
+            proposal_packets[f"{campaign}:{condition}"] = {
+                "file": str(path.relative_to(ROOT)), "campaign": campaign, "forms": forms,
+                "condition": condition, "slug": slug, "scientific": len(scientific),
+                "calibration": 8, "items_sha256": payload["sha256"],
+            }
     index = {
         "kind": "ainglish.ratified-language-census.v1",
         "proposals": 15,
@@ -353,6 +404,7 @@ def main() -> None:
         "items_sha256": hashlib.sha256(blob).hexdigest(),
         "form_counts": {form: sum(row["proposal_form"] == form for row in rows) for form in FORMS},
         "panel_packets": packets,
+        "proposal_packets": proposal_packets,
     }
     (ROOT / "index.json").write_text(json.dumps(index, indent=2, sort_keys=True) + "\n")
     print(json.dumps(index, indent=2, sort_keys=True))
