@@ -264,10 +264,15 @@ def main() -> None:
             prior_state = client.attempt(predecessor)
             if prior_state.get("state") != "aborted" or prior_state.get("successor_attempt_id"):
                 raise RuntimeError("aborted predecessor cannot be linked to this successor")
+            retained_preflight = client.get(
+                f"/api/v1/attempts/{urllib.parse.quote(predecessor, safe='')}/preflight-receipt",
+                auth=True,
+            )
             linked = client.abort_attempt(
                 predecessor,
                 failed_gate=prior_state.get("failed_gate") or "token roster identity rejected",
-                preflight_receipt_hash=prior_state.get("preflight_receipt_hash"),
+                preflight_receipt=retained_preflight,
+                failed_gate_kind=prior_state.get("failed_gate_kind") or "harness_error",
                 successor_attempt_id=opened["attempt_id"],
             )
             SUCCESSOR_LINK_RECEIPT.write_text(
