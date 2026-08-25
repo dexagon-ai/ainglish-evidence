@@ -37,6 +37,11 @@ def post(path: str, payload: dict, timeout: int = 180) -> dict:
         return json.load(response)
 
 
+def get(path: str, timeout: int = 30) -> dict:
+    with urllib.request.urlopen(BASE_URL + path, timeout=timeout) as response:
+        return json.load(response)
+
+
 def prompt(row: dict) -> str:
     left, right = row["left"], row["right"]
     return f"""You are routing a language-register review. Compare two exact proposal surfaces.
@@ -78,7 +83,7 @@ def main() -> None:
     actual = hashlib.sha256(canonical(sealed)).hexdigest()
     if actual != expected:
         raise SystemExit(f"REFUSING: candidate packet drift ({actual} != {expected})")
-    tags = post("/api/tags", {})
+    tags = get("/api/tags")
     digests = {row["name"]: row.get("digest") for row in tags.get("models", [])}
     if any(model not in digests or not digests[model] for model in MODELS):
         raise SystemExit("REFUSING: a declared classifier model or digest is absent")
