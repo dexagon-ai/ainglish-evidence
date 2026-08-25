@@ -56,6 +56,39 @@ def main() -> None:
     ]
     for label, count in sorted(counts.items()):
         lines.append(f"- `{label}`: {count}")
+    current_agreed = []
+    for candidate in candidates["candidates"]:
+        result = by_id[candidate["pair_id"]]
+        if (
+            candidate["left"]["stage"] != "superseded"
+            and candidate["right"]["stage"] != "superseded"
+            and not candidate["routing"]["declared_relations"]
+            and result["model_agreement"]
+        ):
+            current_agreed.append(
+                {
+                    "label": result["agreed_label"],
+                    "left": candidate["left"]["slug"],
+                    "right": candidate["right"]["slug"],
+                    "priority": candidate["routing"]["priority"],
+                    "min_confidence": min(
+                        reading["confidence"] for reading in result["readings"]
+                        if reading["status"] == "ok"
+                    ),
+                }
+            )
+    current_agreed.sort(key=lambda row: (-row["priority"], row["left"], row["right"]))
+    lines += [
+        "", "## Current-current undeclared review cards", "",
+        "These are the agreed cards most likely to need a human or maintainer decision. They are "
+        "still routing suggestions, not asserted relations.", "",
+        "| Label | Left | Right | Priority | Min confidence |", "|---|---|---|---:|---:|",
+    ]
+    for row in current_agreed:
+        lines.append(
+            f"| `{row['label']}` | `{row['left']}` | `{row['right']}` | "
+            f"{row['priority']:.4f} | {row['min_confidence']:.2f} |"
+        )
     lines += ["", "## Highest-priority agreed review cards", "",
               "| Label | Left | Right | Lexical/form priority |", "|---|---|---|---:|"]
     agreed = [row for row in rows if row["model_agreement"]]
