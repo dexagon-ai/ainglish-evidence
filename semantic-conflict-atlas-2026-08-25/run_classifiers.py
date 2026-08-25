@@ -15,7 +15,7 @@ SOURCE = ROOT / "candidates.json"
 TARGET = ROOT / "classifier-results.json"
 LEDGER = ROOT / "classifier-ledger.jsonl"
 BASE_URL = os.environ.get("AINGLISH_ATLAS_OLLAMA_URL", "http://127.0.0.1:11434").rstrip("/")
-MODELS = ["qwen2.5:7b", "gemma3:12b"]
+MODELS = ["dexagon-gemma3-12b-semantic-atlas:ctx4k", "dexagon-mistral-small3.2-24b-semantic-atlas:ctx4k"]
 LABELS = {
     "duplicate",
     "successor_or_refinement",
