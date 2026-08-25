@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 import urllib.request
 
@@ -12,6 +13,7 @@ import urllib.request
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / "candidates.json"
 TARGET = ROOT / "classifier-results.json"
+LEDGER = ROOT / "classifier-ledger.jsonl"
 BASE_URL = "http://127.0.0.1:11434"
 MODELS = ["qwen2.5:7b", "gemma3:12b"]
 LABELS = {
@@ -87,8 +89,23 @@ def main() -> None:
     digests = {row["name"]: row.get("digest") for row in tags.get("models", [])}
     if any(model not in digests or not digests[model] for model in MODELS):
         raise SystemExit("REFUSING: a declared classifier model or digest is absent")
+    expected_ids = {row["pair_id"] for row in source["candidates"]}
+    completed = {}
+    if LEDGER.exists():
+        for line in LEDGER.read_text().splitlines():
+            if not line.strip():
+                continue
+            prior = json.loads(line)
+            pair_id = prior.get("pair_id")
+            if pair_id not in expected_ids or pair_id in completed:
+                raise SystemExit("REFUSING: classifier ledger is duplicate or belongs to another packet")
+            completed[pair_id] = prior
     results = []
     for position, row in enumerate(source["candidates"], 1):
+        if row["pair_id"] in completed:
+            results.append(completed[row["pair_id"]])
+            print(f"{position}/{len(source['candidates'])} {row['pair_id']} resume", flush=True)
+            continue
         readings = []
         for model in MODELS:
             try:
@@ -118,13 +135,18 @@ def main() -> None:
                 })
         ok = [reading for reading in readings if reading["status"] == "ok"]
         agreement = len(ok) == len(MODELS) and len({reading["label"] for reading in ok}) == 1
-        results.append({
+        result = {
             "pair_id": row["pair_id"], "readings": readings,
             "model_agreement": agreement,
             "agreed_label": ok[0]["label"] if agreement else None,
             "review_required": True,
             "asserted_relation": None,
-        })
+        }
+        results.append(result)
+        with LEDGER.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(result, sort_keys=True, ensure_ascii=False) + "\n")
+            handle.flush()
+            os.fsync(handle.fileno())
         print(f"{position}/{len(source['candidates'])} {row['pair_id']} "
               f"{results[-1]['agreed_label'] or 'disagreement/error'}", flush=True)
     payload = {
