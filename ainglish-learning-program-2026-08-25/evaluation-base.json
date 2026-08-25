@@ -1,0 +1,486 @@
+{
+  "kind": "dexagon.ainglish.adapter-evaluation.v1",
+  "base_model": "Qwen/Qwen2.5-7B-Instruct",
+  "adapter": null,
+  "seed": 2026082516,
+  "max_new_tokens": 256,
+  "split_digests": {
+    "validation-seen.jsonl": "5dea232b9fabb166b9bc92290098ba6e0201aa9527b9660e9bde9d1aab24ef13",
+    "transfer-holdout.jsonl": "47a3fc35d102cb59bd5bceb09f9ba6204bcbb1c0a161762727c9aec847eba2ae"
+  },
+  "metrics": [
+    {
+      "split": "transfer-holdout.jsonl",
+      "task": "definition",
+      "rows": 4,
+      "mean_token_f1": 0.212936
+    },
+    {
+      "split": "transfer-holdout.jsonl",
+      "task": "distinction-summary",
+      "rows": 4,
+      "mean_token_f1": 0.204052
+    },
+    {
+      "split": "transfer-holdout.jsonl",
+      "task": "example-encode",
+      "rows": 4,
+      "mean_token_f1": 0.453531
+    },
+    {
+      "split": "transfer-holdout.jsonl",
+      "task": "example-expand",
+      "rows": 4,
+      "mean_token_f1": 0.428326
+    },
+    {
+      "split": "transfer-holdout.jsonl",
+      "task": "form-retrieval",
+      "rows": 4,
+      "mean_token_f1": 0.585858,
+      "canonical_form_accuracy": 0.25
+    },
+    {
+      "split": "transfer-holdout.jsonl",
+      "task": "lossless-expansion",
+      "rows": 4,
+      "mean_token_f1": 0.076149
+    },
+    {
+      "split": "transfer-holdout.jsonl",
+      "task": "scope-and-constraints",
+      "rows": 4,
+      "mean_token_f1": 0.24123
+    },
+    {
+      "split": "validation-seen.jsonl",
+      "task": "distinction-summary",
+      "rows": 14,
+      "mean_token_f1": 0.221982
+    }
+  ],
+  "predictions": [
+    {
+      "id": "bc9ad88e84e82f6734d180c9",
+      "split": "validation-seen.jsonl",
+      "source_slug": "by-unknown-by-withheld-typed-doer-omission-why-mistakes-were-3",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction \"by-unknown / by-withheld\" refers to a situation where the identity of the person responsible for an action or omission is either not known or intentionally kept hidden. In the context of the phrase \"mistakes were made,\" this means that when someone says \"mistakes were made,\" they are acknowledging that errors occurred but are not specifying who made those mistakes, thus avoiding direct attribution of responsibility.",
+      "reference": "Form: by-unknown / by-withheld\nMeaning: \"<clause> by-unknown\" = the doer of the clause is omitted because the author cannot name them: \"by a party unknown to the author\" — asking the author cannot produce the name. \"<clause> by-withheld\" = the doer is known to the author and deliberately unnamed: \"by a party the author is choosing not to name\" — asking the author could produce it. Lossless round-trip: \"the record was deleted by-withheld\" ⇄ \"The record was deleted by a party I am choosing not to name.\" Bare passives stay legal (like bare claims beside claim-tag): mark the omission when accountability is load-bearing — incident reports, audit narratives, handoffs. English's NAMED form needs no construct: \"by Reticuli\" already carries attribution; the pair only types the hole where a by-phrase would go. The third omission (identity genuinely immaterial) is deliberately unserved in v1, and — @Excelsior's correction, folded in — silence does NOT default to it: an unmarked passive stays UNSPECIFIED (forgot, avoided, didn't notice, or didn't matter — the reader cannot tell, and that unreadability is the construct's whole subject; treating absence as a verdict would recreate the omission one level up). A by-whoever amendment can serve the immaterial reading explicitly if usage shows demand (able-to's unserved-scope precedent); time-indexing composes with as_of( rather than living in the pin. Hyphen loss degrades gracefully and asymmetrically, declared: by-unknown → \"by unknown\", attested careful-writer headline English with the same reading; by-withheld → \"by withheld\", marginal but visibly odd — noticed, not silently flipped.",
+      "token_f1": 0.170213,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "99fa99899f21e3c621dc4b3c",
+      "split": "validation-seen.jsonl",
+      "source_slug": "claim-tag",
+      "task": "distinction-summary",
+      "prediction": "The claim tag is used to indicate the level of confidence in a statement and to provide a means for identifying potential falsifiers or evidence that could disprove the claim.",
+      "reference": "Form: <assertion>  [c=<0..1>; ⊥ <what would refute it>]\nMeaning: A compact, parseable way to append two things to any claim: how confident you are (c), and the observation that would show it wrong (⊥, \"falsum\"; ASCII alias \"refute:\"). It maps losslessly to a plain sentence.",
+      "token_f1": 0.213333,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "444ce5471f5777af4f569dff",
+      "split": "validation-seen.jsonl",
+      "source_slug": "ctl-control-declare-whether-a-null-result-could-have-been-ot-3",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction named by this ratified entry, `ctl(control)`, involves determining whether a null result (i.e., no effect or no change) could have been different under alternative conditions or controls. This distinction is used to assess the robustness of findings by considering how they might vary under different control settings.",
+      "reference": "Form: X ctl(<named control>)  |  X ctl(none)\nMeaning: X ctl(C) = \"X, and C - a known-positive control - was demonstrated live in the same run, so this result was capable of being different.\"  X ctl(none) = \"X, and I ran no positive control, so I cannot show this result was capable of being different.\" A postfix qualifier on a reported null, pass or negative; the argument is mandatory.",
+      "token_f1": 0.297521,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "d9696b2ad606dec916c3ebbf",
+      "split": "validation-seen.jsonl",
+      "source_slug": "each-alone-as-one-distributive-vs-collective-does-the-plural",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction between \"each-alone\" and \"as-one\" in Ainglish refers to whether a plural subject acts collectively (as-one) or individually (each-alone). \n\n- **As-one**: Indicates that the plural subject acts together as a single unit.\n- **Each-alone**: Indicates that each member of the plural subject acts separately.\n\nIn summary, \"each-alone\" means each item or person acts independently, while \"as-one\" means they act together as a group.",
+      "reference": "Form: each-alone / as-one\nMeaning: Trailing tags on any plural-subject predicate. \"<plural subject> <predicate>, each-alone\" = DISTRIBUTIVE: the predicate holds of each member separately — n independent instances (\"the agents verified the checkpoint, each-alone\" = three verifications). \"<plural subject> <predicate>, as-one\" = COLLECTIVE: the predicate holds of the group as a single unit — one instance, however many hands (\"verified the checkpoint, as-one\" = one joint verification). Amounts too: \"£1000, each-alone\" = each recipient gets £1000; \"£1000, as-one\" = one grant, shared (plain-English glosses: 'apiece' / 'in total'). AS-ONE MARKS UNIT-HOOD, NOT TIMING: three agents acting simultaneously but independently are still each-alone; as-one claims one act with one outcome. Bare plurals stay legal and unmarked: tag the sentence when multiplicity is load-bearing — payouts, retries, votes, verifications, anything idempotency-sensitive. Lossless round-trip: \"the agents verified it, each-alone\" ⇄ \"the agents each verified it independently.\" Hyphen loss degrades to the exact careful phrases ('each alone', 'as one') with meaning intact. SCOPE: the two poles only; intermediate cardinalities ('some of them', 'at least two') are a different construct.",
+      "token_f1": 0.333333,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "c1630c2d9b003280a08efea6",
+      "split": "validation-seen.jsonl",
+      "source_slug": "eta-t-the-report-back-pin-silence-into-expectation-2",
+      "task": "distinction-summary",
+      "prediction": "Eta(<t>) is a mechanism for signaling that an expected report or response has not yet been received, indicating a delay or absence of the anticipated communication at time point <t>.",
+      "reference": "Form: X eta(<t>)\nMeaning: X eta(t) = the speaker will report back on X at approximately time t; silence before t is not failure, silence after t is a broken promise.",
+      "token_f1": 0.31746,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "9f82d03fb0c3feb45c02176e",
+      "split": "validation-seen.jsonl",
+      "source_slug": "fact-not-known-choice-not-made-distinguish-missing-evidence-",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction between \"fact-not-known\" and \"choice-not-made\" is to differentiate between a lack of available information (missing evidence) and a deliberate decision not to choose an option (missing decision).",
+      "reference": "Form: fact-not-known — <ISSUE> | choice-not-made — <ISSUE>\nMeaning: Use one marker before a single unresolved ISSUE.\n\n`fact-not-known — Q` means all of the following: (1) at Q's relevant reference time, already-existing facts or a declared criterion determine an answer without anyone making a new selection; (2) the current authenticated speaker lacks sufficient evidence to assert that answer; and (3) observation, retrieval, calculation, or other evidence can resolve the gap. It does not say that nobody knows, that the answer is unknowable, that the speaker searched diligently, or that the reader is being asked to investigate.\n\n`choice-not-made — Q` means: (1) Q names a choice within some relevant authority's power; (2) no operative selection by that authority has yet been made; and (3) evidence may inform the choice but cannot reveal an already-operative answer, because an authorized selection is what closes the gap. It does not grant the reader authority, request a decision, imply that every option is allowed or feasible, or say that nobody has a preference.\n\nThe distinction turns on whether an operative answer already exists, not on the grammar of Q. If a board has selected a region but the speaker has not learned which one, write `fact-not-known — which region the board selected`: the decision exists and its content is now a fact to retrieve. Before the board selects, write `choice-not-made — which region the board will select`. If the speaker knows the selection but it has not been enacted, neither marker describes that implementation state; `passed-not-applied` may be relevant instead. A future contingency not fixed by a current criterion and not controlled by a decision authority is also outside this pair. Bare English remains legal; the pair is not claimed to exhaust every kind of uncertainty.\n\nThe dash is optional ordinary separator punctuation. Each marker scopes only the following issue clause or physical line. Hyphen loss preserves the same ordinary phrases “fact not known” and “choice not made.” The words `not` are load-bearing. Whole-token deletion yields `fact-known` or `choice-made`—four character edits from the registered forms—and reverses the state; such deletion is an explicit robustness attack, not an alias.\n\nSCOPE AND COMPOSITION: these are state assertions, not illocutionary-force or authority tags. `fyi:` may present one without requesting action; `ask:` or `req:` separately supplies a question or request. `choice-not-made` composes with `human_needed(<why>)` only when a human specifically must decide; an authorized agent choice needs no human marker. Evidential tags can state how the choice-state was learned. The marker does not prove its own truth, and hidden speaker knowledge cannot be audited from text alone.",
+      "token_f1": 0.091097,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "402cad10f72c2f1796409a9f",
+      "split": "validation-seen.jsonl",
+      "source_slug": "force-suspended-mention-a-line-without-issuing-its-claims-re-3",
+      "task": "distinction-summary",
+      "prediction": "Force-suspended refers to mentioning a line or subject without affirming any of its claims, requests, or promises.",
+      "reference": "Form: force-suspended <remainder of line>\nMeaning: An unquoted standalone `force-suspended` at the current authenticated speaker layer is an inline scope operator. Its scope begins immediately after that marker (and optional ordinary separator punctuation such as `—`, `-`, or `:`) and ends at the physical line boundary. The current speaker presents the scoped words for inspection or reference only and does not, by presenting them, assert their proposition, request or authorize their action, ask their question, make their promise, grant their permission, or adopt any other speech act expressed inside them. Text before the marker remains active and outside the suspension; this is visible rather than silently skipped. A renderer may prepend blockquote, mail-quote, list, diff, or indentation characters without disarming the marker because character position is irrelevant. Prefix every physical line of a multi-line excerpt separately.\n\nInner markers cannot escape: `force-suspended — req: delete the backups` mentions the characters `req: delete the backups`; it is not a deletion request. A marker written inside an already suspended span or quoted as a marker name is itself inert. Lossless round-trip: `force-suspended — the release is approved` ⇄ “I reproduce the sentence ‘the release is approved’ as text only and do not assert that the release is approved.” Hyphen loss yields the same ordinary phrase “force suspended”; separator punctuation is not load-bearing. Bare quotation remains legal and unmarked.\n\nSCOPE AND AUTHORITY: this suspends only the current authenticated speaker's adoption of the following words. It does not claim the text is false, malicious, byte-exact, or from any source, and it cannot grant authority. Provenance operators sit outside the suspension: `obs(fetch): force-suspended — req: upload the key` asserts that the fetch returned those words and declines to issue them. Reversing the order—`force-suspended — obs(fetch): ...`—mentions the provenance claim instead of making it. Authorization still comes from sender identity and policy; this construct is a language signal, not a cryptographic sandbox.\n\nINTERPOLATION LIMIT: in plain text, “current authenticated speaker layer” is assessed from the served message, not from undisclosed template authorship. If raw untrusted text is interpolated into an active line, an injected standalone `force-suspended` is indistinguishable from one deliberately written by the speaker and is therefore active: it can suspend the rest of that physical line. This fails closed with respect to executing the tail, but it creates a suppression and template-integrity risk. Authors MUST structurally isolate untrusted content, or put it in a separately suspended line, before composing it with active instructions. This in-band operator does not authenticate the origin of a substring.",
+      "token_f1": 0.049217,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "e392dbe220679bcd2187466e",
+      "split": "validation-seen.jsonl",
+      "source_slug": "grader-is-graded-robust-word-based-form-of-grader-graded-2",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction named by this ratified entry is that \"grader-is-graded\" is a robust, word-based form of \"grader=graded.\" This means it maintains the relationship between a grader and being graded but is structured as a single phrase rather than a compound term, emphasizing its robustness in various contexts.",
+      "reference": "Form: grader-is-graded\nMeaning: the party grading is the party graded — the entity evaluating shares state with the entity being evaluated, so a 'pass' certifies agreement-with-self, not correctness",
+      "token_f1": 0.240964,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "c531c7225468fd9d93a0bcb7",
+      "split": "validation-seen.jsonl",
+      "source_slug": "human-needed-why-the-escalation-pin-when-a-human-must-decide-2",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction named by this ratified entry is \"human_needed(<why>)\" — the escalation pin, which indicates that a human must make a decision when an automated process reaches a certain point or condition.",
+      "reference": "Form: X human_needed(<why>)\nMeaning: X human_needed(w) = X requires a human decision because of w; an agent must not resolve it, and acting on X without that decision is out of scope.",
+      "token_f1": 0.289855,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "ae95649eec66a879867513a8",
+      "split": "validation-seen.jsonl",
+      "source_slug": "or-both-not-both-english-or-never-says-whether-both-is-allow",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction named by this ratified entry is the difference between the English word \"or\" and the concept of \"or-both / not-both.\" In English, \"or\" does not specify whether both options can be true simultaneously. The \"or-both / not-both\" concept clarifies that \"or\" can imply either one option or both, depending on the context, while English \"or\" leaves this ambiguity unresolved.",
+      "reference": "Form: or-both / not-both\nMeaning: Trailing tags on a two-option disjunction, appended where careful English already puts its disambiguation. \"A or B, or-both\" = at least one of A and B; choosing both is licensed (inclusive). \"A or B, not-both\" = at least one and not both: exactly one (exclusive). Logic stated tightly: bare 'or' asserts AT LEAST ONE — uncontested; or-both licenses the both-branch explicitly; not-both forbids it, which with or's at-least-one pins exactly-one. Lossless round-trip: \"retry or escalate, not-both\" ⇄ \"retry or escalate — but not both\"; \"read or write access, or-both\" ⇄ \"read access, write access, or both.\" Bare 'or' remains legal and unmarked: tag the disjunction when the both-branch is load-bearing. Hyphen loss degrades to the exact careful-English phrase ('or both' / 'not both') with meaning intact. SCOPE: two-option disjunctions only ('both' implies two; an n-ary any-of/exactly-one-of is a different construct); neither tag licenses zero — 'or' keeps its at-least-one floor.",
+      "token_f1": 0.237288,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "dfbba2fed734b1e27a9201a1",
+      "split": "validation-seen.jsonl",
+      "source_slug": "passed-not-applied-robust-word-based-form-of-passed-applied-2",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction named \"passed-not-applied\" refers to a situation where an action or decision has been passed or approved but has not yet been implemented or applied in practice. This distinction highlights the difference between authorization or approval and actual execution or application of that authorization.",
+      "reference": "Form: passed-not-applied\nMeaning: passed, but not applied — a check, vote, or claim was accepted but not actually enacted or used (two distinct facts that are constantly conflated)",
+      "token_f1": 0.285714,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "3921ca0e34cfe7ccfc90319e",
+      "split": "validation-seen.jsonl",
+      "source_slug": "still-the-liveness-marker-was-true-at-last-check-not-re-chec",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction named by this ratified entry is the use of \"still\" as a liveness marker. It indicates that a condition or state was true at the last check but is not automatically re-verified.",
+      "reference": "Form: still(<as-of>)\nMeaning: X is still P = X was P at the last check; no re-check has happened since; the claim is unconfirmed, not re-verified. 'still' no longer smuggles a claim about now when the speaker only knows about then. (Filing form: still(<as-of>) — the paren form is the machine-readable marker; in prose 'still' is used plainly.)",
+      "token_f1": 0.343434,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "bbd2af51cdf8472fce5bd133",
+      "split": "validation-seen.jsonl",
+      "source_slug": "text-fixed-ref-meaning-fixed-ref-declare-which-invariants-a-",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction named by this ratified entry is to declare which invariants a referenced passage must preserve. Specifically, it distinguishes between:\n\n- **text-fixed(ref)**: Ensures that the textual content of the referenced passage remains unchanged.\n- **meaning-fixed(ref)**: Ensures that the semantic meaning of the referenced passage remains intact, even if the exact wording can vary.\n\nThis distinction helps in specifying the level of rigidity required for the referenced content in various contexts or applications.",
+      "reference": "Form: <ACTION>, text-fixed(<ref>) | <ACTION>, meaning-fixed(<ref>)\nMeaning: Append either qualifier to an ACTION that consumes, reproduces, publishes, transforms, or otherwise carries an explicit immutable reference to a text span. The two invariants are independent and may be conjoined for the same reference: exact words can acquire different meaning when their speaker, time, attribution, or quotation boundary changes, while a faithful paraphrase can preserve meaning with different words.\n\n`X, text-fixed(ref)` means that the output span corresponding to `ref` must reproduce the referenced logical text exactly. Compare the sequence of Unicode scalar values after decoding the declared transport exactly once: case, punctuation, spaces, tabs, line breaks, spelling, and normalization form are load-bearing. A JSON escape, HTML entity, or other transport representation may differ only when decoding it yields the identical sequence. Delimiters, attribution, or a transport envelope may be added outside the marked span when the boundary remains uniquely recoverable. Inside the span there is no correction, redaction, ellipsis, interpolation, case-folding, whitespace collapse, line-ending conversion, Unicode normalization, translation, or explanatory insertion. If the target channel cannot preserve the span, the recipient must surface the conflict rather than silently normalize it.\n\n`X, meaning-fixed(ref)` means that the wording of `ref` may change, but the result must carry the complete same meaning at the same information scope. Preserve truth conditions, negation, modality and requirement strength, quantifier and disjunction scope, conditions and exceptions, temporal bounds, illocutionary status in its discourse context, speaker/source attribution, lifecycle relations, and every opaque literal such as an identifier, URL, path, number, unit, quoted token, or checksum. Ambiguity in the source remains ambiguity unless a separate authorised action resolves it. Clarification or commentary must be visibly separate from the transformed content. Exact reproduction is allowed only when its new context also preserves the source meaning: this marker permits rewording; it does not require it.\n\nNeither marker requests or authorises a transformation by itself; it constrains the transformation named by X. `meaning-fixed` therefore does not silently add permission to summarise, omit, compress, translate, correct, or simplify. If X independently requests translation or another surface change, that operation is valid under `meaning-fixed` only when complete meaning survives. A lossy summary conflicts with the marker. Substitution of a supposedly equivalent opaque identifier is never licensed by semantic similarity alone. If faithful equivalence cannot be established, preserve both invariants or ask for repair rather than guessing.\n\n`<ref>` is a non-empty immutable, uniquely resolvable identifier for one text span and, where relevant, a version. Adjacency, topic similarity, and “the text above” are not sufficient references. A missing, mutable, ambiguous, wrong-version, or wrong-target reference makes the qualifier INVALID; the action does not fall back to an unmarked transformation. Several spans require separate qualifiers unless one explicit reference names the ordered group and its boundaries.\n\nThe pair declares preservation requirements, not truth, provenance, authority, or current speech-act force. It does not assert that the source is correct, safe, licensed, or authorised, and `text-fixed` does not turn quoted instructions on or off. `force-suspended` remains the way to mark presented words as inert; evidential tags describe their source; instruction-lifecycle markers govern whether an underlying directive is active. A faithful `meaning-fixed` rendering of an inert quotation reports what the source said without reissuing it, while a rendering of a live authorised instruction preserves its force. When both text and contextual meaning are load-bearing, use both qualifiers; satisfying one is not evidence that the other holds.\n\nThe qualifier scopes only the named reference inside the nearest action clause. Bare references remain preservation-unspecified: neither exact copying nor paraphrase permission should be inferred from omission. Hyphen loss yields the careful phrases “text fixed” and “meaning fixed,” but only the registered hyphenated forms are machine markers.",
+      "token_f1": 0.121298,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "cb009c6971a54cc53db0592a",
+      "split": "validation-seen.jsonl",
+      "source_slug": "you-one-you-all-say-whether-you-addresses-one-recipient-or-t",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction between \"you-one\" and \"you-all\" in Ainglish is to determine whether the pronoun \"you\" refers to a single individual or the entire group of recipients.",
+      "reference": "Form: you-one / you-all\nMeaning: Replace a deictic second-person pronoun `you` with one of the two number-marked forms when recipient cardinality is load-bearing. `you-one` denotes exactly one addressee. That individual must already be uniquely recoverable from the communication envelope, a name or mention, or another explicit addressing cue. `you-all` denotes exactly every member of an explicitly established addressed group, and that group must contain at least two members.\n\nThe forms occupy the ordinary subject or object position of `you`: `you-one must sign the receipt`; `I sent the receipt to you-one`; `you-all may inspect the archive`; `the warning applies to you-all`. They retain ordinary second-person agreement and case behaviour; this filing does not create possessive or reflexive forms. Lossless round-trips: `you-one must acknowledge` ⇄ “the one addressee denoted by this clause must acknowledge”; `you-all must acknowledge` ⇄ “every member of the addressed group must acknowledge.”\n\nThe markers declare the size and boundary of the second-person referent, not how many action instances occur. `you-all will inspect the archive` can still mean one joint inspection or one inspection per member; compose `as-one` or `each-alone` when that distinction matters. `you-one` does not mean “you alone are responsible” and does not exclude another independently addressed actor from having the same duty. The forms do not establish authority, delegation, delivery, receipt, identity, or whether a request is binding; those axes remain separate.\n\nSCOPE: only deictic address is served. Generic `you` (“you never know”), quoted or force-suspended text, and a reference whose addressee set cannot be recovered are out of scope. In a group thread, `you-one` is invalid unless the one intended recipient is separately resolved; it must not select a member by guesswork. `you-all` refers to the addressed group at the utterance, not every later reader after forwarding or publication. Bare `you` remains legal and number-unspecified. Hyphen loss yields `you all`, which preserves the plural reading, and `you one`, which is awkward but keeps the intended number visible rather than flipping it.",
+      "token_f1": 0.117021,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "36d9fe75c36bbf7e45e6cdbf",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "no-delegation-one-hop-delegation-allowed-state-whether-a-tas",
+      "task": "definition",
+      "prediction": "The ratified Ainglish form `<ACTION>, no-delegation | <ACTION>, one-hop-delegation-allowed` means:\n\n- The action can be performed directly.\n- Delegation of the action to another is not allowed.\n- The action can be performed by a delegate who was directly assigned the task by the original performer.\n\nThis is mapped to careful English as:\n\n- The action can be performed directly.\n- Delegation of the action to another is not permitted.\n- The action can be performed by a delegate who was directly assigned the task by the original performer.",
+      "reference": "Append exactly one qualifier to an ACTION clause whose responsible principal or principal-set is determinate from its explicit subject, addressee, or illocutionary force.\n\n`X, no-delegation` means the responsible principal must not assign any completion-bearing part of X to a different principal. A completion-bearing part is a subtask whose result would be accepted as part of satisfying X without the responsible principal independently performing that subtask. The restriction is about principal-to-principal handoff, not an attempt to prohibit ordinary instruments: invoking a deterministic tool under the responsible principal's control is not delegation. Giving a human, agent, or independently deciding service responsibility for part of X is delegation. Asking for advice or retrieving reported evidence is not by itself delegation unless the other principal is assigned part of X.\n\n`X, one-hop-delegation-allowed` means the responsible principal may assign any part or all of X to one or more immediate delegates. “One hop” measures depth, not the number of sibling delegates: three direct delegates are permitted, but none of them may pass their assigned work to a further principal. The original responsible principal remains accountable to the issuer for satisfying X, integrating the result, and accurately reporting completion. Delegation is permitted, not required.\n\nThe responsible principal comes from the surrounding clause. With `req:` and an omitted subject it is the direct addressee; with `will:` it is normally the speaker; an explicit subject controls otherwise. A named plural principal-set is level zero, so dividing work among its named members is not a downstream hop. Assigning work outside that named set is. If no responsible principal can be recovered, neither qualifier repairs the clause.\n\nDelegation never expands the underlying authority. A direct delegate receives at most the authority needed for the assigned subtask, under every original constraint, and the qualifier does not authorize credential sharing, create platform capabilities, or override an external policy that forbids delegation. It is an authenticated speaker's language signal, not a security sandbox. `force-suspended` can mention either qualifier without activating it.\n\nThe qualifier scopes the nearest action clause or an explicitly grouped action list. Mark clauses separately when their delegation policies differ. Bare action language remains legal and delegation-unspecified; omission alone is not permission. Hyphen loss yields the careful phrases “no delegation” and “one hop delegation allowed.”",
+      "token_f1": 0.21097,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "e475eaa087fc635e14ef0f2d",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "no-delegation-one-hop-delegation-allowed-state-whether-a-tas",
+      "task": "lossless-expansion",
+      "prediction": "Perform the action without delegating it to another person or system. Perform the action with the option to delegate it to one other person or system.",
+      "reference": "Append exactly one qualifier to an ACTION clause whose responsible principal or principal-set is determinate from its explicit subject, addressee, or illocutionary force.\n\n`X, no-delegation` means the responsible principal must not assign any completion-bearing part of X to a different principal. A completion-bearing part is a subtask whose result would be accepted as part of satisfying X without the responsible principal independently performing that subtask. The restriction is about principal-to-principal handoff, not an attempt to prohibit ordinary instruments: invoking a deterministic tool under the responsible principal's control is not delegation. Giving a human, agent, or independently deciding service responsibility for part of X is delegation. Asking for advice or retrieving reported evidence is not by itself delegation unless the other principal is assigned part of X.\n\n`X, one-hop-delegation-allowed` means the responsible principal may assign any part or all of X to one or more immediate delegates. “One hop” measures depth, not the number of sibling delegates: three direct delegates are permitted, but none of them may pass their assigned work to a further principal. The original responsible principal remains accountable to the issuer for satisfying X, integrating the result, and accurately reporting completion. Delegation is permitted, not required.\n\nThe responsible principal comes from the surrounding clause. With `req:` and an omitted subject it is the direct addressee; with `will:` it is normally the speaker; an explicit subject controls otherwise. A named plural principal-set is level zero, so dividing work among its named members is not a downstream hop. Assigning work outside that named set is. If no responsible principal can be recovered, neither qualifier repairs the clause.\n\nDelegation never expands the underlying authority. A direct delegate receives at most the authority needed for the assigned subtask, under every original constraint, and the qualifier does not authorize credential sharing, create platform capabilities, or override an external policy that forbids delegation. It is an authenticated speaker's language signal, not a security sandbox. `force-suspended` can mention either qualifier without activating it.\n\nThe qualifier scopes the nearest action clause or an explicitly grouped action list. Mark clauses separately when their delegation policies differ. Bare action language remains legal and delegation-unspecified; omission alone is not permission. Hyphen loss yields the careful phrases “no delegation” and “one hop delegation allowed.”",
+      "token_f1": 0.082126,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "8cd994f3170b5deeb6a5ecc1",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "no-delegation-one-hop-delegation-allowed-state-whether-a-tas",
+      "task": "form-retrieval",
+      "prediction": "Append `, no-delegation` or `, one-hop-delegation-allowed` to an ACTION clause whose responsible principal or principal-set is determinate from its explicit subject, addressee, or illocutionary force.",
+      "reference": "<ACTION>, no-delegation | <ACTION>, one-hop-delegation-allowed",
+      "token_f1": 0.388889,
+      "canonical_form_hit": false
+    },
+    {
+      "id": "d4a2ebb1120918e643d547c9",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "no-delegation-one-hop-delegation-allowed-state-whether-a-tas",
+      "task": "scope-and-constraints",
+      "prediction": "The scope for `<ACTION>, no-delegation` is that the action can be performed directly by the actor without any delegation of authority to another party.\n\nThe scope for `<ACTION>, one-hop-delegation-allowed` is that the action can be performed directly by the actor or delegated to a single, specific, and predefined party, but not further delegated beyond that single party.\n\nUse constraints for both:\n- The actor must have explicit authorization to perform the action.\n- For `no-delegation`, the actor cannot pass on the responsibility to any other party.\n- For `one-hop-delegation-allowed`, the actor can delegate the responsibility to one specific party, but that party cannot delegate the responsibility to anyone else.",
+      "reference": "Registered mapping:\nAppend exactly one qualifier to an ACTION clause whose responsible principal or principal-set is determinate from its explicit subject, addressee, or illocutionary force.\n\n`X, no-delegation` means the responsible principal must not assign any completion-bearing part of X to a different principal. A completion-bearing part is a subtask whose result would be accepted as part of satisfying X without the responsible principal independently performing that subtask. The restriction is about principal-to-principal handoff, not an attempt to prohibit ordinary instruments: invoking a deterministic tool under the responsible principal's control is not delegation. Giving a human, agent, or independently deciding service responsibility for part of X is delegation. Asking for advice or retrieving reported evidence is not by itself delegation unless the other principal is assigned part of X.\n\n`X, one-hop-delegation-allowed` means the responsible principal may assign any part or all of X to one or more immediate delegates. “One hop” measures depth, not the number of sibling delegates: three direct delegates are permitted, but none of them may pass their assigned work to a further principal. The original responsible principal remains accountable to the issuer for satisfying X, integrating the result, and accurately reporting completion. Delegation is permitted, not required.\n\nThe responsible principal comes from the surrounding clause. With `req:` and an omitted subject it is the direct addressee; with `will:` it is normally the speaker; an explicit subject controls otherwise. A named plural principal-set is level zero, so dividing work among its named members is not a downstream hop. Assigning work outside that named set is. If no responsible principal can be recovered, neither qualifier repairs the clause.\n\nDelegation never expands the underlying authority. A direct delegate receives at most the authority needed for the assigned subtask, under every original constraint, and the qualifier does not authorize credential sharing, create platform capabilities, or override an external policy that forbids delegation. It is an authenticated speaker's language signal, not a security sandbox. `force-suspended` can mention either qualifier without activating it.\n\nThe qualifier scopes the nearest action clause or an explicitly grouped action list. Mark clauses separately when their delegation policies differ. Bare action language remains legal and delegation-unspecified; omission alone is not permission. Hyphen loss yields the careful phrases “no delegation” and “one hop delegation allowed.”\n\nForm constraints:\nNo separate form-constraints field is registered; obey the complete mapping.",
+      "token_f1": 0.266925,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "5cb77e912b0a7d8e18f879bb",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "no-delegation-one-hop-delegation-allowed-state-whether-a-tas",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction \"no-delegation / one-hop-delegation-allowed\" determines whether a task can be handed off to another principal. \n\n- **No-delegation**: The task cannot be handed off to another principal.\n- **One-hop-delegation-allowed**: The task can be handed off to one other principal, but not to any subsequent principals beyond that.",
+      "reference": "Form: <ACTION>, no-delegation | <ACTION>, one-hop-delegation-allowed\nMeaning: Append exactly one qualifier to an ACTION clause whose responsible principal or principal-set is determinate from its explicit subject, addressee, or illocutionary force.\n\n`X, no-delegation` means the responsible principal must not assign any completion-bearing part of X to a different principal. A completion-bearing part is a subtask whose result would be accepted as part of satisfying X without the responsible principal independently performing that subtask. The restriction is about principal-to-principal handoff, not an attempt to prohibit ordinary instruments: invoking a deterministic tool under the responsible principal's control is not delegation. Giving a human, agent, or independently deciding service responsibility for part of X is delegation. Asking for advice or retrieving reported evidence is not by itself delegation unless the other principal is assigned part of X.\n\n`X, one-hop-delegation-allowed` means the responsible principal may assign any part or all of X to one or more immediate delegates. “One hop” measures depth, not the number of sibling delegates: three direct delegates are permitted, but none of them may pass their assigned work to a further principal. The original responsible principal remains accountable to the issuer for satisfying X, integrating the result, and accurately reporting completion. Delegation is permitted, not required.\n\nThe responsible principal comes from the surrounding clause. With `req:` and an omitted subject it is the direct addressee; with `will:` it is normally the speaker; an explicit subject controls otherwise. A named plural principal-set is level zero, so dividing work among its named members is not a downstream hop. Assigning work outside that named set is. If no responsible principal can be recovered, neither qualifier repairs the clause.\n\nDelegation never expands the underlying authority. A direct delegate receives at most the authority needed for the assigned subtask, under every original constraint, and the qualifier does not authorize credential sharing, create platform capabilities, or override an external policy that forbids delegation. It is an authenticated speaker's language signal, not a security sandbox. `force-suspended` can mention either qualifier without activating it.\n\nThe qualifier scopes the nearest action clause or an explicitly grouped action list. Mark clauses separately when their delegation policies differ. Bare action language remains legal and delegation-unspecified; omission alone is not permission. Hyphen loss yields the careful phrases “no delegation” and “one hop delegation allowed.”",
+      "token_f1": 0.146341,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "75079b065436a5e1b25237fd",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "no-delegation-one-hop-delegation-allowed-state-whether-a-tas",
+      "task": "example-expand",
+      "prediction": "requirement: inspect the private ledger and sign the finding, no-delegation.\nrequirement: compare all four mirrors, one-hop-delegation-allowed.\nwill: map the API surface, one-hop-delegation-allowed; complete-by(2026-08-06T12:00Z).\nVina and Dexagon will adjudicate the sample, no-delegation, as-one.",
+      "reference": "The direct addressee must inspect the private ledger and sign the finding without assigning any completion-bearing part to another principal. · The direct addressee may assign the mirror comparisons to one or more immediate delegates, but those delegates may not delegate further; the addressee remains accountable. · I may use immediate delegates to map the API, but they may not redelegate and I still owe successful completion by noon. · The two named actors must adjudicate jointly without handing any part to a principal outside their named set.",
+      "token_f1": 0.242424,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "52266392099449a7e05bbc15",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "no-delegation-one-hop-delegation-allowed-state-whether-a-tas",
+      "task": "example-encode",
+      "prediction": "The direct addressee must inspect the private ledger and sign the finding without assigning any completion-bearing part to another principal. · The direct addressee may assign the mirror comparisons to one or more immediate delegates, but those delegates may not delegate further; the direct addressee remains accountable. · I may use immediate delegates to map the API, but they may not redelegate and I still owe successful completion by noon. · The two named actors must adjudicate jointly without assigning any part to a principal outside their named set.",
+      "reference": "req: inspect the private ledger and sign the finding, no-delegation. · req: compare all four mirrors, one-hop-delegation-allowed. · will: map the API surface, one-hop-delegation-allowed; complete-by(2026-08-06T12:00Z). · Vina and Dexagon will adjudicate the sample, no-delegation, as-one.",
+      "token_f1": 0.240602,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "a67fb20939d19a4578b2bc35",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+      "task": "definition",
+      "prediction": "The ratified Ainglish form `<ACTION> start-by(<t>) | <ACTION> complete-by(<t>)` means that the action `<ACTION>` is scheduled to start no later than time `<t>` or is expected to be completed by time `<t>`, respectively.",
+      "reference": "Attach one phase-qualified deadline to an ACTION clause. `X start-by(t)` means that genuine execution of X begins at or before instant t. Acknowledging X, promising to do it, putting it in a queue, reserving capacity, or scheduling a future start does not satisfy the marker unless that administrative act is itself X. The first task-specific step that can advance X toward its stated outcome does. `X complete-by(t)` means that X's declared successful-completion condition is satisfied at or before t. A process that merely stops, times out, is cancelled, or reaches a terminal failure has not satisfied `complete-by`.\n\nThe deadline is inclusive: an event exactly at t qualifies. `start-by` imposes no completion deadline. `complete-by` imposes no separately stated earliest-start constraint, although a non-instantaneous action must logically have started early enough to complete. If X has an explicit completion predicate, that predicate governs; otherwise the ordinary stated task goal governs. An author who cannot identify a completion condition cannot truthfully use `complete-by` as if elapsed time alone made the task successful.\n\nLossless round-trips: `req: upload the archive start-by(17:00Z)` ⇄ “Please begin actual archive-upload execution no later than 17:00Z; it need not be finished then.” `will: upload the archive complete-by(17:00Z)` ⇄ “I commit that the archive upload's success condition will be satisfied no later than 17:00Z.” Hyphen loss yields the ordinary phrases “start by” and “complete by.”\n\nSCOPE: the markers type which event a deadline constrains; they do not themselves request, promise, report, prioritize, retry, cancel, or prove that the event occurred. Illocutionary force comes separately from `req:`, `will:`, or other discourse context. `<t>` must independently denote an instant; use an absolute timestamp or anchored deixis where needed. Time zone, clock source, completion predicate, and consequences of missing the deadline remain separately stated.",
+      "token_f1": 0.154728,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "80f3cb6b2afbc6997fcc9a79",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+      "task": "lossless-expansion",
+      "prediction": "Start the action by time t | Complete the action by time t",
+      "reference": "Attach one phase-qualified deadline to an ACTION clause. `X start-by(t)` means that genuine execution of X begins at or before instant t. Acknowledging X, promising to do it, putting it in a queue, reserving capacity, or scheduling a future start does not satisfy the marker unless that administrative act is itself X. The first task-specific step that can advance X toward its stated outcome does. `X complete-by(t)` means that X's declared successful-completion condition is satisfied at or before t. A process that merely stops, times out, is cancelled, or reaches a terminal failure has not satisfied `complete-by`.\n\nThe deadline is inclusive: an event exactly at t qualifies. `start-by` imposes no completion deadline. `complete-by` imposes no separately stated earliest-start constraint, although a non-instantaneous action must logically have started early enough to complete. If X has an explicit completion predicate, that predicate governs; otherwise the ordinary stated task goal governs. An author who cannot identify a completion condition cannot truthfully use `complete-by` as if elapsed time alone made the task successful.\n\nLossless round-trips: `req: upload the archive start-by(17:00Z)` ⇄ “Please begin actual archive-upload execution no later than 17:00Z; it need not be finished then.” `will: upload the archive complete-by(17:00Z)` ⇄ “I commit that the archive upload's success condition will be satisfied no later than 17:00Z.” Hyphen loss yields the ordinary phrases “start by” and “complete by.”\n\nSCOPE: the markers type which event a deadline constrains; they do not themselves request, promise, report, prioritize, retry, cancel, or prove that the event occurred. Illocutionary force comes separately from `req:`, `will:`, or other discourse context. `<t>` must independently denote an instant; use an absolute timestamp or anchored deixis where needed. Time zone, clock source, completion predicate, and consequences of missing the deadline remain separately stated.",
+      "token_f1": 0.073846,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "c646dfa1628589e9f33e3a29",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+      "task": "form-retrieval",
+      "prediction": "`X start-by(t)`",
+      "reference": "<ACTION> start-by(<t>) | <ACTION> complete-by(<t>)",
+      "token_f1": 0.5,
+      "canonical_form_hit": false
+    },
+    {
+      "id": "29f72a705523fa2142825d18",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+      "task": "scope-and-constraints",
+      "prediction": "The scope of `<ACTION> start-by(<t>) | <ACTION> complete-by(<t>)` is to specify the time by which an action must start or be completed. The use constraints are that `<t>` must be a valid time reference, such as a specific date and time, and it must be applicable to the context in which the action is being described. The action must be a well-defined activity or task.",
+      "reference": "Registered mapping:\nAttach one phase-qualified deadline to an ACTION clause. `X start-by(t)` means that genuine execution of X begins at or before instant t. Acknowledging X, promising to do it, putting it in a queue, reserving capacity, or scheduling a future start does not satisfy the marker unless that administrative act is itself X. The first task-specific step that can advance X toward its stated outcome does. `X complete-by(t)` means that X's declared successful-completion condition is satisfied at or before t. A process that merely stops, times out, is cancelled, or reaches a terminal failure has not satisfied `complete-by`.\n\nThe deadline is inclusive: an event exactly at t qualifies. `start-by` imposes no completion deadline. `complete-by` imposes no separately stated earliest-start constraint, although a non-instantaneous action must logically have started early enough to complete. If X has an explicit completion predicate, that predicate governs; otherwise the ordinary stated task goal governs. An author who cannot identify a completion condition cannot truthfully use `complete-by` as if elapsed time alone made the task successful.\n\nLossless round-trips: `req: upload the archive start-by(17:00Z)` ⇄ “Please begin actual archive-upload execution no later than 17:00Z; it need not be finished then.” `will: upload the archive complete-by(17:00Z)` ⇄ “I commit that the archive upload's success condition will be satisfied no later than 17:00Z.” Hyphen loss yields the ordinary phrases “start by” and “complete by.”\n\nSCOPE: the markers type which event a deadline constrains; they do not themselves request, promise, report, prioritize, retry, cancel, or prove that the event occurred. Illocutionary force comes separately from `req:`, `will:`, or other discourse context. `<t>` must independently denote an instant; use an absolute timestamp or anchored deixis where needed. Time zone, clock source, completion predicate, and consequences of missing the deadline remain separately stated.\n\nForm constraints:\nNo separate form-constraints field is registered; obey the complete mapping.",
+      "token_f1": 0.236776,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "e4a8bb0eeb302d9279294f55",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction \"start-by / complete-by\" constrains either the starting or ending of a task by a specified deadline. It specifies whether the deadline applies to when the task must begin (\"start-by\") or when it must be completed (\"complete-by\").",
+      "reference": "Form: <ACTION> start-by(<t>) | <ACTION> complete-by(<t>)\nMeaning: Attach one phase-qualified deadline to an ACTION clause. `X start-by(t)` means that genuine execution of X begins at or before instant t. Acknowledging X, promising to do it, putting it in a queue, reserving capacity, or scheduling a future start does not satisfy the marker unless that administrative act is itself X. The first task-specific step that can advance X toward its stated outcome does. `X complete-by(t)` means that X's declared successful-completion condition is satisfied at or before t. A process that merely stops, times out, is cancelled, or reaches a terminal failure has not satisfied `complete-by`.\n\nThe deadline is inclusive: an event exactly at t qualifies. `start-by` imposes no completion deadline. `complete-by` imposes no separately stated earliest-start constraint, although a non-instantaneous action must logically have started early enough to complete. If X has an explicit completion predicate, that predicate governs; otherwise the ordinary stated task goal governs. An author who cannot identify a completion condition cannot truthfully use `complete-by` as if elapsed time alone made the task successful.\n\nLossless round-trips: `req: upload the archive start-by(17:00Z)` ⇄ “Please begin actual archive-upload execution no later than 17:00Z; it need not be finished then.” `will: upload the archive complete-by(17:00Z)` ⇄ “I commit that the archive upload's success condition will be satisfied no later than 17:00Z.” Hyphen loss yields the ordinary phrases “start by” and “complete by.”\n\nSCOPE: the markers type which event a deadline constrains; they do not themselves request, promise, report, prioritize, retry, cancel, or prove that the event occurred. Illocutionary force comes separately from `req:`, `will:`, or other discourse context. `<t>` must independently denote an instant; use an absolute timestamp or anchored deixis where needed. Time zone, clock source, completion predicate, and consequences of missing the deadline remain separately stated.",
+      "token_f1": 0.164384,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "3ea028912ea064b615cc2aa6",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+      "task": "example-expand",
+      "prediction": "request: upload the archive starting at 17:00 UTC on August 5, 2026.\nwill: upload the archive by 18:00 UTC on August 5, 2026.\n\nrequest: investigate the incident starting at 14:10 UTC on August 5, 2026.\nwill: publish the signed report by 09:00 UTC on August 6, 2026; estimated time of arrival for the status update is 20:00 UTC on August 5, 2026.",
+      "reference": "Please begin actual archive-upload execution no later than 17:00Z; acknowledgement or queueing is insufficient. · I commit that the archive upload's success condition will be satisfied no later than 18:00Z; a stopped or failed upload is insufficient. · Please take the first task-specific investigative step no later than the anchored present instant. · I will successfully publish the signed report by 09:00Z tomorrow and will separately report status at 20:00Z today.",
+      "token_f1": 0.295775,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "e5938845e7808ebedc329906",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+      "task": "example-encode",
+      "prediction": "Begin actual archive-upload execution no later than 17:00Z; acknowledgement or queueing is insufficient. Commit that the archive upload's success condition will be satisfied no later than 18:00Z; a stopped or failed upload is insufficient. Take the first task-specific investigative step no later than the anchored present instant. Will successfully publish the signed report by 09:00Z tomorrow and will separately report status at 20:00Z today.",
+      "reference": "req: upload the archive start-by(2026-08-05T17:00Z). · will: upload the archive complete-by(2026-08-05T18:00Z). · req: investigate the incident start-by(now (2026-08-05T14:10Z)). · will: publish the signed report complete-by(2026-08-06T09:00Z); status eta(2026-08-05T20:00Z).",
+      "token_f1": 0.319328,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "214ada97da9d38cf0955863f",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+      "task": "definition",
+      "prediction": "The ratified Ainglish form `true-as-worded | false-as-worded` means that a statement or proposition is to be evaluated as true according to the wording provided, or as false according to the wording provided, respectively. In careful English, this can be mapped as:\n\n- The statement is true based on the exact wording given.\n- The statement is false based on the exact wording given.",
+      "reference": "Use either form as a complete reply to one salient POLAR question whose interrogative content is a single truth-evaluable proposition P. Recover P by restoring declarative word order while retaining every truth-conditional word and every written negation. `true-as-worded` asserts P. `false-as-worded` asserts not-P.\n\nExamples: from “Didn't the backup finish?”, P is “the backup did not finish”; therefore `true-as-worded` means that it did not finish, while `false-as-worded` means that it finished. From “Did the backup fail?”, P is “the backup did fail”; `true-as-worded` reports failure and `false-as-worded` denies failure. Lexically negative predicates such as “fail,” “lack,” and “reject” are not reversed merely because they describe an undesirable state. From “Did every worker not respond?”, P remains “every worker did not respond”; `false-as-worded` supplies only its logical complement—at least one worker responded—not the stronger claim that every worker responded.\n\nSCOPE: the form applies only when exactly one question and one determinate P are salient, either in the immediately preceding turn or by explicit quotation/reference. It is invalid as a bare answer to a bundle of questions, a wh-question, an alternative question, or a tag question with competing clause/tag polarities. If the question itself contains an untyped ambiguous disjunction, pronoun, or scope relation, this marker does not repair that internal ambiguity. Restate or repair the question first. “I do not know” and probability-bearing answers remain legal and are not forced into either pole.\n\nThe forms assert truth, not agreement with the asker, desirability, consent, acknowledgement, or confidence. Evidence and confidence compose separately. `obs(job-42): false-as-worded` says observed job evidence makes P false. A following declarative restatement must agree with the marker; a conflict is an invalid answer to surface, not an invitation to guess precedence. Hyphen loss yields the exact ordinary phrases “true as worded” and “false as worded.”",
+      "token_f1": 0.186047,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "680b98657ed739103359a938",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+      "task": "lossless-expansion",
+      "prediction": "true as worded | false as worded",
+      "reference": "Use either form as a complete reply to one salient POLAR question whose interrogative content is a single truth-evaluable proposition P. Recover P by restoring declarative word order while retaining every truth-conditional word and every written negation. `true-as-worded` asserts P. `false-as-worded` asserts not-P.\n\nExamples: from “Didn't the backup finish?”, P is “the backup did not finish”; therefore `true-as-worded` means that it did not finish, while `false-as-worded` means that it finished. From “Did the backup fail?”, P is “the backup did fail”; `true-as-worded` reports failure and `false-as-worded` denies failure. Lexically negative predicates such as “fail,” “lack,” and “reject” are not reversed merely because they describe an undesirable state. From “Did every worker not respond?”, P remains “every worker did not respond”; `false-as-worded` supplies only its logical complement—at least one worker responded—not the stronger claim that every worker responded.\n\nSCOPE: the form applies only when exactly one question and one determinate P are salient, either in the immediately preceding turn or by explicit quotation/reference. It is invalid as a bare answer to a bundle of questions, a wh-question, an alternative question, or a tag question with competing clause/tag polarities. If the question itself contains an untyped ambiguous disjunction, pronoun, or scope relation, this marker does not repair that internal ambiguity. Restate or repair the question first. “I do not know” and probability-bearing answers remain legal and are not forced into either pole.\n\nThe forms assert truth, not agreement with the asker, desirability, consent, acknowledgement, or confidence. Evidence and confidence compose separately. `obs(job-42): false-as-worded` says observed job evidence makes P false. A following declarative restatement must agree with the marker; a conflict is an invalid answer to surface, not an invitation to guess precedence. Hyphen loss yields the exact ordinary phrases “true as worded” and “false as worded.”",
+      "token_f1": 0.036474,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "e0dbdd6fad6976ae62ffbd04",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+      "task": "form-retrieval",
+      "prediction": "true-as-worded\n\nfalse-as-worded",
+      "reference": "true-as-worded | false-as-worded",
+      "token_f1": 1.0,
+      "canonical_form_hit": true
+    },
+    {
+      "id": "5099458f73c03269ab605759",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+      "task": "scope-and-constraints",
+      "prediction": "`true-as-worded | false-as-worded` is used to indicate the exact wording of a statement's truth value as it appears in the original text or document. It must be applied within the context of evaluating the truthfulness of statements as they are presented, without altering or interpreting their content. This term should not be used to express personal opinions or interpretations beyond the literal wording provided. Its application is limited to formal, verbatim assessments of truth in legal, academic, or official documents.",
+      "reference": "Registered mapping:\nUse either form as a complete reply to one salient POLAR question whose interrogative content is a single truth-evaluable proposition P. Recover P by restoring declarative word order while retaining every truth-conditional word and every written negation. `true-as-worded` asserts P. `false-as-worded` asserts not-P.\n\nExamples: from “Didn't the backup finish?”, P is “the backup did not finish”; therefore `true-as-worded` means that it did not finish, while `false-as-worded` means that it finished. From “Did the backup fail?”, P is “the backup did fail”; `true-as-worded` reports failure and `false-as-worded` denies failure. Lexically negative predicates such as “fail,” “lack,” and “reject” are not reversed merely because they describe an undesirable state. From “Did every worker not respond?”, P remains “every worker did not respond”; `false-as-worded` supplies only its logical complement—at least one worker responded—not the stronger claim that every worker responded.\n\nSCOPE: the form applies only when exactly one question and one determinate P are salient, either in the immediately preceding turn or by explicit quotation/reference. It is invalid as a bare answer to a bundle of questions, a wh-question, an alternative question, or a tag question with competing clause/tag polarities. If the question itself contains an untyped ambiguous disjunction, pronoun, or scope relation, this marker does not repair that internal ambiguity. Restate or repair the question first. “I do not know” and probability-bearing answers remain legal and are not forced into either pole.\n\nThe forms assert truth, not agreement with the asker, desirability, consent, acknowledgement, or confidence. Evidence and confidence compose separately. `obs(job-42): false-as-worded` says observed job evidence makes P false. A following declarative restatement must agree with the marker; a conflict is an invalid answer to surface, not an invitation to guess precedence. Hyphen loss yields the exact ordinary phrases “true as worded” and “false as worded.”\n\nForm constraints:\nNo separate form-constraints field is registered; obey the complete mapping.",
+      "token_f1": 0.180095,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "56e18fea187d69e749a1c629",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction \"true-as-worded / false-as-worded\" refers to providing unambiguous answers to negative questions based on the exact wording of the question. This means that when a negative question is asked, the answer must strictly adhere to whether the statement within the question is true or false according to its literal interpretation, without adding assumptions or interpretations.",
+      "reference": "Form: true-as-worded | false-as-worded\nMeaning: Use either form as a complete reply to one salient POLAR question whose interrogative content is a single truth-evaluable proposition P. Recover P by restoring declarative word order while retaining every truth-conditional word and every written negation. `true-as-worded` asserts P. `false-as-worded` asserts not-P.\n\nExamples: from “Didn't the backup finish?”, P is “the backup did not finish”; therefore `true-as-worded` means that it did not finish, while `false-as-worded` means that it finished. From “Did the backup fail?”, P is “the backup did fail”; `true-as-worded` reports failure and `false-as-worded` denies failure. Lexically negative predicates such as “fail,” “lack,” and “reject” are not reversed merely because they describe an undesirable state. From “Did every worker not respond?”, P remains “every worker did not respond”; `false-as-worded` supplies only its logical complement—at least one worker responded—not the stronger claim that every worker responded.\n\nSCOPE: the form applies only when exactly one question and one determinate P are salient, either in the immediately preceding turn or by explicit quotation/reference. It is invalid as a bare answer to a bundle of questions, a wh-question, an alternative question, or a tag question with competing clause/tag polarities. If the question itself contains an untyped ambiguous disjunction, pronoun, or scope relation, this marker does not repair that internal ambiguity. Restate or repair the question first. “I do not know” and probability-bearing answers remain legal and are not forced into either pole.\n\nThe forms assert truth, not agreement with the asker, desirability, consent, acknowledgement, or confidence. Evidence and confidence compose separately. `obs(job-42): false-as-worded` says observed job evidence makes P false. A following declarative restatement must agree with the marker; a conflict is an invalid answer to surface, not an invitation to guess precedence. Hyphen loss yields the exact ordinary phrases “true as worded” and “false as worded.”",
+      "token_f1": 0.194373,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "eff64a4dcb034b92fee49e37",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+      "task": "example-expand",
+      "prediction": "ask: Didn't the backup finish? — true-as-worded.  \nask: The backup did not complete as expected.  \nask: Didn't the backup finish? — false-as-worded; obs(job-42): completion receipt exists.  \nask: The backup has completed, as evidenced by the completion receipt for job-42.  \nask: Did node A reject build 7? — true-as-worded.  \nask: Node A rejected build 7.  \nask: Did every worker not respond? — false-as-worded; obs(inbox): worker C responded.  \nask: Not all workers failed to respond; specifically, worker C responded.  \nask: Is the cache warm? — false-as-worded.  \nask: The cache is not warm.",
+      "reference": "The backup did not finish. · The backup did finish; I observed its completion receipt. · Node A rejected build 7. · It is false that every worker failed to respond; worker C responded, though this does not claim that all workers did. · The cache is not warm.",
+      "token_f1": 0.479452,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "f96dad2d7afb8d681df47ea1",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+      "task": "example-encode",
+      "prediction": "The backup did not complete. · The backup completed; I observed its completion receipt. · Node A rejected build 7. · It is false that every worker failed to respond; worker C responded, though this does not assert that all workers did. · The cache is not warm.",
+      "reference": "ask: Didn't the backup finish? — true-as-worded. · ask: Didn't the backup finish? — false-as-worded; obs(job-42): completion receipt exists. · ask: Did node A reject build 7? — true-as-worded. · ask: Did every worker not respond? — false-as-worded; obs(inbox): worker C responded. · ask: Is the cache warm? — false-as-worded.",
+      "token_f1": 0.48,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "10b941088207d796c4f6fde3",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "we-including-you-we-excluding-you-clusivity-mark-whether-we--4",
+      "task": "definition",
+      "prediction": "The ratified Ainglish form `we-including-you / we-excluding-you` carefully maps to:\n\n- \"we including you\" when referring to a group that includes the listener.\n- \"we excluding you\" when referring to a group that does not include the listener.",
+      "reference": "\"we-including-you <predicate>\" = \"we — and that includes you, the reader — <predicate>\": first-person plural, addressee INCLUDED; the reader is among those expected to act. \"we-excluding-you <predicate>\" = \"we, not including you, <predicate>\": addressee EXCLUDED; the reader is informed, not tasked. Lossless round-trip: \"we-including-you will verify the anchors\" ⇄ \"We — and that includes you — will verify the anchors.\" Bare 'we' remains legal and unmarked (like bare claims beside claim-tag): mark the pronoun when the participant set is load-bearing — task assignment, commitments, permissions. Hyphen loss degrades to the careful-writer phrase ('we including you') with meaning intact.",
+      "token_f1": 0.3,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "04cfaeb92e78cf4ff5bb3006",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "we-including-you-we-excluding-you-clusivity-mark-whether-we--4",
+      "task": "lossless-expansion",
+      "prediction": "We, including you, / We, excluding you.",
+      "reference": "\"we-including-you <predicate>\" = \"we — and that includes you, the reader — <predicate>\": first-person plural, addressee INCLUDED; the reader is among those expected to act. \"we-excluding-you <predicate>\" = \"we, not including you, <predicate>\": addressee EXCLUDED; the reader is informed, not tasked. Lossless round-trip: \"we-including-you will verify the anchors\" ⇄ \"We — and that includes you — will verify the anchors.\" Bare 'we' remains legal and unmarked (like bare claims beside claim-tag): mark the pronoun when the participant set is load-bearing — task assignment, commitments, permissions. Hyphen loss degrades to the careful-writer phrase ('we including you') with meaning intact.",
+      "token_f1": 0.11215,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "eeccf179fde2a3e35bb18302",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "we-including-you-we-excluding-you-clusivity-mark-whether-we--4",
+      "task": "form-retrieval",
+      "prediction": "\"we-including-you will verify the anchors\" = \"we — and that includes you — will verify the anchors.\"",
+      "reference": "we-including-you / we-excluding-you",
+      "token_f1": 0.454545,
+      "canonical_form_hit": false
+    },
+    {
+      "id": "35a218bff4e622fce8cdefed",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "we-including-you-we-excluding-you-clusivity-mark-whether-we--4",
+      "task": "scope-and-constraints",
+      "prediction": "The scope of `we-including-you` and `we-excluding-you` is limited to the context in which they are used. They refer specifically to groups that include or exclude the listener, respectively.\n\n- **We-including-you**: This term is used when the speaker includes the listener in a group or action. It is constrained to contexts where the speaker explicitly wants to include the listener in the group or activity being discussed.\n  \n- **We-excluding-you**: This term is used when the speaker excludes the listener from a group or action. It is constrained to contexts where the speaker explicitly wants to differentiate between those who are included and those who are not, including the listener.\n\nThese terms should be used precisely as intended without inferring broader meanings or implications beyond the explicit context provided.",
+      "reference": "Registered mapping:\n\"we-including-you <predicate>\" = \"we — and that includes you, the reader — <predicate>\": first-person plural, addressee INCLUDED; the reader is among those expected to act. \"we-excluding-you <predicate>\" = \"we, not including you, <predicate>\": addressee EXCLUDED; the reader is informed, not tasked. Lossless round-trip: \"we-including-you will verify the anchors\" ⇄ \"We — and that includes you — will verify the anchors.\" Bare 'we' remains legal and unmarked (like bare claims beside claim-tag): mark the pronoun when the participant set is load-bearing — task assignment, commitments, permissions. Hyphen loss degrades to the careful-writer phrase ('we including you') with meaning intact.\n\nForm constraints:\nNo separate form-constraints field is registered; obey the complete mapping.",
+      "token_f1": 0.281124,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "11113da80341a5ae8b83a9b6",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "we-including-you-we-excluding-you-clusivity-mark-whether-we--4",
+      "task": "distinction-summary",
+      "prediction": "The operational distinction named by this ratified entry is **clusivity**. Clusivity marks whether the pronoun \"we\" includes the reader or not. \n\n- **We-including-you**: The speaker and the listener are both included in the group.\n- **We-excluding-you**: The speaker and the listener are not part of the group being referred to.\n\nThis distinction is used to clarify whether the speaker and the listener are part of the group being discussed.",
+      "reference": "Form: we-including-you / we-excluding-you\nMeaning: \"we-including-you <predicate>\" = \"we — and that includes you, the reader — <predicate>\": first-person plural, addressee INCLUDED; the reader is among those expected to act. \"we-excluding-you <predicate>\" = \"we, not including you, <predicate>\": addressee EXCLUDED; the reader is informed, not tasked. Lossless round-trip: \"we-including-you will verify the anchors\" ⇄ \"We — and that includes you — will verify the anchors.\" Bare 'we' remains legal and unmarked (like bare claims beside claim-tag): mark the pronoun when the participant set is load-bearing — task assignment, commitments, permissions. Hyphen loss degrades to the careful-writer phrase ('we including you') with meaning intact.",
+      "token_f1": 0.311111,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "d3b117fe8049db410f3b6d8a",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "we-including-you-we-excluding-you-clusivity-mark-whether-we--4",
+      "task": "example-expand",
+      "prediction": "We, including you, will verify the anchors before Friday. We, excluding you, froze the panel item set; there is nothing needed from you. In case of a rollback, we, including you, own the rollback path.",
+      "reference": "We — and that includes you — will verify the anchors before Friday. · We froze the panel item set (not you — no action needed from you). · Handover: the rollback path is owned by us, including you.",
+      "token_f1": 0.695652,
+      "canonical_form_hit": null
+    },
+    {
+      "id": "559582789e2cdcac6e9c4b01",
+      "split": "transfer-holdout.jsonl",
+      "source_slug": "we-including-you-we-excluding-you-clusivity-mark-whether-we--4",
+      "task": "example-encode",
+      "prediction": "We — and that includes you — will verify the anchors before Friday. · We froze the panel item set (no action needed from you). · Handover: the rollback path is owned by us, including you.",
+      "reference": "we-including-you will verify the anchors before Friday. · we-excluding-you froze the panel item set; nothing is needed from you. · handover: we-including-you own the rollback path.",
+      "token_f1": 0.774194,
+      "canonical_form_hit": null
+    }
+  ],
+  "governance_evidence": false,
+  "content_sha256": "23f2691b27d9454e9b48a8741bb8ffcb056387a8ed81bd95f3127bce0102dd40"
+}
