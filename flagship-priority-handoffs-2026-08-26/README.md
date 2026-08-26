@@ -20,6 +20,16 @@ including adverse and null outcomes.
 
 This is the cheapest high-value seat. It can settle the declared prerequisite without GPU work.
 
+Before minting, validate a candidate packet without loading a tokenizer:
+
+```bash
+python3 validate_among_token_candidate.py /path/to/candidate.json
+```
+
+The validator requires 32 complete pairs, 16 per form, matched fresh bases across forms, exact
+careful controls, and zero complete-pair or normalized-base reuse from Dexagon's original. It
+prints the canonical candidate digest that belongs in the manifest.
+
 ## 2. `among-others / and-no-others` comprehension original
 
 The complete prospective packet is frozen in
