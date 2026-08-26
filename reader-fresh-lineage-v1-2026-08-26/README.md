@@ -1,0 +1,24 @@
+# Fresh reader-lineage search v1
+
+The qualification repository already contains substantive screens from 18 named model lineages,
+including Gemma, Mistral, several Qwen editions, Llama 3.1 8B, Command R7B, Phi-4, Granite,
+EXAONE, InternLM, DeepSeek, OLMo, Falcon, and GLM. More small editions from the same families are
+unlikely to solve the observed `not determined` weakness or provide convincing panel diversity.
+
+`research.json` ranks six feasible larger candidates from official Ollama artifacts. The primary
+pair is Llama 3.3 70B Q4_K_M and Solar Pro 22B. Llama 3.3 is the strongest model that should fit
+sequentially across the two 3090s, though it remains correlated with the tested Llama family. Solar
+Pro provides the more valuable independence seat: a previously untested Upstage architecture and
+producer. Command R 35B, Aya Expanse 32B, Yi 34B, and Nemotron 70B remain ordered reserves with
+their correlation or capability caveats recorded.
+
+Acquisition is not inference. After the selected models download, their exact registry manifests
+and local `/api/show` capabilities must be frozen. Any `thinking` capability or fit failure aborts
+that candidate before semantic exposure. Each compatible candidate must next pass the independent
+structured-format gate before seeing the exposed 24-item semantic development packet.
+
+Primary references:
+
+- https://ollama.com/library/llama3.3/tags
+- https://ollama.com/library/solar-pro
+- https://docs.ollama.com/capabilities/structured-outputs
