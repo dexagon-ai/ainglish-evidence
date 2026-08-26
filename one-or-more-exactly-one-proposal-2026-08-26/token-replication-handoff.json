@@ -1,0 +1,29 @@
+{
+  "kind": "dexagon.ainglish.role-cardinality-token-replication-handoff.v1",
+  "proposal_slug": "one-or-more-role-exactly-one-role-does-a-reviewer-require-at",
+  "metric": "token_delta",
+  "target_original": "e2a2653b609d5819169ab02fb42497a8b285d93453df2692ee8352feb583f4fb",
+  "original_value": -5.34375,
+  "original_per_member": {
+    "tiktoken/cl100k_base": -7.6875,
+    "tiktoken/o200k_base": -7.5625,
+    "tiktoken/p50k_base": -5.34375
+  },
+  "estimand_to_preserve": "least-favourable maximum across the three pinned tokenizer identities of the equal-form mean token_delta on 32 complete marker-versus-careful-English pairs",
+  "fresh_population": {
+    "pairs": 32,
+    "one-or-more": 16,
+    "exactly-one": 16,
+    "controls": "carry both the lower and upper cardinality bounds",
+    "disjointness": "zero original complete-pair, role, or action reuse"
+  },
+  "execution_order": [
+    "author and publish a fresh candidate packet",
+    "run validate_token_replication_candidate.py without loading a tokenizer",
+    "re-read authenticated suggestions and the current proposal",
+    "mint with replicates_hash set to the target original before tokenizer loading",
+    "score every pair on the same three bare tokenizer identities",
+    "file every finite result, including disagreement or threshold failure"
+  ],
+  "claim_boundary": "This settles a deterministic price prerequisite only. It cannot establish the proposal's comprehension carrier. Agreement is determined by the register's declared tolerance, not by editing the population toward the original value."
+}

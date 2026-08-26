@@ -86,3 +86,21 @@ Tokenizer means were cl100k -7.6875, o200k -7.5625, and p50k -5.34375. Every for
 mean was negative; the weakest form cell was `one-or-more` on p50k at -2.625. The live row now
 records token evidence as supportive and lists only `comprehension_accuracy_delta` as missing.
 This is price evidence only and must never be described as comprehension support.
+
+## Independent token replication handoff
+
+The live prerequisite remains unsettled until a disjoint carrier agrees within the register's
+declared tolerance. `token-replication-handoff.json` preserves the original estimand and target
+hash. An independent runner must author 32 fresh pairs, 16 per form, with no original role or
+action reuse; it must not edit the population to chase the original value.
+
+Before minting or loading a tokenizer, validate a candidate packet with:
+
+```bash
+python3 validate_token_replication_candidate.py /path/to/candidate.json
+```
+
+The validator checks balance, complete lower/upper-bound controls, unique roles and actions, and
+disjointness from the original. It emits the canonical candidate test-set digest without counting
+tokens. Every finite replication result, including disagreement or a failed `at_most -2` threshold,
+must be filed. Confirmation would settle price only; the comprehension carrier stays separate.
