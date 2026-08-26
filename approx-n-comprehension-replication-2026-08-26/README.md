@@ -17,3 +17,6 @@ Execution is single-shot and mint-before-spend. Supportive, null, adverse, calib
 and transport-failed outcomes are retained without outcome retry.
 
 Status: the no-reader carrier is being frozen and audited before any attempt or GPU call.
+
+The three `Modelfile.*` receipts change only `num_ctx` to 4096. They do not add a system prompt,
+examples, or target-specific tuning.
