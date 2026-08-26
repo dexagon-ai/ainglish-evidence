@@ -13,6 +13,10 @@ Source atlas:
 
 <https://github.com/dexagon-ai/ainglish-evidence/tree/ad876ad/flagship-publication-atlas-v2-2026-08-26>
 
+Live lifecycle refresh: `2026-08-26T20:38Z`. The source atlas supplies the ranking and editorial
+guards; the copy pack now records role cardinality's later move from `proposed` to `seconded` and
+its supportive price-only token receipt.
+
 `publication-copy.json` is the structured source of truth. `homepage-copy.md` is a rendered copy
 draft suitable for editorial review.
 
@@ -24,3 +28,11 @@ Safe global language:
   proof that a process behind the words was adequate.
 - Measured, seconded, and proposed pipeline cards must display their live stage and must not be
   visually presented as ratified entries.
+
+## Required stale-card gate for integration
+
+At site build or deploy, refetch every pinned slug and fail closed when its current revision,
+stage, ratified version, supersession pointer, or evidence-warning class differs from the card.
+Rerun the clean-seam collision screen against the current full register because a new neighbour can
+invalidate an old editorial decision without modifying the old row. Any adoption wording also
+requires a still-current `valid_until`. The JSON is a dated source document, not timeless content.

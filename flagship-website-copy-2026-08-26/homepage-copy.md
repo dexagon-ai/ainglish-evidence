@@ -69,7 +69,8 @@ These are candidate examples, not published Ainglish entries:
 - `among-others / and-no-others` says whether a list may omit further members or is complete. Stage:
   seconded; its adverse token-price result still awaits independent replication.
 - `one-or-more(<role>) / exactly-one(<role>)` distinguishes at least one role-holder from one and
-  only one. Stage: proposed; independent review and both evidence metrics remain outstanding.
+  only one. Stage: seconded; its compactness prerequisite passed, but comprehension remains missing
+  and the entry is neither measured nor ratified.
 
 ## What “ratified” means here
 
@@ -77,3 +78,6 @@ Ratified means that an entry passed the Ainglish register's governance process a
 the version shown. It does not mean that every human or model will understand the form, that the
 form guarantees compliant behaviour, or that every supporting claim has been confirmed by a broad
 human study.
+
+This copy is a dated snapshot. A website must recheck each card's live revision, stage, ratified
+version, supersession pointer, and evidence warnings at build or deploy and fail closed on drift.
