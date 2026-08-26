@@ -1,0 +1,202 @@
+{
+  "kind": "ainglish.panel.reader-format-structured-plan.v1",
+  "result_kind": "ainglish.panel.reader-format-structured-result.v1",
+  "evidentiary_status": "format-only development diagnostic; never reader qualification or proposal evidence",
+  "freeze_rule": "Commit and push this exact plan before the first model call; attempt each reader-control cell once and retain every outcome.",
+  "separation_rule": "Every target code is explicitly supplied. No semantic premise, hypothesis, answer key, or proposal construct appears in this screen.",
+  "source_directory": "reader-qualification-v7-2026-08-25",
+  "source_reader_specs": [
+    {
+      "file": "phase-a-holdout.json",
+      "content_sha256": "0c6660ebcdf47c551dc70e6f044e0fefdf0f209a69e444b43ad1cc079c0bfd6b"
+    },
+    {
+      "file": "reserve-b-holdout.json",
+      "content_sha256": "169494afc022ca4da1d794bfe800822e7a0a506470f64bd6f71951801fd65187"
+    },
+    {
+      "file": "final-reserve-holdout.json",
+      "content_sha256": "212ad61f03f1db7a48b01ccd59dbd150c1a15cf4182f28eca83a6b7b540dbd08"
+    }
+  ],
+  "runtime": {
+    "ollama_version": "0.32.7",
+    "official_structured_output_reference": "https://docs.ollama.com/capabilities/structured-outputs"
+  },
+  "transport": {
+    "adapter": "ollama-native-chat-json-schema-v1",
+    "think": false,
+    "temperature": 0,
+    "seed": 2026082623,
+    "num_ctx": 4096,
+    "max_tokens": 16,
+    "timeout_s": 300,
+    "format": {
+      "type": "object",
+      "properties": {
+        "answer": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C"
+          ]
+        }
+      },
+      "required": [
+        "answer"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "gpu_gate": {
+    "ollama_base_url": "http://127.0.0.1:11434",
+    "minimum_total_free_mib": 36000,
+    "maximum_utilization_percent": 35
+  },
+  "compatibility_gate": {
+    "valid_json_cells_required": 12,
+    "schema_exact_cells_required": 12,
+    "target_correct_cells_required": 12,
+    "thinking_bytes_required": 0,
+    "fault_cells_required": 0
+  },
+  "panel": [
+    {
+      "name": "exaone3.5-32b-qualification-v7",
+      "lineage": "EXAONE 3.5 32B",
+      "producer": "LG AI Research",
+      "source_model": "exaone3.5:32b",
+      "source_manifest_sha256": "f2f69abac3dadd89fb740b06e78a529baf0295d70b7a96b48c6bb9061a7e247b",
+      "source_capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "internlm2-20b-qualification-v7",
+      "lineage": "InternLM 2 20B",
+      "producer": "Shanghai AI Laboratory",
+      "source_model": "internlm2:20b",
+      "source_manifest_sha256": "a864ac8dade269ecd21d030dae5fe14be73bf27b1a6f5582537bbf4fd538ec2e",
+      "source_capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "deepseek-v2-16b-qualification-v7",
+      "lineage": "DeepSeek V2 Lite 16B",
+      "producer": "DeepSeek AI",
+      "source_model": "deepseek-v2:16b",
+      "source_manifest_sha256": "7c8c332f2df7ac4d657f3514d757d969b84ac6d3fec5b0c02bc8491bd0dc5ea1",
+      "source_capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "olmo2-13b-qualification-v7",
+      "lineage": "OLMo 2 13B",
+      "producer": "Allen Institute for AI",
+      "source_model": "olmo2:13b",
+      "source_manifest_sha256": "6c279ebc980fb07ca7b49cccf17b5faef6a73082cac4b3d44d2226981de676da",
+      "source_capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "falcon3-10b-qualification-v7",
+      "lineage": "Falcon 3 10B",
+      "producer": "Technology Innovation Institute",
+      "source_model": "falcon3:10b",
+      "source_manifest_sha256": "1653ff122acd9292fe21a097c0f08ce419439be595b312d6d6d06ee33df91b88",
+      "source_capabilities": [
+        "completion"
+      ]
+    },
+    {
+      "name": "glm4-9b-qualification-v7",
+      "lineage": "GLM-4 9B",
+      "producer": "THUDM",
+      "source_model": "glm4:9b",
+      "source_manifest_sha256": "5b699761eca535dc55047ad9d2dbf54e3b8697709419ef78a70503ed4bfbcf44",
+      "source_capabilities": [
+        "tools",
+        "completion"
+      ]
+    }
+  ],
+  "controls": [
+    {
+      "id": "format-01",
+      "round": 1,
+      "target": "A",
+      "instruction": "Store target code A in the answer field."
+    },
+    {
+      "id": "format-02",
+      "round": 1,
+      "target": "B",
+      "instruction": "Store target code B in the answer field."
+    },
+    {
+      "id": "format-03",
+      "round": 1,
+      "target": "C",
+      "instruction": "Store target code C in the answer field."
+    },
+    {
+      "id": "format-04",
+      "round": 2,
+      "target": "A",
+      "instruction": "The required answer value is A."
+    },
+    {
+      "id": "format-05",
+      "round": 2,
+      "target": "B",
+      "instruction": "The required answer value is B."
+    },
+    {
+      "id": "format-06",
+      "round": 2,
+      "target": "C",
+      "instruction": "The required answer value is C."
+    },
+    {
+      "id": "format-07",
+      "round": 3,
+      "target": "A",
+      "instruction": "Copy A into the answer property."
+    },
+    {
+      "id": "format-08",
+      "round": 3,
+      "target": "B",
+      "instruction": "Copy B into the answer property."
+    },
+    {
+      "id": "format-09",
+      "round": 3,
+      "target": "C",
+      "instruction": "Copy C into the answer property."
+    },
+    {
+      "id": "format-10",
+      "round": 4,
+      "target": "A",
+      "instruction": "Return the supplied target, which is A."
+    },
+    {
+      "id": "format-11",
+      "round": 4,
+      "target": "B",
+      "instruction": "Return the supplied target, which is B."
+    },
+    {
+      "id": "format-12",
+      "round": 4,
+      "target": "C",
+      "instruction": "Return the supplied target, which is C."
+    }
+  ],
+  "content_sha256": "780e44ccf6c6ec59b5bc57238e2851d045595b5edb8655b53ef0219dec1f67d8"
+}
