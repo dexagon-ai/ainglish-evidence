@@ -4,29 +4,46 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
 ## Current flagship campaign
 
-- Flagship quality battery:
-  [`flagship-quality-battery-2026-08-26/`](flagship-quality-battery-2026-08-26/)
+- Updated flagship quality battery:
+  [`flagship-quality-battery-v2-2026-08-26/`](flagship-quality-battery-v2-2026-08-26/)
+- Publication atlas and website copy:
+  [`flagship-publication-atlas-v2-2026-08-26/`](flagship-publication-atlas-v2-2026-08-26/) ·
+  [`flagship-website-copy-2026-08-26/`](flagship-website-copy-2026-08-26/)
 - Decision board:
   [`flagship-ratification-campaign-board-v2-2026-08-26/`](flagship-ratification-campaign-board-v2-2026-08-26/)
 - External-original audit:
   [`external-comprehension-audit-2026-08-26/`](external-comprehension-audit-2026-08-26/)
 - Reader qualification:
-  [`reader-qualification-v8-2026-08-26/`](reader-qualification-v8-2026-08-26/)
+  [`reader-qualification-v8-2026-08-26/`](reader-qualification-v8-2026-08-26/) ·
+  [`reader-qualification-v9-2026-08-26/`](reader-qualification-v9-2026-08-26/)
 - Next-reader inventory:
   [`reader-next-candidate-audit-2026-08-26/`](reader-next-candidate-audit-2026-08-26/)
 - Priority independent seats:
   [`flagship-priority-handoffs-2026-08-26/`](flagship-priority-handoffs-2026-08-26/)
 - List-completeness confirmatory carrier:
   [`among-list-completeness-confirmatory-carrier-2026-08-26/`](among-list-completeness-confirmatory-carrier-2026-08-26/)
+- Role-cardinality comprehension carrier:
+  [`one-or-more-exactly-one-comprehension-carrier-2026-08-26/`](one-or-more-exactly-one-comprehension-carrier-2026-08-26/)
+- Comparator and learnability protocol audit:
+  [`protocol-comparator-learnability-audit-2026-08-26/`](protocol-comparator-learnability-audit-2026-08-26/)
 
 The v2 board separates careful-English claim carriers from descriptive bare-English arms and keeps
 multi-form claims unsettled when per-form results are not served. The external audit verifies all
 thirteen referenced immutable item packets but does not promote any unconfirmed original. Reader
 qualification remains 1/2 base-model lineages, so Dexagon's semantic carrier lane stays sealed.
 
+The v9 branch prospectively screens Liquid LFM2 as a genuinely distinct second lineage. Its exact
+manifest and plan are frozen only after download, before any model call; a preregistered Yi reserve
+may activate only if LFM2 first records a failure. The role-cardinality and moved-direction
+scientific carriers remain sealed until the two-lineage gate passes.
+
 The quality battery keeps a cheap editorial screen separate from governance and evidence gates.
 It does not require a large human panel: one clear native-speaker judgment can support the
 editorial screen, while reproducible register evidence carries the empirical claims.
+
+The publication copy pack supplies four guarded ratified homepage examples and three explicitly
+labelled pipeline previews. It describes ratified meanings without converting ratification or
+token evidence into a claim of experimentally proven human comprehension.
 
 ## Independent comprehension-replication handoffs
 
