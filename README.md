@@ -12,8 +12,9 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
   [`flagship-website-copy-2026-08-26/`](flagship-website-copy-2026-08-26/)
 - Post-copy editorial audit:
   [`flagship-editorial-audit-v3-2026-08-26/`](flagship-editorial-audit-v3-2026-08-26/)
-- Decision board:
-  [`flagship-ratification-campaign-board-v2-2026-08-26/`](flagship-ratification-campaign-board-v2-2026-08-26/)
+- Live ratification convoy and guarded ballot dossiers:
+  [`flagship-ratification-convoy-v4-2026-08-26/`](flagship-ratification-convoy-v4-2026-08-26/) ·
+  [`flagship-vote-dossiers-v1-2026-08-26/`](flagship-vote-dossiers-v1-2026-08-26/)
 - Dependency-ordered roadmap:
   [`flagship-ratification-roadmap-v3-2026-08-26/`](flagship-ratification-roadmap-v3-2026-08-26/)
 - External-original audit:
@@ -24,13 +25,20 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 - Next-reader inventory:
   [`reader-next-candidate-audit-2026-08-26/`](reader-next-candidate-audit-2026-08-26/)
 - Priority independent seats:
+  [`independent-flagship-seats-v2-2026-08-26/`](independent-flagship-seats-v2-2026-08-26/) ·
   [`flagship-priority-handoffs-2026-08-26/`](flagship-priority-handoffs-2026-08-26/)
 - List-completeness confirmatory carrier:
   [`among-list-completeness-confirmatory-carrier-2026-08-26/`](among-list-completeness-confirmatory-carrier-2026-08-26/)
 - Role-cardinality comprehension carrier:
   [`one-or-more-exactly-one-comprehension-carrier-2026-08-26/`](one-or-more-exactly-one-comprehension-carrier-2026-08-26/)
-- Repeat-event / restore-state token carrier:
-  [`repeat-restore-token-carrier-2026-08-26/`](repeat-restore-token-carrier-2026-08-26/)
+- Successor-specific repeat-event / restore-state token carrier:
+  [`repeat-restore-force-token-carrier-v2-2026-08-26/`](repeat-restore-force-token-carrier-v2-2026-08-26/)
+- Settlement replication carriers:
+  [`moved-direction-comprehension-carrier-2026-08-26/`](moved-direction-comprehension-carrier-2026-08-26/) ·
+  [`flagship-dispute-replication-carriers-2026-08-26/`](flagship-dispute-replication-carriers-2026-08-26/) ·
+  [`may-modal-settlement-replication-2026-08-26/`](may-modal-settlement-replication-2026-08-26/)
+- Fail-closed production publication audit:
+  [`flagship-production-audit-v4-2026-08-26/`](flagship-production-audit-v4-2026-08-26/)
 - Comparator and learnability protocol audit:
   [`protocol-comparator-learnability-audit-2026-08-26/`](protocol-comparator-learnability-audit-2026-08-26/)
 
@@ -39,10 +47,11 @@ multi-form claims unsettled when per-form results are not served. The external a
 thirteen referenced immutable item packets but does not promote any unconfirmed original. Reader
 qualification remains 1/2 base-model lineages, so Dexagon's semantic carrier lane stays sealed.
 
-The v9 branch prospectively screens Liquid LFM2 as a genuinely distinct second lineage. Its exact
-manifest and plan are frozen only after download, before any model call; a preregistered Yi reserve
-may activate only if LFM2 first records a failure. The role-cardinality and moved-direction
-scientific carriers remain sealed until the two-lineage gate passes.
+The v9 branch retained Liquid LFM2's terminal development failure: structured format passed 12/12,
+but ordinary-English semantics scored 16/24 against a 22/24 gate. The preregistered Yi 34B reserve
+is therefore active, but it is not installed yet and will receive no call until its exact local
+manifest is frozen and pushed. The role-cardinality, moved-direction, preference, persistence, and
+may-force scientific carriers remain sealed until the two-lineage gate passes.
 
 The quality battery keeps a cheap editorial screen separate from governance and evidence gates.
 It does not require a large human panel: one clear native-speaker judgment can support the
@@ -56,6 +65,11 @@ The v3 atlas freezes 13 deployed catalogue rows plus four explicitly declared PR
 Its companion audit makes the pre-deploy gap executable: all lifecycle claims remain separate,
 while the deployed rows fail the new complete-story screen until `problem` and `consequence`
 arrive. The four overlay cards are never represented as deployed catalogue data.
+
+The v4 production audit refuses a positive receipt until the deployed API serves all 17 rows, the
+road-to-register page is live, every pin is current (including the force-explicit repeat/restore
+`-3` successor), and all dedicated candidate pages resolve. Its current read is intentionally
+negative while the Symfony deployment and follow-up review remain incomplete.
 
 ## Independent comprehension-replication handoffs
 
