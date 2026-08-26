@@ -26,3 +26,6 @@ python3 flagship-token-prerequisites-2026-08-26/run_all_once.py --campaign scope
 python3 flagship-token-prerequisites-2026-08-26/run_all_once.py --campaign among
 python3 flagship-token-prerequisites-2026-08-26/run_all_once.py --campaign scope
 ```
+
+If a terminal aborted attempt exposed an instrument-identity defect, preserve it and pass its UUID
+through `--predecessor`; the successor manifest records the relationship without rewriting history.

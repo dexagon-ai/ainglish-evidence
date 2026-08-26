@@ -55,7 +55,7 @@ def current_token_work(proposal: dict) -> dict | None:
     return None
 
 
-def preflight(client, name: str, row: dict) -> dict:
+def preflight(client, name: str, row: dict, predecessor: str | None) -> dict:
     if git("status", "--porcelain"):
         raise RuntimeError("evidence repository is not clean")
     commit = git("rev-parse", "HEAD")
@@ -90,6 +90,13 @@ def preflight(client, name: str, row: dict) -> dict:
         manifest = attempt.get("manifest") or {}
         if manifest.get("items_sha256") == row["items_sha256"]:
             raise RuntimeError("an identical open attempt already exists")
+    predecessor_state = None
+    if predecessor:
+        predecessor_state = client.attempt(predecessor)
+        if predecessor_state.get("state") != "aborted":
+            raise RuntimeError("declared predecessor is not terminal-aborted")
+        if predecessor_state.get("proposal") != row["slug"]:
+            raise RuntimeError("declared predecessor belongs to another proposal")
     return {
         "campaign": name,
         "commit": commit,
@@ -99,6 +106,8 @@ def preflight(client, name: str, row: dict) -> dict:
         "prior_originals": 0,
         "pairs": len(pairs),
         "form_counts": form_counts,
+        "predecessor_attempt": predecessor,
+        "predecessor_state": predecessor_state.get("state") if predecessor_state else None,
     }
 
 
@@ -107,7 +116,7 @@ def build_manifest(name: str, row: dict, checked: dict) -> dict:
         "metric": "token_delta",
         "formula_version": 1,
         "construct": " / ".join(row["forms"]),
-        "models": [f"tiktoken/{encoding}@0.13.0" for encoding in ENCODINGS],
+        "models": [f"tiktoken/{encoding}" for encoding in ENCODINGS],
         "test_set": row["test_set"],
         "items_sha256": row["items_sha256"],
         "test_set_note": (
@@ -124,6 +133,14 @@ def build_manifest(name: str, row: dict, checked: dict) -> dict:
             "repository": "dexagon-ai/ainglish-evidence",
             "commit": checked["commit"],
             "path": "flagship-token-prerequisites-2026-08-26/items.json",
+        },
+        "execution_history": {
+            "predecessor_attempt": checked["predecessor_attempt"],
+            "note": (
+                "When present, the predecessor stopped before measurement emission because the "
+                "server rejected version-suffixed tokenizer roster identities. This manifest uses "
+                "the mandated bare identities and retains version provenance in environment."
+            ),
         },
     }
 
@@ -170,15 +187,17 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--campaign", required=True, choices=("among", "scope"))
     parser.add_argument("--preflight-only", action="store_true")
+    parser.add_argument("--predecessor")
     args = parser.parse_args()
-    attempt_path = ROOT / f"{args.campaign}.attempt.json"
-    result_path = ROOT / f"{args.campaign}.measurement.json"
-    abort_path = ROOT / f"{args.campaign}.abort.json"
+    receipt_stem = args.campaign if not args.predecessor else f"{args.campaign}.successor-{args.predecessor[:8]}"
+    attempt_path = ROOT / f"{receipt_stem}.attempt.json"
+    result_path = ROOT / f"{receipt_stem}.measurement.json"
+    abort_path = ROOT / f"{receipt_stem}.abort.json"
     if attempt_path.exists() or result_path.exists() or abort_path.exists():
         raise SystemExit("REFUSING: a local attempt, result, or abort receipt already exists")
     _, row = load_campaign(args.campaign)
     client = ainglish_client()
-    checked = preflight(client, args.campaign, row)
+    checked = preflight(client, args.campaign, row, args.predecessor)
     manifest = build_manifest(args.campaign, row, checked)
     checked["manifest_commitment"] = manifest_commitment(manifest)
     checked["manifest_bytes"] = len(canonical(manifest))
