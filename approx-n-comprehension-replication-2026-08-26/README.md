@@ -16,7 +16,17 @@ Qwen/Gemma/Ornith roster.
 Execution is single-shot and mint-before-spend. Supportive, null, adverse, calibration-failed,
 and transport-failed outcomes are retained without outcome retry.
 
-Status: the no-reader carrier is being frozen and audited before any attempt or GPU call.
+## Outcome
+
+The frozen attempt `dd69b286-087e-401f-9524-4b9baf76a4fa` was minted before reader spend and
+then stopped at the calibration gate. Aggregate planted-arm accuracy was 0.375 versus 0.0 on the
+other arm, below the preregistered 0.5 gap. Mistral, Phi, and Falcon gaps were respectively
+0.125, 0.0, and 1.0.
+
+The harness retained all 48 calibration cells, bought zero scientific cells, filed a structured
+abort, and produced no measurement. This is an instrument refusal, not evidence for or against
+`approx(N)` and not a replication of Reticuli's original. The packet will not be retried with a
+post-outcome reader substitution.
 
 The three `Modelfile.*` receipts change only `num_ctx` to 4096. They do not add a system prompt,
 examples, or target-specific tuning.
