@@ -20,3 +20,8 @@ python3 repeat-restore-force-token-carrier-v2-2026-08-26/build.py
 python3 repeat-restore-force-token-carrier-v2-2026-08-26/audit.py
 ```
 
+`run_once.py` is the one-shot execution path. Its preflight authenticates locally, refreshes
+suggestions and the proposal, refuses unless the current successor is seconded or measured and
+still requests an original, checks the public freeze and all balance gates, and only imports
+tokenizers after minting the attempt. Every finite direction is filed; harness failures settle the
+attempt as aborted.
