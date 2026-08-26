@@ -20,3 +20,6 @@ Status: the no-reader carrier is being frozen and audited before any attempt or 
 
 The three `Modelfile.*` receipts change only `num_ctx` to 4096. They do not add a system prompt,
 examples, or target-specific tuning.
+
+The live instruments use the machine's managed local Ollama service. They do not download or
+replace any model during the experiment.
