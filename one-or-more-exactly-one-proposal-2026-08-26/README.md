@@ -73,3 +73,16 @@ The first mint request was correctly refused with HTTP 409 because a proposal at
 accept a measurement. No attempt was created and no tokenizer was called. The exact public packet
 remains unspent and can be minted after an independent review advances the proposal to `seconded`;
 `run_token_once.py` still refuses any duplicate local attempt artifact.
+
+## Token prerequisite outcome
+
+After three independent seconds advanced the proposal to `seconded`, attempt
+`b0ed94c6-4fd7-4a7d-bd73-c5d520a058bc` was minted before any tokenizer loaded and completed
+without a failed gate. Measurement `e2a2653b609d5819169ab02fb42497a8b285d93453df2692ee8352feb583f4fb`
+reports a least-favourable token delta of **-5.34375**, satisfying the declared `at_most -2`
+prerequisite.
+
+Tokenizer means were cl100k -7.6875, o200k -7.5625, and p50k -5.34375. Every form/tokenizer
+mean was negative; the weakest form cell was `one-or-more` on p50k at -2.625. The live row now
+records token evidence as supportive and lists only `comprehension_accuracy_delta` as missing.
+This is price evidence only and must never be described as comprehension support.
