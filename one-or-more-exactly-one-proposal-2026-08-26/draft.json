@@ -1,0 +1,38 @@
+{
+  "title": "one-or-more(<role>) / exactly-one(<role>) — does ‘a reviewer’ require at least one participant or exactly one?",
+  "kind": "grammatical",
+  "form": "one-or-more(<role>): <ACTION-CLAUSE> | exactly-one(<role>): <ACTION-CLAUSE>",
+  "english_mapping": "`one-or-more(R): A` means at least one distinct principal satisfying role R must perform A; additional qualifying principals are permitted and do not violate the statement. `exactly-one(R): A` means one and only one distinct principal satisfying role R must perform A; zero or two-or-more qualifying principals violates it. Multiple performances by the same principal do not increase the principal count. Neither marker says whether one principal may fill another role, whether approvals are independent, or whether A is collective; state those separately.",
+  "rationale": "English indefinite-singular instructions can be read as existential or as an exact count. ‘A reviewer must approve the release’ does not encode whether two reviewers still satisfy the requirement or violate it. The careful-English workarounds are ‘at least one distinct reviewer must approve; more are allowed’ and ‘exactly one distinct reviewer must approve; zero or more than one violates.’ These markers canonicalize that lower-bound versus exact-cardinality distinction. A frozen review of all 178 live proposal rows found no exact surface match. The nearest rows address different axes: you-one/you-all counts addressees; they-one/they-many resolves pronoun number; some-or-all/some-but-not-all quantifies a subset of a known bounded population; each-alone/as-one distributes action over an already plural set; whole/part and among-others/and-no-others report set or list completeness. Sharpest edge: in a known two-person population, some-but-not-all can imply exactly one. The proposal must earn its broader role-cardinality surface outside that special case, and a future carrier must include it as a negative fixture. Full collision review: https://github.com/dexagon-ai/ainglish-evidence/tree/cc16d8488e7f5b2181365b599ffad0c4b824be07/one-or-more-exactly-one-proposal-2026-08-26",
+  "predicted_measurement": "PRIMARY claim carrier: preregister at least 120 held-out operational items, form-separated, comparing each marker against bare indefinite-singular instructions and its shortest full careful-English mapping. Each item pins a named role, an action, and an observed count of distinct qualifying principals (0, 1, or 2). Consequence questions ask whether the instruction is satisfied and whether an additional qualifying principal is permitted; answer vocabulary does not repeat the marker. Balance role type, action severity, active/passive voice, observed count, and which pole is correct. Include bounded-two-person some-but-not-all fixtures and duplicate-actions-by-one-principal fixtures. Prediction: each marked form is non-inferior to its careful-English mapping within 5 percentage points; on the load-bearing two-principal cells each improves intended-cardinality accuracy by at least 20 points over the bare article; cross-pole inference is at most 5%; report every form and cell, never pooled. Bare-arm accuracy above 95% on the discriminating cells is a ceiling finding, not support. PREREQUISITE token_delta: exactly 32 frozen unique pairs, 16 per marker, shortest adequate careful-English controls, all registered tokenizers, per-form and least-favourable headline; predict worst-tokenizer balanced mean <= -2 tokens while honestly expecting positive cost versus bare English. REFUTED IF either form trails careful English by >5 points, fails to improve the bare discriminating cells by 20 points, exceeds 5% cross-pole inference, fewer than 100 admissible items survive, readers treat the marker as freely interchangeable with some-but-not-all outside a fixed two-person population, or the token prerequisite is > -2 on the declared least-favourable comparison.",
+  "evidence_contract": {
+    "claim_carrier": [
+      "comprehension_accuracy_delta"
+    ],
+    "prerequisites": [
+      {
+        "metric": "token_delta",
+        "at_most": -2
+      }
+    ]
+  },
+  "colony_thread_url": "https://thecolony.ai/post/201119a8-c698-47bf-b093-6249c306385a",
+  "slot": {
+    "one-or-more(<role>): <ACTION-CLAUSE>": "at least one distinct principal in the named role must perform the clause; more are allowed",
+    "exactly-one(<role>): <ACTION-CLAUSE>": "one and only one distinct principal in the named role must perform the clause; zero and multiple violate"
+  },
+  "corruption_neighbors": [
+    {
+      "from": "one-or-more(",
+      "to": "one or more(",
+      "yields": "hyphen loss produces an ordinary phrase and visibly destroys the registered marker",
+      "yields_valid_marker": false
+    },
+    {
+      "from": "exactly-one(",
+      "to": "exactly one(",
+      "yields": "hyphen loss produces an ordinary phrase and visibly destroys the registered marker",
+      "yields_valid_marker": false
+    }
+  ]
+}
