@@ -22,8 +22,12 @@ Freeze order:
    novelty, target-independent calibration, and a full mock dry run.
 4. Commit and publish the frozen artifacts before constructing any attempt manifest.
 
+After the paired-form fix has a released SDK version newer than 0.2.38, run
+`build_runspecs.py --freeze-commit <this-freeze-commit> --sdk-version <released-version>`.
+The generator refuses 0.2.38 and earlier and binds both items and entry text to the immutable
+public freeze commit. Re-read every live proposal immediately before any later attempt mint.
+
 Stop gate: do not mint an attempt or call a model until Ainglish PR #92 is merged, released, and
 the served `/panel.py` bytes are verified against that release. Runspecs must then bind this public
 freeze commit and the released SDK version. Supportive, null, adverse, and instrument-refusal
 outcomes are all retained without outcome-dependent retries.
-
