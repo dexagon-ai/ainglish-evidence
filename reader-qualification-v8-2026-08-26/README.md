@@ -36,3 +36,10 @@ so its plan permits that capability only while the request transmits `think: fal
 thinking byte fails the unchanged gate. The reserve uses the same prompt, packet, thresholds, seed,
 and JSON schema as the four primary candidates.
 
+Qwen passed that reserve development screen at 24/24, with 8/8 on every label and zero thinking
+bytes. Phi and Qwen therefore entered a newly authored 64-item qualification holdout covering eight
+ordinary-English semantic axes. The holdout has zero exact premise/hypothesis overlap with all prior
+qualification JSON in this repository, contains no Ainglish target construct, balances opaque answer
+positions 22/21/21, and is committed before either qualification call. Passing requires 64/64 exact
+schema responses, at least 60/64 correct, at least 7/8 on every axis, zero thinking bytes, and zero
+faults; both lineages must pass before any scientific roster is released.
