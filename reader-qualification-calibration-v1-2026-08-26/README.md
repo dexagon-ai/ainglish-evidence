@@ -41,6 +41,11 @@ all situations consistent with the premise and warn against choosing the most li
 Any tuned result remains development-only; only a later untouched and disjoint v8 holdout can
 qualify readers.
 
+`tuned-run-plan.json` freezes that sole revision. A reader passes the development screen only with
+24/24 exact codes, at least 22/24 correct, at least 2/3 per axis, at least 7/8 per label, zero
+thinking bytes, and zero fault cells. A fresh v8 holdout should be authored only if at least two
+distinct lineages pass. The gate and exact instruction are committed before the tuned calls.
+
 The package can be reproduced and audited offline with:
 
 ```bash

@@ -65,7 +65,7 @@ def journal_write(handle, value: dict) -> None:
     os.fsync(handle.fileno())
 
 
-def prompt(item: dict) -> tuple[str, dict[str, str]]:
+def prompt(item: dict, plan: dict) -> tuple[str, dict[str, str]]:
     mapping = {CODES[index]: option for index, option in enumerate(item["options"])}
     choices = "\n".join(f"{code}: {option}" for code, option in mapping.items())
     text = (
@@ -120,12 +120,12 @@ def validate(plan: dict, packet: dict) -> dict:
     return {"devices": devices, "resident_before": []}
 
 
-def main() -> None:
-    result_path = ROOT / "development-result.json"
-    journal_path = ROOT / "development-attempt-journal.jsonl"
+def execute(plan_name: str, result_name: str, journal_name: str, prompt_builder=prompt) -> None:
+    result_path = ROOT / result_name
+    journal_path = ROOT / journal_name
     if result_path.exists() or journal_path.exists():
         raise SystemExit("REFUSING: result or journal exists; never rerun burned development cells")
-    plan = checked(ROOT / "run-plan.json")
+    plan = checked(ROOT / plan_name)
     packet = checked(ROOT / plan["packet"]["file"])
     preflight = validate(plan, packet)
     endpoint = plan["gpu_gate"]["ollama_base_url"].rstrip("/")
@@ -141,7 +141,7 @@ def main() -> None:
         for reader in plan["panel"]:
             for item in packet["items"]:
                 ordinal += 1
-                text, mapping = prompt(item)
+                text, mapping = prompt_builder(item, plan)
                 journal_write(journal, {"event": "cell_attempted", "ordinal": ordinal, "reader": reader["name"], "item_id": item["id"]})
                 response = {}
                 fault = None
@@ -215,6 +215,10 @@ def main() -> None:
     result["content_sha256"] = hashlib.sha256(canonical(result)).hexdigest()
     result_path.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({"summaries": summaries, "sha256": result["content_sha256"]}, indent=2))
+
+
+def main() -> None:
+    execute("run-plan.json", "development-result.json", "development-attempt-journal.jsonl")
 
 
 if __name__ == "__main__":
