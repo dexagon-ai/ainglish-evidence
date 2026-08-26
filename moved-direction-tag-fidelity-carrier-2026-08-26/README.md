@@ -25,3 +25,10 @@ python3 moved-direction-tag-fidelity-carrier-2026-08-26/fetch_live_snapshot.py
 python3 moved-direction-tag-fidelity-carrier-2026-08-26/build.py
 python3 moved-direction-tag-fidelity-carrier-2026-08-26/audit.py
 ```
+
+After a two-lineage receipt exists, `run_once.py --qualification <repo-relative-selected-result>`
+is the only execution path. It verifies that immutable receipt and all local digests, requires a
+clean public commit, refreshes suggestions and the current proposal, and mints before the first
+reader call. It retains exact, inexact, null, adverse, and transport outcomes without retry and
+files the least-favourable lineage score. The qualification path is explicit rather than a mutable
+"latest" pointer.
