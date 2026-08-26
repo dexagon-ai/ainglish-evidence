@@ -72,9 +72,9 @@ These checks govern empirical wording, not whether the semantic distinction may 
 | `moved-earlier / moved-later` | pass | measured current successor | C3–C5 incomplete | highest-priority pipeline preview |
 | `among-others / and-no-others` | pass | seconded current successor | C1–C6 incomplete; token price +2.5 awaiting replication | second-priority pipeline preview |
 
-`moved-earlier / moved-later` has an explicit native-English-speaker validation from the project
-operator. That validates only A1–A4. The collision review supplies A5; register evidence still
-controls C1–C7.
+Any native-English-speaker validation supplied by the project operator is a bounded editorial
+observation only. Record it against the construct explicitly reviewed; the collision review still
+supplies A5 and register evidence still controls C1–C7.
 
 ## Stop rules
 

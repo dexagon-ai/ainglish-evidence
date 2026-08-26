@@ -16,6 +16,8 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
   [`reader-next-candidate-audit-2026-08-26/`](reader-next-candidate-audit-2026-08-26/)
 - Priority independent seats:
   [`flagship-priority-handoffs-2026-08-26/`](flagship-priority-handoffs-2026-08-26/)
+- List-completeness confirmatory carrier:
+  [`among-list-completeness-confirmatory-carrier-2026-08-26/`](among-list-completeness-confirmatory-carrier-2026-08-26/)
 
 The v2 board separates careful-English claim carriers from descriptive bare-English arms and keeps
 multi-form claims unsettled when per-form results are not served. The external audit verifies all

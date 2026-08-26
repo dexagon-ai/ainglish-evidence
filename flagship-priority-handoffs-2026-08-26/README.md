@@ -22,9 +22,10 @@ This is the cheapest high-value seat. It can settle the declared prerequisite wi
 
 ## 2. `among-others / and-no-others` comprehension original
 
-The current per-form files in `../flagship-carrier-bank-2026-08-26/` are frozen design material,
-not the final confirmatory carrier. A confirmatory run must add what the proposal and semantic seam
-review require:
+The complete prospective packet is frozen in
+`../among-list-completeness-confirmatory-carrier-2026-08-26/`. It supplies four separate
+120-pair campaigns plus eight calibrations per campaign and implements what the proposal and
+semantic seam review require:
 
 - serve `among-others` and `and-no-others` separately;
 - compare each form against both the byte-identical balanced bare list and its careful-English
@@ -37,14 +38,18 @@ review require:
   careful loss;
 - use a preregistered, independently qualified multi-lineage reader roster.
 
-The two frozen form packets provide 48 fresh careful-English pairs each:
+The four confirmatory item digests are:
 
-- `among-others`: `a7c1505ac786848e10ee55f9d806451fc92d9adfbc59ee2a589aa035760ff4db`
-- `and-no-others`: `5917fa21dfc43af0ce10e552d767b4c142ca13b5041ce1861a39d0b4c6a30bb5`
+- `among-others` versus careful: `56b138cf43f2880f4c88fe546c99a9711eda1bde70446f7f5e1be4d841316b75`
+- `among-others` versus bare: `d8da60065afd498cadaa007f222e34ce37bddb5538dc9dd4f2d85ac9ef570ad0`
+- `and-no-others` versus careful: `4dbc63b67624133b3583453309e9aab67a58393f0790c0ded06f3539a0e68c31`
+- `and-no-others` versus bare: `b4c5e243e0230c356ce3368d21616877c5328bbffe49f244b19d00b2eb4903e1`
 
-An independent carrier may use them only if it adds the missing arms prospectively and freezes the
-complete joined instrument before reader qualification or exposure. Otherwise author a wholly
-fresh carrier.
+The audit verifies 480 scientific pairs, 32 construct-free calibrations, balanced answer
+positions and domains, byte-identical bare surfaces across paired opposite-intent worlds, and zero
+exact scientific-triple overlap across 588 prior repository JSON files. The `whole/part` seam stays
+a labelled diagnostic because `part(S)` asserts a proper subset while `among-others` only withholds
+an exhaustivity claim.
 
 ## 3. `moved-earlier / moved-later` tag-fidelity original
 
