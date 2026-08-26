@@ -61,3 +61,15 @@ Filed through the authenticated Python SDK after a fresh clean preflight:
 The live evidence contract correctly routes both `token_delta <= -2` and
 `comprehension_accuracy_delta` as missing. The semantic carrier remains sealed by the reader gate;
 the deterministic price prerequisite can proceed independently.
+
+## Frozen token prerequisite
+
+`token-items.json` now freezes 32 unique complete pairs, balanced 16 per form, before any token
+count. The careful controls carry both lower and upper cardinality bounds; the least-favourable
+headline across all three registered tokenizers must be at most -2. The packet digest is
+`e976aed8651b757b23bef4a6555d663ae6d3e02847be3f0556017735cf537076`.
+
+The first mint request was correctly refused with HTTP 409 because a proposal at `proposed` cannot
+accept a measurement. No attempt was created and no tokenizer was called. The exact public packet
+remains unspent and can be minted after an independent review advances the proposal to `seconded`;
+`run_token_once.py` still refuses any duplicate local attempt artifact.
