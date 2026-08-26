@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 
 from build_plan import build, canonical, checked
+from run_once import project
 
 
 ROOT = Path(__file__).resolve().parent
@@ -41,7 +42,6 @@ def main() -> None:
         journal = ROOT / result["attempt_journal"]["file"]
         if hashlib.sha256(journal.read_bytes()).hexdigest() != result["attempt_journal"]["sha256"]:
             raise SystemExit("REFUSING: format attempt-journal drift")
-        gate = plan["compatibility_gate"]
         compatible = []
         for reader in plan["panel"]:
             own = [row for row in result["rows"] if row["reader"] == reader["name"]]
@@ -49,18 +49,9 @@ def main() -> None:
                 schema_exact = isinstance(row["parsed"], dict) and set(row["parsed"]) == {"answer"} and row["parsed"]["answer"] in "ABC"
                 if row["schema_exact"] != schema_exact or row["target_correct"] != (schema_exact and row["parsed"]["answer"] == row["target"]):
                     raise SystemExit("REFUSING: format cell projection drift")
-            observed = {
-                "valid_json_cells": sum(row["valid_json"] for row in own),
-                "schema_exact_cells": sum(row["schema_exact"] for row in own),
-                "target_correct_cells": sum(row["target_correct"] for row in own),
-                "thinking_bytes": sum(row["thinking_bytes"] for row in own),
-                "fault_cells": sum(row["fault"] is not None for row in own),
-            }
-            decision = all(observed[key] == value for key, value in gate.items())
-            if result["summaries"][reader["name"]] != {"observed": observed, "format_compatible": decision}:
-                raise SystemExit(f"REFUSING: format summary drift for {reader['name']}")
-            if decision:
-                compatible.append({"name": reader["name"], "lineage": reader["lineage"]})
+        expected_summaries, compatible = project(plan, result["rows"])
+        if result["summaries"] != expected_summaries:
+            raise SystemExit("REFUSING: format summary drift")
         if result["compatible_readers"] != compatible:
             raise SystemExit("REFUSING: compatible-reader projection drift")
         report["result"] = {"file": result_path.name, "content_sha256": result["content_sha256"], "response_cells": len(result["rows"])}

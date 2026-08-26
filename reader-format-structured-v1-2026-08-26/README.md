@@ -21,3 +21,18 @@ Offline reproduction and audit:
 python3 build_plan.py
 python3 audit.py
 ```
+
+## Outcome and recovery note
+
+All 72 calls completed and the journal recorded its terminal `run_completed` event. The original
+runner then raised a `KeyError` while mapping suffixed gate names such as
+`valid_json_cells_required` to observed names such as `valid_json_cells`; no result file had yet
+been written. No cell was rerun. `recover_result.py` validates the attempted/recorded sequence and
+reconstructs the result solely from the durable journal, while preserving the missing historical
+preflight-detail limitation in the result.
+
+Every response was valid JSON and exactly matched the one-field schema. Seventy-one of 72 copied
+the explicit target correctly. Five readers passed 12/12; InternLM 2 returned `C` for one explicit
+`A` target and therefore failed the strict compatibility gate at 11/12. This establishes that JSON
+schema removes response-shape faults for all six readers, but constrained syntax does not guarantee
+correct choice selection and cannot repair semantic over-inference.

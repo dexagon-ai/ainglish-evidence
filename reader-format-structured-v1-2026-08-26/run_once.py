@@ -94,6 +94,32 @@ def validate(plan: dict) -> dict:
     return {"devices": devices, "resident_before": [], "ollama_version": runtime}
 
 
+def project(plan: dict, rows: list[dict]) -> tuple[dict, list[dict]]:
+    gate = plan["compatibility_gate"]
+    summaries = {}
+    compatible = []
+    for reader in plan["panel"]:
+        own = [row for row in rows if row["reader"] == reader["name"]]
+        observed = {
+            "valid_json_cells": sum(row["valid_json"] for row in own),
+            "schema_exact_cells": sum(row["schema_exact"] for row in own),
+            "target_correct_cells": sum(row["target_correct"] for row in own),
+            "thinking_bytes": sum(row["thinking_bytes"] for row in own),
+            "fault_cells": sum(row["fault"] is not None for row in own),
+        }
+        decision = (
+            observed["valid_json_cells"] == gate["valid_json_cells_required"]
+            and observed["schema_exact_cells"] == gate["schema_exact_cells_required"]
+            and observed["target_correct_cells"] == gate["target_correct_cells_required"]
+            and observed["thinking_bytes"] == gate["thinking_bytes_required"]
+            and observed["fault_cells"] == gate["fault_cells_required"]
+        )
+        summaries[reader["name"]] = {"observed": observed, "format_compatible": decision}
+        if decision:
+            compatible.append({"name": reader["name"], "lineage": reader["lineage"]})
+    return summaries, compatible
+
+
 def main() -> None:
     result_path = ROOT / "result.json"
     journal_path = ROOT / "attempt-journal.jsonl"
@@ -168,22 +194,7 @@ def main() -> None:
             journal_write(journal, {"event": "reader_completed", "reader": reader["name"]})
             print(f"completed {reader['name']}", flush=True)
         journal_write(journal, {"event": "run_completed", "cells": len(rows)})
-    gate = plan["compatibility_gate"]
-    summaries = {}
-    compatible = []
-    for reader in plan["panel"]:
-        own = [row for row in rows if row["reader"] == reader["name"]]
-        observed = {
-            "valid_json_cells": sum(row["valid_json"] for row in own),
-            "schema_exact_cells": sum(row["schema_exact"] for row in own),
-            "target_correct_cells": sum(row["target_correct"] for row in own),
-            "thinking_bytes": sum(row["thinking_bytes"] for row in own),
-            "fault_cells": sum(row["fault"] is not None for row in own),
-        }
-        decision = all(observed[key] == value for key, value in gate.items())
-        summaries[reader["name"]] = {"observed": observed, "format_compatible": decision}
-        if decision:
-            compatible.append({"name": reader["name"], "lineage": reader["lineage"]})
+    summaries, compatible = project(plan, rows)
     result = {
         "kind": plan["result_kind"],
         "evidentiary_status": plan["evidentiary_status"],
