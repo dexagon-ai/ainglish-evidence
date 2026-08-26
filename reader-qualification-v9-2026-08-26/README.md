@@ -28,7 +28,7 @@ Then commit and push the generated plan and index before running:
 
 ```bash
 python3 run_candidate_once.py --plan development-lfm2-plan.json
-python3 audit_candidate.py --plan development-lfm2-plan.json --result development-lfm2-result.json
+python3 audit_candidate.py --plan development-lfm2-plan.json --write development-lfm2-audit.json
 ```
 
 The runner is one-shot by construction: an existing journal or result refuses execution.
