@@ -243,7 +243,13 @@ def main() -> None:
     }
     result["content_sha256"] = hashlib.sha256(canonical(result)).hexdigest()
     result_path.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(json.dumps({"candidate": plan["candidate"]["lineage"], "format": result["format"], "semantic": {k:v for k,v in result["semantic"].items() if k != "rows"}, "v8_holdout_eligible": development_ok, "sha256": result["content_sha256"]}, indent=2))
+    print(json.dumps({
+        "candidate": plan["candidate"]["lineage"],
+        "format": {"observed": format_observed, "passed": format_ok},
+        "semantic": {k: v for k, v in result["semantic"].items() if k != "rows"},
+        "v8_holdout_eligible": development_ok,
+        "sha256": result["content_sha256"],
+    }, indent=2))
 
 
 if __name__ == "__main__":

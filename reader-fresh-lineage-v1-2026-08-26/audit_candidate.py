@@ -41,6 +41,18 @@ def main() -> None:
         format_rows = result["format"]["rows"]
         if len(format_rows) != 12 or len({row["control_id"] for row in format_rows}) != 12:
             raise SystemExit("REFUSING: format cell population drift")
+        controls = {row["id"]: row for row in plan["format_stage"]["controls"]}
+        for row in format_rows:
+            parsed = row["parsed"]
+            valid_json = row["parse_error"] is None
+            schema_exact = isinstance(parsed, dict) and set(parsed) == {"answer"} and isinstance(parsed["answer"], str) and parsed["answer"] in "ABC"
+            target = controls[row["control_id"]]["target"]
+            if (
+                row["target"] != target or row["valid_json"] != valid_json
+                or row["schema_exact"] != schema_exact
+                or row["target_correct"] != (schema_exact and parsed["answer"] == target)
+            ):
+                raise SystemExit("REFUSING: format cell projection drift")
         format_observed = observed_format(format_rows)
         format_ok = format_passed(plan, format_observed)
         if result["format"]["observed"] != format_observed or result["format"]["passed"] != format_ok:
@@ -49,6 +61,23 @@ def main() -> None:
         if format_ok:
             if len(semantic_rows) != 24 or len({row["item_id"] for row in semantic_rows}) != 24:
                 raise SystemExit("REFUSING: semantic cell population drift")
+            items = {row["id"]: row for row in packet["items"]}
+            for row in semantic_rows:
+                item = items[row["item_id"]]
+                mapping = {chr(65 + index): label for index, label in enumerate(item["options"])}
+                expected_code = next(code for code, label in mapping.items() if label == item["answer"])
+                parsed = row["parsed"]
+                valid_json = row["parse_error"] is None
+                schema_exact = isinstance(parsed, dict) and set(parsed) == {"answer"} and isinstance(parsed["answer"], str) and parsed["answer"] in "ABC"
+                parsed_code = parsed["answer"] if schema_exact else None
+                parsed_label = mapping.get(parsed_code)
+                if (
+                    row["axis"] != item["axis"] or row["expected_label"] != item["answer"]
+                    or row["expected_code"] != expected_code or row["valid_json"] != valid_json
+                    or row["schema_exact"] != schema_exact or row["parsed_code"] != parsed_code
+                    or row["parsed_label"] != parsed_label or row["correct"] != (parsed_label == item["answer"])
+                ):
+                    raise SystemExit("REFUSING: semantic cell projection drift")
             semantic_observed = observed_semantic(packet, semantic_rows)
             semantic_ok = semantic_passed(plan, semantic_observed)
         else:
