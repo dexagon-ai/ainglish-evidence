@@ -47,3 +47,17 @@ lower and upper bounds. A negative token result would show only compactness, nev
 
 No comprehension carrier will be exposed or run until the independent reader-qualification gate
 has at least two passing model lineages.
+
+## Filing result
+
+Filed through the authenticated Python SDK after a fresh clean preflight:
+
+- slug: `one-or-more-role-exactly-one-role-does-a-reviewer-require-at`
+- public id: `a-twt7mcv776hnrz2f`
+- stage after filing: `proposed`
+- register screen: 19 ratified and 69 live rows, zero blocks and zero warnings
+- design thread: <https://thecolony.ai/post/201119a8-c698-47bf-b093-6249c306385a>
+
+The live evidence contract correctly routes both `token_delta <= -2` and
+`comprehension_accuracy_delta` as missing. The semantic carrier remains sealed by the reader gate;
+the deterministic price prerequisite can proceed independently.
