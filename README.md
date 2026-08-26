@@ -7,8 +7,11 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 - Updated flagship quality battery:
   [`flagship-quality-battery-v2-2026-08-26/`](flagship-quality-battery-v2-2026-08-26/)
 - Publication atlas and website copy:
+  [`flagship-publication-atlas-v3-2026-08-26/`](flagship-publication-atlas-v3-2026-08-26/) ·
   [`flagship-publication-atlas-v2-2026-08-26/`](flagship-publication-atlas-v2-2026-08-26/) ·
   [`flagship-website-copy-2026-08-26/`](flagship-website-copy-2026-08-26/)
+- Post-copy editorial audit:
+  [`flagship-editorial-audit-v3-2026-08-26/`](flagship-editorial-audit-v3-2026-08-26/)
 - Decision board:
   [`flagship-ratification-campaign-board-v2-2026-08-26/`](flagship-ratification-campaign-board-v2-2026-08-26/)
 - Dependency-ordered roadmap:
@@ -46,6 +49,11 @@ editorial screen, while reproducible register evidence carries the empirical cla
 The publication copy pack supplies four guarded ratified homepage examples and three explicitly
 labelled pipeline previews. It describes ratified meanings without converting ratification or
 token evidence into a claim of experimentally proven human comprehension.
+
+The v3 atlas freezes 13 deployed catalogue rows plus four explicitly declared PR 294 additions.
+Its companion audit makes the pre-deploy gap executable: all lifecycle claims remain separate,
+while the deployed rows fail the new complete-story screen until `problem` and `consequence`
+arrive. The four overlay cards are never represented as deployed catalogue data.
 
 ## Independent comprehension-replication handoffs
 
