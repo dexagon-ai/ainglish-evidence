@@ -5,6 +5,7 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 ## Current flagship campaign
 
 - Updated flagship quality battery:
+  [`flagship-quality-battery-v3-2026-08-26/`](flagship-quality-battery-v3-2026-08-26/) ·
   [`flagship-quality-battery-v2-2026-08-26/`](flagship-quality-battery-v2-2026-08-26/)
 - Publication atlas and website copy:
   [`flagship-publication-atlas-v3-2026-08-26/`](flagship-publication-atlas-v3-2026-08-26/) ·
