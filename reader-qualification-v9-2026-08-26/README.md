@@ -32,3 +32,15 @@ python3 audit_candidate.py --plan development-lfm2-plan.json --write development
 ```
 
 The runner is one-shot by construction: an existing journal or result refuses execution.
+
+## LFM2 outcome
+
+LFM2 passed the structured-output gate at 12/12 exact responses, with zero thinking bytes and zero
+faults. It failed the exposed semantic development gate at 16/24 rather than the required 22/24.
+The largest failure was `not determined` at 2/8; quantifier force and set membership were each 1/3.
+The offline journal/result auditor passed without correction.
+
+This is a terminal retained development failure. LFM2 received no holdout item and no Ainglish
+scientific carrier. The two-lineage roster remains closed at 1/2. The prospectively selected Yi
+reserve may now activate under a separately frozen exact-manifest plan; LFM2 will not be rerun under
+a different prompt, sampler, wrapper, or quantization.
