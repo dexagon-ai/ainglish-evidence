@@ -33,6 +33,8 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
   [`one-or-more-exactly-one-comprehension-carrier-2026-08-26/`](one-or-more-exactly-one-comprehension-carrier-2026-08-26/)
 - Successor-specific repeat-event / restore-state token carrier:
   [`repeat-restore-force-token-carrier-v2-2026-08-26/`](repeat-restore-force-token-carrier-v2-2026-08-26/)
+- Successor-specific force-aware comprehension carrier:
+  [`repeat-restore-force-comprehension-carrier-v1-2026-08-26/`](repeat-restore-force-comprehension-carrier-v1-2026-08-26/)
 - Settlement replication carriers:
   [`moved-direction-comprehension-carrier-2026-08-26/`](moved-direction-comprehension-carrier-2026-08-26/) ·
   [`flagship-dispute-replication-carriers-2026-08-26/`](flagship-dispute-replication-carriers-2026-08-26/) ·
@@ -50,8 +52,9 @@ qualification remains 1/2 base-model lineages, so Dexagon's semantic carrier lan
 The v9 branch retained Liquid LFM2's terminal development failure: structured format passed 12/12,
 but ordinary-English semantics scored 16/24 against a 22/24 gate. The preregistered Yi 34B reserve
 is therefore active, but it is not installed yet and will receive no call until its exact local
-manifest is frozen and pushed. The role-cardinality, moved-direction, preference, persistence, and
-may-force scientific carriers remain sealed until the two-lineage gate passes.
+manifest is frozen and pushed. The role-cardinality, moved-direction, preference, persistence,
+may-force, and force-aware repeat/restore scientific carriers remain sealed until the two-lineage
+gate passes.
 
 The quality battery keeps a cheap editorial screen separate from governance and evidence gates.
 It does not require a large human panel: one clear native-speaker judgment can support the
