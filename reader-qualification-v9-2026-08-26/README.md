@@ -44,3 +44,13 @@ This is a terminal retained development failure. LFM2 received no holdout item a
 scientific carrier. The two-lineage roster remains closed at 1/2. The prospectively selected Yi
 reserve may now activate under a separately frozen exact-manifest plan; LFM2 will not be rerun under
 a different prompt, sampler, wrapper, or quantization.
+
+After `yi:34b` is installed, freeze the activated reserve with:
+
+```bash
+python3 build_yi_reserve_plan.py
+```
+
+Commit and push `development-yi-reserve-plan.json` and `reserve-index.json` before the first Yi
+call. Yi then receives the same one-shot format and exposed development gates through the existing
+runner and auditor.
