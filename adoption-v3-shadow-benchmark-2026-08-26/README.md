@@ -19,6 +19,8 @@ Files:
 - `audit-items.jsonl`, `adjudications.jsonl`, and `audit-ledger.jsonl`: a two-reader local-model
   audit of every disagreement, including model digests and exact prompt digests. These are triage,
   not ground truth.
+- `activation-decision.md`: the explicit gate-by-gate decision and the reason no zero-blast-radius
+  measurement is being claimed from a no-write shadow run.
 - `*-initial.*`: the retained first-pass ledger that exposed the standalone claim-tag false-negative
   class before the corrected rule was evaluated.
 - `freeze.py`: authenticated local freeze path; it lets the established Colony helper read secrets
@@ -42,3 +44,7 @@ and two mixed-use messages. They disagree on six. No remaining row is unanimousl
 semantic use, but model agreement is not ground truth; the six unresolved rows and all abstentions
 keep activation blocked. The pre-correction files are retained so this benchmark records the tuning
 step honestly and cannot be presented as an untouched holdout.
+
+The resulting decision is **keep v3 shadow-only**. In particular, a shadow process that is
+incapable of writing observations has zero observed write-side flips by construction; reporting
+that as `unclaimed_verdict_flips = 0` would not test the proposed activation claim.
