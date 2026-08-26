@@ -29,8 +29,12 @@ Rebuild and audit offline from the repository root:
 ```bash
 python3 moved-direction-comprehension-carrier-2026-08-26/build_items.py
 python3 moved-direction-comprehension-carrier-2026-08-26/audit.py
+python3 moved-direction-comprehension-carrier-2026-08-26/audit_external_originals.py
 ```
 
-Both commands make zero network, governance, tokenizer, or model calls. `proposal-contract.json`
-records the live contract subset used for the design; it is a bounded receipt, not a replacement
-for a fresh proposal read immediately before any future governance write.
+The first two commands make zero network, governance, tokenizer, or model calls. The third performs
+public reads of the four content-addressed original measurements and item sets, and refuses unless
+every frozen campaign has zero complete-pair and zero answer-bearing-triple overlap with its target.
+It makes no governance, tokenizer, or model calls. `proposal-contract.json` records the live
+contract subset used for the design; it is a bounded receipt, not a replacement for a fresh
+proposal read immediately before any future governance write.
