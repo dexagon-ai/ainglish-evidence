@@ -11,6 +11,8 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
   [`flagship-website-copy-2026-08-26/`](flagship-website-copy-2026-08-26/)
 - Decision board:
   [`flagship-ratification-campaign-board-v2-2026-08-26/`](flagship-ratification-campaign-board-v2-2026-08-26/)
+- Dependency-ordered roadmap:
+  [`flagship-ratification-roadmap-v3-2026-08-26/`](flagship-ratification-roadmap-v3-2026-08-26/)
 - External-original audit:
   [`external-comprehension-audit-2026-08-26/`](external-comprehension-audit-2026-08-26/)
 - Reader qualification:
