@@ -1,0 +1,386 @@
+{
+  "kind": "ainglish.panel.reader-qualification-development-calibration.v1",
+  "evidentiary_status": "development-only exposed controls; never qualification or proposal evidence",
+  "purpose": "Test a uniform premise-hypothesis classification contract against the reasoning traps isolated from v7.",
+  "answer_protocol": "opaque-entailment-choice-v1",
+  "task_contract": "Given only the premise, classify the hypothesis as entailed, contradicted, or not determined. Return only the opaque option code assigned by the runner.",
+  "model_calls": 0,
+  "network_calls": 0,
+  "axes": [
+    "quantifier_force",
+    "set_membership",
+    "negation_scope",
+    "disjunction",
+    "conditional",
+    "reference_resolution",
+    "temporal_order",
+    "authority_and_permission"
+  ],
+  "items_per_axis": 3,
+  "labels": [
+    "entailed",
+    "contradicted",
+    "not determined"
+  ],
+  "disjointness_receipts": [
+    {
+      "file": "reader-qualification-tournament-2026-08-23/spec.json",
+      "sha256": "1a9808c7cf9d06ed10d0f1da9d83b32e249c39d0d708a59c0b37fadb66b9a206"
+    },
+    {
+      "file": "reader-qualification-v2-2026-08-24/development.json",
+      "sha256": "6b6c0b54641cd80e93a905caffaf6bf0884ed180f2845b9c82fa34b0d3c96d43"
+    },
+    {
+      "file": "reader-qualification-v2-2026-08-24/holdout.json",
+      "sha256": "b44242d3ba4fa4dc77ff4bfe724af14607a115973a4b68b4971a53e1c854d4a1"
+    },
+    {
+      "file": "reader-qualification-v3-2026-08-24/development-tuned.json",
+      "sha256": "a554a527901b1bf76bbc06bdbfb62a7a3048bc9bbd71cf4217feceb687d18014"
+    },
+    {
+      "file": "reader-qualification-v3-2026-08-24/development.json",
+      "sha256": "61437d1a2a46fdfa4ae4ec33345f8225f83530fc0e9ceeb117ae64607378f091"
+    },
+    {
+      "file": "reader-qualification-v3-2026-08-24/holdout.json",
+      "sha256": "aa79b683e5bd753a2a33a787ee0a48468b698a671b9b074bac267cd5b3954346"
+    },
+    {
+      "file": "reader-qualification-v4-2026-08-24/development-tuned.json",
+      "sha256": "7eb394390e58fdf4dc2d68320c54c57d489487d39deb05be631da4298f0e36c4"
+    },
+    {
+      "file": "reader-qualification-v4-2026-08-24/development.json",
+      "sha256": "9e86212b2b8c32c441503f56f910431d8b5b83fa8f4d28ea3707a52d522679df"
+    },
+    {
+      "file": "reader-qualification-v4-2026-08-24/holdout.json",
+      "sha256": "cb77266b792c8545842d02de46d6fd06bce7a7cb29e1e0c6c9e500a765a279ad"
+    },
+    {
+      "file": "reader-qualification-v5-2026-08-25/phase-a-holdout.json",
+      "sha256": "ffeca8399fe0faf1e78909f67e6c6d8f9cb8bd26af5ef1e7ef02a274c36a5d24"
+    },
+    {
+      "file": "reader-qualification-v5-2026-08-25/phi-reserve-holdout.json",
+      "sha256": "d83c25872eb474741a1eaebec4d86fd1e3228cdd406e7e2ad04b40f755d749b8"
+    },
+    {
+      "file": "reader-qualification-v5-2026-08-25/reserve-holdout.json",
+      "sha256": "d155ca56883389de6f5b6ebe490f97b30860d809566b5aa31aac61ca3453814f"
+    },
+    {
+      "file": "reader-qualification-v6-2026-08-25/plan.json",
+      "sha256": "f487ead587fd71a74ed981ba8cb16804dc92c974bab2b443ded3b68c42ea0146"
+    },
+    {
+      "file": "reader-qualification-v7-2026-08-25/final-reserve-holdout.json",
+      "sha256": "08bd4c0fed53d2898d73428c082e695653db085c1c7c0d88f5a649b4bfec9ce4"
+    },
+    {
+      "file": "reader-qualification-v7-2026-08-25/phase-a-holdout.json",
+      "sha256": "0a49eaf016eac36f3d4c5c2dc05ef551fe13acc47048751ebcfcbf67354ef387"
+    },
+    {
+      "file": "reader-qualification-v7-2026-08-25/plan.json",
+      "sha256": "36265ecf71b009831726665f007c9f475d3a0b981c692f71dbdbf5e0f2aec3ef"
+    },
+    {
+      "file": "reader-qualification-v7-2026-08-25/reserve-b-holdout.json",
+      "sha256": "13f15c9d4472d12c233b0b38852ab60c8757e89277a95f54840d0fbb30fb5c04"
+    }
+  ],
+  "items": [
+    {
+      "id": "cal-qf-01",
+      "axis": "quantifier_force",
+      "premise": "Exactly nine of the fifteen archives were retained.",
+      "hypothesis": "Exactly six archives were not retained.",
+      "options": [
+        "not determined",
+        "entailed",
+        "contradicted"
+      ],
+      "answer": "entailed"
+    },
+    {
+      "id": "cal-qf-02",
+      "axis": "quantifier_force",
+      "premise": "Exactly three of the ten cameras are online.",
+      "hypothesis": "Every camera is online.",
+      "options": [
+        "contradicted",
+        "not determined",
+        "entailed"
+      ],
+      "answer": "contradicted"
+    },
+    {
+      "id": "cal-qf-03",
+      "axis": "quantifier_force",
+      "premise": "No fewer than six of the nine relays responded.",
+      "hypothesis": "Exactly six relays responded.",
+      "options": [
+        "entailed",
+        "contradicted",
+        "not determined"
+      ],
+      "answer": "not determined"
+    },
+    {
+      "id": "cal-sm-01",
+      "axis": "set_membership",
+      "premise": "Only licensed pilots may validly authorize takeoff. Mira validly authorized takeoff under this policy.",
+      "hypothesis": "Mira is a licensed pilot.",
+      "options": [
+        "entailed",
+        "contradicted",
+        "not determined"
+      ],
+      "answer": "entailed"
+    },
+    {
+      "id": "cal-sm-02",
+      "axis": "set_membership",
+      "premise": "Every cobalt badge is metallic. Ivo's badge is metallic.",
+      "hypothesis": "Ivo's badge is cobalt.",
+      "options": [
+        "contradicted",
+        "not determined",
+        "entailed"
+      ],
+      "answer": "not determined"
+    },
+    {
+      "id": "cal-sm-03",
+      "axis": "set_membership",
+      "premise": "No cedar crate is marked. The east crate is cedar.",
+      "hypothesis": "The east crate is marked.",
+      "options": [
+        "not determined",
+        "entailed",
+        "contradicted"
+      ],
+      "answer": "contradicted"
+    },
+    {
+      "id": "cal-ns-01",
+      "axis": "negation_scope",
+      "premise": "No relay failed.",
+      "hypothesis": "Every relay avoided failure.",
+      "options": [
+        "entailed",
+        "contradicted",
+        "not determined"
+      ],
+      "answer": "entailed"
+    },
+    {
+      "id": "cal-ns-02",
+      "axis": "negation_scope",
+      "premise": "The gate is not unlocked.",
+      "hypothesis": "The gate is unlocked.",
+      "options": [
+        "not determined",
+        "entailed",
+        "contradicted"
+      ],
+      "answer": "contradicted"
+    },
+    {
+      "id": "cal-ns-03",
+      "axis": "negation_scope",
+      "premise": "Oren did not inspect every folder.",
+      "hypothesis": "Oren inspected no folders.",
+      "options": [
+        "contradicted",
+        "not determined",
+        "entailed"
+      ],
+      "answer": "not determined"
+    },
+    {
+      "id": "cal-dj-01",
+      "axis": "disjunction",
+      "premise": "At least one of the red channel and the blue channel is active.",
+      "hypothesis": "One or both of the two channels are active.",
+      "options": [
+        "not determined",
+        "entailed",
+        "contradicted"
+      ],
+      "answer": "entailed"
+    },
+    {
+      "id": "cal-dj-02",
+      "axis": "disjunction",
+      "premise": "The signal is amber or green, and both colors are permitted by the description.",
+      "hypothesis": "Exactly one color applies.",
+      "options": [
+        "entailed",
+        "contradicted",
+        "not determined"
+      ],
+      "answer": "not determined"
+    },
+    {
+      "id": "cal-dj-03",
+      "axis": "disjunction",
+      "premise": "The parcel went by rail and not by road.",
+      "hypothesis": "The parcel went by road.",
+      "options": [
+        "contradicted",
+        "not determined",
+        "entailed"
+      ],
+      "answer": "contradicted"
+    },
+    {
+      "id": "cal-co-01",
+      "axis": "conditional",
+      "premise": "If the scan fails, quarantine the device. The scan failed.",
+      "hypothesis": "The device should be quarantined.",
+      "options": [
+        "contradicted",
+        "not determined",
+        "entailed"
+      ],
+      "answer": "entailed"
+    },
+    {
+      "id": "cal-co-02",
+      "axis": "conditional",
+      "premise": "Release the package only if it is signed. The package is unsigned.",
+      "hypothesis": "The package may be released under this rule.",
+      "options": [
+        "entailed",
+        "contradicted",
+        "not determined"
+      ],
+      "answer": "contradicted"
+    },
+    {
+      "id": "cal-co-03",
+      "axis": "conditional",
+      "premise": "If the test passes, publish the report. The report was published.",
+      "hypothesis": "The test passed.",
+      "options": [
+        "not determined",
+        "entailed",
+        "contradicted"
+      ],
+      "answer": "not determined"
+    },
+    {
+      "id": "cal-rr-01",
+      "axis": "reference_resolution",
+      "premise": "Mira gave the chart to Jo. Mira then left the room.",
+      "hypothesis": "Mira left the room.",
+      "options": [
+        "entailed",
+        "contradicted",
+        "not determined"
+      ],
+      "answer": "entailed"
+    },
+    {
+      "id": "cal-rr-02",
+      "axis": "reference_resolution",
+      "premise": "The bronze folder is open. The white folder beside it is sealed.",
+      "hypothesis": "The bronze folder is sealed.",
+      "options": [
+        "not determined",
+        "entailed",
+        "contradicted"
+      ],
+      "answer": "contradicted"
+    },
+    {
+      "id": "cal-rr-03",
+      "axis": "reference_resolution",
+      "premise": "Rae told Liv that she would speak next.",
+      "hypothesis": "Rae will speak next.",
+      "options": [
+        "contradicted",
+        "not determined",
+        "entailed"
+      ],
+      "answer": "not determined"
+    },
+    {
+      "id": "cal-to-01",
+      "axis": "temporal_order",
+      "premise": "The seal was applied immediately before dispatch.",
+      "hypothesis": "The seal was applied before dispatch.",
+      "options": [
+        "not determined",
+        "entailed",
+        "contradicted"
+      ],
+      "answer": "entailed"
+    },
+    {
+      "id": "cal-to-02",
+      "axis": "temporal_order",
+      "premise": "Calibration happened after startup.",
+      "hypothesis": "Calibration happened before startup.",
+      "options": [
+        "contradicted",
+        "not determined",
+        "entailed"
+      ],
+      "answer": "contradicted"
+    },
+    {
+      "id": "cal-to-03",
+      "axis": "temporal_order",
+      "premise": "The audit ran while the backup was running.",
+      "hypothesis": "The audit began before the backup.",
+      "options": [
+        "entailed",
+        "contradicted",
+        "not determined"
+      ],
+      "answer": "not determined"
+    },
+    {
+      "id": "cal-ap-01",
+      "axis": "authority_and_permission",
+      "premise": "The policy explicitly permits Lina to export the file.",
+      "hypothesis": "Lina may export the file under the policy.",
+      "options": [
+        "contradicted",
+        "not determined",
+        "entailed"
+      ],
+      "answer": "entailed"
+    },
+    {
+      "id": "cal-ap-02",
+      "axis": "authority_and_permission",
+      "premise": "The machine is capable of opening the hatch, but no permission rule is stated.",
+      "hypothesis": "The machine is permitted to open the hatch.",
+      "options": [
+        "not determined",
+        "entailed",
+        "contradicted"
+      ],
+      "answer": "not determined"
+    },
+    {
+      "id": "cal-ap-03",
+      "axis": "authority_and_permission",
+      "premise": "The policy forbids interns from approving requests. Taro is an intern.",
+      "hypothesis": "Taro may approve the request under this policy.",
+      "options": [
+        "entailed",
+        "contradicted",
+        "not determined"
+      ],
+      "answer": "contradicted"
+    }
+  ],
+  "content_sha256": "5e4f755594e88b5bb4aefdff89c93b76f7406ee467ecabfe4c02ecb2beb447a7"
+}
