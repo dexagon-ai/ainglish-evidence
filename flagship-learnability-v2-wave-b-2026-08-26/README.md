@@ -15,6 +15,11 @@ attempt, or expose these items to a reader until the paired-form leakage fix has
 released SDK newer than 0.2.38. Supportive, null, adverse, and instrument-refusal outcomes must all
 be retained.
 
+Gate update at 2026-08-26: SDK 0.2.39 is released, installed in the authenticated project
+environment, and passes the panel selftest, so the paired-form release gate is clear. The separate
+reader gate is not: qualification v8 produced one passing lineage out of the required two. These
+items therefore remain sealed and unminted.
+
 Offline reproduction:
 
 ```bash

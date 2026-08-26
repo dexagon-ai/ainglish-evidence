@@ -17,6 +17,11 @@ This packet contains no model calls and no governance writes. It must not be tur
 runspec or exposed to a reader until the paired-form leakage fix is present in a released SDK newer
 than 0.2.38. It is evidence design, not evidence.
 
+Gate update at 2026-08-26: SDK 0.2.39 is released, installed in the authenticated project
+environment, and passes the panel selftest, so the paired-form release gate is clear. The separate
+reader gate is not: qualification v8 produced one passing lineage out of the required two. These
+items therefore remain sealed and unminted.
+
 Offline reproduction:
 
 ```bash
