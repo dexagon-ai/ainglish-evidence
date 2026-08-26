@@ -26,12 +26,28 @@ positions. It is development-only and can never qualify a reader or count as pro
 no pass/fail decision. Every cell is attempted at most once, all outcomes are retained, thinking
 must remain disabled, and the plan and packet are committed and pushed before the first call.
 
+## Development outcome
+
+The frozen run completed all 144 cells with zero thinking bytes and zero transport faults. It
+returned 143 exact opaque codes and 110 correct labels. Performance was sharply label-dependent:
+`entailed` scored 44/48, `contradicted` scored 48/48, and `not determined` scored 18/48. Thirty of
+the 34 errors were on the last label, and the fresh ambiguous-pronoun control received zero key
+support. The uniform contract therefore removed one instrument-form ambiguity but did not remove
+the readers' systematic tendency to infer a likely completion from incomplete information.
+
+The next permitted development step is one prospectively frozen generic clarification of the
+three labels, deliberately reusing these exposed controls. It must define the labels in terms of
+all situations consistent with the premise and warn against choosing the most likely completion.
+Any tuned result remains development-only; only a later untouched and disjoint v8 holdout can
+qualify readers.
+
 The package can be reproduced and audited offline with:
 
 ```bash
 python3 analyze.py
 python3 build_development.py
 python3 build_run_plan.py
+python3 analyze_development.py
 python3 audit.py
 ```
 

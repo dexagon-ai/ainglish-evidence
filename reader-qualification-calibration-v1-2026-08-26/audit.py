@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 
 from analyze import build_outputs, canonical, checked
+from analyze_development import build as build_development_analysis
 from build_development import build as build_development
 from build_run_plan import build as build_run_plan
 
@@ -84,6 +85,10 @@ def main() -> None:
             "content_sha256": result["content_sha256"],
             "response_cells": len(result["rows"]),
         }
+        development_analysis = checked(ROOT / "development-analysis.json")
+        if development_analysis != build_development_analysis():
+            raise SystemExit("REFUSING: development analysis drift")
+        report["development_analysis_sha256"] = development_analysis["content_sha256"]
         report["status"] = "passed-with-development-result"
     report["content_sha256"] = hashlib.sha256(canonical(report)).hexdigest()
     if args.write:
