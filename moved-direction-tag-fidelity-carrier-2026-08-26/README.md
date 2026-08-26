@@ -8,6 +8,11 @@ unchanged or the comparison baseline is missing or contradictory. Events span me
 maintenance, jobs, ballots, deadlines, deliveries, audits, and releases. Answer positions are
 exactly balanced.
 
+`audit.py` independently parses every timestamp-bearing source event and re-derives whether the
+replacement is earlier, later, unchanged, missing its baseline, or contradictory. It refuses if
+the derived warranted tag differs from the frozen answer. This ground-truth check leaves the
+published item bytes and digest unchanged.
+
 The estimand is the least-favourable exact warranted-tag fraction across separately qualified
 reader lineages. This controlled-use diagnostic is not organic adoption evidence and does not
 establish cold comprehension. The packet is frozen before any attempt or model call and must not
