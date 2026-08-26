@@ -24,3 +24,15 @@ python3 build_development_plans.py
 The generic staged runner and auditor live in `reader-fresh-lineage-v1-2026-08-26`; the plans bind
 their prompt, transport, gates, local model manifests, Ollama version, and upstream packet digests.
 
+## Primary development outcome
+
+All four primary candidates passed the strict structured-output gate. Phi-4 alone passed the
+semantic development gate at 23/24. Mistral and EXAONE scored 20/24; Gemma scored 19/24. The three
+failures concentrated on `not determined`, and no score or key was changed after observation.
+
+Because only one lineage passed, no qualification holdout was authored. A single already-installed
+high-capacity Qwen 3.6 35B reserve is frozen separately before use. It advertises optional thinking,
+so its plan permits that capability only while the request transmits `think: false`; any returned
+thinking byte fails the unchanged gate. The reserve uses the same prompt, packet, thresholds, seed,
+and JSON schema as the four primary candidates.
+
