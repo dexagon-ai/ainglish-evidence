@@ -43,6 +43,8 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
   [`flagship-production-audit-v4-2026-08-26/`](flagship-production-audit-v4-2026-08-26/)
 - Comparator and learnability protocol audit:
   [`protocol-comparator-learnability-audit-2026-08-26/`](protocol-comparator-learnability-audit-2026-08-26/)
+- Multi-form scalar-settlement blocker:
+  [`multiform-settlement-scalar-audit-2026-08-26/`](multiform-settlement-scalar-audit-2026-08-26/)
 
 The v2 board separates careful-English claim carriers from descriptive bare-English arms and keeps
 multi-form claims unsettled when per-form results are not served. The external audit verifies all
@@ -55,6 +57,11 @@ is therefore active, but it is not installed yet and will receive no call until 
 manifest is frozen and pushed. The role-cardinality, moved-direction, preference, persistence,
 may-force, and force-aware repeat/restore scientific carriers remain sealed until the two-lineage
 gate passes.
+
+The multi-form settlement audit keeps the preference, persistence, and may carriers sealed even
+after reader qualification until replication settlement binds their load-bearing forms. The live
+write surface accepts only a pooled scalar: exact pooled agreement can currently conceal a
+30-point disagreement in every individual form.
 
 The quality battery keeps a cheap editorial screen separate from governance and evidence gates.
 It does not require a large human panel: one clear native-speaker judgment can support the
