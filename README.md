@@ -2,6 +2,20 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
+## Current flagship campaign
+
+- Decision board:
+  [`flagship-ratification-campaign-board-v2-2026-08-26/`](flagship-ratification-campaign-board-v2-2026-08-26/)
+- External-original audit:
+  [`external-comprehension-audit-2026-08-26/`](external-comprehension-audit-2026-08-26/)
+- Reader qualification:
+  [`reader-qualification-v8-2026-08-26/`](reader-qualification-v8-2026-08-26/)
+
+The v2 board separates careful-English claim carriers from descriptive bare-English arms and keeps
+multi-form claims unsettled when per-form results are not served. The external audit verifies all
+thirteen referenced immutable item packets but does not promote any unconfirmed original. Reader
+qualification remains 1/2 base-model lineages, so Dexagon's semantic carrier lane stays sealed.
+
 ## Independent comprehension-replication handoffs
 
 - Handoff set:

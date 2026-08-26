@@ -1,0 +1,1487 @@
+{
+  "kind": "ainglish.external-comprehension-audit.v1",
+  "captured_at": "2026-08-26T15:27:44.555555+00:00",
+  "scope": "Reticuli comprehension originals filed 2026-08-26 for the active flagship pipeline",
+  "artifact_rule": "items_sha256 is SHA-256 of JCS-like compact sorted-key serialization of the packet's items array, not of the enclosing JSON file bytes",
+  "lineage_rule": "post-training does not create a new base-model lineage; Ornith-1.0-35B collapses with Qwen because its served model card identifies Qwen 3.5 as the base",
+  "lineage_source": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+  "strict_reader_gate": {
+    "source": "reader-qualification-v8-2026-08-26/selected-result.json",
+    "roster_ready": false,
+    "required_lineages": 2,
+    "qualified": [
+      "Qwen 3.6 35B"
+    ],
+    "decision": "do not use these originals to unlock Dexagon's sealed semantic carriers; audit and preserve them, then replicate only with a later two-lineage qualified roster"
+  },
+  "measurements": [
+    {
+      "label": "proxy-careful",
+      "manifest_hash": "bcc7b1d1f3cc4c975755a9d2f36d72681a301e6e6584334efd7fa4dcc73dc29f",
+      "proposal": "proxy-m-say-when-the-evidence-you-measured-is-a-proxy-for-th-2",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": -17.82,
+      "value_lo": -29.4118,
+      "value_hi": -8.0357,
+      "stance": "opposes",
+      "arms": {
+        "english": 1,
+        "ainglish": 0.8218,
+        "chance": 0.25
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": -5.13,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": -21.21,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "ornith-35b-q4",
+          "value": -31.03,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "CARRIER: proxy(<M>) versus the complete careful-English mapping applied verbatim; non-inferiority margin -5pp"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/0dcebde25271fc28d6dc350ae811e98232b82430/proxy-comprehension-2026-08-25/items-careful.json",
+        "declared_sha256": "6dfd5e12b61df2b766c1ff05866fa4b2ff3db2360f7e87fc49afce9fbc2dc170",
+        "computed_sha256": "6dfd5e12b61df2b766c1ff05866fa4b2ff3db2360f7e87fc49afce9fbc2dc170",
+        "packet_declared_sha256": "6dfd5e12b61df2b766c1ff05866fa4b2ff3db2360f7e87fc49afce9fbc2dc170",
+        "hashes_match": true,
+        "total": 68,
+        "real": 60,
+        "calibration": 8,
+        "unique_complete_rows": 68,
+        "answer_positions": {
+          "0": 16,
+          "1": 14,
+          "2": 14,
+          "3": 16
+        },
+        "strata": {}
+      },
+      "reader_audit": {
+        "declared_members": 3,
+        "declared_neff": 3,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "ornith-35b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 0.5833,
+          "other": 0.0417,
+          "gap": 0.5417,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.37",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "proxy-bare",
+      "manifest_hash": "2dc47b111ee5bfd656ecad4f142832711b5d1f35baa8ae07c9fe6dd80261a615",
+      "proposal": "proxy-m-say-when-the-evidence-you-measured-is-a-proxy-for-th-2",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": 8.38,
+      "value_lo": -3.997,
+      "value_hi": 21.6323,
+      "stance": "neutral",
+      "arms": {
+        "english": 0.7011,
+        "ainglish": 0.7849,
+        "chance": 0.25
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": 6.67,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": 8.45,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "ornith-35b-q4",
+          "value": 10.71,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "bare-x-and-i-measured-m-v1",
+        "description": "DESCRIPTIVE: proxy(<M>) versus bare 'X, and I measured M' — the added-information comparison the design names; never pooled with the carrier"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/0dcebde25271fc28d6dc350ae811e98232b82430/proxy-comprehension-2026-08-25/items-bare.json",
+        "declared_sha256": "0d656022d1f1d8801b942a315e596ba1acc9ab91b7c3a2367c862a5b2cd6e1a0",
+        "computed_sha256": "0d656022d1f1d8801b942a315e596ba1acc9ab91b7c3a2367c862a5b2cd6e1a0",
+        "packet_declared_sha256": "0d656022d1f1d8801b942a315e596ba1acc9ab91b7c3a2367c862a5b2cd6e1a0",
+        "hashes_match": true,
+        "total": 68,
+        "real": 60,
+        "calibration": 8,
+        "unique_complete_rows": 68,
+        "answer_positions": {
+          "0": 16,
+          "1": 14,
+          "2": 14,
+          "3": 16
+        },
+        "strata": {}
+      },
+      "reader_audit": {
+        "declared_members": 3,
+        "declared_neff": 3,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "ornith-35b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 0.5833,
+          "other": 0.0417,
+          "gap": 0.5417,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.37",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "proxy-obs",
+      "manifest_hash": "82177a0e664db5fed7bbcb812a6590277cd398c8c4f3c79b1cca2a50aaa2f2ae",
+      "proposal": "proxy-m-say-when-the-evidence-you-measured-is-a-proxy-for-th-2",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": -0.68,
+      "value_lo": -13.3399,
+      "value_hi": 11.5741,
+      "stance": "neutral",
+      "arms": {
+        "english": 0.809,
+        "ainglish": 0.8022,
+        "chance": 0.25
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": -6.9,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": -1.39,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "ornith-35b-q4",
+          "value": 8.13,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "x-obs-m-source-tag-v1",
+        "description": "DISTINCTIVENESS: proxy(<M>) versus X obs(M) — the design's secondary falsifier (confusable with the source tag); never pooled with the carrier"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/0dcebde25271fc28d6dc350ae811e98232b82430/proxy-comprehension-2026-08-25/items-obs.json",
+        "declared_sha256": "bbb1d36bc5a9c86e00537002072829e7e106f04ed6d965bc9e6964ad78ff0b97",
+        "computed_sha256": "bbb1d36bc5a9c86e00537002072829e7e106f04ed6d965bc9e6964ad78ff0b97",
+        "packet_declared_sha256": "bbb1d36bc5a9c86e00537002072829e7e106f04ed6d965bc9e6964ad78ff0b97",
+        "hashes_match": true,
+        "total": 68,
+        "real": 60,
+        "calibration": 8,
+        "unique_complete_rows": 68,
+        "answer_positions": {
+          "0": 16,
+          "1": 14,
+          "2": 14,
+          "3": 16
+        },
+        "strata": {}
+      },
+      "reader_audit": {
+        "declared_members": 3,
+        "declared_neff": 3,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "ornith-35b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 0.5833,
+          "other": 0.0417,
+          "gap": 0.5417,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.37",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "moved-later-careful",
+      "manifest_hash": "3965fddd5d31ea9f9948a113dd549cd84bac61223b61941ec69bde0b0d326635",
+      "proposal": "moved-earlier-moved-later-which-way-did-the-meeting-move-2",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": 9.23,
+      "value_lo": -1.4006,
+      "value_hi": 19.0103,
+      "stance": "neutral",
+      "arms": {
+        "english": 0.7233,
+        "ainglish": 0.8156,
+        "chance": 0.25
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": 11.11,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": 4.65,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "ornith-35b-q4",
+          "value": 17.93,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "CARRIER: the marked form vs its full careful-English mapping; non-inferiority -5pp"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/30e58089f8ff2dff62cc6494efcbb1d0ac0fdf10/moved-comprehension-2026-08-25/items-later-careful.json",
+        "declared_sha256": "b7ddb593d884ca3d177206a97f54f6291856305934914841b53cba69a8bfc9c0",
+        "computed_sha256": "b7ddb593d884ca3d177206a97f54f6291856305934914841b53cba69a8bfc9c0",
+        "packet_declared_sha256": "b7ddb593d884ca3d177206a97f54f6291856305934914841b53cba69a8bfc9c0",
+        "hashes_match": true,
+        "total": 108,
+        "real": 100,
+        "calibration": 8,
+        "unique_complete_rows": 108,
+        "answer_positions": {
+          "0": 26,
+          "1": 24,
+          "2": 24,
+          "3": 26
+        },
+        "strata": {
+          "form": {
+            "later": 100
+          },
+          "domain": {
+            "cron": 20,
+            "deadline": 10,
+            "governance": 20,
+            "logistics": 10,
+            "meeting": 30,
+            "ops": 10
+          }
+        }
+      },
+      "reader_audit": {
+        "declared_members": 3,
+        "declared_neff": 3,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "ornith-35b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 0.9167,
+          "other": 0.3333,
+          "gap": 0.5833,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.37",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "moved-later-bare",
+      "manifest_hash": "c35249de0f0807215f4ec82e3a964f9f5ac419522b5986de10c0350ed9ae8bbb",
+      "proposal": "moved-earlier-moved-later-which-way-did-the-meeting-move-2",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": 30.77,
+      "value_lo": 20.38,
+      "value_hi": 40.4672,
+      "stance": "supports",
+      "arms": {
+        "english": 0.5,
+        "ainglish": 0.8077,
+        "chance": 0.25
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": 18.93,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": 68.55,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "ornith-35b-q4",
+          "value": 6.17,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "bare-treacherous-comparator-v1",
+        "description": "DESCRIPTIVE ambiguity arm: the marked form vs the identical-surface bare comparator (moved forward / pushed back / moved up / brought forward); never pooled with the carrier"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/30e58089f8ff2dff62cc6494efcbb1d0ac0fdf10/moved-comprehension-2026-08-25/items-later-bare.json",
+        "declared_sha256": "0c17f4a75cdc8338eef51de24e2be4feee7d92f42f0fcf0cb8be0bac9dbebbbb",
+        "computed_sha256": "0c17f4a75cdc8338eef51de24e2be4feee7d92f42f0fcf0cb8be0bac9dbebbbb",
+        "packet_declared_sha256": "0c17f4a75cdc8338eef51de24e2be4feee7d92f42f0fcf0cb8be0bac9dbebbbb",
+        "hashes_match": true,
+        "total": 108,
+        "real": 100,
+        "calibration": 8,
+        "unique_complete_rows": 108,
+        "answer_positions": {
+          "0": 26,
+          "1": 24,
+          "2": 24,
+          "3": 26
+        },
+        "strata": {
+          "form": {
+            "later": 100
+          },
+          "domain": {
+            "cron": 20,
+            "deadline": 10,
+            "governance": 20,
+            "logistics": 10,
+            "meeting": 30,
+            "ops": 10
+          }
+        }
+      },
+      "reader_audit": {
+        "declared_members": 3,
+        "declared_neff": 3,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "ornith-35b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 0.9167,
+          "other": 0.3333,
+          "gap": 0.5833,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.37",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "moved-earlier-careful",
+      "manifest_hash": "b755d553d4c1f890a54833731a841aef8fa40348d2f641b6ec42b3d1f571813c",
+      "proposal": "moved-earlier-moved-later-which-way-did-the-meeting-move-2",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": 0.48,
+      "value_lo": -10.494,
+      "value_hi": 11.3131,
+      "stance": "neutral",
+      "arms": {
+        "english": 0.6875,
+        "ainglish": 0.6923,
+        "chance": 0.25
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": -11.48,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": -2.79,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "ornith-35b-q4",
+          "value": 5.92,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "CARRIER: the marked form vs its full careful-English mapping; non-inferiority -5pp"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/4056e38017166443534319f412e430e54e3427e7/moved-comprehension-2026-08-25/items-earlier-careful.json",
+        "declared_sha256": "c8abd08059220319fa143fd8146c1196a7d7dbd312855653116dad92daf6d7a9",
+        "computed_sha256": "c8abd08059220319fa143fd8146c1196a7d7dbd312855653116dad92daf6d7a9",
+        "packet_declared_sha256": "c8abd08059220319fa143fd8146c1196a7d7dbd312855653116dad92daf6d7a9",
+        "hashes_match": true,
+        "total": 108,
+        "real": 100,
+        "calibration": 8,
+        "unique_complete_rows": 108,
+        "answer_positions": {
+          "0": 25,
+          "1": 24,
+          "2": 25,
+          "3": 26
+        },
+        "strata": {
+          "form": {
+            "earlier": 100
+          },
+          "domain": {
+            "cron": 20,
+            "deadline": 10,
+            "governance": 20,
+            "logistics": 10,
+            "meeting": 30,
+            "ops": 10
+          }
+        }
+      },
+      "reader_audit": {
+        "declared_members": 3,
+        "declared_neff": 3,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "ornith-35b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 1,
+          "other": 0.0833,
+          "gap": 0.9167,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.37",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "moved-earlier-bare",
+      "manifest_hash": "a7270b497fbb5a8012223fa2be74c18ffd68c2dcb5ce3e5c13d6e1d3ff86bbfb",
+      "proposal": "moved-earlier-moved-later-which-way-did-the-meeting-move-2",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": 24.55,
+      "value_lo": 13.694,
+      "value_hi": 35.131,
+      "stance": "supports",
+      "arms": {
+        "english": 0.4805,
+        "ainglish": 0.726,
+        "chance": 0.25
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": 19.39,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": 29.89,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "ornith-35b-q4",
+          "value": 11.42,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "bare-treacherous-comparator-v1",
+        "description": "DESCRIPTIVE ambiguity arm: the marked form vs the identical-surface bare comparator (moved forward / pushed back / moved up / brought forward); never pooled with the carrier"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/4056e38017166443534319f412e430e54e3427e7/moved-comprehension-2026-08-25/items-earlier-bare.json",
+        "declared_sha256": "536db4d7b9e5e3871d1405e7951f05322783a860c3fd73fdfeb8a8eaeb0c4aa3",
+        "computed_sha256": "536db4d7b9e5e3871d1405e7951f05322783a860c3fd73fdfeb8a8eaeb0c4aa3",
+        "packet_declared_sha256": "536db4d7b9e5e3871d1405e7951f05322783a860c3fd73fdfeb8a8eaeb0c4aa3",
+        "hashes_match": true,
+        "total": 108,
+        "real": 100,
+        "calibration": 8,
+        "unique_complete_rows": 108,
+        "answer_positions": {
+          "0": 25,
+          "1": 24,
+          "2": 25,
+          "3": 26
+        },
+        "strata": {
+          "form": {
+            "earlier": 100
+          },
+          "domain": {
+            "cron": 20,
+            "deadline": 10,
+            "governance": 20,
+            "logistics": 10,
+            "meeting": 30,
+            "ops": 10
+          }
+        }
+      },
+      "reader_audit": {
+        "declared_members": 3,
+        "declared_neff": 3,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "ornith-35b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 1,
+          "other": 0.0833,
+          "gap": 0.9167,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.37",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "may-careful",
+      "manifest_hash": "dba42c0e48b623502fb370067cf080a1b639a2bb621318400217f1f3d79b3e83",
+      "proposal": "may-as-permission-may-as-possibility-does-may-authorize-an-a",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": 6.28,
+      "value_lo": -3.2157,
+      "value_hi": 15.8,
+      "stance": "neutral",
+      "arms": {
+        "english": 0.3557,
+        "ainglish": 0.4185,
+        "chance": 0.25
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": 7.74,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": 10.72,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "qwen25-7b-q4",
+          "value": -1.65,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "shortest-adequate-careful-control-v1",
+        "description": "CARRIER: marked forms vs 'is permitted to' / 'might'; non-inferiority -5pp; both forms reported separately"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/7b25fb432b039af6f2a4edf0f40b8468465d7a19/mayas-comprehension-2026-08-25/items-careful.json",
+        "declared_sha256": "9a4a83937ed67c50442f2b30e0f23d1af9f97b2ac96a51cbef511d6b89083d00",
+        "computed_sha256": "9a4a83937ed67c50442f2b30e0f23d1af9f97b2ac96a51cbef511d6b89083d00",
+        "packet_declared_sha256": "9a4a83937ed67c50442f2b30e0f23d1af9f97b2ac96a51cbef511d6b89083d00",
+        "hashes_match": true,
+        "total": 168,
+        "real": 160,
+        "calibration": 8,
+        "unique_complete_rows": 168,
+        "answer_positions": {
+          "0": 40,
+          "1": 40,
+          "2": 40,
+          "3": 40
+        },
+        "strata": {
+          "form": {
+            "permission": 80,
+            "possibility": 80
+          },
+          "cell": {
+            "denied-feasible": 40,
+            "permitted-blocked": 40,
+            "permitted-feasible": 80
+          }
+        }
+      },
+      "reader_audit": {
+        "declared_members": 3,
+        "declared_neff": 2,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "qwen25-7b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 1,
+          "other": 0,
+          "gap": 1,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.39",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "may-bare",
+      "manifest_hash": "fba86a10ff5400837aeb8eaaded01d2e84a233a3fac8f889e64e578ef76cfad8",
+      "proposal": "may-as-permission-may-as-possibility-does-may-authorize-an-a",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": -2.32,
+      "value_lo": -11.0914,
+      "value_hi": 6.1751,
+      "stance": "neutral",
+      "arms": {
+        "english": 0.3684,
+        "ainglish": 0.3452,
+        "chance": 0.25
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": -11.47,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": 8.26,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "qwen25-7b-q4",
+          "value": 0.81,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "bare-may-descriptive-v1",
+        "description": "DESCRIPTIVE: marked forms vs bare 'may'; the >=20pp improvement claim; never pooled with the carrier"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/7b25fb432b039af6f2a4edf0f40b8468465d7a19/mayas-comprehension-2026-08-25/items-bare.json",
+        "declared_sha256": "dbd912de1f39c7acca44980fcdf32c021f179c9a9e1e80a3b2698ccd12fbf0aa",
+        "computed_sha256": "dbd912de1f39c7acca44980fcdf32c021f179c9a9e1e80a3b2698ccd12fbf0aa",
+        "packet_declared_sha256": "dbd912de1f39c7acca44980fcdf32c021f179c9a9e1e80a3b2698ccd12fbf0aa",
+        "hashes_match": true,
+        "total": 168,
+        "real": 160,
+        "calibration": 8,
+        "unique_complete_rows": 168,
+        "answer_positions": {
+          "0": 40,
+          "1": 40,
+          "2": 40,
+          "3": 40
+        },
+        "strata": {
+          "form": {
+            "permission": 80,
+            "possibility": 80
+          },
+          "cell": {
+            "denied-feasible": 40,
+            "permitted-blocked": 40,
+            "permitted-feasible": 80
+          }
+        }
+      },
+      "reader_audit": {
+        "declared_members": 3,
+        "declared_neff": 2,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "qwen25-7b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 1,
+          "other": 0,
+          "gap": 1,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.39",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "rather-careful",
+      "manifest_hash": "b661b02842052ced7bc148b50fd4194c6084fbc27f1f70e22e45dd6af88e3d7d",
+      "proposal": "rather-not-fine-either-way-would-welcome-you-don-t-have-to-s-2",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": -23.44,
+      "value_lo": -28.5697,
+      "value_hi": -18.1647,
+      "stance": "opposes",
+      "arms": {
+        "english": 0.9005,
+        "ainglish": 0.6661,
+        "chance": 0.3333
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": -19.36,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": -31.45,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "qwen25-7b-q4",
+          "value": -6.5,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "ornith-35b-q4",
+          "value": -35.25,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "CARRIER: tagged forms vs the mapping applied verbatim; non-inferiority -5pp; three forms reported separately"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/b1286fcc765ae28bcee09e2177fced0643772f30/rathernot-comprehension-2026-08-25/items-careful.json",
+        "declared_sha256": "2f991f4afa01bc4fd0729c65c0c07423bc77b6ccf05ac166f215596c67eabe80",
+        "computed_sha256": "2f991f4afa01bc4fd0729c65c0c07423bc77b6ccf05ac166f215596c67eabe80",
+        "packet_declared_sha256": "2f991f4afa01bc4fd0729c65c0c07423bc77b6ccf05ac166f215596c67eabe80",
+        "hashes_match": true,
+        "total": 296,
+        "real": 288,
+        "calibration": 8,
+        "unique_complete_rows": 296,
+        "answer_positions": {
+          "0": 120,
+          "1": 72,
+          "2": 96
+        },
+        "strata": {
+          "form": {
+            "fine-either-way": 96,
+            "rather-not": 96,
+            "would-welcome": 96
+          },
+          "domain": {
+            "CI": 36,
+            "code review": 36,
+            "communication": 36,
+            "packaging": 36,
+            "process": 36,
+            "release": 36,
+            "review": 36,
+            "social": 36
+          },
+          "outcome": {
+            "obligation": 144,
+            "preference": 144
+          },
+          "power": {
+            "peer": 96,
+            "subordinate": 96,
+            "superior": 96
+          }
+        }
+      },
+      "reader_audit": {
+        "declared_members": 4,
+        "declared_neff": 3,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "qwen25-7b-q4@q4_k_m",
+          "ornith-35b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 0.7188,
+          "other": 0.0938,
+          "gap": 0.625,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.37",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "rather-bare",
+      "manifest_hash": "edb44cee446c7105302049ca72135bdb23268325771a8612217fe7deeaf9751f",
+      "proposal": "rather-not-fine-either-way-would-welcome-you-don-t-have-to-s-2",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": 11.14,
+      "value_lo": 5.1924,
+      "value_hi": 17.0159,
+      "stance": "supports",
+      "arms": {
+        "english": 0.5453,
+        "ainglish": 0.6567,
+        "chance": 0.3333
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": 24.87,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": 13.58,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "qwen25-7b-q4",
+          "value": 2.4,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "ornith-35b-q4",
+          "value": 3.99,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "bare-untagged-release-v1",
+        "description": "DESCRIPTIVE: tagged forms vs the bare release; the >=25pp improvement claim; never pooled with the carrier"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/b1286fcc765ae28bcee09e2177fced0643772f30/rathernot-comprehension-2026-08-25/items-bare.json",
+        "declared_sha256": "7183d3cb6125c22e2d13a0903bab715ac4e5f5947a1799876a0eef4a63a534ec",
+        "computed_sha256": "7183d3cb6125c22e2d13a0903bab715ac4e5f5947a1799876a0eef4a63a534ec",
+        "packet_declared_sha256": "7183d3cb6125c22e2d13a0903bab715ac4e5f5947a1799876a0eef4a63a534ec",
+        "hashes_match": true,
+        "total": 296,
+        "real": 288,
+        "calibration": 8,
+        "unique_complete_rows": 296,
+        "answer_positions": {
+          "0": 120,
+          "1": 72,
+          "2": 96
+        },
+        "strata": {
+          "form": {
+            "fine-either-way": 96,
+            "rather-not": 96,
+            "would-welcome": 96
+          },
+          "domain": {
+            "CI": 36,
+            "code review": 36,
+            "communication": 36,
+            "packaging": 36,
+            "process": 36,
+            "release": 36,
+            "review": 36,
+            "social": 36
+          },
+          "outcome": {
+            "obligation": 144,
+            "preference": 144
+          },
+          "power": {
+            "peer": 96,
+            "subordinate": 96,
+            "superior": 96
+          }
+        }
+      },
+      "reader_audit": {
+        "declared_members": 4,
+        "declared_neff": 3,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "qwen25-7b-q4@q4_k_m",
+          "ornith-35b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 0.7188,
+          "other": 0.0938,
+          "gap": 0.625,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.37",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "thisonce-careful",
+      "manifest_hash": "b4284015daf019e10b2bf4a7643c4341d6576859a57ae40d7c99ae0a1ced546c",
+      "proposal": "this-once-from-now-on-does-this-instruction-apply-to-this-ta",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": -9.67,
+      "value_lo": -17.1617,
+      "value_hi": -1.6352,
+      "stance": "opposes",
+      "arms": {
+        "english": 0.7292,
+        "ainglish": 0.6325,
+        "chance": 0.3333
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": -2.37,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": -5.71,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "qwen25-7b-q4",
+          "value": -11.49,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "ornith-35b-q4",
+          "value": -19.46,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "shortest-adequate-careful-control-v1",
+        "description": "CARRIER: tagged forms vs ', just this once' / ', from now on'; non-inferiority -5pp; forms reported separately"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/c43a41e4be6e7947ed415533c307d2e59d8ad1c0/thisonce-comprehension-2026-08-25/items-careful.json",
+        "declared_sha256": "9cad1813de2acd89356a90adf9cc48098473a9968a01b8c2aaa8cd8ddee11013",
+        "computed_sha256": "9cad1813de2acd89356a90adf9cc48098473a9968a01b8c2aaa8cd8ddee11013",
+        "packet_declared_sha256": "9cad1813de2acd89356a90adf9cc48098473a9968a01b8c2aaa8cd8ddee11013",
+        "hashes_match": true,
+        "total": 148,
+        "real": 140,
+        "calibration": 8,
+        "unique_complete_rows": 148,
+        "answer_positions": {
+          "0": 48,
+          "1": 36,
+          "2": 56
+        },
+        "strata": {
+          "form": {
+            "once": 70,
+            "standing": 70
+          },
+          "stratum": {
+            "audit-required": 20,
+            "project-scope": 20,
+            "storage-forbidden": 20
+          }
+        }
+      },
+      "reader_audit": {
+        "declared_members": 4,
+        "declared_neff": 3,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "qwen25-7b-q4@q4_k_m",
+          "ornith-35b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 0.9688,
+          "other": 0,
+          "gap": 0.9688,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.37",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    },
+    {
+      "label": "thisonce-bare",
+      "manifest_hash": "dbc96ac646e5eaa6b115bd904d90a624b08d400a1229833e806512feddf290ef",
+      "proposal": "this-once-from-now-on-does-this-instruction-apply-to-this-ta",
+      "metric": "comprehension_accuracy_delta",
+      "formula_version": 2,
+      "value": 16.48,
+      "value_lo": 7.8843,
+      "value_hi": 24.6712,
+      "stance": "supports",
+      "arms": {
+        "english": 0.4947,
+        "ainglish": 0.6595,
+        "chance": 0.3333
+      },
+      "per_member": [
+        {
+          "model": "qwen35-27b-q4",
+          "value": 20,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "gemma4-31b-q4",
+          "value": 17.13,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "qwen25-7b-q4",
+          "value": 23.33,
+          "precision": "q4_k_m"
+        },
+        {
+          "model": "ornith-35b-q4",
+          "value": 3.75,
+          "precision": "q4_k_m"
+        }
+      ],
+      "comparator": {
+        "kind": "bare-untagged-directive-v1",
+        "description": "DESCRIPTIVE: tagged forms vs the bare directive; the >=20pp improvement claim; never pooled with the carrier"
+      },
+      "items": {
+        "url": "https://raw.githubusercontent.com/reticuli-labs/panel-artifacts/c43a41e4be6e7947ed415533c307d2e59d8ad1c0/thisonce-comprehension-2026-08-25/items-bare.json",
+        "declared_sha256": "8fc9e1db9aec7d691eef1e976f860e07daf8bed900cfc77c1588cf62d96a1ff9",
+        "computed_sha256": "8fc9e1db9aec7d691eef1e976f860e07daf8bed900cfc77c1588cf62d96a1ff9",
+        "packet_declared_sha256": "8fc9e1db9aec7d691eef1e976f860e07daf8bed900cfc77c1588cf62d96a1ff9",
+        "hashes_match": true,
+        "total": 148,
+        "real": 140,
+        "calibration": 8,
+        "unique_complete_rows": 148,
+        "answer_positions": {
+          "0": 48,
+          "1": 36,
+          "2": 56
+        },
+        "strata": {
+          "form": {
+            "once": 70,
+            "standing": 70
+          },
+          "stratum": {
+            "audit-required": 20,
+            "project-scope": 20,
+            "storage-forbidden": 20
+          }
+        }
+      },
+      "reader_audit": {
+        "declared_members": 4,
+        "declared_neff": 3,
+        "declared_neff_basis": "declared:reader-axis-unvalidated",
+        "served_models": [
+          "qwen35-27b-q4@q4_k_m",
+          "gemma4-31b-q4@q4_k_m",
+          "qwen25-7b-q4@q4_k_m",
+          "ornith-35b-q4@q4_k_m"
+        ],
+        "base_families": [
+          "Gemma",
+          "Qwen"
+        ],
+        "base_family_count": 2,
+        "strict_local_reader_gate_applies": true
+      },
+      "run_integrity": {
+        "calibration": {
+          "planted_arm": "ainglish",
+          "detectable": 0.9688,
+          "other": 0,
+          "gap": 0.9688,
+          "min_gap": 0.5,
+          "passed": true
+        },
+        "transport_faults": {
+          "total": 0,
+          "retried": false,
+          "per_cell": []
+        },
+        "transport_truncations": {
+          "total": 0,
+          "per_reader_cell": [],
+          "by_cell": {
+            "english": 0,
+            "ainglish": 0
+          },
+          "imbalanced_across_cells": false
+        },
+        "harness": "ainglish-panel/0.2.37",
+        "attempt_state": "completed",
+        "manifest_storage": "stored_at_mint",
+        "confirmed": false,
+        "settlement_state": "awaiting"
+      }
+    }
+  ],
+  "cross_cutting_findings": [
+    "All 13 served manifests resolve to immutable commit-pinned item URLs and all 13 item-array digests recompute exactly.",
+    "Every run passed its declared calibration and reports zero transport faults or truncations.",
+    "No original is independently confirmed; each remains settlement_state awaiting.",
+    "The served pools contain at most two base families, Qwen and Gemma. Qwen 2.5, Qwen 3.8, and Qwen-derived Ornith do not create separate lineages.",
+    "The v8 strict ordinary-English qualification gate has only one qualified lineage, Qwen 3.6 35B, so the campaign's two-lineage semantic gate remains closed.",
+    "For multi-form proposals the register serves one aggregate scalar and no per-form result fields. Claims that require every form to pass cannot be established from the served scalar alone; per-form evidence must be filed separately or made first-class and auditable.",
+    "Several apparent sign conflicts are different estimands: a careful-English carrier and a bare-English descriptive comparison. They must not be pooled or treated as replications of one another."
+  ],
+  "content_sha256": "ccdfe647010988f402ed98edf5f1e6b5f972702543741e88afef810285d5e185"
+}
