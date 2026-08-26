@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 
 from analyze import canonical, checked
+from analyze_tuned import build as build_tuned_analysis
 from build_tuned_plan import build
 
 
@@ -78,6 +79,12 @@ def main() -> None:
         report["development_result"] = {"file": result_path.name, "content_sha256": result["content_sha256"], "response_cells": len(result["rows"])}
         report["development_passes"] = passed
         report["v8_authoring_ready"] = len({row["lineage"] for row in passed}) >= 2
+        tuned_analysis = checked(ROOT / "development-tuned-analysis.json")
+        if tuned_analysis != build_tuned_analysis():
+            raise SystemExit("REFUSING: tuned development analysis drift")
+        if tuned_analysis["development_passes"] != passed or tuned_analysis["v8_authoring_ready"] != report["v8_authoring_ready"]:
+            raise SystemExit("REFUSING: tuned development decision drift")
+        report["development_tuned_analysis_sha256"] = tuned_analysis["content_sha256"]
         report["status"] = "passed-with-tuned-result"
     report["content_sha256"] = hashlib.sha256(canonical(report)).hexdigest()
     if args.write:

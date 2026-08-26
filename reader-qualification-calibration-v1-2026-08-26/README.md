@@ -46,6 +46,20 @@ qualify readers.
 thinking bytes, and zero fault cells. A fresh v8 holdout should be authored only if at least two
 distinct lineages pass. The gate and exact instruction are committed before the tuned calls.
 
+## Tuned outcome
+
+No reader passed the prospective development gate. The clarification improved `not determined`
+from 18/48 to 25/48, but overall correctness fell from 110/144 to 105/144 and exact-code compliance
+fell from 143/144 to 135/144. InternLM 2 came closest with 22/24 correct and 24/24 exact codes, but
+its `not determined` score was 6/8 rather than the required 7/8. The clarification also induced
+several code-plus-label or truncated-label outputs under the unchanged four-token bound.
+
+This is a mixed and overall adverse development result. `v8_authoring_ready` is false. Repeatedly
+tuning these exposed controls would overfit the instrument, so this branch stops here: preserve the
+one optional native wording check, separate constrained formatting from semantic discrimination,
+and identify a genuinely stronger new lineage or prospectively frozen constrained-decoding
+transport before further GPU spend.
+
 The package can be reproduced and audited offline with:
 
 ```bash
@@ -53,7 +67,9 @@ python3 analyze.py
 python3 build_development.py
 python3 build_run_plan.py
 python3 analyze_development.py
+python3 analyze_tuned.py
 python3 audit.py
+python3 audit_tuned.py
 ```
 
 The optional human burden is deliberately one item, in `native-review-packet.json`. Any answer
