@@ -22,3 +22,11 @@ Primary references:
 - https://ollama.com/library/llama3.3/tags
 - https://ollama.com/library/solar-pro
 - https://docs.ollama.com/capabilities/structured-outputs
+
+The generic staged runner is committed independently of any candidate plan. After acquisition,
+`build_candidate_plan.py` pins the local manifest and capabilities. `run_candidate_once.py` first
+runs the 12 format-only controls; a strict failure publishes without exposing a semantic item. A
+passing candidate then sees the already-exposed balanced 24-item development packet through JSON
+schema output. Its prospective semantic gate is 22/24 overall, at least 2/3 per axis, at least 7/8
+per label, exact schema on every cell, and zero thinking or fault cells. Passing means only that a
+fresh v8 holdout may be worth authoring.
