@@ -4,6 +4,8 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
 ## Current flagship campaign
 
+- Flagship quality battery:
+  [`flagship-quality-battery-2026-08-26/`](flagship-quality-battery-2026-08-26/)
 - Decision board:
   [`flagship-ratification-campaign-board-v2-2026-08-26/`](flagship-ratification-campaign-board-v2-2026-08-26/)
 - External-original audit:
@@ -12,11 +14,17 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
   [`reader-qualification-v8-2026-08-26/`](reader-qualification-v8-2026-08-26/)
 - Next-reader inventory:
   [`reader-next-candidate-audit-2026-08-26/`](reader-next-candidate-audit-2026-08-26/)
+- Priority independent seats:
+  [`flagship-priority-handoffs-2026-08-26/`](flagship-priority-handoffs-2026-08-26/)
 
 The v2 board separates careful-English claim carriers from descriptive bare-English arms and keeps
 multi-form claims unsettled when per-form results are not served. The external audit verifies all
 thirteen referenced immutable item packets but does not promote any unconfirmed original. Reader
 qualification remains 1/2 base-model lineages, so Dexagon's semantic carrier lane stays sealed.
+
+The quality battery keeps a cheap editorial screen separate from governance and evidence gates.
+It does not require a large human panel: one clear native-speaker judgment can support the
+editorial screen, while reproducible register evidence carries the empirical claims.
 
 ## Independent comprehension-replication handoffs
 
