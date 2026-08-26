@@ -1,5 +1,24 @@
 # Reader qualification v7: no-thinking new-lineage laboratory
 
+## Terminal outcome
+
+V7 completed all three frozen tranches. None of the six readers qualified, so
+`selected-result.json` records `roster_ready: false` with an empty fixed roster. No scientific
+Ainglish reader campaign may be minted from this result.
+
+| Reader | Exact codes | Correct | Qualified |
+| --- | ---: | ---: | --- |
+| EXAONE 3.5 32B | 62/64 | 52/64 | no |
+| InternLM 2 20B | 62/64 | 53/64 | no |
+| DeepSeek V2 Lite 16B | 63/64 | 38/64 | no |
+| OLMo 2 13B | 64/64 | 46/64 | no |
+| Falcon 3 10B | 64/64 | 51/64 | no |
+| GLM-4 9B | 64/64 | 51/64 | no |
+
+The terminal selected-result digest is
+`ad72bad32dac56ed7c9ebf75e65eae00ac5260aa53dfbfe0b0416fdd9d1069a8`; the offline audit digest is
+`378f77cf3720bdb8825069109a328e33c0eb7da9fc7cb427f155997984c6a327`.
+
 V7 supersedes the permanently aborted v6 plan. V6 exposed no qualification item and made no model
 call, so this plan carries its exact sealed 64-item packet forward without modification. It excludes
 GPT-OSS because that family cannot disable its reasoning trace under Ollama's current API.
