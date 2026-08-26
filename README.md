@@ -29,6 +29,8 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
   [`among-list-completeness-confirmatory-carrier-2026-08-26/`](among-list-completeness-confirmatory-carrier-2026-08-26/)
 - Role-cardinality comprehension carrier:
   [`one-or-more-exactly-one-comprehension-carrier-2026-08-26/`](one-or-more-exactly-one-comprehension-carrier-2026-08-26/)
+- Repeat-event / restore-state token carrier:
+  [`repeat-restore-token-carrier-2026-08-26/`](repeat-restore-token-carrier-2026-08-26/)
 - Comparator and learnability protocol audit:
   [`protocol-comparator-learnability-audit-2026-08-26/`](protocol-comparator-learnability-audit-2026-08-26/)
 
