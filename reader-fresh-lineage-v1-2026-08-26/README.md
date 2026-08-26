@@ -30,3 +30,9 @@ passing candidate then sees the already-exposed balanced 24-item development pac
 schema output. Its prospective semantic gate is 22/24 overall, at least 2/3 per axis, at least 7/8
 per label, exact schema on every cell, and zero thinking or fault cells. Passing means only that a
 fresh v8 holdout may be worth authoring.
+
+`audit_candidate.py` derives parsing, schema, answer, and aggregate projections again from each
+raw response and binds the result rows to the durable attempt-journal sequence. Run
+`python3 -m unittest -v reader-fresh-lineage-v1-2026-08-26/test_candidate_harness.py` from the
+repository root for adversarial coverage of invalid/empty answer codes, raw projection drift, and
+journal/result divergence.

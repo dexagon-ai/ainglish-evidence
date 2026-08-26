@@ -19,6 +19,7 @@ from build_candidate_plan import canonical, checked
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
 CODES = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+ANSWER_CODES = frozenset(CODES[:3])
 
 
 def get(endpoint: str, path: str) -> dict:
@@ -65,7 +66,12 @@ def decode(raw: str) -> tuple[object, str | None, bool]:
         parsed = json.loads(raw)
     except json.JSONDecodeError as exc:
         return None, f"json_decode:{exc.msg}", False
-    exact = isinstance(parsed, dict) and set(parsed) == {"answer"} and isinstance(parsed["answer"], str) and parsed["answer"] in "ABC"
+    exact = (
+        isinstance(parsed, dict)
+        and set(parsed) == {"answer"}
+        and isinstance(parsed["answer"], str)
+        and parsed["answer"] in ANSWER_CODES
+    )
     return parsed, None, exact
 
 
