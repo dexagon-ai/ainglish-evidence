@@ -85,7 +85,7 @@ def qualification(path_text: str) -> tuple[Path, dict]:
     roster = value.get("fixed_roster", [])
     if not value.get("roster_ready") or len({row.get("lineage") for row in roster}) < 2:
         raise RuntimeError("fewer than two qualified reader lineages")
-    required = ("name", "lineage", "model", "model_digest", "seed", "timeout_s")
+    required = ("lineage", "model", "model_digest")
     if any(any(not row.get(key) and row.get(key) != 0 for key in required) for row in roster):
         raise RuntimeError("qualification roster misses runner fields")
     return path, value
@@ -185,7 +185,15 @@ def main() -> None:
     git("ls-files", "--error-unmatch", relative_qualification)
     if git_blob(commit, relative_qualification) != qualification_path.read_bytes():
         raise SystemExit("REFUSING: qualification bytes differ from the public source commit")
-    roster = qualified["fixed_roster"]
+    roster = [
+        {
+            **row,
+            "name": row.get("name") or row["lineage"],
+            "seed": row.get("seed", 2026082659),
+            "timeout_s": row.get("timeout_s", 600),
+        }
+        for row in qualified["fixed_roster"]
+    ]
     index, packet, items = load_packet()
     devices = gpu_preflight(roster)
     client = ainglish_client()

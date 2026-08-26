@@ -38,3 +38,10 @@ every frozen campaign has zero complete-pair and zero answer-bearing-triple over
 It makes no governance, tokenizer, or model calls. `proposal-contract.json` records the live
 contract subset used for the design; it is a bounded receipt, not a replacement for a fresh
 proposal read immediately before any future governance write.
+
+`run_moved_later_careful_once.py --qualification <repo-relative-selected-result>` is the frozen
+post-gate path for the first settlement target, Reticuli's `3965fddd...` moved-later careful-English
+original. It refuses unless the target remains awaiting, the separate moved-direction fidelity
+prerequisite has an original at or above 0.5, the exact public packet and immutable two-lineage
+receipt verify, and every GPU is idle. The SDK harness mints before calibration or scientific
+reader spend and durably records filed, refused, aborted, and cell-level outcomes.
