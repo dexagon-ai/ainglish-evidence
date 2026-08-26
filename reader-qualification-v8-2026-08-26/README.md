@@ -43,3 +43,11 @@ qualification JSON in this repository, contains no Ainglish target construct, ba
 positions 22/21/21, and is committed before either qualification call. Passing requires 64/64 exact
 schema responses, at least 60/64 correct, at least 7/8 on every axis, zero thinking bytes, and zero
 faults; both lineages must pass before any scientific roster is released.
+
+## Terminal qualification outcome
+
+Qwen qualified at 61/64, with every axis at least 7/8, 64/64 exact schema responses, zero thinking
+bytes, and zero faults. Phi scored 58/64 and fell to 6/8 on both conditional and reference-resolution
+items, so it did not qualify. The two-lineage rule therefore failed: `selected-result.json` records
+`roster_ready: false` and an empty fixed roster. No scientific flagship carrier was exposed, minted,
+or run from v8. The single Qwen pass is retained as an instrument result, not promoted into a panel.
