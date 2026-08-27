@@ -54,3 +54,13 @@ python3 build_yi_reserve_plan.py
 Commit and push `development-yi-reserve-plan.json` and `reserve-index.json` before the first Yi
 call. Yi then receives the same one-shot format and exposed development gates through the existing
 runner and auditor.
+
+## Yi reserve outcome
+
+Yi passed the structured-output gate at 12/12 exact responses, with zero thinking bytes and zero
+faults. It failed the unchanged exposed semantic development gate at 20/24 rather than the required
+22/24. The per-axis floor was met, but the `not determined` label reached only 4/8 rather than 7/8.
+
+This is a terminal retained development failure. Yi received no holdout item and no Ainglish
+scientific carrier. It will not be retried or tuned on the exposed cells. The two-lineage roster
+therefore remains closed at 1/2, so all reader-dependent proposal work stays gated.
