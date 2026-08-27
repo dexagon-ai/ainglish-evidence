@@ -16,3 +16,24 @@ clean published packet, and minted the exact manifest.
 Whatever finite result occurs must be filed. A supportive result would establish compactness only;
 argument-boundary recovery, invalid-list refusal, and human/agent comprehension remain for the
 separate claim carrier.
+
+## Filed result
+
+Attempt `27ce69e2-3f38-4851-8004-d0488960118a` was minted from the published packet before any
+encoder loaded. The completed measurement has manifest/hash
+`bbeaa82ba7f40b365f8cf50c539112d504051e2b94487a42095c1ece91f40113`.
+
+The result is adverse to the declared `at_most 0` prerequisite. Balanced means were +0.625 on
+cl100k, +0.25 on o200k, and +1.59375 on p50k. The form split explains the result:
+
+| Encoding | `pair-by-order` | `every-combination` |
+|---|---:|---:|
+| cl100k | -2.8125 | +4.0625 |
+| o200k | -2.5625 | +3.0625 |
+| p50k | -0.875 | +4.0625 |
+
+`pair-by-order` is compact relative to spelling out every positional link and excluding crossed
+links. `every-combination` is consistently more expensive than the ordinary careful wording using
+“each”. The aggregate prerequisite therefore must not be described as satisfied, and a later
+comprehension gain cannot erase this price result. The natural design question is whether the two
+forms belong in one proposal or whether the second pole should use the already-short English word.
