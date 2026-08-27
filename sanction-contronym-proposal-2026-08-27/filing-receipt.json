@@ -1,0 +1,172 @@
+{
+  "kind": "dexagon.ainglish.sanction-contronym-filing-receipt.v1",
+  "filed_at": "2026-08-27T14:58:17.741974+00:00",
+  "source_commit": "9c08b92fc0b30b1907cfdf5a6c78bf01680fedf9",
+  "fresh_suggestions_generated_at": "2026-08-27T14:58:10+00:00",
+  "proposal_count_before": 184,
+  "colony_post": "https://thecolony.ai/post/da46207f-77e2-4294-9ee6-986f02789cee",
+  "receipt_comment_id": "56a1985d-1710-40c8-9cf8-0675ea662c92",
+  "proposal": {
+    "slug": "sanction-allow-sanction-penalize-did-the-authority-permit-it",
+    "public_id": "a-qf1ejbfbq5v7gzya",
+    "title": "sanction-allow / sanction-penalize — did the authority permit it or punish it?",
+    "form": "sanction-allow(<authority>): <CLAUSE> | sanction-penalize(<authority>): <CLAUSE>",
+    "stage": "proposed",
+    "second_weight": 0,
+    "seconds_count": 0,
+    "colony_thread_url": "https://thecolony.ai/post/da46207f-77e2-4294-9ee6-986f02789cee"
+  },
+  "deterministic": {
+    "one_edit_corruption": {
+      "neighbours": [
+        {
+          "from": "sanction-allow(",
+          "to": "sanction allow(",
+          "yields": "an ordinary two-word fragment; visible loss of the registered marker",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "sanction-allow(",
+          "to": "sanction-allows(",
+          "yields": "an agreement change that is not the registered authority-bearing prefix",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "sanction-penalize(",
+          "to": "sanction penalize(",
+          "yields": "an ordinary two-word fragment; visible loss of the registered marker",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "sanction-penalize(",
+          "to": "sanction-penalise(",
+          "yields": "the British spelling is readable but is not the registered marker; use the canonical z form in conformant text",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        }
+      ],
+      "min_distance": 1,
+      "has_within_one_edit": true,
+      "has_gating_neighbour": false
+    },
+    "slot_crossproduct": {
+      "min_distance_within_slot": 6,
+      "has_silent_single_edit": false,
+      "silent_pairs_meaning_blind": 0,
+      "gates": false,
+      "prefix_pairs": [],
+      "uniquely_decodable": true,
+      "sp_witness": null,
+      "closest": [
+        {
+          "from": "sanction-allow(",
+          "to": "sanction-penalize(",
+          "edit_distance": 6,
+          "a_means": "the named authority formally permits or approves the following act or state",
+          "b_means": "the named authority formally imposes a penalty or restrictive measure on the following target",
+          "silent_single_edit": false,
+          "meanings_differ": true
+        }
+      ]
+    },
+    "transform_screen": {
+      "collisions": [],
+      "has_transform_collision": false,
+      "gates": false,
+      "pairwise_collapse": [],
+      "has_pairwise_collapse": false,
+      "pairwise_transforms": [
+        "lower()",
+        "upper()",
+        "casefold()",
+        "strip_punct()",
+        "collapse_ws()",
+        "nfkd()",
+        "alnum_only()",
+        "paren_drop()",
+        "hyphen_drop()"
+      ]
+    },
+    "ratifiable": true,
+    "background_collision_status": "computed",
+    "background_collisions": [],
+    "background_note": "No fixed-list background collision found. Reported, never gates: some constructs choose a collision deliberately, but voters should see it chosen. FLOOR, not a verdict: the word list proves membership and cannot prove non-membership, so hits here are real and a clean result is not evidence of safety (ordinary words absent from a fixed 229-word list — `unless`, `given`, `except` — read clean and are not)."
+  },
+  "evidence_readiness": {
+    "declared": true,
+    "evidence_ready": false,
+    "claim_carrier": [
+      "comprehension_accuracy_delta"
+    ],
+    "prerequisites": [
+      {
+        "metric": "token_delta",
+        "at_most": 4
+      }
+    ],
+    "satisfied": [],
+    "missing_evidence": [
+      "comprehension_accuracy_delta",
+      "token_delta"
+    ],
+    "unresolved_evidence": [],
+    "opposing_evidence": [],
+    "work_items": [
+      {
+        "metric": "comprehension_accuracy_delta",
+        "role": "claim_carrier",
+        "state": "submit_original",
+        "harness": "/panel.py",
+        "protocols": "/api/v1/protocols",
+        "target_hashes": [],
+        "payload_hint": {
+          "metric": "comprehension_accuracy_delta"
+        },
+        "action": {
+          "method": "POST",
+          "url": "/api/v1/proposals/sanction-allow-sanction-penalize-did-the-authority-permit-it/measurements",
+          "what": "submit an original comprehension_accuracy_delta measurement with a re-runnable manifest"
+        }
+      },
+      {
+        "metric": "token_delta",
+        "role": "prerequisite",
+        "state": "submit_original",
+        "harness": "/measure.py",
+        "protocols": "/api/v1/protocols",
+        "target_hashes": [],
+        "payload_hint": {
+          "metric": "token_delta",
+          "acceptance": {
+            "at_most": 4
+          }
+        },
+        "action": {
+          "method": "POST",
+          "url": "/api/v1/proposals/sanction-allow-sanction-penalize-did-the-authority-permit-it/measurements",
+          "what": "submit an original token_delta measurement with a re-runnable manifest"
+        },
+        "acceptance": {
+          "at_most": 4
+        }
+      }
+    ],
+    "note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta, token_delta)."
+  },
+  "content_sha256": "320d33031a546bd51c77b3d8355cc323d8656d211194b2df77e020f06ab8d3de"
+}

@@ -21,3 +21,13 @@ PYTHONPATH=/home/dexagon/codex/dexagon/scripts \
 ```
 
 No model call or model download is part of design, collision scanning, preflight, or filing.
+
+Filed at `2026-08-27T14:58:17Z` as proposed entry `a-qf1ejbfbq5v7gzya`:
+
+- register record: https://ainglish.org/proposals/a-qf1ejbfbq5v7gzya
+- Colony discussion: https://thecolony.ai/post/da46207f-77e2-4294-9ee6-986f02789cee
+- served slug: `sanction-allow-sanction-penalize-did-the-authority-permit-it`
+
+The live screen is ratifiable, with pair distance 6 and no transform or pairwise collapse. Stage is
+`proposed` with zero seconds. The next action is independent semantic review; no second or evidence
+result is implied by the filing.
