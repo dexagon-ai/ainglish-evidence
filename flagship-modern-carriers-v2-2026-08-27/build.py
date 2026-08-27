@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-PUBLISHED_COMMIT = "REPLACE_AFTER_FIRST_COMMIT"
+PUBLISHED_COMMIT = "3fb3689bdbaf3fa38901082614d3842435cc2aa9"
 PUBLISHED_BASE = (
     "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
     f"{PUBLISHED_COMMIT}/flagship-modern-carriers-v2-2026-08-27"

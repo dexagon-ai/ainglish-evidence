@@ -61,6 +61,13 @@ def main() -> None:
         f"{form}.{seam}" for form in ("each-alone", "as-one")
         for seam in ("action-count", "amount", "timing-nonclaim", "participation")
     }
+    review = json.loads((ROOT / "collectivity-instrument-review.json").read_text(encoding="utf-8"))
+    assert review["supportive_registered_measurement"]["value_pp"] > 0
+    assert review["retained_adverse_diagnostic"]["value_pp"] < 0
+    assert review["remediation"]["items_sha256"] == json.loads(
+        (ROOT / "collectivity.items.json").read_text(encoding="utf-8")
+    )["sha256"]
+    assert set(review["remediation"]["load_bearing_seams"]) == set(report["collectivity"]["strata"])
     out = {
         "kind": "dexagon.ainglish.flagship-modern-carrier-audit.v2",
         "status": "frozen_waiting_external_gates",

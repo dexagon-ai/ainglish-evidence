@@ -17,6 +17,11 @@ searches only the counterbalancing seed, proves both arms in every settlement ce
 20 KB attempt-manifest cap, and writes all five runspecs atomically. It makes zero API or reader
 calls. Commit those outputs before minting any attempt; mint before reader spend.
 
+`collectivity-instrument-review.json` records why the existing positive bare-plural result does
+not clear the modern rubric and keeps the later -23.33 pp complete-comparator diagnostic fully
+visible. The remediation does not pool them. It freezes fresh action-count, amount, timing, and
+participation cells for both forms, so the previously weak `as-one` seams remain load-bearing.
+
 The current state is frozen but not runnable: the independent reader roster is still 1/2, and
 the stratified server/SDK changes are still awaiting review/deployment.
 

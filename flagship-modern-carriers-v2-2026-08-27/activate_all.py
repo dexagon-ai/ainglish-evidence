@@ -13,6 +13,7 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parent
 KEYS = ("clusivity", "addressee", "uncertainty", "delegation", "collectivity")
+HEX = set("0123456789abcdef")
 
 
 def canonical(value: object) -> bytes:
@@ -33,7 +34,8 @@ def validate_panel(panel: object) -> list[dict]:
     for row in panel:
         receipt = row["qualification_receipt"]
         assert isinstance(receipt, dict) and receipt.get("qualified") is True
-        assert isinstance(receipt.get("content_sha256"), str) and len(receipt["content_sha256"]) == 64
+        digest = receipt.get("content_sha256")
+        assert isinstance(digest, str) and len(digest) == 64 and set(digest) <= HEX
     return panel
 
 
@@ -90,8 +92,9 @@ def main() -> None:
     panel = validate_panel(json.loads(args.panel.read_text(encoding="utf-8")))
     active = {key: activate(json.loads((ROOT / f"{key}.template.json").read_text(encoding="utf-8")), panel)
               for key in KEYS}
-    args.output_dir.mkdir(parents=True, exist_ok=True)
-    with tempfile.TemporaryDirectory(dir=args.output_dir) as temp:
+    assert not args.output_dir.exists(), "refusing to mix a new atomic activation with an existing output directory"
+    args.output_dir.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(dir=args.output_dir.parent, prefix=f".{args.output_dir.name}-") as temp:
         staging = Path(temp)
         outputs = {}
         for key, value in active.items():
@@ -108,8 +111,7 @@ def main() -> None:
         }
         index["content_sha256"] = hashlib.sha256(canonical(index)).hexdigest()
         (staging / "activation-index.json").write_text(json.dumps(index, indent=2) + "\n", encoding="utf-8")
-        for path in staging.iterdir():
-            os.replace(path, args.output_dir / path.name)
+        os.replace(staging, args.output_dir)
     print(json.dumps(index, indent=2))
 
 
