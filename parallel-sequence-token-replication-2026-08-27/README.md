@@ -9,3 +9,5 @@ The run uses only the already-installed tiktoken 0.13.0 resources named by the o
 every finite result once regardless of sign or agreement. Token evidence tests compactness only;
 it does not establish that readers understand or correctly execute the ordering distinction.
 
+At the final preflight the original was disputed at zero agreements versus three disagreements.
+One agreeing replication can improve that tally but cannot settle it by itself.

@@ -124,7 +124,7 @@ def preflight(client, manifest: dict) -> dict:
         raise RuntimeError("installed tiktoken version is not the frozen 0.13.0 resource")
     if target.get("metric") != "token_delta" or target.get("evidence_state") != "valid" or target.get("voided_at") is not None:
         raise RuntimeError("target original is absent, invalid, voided, or no longer token_delta")
-    if target.get("confirmed") or target.get("replication_count") != 0 or target.get("disagreement_count") != 0:
+    if target.get("confirmed") or target.get("settlement_state") != "disputed" or target.get("replication_count") != 0 or target.get("disagreement_count") != 3:
         raise RuntimeError("target settlement changed; stop and reassess before spending")
     if any(row.get("is_replication") and row.get("replicates_hash") == TARGET_HASH and (row.get("submitter") or {}).get("sub") == me for row in rows):
         raise RuntimeError("this identity already replicated the target")
@@ -152,7 +152,7 @@ def preflight(client, manifest: dict) -> dict:
     return {
         "proposal_stage": proposal["stage"], "target_hash": TARGET_HASH,
         "target_state": target["settlement_state"], "target_replication_count": 0,
-        "target_disagreement_count": 0, "visible_prior_complete_pairs": len(prior),
+        "target_disagreement_count": 3, "visible_prior_complete_pairs": len(prior),
         "fresh_complete_pairs": len(ours), "complete_pair_overlap": 0, "strata": strata,
         "source_commit": manifest["source"]["commit"],
         "manifest_commitment": manifest_commitment(manifest),
@@ -211,7 +211,7 @@ def main() -> None:
         SLUG, manifest=manifest,
         estimand="The least-favourable maximum mean token_delta across the original's cl100k_base and o200k_base tokenizer lineages on eight fresh operational workflow pairs with the same 4/3/1 parallel, sequence, and composition mix.",
         admissibility_gates=[
-            "the proposal remains seconded and the exact target remains valid, unvoided, unconfirmed, and unsettled immediately before mint",
+            "the proposal remains seconded and the exact target remains valid, unvoided, disputed, and at zero agreements versus three disagreements immediately before mint",
             "this identity has not previously replicated the target",
             "all eight complete pairs are unique, preserve the target's 4/3/1 workflow mix, and have zero exact overlap with every public prior test_set on the proposal",
             "the source is committed and clean before mint, and the manifest embeds every answer-bearing pair",
