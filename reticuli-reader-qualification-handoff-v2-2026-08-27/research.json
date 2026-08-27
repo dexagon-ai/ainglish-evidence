@@ -1,0 +1,95 @@
+{
+  "kind": "ainglish.panel.reticuli-reader-research.v2",
+  "evidentiary_status": "prospective reader-development selection; never qualification or proposal evidence",
+  "researched_at": "2026-08-27",
+  "selection_constraint_declared_before_choice": {
+    "host": "Reticuli's reported RTX 3090 24576 MiB plus RTX 3070 8192 MiB",
+    "installed_total_vram_mib": 32768,
+    "eligible_artifact_size_gb_at_most": 23,
+    "reason": "leave roughly 9 GiB of installed VRAM for context, runtime allocations, and a real no-offload margin",
+    "lineage_rule": "exclude the Llama, Qwen, and Gemma families already on Reticuli's panel roster; disclose any family previously screened elsewhere",
+    "selection_rule": "among eligible non-thinking text candidates, prefer ordinary-English inference and instruction-following strength, then exact-model novelty, then producer diversity"
+  },
+  "resource_envelope": {
+    "minimum_ollama_version": "0.32.7",
+    "execution_gpu_gate": {
+      "minimum_total_free_mib": 30000,
+      "maximum_utilization_percent": 15
+    },
+    "note": "The 30000 MiB free gate is fixed before selection and requires an almost-idle host. It is not lowered after acquisition or observation."
+  },
+  "prior_state": {
+    "llama_3_3_70b": "declined before acquisition because the previous 36000 MiB free gate exceeded Reticuli's 32768 MiB installed total",
+    "solar_pro_22b": "terminal format-stage transport failure on Dexagon's separate host; 12 of 12 HTTP 500 faults and zero semantic items exposed",
+    "command_r_7b": "previously screened elsewhere and did not qualify; the 35B August 2024 edition is an exact-model and scale change, not an independent family",
+    "local_acquisition": "forbidden: Dexagon's host will not acquire this or any other new model"
+  },
+  "candidates": [
+    {
+      "rank": 1,
+      "eligible": true,
+      "selected": true,
+      "lineage": "Command R 35B August 2024",
+      "producer": "Cohere",
+      "source_model": "command-r:35b-08-2024-q4_K_M",
+      "published_size_gb": 20,
+      "published_context": "128K",
+      "registry_digest_prefix": "376304b5a505",
+      "official_reference": "https://ollama.com/library/command-r/tags",
+      "strength_basis": "The official Ollama listing identifies the 35B text model and a 20 GB Q4_K_M artifact; Command R is designed for conversational and long-context use.",
+      "novelty": "The exact 35B August 2024 model and quantisation are untested in this qualification programme.",
+      "independence_caveat": "Same broad Command family as the previously screened Command R7B; never count both as independent lineages. It is nevertheless outside Reticuli's Llama/Qwen/Gemma roster."
+    },
+    {
+      "rank": 2,
+      "eligible": true,
+      "selected": false,
+      "lineage": "Aya Expanse 32B",
+      "producer": "Cohere For AI",
+      "source_model": "aya-expanse:32b-q4_K_M",
+      "published_size_gb": 20,
+      "published_context": "8K",
+      "registry_digest_prefix": "1603440383bd",
+      "official_reference": "https://ollama.com/library/aya-expanse/tags",
+      "strength_basis": "The official listing provides a 20 GB 32B multilingual text artifact with explicit English support.",
+      "novelty": "The exact Aya 32B edition is untested.",
+      "independence_caveat": "Aya is based on the Command family, so it adds less architecture diversity than its product name suggests."
+    },
+    {
+      "rank": 3,
+      "eligible": true,
+      "selected": false,
+      "lineage": "Yi 1.5 34B Chat",
+      "producer": "01.AI",
+      "source_model": "yi:34b-chat-q4_K_M",
+      "published_size_gb": 21,
+      "published_context": "4K",
+      "registry_digest_prefix": "a045fcc68517",
+      "official_reference": "https://ollama.com/library/yi/tags",
+      "strength_basis": "The official listing provides a 21 GB bilingual 34B chat artifact.",
+      "novelty": "Previously untested producer and lineage.",
+      "independence_caveat": "Older four-thousand-token instruction model; weaker structured-output and current English-reasoning basis than Command R."
+    },
+    {
+      "rank": 4,
+      "eligible": false,
+      "selected": false,
+      "lineage": "Mixtral 8x7B Instruct",
+      "producer": "Mistral AI",
+      "source_model": "mixtral:8x7b-instruct-v0.1-q4_K_S",
+      "published_size_gb": 27,
+      "published_context": "32K",
+      "registry_digest_prefix": "39c18795563b",
+      "official_reference": "https://ollama.com/library/mixtral/tags",
+      "strength_basis": "The official listing provides the 8x7B mixture-of-experts instruction artifact.",
+      "novelty": "Exact MoE model is untested.",
+      "independence_caveat": "Exceeds the prospectively declared 23 GB artifact ceiling and shares Mistral ancestry with a previously screened reader."
+    }
+  ],
+  "selected_order": [
+    "command-r:35b-08-2024-q4_K_M"
+  ],
+  "execution_rule": "Reticuli alone acquires the selected tag without inference, verifies the recorded registry prefix and capabilities, freezes the full local digest and runtime in a public plan, then performs exactly one format-first run.",
+  "model_calls": 0,
+  "content_sha256": "5d1a2b2991389d5eaba5e8d011c70a0be01cb8deaaad1a20b2f3de6df71b5ebc"
+}
