@@ -1,0 +1,122 @@
+{
+  "kind": "ainglish.panel.reticuli-reader-research.v3",
+  "evidentiary_status": "prospective reader-development selection; never qualification or proposal evidence",
+  "researched_at": "2026-08-27",
+  "selection_constraint_declared_before_choice": {
+    "host": "Reticuli's reported RTX 3090 24576 MiB plus RTX 3070 8192 MiB",
+    "installed_total_vram_mib": 32768,
+    "eligible_artifact_size_gb_at_most": 23,
+    "reason": "leave roughly 9 GiB of installed VRAM for context, runtime allocations, and a real no-offload margin",
+    "lineage_rule": "exclude every qualified or terminally failed broad lineage: Command, DeepSeek, EXAONE, Falcon, Gemma, GLM, Granite, InternLM, Liquid, Llama, Mistral, OLMo, Phi, Qwen, Solar, and Yi",
+    "selection_rule": "among eligible distinct candidates, prioritize ordinary-language semantic inference and calibrated non-entailment, then broad-lineage independence, exact-artifact reproducibility, and producer diversity; structured-output strength is only a preflight concern"
+  },
+  "resource_envelope": {
+    "minimum_ollama_version": "0.32.7",
+    "execution_gpu_gate": {
+      "minimum_total_free_mib": 30000,
+      "maximum_utilization_percent": 15
+    },
+    "note": "The 30000 MiB free gate is unchanged and requires an almost-idle host. It is not lowered after acquisition or observation."
+  },
+  "prior_state": {
+    "qualified_lineages": "Qwen is the sole qualified broad lineage; a second distinct lineage is required",
+    "command_r_35b": "terminal semantic development failure at 17/24 after a 12/12 exact format pass; six of seven misses were not-determined to entailed",
+    "yi_1_5_34b": "terminal retained v9 development failure at 20/24, including 4/8 not-determined",
+    "old_ranking": "Aya shares Command ancestry and cannot add a distinct lineage; the old ranking is exhausted",
+    "local_acquisition": "forbidden: Dexagon's host will not acquire this or any other new model"
+  },
+  "candidates": [
+    {
+      "rank": 1,
+      "eligible": true,
+      "selected": true,
+      "lineage": "Seed-OSS 36B Instruct",
+      "producer": "ByteDance Seed Team",
+      "source_model": "milkey/Seed-OSS-36B-Instruct:q4_K_M",
+      "published_size_gb": 22,
+      "published_context": "512K",
+      "registry_digest_prefix": "7a66a2f466bf",
+      "registry_reference": "https://ollama.com/milkey/Seed-OSS-36B-Instruct:q4_K_M",
+      "official_model_reference": "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct",
+      "strength_basis": "The producer describes balanced general and reasoning capability, reports 87.4 MMLU and 85.8 IFEval, and supports a zero thinking budget for direct answers. None of those benchmarks proves calibrated underdetermination; they are prospective selection signals only.",
+      "novelty": "Previously untested producer, architecture, tokenizer, and model family in this qualification programme.",
+      "independence_caveat": "The full registry manifest is a community-uploaded Q4_K_M artifact rather than an Ollama official-library tag. Any result and later independence statement apply to the exact acquired digest and retain this provenance caveat.",
+      "thinking_control": {
+        "capability_expected": true,
+        "request_value": false,
+        "template_blob_digest_prefix": "260bb0ab1136",
+        "required_template_markers": [
+          "$thinking_budget = 0",
+          "The current thinking budget is 0, so I will directly start answering the question."
+        ],
+        "gate": "The builder refuses before the first call unless /api/show advertises thinking and its manifest-bound template contains both frozen zero-budget markers. Every response still must return zero thinking bytes."
+      }
+    },
+    {
+      "rank": 2,
+      "eligible": true,
+      "selected": false,
+      "lineage": "Laguna XS 2.1",
+      "producer": "Poolside",
+      "source_model": "laguna-xs-2.1:q4_K_M",
+      "published_size_gb": 20,
+      "published_context": "256K",
+      "registry_digest_prefix": "0175be1e57f4",
+      "registry_reference": "https://ollama.com/library/laguna-xs-2.1:q4_K_M",
+      "official_model_reference": "https://huggingface.co/poolside/Laguna-XS-2.1",
+      "strength_basis": "Official-library artifact and per-request thinking control, but the published evaluation is dominated by agentic coding with thinking enabled and the model activates only 3B parameters per token.",
+      "novelty": "Previously untested Poolside Laguna family.",
+      "independence_caveat": "Distinct producer and architecture, but no published ordinary-English entailment or calibration result supports promotion above Seed-OSS."
+    },
+    {
+      "rank": 3,
+      "eligible": true,
+      "selected": false,
+      "lineage": "Rnj-1 8B Instruct",
+      "producer": "Essential AI",
+      "source_model": "rnj-1:8b-instruct-q4_K_M",
+      "published_size_gb": 5.1,
+      "published_context": "32K",
+      "registry_digest_prefix": "d20e29ab8d0f",
+      "registry_reference": "https://ollama.com/library/rnj-1:8b-instruct-q4_K_M",
+      "official_model_reference": "https://huggingface.co/EssentialAI/rnj-1",
+      "strength_basis": "Dense 8.3B model trained from scratch with no thinking capability, but its limited post-training and strong coding/STEM bias are weak priors for the binding ordinary-English semantic gate.",
+      "novelty": "Previously untested Essential AI training lineage despite a Gemma-like architecture.",
+      "independence_caveat": "The implementation architecture resembles Gemma 3, but Essential AI states that the weights were trained from scratch; this distinction must remain explicit."
+    },
+    {
+      "rank": 4,
+      "eligible": false,
+      "selected": false,
+      "lineage": "GPT-OSS 20B",
+      "producer": "OpenAI",
+      "source_model": "gpt-oss:20b",
+      "published_size_gb": 14,
+      "registry_digest_prefix": "17052f91a42e",
+      "registry_reference": "https://ollama.com/library/gpt-oss/tags",
+      "strength_basis": "Strong general model within the artifact ceiling.",
+      "novelty": "Previously untested OpenAI open-weight lineage.",
+      "independence_caveat": "Ineligible because its Ollama thinking level cannot be disabled; the frozen gate requires zero returned thinking bytes rather than merely a low reasoning level."
+    },
+    {
+      "rank": 5,
+      "eligible": false,
+      "selected": false,
+      "lineage": "Nemotron 3 Nano 30B",
+      "producer": "NVIDIA",
+      "source_model": "nemotron-3-nano:30b-a3b-q4_K_M",
+      "published_size_gb": 24,
+      "registry_digest_prefix": "b725f1117407",
+      "registry_reference": "https://ollama.com/library/nemotron-3-nano/tags",
+      "strength_basis": "Distinct recent NVIDIA model family.",
+      "novelty": "Previously untested NVIDIA Nemotron 3 family.",
+      "independence_caveat": "Ineligible because the published artifact is 24 GB, above the prospectively fixed 23 GB ceiling."
+    }
+  ],
+  "selected_order": [
+    "milkey/Seed-OSS-36B-Instruct:q4_K_M"
+  ],
+  "execution_rule": "Reticuli alone acquires the selected tag without inference, verifies the registry prefix and manifest-bound zero-thinking template, freezes the full local digest and runtime in a public plan, then performs exactly one format-first run.",
+  "model_calls": 0,
+  "content_sha256": "93e3e4c9676aba36cd70910b2ba680f4597bcd3a2803a034e54678c16d3a9d0f"
+}

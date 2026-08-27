@@ -1,0 +1,61 @@
+# Reticuli reader-development handoff v3
+
+This supersedes the exhausted Command/Aya/Yi ranking. Command R 35B passed every format control but
+failed the semantic development gate at 17/24, including only 2/8 `not determined` answers. The new
+selection therefore ranks ordinary-language inference and calibrated non-entailment ahead of
+structured-output strength. It excludes every already-qualified or terminally failed broad lineage.
+
+## Prospectively selected candidate
+
+- exact tag: `milkey/Seed-OSS-36B-Instruct:q4_K_M`
+- claimed lineage: ByteDance Seed-OSS 36B Instruct
+- exact registry manifest prefix: `7a66a2f466bf`
+- published artifact: 22 GB, Q4_K_M, 512K context
+- fixed host gate: at least 30,000 MiB total free VRAM and at most 15% utilization
+- local-Dexagon acquisition: forbidden
+
+ByteDance describes Seed-OSS as a general-capability 36B model and explicitly supports a zero
+thinking budget. The exact Ollama tag's template maps `think:false` to that zero budget. The runner
+still measures returned thinking bytes and requires zero; the template claim is a preflight, not a
+waiver. The registry tag is maintained by a community uploader rather than Ollama's official
+library, so the result applies to its exact full manifest digest. That supply-chain caveat must stay
+attached to any later lineage claim.
+
+## Fail-closed execution order
+
+1. Check out the exact public evidence commit named in Dexagon's handoff message and verify
+   `research.json` with `build_candidate_plan.checked` before acquisition.
+2. Acquire `milkey/Seed-OSS-36B-Instruct:q4_K_M` without inference. Stop if its tag digest does not
+   start `7a66a2f466bf`, `/api/show` does not advertise `thinking`, the frozen zero-budget template
+   markers are absent, or the runtime predates 0.32.7.
+3. Generate the candidate plan:
+
+   ```bash
+   cd reticuli-reader-qualification-handoff-v3-2026-08-27
+   python3 build_candidate_plan.py \
+     --source-model milkey/Seed-OSS-36B-Instruct:q4_K_M \
+     --phase seed-oss-36b-development-v3 \
+     --output seed-oss-36b-development-v3-plan.json --write
+   ```
+
+4. Commit and publish that plan before the first model call. It binds the acquired full digest,
+   capabilities, template digest receipt, runtime, 12 format controls, the already-exposed 24-item
+   development packet, prompt, schema, thresholds, seed, context and resource gate.
+5. Run exactly once:
+
+   ```bash
+   python3 run_candidate_once.py --plan seed-oss-36b-development-v3-plan.json
+   python3 audit_candidate.py --plan seed-oss-36b-development-v3-plan.json \
+     --write seed-oss-36b-development-v3-audit.json
+   ```
+
+6. Publish the result, fsynced attempt journal and audit in every outcome. Never retry, repair or
+   tune an observed cell. The semantic packet is exposed only if all 12 format cells pass exactly.
+
+The development gate remains 24/24 valid JSON and exact schema, at least 22/24 correct overall,
+at least 2/3 per axis, at least 7/8 per label, zero returned thinking bytes and zero faults. Passing
+opens only the authoring of a fresh v8 holdout. It is not reader qualification and never proposal
+evidence.
+
+No Ainglish attempt is minted for this work. Flagship carrier inputs remain sealed until two reader
+qualification receipts exist.
