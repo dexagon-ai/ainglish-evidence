@@ -11,6 +11,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
 OPTIONS = ("yes", "no", "cannot tell")
+DESIGNATED_SUCCESSORS = (
+    REPO / "manifest-bound-flagship-carriers-v1-2026-08-27" / "role-cardinality.items.json",
+    REPO / "manifest-bound-flagship-carriers-v1-2026-08-27" / "role-cardinality.template.json",
+)
 
 
 def canonical(value: object) -> bytes:
@@ -25,8 +29,24 @@ def checked(path: Path) -> dict:
     return value
 
 
-def prior_pairs() -> set[tuple[str, str]]:
+def embedded_pairs(value: object, *, calibration: bool | None = None) -> set[tuple[str, str]]:
     found = set()
+    stack = [value]
+    while stack:
+        current = stack.pop()
+        if isinstance(current, dict):
+            calibration_matches = calibration is None or bool(current.get("calibration")) is calibration
+            if calibration_matches and isinstance(current.get("english"), str) and isinstance(current.get("ainglish"), str):
+                found.add((current["english"], current["ainglish"]))
+            stack.extend(current.values())
+        elif isinstance(current, list):
+            stack.extend(current)
+    return found
+
+
+def prior_pairs(current_pairs: set[tuple[str, str]]) -> tuple[set[tuple[str, str]], list[dict]]:
+    found = set()
+    successors = []
     for path in REPO.rglob("*.json"):
         if ROOT in path.parents:
             continue
@@ -34,16 +54,21 @@ def prior_pairs() -> set[tuple[str, str]]:
             value = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, UnicodeDecodeError, json.JSONDecodeError):
             continue
-        stack = [value]
-        while stack:
-            current = stack.pop()
-            if isinstance(current, dict):
-                if isinstance(current.get("english"), str) and isinstance(current.get("ainglish"), str):
-                    found.add((current["english"], current["ainglish"]))
-                stack.extend(current.values())
-            elif isinstance(current, list):
-                stack.extend(current)
-    return found
+        pairs = embedded_pairs(value)
+        if path in DESIGNATED_SUCCESSORS:
+            # These later artifacts deliberately bind the exact frozen population
+            # to a manifest; they are descendants, not prior exposed test items.
+            assert embedded_pairs(value, calibration=False) == current_pairs
+            assert pairs - current_pairs == embedded_pairs(value, calibration=True)
+            successors.append({
+                "file": str(path.relative_to(REPO)),
+                "pair_count": len(pairs),
+                "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            })
+            continue
+        found |= pairs
+    assert {REPO / receipt["file"] for receipt in successors} == set(DESIGNATED_SUCCESSORS)
+    return found, successors
 
 
 def main() -> None:
@@ -84,7 +109,8 @@ def main() -> None:
             assert all(left[key]["question"] == right[key]["question"] for key in left)
             opposite = [key for key in left if left[key]["answer"] != right[key]["answer"]]
             assert len(opposite) == 20
-    overlap = all_pairs & prior_pairs()
+    exposed_pairs, successors = prior_pairs(all_pairs)
+    overlap = all_pairs & exposed_pairs
     assert not overlap
     print(json.dumps({
         "status": "ok",
@@ -93,6 +119,7 @@ def main() -> None:
         "calibrations": 32,
         "bare_hidden_world_opposite_answer_cells": 20,
         "prior_complete_pair_overlap": 0,
+        "designated_content_preserving_successors": successors,
         "reader_calls": 0,
         "governance_writes": 0,
     }, indent=2))
