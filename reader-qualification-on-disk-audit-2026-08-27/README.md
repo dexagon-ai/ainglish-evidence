@@ -10,6 +10,11 @@ Repeating observed cells would not be a fresh qualification, and another Qwen si
 the required second-lineage gate. Yi and LFM2 failures remain adverse results; neither is tuned or
 retried.
 
+The refreshed inventory also includes Solar Pro 22B. Its separately published prospective plan
+failed the format stage with 12/12 HTTP 500 cells and exposed zero semantic items. This audit maps
+that retained terminal transport result explicitly; it does not reinterpret the failure as a
+semantic score or authorise a retry through a different adapter.
+
 This audit intentionally records zero downloads and zero model calls. A future campaign needs a
 genuinely new, prospectively selected installed lineage and a newly frozen disjoint qualification
 holdout—not more GPU time on the current inventory.

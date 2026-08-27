@@ -16,6 +16,7 @@ URL = "http://127.0.0.1:11434/api/tags"
 
 LINEAGES = [
     ("qwen", ("qwen",), "qualified-one-lineage", "Qwen 3.6 35B qualified on v8; additional Qwen editions do not create a second lineage."),
+    ("solar", ("solar-pro",), "failed-format-transport", "Solar Pro 22B failed its prospectively frozen format stage with 12/12 HTTP 500 cells; zero semantic items were exposed and the one-shot plan is terminal."),
     ("yi", ("yi:",), "failed-development", "Yi 1.5 34B failed v9 at 20/24 and 4/8 on not-determined; no retry."),
     ("liquid", ("lfm2",), "failed-development", "LFM2 24B failed v9 at 16/24 and 2/8 on not-determined; no retry."),
     ("mistral", ("mistral",), "failed-development", "Mistral Small 3.2 failed the v8 semantic development gate at 20/24."),
