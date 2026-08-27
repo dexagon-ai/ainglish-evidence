@@ -17,7 +17,7 @@ assert SPEC and SPEC.loader
 BASE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(BASE)
 
-PUBLISHED_COMMIT = "REPLACE_AFTER_FIRST_COMMIT"
+PUBLISHED_COMMIT = "d3cd4b7f216bf6674492d726c2ec3ef620572d1b"
 PUBLISHED_BASE = (
     "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
     f"{PUBLISHED_COMMIT}/flagship-modern-carriers-v3-2026-08-27"
