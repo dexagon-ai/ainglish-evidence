@@ -42,6 +42,13 @@ def main() -> None:
         assert len(result["model_summary"]) == 3 and len(result["construct_summary"]) == 17
         assert result["model_downloads"] == result["governance_writes"] == 0
         output["result"] = "ok"
+    if (ROOT / "analysis.json").exists():
+        analysis = checked(ROOT / "analysis.json")
+        assert analysis["result_sha256"] == result["content_sha256"]
+        assert len(analysis["usable_models"]) == 2
+        assert len(analysis["semantic_failures"]) == 2
+        assert analysis["model_downloads"] == analysis["governance_writes"] == 0
+        output["analysis"] = "ok"
     print(json.dumps(output, indent=2))
 
 

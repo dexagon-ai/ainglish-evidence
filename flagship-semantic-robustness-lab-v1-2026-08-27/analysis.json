@@ -1,0 +1,132 @@
+{
+  "kind": "dexagon.ainglish.flagship-semantic-robustness-analysis.v1",
+  "result_sha256": "bd5d853e34631e8a59849b64ba690aa40f14e4dcafaae5ddecfa22ae7740363e",
+  "usable_models": [
+    "gemma3:12b",
+    "mistral-small3.2:24b-instruct-2506-q4_K_M"
+  ],
+  "output_failures": {
+    "qwen3.5:9b-q4_k_m": {
+      "calls": 17,
+      "parseable_calls": 0,
+      "empty_response_calls": 17,
+      "eval_tokens_min": 204,
+      "eval_tokens_max": 263,
+      "classification": "output-channel/harness failure; semantic accuracy not estimable",
+      "interpretation": "The server reported generated tokens and stop completion but returned an empty response field on every call. The frozen runner did not retain a separate thinking field, so the zero score is not evidence that the model selected the wrong pole."
+    }
+  },
+  "usable_model_summary": {
+    "gemma3:12b": {
+      "correct": 134,
+      "total": 136,
+      "accuracy": 0.9852941176470589,
+      "by_variant": {
+        "canonical": {
+          "correct": 34,
+          "total": 34
+        },
+        "careful_english": {
+          "correct": 34,
+          "total": 34
+        },
+        "hyphen_loss": {
+          "correct": 34,
+          "total": 34
+        },
+        "opposite_distractor": {
+          "correct": 32,
+          "total": 34
+        }
+      }
+    },
+    "mistral-small3.2:24b-instruct-2506-q4_K_M": {
+      "correct": 136,
+      "total": 136,
+      "accuracy": 1.0,
+      "by_variant": {
+        "canonical": {
+          "correct": 34,
+          "total": 34
+        },
+        "careful_english": {
+          "correct": 34,
+          "total": 34
+        },
+        "hyphen_loss": {
+          "correct": 34,
+          "total": 34
+        },
+        "opposite_distractor": {
+          "correct": 34,
+          "total": 34
+        }
+      }
+    }
+  },
+  "usable_variant_summary": {
+    "canonical": {
+      "correct": 68,
+      "total": 68,
+      "accuracy": 1.0
+    },
+    "careful_english": {
+      "correct": 68,
+      "total": 68,
+      "accuracy": 1.0
+    },
+    "hyphen_loss": {
+      "correct": 68,
+      "total": 68,
+      "accuracy": 1.0
+    },
+    "opposite_distractor": {
+      "correct": 66,
+      "total": 68,
+      "accuracy": 0.9705882352941176
+    }
+  },
+  "semantic_failures": [
+    {
+      "id": "flagship-09-opposite_distractor-left",
+      "variant": "opposite_distractor",
+      "expected": "left",
+      "observed": "right",
+      "correct": false,
+      "model": "gemma3:12b",
+      "slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati"
+    },
+    {
+      "id": "flagship-09-opposite_distractor-right",
+      "variant": "opposite_distractor",
+      "expected": "right",
+      "observed": "left",
+      "correct": false,
+      "model": "gemma3:12b",
+      "slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati"
+    }
+  ],
+  "failure_counts": {
+    "semantic_cells": 2,
+    "by_slug": {
+      "true-as-worded-false-as-worded-unambiguous-answers-to-negati": 2
+    },
+    "by_variant": {
+      "opposite_distractor": 2
+    }
+  },
+  "interpretation": [
+    "Gemma and Mistral classified every canonical, careful-English, and hyphen-loss cell correctly under supplied definitions.",
+    "The only parseable semantic misses were Gemma's two true-as-worded/false-as-worded opposite-distractor cells; it followed the contrast sentence rather than the explicitly labelled actual message.",
+    "Qwen's 0/136 mechanical score is excluded from semantic interpretation because all 17 response fields were empty despite nonzero generation counts.",
+    "This is useful development evidence for copy, prompt, and harness design, but it is not Ainglish governance evidence and cannot advance ratification."
+  ],
+  "recommended_follow_up": [
+    "Make any future development harness explicitly retain both response and thinking channels and freeze a no-thinking capability gate before calls.",
+    "Keep true-as-worded/false-as-worded examples away from prose that states the opposite pole immediately before the actual answer, or visually delimit the actual message.",
+    "Do not rerun or repair this frozen battery; a changed harness would be a new prospectively versioned experiment."
+  ],
+  "model_downloads": 0,
+  "governance_writes": 0,
+  "content_sha256": "768cc32bfcc919d94c46810ce79609f9b04954bb546abfb229ce21e21dad8696"
+}
