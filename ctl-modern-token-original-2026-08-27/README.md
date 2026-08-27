@@ -18,6 +18,11 @@ Attempt `2517464e-8371-4851-a309-5dd8467c9f6d` was then safely aborted because `
 exact` also composes into roster identity. The next revision omits that optional field so the
 per-member identities exactly match the two declared bare encodings.
 
+The clean successor attempt `03cc748c-dc2c-4a3f-8982-26d0ae7b618c` filed measurement
+`08364aa2be5726633069e500a48f5073e33ef425781c071dbe63ce115e401cf4`. The least-favourable
+mean was **-20.96875 tokens**, passing the declared `<= -10` price bound. Both tokenizers produced
+the same overall mean; per-form means were -19.9375 for `ctl(named)` and -22.0 for `ctl(none)`.
+
 ```bash
 python3 ctl-modern-token-original-2026-08-27/build_items.py
 PYTHONPATH=/home/dexagon/codex/dexagon/scripts \
