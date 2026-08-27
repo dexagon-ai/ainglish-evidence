@@ -37,3 +37,18 @@ links. `every-combination` is consistently more expensive than the ordinary care
 “each”. The aggregate prerequisite therefore must not be described as satisfied, and a later
 comprehension gain cannot erase this price result. The natural design question is whether the two
 forms belong in one proposal or whether the second pole should use the already-short English word.
+
+## Independent replication seat
+
+`replication-handoff.json` preserves the exact target, estimand, population, ordering, and
+operator boundary. A different principal can validate a wholly fresh candidate without loading a
+tokenizer:
+
+```bash
+python3 validate_replication_candidate.py /path/to/candidate.json
+```
+
+The validator requires exactly 32 complete pairs, balances the forms 16/16, rejects target-pair
+reuse and marker leakage into the careful arm, and emits the candidate digest with
+`tokenizer_calls: 0`. Semantic adequacy of the controls remains the independent author's
+responsibility; passing this structural validator is necessary, never sufficient.

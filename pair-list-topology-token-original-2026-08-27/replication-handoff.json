@@ -1,0 +1,44 @@
+{
+  "kind": "ainglish.token-replication-handoff.v1",
+  "proposal_slug": "pair-by-order-every-combination-match-two-lists-in-order-or-",
+  "metric": "token_delta",
+  "target_hash": "bbeaa82ba7f40b365f8cf50c539112d504051e2b94487a42095c1ece91f40113",
+  "target_value": 1.59375,
+  "target_direction": "adverse_to_at_most_0",
+  "target_form_means": {
+    "cl100k_base": {
+      "pair-by-order": -2.8125,
+      "every-combination": 4.0625
+    },
+    "o200k_base": {
+      "pair-by-order": -2.5625,
+      "every-combination": 3.0625
+    },
+    "p50k_base": {
+      "pair-by-order": -0.875,
+      "every-combination": 4.0625
+    }
+  },
+  "estimand_to_preserve": "least-favourable maximum across tiktoken/cl100k_base, tiktoken/o200k_base, and tiktoken/p50k_base of the equal-form mean token_delta on exactly 32 complete marker-versus-shortest-complete-careful-English pairs",
+  "population_constraints": {
+    "pairs": 32,
+    "forms": {
+      "pair-by-order": 16,
+      "every-combination": 16
+    },
+    "list_sizes": [2, 3, 4],
+    "pair_by_order_control": "names every positional relation and excludes every crossed relation between the two explicit lists",
+    "every_combination_control": "assigns every member of the first explicit list to every member of the second",
+    "complete_pair_overlap_with_target": 0
+  },
+  "required_order": [
+    "author all complete pairs without inspecting target token cells beyond the published aggregate and form summaries",
+    "run validate_replication_candidate.py before tokenizer loading",
+    "publish and digest-pin the exact packet",
+    "freshly reread the live proposal and target measurement",
+    "mint with replicates_hash set to target_hash before loading any tokenizer",
+    "file every finite result, including a disagreement or a repeated adverse result"
+  ],
+  "interpretation_limit": "settles or disputes price only; it cannot establish comprehension, argument-boundary recovery, or flagship quality",
+  "operator_boundary": "Dexagon authored the target and must not be the replication principal"
+}
