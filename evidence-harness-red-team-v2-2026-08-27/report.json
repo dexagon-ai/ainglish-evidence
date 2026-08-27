@@ -1,0 +1,213 @@
+{
+  "kind": "dexagon.ainglish.evidence-harness-red-team.v2",
+  "captured_at": "2026-08-27T17:01:06.970336+00:00",
+  "repositories": {
+    "sdk": {
+      "commit": "b30301d4721b4ed4bf09fa961921df2522b0be5e",
+      "dirty": false
+    },
+    "symfony": {
+      "commit": "1538ef28f77b9eee29505ad85cf2fd762677832b",
+      "dirty": false
+    }
+  },
+  "threats": [
+    {
+      "id": "answer-bearing-target-leakage",
+      "risk": "a calibration teaches the target or its answer and certifies a reader on the claim itself",
+      "surface": "sdk",
+      "file": "src/ainglish/panel.py",
+      "anchors": [
+        "a relabelled control carrying entry.text must refuse before spend",
+        "a control teaching one {separator}-separated target pole must refuse before spend",
+        "learnability real items must carry the byte-identical marked"
+      ],
+      "source_sha256": "929a373f1eaa32e6d38d70e98b429268db95e86290ee22f5eb91b224040819f3",
+      "anchors_present": true,
+      "missing_anchors": []
+    },
+    {
+      "id": "same-input-pseudo-replication",
+      "risk": "a rerun reuses the original metric inputs and receives a settlement voice",
+      "surface": "symfony",
+      "file": "tests/SameInputReplicationRegressionTest.php",
+      "anchors": [
+        "same metric inputs build check",
+        "overlapping metric inputs build check",
+        "settlement_eligible"
+      ],
+      "source_sha256": "b64d2efb6bba865f05d946f7e8e5e8b65ff7ee6749dfbdaa2fa154f7d478033e",
+      "anchors_present": true,
+      "missing_anchors": []
+    },
+    {
+      "id": "incomplete-careful-comparator",
+      "risk": "a short or ambiguous English baseline is presented as a complete careful comparator",
+      "surface": "symfony",
+      "file": "src/Service/FlagshipQualification.php",
+      "anchors": [
+        "complete-careful-english-v1",
+        "complete careful-English comparator not declared",
+        "exact preregistered manifest bytes were not retained"
+      ],
+      "source_sha256": "a5dd0f73b5b67f3c5ef47ee49130f23efbbe7582390d34e0b462426b36941ce3",
+      "anchors_present": true,
+      "missing_anchors": []
+    },
+    {
+      "id": "dead-cell-denominator-drift",
+      "risk": "transport or parsing loss changes the surviving denominator and manufactures an effect",
+      "surface": "sdk",
+      "file": "src/ainglish/empty_cell_guard.py",
+      "anchors": [
+        "max_cell_dead_rate",
+        "max_total_dead_rate",
+        "pooled dead rate"
+      ],
+      "source_sha256": "0c8f478a7b996a57c5b7c6300e654d9bcad60e0b582bbede489599e4d8088d64",
+      "anchors_present": true,
+      "missing_anchors": []
+    },
+    {
+      "id": "pooled-stratum-cancellation",
+      "risk": "opposite form-level failures cancel in the pooled scalar and settle a multi-form claim",
+      "surface": "symfony",
+      "file": "tests/ReplicationSettlementTest.php",
+      "anchors": [
+        "the pooled scalar cancels exactly",
+        "a pooled cancellation must not settle the claim",
+        "aggregate_reproduced_ok"
+      ],
+      "source_sha256": "d1db3cfed35db003be7ad0be75252d9f8922461d8a10e04cbaa50c4ab48d55c8",
+      "anchors_present": true,
+      "missing_anchors": []
+    }
+  ],
+  "executions": [
+    {
+      "name": "panel mutation selftest",
+      "command": [
+        "/usr/bin/env",
+        "PYTHONPATH=/home/dexagon/codex/dexagon/worktrees/sdk-measurement-index-20260827/src",
+        "/home/dexagon/codex/dexagon/.venv/bin/python",
+        "-m",
+        "ainglish.panel",
+        "--selftest"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "output_tail": [
+        "   \"ainglish\": 10",
+        "  },",
+        "  \"one_cell_pp\": {",
+        "   \"english\": \"16.6667\",",
+        "   \"ainglish\": \"10\"",
+        "  },",
+        "  \"delta_grid\": {",
+        "   \"numerator_pp\": 100,",
+        "   \"denominator_lcm\": 30,",
+        "   \"step_pp\": \"3.3333\"",
+        "  }",
+        " }",
+        "}",
+        "",
+        "Submit: POST /api/v1/proposals/demo/measurements with a Colony Bearer (see /developers). Confirmation needs a DISJOINT party to agree on the same metric using a DIFFERENT manifest; this exact manifest is only a build check.",
+        "SUBMISSION RESPONSE LOST: selftest-attempt is still open; retrying the exact manifest and attempt id once.",
+        "SUBMITTED: {\"measurement\": {\"manifest_hash\": \"filed-on-exact-retry\"}}",
+        "REFUSING before reader spend: panel entry 'unfunded' needs OPENAI_API_KEY, but it is not set. Export the key or drop the member.",
+        "",
+        "selftest OK: real effect measured by a calibrated panel; uncalibrated panel refused; arms ship with the payload; unpinned/tampered/swapped item sets refuse; robustness v4 censors floors beside their uncensored twin; attempts mint before reader spend and close on success/refusal; absence is ONE predicate (typed, mutation-verified, decision-surface swept)."
+      ]
+    },
+    {
+      "name": "dead-cell guard mutation selftest",
+      "command": [
+        "/usr/bin/env",
+        "PYTHONPATH=/home/dexagon/codex/dexagon/worktrees/sdk-measurement-index-20260827/src",
+        "/home/dexagon/codex/dexagon/.venv/bin/python",
+        "-m",
+        "ainglish.empty_cell_guard",
+        "--selftest"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "output_tail": [
+        "  ok   CONTROL: 4% dead, evenly spread, does NOT abort",
+        "  ok   64 empty cells abort (the original bug)",
+        "  ok   abort message names the `think`/num_predict hypothesis",
+        "  ok   a break at cell 61 aborts (prefix-only check would have passed)",
+        "  ok   50% dead with no 8-in-a-row still aborts",
+        "  ok   asymmetric arm failure aborts",
+        "  ok   abort names the asymmetry rather than a generic yield problem",
+        "  ok   abort reports BOTH arms' rates so the reader can see which broke",
+        "  ok   setup: pooled dead rate 12.5% is under the total limit",
+        "  ok   one broken (model, arm) out of eight aborts, and is NAMED, though the pooled rate is survivable",
+        "  ok   cells that return text but no extractable label abort",
+        "  ok   counts separate unparsed from empty (different cause, different fix)",
+        "  ok   20% even bleed passes every window and is caught at finalise()",
+        "  ok   a model that produced no cells at all aborts",
+        "  ok   an empty run aborts rather than passing",
+        "  ok   a typo'd arm name aborts, is not counted nowhere",
+        "  ok   report carries cells and dead_rate",
+        "  ok   report breaks the yield down per (model, arm), never only pooled",
+        "",
+        "  19 assertions, all green (2 of them controls that must NOT fire)"
+      ]
+    },
+    {
+      "name": "client result-contract selftest",
+      "command": [
+        "/usr/bin/env",
+        "PYTHONPATH=/home/dexagon/codex/dexagon/worktrees/sdk-measurement-index-20260827/src",
+        "/home/dexagon/codex/dexagon/.venv/bin/python",
+        "-m",
+        "ainglish.client"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "output_tail": [
+        "client selftest OK: envelope, exp parsing, env pickup, refusals carrying their fixes, second() carrying its rationale, cursor traversal, drift-guard subject selection."
+      ]
+    },
+    {
+      "name": "server replication and qualification regressions",
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "-e",
+        "APP_ENV=test",
+        "-e",
+        "DATABASE_URL=mysql://aing:aing@db:3306/ainglish_test?serverVersion=mariadb-10.6.27&charset=utf8mb4",
+        "php",
+        "php",
+        "bin/phpunit",
+        "tests/SameInputReplicationRegressionTest.php",
+        "tests/ReplicationSettlementTest.php",
+        "tests/MeasurementApiTest.php",
+        "tests/HomepageExamplesTest.php"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "output_tail": [
+        "PHPUnit 11.5.56 by Sebastian Bergmann and contributors.",
+        "",
+        "Runtime:       PHP 8.2.30",
+        "Configuration: /app/phpunit.dist.xml",
+        "",
+        "..............................................................    62 / 62 (100%)",
+        "",
+        "Time: 00:03.254, Memory: 48.50 MB",
+        "",
+        "OK (62 tests, 391 assertions)"
+      ]
+    }
+  ],
+  "passed": true,
+  "interpretation": "All named false-positive paths retain an executable regression or mutation gate at these exact source bytes. This is a harness audit, not evidence for any language construct.",
+  "model_calls": 0,
+  "model_downloads": 0,
+  "governance_writes": 0,
+  "content_sha256": "00d5fe01eb1c3ca0eb343226b1fa2dd358eb2f197eb437f07fadf95f8e9fbc1e"
+}
