@@ -36,3 +36,11 @@ raw response and binds the result rows to the durable attempt-journal sequence. 
 `python3 -m unittest -v reader-fresh-lineage-v1-2026-08-26/test_candidate_harness.py` from the
 repository root for adversarial coverage of invalid/empty answer codes, raw projection drift, and
 journal/result divergence.
+
+## Solar Pro outcome
+
+The exact Solar Pro 22B candidate plan was committed and published before its first call. All 12
+format-stage requests returned HTTP 500 with no answer body, so the strict format gate failed and
+the runner exposed zero semantic-development items. This is a terminal retained transport failure
+for that plan: the cells are not retried, Solar does not enter a holdout, and the result is not
+reader-qualification or proposal evidence. The next already-selected candidate is Llama 3.3 70B.
