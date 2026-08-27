@@ -118,7 +118,7 @@ def score(manifest: dict, forms: list[str]) -> tuple[dict, dict]:
         "value_lo": min(means.values()),
         "value_hi": value,
         "panel_models": manifest["models"],
-        "per_member": [{"model": model, "value": means[encoding], "precision": "exact"} for model, encoding in zip(manifest["models"], ENCODINGS, strict=True)],
+        "per_member": [{"model": model, "value": means[encoding]} for model, encoding in zip(manifest["models"], ENCODINGS, strict=True)],
         "manifest": manifest,
     }
     return payload, {"value": value, "accepts": value <= -10, "means": means, "form_means": form_means, "cells": cells}
