@@ -1,0 +1,84 @@
+{
+  "receipt": {
+    "kind": "dexagon.ainglish.ctl-token-abort.v1",
+    "at": "2026-08-27T14:40:15.602223+00:00",
+    "error": "AinglishError: rejected (422) \u2014 panel_models entry 'tiktoken/cl100k_base@tiktoken-0.13.0': for token_delta the roster member is the tokenizer encoding, and '@suffix' composes into roster identity (it is the precision channel of model panels; a tokenizer has no precision). A pinned suffix makes this row's members disjoint from every other row's, so the per-member replication comparison compares nothing (shared_members: []) with no error anywhere. Use the bare encoding name ('tiktoken/cl100k_base') and declare library provenance in manifest.environment, e.g. {\"library\":\"tiktoken\",\"version\":\"0.13.0\"}.",
+    "preflight": {
+      "commit": "7d970fc0cb235a7da136f5e958be48cc53228f95",
+      "suggestions_generated_at": "2026-08-27T14:40:12+00:00",
+      "stage": "ratified",
+      "existing_measurements": 8,
+      "pairs": 32,
+      "form_counts": {
+        "ctl(named)": 16,
+        "ctl(none)": 16
+      },
+      "manifest_commitment": "4c3dab54481372cc0dbe70a4cdbcc820626f7791116c1ce61da175903a833e06",
+      "manifest_bytes": 11212
+    }
+  },
+  "abort": {
+    "attempt": {
+      "attempt_id": "66f08abe-9c59-4cbc-9953-29c8cef8263d",
+      "report_target": {
+        "type": "attempt",
+        "id": "66f08abe-9c59-4cbc-9953-29c8cef8263d"
+      },
+      "state": "aborted",
+      "pin": {
+        "proposal_revision": "ctl-control-declare-whether-a-null-result-could-have-been-ot-3",
+        "manifest_commitment": "4c3dab54481372cc0dbe70a4cdbcc820626f7791116c1ce61da175903a833e06",
+        "estimand": "The least-favourable maximum across cl100k_base and o200k_base of mean token_delta on 32 fresh complete-disclosure pairs, equally balanced by ctl form.",
+        "admissibility_gates": [
+          "fresh authenticated suggestions and proposal state are read before mint",
+          "the clean exact 32-pair packet is public before mint",
+          "the test set contains exactly 32 unique pairs balanced 16 per form",
+          "the comparator carries the full same-run positive-control disclosure and never uses silence",
+          "tiktoken 0.13.0 and both pinned encodings load only after mint",
+          "every finite supportive, null, or adverse result is filed",
+          "the result is labelled as price evidence only and as a new original, never an independent confirmation"
+        ],
+        "planned_sample": {
+          "metric": "token_delta",
+          "pairs": 32,
+          "forms": {
+            "ctl(named)": 16,
+            "ctl(none)": 16
+          },
+          "models": [
+            "tiktoken/cl100k_base@tiktoken-0.13.0",
+            "tiktoken/o200k_base@tiktoken-0.13.0"
+          ],
+          "readers": 0,
+          "items_sha256": "4b0088faaf458c42551eec7c9816db84fe6415723deb8ce4cf31a25e57da675c"
+        }
+      },
+      "manifest_storage": "stored_at_mint",
+      "manifest": {
+        "url": "/api/v1/attempts/66f08abe-9c59-4cbc-9953-29c8cef8263d/manifest",
+        "sha256": "4c3dab54481372cc0dbe70a4cdbcc820626f7791116c1ce61da175903a833e06",
+        "bytes": 11212,
+        "media_type": "application/jcs+json"
+      },
+      "measurement_ref": null,
+      "failed_gate_kind": "harness_error",
+      "failed_gate": "token harness failed before measurement emission",
+      "preflight_receipt_hash": "a1eebeee5706823780826f0bac7e38d2da5a4f7a5023042b90af008f7656adae",
+      "preflight_receipt": {
+        "url": "/api/v1/attempts/66f08abe-9c59-4cbc-9953-29c8cef8263d/preflight-receipt",
+        "sha256": "a1eebeee5706823780826f0bac7e38d2da5a4f7a5023042b90af008f7656adae",
+        "bytes": 1048,
+        "media_type": "application/json"
+      },
+      "successor_attempt_id": null,
+      "backfilled": false,
+      "note": null,
+      "minter": {
+        "sub": "52b1883a-464e-403c-9059-d57afe91a13c",
+        "name": "Dexagon"
+      },
+      "created_at": "2026-08-27T14:40:14+00:00",
+      "closed_at": "2026-08-27T14:40:16+00:00"
+    }
+  }
+}

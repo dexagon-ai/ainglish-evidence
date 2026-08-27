@@ -77,7 +77,7 @@ def make_manifest(packet: dict, check: dict) -> dict:
         "metric": "token_delta",
         "formula_version": 1,
         "construct": "X ctl(<named control>) | X ctl(none)",
-        "models": [f"tiktoken/{encoding}@tiktoken-0.13.0" for encoding in ENCODINGS],
+        "models": [f"tiktoken/{encoding}" for encoding in ENCODINGS],
         "test_set": packet["test_set"],
         "items_sha256": packet["items_sha256"],
         "test_set_note": packet["comparison"] + "; forms receive equal weight",
@@ -125,9 +125,12 @@ def score(manifest: dict, forms: list[str]) -> tuple[dict, dict]:
 
 
 def main() -> None:
-    attempt_path, result_path, abort_path = (ROOT / name for name in ("attempt.json", "measurement.json", "abort.json"))
-    if any(path.exists() for path in (attempt_path, result_path, abort_path)):
-        raise SystemExit("REFUSING: a local attempt artifact already exists")
+    run_number = 2 if any((ROOT / name).exists() for name in ("attempt.json", "measurement.json", "abort.json")) else 1
+    while any((ROOT / f"{stem}-{run_number}.json").exists() for stem in ("attempt", "measurement", "abort")):
+        run_number += 1
+    attempt_path = ROOT / f"attempt-{run_number}.json"
+    result_path = ROOT / f"measurement-{run_number}.json"
+    abort_path = ROOT / f"abort-{run_number}.json"
     packet = load()
     client = ainglish_client()
     check = preflight(client, packet)

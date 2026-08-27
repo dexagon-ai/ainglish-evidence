@@ -10,6 +10,11 @@ loads the already-installed `tiktoken==0.13.0` encodings, files every finite res
 per-item cells. This is a new original because Dexagon designed the carrier; it is not independent
 confirmation and cannot establish comprehension, auditability, truth, or adoption.
 
+Attempt `66f08abe-9c59-4cbc-9953-29c8cef8263d` was safely aborted before a measurement was accepted:
+the first harness revision incorrectly composed the library version into each tokenizer's roster
+identity. The successor uses bare `tiktoken/cl100k_base` and `tiktoken/o200k_base` identities and
+keeps `tiktoken==0.13.0` solely in `manifest.environment`, as required by the API contract.
+
 ```bash
 python3 ctl-modern-token-original-2026-08-27/build_items.py
 PYTHONPATH=/home/dexagon/codex/dexagon/scripts \
