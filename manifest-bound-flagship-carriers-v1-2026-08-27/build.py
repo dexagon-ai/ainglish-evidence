@@ -12,6 +12,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 EVIDENCE = ROOT.parent
 REPEAT_SLUG = "repeat-event-restore-state-did-again-repeat-the-action-or-on-4"
+PUBLISHED_ITEMS_COMMIT = "069790cb0efd9dbb25a667c613e5bc0bcfd8ce0f"
+PUBLISHED_ITEMS_BASE = (
+    "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+    f"{PUBLISHED_ITEMS_COMMIT}/manifest-bound-flagship-carriers-v1-2026-08-27"
+)
 
 
 def canonical(value: object) -> bytes:
@@ -45,6 +50,7 @@ def attach_item_artifact(template: dict, name: str) -> dict:
     (ROOT / name).write_text(json.dumps(artifact, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     template["items_artifact"] = {
         "file": name,
+        "published_url": f"{PUBLISHED_ITEMS_BASE}/{name}",
         "items_sha256": digest,
         "activation_rule": "Publish these exact bytes, then activate with their HTTPS URL; the runnable manifest carries URL plus digest instead of exceeding the 20 KB commitment cap.",
     }

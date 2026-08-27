@@ -19,8 +19,9 @@ Every template is sealed but non-runnable while the ordinary-English reader rost
 one of the required two independently qualified lineages. After the server and SDK changes deploy
 and a second lineage qualifies, supply an exact panel JSON to `activate.py`. It searches only the
 deterministic seed until every settlement cell has planned exposure in both arms; it makes no
-reader or API call. Also supply the published HTTPS URL of the matching `*.items.json`; activation
-pins its canonical item digest and leaves bulky bytes out of the 20 KB attempt-manifest cap.
+reader or API call. The templates pin an immutable raw-GitHub URL for each matching
+`*.items.json`; pass `@published` to use it (or supply another HTTPS mirror of the exact bytes).
+Activation pins the canonical item digest and leaves bulky bytes out of the 20 KB attempt-manifest cap.
 Commit and push the activated runspec before the first reader call, then mint the attempt before
 spend.
 
@@ -31,6 +32,6 @@ python3 manifest-bound-flagship-carriers-v1-2026-08-27/audit.py
 # Later, after both external gates clear:
 python3 manifest-bound-flagship-carriers-v1-2026-08-27/activate.py \
   manifest-bound-flagship-carriers-v1-2026-08-27/role-cardinality.template.json \
-  qualified-panel.json https://example.invalid/role-cardinality.items.json \
+  qualified-panel.json @published \
   role-cardinality.runspec.json
 ```

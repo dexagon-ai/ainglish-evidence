@@ -35,6 +35,10 @@ def audit_template(name: str, expected_strata: int) -> tuple[dict, list[dict]]:
     assert artifact["items"] == value["items"]
     assert artifact["sha256"] == value["items_artifact"]["items_sha256"]
     assert hashlib.sha256(canonical(artifact["items"])).hexdigest() == artifact["sha256"]
+    published = value["items_artifact"]["published_url"]
+    assert published.startswith("https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/")
+    assert "/069790cb0efd9dbb25a667c613e5bc0bcfd8ce0f/" in published
+    assert published.endswith("/" + value["items_artifact"]["file"])
     ids = {row["id"] for row in contract}
     assert all(row.get("settlement_stratum") in ids for row in rows)
     assert set(row["settlement_stratum"] for row in rows) == ids

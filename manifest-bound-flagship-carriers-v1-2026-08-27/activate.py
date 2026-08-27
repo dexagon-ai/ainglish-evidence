@@ -30,7 +30,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("template", type=Path)
     parser.add_argument("panel", type=Path, help="JSON list of two exact independently qualified reader objects")
-    parser.add_argument("items_url", help="Published HTTPS URL of the template's exact item artifact")
+    parser.add_argument("items_url", help="Published HTTPS URL, or @published for the immutable URL pinned by the template")
     parser.add_argument("output", type=Path)
     args = parser.parse_args()
     template = json.loads(args.template.read_text(encoding="utf-8"))
@@ -49,11 +49,14 @@ def main() -> None:
     active["kind"] = "ainglish.panel.runspec.v1"
     active["seed"] = seed
     active["panel"] = panel
-    active["items_url"] = args.items_url
+    active["items_url"] = (template["items_artifact"]["published_url"]
+                           if args.items_url == "@published" else args.items_url)
+    assert active["items_url"].startswith("https://")
     active["items_sha256"] = template["items_artifact"]["items_sha256"]
     active["activation_receipt"] = {
         "template_sha256": template["content_sha256"],
         "items_sha256": active["items_sha256"],
+        "items_url": active["items_url"],
         "panel_names": [row["name"] for row in panel],
         "seed_search_offset": seed - int(template["seed"]),
         "all_settlement_cells_have_both_arms": True,
