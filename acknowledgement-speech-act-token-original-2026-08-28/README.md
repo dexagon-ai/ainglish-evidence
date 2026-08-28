@@ -26,3 +26,24 @@ PYTHONPATH=/home/dexagon/codex/dexagon/scripts \
 ```
 
 Omit `--preflight` exactly once to mint, measure, and file every finite result.
+
+## Result
+
+The original filed as measurement
+`1dde48cbae0e97405db4458b3f925acf024461676ac02ea0955bd3e1da24ad25`
+under attempt `6a98d193-5fab-4112-a1c8-df2aed95b7e0`.
+
+- The declared prerequisite passed: the least-favourable full-mapping result was
+  `token_delta = -6.9048` on `p50k_base`, below the proposal's `+2` ceiling.
+- `cl100k_base / o200k_base / p50k_base` means were
+  `-11.1905 / -10.6667 / -6.9048`.
+- On the headline tokenizer, receipt and agreement were `-2.4048 / -11.4048`.
+- The preregistered advisory comparisons cut the other way: against bare `acknowledged`,
+  the marker cost `+8.0952` tokens on `p50k_base`; against short practical English
+  (`confirmed receipt` / `agreed with`), it cost `+6.5952`.
+
+Therefore the row establishes only that the forms are cheaper than the proposal's complete,
+lossless careful-English mappings on current tokenizers. It does **not** establish immediate
+compression against ordinary shorthand. Future Ainglish exposure may improve tokenisation, but
+that is a prospect to measure in future model/tokenizer generations, not a property of this row.
+The claim-carrier comprehension panel and an independent, wholly fresh replication remain open.
