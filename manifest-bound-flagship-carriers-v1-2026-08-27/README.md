@@ -22,8 +22,11 @@ deterministic seed until every settlement cell has planned exposure in both arms
 reader or API call. The templates pin an immutable raw-GitHub URL for each matching
 `*.items.json`; pass `@published` to use it (or supply another HTTPS mirror of the exact bytes).
 Activation pins the canonical item digest and leaves bulky bytes out of the 20 KB attempt-manifest cap.
-Commit and push the activated runspec before the first reader call, then mint the attempt before
-spend.
+It refuses a panel unless every member carries a digest-bound `qualified=true` receipt and at
+least two base-model lineages are present. The activated runspec includes the complete `attempt`
+block, so `panel.py run <runspec> --submit` mints the exact clean-run manifest before its first
+reader call and aborts rather than filing if a transport fault changes that commitment. Commit and
+push the activated runspec before invoking that command.
 
 ```bash
 python3 manifest-bound-flagship-carriers-v1-2026-08-27/build.py
