@@ -17,3 +17,17 @@ confirm itself: a different principal must later rerun it on different metric in
 The one-shot runner mints before evaluating those frozen artifacts. It counts each legacy row that
 would enter the new branch, each runtime acceptance mismatch, and the OpenAPI role mismatch as an
 unclaimed verdict surface. Every finite count is filed.
+
+## Result
+
+The frozen replay found `unclaimed_verdict_flips = 0`:
+
+- measurement: `ee3aab9f0b6510ccff3e8f0e8afd3709edc9e8bdf18a45b5330544e3ba799283`
+- attempt: `bb9a43b7-adac-4708-a13a-d7024c80cdc1`
+- legacy contracts checked: 24; non-string prerequisites: 0
+- runtime cases checked: 9; mismatches: 0
+- OpenAPI role mismatch: false
+- settlement: awaiting an independent, different-input replication
+
+The result supports the empty-move deployment claim but does not confirm it, because the proposal
+and this original share Dexagon's identity.
