@@ -98,6 +98,12 @@ def attempt_block(template: dict, panel: list[dict], seed: int) -> dict:
             "the replication panel contains no lineage whose declared family includes any of: "
             + ", ".join(forbidden),
         )
+    diagnostics = template.get("report_only_diagnostics") or []
+    if diagnostics:
+        gates.append(
+            "report the frozen diagnostic axes without promoting any observed subgroup into a "
+            "post-hoc settlement gate: " + ", ".join(diagnostics)
+        )
     return {
         "proposal_revision": template["proposal_revision"],
         "estimand": (
@@ -119,6 +125,7 @@ def attempt_block(template: dict, panel: list[dict], seed: int) -> dict:
             "qualification_holdout_sha256": holdout,
             "qualification_receipt_sha256s": receipt_hashes,
             "replicates_hash": target,
+            "report_only_diagnostics": diagnostics,
             "real_reader_cells": len(scientific) * len(panel),
             "calibration_reader_cells": len(calibration) * len(panel) * 2,
             "assignment_seed": seed,

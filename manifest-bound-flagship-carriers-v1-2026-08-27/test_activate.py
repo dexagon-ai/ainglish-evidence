@@ -74,6 +74,16 @@ class ActivationTest(unittest.TestCase):
                 constraints,
             )
 
+    def test_replication_attempt_preserves_target_and_report_only_diagnostics(self) -> None:
+        template = dict(self.template)
+        template["replicates_hash"] = "c" * 64
+        template["report_only_diagnostics"] = ["form", "domain"]
+        attempt = ACTIVATE.attempt_block(template, ACTIVATE.validate_panel(self.panel), template["seed"])
+        self.assertEqual("c" * 64, attempt["planned_sample"]["replicates_hash"])
+        self.assertEqual(["form", "domain"], attempt["planned_sample"]["report_only_diagnostics"])
+        self.assertTrue(attempt["estimand"].startswith("Fresh-input replication"))
+        self.assertTrue(any("post-hoc settlement gate" in gate for gate in attempt["admissibility_gates"]))
+
     def test_attempt_block_prices_the_complete_planned_spend(self) -> None:
         panel = ACTIVATE.validate_panel(self.panel)
         attempt = ACTIVATE.attempt_block(self.template, panel, self.template["seed"])
