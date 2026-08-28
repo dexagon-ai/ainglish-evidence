@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
-PUBLISHED_COMMIT = "REPLACE_AFTER_FIRST_COMMIT"
+PUBLISHED_COMMIT = "2763406986a907de3dcea5ee25b0fa898ef8791d"
 PUBLISHED_BASE = (
     "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
     f"{PUBLISHED_COMMIT}/{ROOT.name}"
