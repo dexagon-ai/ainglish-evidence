@@ -137,8 +137,7 @@ def preflight(client, manifest: dict, population: dict, acceptance: dict) -> dic
     ]
     if existing:
         raise RuntimeError("a valid original already exists; stop instead of adding another")
-    if (proposal.get("proposer") or {}).get("sub") == me:
-        raise RuntimeError("this carrier is intended for a principal disjoint from the proposer")
+    proposer_authored = (proposal.get("proposer") or {}).get("sub") == me
     if population.get("content_sha256") is None or not population.get("contracts"):
         raise RuntimeError("population artifact is missing its content digest or contracts")
     if acceptance.get("schema") != "ainglish-bounded-prerequisite-deployment-acceptance/v1":
@@ -153,7 +152,8 @@ def preflight(client, manifest: dict, population: dict, acceptance: dict) -> dic
     return {
         "proposal_stage": proposal["stage"],
         "existing_valid_originals": 0,
-        "disjoint_from_proposer": True,
+        "proposer_authored_original": proposer_authored,
+        "independent_replication_still_required": True,
         "population_sha256": digest(POPULATION),
         "acceptance_sha256": digest(ACCEPTANCE),
         "manifest_commitment": manifest_commitment(manifest),
@@ -202,7 +202,7 @@ def main() -> None:
         ),
         admissibility_gates=[
             "fresh authenticated suggestions and proposal detail still route an original unclaimed_verdict_flips row on a seconded proposal",
-            "no valid original exists and this principal is disjoint from the proposer",
+            "no valid original exists; a proposer-authored original remains unconfirmed until a different principal reruns different metric inputs",
             "both exact public input artifacts and this runner are committed and reachable from origin/main",
             "the population digest, runtime expectations, OpenAPI role assertions, and integer aggregation are frozen before evaluation",
             "every finite count is filed once, including a positive refutation",

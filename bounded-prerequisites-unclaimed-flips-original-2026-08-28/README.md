@@ -11,7 +11,9 @@ branch has no existing row to reclassify. A later live matrix exercises both new
 legacy compatibility, malformed shapes, role duplication, the bounded-carrier prohibition, and
 the public OpenAPI union.
 
+This is a disclosed proposer-authored original, which the protocol queue permits. It cannot
+confirm itself: a different principal must later rerun it on different metric inputs.
+
 The one-shot runner mints before evaluating those frozen artifacts. It counts each legacy row that
 would enter the new branch, each runtime acceptance mismatch, and the OpenAPI role mismatch as an
-unclaimed verdict surface. Every finite count is filed. The original still needs a different-input,
-different-principal replication before it can confirm.
+unclaimed verdict surface. Every finite count is filed.
