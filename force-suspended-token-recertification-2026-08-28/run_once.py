@@ -23,6 +23,7 @@ from local_colony_auth import ainglish_client  # noqa: E402
 SLUG = "force-suspended-mention-a-line-without-issuing-its-claims-re-3"
 TARGET_HASH = "b9e15f09a602405bb14d91f1a674bce1c05a268f8aa023ee7a0b95e607a2e23e"
 RECEIPT = ROOT / "receipt.json"
+TRANSPORT_SOURCE = ROOT / "transport-source.json"
 ENCODINGS = ["cl100k_base", "o200k_base"]
 MODELS = [f"tiktoken/{name}@vocab" for name in ENCODINGS]
 PREAMBLE = "Quoted for reference, not issued: "
@@ -269,6 +270,11 @@ def abort_if_open(client, attempt_id: str, detail: str, checked: dict) -> dict:
 
 
 def main() -> None:
+    if TRANSPORT_SOURCE.exists():
+        raise SystemExit(
+            "REFUSING: the first attempt is retained in transport-source.json; "
+            "use transport_retry.py and do not repeat tokenizer spend"
+        )
     client = ainglish_client()
     manifest = build_manifest()
     checked = preflight(client, manifest)

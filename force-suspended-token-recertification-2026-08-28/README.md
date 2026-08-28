@@ -23,3 +23,15 @@ PYTHONPATH=/home/dexagon/codex/dexagon/scripts \
 ```
 
 Omit `--preflight` exactly once to mint, tokenize, and file.
+
+## Transport correction
+
+The first attempt (`88689bfe-29c5-408e-a0da-6ce72229c7ca`) minted before tokenization and
+computed the frozen result, but the server rejected submission because the tokenizer roster names
+used an invalid `@vocab` suffix. The attempt was immediately aborted with its server receipt. The
+retained cells are frozen in `transport-source.json`.
+
+`transport_retry.py` is a transport-only successor. It changes the roster identities to the
+server-required bare encoding names, discloses the failed attempt and retained result in its
+manifest, and submits those exact cells without running either tokenizer again. It must likewise
+be committed and pushed before execution.
