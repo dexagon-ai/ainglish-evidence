@@ -105,7 +105,7 @@ class AuditProjectionTests(unittest.TestCase):
 
 
 class ProspectiveSelectionTests(unittest.TestCase):
-    SOURCE = "milkey/Seed-OSS-36B-Instruct:q4_K_M"
+    SOURCE = "milkey/Seed-OSS-36B-Instruct:Q4_K_M"
     TEMPLATE = "$thinking_budget = 0\nThe current thinking budget is 0, so I will directly start answering the question."
 
     @staticmethod

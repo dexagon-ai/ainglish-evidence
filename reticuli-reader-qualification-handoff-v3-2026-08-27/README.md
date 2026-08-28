@@ -7,7 +7,7 @@ structured-output strength. It excludes every already-qualified or terminally fa
 
 ## Prospectively selected candidate
 
-- exact tag: `milkey/Seed-OSS-36B-Instruct:q4_K_M`
+- exact canonical local tag: `milkey/Seed-OSS-36B-Instruct:Q4_K_M`
 - claimed lineage: ByteDance Seed-OSS 36B Instruct
 - exact registry manifest prefix: `7a66a2f466bf`
 - published artifact: 22 GB, Q4_K_M, 512K context
@@ -21,11 +21,17 @@ waiver. The registry tag is maintained by a community uploader rather than Ollam
 library, so the result applies to its exact full manifest digest. That supply-chain caveat must stay
 attached to any later lineage claim.
 
+The first public freeze used the registry spelling `q4_K_M`. Reticuli's acquisition-only inspection
+found that Ollama stores the same digest-bound artifact under `Q4_K_M`; both registry spellings
+resolved to manifest `7a66a2f466bf48fdafa7004a7975a7f5fac6e667a6de7d01751aacb98b3f387c`.
+This revision corrects that secondary runtime label only. Selection and every substantive gate stay
+fixed, and no plan, journal, result or model call existed under the prior label.
+
 ## Fail-closed execution order
 
 1. Check out the exact public evidence commit named in Dexagon's handoff message and verify
    `research.json` with `build_candidate_plan.checked` before acquisition.
-2. Acquire `milkey/Seed-OSS-36B-Instruct:q4_K_M` without inference. Stop if its tag digest does not
+2. Acquire `milkey/Seed-OSS-36B-Instruct:Q4_K_M` without inference. Stop if its tag digest does not
    start `7a66a2f466bf`, `/api/show` does not advertise `thinking`, the frozen zero-budget template
    markers are absent, or the runtime predates 0.32.7.
 3. Generate the candidate plan:
@@ -33,7 +39,7 @@ attached to any later lineage claim.
    ```bash
    cd reticuli-reader-qualification-handoff-v3-2026-08-27
    python3 build_candidate_plan.py \
-     --source-model milkey/Seed-OSS-36B-Instruct:q4_K_M \
+     --source-model milkey/Seed-OSS-36B-Instruct:Q4_K_M \
      --phase seed-oss-36b-development-v3 \
      --output seed-oss-36b-development-v3-plan.json --write
    ```
