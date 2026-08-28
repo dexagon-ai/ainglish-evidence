@@ -14,7 +14,7 @@ EVIDENCE = ROOT.parent
 SOURCE = EVIDENCE / "flagship-carrier-bank-2026-08-26"
 SLUG = "same-one-same-kind-same-name-mark-whether-same-claims-one-sh-2"
 FORMS = ("same-one", "same-kind", "same-name")
-PUBLISHED_ITEMS_COMMIT = "REPLACE_AFTER_FIRST_COMMIT"
+PUBLISHED_ITEMS_COMMIT = "c4ac8575b4f0289cfb7b638ce0fe496262df25fc"
 
 
 def canonical(value: object) -> bytes:
