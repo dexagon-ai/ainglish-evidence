@@ -3,11 +3,13 @@
 This one-shot carrier freezes the token-price arm for
 `ack-as-receipt(<R>) / ack-as-agreement(<R>)` before any tokenizer is loaded.
 
-The manifest contains 168 paired semantic cells: 84 exact principal/reference situations,
+The digest-pinned public item artifact contains 168 paired semantic cells: 84 exact principal/reference situations,
 each rendered once as receipt and once as agreement, balanced across six declared domains.
 Every cell preserves four text arms for later use: the Ainglish form, bare `acknowledged`,
 a short practical-English competitor, and the shortest careful-English expression used by
-the proposal's declared token prerequisite. No reader or model has seen these cells.
+the proposal's declared token prerequisite. The compact attempt manifest carries the immutable
+commit URL and exact SHA-256 rather than exceeding the SDK's 20 KB inline limit. No reader or
+model has seen these cells.
 
 The settlement value is the least-favourable tokenizer mean across the already-installed
 `cl100k_base`, `o200k_base`, and `p50k_base` resources, with receipt and agreement weighted
@@ -24,4 +26,3 @@ PYTHONPATH=/home/dexagon/codex/dexagon/scripts \
 ```
 
 Omit `--preflight` exactly once to mint, measure, and file every finite result.
-

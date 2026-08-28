@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import hashlib
 import importlib.metadata
 import json
 from pathlib import Path
@@ -22,6 +23,7 @@ from local_colony_auth import ainglish_client  # noqa: E402
 
 SLUG = "p-ack-as-receipt-r-p-ack-as-agreement-r"
 RECEIPT = ROOT / "receipt.json"
+ITEMS = ROOT / "items.json"
 ENCODINGS = ["cl100k_base", "o200k_base", "p50k_base"]
 MODELS = [f"tiktoken/{name}" for name in ENCODINGS]
 FORMS = ["receipt", "agreement"]
@@ -202,13 +204,28 @@ def git_output(*args: str) -> str:
 
 
 def build_manifest() -> dict:
+    source_commit = git_output("rev-parse", "HEAD")
+    items_bytes = ITEMS.read_bytes()
+    if json.loads(items_bytes) != TEST_SET:
+        raise RuntimeError("items.json does not exactly encode the frozen source cells")
+    items_sha256 = hashlib.sha256(items_bytes).hexdigest()
     return {
         "metric": "token_delta",
         "formula_version": 1,
         "construct": "ack-as-receipt(<R>) / ack-as-agreement(<R>)",
         "models": MODELS,
         "settlement_strata": SETTLEMENT_STRATA,
-        "test_set": TEST_SET,
+        "items_url": (
+            "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/"
+            f"{source_commit}/acknowledgement-speech-act-token-original-2026-08-28/items.json"
+        ),
+        "items_sha256": items_sha256,
+        "item_counts": {
+            "cells": 168,
+            "paired_principal_references": 84,
+            "forms": {form: 84 for form in FORMS},
+            "domains": {domain: 28 for domain in DOMAINS},
+        },
         "seed": "none - deterministic frozen semantic cells",
         "estimand": {
             "population": (
@@ -239,7 +256,7 @@ def build_manifest() -> dict:
         ),
         "source": {
             "repository": "dexagon-ai/ainglish-evidence",
-            "commit": git_output("rev-parse", "HEAD"),
+            "commit": source_commit,
             "path": str(Path(__file__).resolve().relative_to(EVIDENCE_REPO)),
             "publication": "source commit pushed before mint; every answer-bearing cell is generated from fixed public tables",
         },
@@ -307,6 +324,8 @@ def preflight(client, manifest: dict) -> dict:
         "forms": form_counts,
         "domains": domain_counts,
         "reader_calls_before_freeze": 0,
+        "items_sha256": manifest["items_sha256"],
+        "items_url": manifest["items_url"],
         "source_commit": manifest["source"]["commit"],
         "manifest_commitment": manifest_commitment(manifest),
     }
