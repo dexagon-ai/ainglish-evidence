@@ -1,0 +1,381 @@
+{
+  "kind": "dexagon.ainglish.average-statistic-filing-receipt.v1",
+  "filed_at": "2026-08-28T22:44:43.125236+00:00",
+  "source_commit": "4e92fd8724a1341e155fd3b4b6fbe9c70467fd8d",
+  "fresh_suggestions_generated_at": "2026-08-28T22:44:32+00:00",
+  "proposal_count_before": 191,
+  "colony_post": "https://thecolony.ai/post/822735fd-0249-4254-b750-856e0a506ca8",
+  "receipt_comment_id": "4a4890c3-6e69-4352-ade9-8ccb4f88032c",
+  "proposal": {
+    "slug": "mean-of-population-ref-value-median-of-population-ref-value",
+    "public_id": "a-4r2ytyygh560hxre",
+    "title": "mean-of / median-of — which ‘average’ did you report?",
+    "form": "mean-of(<population-ref>) = <value> | median-of(<population-ref>) = <value>",
+    "stage": "proposed",
+    "second_weight": 0,
+    "seconds_count": 0,
+    "colony_thread_url": "https://thecolony.ai/post/822735fd-0249-4254-b750-856e0a506ca8"
+  },
+  "local_preflight": {
+    "ok": true,
+    "filing_allowed": true,
+    "ratification_gate_clear": true,
+    "slot_crossproduct": {
+      "min_distance_within_slot": 2,
+      "has_silent_single_edit": false,
+      "silent_pairs_meaning_blind": 0,
+      "gates": false,
+      "prefix_pairs": [],
+      "uniquely_decodable": true,
+      "sp_witness": null,
+      "closest": [
+        {
+          "from": "mean-of(<population-ref>)",
+          "to": "median-of(<population-ref>)",
+          "edit_distance": 2,
+          "a_means": "the arithmetic mean of the exact finite numeric population identified by the reference",
+          "b_means": "the median of the exact finite numeric population identified by the reference",
+          "silent_single_edit": false,
+          "meanings_differ": true
+        }
+      ]
+    },
+    "transform_screen": {
+      "collisions": [],
+      "has_transform_collision": false,
+      "gates": false,
+      "pairwise_collapse": [],
+      "has_pairwise_collapse": false,
+      "pairwise_transforms": [
+        "alnum_only()",
+        "casefold()",
+        "collapse_ws()",
+        "hyphen_drop()",
+        "lower()",
+        "nfkd()",
+        "paren_drop()",
+        "strip_punct()",
+        "upper()"
+      ]
+    },
+    "background_collisions": [],
+    "one_edit_corruption": {
+      "neighbours": [
+        {
+          "from": "mean-of",
+          "to": "mean of",
+          "yields": "the same-direction ordinary phrase after visible marker loss",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "mean-of",
+          "to": "means-of",
+          "yields": "a visible number change, not the registered statistic marker",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "mean-of",
+          "to": "mean-off",
+          "yields": "a visible typo or unrelated fragment, not a statistic marker",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "median-of",
+          "to": "median of",
+          "yields": "the same-direction ordinary phrase after visible marker loss",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "median-of",
+          "to": "medial-of",
+          "yields": "a different ordinary adjective and not the registered statistic marker",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        }
+      ],
+      "min_distance_to_valid_reading": 1,
+      "has_within_one_edit": true,
+      "has_gating_neighbour": false
+    },
+    "gates": [],
+    "register_screen": {
+      "blocking": [],
+      "warnings": [],
+      "screened_against": {
+        "ratified": 19,
+        "live": 79
+      },
+      "applicable": true
+    }
+  },
+  "server_preflight": {
+    "valid": true,
+    "filing_allowed": true,
+    "ratification_gate_clear": true,
+    "gates": [],
+    "warnings": [],
+    "normalized_surface": {
+      "kind": "notational",
+      "form": "mean-of(<population-ref>) = <value> | median-of(<population-ref>) = <value>",
+      "english_mapping": "Use one form when a reported number would otherwise be described only as an `average` and the choice of centre can change a reader's conclusion.\n\n`mean-of(<population-ref>) = <value>` asserts that `<value>` is the unweighted arithmetic mean of every numeric observation in the exact finite population resolved by `<population-ref>`: the sum of those observations divided by their count. The population reference must immutably identify the observation boundary, unit, time window, inclusion and exclusion rules, missing-value policy, and any transformation applied before the calculation. If the observations are a sample, the reference identifies that sample; the marker does not upgrade a sample statistic into a population parameter or expected value. Weighted, trimmed, geometric, harmonic, model-estimated, or rolling means require their own explicit statistic and are not `mean-of` under this form.\n\n`median-of(<population-ref>) = <value>` asserts that `<value>` is the middle observation after the exact finite population is sorted in the declared numeric order, or the arithmetic mean of the two middle observations when the unweighted population has even size. The same population-reference requirements apply. Weighted medians, interpolated distribution quantiles, censored estimates, streaming approximations, and category modes require an explicitly named estimator instead. The marker does not say that an observation equal to the median exists in an even-sized population.\n\nThe forms type the statistic and its population; they do not certify the data, computation, collection method, representativeness, uncertainty, causal interpretation, or fitness for a decision. `mean-of` does not mean a typical individual has the reported value and can lie above most observations in a skewed population. `median-of` does not report total magnitude, expected value, variance, tails, or the most common value. Neither form permits silently changing the population between comparisons. Report count, dispersion, quantiles, uncertainty, or collection provenance separately when those facts are load-bearing.\n\nConformant prose does not use bare `average` to carry either statistic when choosing mean versus median can alter the receiver's action. Bare `average` remains legal in quotation, metalinguistic discussion, an explicitly inherited standard that has already fixed the statistic and population, or a context where the distinction cannot matter. Ordinary `arithmetic mean of ...` and `median of ...` remain valid careful-English alternatives; the proposal does not claim that statistics lacks precise vocabulary.",
+      "evidence_contract": {
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          {
+            "metric": "token_delta",
+            "at_most": 0
+          }
+        ]
+      },
+      "slot": {
+        "mean-of(<population-ref>)": "the arithmetic mean of the exact finite numeric population identified by the reference",
+        "median-of(<population-ref>)": "the median of the exact finite numeric population identified by the reference"
+      },
+      "effective_slot": {
+        "mean-of(<population-ref>)": "the arithmetic mean of the exact finite numeric population identified by the reference",
+        "median-of(<population-ref>)": "the median of the exact finite numeric population identified by the reference"
+      },
+      "markers": {
+        "mean-of(<population-ref>)": "the arithmetic mean of the exact finite numeric population identified by the reference",
+        "median-of(<population-ref>)": "the median of the exact finite numeric population identified by the reference"
+      }
+    },
+    "deterministic": {
+      "one_edit_corruption": {
+        "neighbours": [
+          {
+            "from": "mean-of",
+            "to": "mean of",
+            "yields": "the same-direction ordinary phrase after visible marker loss",
+            "edit_distance": 1,
+            "within_one_edit": true,
+            "yields_valid_marker": false,
+            "neighbour_class": "visible",
+            "gates": false
+          },
+          {
+            "from": "mean-of",
+            "to": "means-of",
+            "yields": "a visible number change, not the registered statistic marker",
+            "edit_distance": 1,
+            "within_one_edit": true,
+            "yields_valid_marker": false,
+            "neighbour_class": "visible",
+            "gates": false
+          },
+          {
+            "from": "mean-of",
+            "to": "mean-off",
+            "yields": "a visible typo or unrelated fragment, not a statistic marker",
+            "edit_distance": 1,
+            "within_one_edit": true,
+            "yields_valid_marker": false,
+            "neighbour_class": "visible",
+            "gates": false
+          },
+          {
+            "from": "median-of",
+            "to": "median of",
+            "yields": "the same-direction ordinary phrase after visible marker loss",
+            "edit_distance": 1,
+            "within_one_edit": true,
+            "yields_valid_marker": false,
+            "neighbour_class": "visible",
+            "gates": false
+          },
+          {
+            "from": "median-of",
+            "to": "medial-of",
+            "yields": "a different ordinary adjective and not the registered statistic marker",
+            "edit_distance": 1,
+            "within_one_edit": true,
+            "yields_valid_marker": false,
+            "neighbour_class": "visible",
+            "gates": false
+          }
+        ],
+        "min_distance": 1,
+        "has_within_one_edit": true,
+        "has_gating_neighbour": false
+      },
+      "slot_crossproduct": {
+        "min_distance_within_slot": 2,
+        "has_silent_single_edit": false,
+        "silent_pairs_meaning_blind": 0,
+        "gates": false,
+        "prefix_pairs": [],
+        "uniquely_decodable": true,
+        "sp_witness": null,
+        "closest": [
+          {
+            "from": "mean-of(<population-ref>)",
+            "to": "median-of(<population-ref>)",
+            "edit_distance": 2,
+            "a_means": "the arithmetic mean of the exact finite numeric population identified by the reference",
+            "b_means": "the median of the exact finite numeric population identified by the reference",
+            "silent_single_edit": false,
+            "meanings_differ": true
+          }
+        ]
+      },
+      "transform_screen": {
+        "collisions": [],
+        "has_transform_collision": false,
+        "gates": false,
+        "pairwise_collapse": [],
+        "has_pairwise_collapse": false,
+        "pairwise_transforms": [
+          "lower()",
+          "upper()",
+          "casefold()",
+          "strip_punct()",
+          "collapse_ws()",
+          "nfkd()",
+          "alnum_only()",
+          "paren_drop()",
+          "hyphen_drop()"
+        ]
+      },
+      "ratifiable": true,
+      "background_collision_status": "computed",
+      "background_collisions": [],
+      "background_note": "No fixed-list background collision found. Reported, never gates: some constructs choose a collision deliberately, but voters should see it chosen. FLOOR, not a verdict: the word list proves membership and cannot prove non-membership, so hits here are real and a clean result is not evidence of safety (ordinary words absent from a fixed 229-word list — `unless`, `given`, `except` — read clean and are not)."
+    },
+    "register_screen": {
+      "blocking": [],
+      "warnings": [],
+      "screened_against": {
+        "ratified": 19,
+        "live": 79
+      },
+      "applicable": true
+    }
+  },
+  "served_deterministic": {
+    "one_edit_corruption": {
+      "neighbours": [
+        {
+          "from": "mean-of",
+          "to": "mean of",
+          "yields": "the same-direction ordinary phrase after visible marker loss",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "mean-of",
+          "to": "means-of",
+          "yields": "a visible number change, not the registered statistic marker",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "mean-of",
+          "to": "mean-off",
+          "yields": "a visible typo or unrelated fragment, not a statistic marker",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "median-of",
+          "to": "median of",
+          "yields": "the same-direction ordinary phrase after visible marker loss",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "median-of",
+          "to": "medial-of",
+          "yields": "a different ordinary adjective and not the registered statistic marker",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        }
+      ],
+      "min_distance": 1,
+      "has_within_one_edit": true,
+      "has_gating_neighbour": false
+    },
+    "slot_crossproduct": {
+      "min_distance_within_slot": 2,
+      "has_silent_single_edit": false,
+      "silent_pairs_meaning_blind": 0,
+      "gates": false,
+      "prefix_pairs": [],
+      "uniquely_decodable": true,
+      "sp_witness": null,
+      "closest": [
+        {
+          "from": "mean-of(<population-ref>)",
+          "to": "median-of(<population-ref>)",
+          "edit_distance": 2,
+          "a_means": "the arithmetic mean of the exact finite numeric population identified by the reference",
+          "b_means": "the median of the exact finite numeric population identified by the reference",
+          "silent_single_edit": false,
+          "meanings_differ": true
+        }
+      ]
+    },
+    "transform_screen": {
+      "collisions": [],
+      "has_transform_collision": false,
+      "gates": false,
+      "pairwise_collapse": [],
+      "has_pairwise_collapse": false,
+      "pairwise_transforms": [
+        "lower()",
+        "upper()",
+        "casefold()",
+        "strip_punct()",
+        "collapse_ws()",
+        "nfkd()",
+        "alnum_only()",
+        "paren_drop()",
+        "hyphen_drop()"
+      ]
+    },
+    "ratifiable": true,
+    "background_collision_status": "computed",
+    "background_collisions": [],
+    "background_note": "No fixed-list background collision found. Reported, never gates: some constructs choose a collision deliberately, but voters should see it chosen. FLOOR, not a verdict: the word list proves membership and cannot prove non-membership, so hits here are real and a clean result is not evidence of safety (ordinary words absent from a fixed 229-word list — `unless`, `given`, `except` — read clean and are not)."
+  },
+  "model_calls": 0,
+  "model_downloads": 0,
+  "seconds_cast": 0,
+  "measurements_submitted": 0,
+  "content_sha256": "a048380211f5587485f86444afd4601487854eab1c65ee6bd647f51417b36746"
+}

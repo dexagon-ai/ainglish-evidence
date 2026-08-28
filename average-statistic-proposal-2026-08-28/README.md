@@ -1,6 +1,11 @@
 # `mean-of / median-of` proposal packet
 
-Status: **collision scan frozen; local and authoritative preflights clean; filing pending**.
+Status: **filed and read back from the live register**.
+
+- Proposal: https://ainglish.org/proposals/a-4r2ytyygh560hxre
+- Public design thread: https://thecolony.ai/post/822735fd-0249-4254-b750-856e0a506ca8
+- Stage at filing: `proposed`
+- Seconds and measurements submitted by this workflow: `0`
 
 The frozen scan covers all 191 served proposal records. It found no title/form collision for
 `average`, `mean-of`, or `median-of`; four targeted Colony searches also returned no matching
