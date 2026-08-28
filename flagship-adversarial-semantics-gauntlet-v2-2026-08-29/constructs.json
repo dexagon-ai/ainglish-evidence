@@ -1,0 +1,375 @@
+{
+  "schema": "ainglish.flagship-adversarial-constructs.v2",
+  "source": {
+    "catalog_pr": "https://github.com/ai-nglish/ainglish-symfony/pull/340",
+    "catalog_commit": "a61dab4c2506cb3ace9b0faae50f879b468ed5a0",
+    "editorial_boundary": "The 18 entries are an editorial shortlist. Inclusion is not evidence of ratification, comprehension, or adoption."
+  },
+  "labels": {
+    "entailed": "the candidate conclusion must be true if the actual message and supplied reference are true",
+    "contradicted": "the candidate conclusion must be false if the actual message and supplied reference are true",
+    "underdetermined": "neither the candidate conclusion nor its negation must follow"
+  },
+  "constructs": [
+    {
+      "rank": 1,
+      "slug": "we-including-you-we-excluding-you-clusivity-mark-whether-we--4",
+      "form": "we-including-you / we-excluding-you",
+      "reference": "we-including-you says the speaker's we-group includes the addressee; we-excluding-you says it excludes the addressee.",
+      "left": {
+        "message": "we-including-you will review the draft.",
+        "entailed": "The addressee belongs to the we-group that will review the draft.",
+        "cross": "The addressee is excluded from the we-group that will review the draft.",
+        "cross_expected": "contradicted",
+        "overread": "The addressee must review the draft alone."
+      },
+      "right": {
+        "message": "we-excluding-you will review the draft.",
+        "entailed": "The addressee does not belong to the we-group that will review the draft.",
+        "cross": "The addressee belongs to the we-group that will review the draft.",
+        "cross_expected": "contradicted",
+        "overread": "The addressee is forbidden from reviewing the draft independently."
+      }
+    },
+    {
+      "rank": 2,
+      "slug": "you-one-you-all-say-whether-you-addresses-one-recipient-or-t",
+      "form": "you-one / you-all",
+      "reference": "In a message to a named group, you-one addresses one specified recipient; you-all addresses every member of that group.",
+      "left": {
+        "message": "Message to Alice, Bob, and Chen: you-one, Alice, should approve the change.",
+        "entailed": "Alice is addressed with the approval request, but Bob and Chen are not addressed with it.",
+        "cross": "Alice, Bob, and Chen are all addressed with the approval request.",
+        "cross_expected": "contradicted",
+        "overread": "Bob and Chen are forbidden from approving the change voluntarily."
+      },
+      "right": {
+        "message": "Message to Alice, Bob, and Chen: you-all should approve the change.",
+        "entailed": "Alice, Bob, and Chen are all addressed with the approval request.",
+        "cross": "Only one member of the group is addressed with the approval request.",
+        "cross_expected": "contradicted",
+        "overread": "All three approvals must occur at the same instant."
+      }
+    },
+    {
+      "rank": 3,
+      "slug": "fact-not-known-choice-not-made-distinguish-missing-evidence-",
+      "form": "fact-not-known / choice-not-made",
+      "reference": "fact-not-known says an answer exists but the relevant fact is not known here; choice-not-made says the authoritative choice does not yet exist.",
+      "left": {
+        "message": "fact-not-known — deployment region.",
+        "entailed": "A deployment-region answer exists, but it is not known here.",
+        "cross": "No authoritative deployment-region choice has yet been made.",
+        "cross_expected": "contradicted",
+        "overread": "No person or record could reveal the deployment region."
+      },
+      "right": {
+        "message": "choice-not-made — deployment region.",
+        "entailed": "The authoritative deployment-region choice does not yet exist.",
+        "cross": "A deployment-region answer already exists but is merely unknown here.",
+        "cross_expected": "contradicted",
+        "overread": "The board will never choose a deployment region."
+      }
+    },
+    {
+      "rank": 4,
+      "slug": "no-delegation-one-hop-delegation-allowed-state-whether-a-tas",
+      "form": "no-delegation / one-hop-delegation-allowed",
+      "reference": "no-delegation forbids the assignee from handing the task off; one-hop-delegation-allowed permits a handoff to one direct delegate, who may not delegate again.",
+      "left": {
+        "message": "Complete the audit, no-delegation.",
+        "entailed": "The assignee may not hand the audit to another agent.",
+        "cross": "The assignee may hand the audit to one direct delegate.",
+        "cross_expected": "contradicted",
+        "overread": "The audit has already started."
+      },
+      "right": {
+        "message": "Complete the audit, one-hop-delegation-allowed.",
+        "entailed": "The assignee may hand the audit to one direct delegate, but that delegate may not hand it on again.",
+        "cross": "No handoff of the audit is permitted at all.",
+        "cross_expected": "contradicted",
+        "overread": "The assignee is required to delegate the audit."
+      }
+    },
+    {
+      "rank": 5,
+      "slug": "each-alone-as-one-distributive-vs-collective-does-the-plural",
+      "form": "each-alone / as-one",
+      "reference": "each-alone makes the plural predicate apply separately to every member; as-one makes it apply once to the group collectively.",
+      "left": {
+        "message": "The three agents each-alone signed the report.",
+        "entailed": "Each of the three agents performed a separate signing act.",
+        "cross": "The three agents performed only one collective signing act.",
+        "cross_expected": "contradicted",
+        "overread": "Every separate signature used identical handwriting."
+      },
+      "right": {
+        "message": "The three agents as-one signed the report.",
+        "entailed": "The three agents performed one group-level signing act.",
+        "cross": "Each agent performed a separate signing act.",
+        "cross_expected": "contradicted",
+        "overread": "Every agent privately agreed with every sentence in the report."
+      }
+    },
+    {
+      "rank": 6,
+      "slug": "by-unknown-by-withheld-typed-doer-omission-why-mistakes-were-3",
+      "form": "by-unknown / by-withheld",
+      "reference": "by-unknown says the author does not know the actor; by-withheld says the author knows the actor but does not disclose them.",
+      "left": {
+        "message": "The file was deleted by-unknown.",
+        "entailed": "The author does not know who deleted the file.",
+        "cross": "The author knows who deleted the file but is withholding the identity.",
+        "cross_expected": "contradicted",
+        "overread": "The deleter's identity can never be discovered."
+      },
+      "right": {
+        "message": "The file was deleted by-withheld.",
+        "entailed": "The author knows who deleted the file but does not disclose the identity.",
+        "cross": "The author does not know who deleted the file.",
+        "cross_expected": "contradicted",
+        "overread": "The author is withholding the identity for a malicious reason."
+      }
+    },
+    {
+      "rank": 7,
+      "slug": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+      "form": "start-by / complete-by",
+      "reference": "start-by(t) constrains genuine execution to begin no later than t; complete-by(t) constrains successful completion no later than t. A marker does not independently set the other event's deadline.",
+      "left": {
+        "message": "Migrate the index start-by(17:00 UTC).",
+        "entailed": "Genuine execution of the migration must begin no later than 17:00 UTC.",
+        "cross": "The migration will complete successfully no later than 17:00 UTC.",
+        "cross_expected": "underdetermined",
+        "overread": "The migration will finish on the same day."
+      },
+      "right": {
+        "message": "Migrate the index complete-by(17:00 UTC).",
+        "entailed": "The migration must complete successfully no later than 17:00 UTC.",
+        "cross": "Genuine execution will begin no later than 16:00 UTC.",
+        "cross_expected": "underdetermined",
+        "overread": "Execution will begin exactly at 17:00 UTC."
+      }
+    },
+    {
+      "rank": 8,
+      "slug": "or-both-not-both-english-or-never-says-whether-both-is-allow",
+      "form": "or-both / not-both",
+      "reference": "or-both is inclusive: either option or both is permitted; not-both is exclusive: at least one is required and choosing both is forbidden.",
+      "left": {
+        "message": "Activate blue or-both green.",
+        "entailed": "Activating both blue and green is permitted.",
+        "cross": "Activating both blue and green is forbidden.",
+        "cross_expected": "contradicted",
+        "overread": "Both blue and green must be activated."
+      },
+      "right": {
+        "message": "Activate blue not-both green.",
+        "entailed": "At least one slot must be activated, but activating both is forbidden.",
+        "cross": "Activating both blue and green is permitted.",
+        "cross_expected": "contradicted",
+        "overread": "Blue, rather than green, must be activated."
+      }
+    },
+    {
+      "rank": 9,
+      "slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+      "form": "true-as-worded / false-as-worded",
+      "reference": "true-as-worded affirms the proposition exactly as worded, including negation; false-as-worded denies that exact proposition.",
+      "left": {
+        "message": "Question: Did the backup not finish? Answer: true-as-worded.",
+        "entailed": "The backup did not finish.",
+        "cross": "The backup finished.",
+        "cross_expected": "contradicted",
+        "overread": "A network outage caused the backup not to finish."
+      },
+      "right": {
+        "message": "Question: Did the backup not finish? Answer: false-as-worded.",
+        "entailed": "It is false that the backup did not finish; the backup finished.",
+        "cross": "The backup did not finish.",
+        "cross_expected": "contradicted",
+        "overread": "The backup finished before midnight."
+      }
+    },
+    {
+      "rank": 10,
+      "slug": "moved-earlier-moved-later-which-way-did-the-meeting-move-2",
+      "form": "moved-earlier / moved-later",
+      "reference": "moved-earlier says the new scheduled time precedes the prior scheduled time; moved-later says it follows the prior scheduled time.",
+      "left": {
+        "message": "The review moved-earlier from Wednesday to Tuesday.",
+        "entailed": "The review's new scheduled time is earlier than its prior scheduled time.",
+        "cross": "The review's new scheduled time is later than its prior scheduled time.",
+        "cross_expected": "contradicted",
+        "overread": "Every reviewer approved the schedule change."
+      },
+      "right": {
+        "message": "The review moved-later from Wednesday to Thursday.",
+        "entailed": "The review's new scheduled time is later than its prior scheduled time.",
+        "cross": "The review's new scheduled time is earlier than its prior scheduled time.",
+        "cross_expected": "contradicted",
+        "overread": "The delay was caused by an unavailable reviewer."
+      }
+    },
+    {
+      "rank": 11,
+      "slug": "among-others-and-no-others-is-the-list-the-whole-list-2",
+      "form": "among-others / and-no-others",
+      "reference": "among-others says the named enumeration is incomplete; and-no-others says it is complete.",
+      "left": {
+        "message": "Affected services: API, worker, among-others.",
+        "entailed": "At least one affected service is omitted from the named list.",
+        "cross": "API and worker are the complete list of affected services.",
+        "cross_expected": "contradicted",
+        "overread": "The database is one of the omitted affected services."
+      },
+      "right": {
+        "message": "Affected services: API, worker, and-no-others.",
+        "entailed": "API and worker are the complete list of affected services.",
+        "cross": "At least one other affected service is omitted from the named list.",
+        "cross_expected": "contradicted",
+        "overread": "API and worker share the same root cause."
+      }
+    },
+    {
+      "rank": 12,
+      "slug": "some-or-all-some-but-not-all-does-some-leave-room-for-all-2",
+      "form": "some-or-all / some-but-not-all",
+      "reference": "some-or-all means at least one and leaves the all-members case permitted; some-but-not-all means at least one but excludes the all-members case.",
+      "left": {
+        "message": "some-or-all workers may retry.",
+        "entailed": "At least one worker may retry, and the permission does not rule out every worker retrying.",
+        "cross": "Not every worker may retry.",
+        "cross_expected": "underdetermined",
+        "overread": "Every worker definitely will retry."
+      },
+      "right": {
+        "message": "some-but-not-all workers may retry.",
+        "entailed": "At least one worker may retry, but not every worker may retry.",
+        "cross": "Every worker may retry.",
+        "cross_expected": "contradicted",
+        "overread": "Exactly one worker may retry."
+      }
+    },
+    {
+      "rank": 13,
+      "slug": "may-as-permission-may-as-possibility-does-may-authorize-an-a",
+      "form": "may-as-permission / may-as-possibility",
+      "reference": "may-as-permission grants authorization; may-as-possibility describes a possible event. Permission alone does not assert feasibility, and possibility alone does not grant authority.",
+      "left": {
+        "message": "The worker may-as-permission retry.",
+        "entailed": "The worker is authorized to retry.",
+        "cross": "A retry is actually possible in the current system state.",
+        "cross_expected": "underdetermined",
+        "overread": "The worker will retry."
+      },
+      "right": {
+        "message": "The worker may-as-possibility retry.",
+        "entailed": "A worker retry is a possible event.",
+        "cross": "The worker is authorized to retry.",
+        "cross_expected": "underdetermined",
+        "overread": "The worker will retry."
+      }
+    },
+    {
+      "rank": 14,
+      "slug": "whole-s-part-s-declare-whether-a-reported-set-is-the-complet",
+      "form": "whole(S) / part(S)",
+      "reference": "whole(S) says the reported members are the complete set S; part(S) says they are a proper subset and at least one member is omitted.",
+      "left": {
+        "message": "whole(failed-jobs): 7, 9.",
+        "entailed": "Jobs 7 and 9 are the complete set of failed jobs.",
+        "cross": "At least one failed job is omitted from the report.",
+        "cross_expected": "contradicted",
+        "overread": "Jobs 7 and 9 failed for the same reason."
+      },
+      "right": {
+        "message": "part(failed-jobs): 7, 9.",
+        "entailed": "At least one failed job is omitted from the report.",
+        "cross": "Jobs 7 and 9 are the complete set of failed jobs.",
+        "cross_expected": "contradicted",
+        "overread": "Exactly one failed job is omitted from the report."
+      }
+    },
+    {
+      "rank": 15,
+      "slug": "proposal-by-p-decision-by-a-say-whether-an-option-is-offered",
+      "form": "proposal-by(P) / decision-by(A)",
+      "reference": "proposal-by(P) says P offered an option; decision-by(A) says authority A operatively chose it. Either event alone does not assert whether the other event also occurred.",
+      "left": {
+        "message": "proposal-by(chair): deploy Friday.",
+        "entailed": "The chair offered Friday deployment as an option.",
+        "cross": "The chair operatively chose Friday deployment.",
+        "cross_expected": "underdetermined",
+        "overread": "The chair had legal authority to order the deployment."
+      },
+      "right": {
+        "message": "decision-by(board): deploy Friday.",
+        "entailed": "The board operatively chose Friday deployment.",
+        "cross": "The board had earlier offered Friday deployment as a proposal.",
+        "cross_expected": "underdetermined",
+        "overread": "The board followed every required decision procedure."
+      }
+    },
+    {
+      "rank": 16,
+      "slug": "one-or-more-role-exactly-one-role-does-a-reviewer-require-at",
+      "form": "one-or-more(role) / exactly-one(role)",
+      "reference": "one-or-more(role) requires at least one actor with that role and sets no upper bound; exactly-one(role) requires one and forbids a second actor in that role for the action.",
+      "left": {
+        "message": "one-or-more(reviewer): approve the release.",
+        "entailed": "At least one reviewer must approve the release.",
+        "cross": "Exactly one reviewer must approve and a second reviewer is forbidden.",
+        "cross_expected": "underdetermined",
+        "overread": "Exactly two reviewers must approve the release."
+      },
+      "right": {
+        "message": "exactly-one(reviewer): approve the release.",
+        "entailed": "One reviewer must approve the release, and a second reviewer approval is forbidden under this requirement.",
+        "cross": "At least one reviewer must approve the release.",
+        "cross_expected": "entailed",
+        "overread": "Reviewer Alice is the required reviewer."
+      }
+    },
+    {
+      "rank": 17,
+      "slug": "repeat-event-restore-state-did-again-repeat-the-action-or-on-4",
+      "form": "repeat-event / restore-state",
+      "reference": "repeat-event commits to an earlier matching event; restore-state(R) commits to an earlier state R but not to any particular earlier event that produced it.",
+      "left": {
+        "message": "repeat-event: Mara opened the gate.",
+        "entailed": "An earlier matching event of Mara opening the gate occurred.",
+        "cross": "No earlier matching event of Mara opening the gate is asserted.",
+        "cross_expected": "contradicted",
+        "overread": "The earlier opening happened immediately before the current opening."
+      },
+      "right": {
+        "message": "restore-state(open(gate)): Mara opened the gate.",
+        "entailed": "The gate had been open at some earlier time.",
+        "cross": "Mara necessarily performed an earlier matching gate-opening event.",
+        "cross_expected": "underdetermined",
+        "overread": "Mara was the person who caused every earlier open state of the gate."
+      }
+    },
+    {
+      "rank": 18,
+      "slug": "text-fixed-ref-meaning-fixed-ref-declare-which-invariants-a-",
+      "form": "text-fixed(ref) / meaning-fixed(ref)",
+      "reference": "text-fixed(ref) requires the referenced logical Unicode text code-point-for-code-point; meaning-fixed(ref) permits rewording only if the complete meaning is preserved. Neither marker certifies that execution complied.",
+      "left": {
+        "message": "Transfer the notice, text-fixed(notice-v3).",
+        "entailed": "The transferred logical Unicode text must match notice-v3 code-point-for-code-point.",
+        "cross": "A faithful rewording of notice-v3 is permitted instead of exact logical text.",
+        "cross_expected": "contradicted",
+        "overread": "The transferred file must have the same byte encoding and metadata as the source file."
+      },
+      "right": {
+        "message": "Rewrite the notice, meaning-fixed(notice-v3).",
+        "entailed": "Rewording is permitted only if the complete meaning of notice-v3 survives.",
+        "cross": "Every code point of notice-v3 must remain unchanged.",
+        "cross_expected": "contradicted",
+        "overread": "The compliant output will necessarily use fewer tokens than notice-v3."
+      }
+    }
+  ]
+}
