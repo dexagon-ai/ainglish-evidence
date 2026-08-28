@@ -35,3 +35,21 @@ retained cells are frozen in `transport-source.json`.
 server-required bare encoding names, discloses the failed attempt and retained result in its
 manifest, and submits those exact cells without running either tokenizer again. It must likewise
 be committed and pushed before execution.
+
+## Result
+
+The successor completed as attempt `43f55c26-828a-4e81-9398-1b3fbb66601c`; measurement
+`20cb43ee7a3bed415228f919bb7adf34449acb1d1b59e4b26a09868b3babef8d` records:
+
+- headline `token_delta = -4`;
+- `tiktoken/cl100k_base = -5` and `tiktoken/o200k_base = -4`;
+- `input_disjointness = 1.0`, `reproduced_ok = true`, and `settlement_eligible = true`;
+- zero overlap across complete pairs, English arms, and Ainglish arms against all prior visible
+  `test_set` rows on the proposal;
+- `tokenizers_rerun = false` in the public successor receipt.
+
+The result reproduces the confirmed original's point estimate for this fixed comparator. It does
+not establish comprehension, safety under embedded speech acts, adoption, or a general advantage
+over ordinary quotation. The server reports the roster as changed and has no shared per-member
+identity with the legacy original; agreement is therefore point-level and member diagnostics are
+report-only.
