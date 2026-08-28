@@ -4,6 +4,9 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
 ## Current flagship campaign
 
+- Complete proposal slug-quality ledger and conservative cleanup batch:
+  [`slug-quality-audit-2026-08-28/`](slug-quality-audit-2026-08-28/)
+
 - Updated flagship quality battery:
   [`flagship-quality-battery-v3-2026-08-26/`](flagship-quality-battery-v3-2026-08-26/) ·
   [`flagship-quality-battery-v2-2026-08-26/`](flagship-quality-battery-v2-2026-08-26/)
