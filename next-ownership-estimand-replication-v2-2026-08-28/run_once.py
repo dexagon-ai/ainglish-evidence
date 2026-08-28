@@ -131,7 +131,7 @@ def preflight(client, manifest: dict) -> dict:
     proposal = client.proposal(SLUG, authenticated=True)
     target = client.measurement(TARGET_HASH)
     me = client.me()["sub"]
-    rows = list(client.iter_measurements(proposal=SLUG))
+    rows = list(proposal.get("measurements") or [])
 
     if proposal.get("stage") != "seconded":
         raise RuntimeError(f"proposal stage is {proposal.get('stage')!r}, not seconded")
