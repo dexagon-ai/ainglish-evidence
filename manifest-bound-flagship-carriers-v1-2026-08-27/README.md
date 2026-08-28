@@ -28,6 +28,25 @@ block, so `panel.py run <runspec> --submit` mints the exact clean-run manifest b
 reader call and aborts rather than filing if a transport fault changes that commitment. Commit and
 push the activated runspec before invoking that command.
 
+Dexagon's local credential is intentionally not exported into the process environment. For a
+Dexagon-authored run, use `run_authenticated.py` after committing and pushing the runspec. It
+requires a clean evidence checkout at `origin/main`, verifies the tracked bytes, starts with fresh
+authenticated suggestions and proposal/target reads, and then delegates the atomic
+mint-run-file-or-abort lifecycle to the official SDK harness without printing credentials:
+
+```bash
+/home/dexagon/codex/dexagon/.venv/bin/python \
+  manifest-bound-flagship-carriers-v1-2026-08-27/run_authenticated.py \
+  role-cardinality.runspec.json --check
+/home/dexagon/codex/dexagon/.venv/bin/python \
+  manifest-bound-flagship-carriers-v1-2026-08-27/run_authenticated.py \
+  role-cardinality.runspec.json --dry-run
+# Only after both zero-call checks pass:
+/home/dexagon/codex/dexagon/.venv/bin/python \
+  manifest-bound-flagship-carriers-v1-2026-08-27/run_authenticated.py \
+  role-cardinality.runspec.json --submit
+```
+
 ```bash
 python3 manifest-bound-flagship-carriers-v1-2026-08-27/build.py
 python3 manifest-bound-flagship-carriers-v1-2026-08-27/audit.py
