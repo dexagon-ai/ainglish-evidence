@@ -1,0 +1,488 @@
+{
+  "kind": "dexagon.ainglish.tokenizer-adaptation-lab.v1",
+  "design": {
+    "tokenizers_version": "0.22.2",
+    "core_training_bytes": 8000000,
+    "ordinary_evaluation_bytes": 2000000,
+    "supplement_bytes_each": 2000000,
+    "reviewed_pairs": 57,
+    "repetitions_per_pair": 32,
+    "control": "32 repeats of each careful-English reviewed pair, then neutral corpus filler to the fixed supplement byte budget",
+    "ainglish": "32 repeats of each paired Ainglish rendering, then neutral corpus filler to the same fixed supplement byte budget",
+    "pretokenizers": {
+      "punctuation_split": "Whitespace: isolates punctuation, including hyphens",
+      "whitespace_only": "WhitespaceSplit: keeps hyphenated whitespace-delimited forms together during BPE learning"
+    },
+    "boundary": "A small tokenizer-training simulation, not a production-tokenizer forecast. Exposure frequency is intentionally high enough to test whether vocabulary allocation can respond. Ordinary-corpus filtering is lexical and cannot prove absence of every Ainglish concept."
+  },
+  "inputs": {
+    "corpus_sha256": "b87af1edc03137e926981322cc7ce22f6972116b9a8a1b292fda345ed26beffe",
+    "corpus_records": 21725,
+    "eligible_non_ainglish_documents": 21574,
+    "parallel_sha256": "6f65100c1e4a5df7be6c1fb4f3d3f22f6025c814acff606440d36ec70f448523",
+    "register_sha256": "db659d594b424e2e1ff789a48c0a112d20c20cb5501cdd9aaca8bdc2e5152131",
+    "marker_surfaces": [
+      "as-of",
+      "as-one",
+      "by-unknown",
+      "by-withheld",
+      "choice-not-made",
+      "complete-by",
+      "complete-for",
+      "done-under",
+      "each-alone",
+      "fact-not-known",
+      "false-as-worded",
+      "force-suspended",
+      "grader-is-graded",
+      "meaning-fixed",
+      "no-delegation",
+      "not-both",
+      "one-hop-delegation-allowed",
+      "or-both",
+      "passed-not-applied",
+      "start-by",
+      "text-fixed",
+      "true-as-worded",
+      "we-excluding-you",
+      "we-including-you",
+      "you-all",
+      "you-one"
+    ]
+  },
+  "cells": [
+    {
+      "vocab_size_requested": 8000,
+      "vocab_size_observed": 8000,
+      "pretokenizer": "punctuation_split",
+      "exposure": "control_english",
+      "tokenizer_sha256": "73ea87fe6508c77c77cee200cb5e7b28468011a244b13d0c77fc9f1dc9ca4f10",
+      "ordinary_eval": {
+        "bytes": 2000000,
+        "tokens": 448825
+      },
+      "release": {
+        "english_tokens": 2133,
+        "ainglish_tokens": 1685,
+        "delta": -448
+      },
+      "markers": {
+        "surfaces": 26,
+        "tokens": 105,
+        "single_token": 0,
+        "per_surface": {
+          "as-of": 3,
+          "as-one": 3,
+          "by-unknown": 3,
+          "by-withheld": 4,
+          "choice-not-made": 5,
+          "complete-by": 3,
+          "complete-for": 3,
+          "done-under": 3,
+          "each-alone": 3,
+          "fact-not-known": 5,
+          "false-as-worded": 6,
+          "force-suspended": 4,
+          "grader-is-graded": 6,
+          "meaning-fixed": 3,
+          "no-delegation": 3,
+          "not-both": 3,
+          "one-hop-delegation-allowed": 7,
+          "or-both": 3,
+          "passed-not-applied": 5,
+          "start-by": 3,
+          "text-fixed": 3,
+          "true-as-worded": 6,
+          "we-excluding-you": 7,
+          "we-including-you": 5,
+          "you-all": 3,
+          "you-one": 3
+        }
+      }
+    },
+    {
+      "vocab_size_requested": 8000,
+      "vocab_size_observed": 8000,
+      "pretokenizer": "punctuation_split",
+      "exposure": "ainglish",
+      "tokenizer_sha256": "fb0eb04d4a90202e44a19bd5cd42f881e4b3f02716d4284c6782f6818fb12df0",
+      "ordinary_eval": {
+        "bytes": 2000000,
+        "tokens": 448661
+      },
+      "release": {
+        "english_tokens": 2255,
+        "ainglish_tokens": 1591,
+        "delta": -664
+      },
+      "markers": {
+        "surfaces": 26,
+        "tokens": 98,
+        "single_token": 0,
+        "per_surface": {
+          "as-of": 3,
+          "as-one": 3,
+          "by-unknown": 3,
+          "by-withheld": 3,
+          "choice-not-made": 5,
+          "complete-by": 3,
+          "complete-for": 3,
+          "done-under": 3,
+          "each-alone": 3,
+          "fact-not-known": 5,
+          "false-as-worded": 5,
+          "force-suspended": 3,
+          "grader-is-graded": 5,
+          "meaning-fixed": 3,
+          "no-delegation": 3,
+          "not-both": 3,
+          "one-hop-delegation-allowed": 7,
+          "or-both": 3,
+          "passed-not-applied": 5,
+          "start-by": 3,
+          "text-fixed": 3,
+          "true-as-worded": 5,
+          "we-excluding-you": 5,
+          "we-including-you": 5,
+          "you-all": 3,
+          "you-one": 3
+        }
+      }
+    },
+    {
+      "vocab_size_requested": 8000,
+      "vocab_size_observed": 8000,
+      "pretokenizer": "whitespace_only",
+      "exposure": "control_english",
+      "tokenizer_sha256": "605fd6258250505ad0593df4d12e33de0976997a9368838d4481d5ef4db9fd03",
+      "ordinary_eval": {
+        "bytes": 2000000,
+        "tokens": 430790
+      },
+      "release": {
+        "english_tokens": 2023,
+        "ainglish_tokens": 1588,
+        "delta": -435
+      },
+      "markers": {
+        "surfaces": 26,
+        "tokens": 92,
+        "single_token": 0,
+        "per_surface": {
+          "as-of": 2,
+          "as-one": 2,
+          "by-unknown": 2,
+          "by-withheld": 3,
+          "choice-not-made": 4,
+          "complete-by": 3,
+          "complete-for": 2,
+          "done-under": 3,
+          "each-alone": 3,
+          "fact-not-known": 4,
+          "false-as-worded": 4,
+          "force-suspended": 4,
+          "grader-is-graded": 7,
+          "meaning-fixed": 3,
+          "no-delegation": 3,
+          "not-both": 2,
+          "one-hop-delegation-allowed": 6,
+          "or-both": 3,
+          "passed-not-applied": 4,
+          "start-by": 3,
+          "text-fixed": 3,
+          "true-as-worded": 4,
+          "we-excluding-you": 7,
+          "we-including-you": 5,
+          "you-all": 3,
+          "you-one": 3
+        }
+      }
+    },
+    {
+      "vocab_size_requested": 8000,
+      "vocab_size_observed": 8000,
+      "pretokenizer": "whitespace_only",
+      "exposure": "ainglish",
+      "tokenizer_sha256": "286e608f1a13802912455c47b7163ea0b6d9549bf7a4641f8604bc7a025b24b7",
+      "ordinary_eval": {
+        "bytes": 2000000,
+        "tokens": 431154
+      },
+      "release": {
+        "english_tokens": 2205,
+        "ainglish_tokens": 1220,
+        "delta": -985
+      },
+      "markers": {
+        "surfaces": 26,
+        "tokens": 46,
+        "single_token": 10,
+        "per_surface": {
+          "as-of": 2,
+          "as-one": 2,
+          "by-unknown": 2,
+          "by-withheld": 2,
+          "choice-not-made": 1,
+          "complete-by": 1,
+          "complete-for": 2,
+          "done-under": 3,
+          "each-alone": 3,
+          "fact-not-known": 1,
+          "false-as-worded": 3,
+          "force-suspended": 1,
+          "grader-is-graded": 2,
+          "meaning-fixed": 2,
+          "no-delegation": 2,
+          "not-both": 2,
+          "one-hop-delegation-allowed": 2,
+          "or-both": 2,
+          "passed-not-applied": 1,
+          "start-by": 1,
+          "text-fixed": 2,
+          "true-as-worded": 3,
+          "we-excluding-you": 1,
+          "we-including-you": 1,
+          "you-all": 1,
+          "you-one": 1
+        }
+      }
+    },
+    {
+      "vocab_size_requested": 16000,
+      "vocab_size_observed": 16000,
+      "pretokenizer": "punctuation_split",
+      "exposure": "control_english",
+      "tokenizer_sha256": "e6fd7c6a4821698117a114ab2070ec0cec42e65ae115e8593ef5b126f839fe1b",
+      "ordinary_eval": {
+        "bytes": 2000000,
+        "tokens": 409710
+      },
+      "release": {
+        "english_tokens": 2000,
+        "ainglish_tokens": 1578,
+        "delta": -422
+      },
+      "markers": {
+        "surfaces": 26,
+        "tokens": 101,
+        "single_token": 0,
+        "per_surface": {
+          "as-of": 3,
+          "as-one": 3,
+          "by-unknown": 3,
+          "by-withheld": 3,
+          "choice-not-made": 5,
+          "complete-by": 3,
+          "complete-for": 3,
+          "done-under": 3,
+          "each-alone": 3,
+          "fact-not-known": 5,
+          "false-as-worded": 5,
+          "force-suspended": 4,
+          "grader-is-graded": 6,
+          "meaning-fixed": 3,
+          "no-delegation": 3,
+          "not-both": 3,
+          "one-hop-delegation-allowed": 7,
+          "or-both": 3,
+          "passed-not-applied": 5,
+          "start-by": 3,
+          "text-fixed": 3,
+          "true-as-worded": 5,
+          "we-excluding-you": 6,
+          "we-including-you": 5,
+          "you-all": 3,
+          "you-one": 3
+        }
+      }
+    },
+    {
+      "vocab_size_requested": 16000,
+      "vocab_size_observed": 16000,
+      "pretokenizer": "punctuation_split",
+      "exposure": "ainglish",
+      "tokenizer_sha256": "202a6111e352f0b9e9303fc7089e2b95f0a3e5a12717119f06ad47dcc7ae9e25",
+      "ordinary_eval": {
+        "bytes": 2000000,
+        "tokens": 409687
+      },
+      "release": {
+        "english_tokens": 2083,
+        "ainglish_tokens": 1485,
+        "delta": -598
+      },
+      "markers": {
+        "surfaces": 26,
+        "tokens": 98,
+        "single_token": 0,
+        "per_surface": {
+          "as-of": 3,
+          "as-one": 3,
+          "by-unknown": 3,
+          "by-withheld": 3,
+          "choice-not-made": 5,
+          "complete-by": 3,
+          "complete-for": 3,
+          "done-under": 3,
+          "each-alone": 3,
+          "fact-not-known": 5,
+          "false-as-worded": 5,
+          "force-suspended": 3,
+          "grader-is-graded": 5,
+          "meaning-fixed": 3,
+          "no-delegation": 3,
+          "not-both": 3,
+          "one-hop-delegation-allowed": 7,
+          "or-both": 3,
+          "passed-not-applied": 5,
+          "start-by": 3,
+          "text-fixed": 3,
+          "true-as-worded": 5,
+          "we-excluding-you": 5,
+          "we-including-you": 5,
+          "you-all": 3,
+          "you-one": 3
+        }
+      }
+    },
+    {
+      "vocab_size_requested": 16000,
+      "vocab_size_observed": 16000,
+      "pretokenizer": "whitespace_only",
+      "exposure": "control_english",
+      "tokenizer_sha256": "8a018c68b9f699bf3127239285b7e2fa38ee85eb8e265ba7de10e6e92bf3d91a",
+      "ordinary_eval": {
+        "bytes": 2000000,
+        "tokens": 381601
+      },
+      "release": {
+        "english_tokens": 1692,
+        "ainglish_tokens": 1427,
+        "delta": -265
+      },
+      "markers": {
+        "surfaces": 26,
+        "tokens": 87,
+        "single_token": 0,
+        "per_surface": {
+          "as-of": 2,
+          "as-one": 2,
+          "by-unknown": 2,
+          "by-withheld": 3,
+          "choice-not-made": 3,
+          "complete-by": 3,
+          "complete-for": 2,
+          "done-under": 3,
+          "each-alone": 3,
+          "fact-not-known": 3,
+          "false-as-worded": 4,
+          "force-suspended": 4,
+          "grader-is-graded": 6,
+          "meaning-fixed": 3,
+          "no-delegation": 2,
+          "not-both": 2,
+          "one-hop-delegation-allowed": 6,
+          "or-both": 2,
+          "passed-not-applied": 4,
+          "start-by": 3,
+          "text-fixed": 3,
+          "true-as-worded": 4,
+          "we-excluding-you": 7,
+          "we-including-you": 5,
+          "you-all": 3,
+          "you-one": 3
+        }
+      }
+    },
+    {
+      "vocab_size_requested": 16000,
+      "vocab_size_observed": 16000,
+      "pretokenizer": "whitespace_only",
+      "exposure": "ainglish",
+      "tokenizer_sha256": "142bc1acc0eeb312a14b4907f76c1eeb77f5a8c305b0efd75981c0b1dc049b9d",
+      "ordinary_eval": {
+        "bytes": 2000000,
+        "tokens": 381838
+      },
+      "release": {
+        "english_tokens": 1959,
+        "ainglish_tokens": 842,
+        "delta": -1117
+      },
+      "markers": {
+        "surfaces": 26,
+        "tokens": 38,
+        "single_token": 16,
+        "per_surface": {
+          "as-of": 2,
+          "as-one": 1,
+          "by-unknown": 1,
+          "by-withheld": 1,
+          "choice-not-made": 1,
+          "complete-by": 1,
+          "complete-for": 1,
+          "done-under": 2,
+          "each-alone": 3,
+          "fact-not-known": 1,
+          "false-as-worded": 2,
+          "force-suspended": 1,
+          "grader-is-graded": 2,
+          "meaning-fixed": 2,
+          "no-delegation": 2,
+          "not-both": 1,
+          "one-hop-delegation-allowed": 2,
+          "or-both": 1,
+          "passed-not-applied": 1,
+          "start-by": 1,
+          "text-fixed": 2,
+          "true-as-worded": 3,
+          "we-excluding-you": 1,
+          "we-including-you": 1,
+          "you-all": 1,
+          "you-one": 1
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "vocab_size": 8000,
+      "pretokenizer": "punctuation_split",
+      "ainglish_release_token_change": -94,
+      "careful_english_release_token_change": 122,
+      "ordinary_eval_token_change": -164,
+      "marker_token_change": -7,
+      "single_token_marker_change": 0
+    },
+    {
+      "vocab_size": 8000,
+      "pretokenizer": "whitespace_only",
+      "ainglish_release_token_change": -368,
+      "careful_english_release_token_change": 182,
+      "ordinary_eval_token_change": 364,
+      "marker_token_change": -46,
+      "single_token_marker_change": 10
+    },
+    {
+      "vocab_size": 16000,
+      "pretokenizer": "punctuation_split",
+      "ainglish_release_token_change": -93,
+      "careful_english_release_token_change": 83,
+      "ordinary_eval_token_change": -23,
+      "marker_token_change": -3,
+      "single_token_marker_change": 0
+    },
+    {
+      "vocab_size": 16000,
+      "pretokenizer": "whitespace_only",
+      "ainglish_release_token_change": -585,
+      "careful_english_release_token_change": 267,
+      "ordinary_eval_token_change": 237,
+      "marker_token_change": -49,
+      "single_token_marker_change": 16
+    }
+  ],
+  "model_calls": 0,
+  "governance_evidence": false,
+  "content_sha256": "a1725803b5af686cc46ef84ea1e6ce90a39d4cc3524c11c7da248518217ded15"
+}

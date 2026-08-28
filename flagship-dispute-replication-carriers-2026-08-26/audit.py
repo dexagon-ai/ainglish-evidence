@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 
 
 ROOT = Path(__file__).resolve().parent
@@ -36,16 +37,33 @@ def triples(value: object):
             yield from triples(child)
 
 
-def prior_triples() -> set[tuple[str, str, str]]:
+def git(*args: str) -> str:
+    return subprocess.run(
+        ["git", *args], cwd=REPO, check=True, capture_output=True, text=True
+    ).stdout
+
+
+def prior_triples() -> tuple[set[tuple[str, str, str]], str, int]:
+    """Read only the repository tree that preceded this carrier's first freeze."""
+    relative = str((ROOT / "items-preference.json").relative_to(REPO))
+    additions = [
+        line for line in git("log", "--diff-filter=A", "--format=%H", "--", relative).splitlines()
+        if line
+    ]
+    if len(additions) != 1:
+        raise RuntimeError("cannot identify unique carrier-addition commit")
+    prior_tree = git("rev-parse", additions[0] + "^").strip()
     found = set()
-    for path in REPO.rglob("*.json"):
-        if ROOT in path.parents:
+    scanned = 0
+    for path in git("ls-tree", "-r", "--name-only", prior_tree).splitlines():
+        if not path.endswith(".json"):
             continue
         try:
-            found.update(triples(json.loads(path.read_text(encoding="utf-8"))))
-        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+            found.update(triples(json.loads(git("show", f"{prior_tree}:{path}"))))
+            scanned += 1
+        except (UnicodeDecodeError, json.JSONDecodeError):
             continue
-    return found
+    return found, prior_tree, scanned
 
 
 def calibration_text(rows: list[dict]) -> str:
@@ -56,7 +74,7 @@ def main() -> None:
     snapshots = checked(ROOT / "proposal-snapshots.json")
     index = checked(ROOT / "index.json")
     assert index["proposal_snapshot_sha256"] == snapshots["content_sha256"]
-    old = prior_triples()
+    old, prior_tree, prior_files_scanned = prior_triples()
     seen = set()
     report = []
     for name, meta in index["campaigns"].items():
@@ -83,7 +101,12 @@ def main() -> None:
             assert sum(row["stratum"] != "core" for row in scientific) == 60
             assert all(row["scored_probe"] == "applicability" for row in scientific)
         report.append({"campaign": name, "scientific": len(scientific), "calibration": 8, "prior_exact_triple_overlap": 0, "replicates_hash": meta["replicates_hash"]})
-    print(json.dumps({"status": "ok", "campaigns": report, "model_calls": 0, "governance_writes": 0}, indent=2))
+    print(json.dumps({
+        "status": "ok", "campaigns": report,
+        "freshness_prior_tree": prior_tree,
+        "freshness_prior_json_files_scanned": prior_files_scanned,
+        "model_calls": 0, "governance_writes": 0,
+    }, indent=2))
 
 
 if __name__ == "__main__":

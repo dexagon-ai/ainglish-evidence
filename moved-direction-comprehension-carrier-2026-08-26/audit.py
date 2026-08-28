@@ -7,6 +7,7 @@ from datetime import date, datetime, timedelta, timezone
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 
 from build_items import BARE_FAMILY, COMPARATORS, DOMAINS, FORMS, REPO, ROOT, build, canonical
 
@@ -27,6 +28,35 @@ def rows_in(value: object):
     elif isinstance(value, list):
         for child in value:
             yield from rows_in(child)
+
+
+def git(*args: str) -> str:
+    return subprocess.run(
+        ["git", *args], cwd=REPO, check=True, capture_output=True, text=True
+    ).stdout
+
+
+def prior_repository_rows() -> tuple[set[tuple[str, str, str]], str, int]:
+    """Read the tree before this carrier was frozen, not its later descendants."""
+    relative = str((ROOT / "items-moved-later-vs-careful.json").relative_to(REPO))
+    additions = [
+        line for line in git("log", "--diff-filter=A", "--format=%H", "--", relative).splitlines()
+        if line
+    ]
+    if len(additions) != 1:
+        raise RuntimeError("cannot identify unique carrier-addition commit")
+    prior_tree = git("rev-parse", additions[0] + "^").strip()
+    rows = set()
+    scanned = 0
+    for path in git("ls-tree", "-r", "--name-only", prior_tree).splitlines():
+        if not path.endswith(".json"):
+            continue
+        try:
+            rows.update(rows_in(json.loads(git("show", f"{prior_tree}:{path}"))))
+            scanned += 1
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            continue
+    return rows, prior_tree, scanned
 
 
 def validate_semantics(row: dict, form: str, comparator: str) -> None:
@@ -110,17 +140,7 @@ def main() -> None:
                 raise SystemExit("REFUSING: paired question or options drift")
             if comparator == "bare" and left["english"] != right["english"]:
                 raise SystemExit("REFUSING: paired bare surfaces are not byte-identical")
-    prior_triples = set()
-    scanned_files = 0
-    for path in REPO.rglob("*.json"):
-        if ROOT in path.parents:
-            continue
-        try:
-            value = json.loads(path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, UnicodeDecodeError):
-            continue
-        scanned_files += 1
-        prior_triples.update(rows_in(value))
+    prior_triples, prior_tree, scanned_files = prior_repository_rows()
     current_triples = {
         (row["english"], row["ainglish"], row["question"])
         for rows in loaded.values()
@@ -137,6 +157,7 @@ def main() -> None:
         "scientific_rows": sum(len(payload["items"]) - 8 for payload in expected_campaigns.values()),
         "calibration_rows": 8 * len(expected_campaigns),
         "prior_json_files_scanned": scanned_files,
+        "freshness_prior_tree": prior_tree,
         "prior_exact_scientific_triple_overlap": len(overlap),
         "index_sha256": index["content_sha256"],
     }
