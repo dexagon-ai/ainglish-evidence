@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import importlib.util
+import hashlib
 import json
 from pathlib import Path
 import unittest
@@ -17,15 +18,24 @@ SPEC.loader.exec_module(ACTIVATE)
 
 
 def reader(name: str, lineage: str, digest_char: str = "a") -> dict:
+    model = f"model-{name}"
+    model_digest = digest_char * 64
+    receipt = {
+        "kind": "ainglish.panel.reader-qualification-receipt.v1",
+        "qualified": True,
+        "lineage": lineage,
+        "model": model,
+        "model_digest": "sha256:" + model_digest,
+        "holdout_sha256": "f" * 64,
+    }
+    receipt["content_sha256"] = hashlib.sha256(ACTIVATE.canonical(receipt)).hexdigest()
     return {
         "name": name,
-        "model": f"model-{name}",
+        "model": model,
+        "model_digest": "sha256:" + model_digest,
         "provider": "ollama",
         "lineage": lineage,
-        "qualification_receipt": {
-            "qualified": True,
-            "content_sha256": digest_char * 64,
-        },
+        "qualification_receipt": receipt,
     }
 
 
@@ -42,6 +52,28 @@ class ActivationTest(unittest.TestCase):
         with self.assertRaises(AssertionError):
             ACTIVATE.validate_panel([reader("a", "Lineage A"), unqualified])
 
+    def test_receipt_bytes_model_and_common_holdout_are_enforced(self) -> None:
+        bad_digest = reader("b", "Lineage B", "b")
+        bad_digest["qualification_receipt"]["lineage"] = "Other"
+        with self.assertRaises(AssertionError):
+            ACTIVATE.validate_panel([reader("a", "Lineage A", "a"), bad_digest])
+        different_holdout = reader("b", "Lineage B", "b")
+        receipt = different_holdout["qualification_receipt"]
+        receipt["holdout_sha256"] = "e" * 64
+        unsigned = dict(receipt)
+        unsigned.pop("content_sha256")
+        receipt["content_sha256"] = hashlib.sha256(ACTIVATE.canonical(unsigned)).hexdigest()
+        with self.assertRaisesRegex(AssertionError, "same frozen holdout"):
+            ACTIVATE.validate_panel([reader("a", "Lineage A", "a"), different_holdout])
+
+    def test_replication_lineage_exclusions_are_enforced(self) -> None:
+        constraints = {"forbidden_lineage_fragments": ["qwen", "gemma", "ornith"]}
+        with self.assertRaisesRegex(AssertionError, "forbidden original lineage"):
+            ACTIVATE.validate_panel(
+                [reader("a", "Qwen 3.6", "a"), reader("b", "Seed OSS", "b")],
+                constraints,
+            )
+
     def test_attempt_block_prices_the_complete_planned_spend(self) -> None:
         panel = ACTIVATE.validate_panel(self.panel)
         attempt = ACTIVATE.attempt_block(self.template, panel, self.template["seed"])
@@ -50,6 +82,8 @@ class ActivationTest(unittest.TestCase):
         self.assertEqual(960, sample["real_reader_cells"])
         self.assertEqual(48, sample["calibration_reader_cells"])
         self.assertEqual(2, sample["panel_neff"])
+        self.assertEqual("f" * 64, sample["qualification_holdout_sha256"])
+        self.assertEqual(2, len(sample["qualification_receipt_sha256s"]))
         self.assertEqual(self.template["proposal_revision"], attempt["proposal_revision"])
         self.assertTrue(any("filed once" in gate for gate in attempt["admissibility_gates"]))
 

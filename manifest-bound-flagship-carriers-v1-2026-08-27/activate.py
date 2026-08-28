@@ -33,17 +33,40 @@ def complete(template: dict, panel: list[dict], seed: int) -> bool:
     return all(value[arm] > 0 for value in counts.values() for arm in ("english", "ainglish"))
 
 
-def validate_panel(panel: object) -> list[dict]:
+def normal_digest(value: object) -> str:
+    assert isinstance(value, str)
+    digest = value.removeprefix("sha256:").lower()
+    assert len(digest) == 64 and set(digest) <= HEX
+    return digest
+
+
+def validate_panel(panel: object, constraints: dict | None = None) -> list[dict]:
     assert isinstance(panel, list) and len(panel) >= 2
-    required = {"name", "model", "provider", "lineage", "qualification_receipt"}
+    required = {"name", "model", "model_digest", "provider", "lineage", "qualification_receipt"}
     assert all(isinstance(row, dict) and required <= set(row) for row in panel)
     assert len({row["name"] for row in panel}) == len(panel)
     assert len({row["lineage"] for row in panel}) >= 2, "at least two independently qualified lineages required"
+    holdouts = set()
     for row in panel:
         receipt = row["qualification_receipt"]
         assert isinstance(receipt, dict) and receipt.get("qualified") is True
-        digest = receipt.get("content_sha256")
-        assert isinstance(digest, str) and len(digest) == 64 and set(digest) <= HEX
+        assert receipt.get("lineage") == row["lineage"]
+        assert receipt.get("model") == row["model"]
+        assert normal_digest(receipt.get("model_digest")) == normal_digest(row["model_digest"])
+        holdout = normal_digest(receipt.get("holdout_sha256"))
+        holdouts.add(holdout)
+        sealed = dict(receipt)
+        expected = normal_digest(sealed.pop("content_sha256", None))
+        assert hashlib.sha256(canonical(sealed)).hexdigest() == expected
+    assert len(holdouts) == 1, "all readers must qualify on the same frozen holdout"
+    constraints = constraints or {}
+    forbidden = tuple(str(value).casefold() for value in constraints.get("forbidden_lineage_fragments", []))
+    if forbidden:
+        offenders = [
+            row["lineage"] for row in panel
+            if any(fragment in row["lineage"].casefold() for fragment in forbidden)
+        ]
+        assert not offenders, f"replication panel overlaps forbidden original lineage families: {offenders}"
     return panel
 
 
@@ -51,28 +74,41 @@ def attempt_block(template: dict, panel: list[dict], seed: int) -> dict:
     scientific = [row for row in template["items"] if not row.get("calibration")]
     calibration = [row for row in template["items"] if row.get("calibration")]
     strata = [row["id"] for row in template["settlement_strata"]]
+    target = template.get("replicates_hash")
+    role = "Fresh-input replication" if target else "Original"
+    receipt_hashes = [row["qualification_receipt"]["content_sha256"] for row in panel]
+    holdout = panel[0]["qualification_receipt"]["holdout_sha256"]
+    gates = [
+        f"the proposal is freshly read immediately before mint and still accepts {'replication of ' + target if target else 'an original comprehension row'} at revision {template['proposal_revision']}",
+        f"the unactivated template verifies at content_sha256 {template['content_sha256']}",
+        f"the public item artifact resolves to items_sha256 {template['items_artifact']['items_sha256']}",
+        f"all {len(strata)} settlement strata have planned exposure in both arms at deterministic assignment seed {seed}",
+        f"every panel member carries a byte-verified qualified=true receipt on common holdout {holdout} and at least two distinct base-model lineages are present",
+        "every configured reader model and live model digest matches its qualification receipt before mint",
+        "construct-free calibration runs first in both arms for every reader and must show a planted-arm gap of at least 0.5",
+        "zero reader transport faults and zero response-bound truncations are required for the clean committed manifest",
+        "supportive, null, adverse, ceiling-bound, and floor-bound finite outcomes are filed once without outcome retry",
+        "these answer-bearing inputs and this attempt are never reused as a fresh independent confirmation",
+    ]
+    independence = template.get("reader_independence") or {}
+    forbidden = independence.get("forbidden_lineage_fragments") or []
+    if forbidden:
+        gates.insert(
+            6,
+            "the replication panel contains no lineage whose declared family includes any of: "
+            + ", ".join(forbidden),
+        )
     return {
         "proposal_revision": template["proposal_revision"],
         "estimand": (
-            f"Original comprehension_accuracy_delta for {template['construct']} versus "
+            f"{role} comprehension_accuracy_delta for {template['construct']} versus "
             f"{template['comparator']['description']} Every declared settlement stratum is "
             f"load-bearing under the frozen equal-weight contract: {template['settlement_design']}. "
             "Report absolute arms, interval, resolution, per-reader values, every stratum, "
             "calibration, yield, transport, and resample-down receipts; no favourable stratum "
             "may rescue a failed one."
         ),
-        "admissibility_gates": [
-            f"the proposal is freshly read immediately before mint and still accepts an original comprehension row at revision {template['proposal_revision']}",
-            f"the unactivated template verifies at content_sha256 {template['content_sha256']}",
-            f"the public item artifact resolves to items_sha256 {template['items_artifact']['items_sha256']}",
-            f"all {len(strata)} settlement strata have planned exposure in both arms at deterministic assignment seed {seed}",
-            "every panel member carries a digest-bound qualified=true ordinary-English holdout receipt and at least two distinct base-model lineages are present",
-            "every configured reader model and transport matches its qualification receipt before mint",
-            "construct-free calibration runs first in both arms for every reader and must show a planted-arm gap of at least 0.5",
-            "zero reader transport faults and zero response-bound truncations are required for the clean committed manifest",
-            "supportive, null, adverse, ceiling-bound, and floor-bound finite outcomes are filed once without outcome retry",
-            "a different principal with wholly fresh answer-bearing inputs is required for any later confirmation",
-        ],
+        "admissibility_gates": gates,
         "planned_sample": {
             "scientific_items": len(scientific),
             "calibration_items": len(calibration),
@@ -80,6 +116,9 @@ def attempt_block(template: dict, panel: list[dict], seed: int) -> dict:
             "readers": len(panel),
             "reader_lineages": sorted({row["lineage"] for row in panel}),
             "panel_neff": len({row["lineage"] for row in panel}),
+            "qualification_holdout_sha256": holdout,
+            "qualification_receipt_sha256s": receipt_hashes,
+            "replicates_hash": target,
             "real_reader_cells": len(scientific) * len(panel),
             "calibration_reader_cells": len(calibration) * len(panel) * 2,
             "assignment_seed": seed,
@@ -95,7 +134,10 @@ def main() -> None:
     parser.add_argument("output", type=Path)
     args = parser.parse_args()
     template = json.loads(args.template.read_text(encoding="utf-8"))
-    panel = validate_panel(json.loads(args.panel.read_text(encoding="utf-8")))
+    panel = validate_panel(
+        json.loads(args.panel.read_text(encoding="utf-8")),
+        template.get("reader_independence"),
+    )
     unsigned = dict(template)
     expected = unsigned.pop("content_sha256")
     assert hashlib.sha256(canonical(unsigned)).hexdigest() == expected

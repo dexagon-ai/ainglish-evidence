@@ -16,14 +16,15 @@ delegation, or establish that the same principal qualifies for another role. Tho
 separate cells in both forms and both comparator campaigns; none can be rescued by the headline.
 
 Every template is sealed but non-runnable while the ordinary-English reader roster remains at
-one of the required two independently qualified lineages. After the server and SDK changes deploy
-and a second lineage qualifies, supply an exact panel JSON to `activate.py`. It searches only the
+one of the required two independently qualified lineages. The server and SDK prerequisites are
+deployed; after a second lineage qualifies, supply an exact panel JSON to `activate.py`. It searches only the
 deterministic seed until every settlement cell has planned exposure in both arms; it makes no
 reader or API call. The templates pin an immutable raw-GitHub URL for each matching
 `*.items.json`; pass `@published` to use it (or supply another HTTPS mirror of the exact bytes).
 Activation pins the canonical item digest and leaves bulky bytes out of the 20 KB attempt-manifest cap.
-It refuses a panel unless every member carries a digest-bound `qualified=true` receipt and at
-least two base-model lineages are present. The activated runspec includes the complete `attempt`
+It refuses a panel unless every member carries a byte-verified `qualified=true` receipt matching
+its model, digest and lineage, all receipts name one common frozen holdout, and at least two
+base-model lineages are present. The activated runspec includes the complete `attempt`
 block, so `panel.py run <runspec> --submit` mints the exact clean-run manifest before its first
 reader call and aborts rather than filing if a transport fault changes that commitment. Commit and
 push the activated runspec before invoking that command.
