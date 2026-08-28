@@ -1,0 +1,433 @@
+{
+  "schema": "https://ainglish.org/schemas/agent-task-benchmark-v0.1",
+  "benchmark": "ainglish-agent-task-v0.1",
+  "source_release": {
+    "version": "0.35.0",
+    "register_digest": "ee8978f9ab5adb252aa244dc1a0dbb5abaa81f499758ec18c95caf5dcfa863b8",
+    "url": "https://ainglish.org/releases/ainglish-core-v0.35.0/register.json"
+  },
+  "arms": ["bare", "careful", "ainglish"],
+  "tracks": ["cold", "one_exposure"],
+  "items": [
+    {
+      "id": "clusivity-include-01",
+      "construct": "we-including-you / we-excluding-you",
+      "source_slug": "we-including-you-we-excluding-you-clusivity-mark-whether-we--4",
+      "pole": "we-including-you",
+      "context": "You are the receiving release-review agent. The sender and two other agents are already assigned to the release. Choose what you should do next.",
+      "source_intent": "The receiving agent is included in the group expected to review the draft.",
+      "actions": [
+        {"id": "review-draft", "description": "Open and review the release draft."},
+        {"id": "wait-for-result", "description": "Do not join the review; wait to be informed."}
+      ],
+      "valid_action_sets": [["review-draft"]],
+      "arms": {
+        "bare": {"message": "We will review the release draft before publication."},
+        "careful": {"message": "We, including you as the receiving agent, will review the release draft before publication."},
+        "ainglish": {"message": "we-including-you will review the release draft before publication.", "reference": "we-including-you means that the addressee is included in the group denoted by we and is expected to participate."}
+      },
+      "clarification": "The receiving agent is included. You should join the release-draft review."
+    },
+    {
+      "id": "clusivity-exclude-01",
+      "construct": "we-including-you / we-excluding-you",
+      "source_slug": "we-including-you-we-excluding-you-clusivity-mark-whether-we--4",
+      "pole": "we-excluding-you",
+      "context": "You are the receiving release-review agent. The sender and two other agents are already assigned to the release. Choose what you should do next.",
+      "source_intent": "The receiving agent is not included in the reviewing group and should not duplicate the work.",
+      "actions": [
+        {"id": "review-draft", "description": "Open and review the release draft."},
+        {"id": "wait-for-result", "description": "Do not join the review; wait to be informed."}
+      ],
+      "valid_action_sets": [["wait-for-result"]],
+      "arms": {
+        "bare": {"message": "We will review the release draft before publication."},
+        "careful": {"message": "We, not including you as the receiving agent, will review the release draft before publication."},
+        "ainglish": {"message": "we-excluding-you will review the release draft before publication.", "reference": "we-excluding-you means that the addressee is excluded from the group denoted by we and is being informed rather than tasked."}
+      },
+      "clarification": "The receiving agent is excluded. Do not duplicate the review; wait for its result."
+    },
+    {
+      "id": "disjunction-inclusive-01",
+      "construct": "or-both / not-both",
+      "source_slug": "or-both-not-both-english-or-never-says-whether-both-is-allow",
+      "pole": "or-both",
+      "context": "You are configuring redundant artifact storage. Both named destinations are healthy and the instruction should be executed exactly.",
+      "source_intent": "At least one destination must be used and using both is permitted; the standing redundancy policy says use every permitted healthy destination.",
+      "actions": [
+        {"id": "mirror-eu", "description": "Mirror the artifact to the EU store."},
+        {"id": "mirror-us", "description": "Mirror the artifact to the US store."}
+      ],
+      "valid_action_sets": [["mirror-eu", "mirror-us"]],
+      "arms": {
+        "bare": {"message": "Mirror the artifact to the EU store or the US store."},
+        "careful": {"message": "Mirror the artifact to at least one of the EU and US stores; using both stores is permitted."},
+        "ainglish": {"message": "Mirror the artifact to the EU store or the US store, or-both.", "reference": "or-both marks an inclusive two-option disjunction: at least one option is required and choosing both is permitted."}
+      },
+      "clarification": "Both destinations are permitted and healthy. Under the standing redundancy policy, mirror to both."
+    },
+    {
+      "id": "disjunction-exclusive-01",
+      "construct": "or-both / not-both",
+      "source_slug": "or-both-not-both-english-or-never-says-whether-both-is-allow",
+      "pole": "not-both",
+      "context": "You are selecting one active deployment slot. Either healthy slot is acceptable, but activating both would split traffic incorrectly.",
+      "source_intent": "Exactly one of the two deployment slots may be activated.",
+      "actions": [
+        {"id": "activate-blue", "description": "Activate the blue slot."},
+        {"id": "activate-green", "description": "Activate the green slot."}
+      ],
+      "valid_action_sets": [["activate-blue"], ["activate-green"]],
+      "arms": {
+        "bare": {"message": "Activate the blue slot or the green slot."},
+        "careful": {"message": "Activate exactly one of the blue and green slots; do not activate both."},
+        "ainglish": {"message": "Activate the blue slot or the green slot, not-both.", "reference": "not-both marks an exclusive two-option disjunction: at least one option is required and choosing both is forbidden."}
+      },
+      "clarification": "Activate exactly one slot. Either blue alone or green alone is compliant; both is not."
+    },
+    {
+      "id": "uncertainty-existing-answer-01",
+      "construct": "fact-not-known / choice-not-made",
+      "source_slug": "fact-not-known-choice-not-made-distinguish-missing-evidence-",
+      "pole": "fact-not-known",
+      "context": "You route unresolved deployment-region issues. The board record can be retrieved; only the board can make a new region choice.",
+      "source_intent": "The board has already selected a region, but the sender does not know which region it selected.",
+      "actions": [
+        {"id": "retrieve-board-record", "description": "Retrieve the existing board decision."},
+        {"id": "request-board-decision", "description": "Ask the board to make a new decision."}
+      ],
+      "valid_action_sets": [["retrieve-board-record"]],
+      "arms": {
+        "bare": {"message": "The deployment region is undecided."},
+        "careful": {"message": "The board has already selected the deployment region, but I do not know which region it selected; retrieve the existing answer."},
+        "ainglish": {"message": "fact-not-known — which deployment region the board selected.", "reference": "fact-not-known means an operative answer already exists but the speaker lacks it; evidence or retrieval, not a new choice, resolves the issue."}
+      },
+      "clarification": "The board already made the decision. Retrieve its existing record rather than asking it to decide again."
+    },
+    {
+      "id": "uncertainty-missing-choice-01",
+      "construct": "fact-not-known / choice-not-made",
+      "source_slug": "fact-not-known-choice-not-made-distinguish-missing-evidence-",
+      "pole": "choice-not-made",
+      "context": "You route unresolved deployment-region issues. The board record can be retrieved; only the board can make a new region choice.",
+      "source_intent": "The board has not yet selected a deployment region, so no operative answer exists to retrieve.",
+      "actions": [
+        {"id": "retrieve-board-record", "description": "Retrieve the existing board decision."},
+        {"id": "request-board-decision", "description": "Ask the board to make a new decision."}
+      ],
+      "valid_action_sets": [["request-board-decision"]],
+      "arms": {
+        "bare": {"message": "The deployment region is undecided."},
+        "careful": {"message": "The board has not yet selected a deployment region; ask the authorised board to make that choice."},
+        "ainglish": {"message": "choice-not-made — which deployment region the board will select.", "reference": "choice-not-made means no operative selection has yet been made by the relevant authority; an authorised choice, not retrieval, resolves the issue."}
+      },
+      "clarification": "No board decision exists yet. Ask the authorised board to select the region."
+    },
+    {
+      "id": "deadline-start-01",
+      "construct": "start-by / complete-by",
+      "source_slug": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+      "pole": "start-by",
+      "context": "You schedule a migration that takes about four hours. The task window is otherwise unconstrained.",
+      "source_intent": "Genuine migration execution must begin by 17:00 UTC; completion may be later.",
+      "actions": [
+        {"id": "schedule-start-1700", "description": "Schedule genuine execution to begin no later than 17:00 UTC."},
+        {"id": "schedule-complete-1700", "description": "Schedule successful completion no later than 17:00 UTC."}
+      ],
+      "valid_action_sets": [["schedule-start-1700"]],
+      "arms": {
+        "bare": {"message": "Migrate the index by 17:00 UTC."},
+        "careful": {"message": "Begin genuine execution of the index migration no later than 17:00 UTC; it need not be complete by then."},
+        "ainglish": {"message": "Migrate the index start-by(17:00Z).", "reference": "start-by(t) requires genuine execution of the action to begin at or before t; it does not impose a completion deadline."}
+      },
+      "clarification": "The deadline constrains the start event. Begin execution by 17:00 UTC; completion may occur later."
+    },
+    {
+      "id": "deadline-complete-01",
+      "construct": "start-by / complete-by",
+      "source_slug": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+      "pole": "complete-by",
+      "context": "You schedule a migration that takes about four hours. The task window is otherwise unconstrained.",
+      "source_intent": "The migration's successful completion condition must be satisfied by 17:00 UTC.",
+      "actions": [
+        {"id": "schedule-start-1700", "description": "Schedule genuine execution to begin no later than 17:00 UTC."},
+        {"id": "schedule-complete-1700", "description": "Schedule successful completion no later than 17:00 UTC."}
+      ],
+      "valid_action_sets": [["schedule-complete-1700"]],
+      "arms": {
+        "bare": {"message": "Migrate the index by 17:00 UTC."},
+        "careful": {"message": "Satisfy the successful-completion condition of the index migration no later than 17:00 UTC."},
+        "ainglish": {"message": "Migrate the index complete-by(17:00Z).", "reference": "complete-by(t) requires the action's successful-completion condition to be satisfied at or before t; merely starting, stopping or failing does not count."}
+      },
+      "clarification": "The deadline constrains successful completion. Finish the migration successfully by 17:00 UTC."
+    },
+    {
+      "id": "delegation-forbidden-01",
+      "construct": "no-delegation / one-hop-delegation-allowed",
+      "source_slug": "no-delegation-one-hop-delegation-allowed-state-whether-a-tas",
+      "pole": "no-delegation",
+      "context": "You are responsible for an audit. Your local capacity is unavailable today; a qualified direct delegate is available. Choose a compliant plan, not a merely convenient one.",
+      "source_intent": "No completion-bearing part may be assigned to another principal.",
+      "actions": [
+        {"id": "delegate-direct", "description": "Assign the audit to the available direct delegate."},
+        {"id": "report-capacity-block", "description": "Report that the task cannot proceed under the current capacity and delegation constraint."}
+      ],
+      "valid_action_sets": [["report-capacity-block"]],
+      "arms": {
+        "bare": {"message": "Complete the audit. Do not pass it on."},
+        "careful": {"message": "Complete the audit yourself; you must not assign any completion-bearing part to another principal."},
+        "ainglish": {"message": "Complete the audit, no-delegation.", "reference": "no-delegation means the responsible principal must not assign any completion-bearing part of the action to another principal."}
+      },
+      "clarification": "Delegation is forbidden. Because your capacity is unavailable, report the block rather than assigning the audit elsewhere."
+    },
+    {
+      "id": "delegation-one-hop-01",
+      "construct": "no-delegation / one-hop-delegation-allowed",
+      "source_slug": "no-delegation-one-hop-delegation-allowed-state-whether-a-tas",
+      "pole": "one-hop-delegation-allowed",
+      "context": "You are responsible for an audit. Your local capacity is unavailable today; a qualified direct delegate is available and has confirmed it will not delegate further. Choose a compliant plan.",
+      "source_intent": "A direct delegate may perform the work, but that delegate may not delegate it further.",
+      "actions": [
+        {"id": "delegate-direct", "description": "Assign the audit to the available direct delegate."},
+        {"id": "report-capacity-block", "description": "Report that the task cannot proceed under the current capacity and delegation constraint."}
+      ],
+      "valid_action_sets": [["delegate-direct"]],
+      "arms": {
+        "bare": {"message": "Complete the audit. You may pass it on once."},
+        "careful": {"message": "You may assign the audit to one direct delegate, but that delegate must not assign it to anyone else; you remain accountable."},
+        "ainglish": {"message": "Complete the audit, one-hop-delegation-allowed.", "reference": "one-hop-delegation-allowed permits one or more direct delegates, forbids those delegates from delegating further, and leaves the original principal accountable."}
+      },
+      "clarification": "One direct delegation hop is permitted, and the available delegate will not delegate further. Assign it directly."
+    },
+    {
+      "id": "plural-distributive-01",
+      "construct": "each-alone / as-one",
+      "source_slug": "each-alone-as-one-distributive-vs-collective-does-the-plural",
+      "pole": "each-alone",
+      "context": "Three named verifier agents are available. You must create the verification jobs implied by the message.",
+      "source_intent": "Each verifier must perform a separate verification, producing three independent jobs.",
+      "actions": [
+        {"id": "create-three-independent-jobs", "description": "Create one separate verification job per verifier."},
+        {"id": "create-one-joint-job", "description": "Create one shared verification job for the group."}
+      ],
+      "valid_action_sets": [["create-three-independent-jobs"]],
+      "arms": {
+        "bare": {"message": "The three verifiers will check the checkpoint."},
+        "careful": {"message": "Each of the three verifiers will check the checkpoint separately, producing three independent verification acts."},
+        "ainglish": {"message": "The three verifiers will check the checkpoint, each-alone.", "reference": "each-alone marks a distributive predicate: it holds separately of every group member, producing one instance per member."}
+      },
+      "clarification": "Create three separate verification jobs, one for each verifier."
+    },
+    {
+      "id": "plural-collective-01",
+      "construct": "each-alone / as-one",
+      "source_slug": "each-alone-as-one-distributive-vs-collective-does-the-plural",
+      "pole": "as-one",
+      "context": "Three named verifier agents are available. You must create the verification jobs implied by the message.",
+      "source_intent": "The verifier group must perform one joint verification, producing one job and one outcome.",
+      "actions": [
+        {"id": "create-three-independent-jobs", "description": "Create one separate verification job per verifier."},
+        {"id": "create-one-joint-job", "description": "Create one shared verification job for the group."}
+      ],
+      "valid_action_sets": [["create-one-joint-job"]],
+      "arms": {
+        "bare": {"message": "The three verifiers will check the checkpoint."},
+        "careful": {"message": "The three verifiers will act together as one group to perform a single joint checkpoint verification."},
+        "ainglish": {"message": "The three verifiers will check the checkpoint, as-one.", "reference": "as-one marks a collective predicate: it holds of the group as a single unit, producing one joint instance."}
+      },
+      "clarification": "Create one joint verification job for the three-verifier group."
+    },
+    {
+      "id": "completion-stopped-01",
+      "construct": "stopped / done-under / complete-for",
+      "source_slug": "stopped-done-under-c-complete-for-r-say-which-claim-your-don",
+      "pole": "stopped",
+      "context": "You are the downstream release agent. Publishing without a handoff-ready artifact is unsafe.",
+      "source_intent": "Work ceased, but no correctness, completeness or handoff claim is made.",
+      "actions": [
+        {"id": "publish-artifact", "description": "Publish the artifact without another readiness check."},
+        {"id": "inspect-before-use", "description": "Inspect and establish readiness before any downstream use."}
+      ],
+      "valid_action_sets": [["inspect-before-use"]],
+      "arms": {
+        "bare": {"message": "The artifact is done."},
+        "careful": {"message": "I stopped working on the artifact; I make no claim that it works, is complete or is ready for you to publish."},
+        "ainglish": {"message": "stopped: the artifact.", "reference": "stopped reports that work ceased and explicitly makes no claim about correctness, completeness or readiness for downstream action."}
+      },
+      "clarification": "No readiness claim was made. Inspect and establish readiness before using the artifact."
+    },
+    {
+      "id": "completion-handoff-01",
+      "construct": "stopped / done-under / complete-for",
+      "source_slug": "stopped-done-under-c-complete-for-r-say-which-claim-your-don",
+      "pole": "complete-for",
+      "context": "You are the named downstream release agent. The sender is authorised to hand off this artifact for publication.",
+      "source_intent": "The artifact is complete for the receiving release agent to act on without another readiness qualification.",
+      "actions": [
+        {"id": "publish-artifact", "description": "Publish the artifact under the ordinary release procedure."},
+        {"id": "inspect-before-use", "description": "Treat readiness as unclaimed and start a new readiness investigation."}
+      ],
+      "valid_action_sets": [["publish-artifact"]],
+      "arms": {
+        "bare": {"message": "The artifact is done."},
+        "careful": {"message": "The artifact is complete for you, the receiving release agent, to act on; you may publish it under the ordinary procedure."},
+        "ainglish": {"message": "complete-for(receiving-release-agent): the artifact.", "reference": "complete-for(R) asserts a handoff-ready state for the named consumer R and licenses that consumer's ordinary downstream action."}
+      },
+      "clarification": "This is a handoff-ready claim addressed to you as the receiving release agent. Proceed under the ordinary publication procedure."
+    },
+    {
+      "id": "negative-answer-true-01",
+      "construct": "true-as-worded / false-as-worded",
+      "source_slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+      "pole": "true-as-worded",
+      "context": "The immediately preceding question was: “Didn't the backup finish?” If the backup did not finish, rerun it; if it finished, close the incident.",
+      "source_intent": "The proposition as worded—The backup did not finish—is true.",
+      "actions": [
+        {"id": "rerun-backup", "description": "Rerun the unfinished backup."},
+        {"id": "close-incident", "description": "Record that the backup finished and close the incident."}
+      ],
+      "valid_action_sets": [["rerun-backup"]],
+      "arms": {
+        "bare": {"message": "Yes."},
+        "careful": {"message": "The proposition as worded—The backup did not finish—is true."},
+        "ainglish": {"message": "true-as-worded", "reference": "true-as-worded asserts the single proposition expressed by the salient polar question after preserving every written negation."}
+      },
+      "clarification": "The backup did not finish. Rerun it."
+    },
+    {
+      "id": "negative-answer-false-01",
+      "construct": "true-as-worded / false-as-worded",
+      "source_slug": "true-as-worded-false-as-worded-unambiguous-answers-to-negati",
+      "pole": "false-as-worded",
+      "context": "The immediately preceding question was: “Didn't the backup finish?” If the backup did not finish, rerun it; if it finished, close the incident.",
+      "source_intent": "The proposition as worded—The backup did not finish—is false, so the backup finished.",
+      "actions": [
+        {"id": "rerun-backup", "description": "Rerun the unfinished backup."},
+        {"id": "close-incident", "description": "Record that the backup finished and close the incident."}
+      ],
+      "valid_action_sets": [["close-incident"]],
+      "arms": {
+        "bare": {"message": "No."},
+        "careful": {"message": "The proposition as worded—The backup did not finish—is false; the backup finished."},
+        "ainglish": {"message": "false-as-worded", "reference": "false-as-worded asserts that the single proposition expressed by the salient polar question, including its written negation, is false."}
+      },
+      "clarification": "The backup finished. Close the incident."
+    },
+    {
+      "id": "omitted-actor-unknown-01",
+      "construct": "by-unknown / by-withheld",
+      "source_slug": "by-unknown-by-withheld-typed-doer-omission-why-mistakes-were-3",
+      "pole": "by-unknown",
+      "context": "You are triaging an incident report. The report author is available, and an independent access-log investigation can identify actors.",
+      "source_intent": "The author cannot name the actor, so asking the author for the name cannot resolve the gap.",
+      "actions": [
+        {"id": "ask-author-to-disclose", "description": "Ask the report author to disclose the actor they know."},
+        {"id": "investigate-access-logs", "description": "Investigate external evidence to identify the actor."}
+      ],
+      "valid_action_sets": [["investigate-access-logs"]],
+      "arms": {
+        "bare": {"message": "The production key was rotated, but the report does not name who did it."},
+        "careful": {"message": "The production key was rotated by a party unknown to me, the author; asking me cannot produce the name."},
+        "ainglish": {"message": "The production key was rotated by-unknown.", "reference": "by-unknown means the doer is omitted because the author cannot name them; asking the author cannot produce the identity."}
+      },
+      "clarification": "The author does not know the actor. Investigate the access logs rather than asking the author to disclose a name."
+    },
+    {
+      "id": "omitted-actor-withheld-01",
+      "construct": "by-unknown / by-withheld",
+      "source_slug": "by-unknown-by-withheld-typed-doer-omission-why-mistakes-were-3",
+      "pole": "by-withheld",
+      "context": "You are triaging an incident report. The report author is available, and an independent access-log investigation can identify actors.",
+      "source_intent": "The author knows the actor but deliberately omitted the name, so asking for disclosure can resolve the gap.",
+      "actions": [
+        {"id": "ask-author-to-disclose", "description": "Ask the report author to disclose the actor they know."},
+        {"id": "investigate-access-logs", "description": "Investigate external evidence to identify the actor."}
+      ],
+      "valid_action_sets": [["ask-author-to-disclose"]],
+      "arms": {
+        "bare": {"message": "The production key was rotated, but the report does not name who did it."},
+        "careful": {"message": "The production key was rotated by a party I know but am choosing not to name; asking me could produce the name."},
+        "ainglish": {"message": "The production key was rotated by-withheld.", "reference": "by-withheld means the author knows the doer and deliberately omitted the name; asking the author could produce it."}
+      },
+      "clarification": "The author knows the actor and withheld the name. Ask the author to disclose it."
+    },
+    {
+      "id": "preservation-text-01",
+      "construct": "text-fixed / meaning-fixed",
+      "source_slug": "text-fixed-ref-meaning-fixed-ref-declare-which-invariants-a-",
+      "pole": "text-fixed",
+      "context": "You must transfer referenced notice sha256:abc123 into a channel that supports exact Unicode text. Choose the compliant transformation plan.",
+      "source_intent": "Every decoded Unicode code point of the referenced span must remain exact.",
+      "actions": [
+        {"id": "copy-codepoint-exact", "description": "Copy the referenced logical text code-point-for-code-point."},
+        {"id": "paraphrase-completely", "description": "Reword every proposition while preserving its complete meaning."},
+        {"id": "summarise", "description": "Send a shorter lossy summary."}
+      ],
+      "valid_action_sets": [["copy-codepoint-exact"]],
+      "arms": {
+        "bare": {"message": "Transfer notice sha256:abc123 faithfully."},
+        "careful": {"message": "Transfer notice sha256:abc123 by reproducing its decoded Unicode text exactly, preserving every code point, space, line break and punctuation mark."},
+        "ainglish": {"message": "Transfer the notice, text-fixed(sha256:abc123).", "reference": "text-fixed(ref) requires the referenced logical text to be reproduced code-point-for-code-point, including case, punctuation, whitespace and normalization form."}
+      },
+      "clarification": "The surface text is load-bearing. Copy the referenced logical text code-point-for-code-point."
+    },
+    {
+      "id": "preservation-meaning-01",
+      "construct": "text-fixed / meaning-fixed",
+      "source_slug": "text-fixed-ref-meaning-fixed-ref-declare-which-invariants-a-",
+      "pole": "meaning-fixed",
+      "context": "You must transfer referenced notice sha256:def456 into a channel that cannot carry the source formatting but can carry a complete rewording. Choose the compliant plan.",
+      "source_intent": "Surface wording may change, but complete meaning, scope, force, attribution and opaque literals must remain.",
+      "actions": [
+        {"id": "report-format-block", "description": "Report that exact copying is unavailable and stop."},
+        {"id": "paraphrase-completely", "description": "Reword every proposition while preserving its complete meaning and opaque literals."},
+        {"id": "summarise", "description": "Send a shorter lossy summary."}
+      ],
+      "valid_action_sets": [["paraphrase-completely"]],
+      "arms": {
+        "bare": {"message": "Transfer notice sha256:def456 faithfully."},
+        "careful": {"message": "Reword notice sha256:def456 as needed, but preserve its complete truth conditions, force, scope, attribution, references and every opaque literal; do not summarise it."},
+        "ainglish": {"message": "Transfer the notice, meaning-fixed(sha256:def456).", "reference": "meaning-fixed(ref) permits rewording but requires complete preservation of truth conditions, force, scope, attribution, references and opaque literals."}
+      },
+      "clarification": "Exact formatting is not required. Produce a complete meaning-preserving paraphrase and preserve every opaque literal."
+    },
+    {
+      "id": "address-one-01",
+      "construct": "you-one / you-all",
+      "source_slug": "you-one-you-all-say-whether-you-addresses-one-recipient-or-t",
+      "pole": "you-one",
+      "context": "You route acknowledgements in a group channel containing Alex, Bo and Cy. Alex is the uniquely named receiving agent for this clause.",
+      "source_intent": "Exactly Alex, not every member of the addressed group, must acknowledge.",
+      "actions": [
+        {"id": "collect-alex", "description": "Collect one acknowledgement from Alex."},
+        {"id": "collect-whole-group", "description": "Collect acknowledgements from Alex, Bo and Cy."}
+      ],
+      "valid_action_sets": [["collect-alex"]],
+      "arms": {
+        "bare": {"message": "Alex: you must acknowledge the receipt."},
+        "careful": {"message": "Alex alone is the one addressee required to acknowledge the receipt; the other group members are not addressed by this clause."},
+        "ainglish": {"message": "Alex: you-one must acknowledge the receipt.", "reference": "you-one denotes exactly one addressee who is uniquely recoverable from the communication context."}
+      },
+      "clarification": "Only Alex is addressed by this clause. Collect Alex's acknowledgement."
+    },
+    {
+      "id": "address-all-01",
+      "construct": "you-one / you-all",
+      "source_slug": "you-one-you-all-say-whether-you-addresses-one-recipient-or-t",
+      "pole": "you-all",
+      "context": "You route acknowledgements in a group channel whose established addressed group is Alex, Bo and Cy.",
+      "source_intent": "Every member of the three-person addressed group must acknowledge.",
+      "actions": [
+        {"id": "collect-alex", "description": "Collect one acknowledgement from Alex."},
+        {"id": "collect-whole-group", "description": "Collect acknowledgements from Alex, Bo and Cy."}
+      ],
+      "valid_action_sets": [["collect-whole-group"]],
+      "arms": {
+        "bare": {"message": "You must acknowledge the receipt."},
+        "careful": {"message": "Every member of the addressed group—Alex, Bo and Cy—must acknowledge the receipt."},
+        "ainglish": {"message": "you-all must acknowledge the receipt.", "reference": "you-all denotes every member of an explicitly established addressed group containing at least two members."}
+      },
+      "clarification": "All three established addressees—Alex, Bo and Cy—must acknowledge."
+    }
+  ]
+}

@@ -2,6 +2,18 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
+## End-to-end research programme
+
+- Frozen three-arm agent-task benchmark:
+  [`end-to-end-agent-task-benchmark-v0.1-2026-08-28/`](end-to-end-agent-task-benchmark-v0.1-2026-08-28/)
+
+The v0.1 benchmark asks whether wording changes an agent's operational decision, not merely whether
+it can answer a sentence-comprehension question. Its 22 tasks compare ambiguous bare English,
+meaning-matched careful English and Ainglish across cold and one-exposure tracks. It scores exact
+task action, clarification, one-turn repair, wrong action, token coverage and latency. The packet
+contains no model result and makes no validation claim; its manifest, scorer and claim contract are
+published so an adverse external run can be retained rather than explained away.
+
 ## Current flagship campaign
 
 - Complete proposal slug-quality ledger and conservative cleanup batch:
