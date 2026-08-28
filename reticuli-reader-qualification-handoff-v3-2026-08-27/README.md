@@ -11,7 +11,8 @@ structured-output strength. It excludes every already-qualified or terminally fa
 - claimed lineage: ByteDance Seed-OSS 36B Instruct
 - exact registry manifest prefix: `7a66a2f466bf`
 - published artifact: 22 GB, Q4_K_M, 512K context
-- fixed host gate: at least 30,000 MiB total free VRAM and at most 15% utilization
+- fixed host gate: at least 30,000 MiB total free VRAM, no CUDA compute contexts, and a
+  30-sample graphics-tolerant baseline whose median is at most 15% and p95 is at most 35%
 - local-Dexagon acquisition: forbidden
 
 ByteDance describes Seed-OSS as a general-capability 36B model and explicitly supports a zero
@@ -26,6 +27,15 @@ found that Ollama stores the same digest-bound artifact under `Q4_K_M`; both reg
 resolved to manifest `7a66a2f466bf48fdafa7004a7975a7f5fac6e667a6de7d01751aacb98b3f387c`.
 This revision corrects that secondary runtime label only. Selection and every substantive gate stay
 fixed, and no plan, journal, result or model call existed under the prior label.
+
+Reticuli's next acquisition-only preflight exposed a defect in the original resource instrument:
+one instantaneous whole-device utilization sample conflated desktop graphics with competing model
+compute. Across 30 samples the host had a 10% median and 25--27% peaks, while `nvidia-smi` reported
+zero CUDA compute contexts, zero resident Ollama models and 31,809 MiB free VRAM. No plan, journal,
+result or model call existed. This prospective revision replaces the lottery-like single sample with
+30 samples, binds their median and nearest-rank p95, and separately requires zero compute contexts.
+The 30,000 MiB free-memory floor is unchanged. The replacement better measures the declared hazard
+(competing compute) while retaining a fail-closed guard against sustained graphics load.
 
 ## Fail-closed execution order
 

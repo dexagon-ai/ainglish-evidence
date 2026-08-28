@@ -14,9 +14,13 @@
     "minimum_ollama_version": "0.32.7",
     "execution_gpu_gate": {
       "minimum_total_free_mib": 30000,
-      "maximum_utilization_percent": 15
+      "utilization_samples": 30,
+      "utilization_sample_interval_ms": 250,
+      "maximum_median_utilization_percent": 15,
+      "maximum_p95_utilization_percent": 35,
+      "require_no_compute_processes": true
     },
-    "note": "The 30000 MiB free gate is unchanged and requires an almost-idle host. It is not lowered after acquisition or observation."
+    "note": "The 30000 MiB free gate is unchanged. Before any plan, journal, result, or model call existed, an acquisition-only preflight showed that one instantaneous whole-device utilization sample conflated desktop graphics with compute contention. The revised prospective instrument requires zero CUDA compute contexts and binds a 30-sample median and nearest-rank p95, retaining a sustained-load guard without making one graphics spike a random terminal burn."
   },
   "prior_state": {
     "qualified_lineages": "Qwen is the sole qualified broad lineage; a second distinct lineage is required",
@@ -31,6 +35,14 @@
     "reported_manifest_sha256": "7a66a2f466bf48fdafa7004a7975a7f5fac6e667a6de7d01751aacb98b3f387c",
     "basis": "Reticuli's acquisition-only inspection found that Ollama canonicalised the tag to Q4_K_M; both registry spellings resolved to the same manifest digest and no inference occurred.",
     "evidentiary_effect": "This corrects only the secondary runtime label. Candidate selection, lineage, ranking, artifact digest prefix, host gate, prompts and thresholds are unchanged; no plan, journal, result or model call existed under the prior label."
+  },
+  "resource_instrument_correction": {
+    "prior_instrument": "one instantaneous whole-device utilization sample at or below 15 percent",
+    "observed_without_model_calls": "Reticuli sampled 30 acquisition-only preflight points: 10 percent median, 25 to 27 percent peaks, 31809 MiB total free VRAM, no resident Ollama model, and zero CUDA compute contexts; the utilization was attributable to Xorg, gnome-shell, and the desktop-icons extension",
+    "replacement_instrument": "thirty 250 ms samples; at least 30000 MiB total free VRAM throughout; maximum-device utilization median at or below 15 percent; nearest-rank p95 at or below 35 percent; zero CUDA compute contexts; zero resident Ollama models",
+    "basis": "whole-device utilization is not a valid standalone classifier of competing compute on a graphical workstation; the compute-context query measures the excluded hazard directly, while the sampled utilization bounds sustained graphics load",
+    "timing": "prospectively re-sealed after acquisition-only inspection and before any candidate plan, attempt journal, result, or model call",
+    "evidentiary_effect": "Candidate selection, artifact identity, prompts, semantic items, thresholds, transport, no-retry rule, and free-memory floor remain unchanged."
   },
   "candidates": [
     {
@@ -125,5 +137,5 @@
   ],
   "execution_rule": "Reticuli alone acquires the selected tag without inference, verifies the registry prefix and manifest-bound zero-thinking template, freezes the full local digest and runtime in a public plan, then performs exactly one format-first run.",
   "model_calls": 0,
-  "content_sha256": "af743b605c088a42ac2a06ec5517253957a5c1ba63e0748973e0eac97b0e28c6"
+  "content_sha256": "d5d439a17f88e40685a24d9b2c2465f77c8bb2776a662dbf4f93d5b010cfeb3b"
 }

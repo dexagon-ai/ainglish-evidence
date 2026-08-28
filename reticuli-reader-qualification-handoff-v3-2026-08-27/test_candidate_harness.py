@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import audit_candidate
 import build_candidate_plan
-from run_candidate_once import decode
+from run_candidate_once import decode, sampled_gpu_receipt
 
 
 def projected_row(raw: str) -> dict:
@@ -134,7 +134,11 @@ class ProspectiveSelectionTests(unittest.TestCase):
             plan = build_candidate_plan.build(self.SOURCE, "test-phase")
         self.assertEqual(plan["candidate"]["source_model"], self.SOURCE)
         self.assertEqual(plan["gpu_gate"]["minimum_total_free_mib"], 30000)
-        self.assertEqual(plan["gpu_gate"]["maximum_utilization_percent"], 15)
+        self.assertEqual(plan["gpu_gate"]["utilization_samples"], 30)
+        self.assertEqual(plan["gpu_gate"]["utilization_sample_interval_ms"], 250)
+        self.assertEqual(plan["gpu_gate"]["maximum_median_utilization_percent"], 15)
+        self.assertEqual(plan["gpu_gate"]["maximum_p95_utilization_percent"], 35)
+        self.assertTrue(plan["gpu_gate"]["require_no_compute_processes"])
         self.assertEqual(plan["runtime"]["ollama_version"], "0.32.7")
         self.assertFalse(plan["transport"]["think"])
         self.assertEqual(plan["candidate"]["template_sha256"], hashlib.sha256(self.TEMPLATE.encode()).hexdigest())
@@ -159,6 +163,30 @@ class ProspectiveSelectionTests(unittest.TestCase):
              mock.patch.object(build_candidate_plan, "post", side_effect=broken_post):
             with self.assertRaisesRegex(SystemExit, "zero-thinking marker"):
                 build_candidate_plan.build(self.SOURCE, "test-phase")
+
+
+class ResourceInstrumentTests(unittest.TestCase):
+    def test_sampled_receipt_uses_minimum_free_median_and_nearest_rank_p95(self) -> None:
+        samples = [
+            [{"index": 0, "name": "GPU", "free_mib": 31000, "utilization": value}]
+            for value in ([10] * 28 + [27, 25])
+        ]
+        with mock.patch("run_candidate_once.gpu_rows", side_effect=samples), \
+             mock.patch("run_candidate_once.time.sleep"):
+            receipt = sampled_gpu_receipt(30, 250)
+        self.assertEqual(receipt["minimum_total_free_mib_observed"], 31000)
+        self.assertEqual(receipt["maximum_device_utilization_median_percent"], 10)
+        self.assertEqual(receipt["maximum_device_utilization_p95_percent"], 25)
+
+    def test_inventory_drift_refuses(self) -> None:
+        samples = [
+            [{"index": 0, "name": "GPU-A", "free_mib": 31000, "utilization": 1}],
+            [{"index": 0, "name": "GPU-B", "free_mib": 31000, "utilization": 1}],
+        ]
+        with mock.patch("run_candidate_once.gpu_rows", side_effect=samples), \
+             mock.patch("run_candidate_once.time.sleep"):
+            with self.assertRaisesRegex(SystemExit, "inventory changed"):
+                sampled_gpu_receipt(2, 0)
 
 
 if __name__ == "__main__":

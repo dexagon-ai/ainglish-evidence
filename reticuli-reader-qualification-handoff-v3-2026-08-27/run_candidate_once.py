@@ -7,9 +7,12 @@ import argparse
 import datetime
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
+import statistics
 import subprocess
+import time
 import urllib.error
 import urllib.request
 
@@ -43,6 +46,47 @@ def gpu_rows() -> list[dict]:
         index, name, free, utilization = [part.strip() for part in line.split(",", 3)]
         rows.append({"index": int(index), "name": name, "free_mib": int(free), "utilization": int(utilization)})
     return rows
+
+
+def compute_process_rows() -> list[dict]:
+    completed = subprocess.run([
+        "nvidia-smi", "--query-compute-apps=pid,process_name,used_gpu_memory",
+        "--format=csv,noheader,nounits",
+    ], check=False, capture_output=True, text=True)
+    if completed.returncode != 0:
+        raise SystemExit("REFUSING: cannot enumerate CUDA compute contexts")
+    rows = []
+    for line in completed.stdout.splitlines():
+        if not line.strip() or "No running processes found" in line:
+            continue
+        parts = [part.strip() for part in line.split(",", 2)]
+        if len(parts) != 3:
+            raise SystemExit("REFUSING: unparseable CUDA compute context")
+        pid, process_name, used_memory = parts
+        rows.append({"pid": int(pid), "process_name": process_name, "used_memory_mib": int(used_memory)})
+    return rows
+
+
+def sampled_gpu_receipt(sample_count: int, interval_ms: int) -> dict:
+    samples = []
+    for ordinal in range(sample_count):
+        samples.append(gpu_rows())
+        if ordinal + 1 < sample_count:
+            time.sleep(interval_ms / 1000)
+    device_shapes = [[(row["index"], row["name"]) for row in sample] for sample in samples]
+    if not device_shapes or any(shape != device_shapes[0] for shape in device_shapes[1:]):
+        raise SystemExit("REFUSING: GPU inventory changed during resource sampling")
+    maximum_utilizations = [max(row["utilization"] for row in sample) for sample in samples]
+    total_free = [sum(row["free_mib"] for row in sample) for sample in samples]
+    ordered = sorted(maximum_utilizations)
+    p95 = ordered[math.ceil(0.95 * len(ordered)) - 1]
+    return {
+        "samples": samples,
+        "minimum_total_free_mib_observed": min(total_free),
+        "maximum_device_utilization_median_percent": statistics.median(maximum_utilizations),
+        "maximum_device_utilization_p95_percent": p95,
+        "p95_method": "nearest-rank",
+    }
 
 
 def journal_write(handle, value: dict) -> None:
@@ -146,9 +190,15 @@ def validate(plan: dict) -> tuple[dict, dict]:
     packet = checked(packet_path)
     if packet["content_sha256"] != plan["semantic_stage"]["packet"]["content_sha256"]:
         raise SystemExit("REFUSING: semantic packet drift")
-    devices = gpu_rows()
     gate = plan["gpu_gate"]
-    if sum(row["free_mib"] for row in devices) < gate["minimum_total_free_mib"] or max(row["utilization"] for row in devices) > gate["maximum_utilization_percent"]:
+    gpu_receipt = sampled_gpu_receipt(gate["utilization_samples"], gate["utilization_sample_interval_ms"])
+    compute_processes = compute_process_rows()
+    if (
+        gpu_receipt["minimum_total_free_mib_observed"] < gate["minimum_total_free_mib"]
+        or gpu_receipt["maximum_device_utilization_median_percent"] > gate["maximum_median_utilization_percent"]
+        or gpu_receipt["maximum_device_utilization_p95_percent"] > gate["maximum_p95_utilization_percent"]
+        or (gate["require_no_compute_processes"] and compute_processes)
+    ):
         raise SystemExit("REFUSING: GPU gate")
     endpoint = gate["ollama_base_url"].rstrip("/")
     if get(endpoint, "/api/version").get("version") != plan["runtime"]["ollama_version"]:
@@ -177,7 +227,12 @@ def validate(plan: dict) -> tuple[dict, dict]:
             raise SystemExit("REFUSING: candidate template drift")
         if any(marker not in template for marker in thinking_control["required_template_markers"]):
             raise SystemExit("REFUSING: candidate zero-thinking template contract drift")
-    return packet, {"devices": devices, "resident_before": [], "ollama_version": plan["runtime"]["ollama_version"]}
+    return packet, {
+        "gpu_sampling": gpu_receipt,
+        "compute_processes": compute_processes,
+        "resident_before": [],
+        "ollama_version": plan["runtime"]["ollama_version"],
+    }
 
 
 def main() -> None:
