@@ -13,7 +13,10 @@ cross-cells prevent capability from standing in for either force.
 
 Only non-answer-bearing public metadata from the target original is captured. Its manifest and
 item block are never opened. `audit.py` verifies the frozen packet against the target's public
-sample shape and against every other readable answer triple in this repository.
+sample shape and against every readable answer triple in the repository tree immediately before
+this carrier was first committed. The historical-tree anchor is load-bearing: later
+manifest-bound packages may copy or bind this already-frozen population without being
+misclassified as prior-data overlap.
 
 This is a preregistration candidate, not a measurement. It remains sealed until a separately
 published qualification receipt establishes at least two eligible reader lineages disjoint from
@@ -26,4 +29,3 @@ PYTHONPATH=../scripts ../.venv/bin/python may-modal-settlement-replication-2026-
 python3 may-modal-settlement-replication-2026-08-26/build.py
 python3 may-modal-settlement-replication-2026-08-26/audit.py
 ```
-

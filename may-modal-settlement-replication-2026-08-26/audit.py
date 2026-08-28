@@ -7,6 +7,7 @@ from collections import Counter
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 
 
 ROOT = Path(__file__).resolve().parent
@@ -26,6 +27,45 @@ def triples(value: object):
     elif isinstance(value, list):
         for child in value:
             yield from triples(child)
+
+
+def git(*args: str) -> str:
+    return subprocess.run(
+        ["git", *args], cwd=REPO, check=True, capture_output=True, text=True
+    ).stdout
+
+
+def prior_repository_triples() -> tuple[set[tuple[str, str, str]], str, int]:
+    """Read the tree before this carrier was first committed.
+
+    Later packages may bind or copy an already-frozen carrier. Scanning the current
+    worktree makes those descendants look like prior input and reverses the freshness arrow.
+    """
+
+    relative = str((ROOT / "items.json").relative_to(REPO))
+    additions = [
+        line
+        for line in git("log", "--diff-filter=A", "--format=%H", "--", relative).splitlines()
+        if line
+    ]
+    if len(additions) != 1:
+        raise RuntimeError("cannot identify the unique carrier-addition commit")
+    prior_tree = git("rev-parse", additions[0] + "^").strip()
+    paths = [
+        line
+        for line in git("ls-tree", "-r", "--name-only", prior_tree).splitlines()
+        if line.endswith(".json")
+    ]
+    found: set[tuple[str, str, str]] = set()
+    scanned = 0
+    for path in paths:
+        try:
+            value = json.loads(git("show", f"{prior_tree}:{path}"))
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            continue
+        scanned += 1
+        found.update(triples(value))
+    return found, prior_tree, scanned
 
 
 def main() -> None:
@@ -48,14 +88,7 @@ def main() -> None:
     assert all(row["answer"] in row["options"] and len(set(row["options"])) == 4 for row in rows)
     assert all("may-as-" not in row["question"] and not any("may-as-" in option for option in row["options"]) for row in scientific)
     assert all(row["english"] != row["ainglish"] for row in rows)
-    prior = set()
-    for path in REPO.rglob("*.json"):
-        if ROOT in path.parents:
-            continue
-        try:
-            prior.update(triples(json.loads(path.read_text(encoding="utf-8"))))
-        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
-            continue
+    prior, prior_tree, prior_files_scanned = prior_repository_triples()
     current = {(row["english"], row["ainglish"], row["question"]) for row in scientific}
     assert not current & prior
     planned = snapshot["target_original"]["planned_sample"]
@@ -68,6 +101,8 @@ def main() -> None:
         "forms": {"may-as-permission": 80, "may-as-possibility": 80},
         "answer_positions": {str(key): value for key, value in sorted(Counter(row["options"].index(row["answer"]) for row in scientific).items())},
         "repository_exact_triple_overlap": 0,
+        "freshness_prior_tree": prior_tree,
+        "freshness_prior_json_files_scanned": prior_files_scanned,
         "target_answer_bearing_block_opened": False,
         "model_calls": 0,
         "governance_writes": 0,
@@ -78,4 +113,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
