@@ -12,6 +12,10 @@ from pathlib import Path
 HEX = set("0123456789abcdef")
 
 
+def canonical(value: object) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+
+
 def arm_for(seed: int, reader: str, item_id: str) -> str:
     digest = hashlib.sha256(f"{seed}|{reader}|{item_id}".encode()).digest()
     return "ainglish" if digest[0] % 2 else "english"
@@ -94,10 +98,10 @@ def main() -> None:
     panel = validate_panel(json.loads(args.panel.read_text(encoding="utf-8")))
     unsigned = dict(template)
     expected = unsigned.pop("content_sha256")
-    assert hashlib.sha256(json.dumps(unsigned, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()).hexdigest() == expected
+    assert hashlib.sha256(canonical(unsigned)).hexdigest() == expected
     artifact = json.loads((args.template.parent / template["items_artifact"]["file"]).read_text(encoding="utf-8"))
     assert artifact["items"] == template["items"]
-    assert hashlib.sha256(json.dumps(artifact["items"], sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()).hexdigest() == template["items_artifact"]["items_sha256"]
+    assert hashlib.sha256(canonical(artifact["items"])).hexdigest() == template["items_artifact"]["items_sha256"]
     assert "REPLACE_AFTER_FIRST_COMMIT" not in template["items_artifact"]["published_url"]
     seed = int(template["seed"])
     while not complete(template, panel, seed):
@@ -125,6 +129,7 @@ def main() -> None:
         "reader_calls": 0,
         "attempt_mints": 0,
     }
+    assert len(canonical(active)) <= 20_000, "attempt manifest exceeds register cap"
     encoded = json.dumps(active, indent=2, ensure_ascii=False) + "\n"
     args.output.write_text(encoded, encoding="utf-8")
     print(json.dumps(active["activation_receipt"], indent=2))
