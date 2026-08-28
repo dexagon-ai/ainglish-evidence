@@ -17,6 +17,8 @@ human triage view. `SHA256SUMS` freezes all three generated artifacts.
 The initial production batch is deliberately narrower than the ranking: four conspicuous active
 flagship candidates with truncated or collision-suffixed title slugs. Its exact report checks and
 post-write resolution receipts are recorded separately in `rename-batch.json` after execution.
+`verify_rename_batch.py` reconstructs that receipt from public list, search, old-slug, new-slug,
+stable-ID, and history surfaces; it never reads or republishes report content.
 
 ```bash
 PYTHONPATH=/path/to/ainglish/src python3 slug-quality-audit-2026-08-28/capture.py

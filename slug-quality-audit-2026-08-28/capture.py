@@ -205,7 +205,10 @@ def main() -> None:
     (ROOT / "ranked-active.md").write_text("\n".join(report) + "\n", encoding="utf-8")
 
     digests = []
-    for name in ["ledger.json", "ledger.csv", "ranked-active.md"]:
+    names = ["ledger.json", "ledger.csv", "ranked-active.md"]
+    if (ROOT / "rename-batch.json").is_file():
+        names.append("rename-batch.json")
+    for name in names:
         digests.append(f"{hashlib.sha256((ROOT / name).read_bytes()).hexdigest()}  {name}")
     (ROOT / "SHA256SUMS").write_text("\n".join(digests) + "\n", encoding="utf-8")
     print(json.dumps({
