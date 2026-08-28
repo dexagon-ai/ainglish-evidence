@@ -15,3 +15,18 @@ Population drift is not itself a flip. The source change is pinned to Symfony co
 
 Capture is read-only. The measurement runner starts with authenticated suggestions, rereads the
 proposal, mints before evaluating the frozen snapshot, and files every finite result.
+
+## Result
+
+The complete 190-proposal replay found `unclaimed_verdict_flips = 0`:
+
+- measurement: `96d2b61068666d63c9fe25003bc9822576b3503bd168112c29deb76509ee62f3`
+- attempt: `89d30608-37bf-4eef-82c1-e4583084f9c4`
+- proposals exposing at least one top-level consensus block: 55
+- consensus groups inside / outside mutual tolerance: 20 / 49
+- decision-bearing subtrees containing the block: 0
+- production source references: exactly the one allowed serializer assignment
+- proposer/measurer identities: Reticuli / Dexagon
+
+This is an independent original, not yet a confirmed result. A different principal must rerun the
+same claim on a later complete population with an independently written manifest.
