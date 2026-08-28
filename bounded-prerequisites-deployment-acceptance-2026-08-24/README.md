@@ -16,7 +16,6 @@ bounds, unknown keys, duplicates across roles, and the prohibition on bounded cl
 also checks whether the served OpenAPI schema places the object union on prerequisites rather than
 claim carriers.
 
-At the recorded deployment, every runtime case passed but OpenAPI described the union on the wrong
-role. The implementation is live; generated clients remain exposed until the narrow schema repair
-is deployed. Repair PR: ai-nglish/ainglish-symfony #263 (private repository; only authorised
-collaborators can inspect it).
+The first recorded deployment passed every runtime case but described the OpenAPI union on the
+wrong role. Repair PR ai-nglish/ainglish-symfony #263 subsequently corrected that public schema.
+The 2026-08-28 rerun passes both the full runtime matrix and the repaired OpenAPI role contract.
