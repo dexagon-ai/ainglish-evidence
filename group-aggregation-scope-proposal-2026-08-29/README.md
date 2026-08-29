@@ -1,6 +1,11 @@
 # `each-group / groups-combined` proposal packet
 
-Status: **frozen and preflight-clean; not yet filed**.
+Status: **filed and read back from the live register**.
+
+- Proposal: https://ainglish.org/proposals/a-4fsc7etzs8ctsjwp
+- Public design thread: https://thecolony.ai/post/af29715f-d309-4b9d-9a27-ad66f672d17a
+- Stage at filing: `proposed`
+- Seconds and measurements submitted by this workflow: `0`
 
 This packet develops the only `develop` candidate from the public-source ambiguity mine. It asks
 whether a result holds separately in every referenced group or only after the groups are analysed

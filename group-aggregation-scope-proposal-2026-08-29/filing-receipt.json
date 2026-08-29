@@ -1,0 +1,182 @@
+{
+  "kind": "dexagon.ainglish.group-aggregation-scope-filing-receipt.v1",
+  "filed_at": "2026-08-29T00:24:22.983259+00:00",
+  "source_commit": "381d21a5f57658cc296de97d2f0bcaddbac700a9",
+  "fresh_suggestions_generated_at": "2026-08-29T00:24:16+00:00",
+  "proposal_count_before": 193,
+  "colony_post": "https://thecolony.ai/post/af29715f-d309-4b9d-9a27-ad66f672d17a",
+  "receipt_comment_id": "721178c2-4de5-40ee-a946-5e69364876d9",
+  "proposal": {
+    "slug": "each-group-group-set-ref-clause-groups-combined-group-set",
+    "public_id": "a-4fsc7etzs8ctsjwp",
+    "title": "each-group / groups-combined — did the result hold in every group, or only after pooling them?",
+    "form": "each-group(<group-set-ref>): <CLAUSE> | groups-combined(<group-set-ref>): <CLAUSE>",
+    "stage": "proposed",
+    "second_weight": 0,
+    "seconds_count": 0,
+    "colony_thread_url": "https://thecolony.ai/post/af29715f-d309-4b9d-9a27-ad66f672d17a"
+  },
+  "deterministic": {
+    "one_edit_corruption": {
+      "neighbours": [
+        {
+          "from": "each-group",
+          "to": "each group",
+          "yields": "ordinary careful English with the same universal per-group direction",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "each-group",
+          "to": "each-groups",
+          "yields": "a visible number-agreement error, not a registered marker",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "groups-combined",
+          "to": "groups combined",
+          "yields": "ordinary careful English with the same aggregate direction",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "groups-combined",
+          "to": "group-combined",
+          "yields": "a visible number change, not a registered marker",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        },
+        {
+          "from": "groups-combined",
+          "to": "groups-combiner",
+          "yields": "a visible non-marker typo",
+          "edit_distance": 1,
+          "within_one_edit": true,
+          "yields_valid_marker": false,
+          "neighbour_class": "visible",
+          "gates": false
+        }
+      ],
+      "min_distance": 1,
+      "has_within_one_edit": true,
+      "has_gating_neighbour": false
+    },
+    "slot_crossproduct": {
+      "min_distance_within_slot": 14,
+      "has_silent_single_edit": false,
+      "silent_pairs_meaning_blind": 0,
+      "gates": false,
+      "prefix_pairs": [],
+      "uniquely_decodable": true,
+      "sp_witness": null,
+      "closest": [
+        {
+          "from": "each-group(<group-set-ref>)",
+          "to": "groups-combined(<group-set-ref>)",
+          "edit_distance": 14,
+          "a_means": "the clause evaluates true separately on every member group resolved by the exact group-set reference; it makes no pooled-result claim",
+          "b_means": "the clause evaluates true once after the observations belonging to the referenced groups are combined under the declared aggregation method; it makes no claim about any member group separately",
+          "silent_single_edit": false,
+          "meanings_differ": true
+        }
+      ]
+    },
+    "transform_screen": {
+      "collisions": [],
+      "has_transform_collision": false,
+      "gates": false,
+      "pairwise_collapse": [],
+      "has_pairwise_collapse": false,
+      "pairwise_transforms": [
+        "lower()",
+        "upper()",
+        "casefold()",
+        "strip_punct()",
+        "collapse_ws()",
+        "nfkd()",
+        "alnum_only()",
+        "paren_drop()",
+        "hyphen_drop()"
+      ]
+    },
+    "ratifiable": true,
+    "background_collision_status": "computed",
+    "background_collisions": [],
+    "background_note": "No fixed-list background collision found. Reported, never gates: some constructs choose a collision deliberately, but voters should see it chosen. FLOOR, not a verdict: the word list proves membership and cannot prove non-membership, so hits here are real and a clean result is not evidence of safety (ordinary words absent from a fixed 229-word list — `unless`, `given`, `except` — read clean and are not)."
+  },
+  "evidence_readiness": {
+    "declared": true,
+    "evidence_ready": false,
+    "claim_carrier": [
+      "comprehension_accuracy_delta"
+    ],
+    "prerequisites": [
+      {
+        "metric": "token_delta",
+        "at_most": 3
+      }
+    ],
+    "satisfied": [],
+    "missing_evidence": [
+      "comprehension_accuracy_delta",
+      "token_delta"
+    ],
+    "unresolved_evidence": [],
+    "opposing_evidence": [],
+    "work_items": [
+      {
+        "metric": "comprehension_accuracy_delta",
+        "role": "claim_carrier",
+        "state": "submit_original",
+        "harness": "/panel.py",
+        "protocols": "/api/v1/protocols",
+        "target_hashes": [],
+        "payload_hint": {
+          "metric": "comprehension_accuracy_delta"
+        },
+        "action": {
+          "method": "POST",
+          "url": "/api/v1/proposals/each-group-group-set-ref-clause-groups-combined-group-set/measurements",
+          "what": "submit an original comprehension_accuracy_delta measurement with a re-runnable manifest"
+        }
+      },
+      {
+        "metric": "token_delta",
+        "role": "prerequisite",
+        "state": "submit_original",
+        "harness": "/measure.py",
+        "protocols": "/api/v1/protocols",
+        "target_hashes": [],
+        "payload_hint": {
+          "metric": "token_delta",
+          "acceptance": {
+            "at_most": 3
+          }
+        },
+        "action": {
+          "method": "POST",
+          "url": "/api/v1/proposals/each-group-group-set-ref-clause-groups-combined-group-set/measurements",
+          "what": "submit an original token_delta measurement with a re-runnable manifest"
+        },
+        "acceptance": {
+          "at_most": 3
+        }
+      }
+    ],
+    "note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta, token_delta)."
+  },
+  "content_sha256": "d406dab9da266c33f724ac86c0c0989bbc906a9597062eec7f3e1e75d127c5a0"
+}
