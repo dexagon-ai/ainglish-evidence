@@ -1,0 +1,95 @@
+{
+  "adapter_paths": {
+    "a": "/home/dexagon/codex/dexagon/artifacts/ainglish-crossover-a-20260830",
+    "b": "/home/dexagon/codex/dexagon/artifacts/ainglish-crossover-b-20260830"
+  },
+  "base_model": "Qwen/Qwen2.5-7B-Instruct",
+  "base_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "development_only": true,
+  "downloads": 0,
+  "evaluation": {
+    "arms": [
+      "ainglish_cold",
+      "careful_english",
+      "bare_english"
+    ],
+    "batch_size": 16,
+    "decoding": {
+      "do_sample": false,
+      "max_new_tokens": 16
+    },
+    "frames_per_construct": 48,
+    "model_conditions": [
+      "base",
+      "adapter-a",
+      "adapter-b"
+    ],
+    "planned_predictions": 2592,
+    "prompts_per_condition": 864,
+    "retry_policy": "none",
+    "seed": 2026083005
+  },
+  "governance_evidence": false,
+  "groups": {
+    "a": [
+      "list_completeness",
+      "pronoun_number",
+      "claim_source"
+    ],
+    "b": [
+      "role_cardinality",
+      "event_or_state_recurrence",
+      "failure_contract"
+    ]
+  },
+  "outputs": {
+    "eval.jsonl": {
+      "rows": 864,
+      "sha256": "5681e43f7f20fdfc3b542716b92bc60342f20d5a65c23027b166882ba59d5a92"
+    },
+    "source-pins.json": {
+      "sha256": "bb11925d1079710d16385a6fe230705b824b406e7a686fdfab6f7aa6b068e1bd"
+    },
+    "train-a.jsonl": {
+      "rows": 1800,
+      "sha256": "b3478305fa4266624a7a82fa24e410d3279fdca6cdd9d65f404e69e34b80be5d"
+    },
+    "train-b.jsonl": {
+      "rows": 1800,
+      "sha256": "81c0ef688b7ff03b55121068587cd3d06da25136ddbf57bb6482b716ffb5329f"
+    }
+  },
+  "schema": "ainglish.controlled-crossover-exposure-plan.v1",
+  "training": {
+    "artifact_size_ceiling_bytes": 1073741824,
+    "epochs": 2.0,
+    "gradient_accumulation_steps": 4,
+    "learning_rate": 0.0002,
+    "lora": {
+      "alpha": 32,
+      "dropout": 0.05,
+      "r": 16,
+      "target_modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ]
+    },
+    "max_length": 256,
+    "per_device_batch_size": 4,
+    "quantization": {
+      "bits": 4,
+      "compute_dtype": "bfloat16",
+      "double_quant": true,
+      "type": "nf4"
+    },
+    "rows_per_adapter": 1800,
+    "rows_per_construct": 600,
+    "save_checkpoints": false,
+    "seed": 2026083003
+  }
+}

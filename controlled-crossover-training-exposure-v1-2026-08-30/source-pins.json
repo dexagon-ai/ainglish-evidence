@@ -1,0 +1,368 @@
+{
+  "constructs": [
+    {
+      "choices": {
+        "closed": "The sender claims that the named members are the complete same-kind set in scope.",
+        "open": "The sender explicitly does not claim that the named members are the complete same-kind set in scope.",
+        "unspecified": "The message does not say whether the named members are the complete set."
+      },
+      "english_mapping": "Terminate an enumeration with one of the two forms when completeness matters. \"X, Y, among-others\" means X and Y are claimed members and the list is not claimed complete: unlisted candidates are neither admitted nor excluded. \"X, Y, and-no-others\" means X and Y are claimed members and the list is claimed complete at its stated kind and scope: every unlisted candidate of the same kind, inside the same scope, is claimed excluded.\n\nEach marker binds the enumeration it immediately terminates, not every list in the sentence. The markers declare completeness only. They do not choose the kind boundary (whether a YAML document counts as JSON is a property of the stated kind, not of the marker), do not time-stamp the claim (compose with as-of(<t>) when the set changes over time), and do not promise the members work — a listed member that is claimed present can still be broken. A bare list remains legal and unmarked, exactly as bare \"we\" remains legal beside the clusivity pair.\n\nLossless round-trips: \"the export accepts csv, parquet, among-others\" ⇄ \"the export accepts csv and parquet, and the list is not claimed complete\"; \"the allowlist admits agent-a, agent-b, and-no-others\" ⇄ \"the allowlist admits agent-a and agent-b and nothing else of that kind in that scope\". Hyphen loss yields the ordinary careful-English phrases \"among others\" and \"and no others\", each preserving its own direction rather than silently selecting the other.",
+      "form": "<enumeration>, among-others / <enumeration>, and-no-others",
+      "key": "list_completeness",
+      "public_id": "a-kk2fgztm3cmh859j",
+      "rank": 1,
+      "slug": "among-others-and-no-others-is-the-list-the-whole-list-2",
+      "stage_at_capture": "measured",
+      "title": "among-others / and-no-others — is the list the whole list?"
+    },
+    {
+      "choices": {
+        "exactly_one": "Exactly one distinct qualifying principal must perform the action; two would violate the instruction.",
+        "multiple_allowed": "Two distinct qualifying principals may perform the action without violating the instruction.",
+        "unspecified": "The message does not determine whether one or several qualifying principals are required."
+      },
+      "english_mapping": "`one-or-more(R): A` means at least one distinct principal satisfying role R must perform A; additional qualifying principals are permitted and do not violate the statement. `exactly-one(R): A` means one and only one distinct principal satisfying role R must perform A; zero or two-or-more qualifying principals violates it. Multiple performances by the same principal do not increase the principal count. Neither marker says whether one principal may fill another role, whether approvals are independent, or whether A is collective; state those separately.",
+      "form": "one-or-more(<role>): <ACTION-CLAUSE> | exactly-one(<role>): <ACTION-CLAUSE>",
+      "key": "role_cardinality",
+      "public_id": "a-twt7mcv776hnrz2f",
+      "rank": 2,
+      "slug": "one-or-more-role-exactly-one-role-does-a-reviewer-require-at",
+      "stage_at_capture": "measured",
+      "title": "one-or-more(<role>) / exactly-one(<role>) — does ‘a reviewer’ require at least one participant or exactly one?"
+    },
+    {
+      "choices": {
+        "repeat": "A matching earlier event by the same resolved actor and participants is backgrounded.",
+        "restore": "Only the named result state is backgrounded; an earlier matching event or actor is not required.",
+        "unspecified": "The message does not choose between an earlier matching event and an earlier result state."
+      },
+      "english_mapping": "Use one prefix where bare English ‘again’ would leave its attachment unresolved. repeat-event: E marks the repetitive reading by contributing one background presupposition: before the reference time supplied by the scoped clause, there was an event matching E's event predicate and every resolved participant and reference role stated in that clause. The following clause alone determines the at-issue force and therefore whether a current event is asserted, denied, questioned, or requested. Thus repeat-event: Mara opened the gate commits to an earlier opening of that gate by Mara. It does not preserve an unmentioned method, tool, time, or manner. Any claim about an earlier result state follows only when the event predicate itself entails that state. restore-state(S): E marks the restitutive reading and is valid only for a change-of-state event E with an explicit, uniquely resolved result state S. It contributes the background presupposition that S held during an earlier interval; it makes no independent claim that S later ceased. The at-issue event predicate entails S if that event is realized, while the following clause determines whether realization is asserted, denied, questioned, or requested. The marker makes no claim that an earlier event matching E occurred or that the current actor previously caused S. Thus restore-state(open(gate)): Mara opened the gate permits the gate to have been open originally or to have been opened earlier by somebody else. The named state is mandatory: restore-state: with no S, or a state not entailed as E's result, is invalid rather than guessable. For a positive directive, the imperative clause resolves its understood addressee as the event's actor and the requested execution supplies the reference time: repeat-event: open the gate backgrounds a matching opening by that addressee before the requested opening, without asserting that the requested event occurs. The prefix scopes exactly the following clause. Under ‘repeat-event: Mara did not open the gate,’ the earlier Mara-opening is backgrounded but the current opening is denied; the corresponding question asks only about the current opening. restore-state projects its earlier-state condition in the same way. Bare again remains legal and ambiguous.",
+      "form": "repeat-event: <EVENT-CLAUSE> | restore-state(<RESULT-STATE>): <CHANGE-OF-STATE-CLAUSE>",
+      "key": "event_or_state_recurrence",
+      "public_id": "a-1v2tfbyk5zc0g40w",
+      "rank": 3,
+      "slug": "repeat-event-restore-state",
+      "stage_at_capture": "measured",
+      "title": "repeat-event / restore-state — did ‘again’ repeat the action, or only bring the result back?"
+    },
+    {
+      "choices": {
+        "plural": "The pronoun denotes two or more actors or entities.",
+        "singular": "The pronoun denotes exactly one actor or entity.",
+        "unspecified": "The message does not state whether the pronoun denotes one actor or several."
+      },
+      "english_mapping": "they-one is singular ‘they’: the pronoun denotes exactly one person or entity, without implying gender. they-many is plural ‘they’: the pronoun denotes two or more people or entities. The marker states referent number only. they-many does not assert that every member of a salient group acted, that the action was unanimous, or that the actors acted collectively; identity and distributive-versus-collective force remain separate questions.",
+      "form": "they-one / they-many",
+      "key": "pronoun_number",
+      "public_id": "a-tgtw3zdj0qqws2v4",
+      "rank": 4,
+      "slug": "they-one-they-many-say-whether-they-is-one-actor-or-several",
+      "stage_at_capture": "measured",
+      "title": "they-one / they-many — say whether ‘they’ is one actor or several"
+    },
+    {
+      "choices": {
+        "inferred": "The speaker says the claim was concluded from a stated basis without direct observation.",
+        "observed": "The speaker claims direct observation or measurement and says receipts exist or can be produced.",
+        "reported": "The claim is attributed to a named source and the speaker has not independently verified it.",
+        "unspecified": "The message does not state the speaker's epistemic source for the claim."
+      },
+      "english_mapping": "Leading markers stating the epistemic SOURCE of a factual claim. 'observed: X' = the speaker directly ran, saw, or measured this; receipts exist or can be produced. 'reported(Y): X' = Y states this and the speaker has not independently verified it. 'inferred(Z): X' = concluded from the stated basis Z without direct observation. Bare unmarked claims carry no epistemic standing; receivers verify before acting if stakes warrant. Expands losslessly to standard English attributions: 'I directly observed that...', 'Y reports that...', 'I conclude from Z that...'.",
+      "form": "observed: <claim> | reported(<by>): <claim> | inferred(<from>): <claim>",
+      "key": "claim_source",
+      "public_id": "a-wq8adyzheq50bw17",
+      "rank": 5,
+      "slug": "observed-reported-by-inferred-from-mark-where-a-claim-came-f",
+      "stage_at_capture": "seconded",
+      "title": "observed / reported(<by>) / inferred(<from>) - mark where a claim came from"
+    },
+    {
+      "choices": {
+        "attempt": "An honest failed attempt followed by a failure report can satisfy the instruction.",
+        "ensure": "The required end state must hold; stopping after a failed attempt does not satisfy the instruction.",
+        "unspecified": "The message does not state whether an honest failed attempt can satisfy the instruction."
+      },
+      "english_mapping": "Leading tags on any action instruction. 'attempt: <X>' states the action should be executed and the instruction is satisfied by an honest failure report - English: 'try to X; report either way.' 'ensure: <X>' states <X> must hold on completion - English: 'make X true; do not stop at a failed attempt.' Bare instructions stay legal and unmarked; the tag states the escalation contract explicitly when failure behavior is load-bearing.",
+      "form": "attempt: <X> / ensure: <X>",
+      "key": "failure_contract",
+      "public_id": "a-mznv1j4k869me22t",
+      "rank": 6,
+      "slug": "attempt-ensure-say-whether-the-instruction-tolerates-failure",
+      "stage_at_capture": "seconded",
+      "title": "attempt: / ensure: — say whether the instruction tolerates failure"
+    }
+  ],
+  "content_sha256": "5ff7241bd8c61e7b663e316ab66b16df6a92bae9cc5a56319f89bcd1da5f8c15",
+  "evaluation_vocabulary": {
+    "actors": [
+      "Jae",
+      "Kira",
+      "Luis",
+      "Mei",
+      "Nia",
+      "Otto"
+    ],
+    "bases": [
+      "audit-path",
+      "hash-agreement",
+      "timing-shift",
+      "event-chain",
+      "sample-pattern",
+      "graph-edge"
+    ],
+    "events": [
+      [
+        "mounted",
+        "mounted",
+        "volume"
+      ],
+      [
+        "activated",
+        "active",
+        "device"
+      ],
+      [
+        "closed",
+        "closed",
+        "channel"
+      ],
+      [
+        "armed",
+        "armed",
+        "sensor"
+      ],
+      [
+        "restored",
+        "available",
+        "endpoint"
+      ],
+      [
+        "engaged",
+        "engaged",
+        "clutch"
+      ]
+    ],
+    "failure_actions": [
+      [
+        "publish",
+        "published"
+      ],
+      [
+        "transmit",
+        "transmitted"
+      ],
+      [
+        "reserve",
+        "reserved"
+      ],
+      [
+        "attach",
+        "attached"
+      ],
+      [
+        "index",
+        "indexed"
+      ],
+      [
+        "commit",
+        "committed"
+      ]
+    ],
+    "kinds": [
+      "dialect",
+      "zone",
+      "signal",
+      "route",
+      "permission",
+      "mode"
+    ],
+    "objects": [
+      "capsule",
+      "manifest",
+      "daemon",
+      "package",
+      "credential",
+      "batch"
+    ],
+    "pronoun_actions": [
+      "certified",
+      "endorsed",
+      "dispatched",
+      "inspected",
+      "preserved",
+      "accepted"
+    ],
+    "role_actions": [
+      "certify",
+      "endorse",
+      "dispatch",
+      "open",
+      "inspect",
+      "preserve"
+    ],
+    "roles": [
+      "inspector",
+      "archivist",
+      "moderator",
+      "controller",
+      "steward",
+      "witness"
+    ],
+    "sources": [
+      "Relay-X",
+      "Team-U",
+      "Probe-R",
+      "Vendor-W",
+      "Index-H",
+      "Agent-N"
+    ]
+  },
+  "groups": {
+    "a": [
+      "list_completeness",
+      "pronoun_number",
+      "claim_source"
+    ],
+    "b": [
+      "role_cardinality",
+      "event_or_state_recurrence",
+      "failure_contract"
+    ]
+  },
+  "schema": "ainglish.crossover-exposure-source-pins.v1",
+  "source_constructs_sha256": "c1629f26454e59d592e8725147f440c40ab15957d97596c2b3c9b3bb38b4b1da",
+  "source_path": "flagship-cold-clarity-atlas-v1-2026-08-29",
+  "source_proposal_snapshot_sha256": "24b35fed36e968ecf4c2c8e5e45781479c0798d5754005e0ce9523bb4c999806",
+  "training_vocabulary": {
+    "actors": [
+      "Ari",
+      "Bo",
+      "Cy",
+      "Di",
+      "Eli",
+      "Fia",
+      "Gus",
+      "Hana"
+    ],
+    "bases": [
+      "log-pattern",
+      "checksum-match",
+      "counter-delta",
+      "trace-link",
+      "receipt-chain",
+      "sensor-trend"
+    ],
+    "events": [
+      [
+        "opened",
+        "open",
+        "gate"
+      ],
+      [
+        "started",
+        "running",
+        "service"
+      ],
+      [
+        "sealed",
+        "sealed",
+        "container"
+      ],
+      [
+        "enabled",
+        "enabled",
+        "account"
+      ],
+      [
+        "connected",
+        "connected",
+        "link"
+      ],
+      [
+        "unlocked",
+        "unlocked",
+        "vault"
+      ]
+    ],
+    "failure_actions": [
+      [
+        "upload",
+        "uploaded"
+      ],
+      [
+        "notify",
+        "notified"
+      ],
+      [
+        "create",
+        "created"
+      ],
+      [
+        "acquire",
+        "acquired"
+      ],
+      [
+        "deliver",
+        "delivered"
+      ],
+      [
+        "synchronize",
+        "synchronized"
+      ]
+    ],
+    "kinds": [
+      "format",
+      "region",
+      "status",
+      "channel",
+      "role",
+      "command",
+      "transport",
+      "codec"
+    ],
+    "objects": [
+      "artifact",
+      "record",
+      "service",
+      "bundle",
+      "account",
+      "job",
+      "archive",
+      "vault"
+    ],
+    "pronoun_actions": [
+      "approved",
+      "signed",
+      "released",
+      "checked",
+      "acknowledged",
+      "authorized"
+    ],
+    "role_actions": [
+      "approve",
+      "sign",
+      "release",
+      "unlock",
+      "verify",
+      "archive"
+    ],
+    "roles": [
+      "reviewer",
+      "auditor",
+      "operator",
+      "maintainer",
+      "custodian",
+      "approver",
+      "dispatcher",
+      "verifier"
+    ],
+    "sources": [
+      "Mira",
+      "Node-Q",
+      "Supplier-Z",
+      "Monitor-P",
+      "Ledger-K",
+      "Agent-V"
+    ]
+  }
+}
