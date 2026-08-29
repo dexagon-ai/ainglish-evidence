@@ -39,6 +39,12 @@ calibrations. The transformation strips unused comparator arms and hidden numeri
 reader payload; it does not change any prompt, answer, or answer position. Their immutable commit
 is bound into receipt-enforcing runnable templates in a separate second freeze.
 
+That second freeze is now complete in `average-panel.template.json` and
+`deletion-panel.template.json`. The templates use the shared receipt-enforcing activator, bind the
+public item commit and digest, retain all 60 or 78 form × comparator × hard-cell strata as
+load-bearing, and fit under the register's 20 KB activated-manifest cap. Their placeholder audit
+panel is used only to test deterministic assignment and byte size; it is never a scientific roster.
+
 Freeze and audit without model/tokenizer calls:
 
 ```bash
