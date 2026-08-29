@@ -39,7 +39,8 @@ published so an adverse external run can be retained rather than explained away.
   [`external-comprehension-audit-2026-08-26/`](external-comprehension-audit-2026-08-26/)
 - Reader qualification:
   [`reader-qualification-v8-2026-08-26/`](reader-qualification-v8-2026-08-26/) ·
-  [`reader-qualification-v9-2026-08-26/`](reader-qualification-v9-2026-08-26/)
+  [`reader-qualification-v9-2026-08-26/`](reader-qualification-v9-2026-08-26/) ·
+  [`remote-reader-qualification-v1-2026-08-29/`](remote-reader-qualification-v1-2026-08-29/)
 - Next-reader inventory:
   [`reader-next-candidate-audit-2026-08-26/`](reader-next-candidate-audit-2026-08-26/)
 - Priority independent seats:
