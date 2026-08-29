@@ -1,0 +1,112 @@
+{
+  "kind": "ainglish.reader-evidence-design.v1",
+  "slug": "repeat-event-restore-state",
+  "proposal_revision": "repeat-event-restore-state",
+  "population": "128 force-balanced fresh items: 64 per form and 16 affirmative, negated, question, and directive items per form; each joint answer recovers earlier basis and current force",
+  "forms": [
+    "repeat-event",
+    "restore-state"
+  ],
+  "estimand": "per-form comprehension_accuracy_delta with complete careful-English non-inferiority as the claim carrier; balanced bare English is separately frozen and reported only as a diagnostic",
+  "decision_rule": "every form by force cell is non-inferior to complete force-matched careful English within 0.05; restore prior-actor over-inference <= 0.10; current-event assertion errors <= 0.05",
+  "training_data_interpretation": {
+    "present_zero_shot": "Current readers were exposed to English in training and are not assumed to have seen Ainglish; zero-shot results measure present surface transparency under that asymmetry.",
+    "future_efficiency": "Ainglish-aware future training and tokenizers may change both comprehension and cost. That prospective benefit is a hypothesis, not a reinterpretation of present adverse evidence.",
+    "token_boundary": "Current token price is reported separately and cannot establish comprehension. A preregistered adverse token prerequisite remains adverse even when the future-training rationale remains plausible."
+  },
+  "quality_gates": {
+    "mint_before_reader_spend": true,
+    "calibration_both_arms": true,
+    "retain_all_admissible_outcomes": true,
+    "no_scientific_cell_retry": true,
+    "complete_pair_identity": true,
+    "qualified_reader_lineages_min": 2,
+    "reader_gate_status_at_freeze": "closed: Qwen v10-general was adverse on reference resolution; no two-lineage common-holdout roster exists",
+    "zero_transport_truncations": true,
+    "report_forms_and_strata_separately": true
+  },
+  "campaigns": {
+    "repeat-event-vs-careful": {
+      "role": "claim_carrier",
+      "form": "repeat-event",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "Full registered meaning, including material nonclaims."
+      },
+      "items": "repetition-restoration--repeat-event--claim.items.json",
+      "items_sha256": "0fd604a42aa591dc5fa333e210ab003086e933d8285329659779a05307181e74",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "repeat-event-vs-bare": {
+      "role": "bare_diagnostic",
+      "form": "repeat-event",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "balanced-bare-english-v1",
+        "description": "Ambiguous ordinary-English surface balanced across both intended readings; diagnostic only."
+      },
+      "items": "repetition-restoration--repeat-event--bare.items.json",
+      "items_sha256": "7624e29d51fff26f1b112e49f661dfcb2edf67ef2f176f2120e471cca79bf30a",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "restore-state-vs-careful": {
+      "role": "claim_carrier",
+      "form": "restore-state",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "Full registered meaning, including material nonclaims."
+      },
+      "items": "repetition-restoration--restore-state--claim.items.json",
+      "items_sha256": "efb4ee0551e21c55962db98ef233e988ecd129ae6b441c763af6ef47ed616c0d",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "restore-state-vs-bare": {
+      "role": "bare_diagnostic",
+      "form": "restore-state",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "balanced-bare-english-v1",
+        "description": "Ambiguous ordinary-English surface balanced across both intended readings; diagnostic only."
+      },
+      "items": "repetition-restoration--restore-state--bare.items.json",
+      "items_sha256": "2d9e6f4eedff7e3dba0beb2c819442c729018d71ec4e955cb5af9318c2932026",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "restore-state-validity": {
+      "role": "learnability_diagnostic",
+      "form": "restore-state",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "complete-validity-rule-v1"
+      },
+      "items": "repetition-restoration--restore-validity.items.json",
+      "items_sha256": "9e0d78862b6766e47d3774dcf739b3976181b380967657d693f977a0eac78e3c",
+      "planned_sample": {
+        "real_items": 32,
+        "calibration_items": 12
+      }
+    }
+  },
+  "activation": "bind exact qualified reader editions, freeze a runspec, publish it, then mint the Ainglish attempt before any scientific or calibration reader call",
+  "model_calls": 0,
+  "governance_writes": 0,
+  "content_sha256": "16716c807ef07cec2da559c6081675ed8ab9b24a2db7fc36b550740c7f2ceedc"
+}

@@ -1,0 +1,98 @@
+{
+  "kind": "ainglish.reader-evidence-design.v1",
+  "slug": "p-ack-as-receipt-r-p-ack-as-agreement-r",
+  "proposal_revision": "p-ack-as-receipt-r-p-ack-as-agreement-r",
+  "population": "160 form-balanced exchanges with exact bounded references across six operational domains and independently scored receipt, agreement, disagreement, and downstream nonclaim probes",
+  "forms": [
+    "ack-as-receipt",
+    "ack-as-agreement"
+  ],
+  "estimand": "per-form comprehension_accuracy_delta with complete careful-English non-inferiority as the claim carrier; balanced bare English is separately frozen and reported only as a diagnostic",
+  "decision_rule": "each form separately: marked exact receipt/agreement recovery minus bare >= 0.20, marked minus careful >= -0.05, and each false disagreement, authority, compliance, truth, promise, or implementation inference <= 0.05",
+  "training_data_interpretation": {
+    "present_zero_shot": "Current readers were exposed to English in training and are not assumed to have seen Ainglish; zero-shot results measure present surface transparency under that asymmetry.",
+    "future_efficiency": "Ainglish-aware future training and tokenizers may change both comprehension and cost. That prospective benefit is a hypothesis, not a reinterpretation of present adverse evidence.",
+    "token_boundary": "Current token price is reported separately and cannot establish comprehension. A preregistered adverse token prerequisite remains adverse even when the future-training rationale remains plausible."
+  },
+  "quality_gates": {
+    "mint_before_reader_spend": true,
+    "calibration_both_arms": true,
+    "retain_all_admissible_outcomes": true,
+    "no_scientific_cell_retry": true,
+    "complete_pair_identity": true,
+    "qualified_reader_lineages_min": 2,
+    "reader_gate_status_at_freeze": "closed: Qwen v10-general was adverse on reference resolution; no two-lineage common-holdout roster exists",
+    "zero_transport_truncations": true,
+    "report_forms_and_strata_separately": true
+  },
+  "campaigns": {
+    "ack-as-receipt-vs-careful": {
+      "role": "claim_carrier",
+      "form": "ack-as-receipt",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "Full registered meaning, including material nonclaims."
+      },
+      "items": "acknowledgement-force--ack-as-receipt--claim.items.json",
+      "items_sha256": "1082aa03850bdb37a40edfb509686225a09440b559b1b5d811081639b9385a2c",
+      "planned_sample": {
+        "real_items": 80,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "ack-as-receipt-vs-bare": {
+      "role": "bare_diagnostic",
+      "form": "ack-as-receipt",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "balanced-bare-english-v1",
+        "description": "Ambiguous ordinary-English surface balanced across both intended readings; diagnostic only."
+      },
+      "items": "acknowledgement-force--ack-as-receipt--bare.items.json",
+      "items_sha256": "77de9a3d8e0f934777d4581f135aaf0d589034043e601904777a9f0c60796a9e",
+      "planned_sample": {
+        "real_items": 80,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "ack-as-agreement-vs-careful": {
+      "role": "claim_carrier",
+      "form": "ack-as-agreement",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "Full registered meaning, including material nonclaims."
+      },
+      "items": "acknowledgement-force--ack-as-agreement--claim.items.json",
+      "items_sha256": "2e1cd298a95ae7595b3d7ec5e8b99c2101c6fa3d18fda83b8b0ff2eb8a1a9e77",
+      "planned_sample": {
+        "real_items": 80,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "ack-as-agreement-vs-bare": {
+      "role": "bare_diagnostic",
+      "form": "ack-as-agreement",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "balanced-bare-english-v1",
+        "description": "Ambiguous ordinary-English surface balanced across both intended readings; diagnostic only."
+      },
+      "items": "acknowledgement-force--ack-as-agreement--bare.items.json",
+      "items_sha256": "ebdf6ba6e3574c4cfe04e85719ee2dff199d0c553ae962cce7c38273ce29a881",
+      "planned_sample": {
+        "real_items": 80,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    }
+  },
+  "activation": "bind exact qualified reader editions, freeze a runspec, publish it, then mint the Ainglish attempt before any scientific or calibration reader call",
+  "model_calls": 0,
+  "governance_writes": 0,
+  "content_sha256": "fc4e9d433dc7dec538b7208134f7ce5829dae98f50d56bfc3d859684c3660390"
+}

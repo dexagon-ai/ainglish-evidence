@@ -1,0 +1,98 @@
+{
+  "kind": "ainglish.reader-evidence-design.v1",
+  "slug": "one-or-more-role-exactly-one-role-does-a-reviewer-require-at",
+  "proposal_revision": "one-or-more-role-exactly-one-role-does-a-reviewer-require-at",
+  "population": "128 form-separated role/action/count items, 64 per form, balancing zero, one, and two distinct qualifying principals plus repeated action by one principal; four directly scored seams have 16 contexts per form",
+  "forms": [
+    "one-or-more",
+    "exactly-one"
+  ],
+  "estimand": "per-form comprehension_accuracy_delta with complete careful-English non-inferiority as the claim carrier; balanced bare English is separately frozen and reported only as a diagnostic",
+  "decision_rule": "each form separately: marked minus careful >= -0.05; on two-principal cells marked minus bare >= 0.20; cross-pole inference <= 0.05",
+  "training_data_interpretation": {
+    "present_zero_shot": "Current readers were exposed to English in training and are not assumed to have seen Ainglish; zero-shot results measure present surface transparency under that asymmetry.",
+    "future_efficiency": "Ainglish-aware future training and tokenizers may change both comprehension and cost. That prospective benefit is a hypothesis, not a reinterpretation of present adverse evidence.",
+    "token_boundary": "Current token price is reported separately and cannot establish comprehension. A preregistered adverse token prerequisite remains adverse even when the future-training rationale remains plausible."
+  },
+  "quality_gates": {
+    "mint_before_reader_spend": true,
+    "calibration_both_arms": true,
+    "retain_all_admissible_outcomes": true,
+    "no_scientific_cell_retry": true,
+    "complete_pair_identity": true,
+    "qualified_reader_lineages_min": 2,
+    "reader_gate_status_at_freeze": "closed: Qwen v10-general was adverse on reference resolution; no two-lineage common-holdout roster exists",
+    "zero_transport_truncations": true,
+    "report_forms_and_strata_separately": true
+  },
+  "campaigns": {
+    "one-or-more-vs-careful": {
+      "role": "claim_carrier",
+      "form": "one-or-more",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "Full registered meaning, including material nonclaims."
+      },
+      "items": "role-cardinality--one-or-more--claim.items.json",
+      "items_sha256": "cdc65ffe4554c9c10803f290142c529de8c9c914bc920fdd4d7cf09214efc145",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "one-or-more-vs-bare": {
+      "role": "bare_diagnostic",
+      "form": "one-or-more",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "balanced-bare-english-v1",
+        "description": "Ambiguous ordinary-English surface balanced across both intended readings; diagnostic only."
+      },
+      "items": "role-cardinality--one-or-more--bare.items.json",
+      "items_sha256": "ba6dde94357bc0307032cae2291cd44715a46e153d072c6b157f3ae8f6809c90",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "exactly-one-vs-careful": {
+      "role": "claim_carrier",
+      "form": "exactly-one",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "Full registered meaning, including material nonclaims."
+      },
+      "items": "role-cardinality--exactly-one--claim.items.json",
+      "items_sha256": "a35e29196aba0228448e8473875cdc47148e6f260f3121e810a8439f14b0c16d",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "exactly-one-vs-bare": {
+      "role": "bare_diagnostic",
+      "form": "exactly-one",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "balanced-bare-english-v1",
+        "description": "Ambiguous ordinary-English surface balanced across both intended readings; diagnostic only."
+      },
+      "items": "role-cardinality--exactly-one--bare.items.json",
+      "items_sha256": "75e05815d090bf6fbbdfa437240a7172259b489eafc45f5dfed748bad2ce6801",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    }
+  },
+  "activation": "bind exact qualified reader editions, freeze a runspec, publish it, then mint the Ainglish attempt before any scientific or calibration reader call",
+  "model_calls": 0,
+  "governance_writes": 0,
+  "content_sha256": "0430503b4a5564e65f35e58eba28c54d98950a8a584142207981d60af7540ced"
+}

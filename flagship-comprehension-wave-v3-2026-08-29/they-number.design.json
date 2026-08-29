@@ -1,0 +1,102 @@
+{
+  "kind": "ainglish.reader-evidence-design.v1",
+  "slug": "they-one-they-many-say-whether-they-is-one-actor-or-several",
+  "proposal_revision": "they-one-they-many-say-whether-they-is-one-actor-or-several",
+  "population": "128 fresh operational items, 64 per form, with one singular and one plural antecedent candidate both semantically live; four directly scored number and nonclaim seams have 16 contexts per form",
+  "forms": [
+    "they-one",
+    "they-many"
+  ],
+  "estimand": "per-form comprehension_accuracy_delta with complete careful-English non-inferiority as the claim carrier; balanced bare English is separately frozen and reported only as a diagnostic",
+  "decision_rule": "each form: marked minus balanced bare >= 0.20 on number consequences, marked minus complete careful English >= -0.05, every false gender, identity, unanimity, all-member, and collectivity inference <= 0.05",
+  "training_data_interpretation": {
+    "present_zero_shot": "Current readers were exposed to English in training and are not assumed to have seen Ainglish; zero-shot results measure present surface transparency under that asymmetry.",
+    "future_efficiency": "Ainglish-aware future training and tokenizers may change both comprehension and cost. That prospective benefit is a hypothesis, not a reinterpretation of present adverse evidence.",
+    "token_boundary": "Current token price is reported separately and cannot establish comprehension. A preregistered adverse token prerequisite remains adverse even when the future-training rationale remains plausible."
+  },
+  "quality_gates": {
+    "mint_before_reader_spend": true,
+    "calibration_both_arms": true,
+    "retain_all_admissible_outcomes": true,
+    "no_scientific_cell_retry": true,
+    "complete_pair_identity": true,
+    "qualified_reader_lineages_min": 2,
+    "reader_gate_status_at_freeze": "closed: Qwen v10-general was adverse on reference resolution; no two-lineage common-holdout roster exists",
+    "zero_transport_truncations": true,
+    "report_forms_and_strata_separately": true
+  },
+  "campaigns": {
+    "they-one-vs-careful": {
+      "role": "claim_carrier",
+      "form": "they-one",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "Full registered meaning, including material nonclaims."
+      },
+      "items": "they-number--they-one--claim.items.json",
+      "items_sha256": "1a487e33d71edc8c7e2afe7c619c012fd1b5ade1326aadb8baf4e112ad890a71",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "they-one-vs-bare": {
+      "role": "bare_diagnostic",
+      "form": "they-one",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "balanced-bare-english-v1",
+        "description": "Ambiguous ordinary-English surface balanced across both intended readings; diagnostic only."
+      },
+      "items": "they-number--they-one--bare.items.json",
+      "items_sha256": "510b5da2ac2d7c8a1d565df9069b3577a0dba35fffd5c1e968a263b86ac425ba",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "they-many-vs-careful": {
+      "role": "claim_carrier",
+      "form": "they-many",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "Full registered meaning, including material nonclaims."
+      },
+      "items": "they-number--they-many--claim.items.json",
+      "items_sha256": "d7cb0df5d9109725c5a3ba084bc37a90c83917a98d09210c7d2bee2eb0d10456",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "they-many-vs-bare": {
+      "role": "bare_diagnostic",
+      "form": "they-many",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "balanced-bare-english-v1",
+        "description": "Ambiguous ordinary-English surface balanced across both intended readings; diagnostic only."
+      },
+      "items": "they-number--they-many--bare.items.json",
+      "items_sha256": "7e75d6667e5048a00c9c54cf23e3401b150b6c545668d81d2c2555d8ae93d697",
+      "planned_sample": {
+        "real_items": 64,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    }
+  },
+  "activation": "bind exact qualified reader editions, freeze a runspec, publish it, then mint the Ainglish attempt before any scientific or calibration reader call",
+  "model_calls": 0,
+  "governance_writes": 0,
+  "replication": {
+    "replicates_hash": "92b77fdcc4b1529f6446f1c9756b80cc08acad1c4433bf845e0a95c98b9693b0",
+    "boundary": "the balanced-bare campaign preserves the filed original's primary comparator on wholly fresh inputs; careful-English non-inferiority remains a separately frozen claim-carrier campaign and must not be inferred from replication settlement"
+  },
+  "content_sha256": "dba71dfcf7e67dc1fa7db9814b3692546f78a25416317d8e5aefa03fcfeba845"
+}

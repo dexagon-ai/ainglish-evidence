@@ -1,0 +1,98 @@
+{
+  "kind": "ainglish.reader-evidence-design.v1",
+  "slug": "test-run-t-test-passed-t-did-tested-mean-the-check-happened-",
+  "proposal_revision": "test-run-t-test-passed-t-did-tested-mean-the-check-happened-",
+  "population": "96 form-balanced named-test items across software, backups, pipelines, inspections, audits, and model evaluations with recoverable criteria",
+  "forms": [
+    "test-run",
+    "test-passed"
+  ],
+  "estimand": "per-form comprehension_accuracy_delta with complete careful-English non-inferiority as the claim carrier; balanced bare English is separately frozen and reported only as a diagnostic",
+  "decision_rule": "each form separately: marked minus careful >= -0.05, marked materially improves pass-state recovery over bare tested, and broader-fitness overread remains <= 0.05",
+  "training_data_interpretation": {
+    "present_zero_shot": "Current readers were exposed to English in training and are not assumed to have seen Ainglish; zero-shot results measure present surface transparency under that asymmetry.",
+    "future_efficiency": "Ainglish-aware future training and tokenizers may change both comprehension and cost. That prospective benefit is a hypothesis, not a reinterpretation of present adverse evidence.",
+    "token_boundary": "Current token price is reported separately and cannot establish comprehension. A preregistered adverse token prerequisite remains adverse even when the future-training rationale remains plausible."
+  },
+  "quality_gates": {
+    "mint_before_reader_spend": true,
+    "calibration_both_arms": true,
+    "retain_all_admissible_outcomes": true,
+    "no_scientific_cell_retry": true,
+    "complete_pair_identity": true,
+    "qualified_reader_lineages_min": 2,
+    "reader_gate_status_at_freeze": "closed: Qwen v10-general was adverse on reference resolution; no two-lineage common-holdout roster exists",
+    "zero_transport_truncations": true,
+    "report_forms_and_strata_separately": true
+  },
+  "campaigns": {
+    "test-run-vs-careful": {
+      "role": "claim_carrier",
+      "form": "test-run",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "Full registered meaning, including material nonclaims."
+      },
+      "items": "test-outcome--test-run--claim.items.json",
+      "items_sha256": "6eac40156b8ad91aeef5f837995b5097157727da3825097fb0fa7af5e4167937",
+      "planned_sample": {
+        "real_items": 48,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "test-run-vs-bare": {
+      "role": "bare_diagnostic",
+      "form": "test-run",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "balanced-bare-english-v1",
+        "description": "Ambiguous ordinary-English surface balanced across both intended readings; diagnostic only."
+      },
+      "items": "test-outcome--test-run--bare.items.json",
+      "items_sha256": "f090412a98f0694c49bb1d39bc3f4f6a9c9dfba48ef7c9e624f8795dcd9dca99",
+      "planned_sample": {
+        "real_items": 48,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "test-passed-vs-careful": {
+      "role": "claim_carrier",
+      "form": "test-passed",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "complete-careful-english-v1",
+        "description": "Full registered meaning, including material nonclaims."
+      },
+      "items": "test-outcome--test-passed--claim.items.json",
+      "items_sha256": "8e15f8afbfd3648f7b4fd5165ec4edda8152618d1e9f5f0e1eab749fdbc49e38",
+      "planned_sample": {
+        "real_items": 48,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    },
+    "test-passed-vs-bare": {
+      "role": "bare_diagnostic",
+      "form": "test-passed",
+      "metric": "comprehension_accuracy_delta",
+      "comparator": {
+        "kind": "balanced-bare-english-v1",
+        "description": "Ambiguous ordinary-English surface balanced across both intended readings; diagnostic only."
+      },
+      "items": "test-outcome--test-passed--bare.items.json",
+      "items_sha256": "8e76ab28392772672751ef3e3579fb7e9e99bb4f60c92b048295c589b14b584b",
+      "planned_sample": {
+        "real_items": 48,
+        "calibration_items": 12
+      },
+      "settlement": "form and semantic seams remain separately visible; no pooled rescue"
+    }
+  },
+  "activation": "bind exact qualified reader editions, freeze a runspec, publish it, then mint the Ainglish attempt before any scientific or calibration reader call",
+  "model_calls": 0,
+  "governance_writes": 0,
+  "content_sha256": "0ee7e5a292cf2885a7f1f01d65046aefc807c4e5097b2843d149bae1540fd61f"
+}
