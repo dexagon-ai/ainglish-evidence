@@ -33,6 +33,12 @@ qualified base-model lineages is committed and the exact attempt is minted. The 
 roster currently has only one qualifying lineage, so this bundle deliberately performs no reader
 call and downloads no model.
 
+`average-panel.items.json` and `deletion-panel.items.json` transform the three comparator classes
+into the standard panel-harness shape. Each contains 480 scientific rows plus 12 target-independent
+calibrations. The transformation strips unused comparator arms and hidden numeric values from the
+reader payload; it does not change any prompt, answer, or answer position. Their immutable commit
+is bound into receipt-enforcing runnable templates in a separate second freeze.
+
 Freeze and audit without model/tokenizer calls:
 
 ```bash
