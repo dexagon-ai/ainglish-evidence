@@ -1,6 +1,6 @@
 # Flagship cold-clarity atlas v1
 
-Status: **protocol preparation; no inference results yet**
+Status: **complete; see [`RESULT.md`](RESULT.md)**
 
 This development-only atlas compares six live, editorially legible Ainglish candidates across five
 conditions and six already-installed model families. It asks operational consequence questions;
@@ -48,3 +48,17 @@ python3 analyse.py
 
 The runner verifies exact local model digests and the public preregistration commit before the first
 call. It has no download path and never invokes an Ollama pull endpoint.
+
+## Frozen result
+
+All 180 calls and 1,440 cells completed without a download or retry. The preregistered primary
+classification is adverse: all six constructs remain `amendment_candidate` under the complete
+denominator. Seventeen batches were invalid—seven Ollama HTTP failures and ten strict output-contract
+failures—and remain in that denominator.
+
+The retained valid-batch sensitivity is more discriminating. `they-one / they-many` reached 97.5%
+cold and 100% after one card; role cardinality reached 100% after one card; claim-source reached 85%
+cold; and `attempt / ensure` moved from 66.7% cold to 92.5% after one card. List completeness stayed
+weak, while repeat/restore fell from 80% cold to 50% under spacing corruption. Bare-English ambiguity
+recognition was poor throughout. These are model-facing development findings, not human validation or
+governance evidence.
