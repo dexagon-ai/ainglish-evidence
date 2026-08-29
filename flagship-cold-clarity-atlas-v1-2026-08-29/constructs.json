@@ -1,0 +1,590 @@
+{
+  "constructs": [
+    {
+      "choices": {
+        "closed": "The sender claims that the named members are the complete same-kind set in scope.",
+        "open": "The sender explicitly does not claim that the named members are the complete same-kind set in scope.",
+        "unspecified": "The message does not say whether the named members are the complete set."
+      },
+      "english_mapping": "Terminate an enumeration with one of the two forms when completeness matters. \"X, Y, among-others\" means X and Y are claimed members and the list is not claimed complete: unlisted candidates are neither admitted nor excluded. \"X, Y, and-no-others\" means X and Y are claimed members and the list is claimed complete at its stated kind and scope: every unlisted candidate of the same kind, inside the same scope, is claimed excluded.\n\nEach marker binds the enumeration it immediately terminates, not every list in the sentence. The markers declare completeness only. They do not choose the kind boundary (whether a YAML document counts as JSON is a property of the stated kind, not of the marker), do not time-stamp the claim (compose with as-of(<t>) when the set changes over time), and do not promise the members work — a listed member that is claimed present can still be broken. A bare list remains legal and unmarked, exactly as bare \"we\" remains legal beside the clusivity pair.\n\nLossless round-trips: \"the export accepts csv, parquet, among-others\" ⇄ \"the export accepts csv and parquet, and the list is not claimed complete\"; \"the allowlist admits agent-a, agent-b, and-no-others\" ⇄ \"the allowlist admits agent-a and agent-b and nothing else of that kind in that scope\". Hyphen loss yields the ordinary careful-English phrases \"among others\" and \"and no others\", each preserving its own direction rather than silently selecting the other.",
+      "form": "<enumeration>, among-others / <enumeration>, and-no-others",
+      "frames": [
+        {
+          "answer": "open",
+          "bare": "The export accepts CSV and Parquet.",
+          "canonical": "The export accepts CSV, Parquet, among-others.",
+          "careful": "The export accepts CSV and Parquet, and this list is not claimed complete.",
+          "corrupted": "The export accepts CSV, Parquet, among others.",
+          "id": "formats-open",
+          "pole": "among_others",
+          "question": "What completeness commitment does the sender make about accepted export formats?"
+        },
+        {
+          "answer": "closed",
+          "bare": "The deployment allowlist admits agent-a and agent-b.",
+          "canonical": "The deployment allowlist admits agent-a, agent-b, and-no-others.",
+          "careful": "The deployment allowlist admits agent-a and agent-b and no other agents in this deployment.",
+          "corrupted": "The deployment allowlist admits agent-a, agent-b, and no others.",
+          "id": "allowlist-closed",
+          "pole": "and_no_others",
+          "question": "What completeness commitment does the sender make about admitted agents in this deployment?"
+        },
+        {
+          "answer": "open",
+          "bare": "Retry on HTTP 429 and HTTP 503.",
+          "canonical": "Retry on HTTP 429, HTTP 503, among-others.",
+          "careful": "Retry on HTTP 429 and HTTP 503, and this list of retry statuses is not claimed complete.",
+          "corrupted": "Retry on HTTP 429, HTTP 503, among others.",
+          "id": "retries-open",
+          "pole": "among_others",
+          "question": "What completeness commitment does the sender make about retry-triggering HTTP statuses?"
+        },
+        {
+          "answer": "closed",
+          "bare": "Store replicas in London and Dublin.",
+          "canonical": "Store replicas in London, Dublin, and-no-others.",
+          "careful": "Store replicas in London and Dublin and in no other regions within this storage scope.",
+          "corrupted": "Store replicas in London, Dublin, and no others.",
+          "id": "regions-closed",
+          "pole": "and_no_others",
+          "question": "What completeness commitment does the sender make about storage regions?"
+        },
+        {
+          "answer": "open",
+          "bare": "Notify by email and webhook.",
+          "canonical": "Notify by email, webhook, among-others.",
+          "careful": "Notify by email and webhook, and this list of notification channels is not claimed complete.",
+          "corrupted": "Notify by email, webhook, among others.",
+          "id": "channels-open",
+          "pole": "among_others",
+          "question": "What completeness commitment does the sender make about notification channels?"
+        },
+        {
+          "answer": "closed",
+          "bare": "The endpoint accepts PNG and WebP.",
+          "canonical": "The endpoint accepts PNG, WebP, and-no-others.",
+          "careful": "The endpoint accepts PNG and WebP and no other image formats in this endpoint scope.",
+          "corrupted": "The endpoint accepts PNG, WebP, and no others.",
+          "id": "images-closed",
+          "pole": "and_no_others",
+          "question": "What completeness commitment does the sender make about accepted image formats?"
+        },
+        {
+          "answer": "open",
+          "bare": "Deployment participants include reviewer and operator.",
+          "canonical": "Deployment participants include reviewer, operator, among-others.",
+          "careful": "Deployment participants include reviewer and operator, and this list of participant roles is not claimed complete.",
+          "corrupted": "Deployment participants include reviewer, operator, among others.",
+          "id": "roles-open",
+          "pole": "among_others",
+          "question": "What completeness commitment does the sender make about deployment participant roles?"
+        },
+        {
+          "answer": "closed",
+          "bare": "The recovery interface permits inspect and restore.",
+          "canonical": "The recovery interface permits inspect, restore, and-no-others.",
+          "careful": "The recovery interface permits inspect and restore and no other commands in this interface.",
+          "corrupted": "The recovery interface permits inspect, restore, and no others.",
+          "id": "commands-closed",
+          "pole": "and_no_others",
+          "question": "What completeness commitment does the sender make about recovery commands?"
+        }
+      ],
+      "key": "list_completeness",
+      "public_id": "a-kk2fgztm3cmh859j",
+      "rank": 1,
+      "slug": "among-others-and-no-others-is-the-list-the-whole-list-2",
+      "stage_at_capture": "measured",
+      "title": "among-others / and-no-others — is the list the whole list?"
+    },
+    {
+      "choices": {
+        "exactly_one": "Exactly one distinct qualifying principal must perform the action; two would violate the instruction.",
+        "multiple_allowed": "Two distinct qualifying principals may perform the action without violating the instruction.",
+        "unspecified": "The message does not determine whether one or several qualifying principals are required."
+      },
+      "english_mapping": "`one-or-more(R): A` means at least one distinct principal satisfying role R must perform A; additional qualifying principals are permitted and do not violate the statement. `exactly-one(R): A` means one and only one distinct principal satisfying role R must perform A; zero or two-or-more qualifying principals violates it. Multiple performances by the same principal do not increase the principal count. Neither marker says whether one principal may fill another role, whether approvals are independent, or whether A is collective; state those separately.",
+      "form": "one-or-more(<role>): <ACTION-CLAUSE> | exactly-one(<role>): <ACTION-CLAUSE>",
+      "frames": [
+        {
+          "answer": "multiple_allowed",
+          "bare": "A reviewer must approve release R.",
+          "canonical": "one-or-more(reviewer): approve release R.",
+          "careful": "At least one distinct reviewer must approve release R; additional qualifying reviewers are permitted.",
+          "corrupted": "one or more(reviewer): approve release R.",
+          "id": "reviewers-many",
+          "pole": "one_or_more",
+          "question": "If two distinct qualifying reviewers both approve release R, what follows?"
+        },
+        {
+          "answer": "exactly_one",
+          "bare": "An auditor must sign report Q.",
+          "canonical": "exactly-one(auditor): sign report Q.",
+          "careful": "One and only one distinct auditor must sign report Q; two auditors signing would violate the instruction.",
+          "corrupted": "exactly one(auditor): sign report Q.",
+          "id": "auditor-one",
+          "pole": "exactly_one",
+          "question": "If two distinct qualifying auditors both sign report Q, what follows?"
+        },
+        {
+          "answer": "multiple_allowed",
+          "bare": "An operator must restart service S.",
+          "canonical": "one-or-more(operator): restart service S.",
+          "careful": "At least one distinct operator must restart service S; additional qualifying operators are permitted.",
+          "corrupted": "one or more(operator): restart service S.",
+          "id": "operators-many",
+          "pole": "one_or_more",
+          "question": "If two distinct qualifying operators both restart service S, what follows?"
+        },
+        {
+          "answer": "exactly_one",
+          "bare": "A custodian must acknowledge transfer T.",
+          "canonical": "exactly-one(custodian): acknowledge transfer T.",
+          "careful": "One and only one distinct custodian must acknowledge transfer T; two custodians acknowledging would violate the instruction.",
+          "corrupted": "exactly one(custodian): acknowledge transfer T.",
+          "id": "custodian-one",
+          "pole": "exactly_one",
+          "question": "If two distinct qualifying custodians both acknowledge transfer T, what follows?"
+        },
+        {
+          "answer": "multiple_allowed",
+          "bare": "A maintainer must authorize patch P.",
+          "canonical": "one-or-more(maintainer): authorize patch P.",
+          "careful": "At least one distinct maintainer must authorize patch P; additional qualifying maintainers are permitted.",
+          "corrupted": "one or more(maintainer): authorize patch P.",
+          "id": "maintainers-many",
+          "pole": "one_or_more",
+          "question": "If two distinct qualifying maintainers both authorize patch P, what follows?"
+        },
+        {
+          "answer": "exactly_one",
+          "bare": "A witness must attest event E.",
+          "canonical": "exactly-one(witness): attest event E.",
+          "careful": "One and only one distinct witness must attest event E; two witnesses attesting would violate the instruction.",
+          "corrupted": "exactly one(witness): attest event E.",
+          "id": "witness-one",
+          "pole": "exactly_one",
+          "question": "If two distinct qualifying witnesses both attest event E, what follows?"
+        },
+        {
+          "answer": "multiple_allowed",
+          "bare": "An approver must unlock account A.",
+          "canonical": "one-or-more(approver): unlock account A.",
+          "careful": "At least one distinct approver must unlock account A; additional qualifying approvers are permitted.",
+          "corrupted": "one or more(approver): unlock account A.",
+          "id": "approvers-many",
+          "pole": "one_or_more",
+          "question": "If two distinct qualifying approvers both unlock account A, what follows?"
+        },
+        {
+          "answer": "exactly_one",
+          "bare": "A dispatcher must release job J.",
+          "canonical": "exactly-one(dispatcher): release job J.",
+          "careful": "One and only one distinct dispatcher must release job J; two dispatchers releasing it would violate the instruction.",
+          "corrupted": "exactly one(dispatcher): release job J.",
+          "id": "dispatcher-one",
+          "pole": "exactly_one",
+          "question": "If two distinct qualifying dispatchers both release job J, what follows?"
+        }
+      ],
+      "key": "role_cardinality",
+      "public_id": "a-twt7mcv776hnrz2f",
+      "rank": 2,
+      "slug": "one-or-more-role-exactly-one-role-does-a-reviewer-require-at",
+      "stage_at_capture": "measured",
+      "title": "one-or-more(<role>) / exactly-one(<role>) — does ‘a reviewer’ require at least one participant or exactly one?"
+    },
+    {
+      "choices": {
+        "repeat": "A matching earlier event by the same resolved actor and participants is backgrounded.",
+        "restore": "Only the named result state is backgrounded; an earlier matching event or actor is not required.",
+        "unspecified": "The message does not choose between an earlier matching event and an earlier result state."
+      },
+      "english_mapping": "Use one prefix where bare English ‘again’ would leave its attachment unresolved. repeat-event: E marks the repetitive reading by contributing one background presupposition: before the reference time supplied by the scoped clause, there was an event matching E's event predicate and every resolved participant and reference role stated in that clause. The following clause alone determines the at-issue force and therefore whether a current event is asserted, denied, questioned, or requested. Thus repeat-event: Mara opened the gate commits to an earlier opening of that gate by Mara. It does not preserve an unmentioned method, tool, time, or manner. Any claim about an earlier result state follows only when the event predicate itself entails that state. restore-state(S): E marks the restitutive reading and is valid only for a change-of-state event E with an explicit, uniquely resolved result state S. It contributes the background presupposition that S held during an earlier interval; it makes no independent claim that S later ceased. The at-issue event predicate entails S if that event is realized, while the following clause determines whether realization is asserted, denied, questioned, or requested. The marker makes no claim that an earlier event matching E occurred or that the current actor previously caused S. Thus restore-state(open(gate)): Mara opened the gate permits the gate to have been open originally or to have been opened earlier by somebody else. The named state is mandatory: restore-state: with no S, or a state not entailed as E's result, is invalid rather than guessable. For a positive directive, the imperative clause resolves its understood addressee as the event's actor and the requested execution supplies the reference time: repeat-event: open the gate backgrounds a matching opening by that addressee before the requested opening, without asserting that the requested event occurs. The prefix scopes exactly the following clause. Under ‘repeat-event: Mara did not open the gate,’ the earlier Mara-opening is backgrounded but the current opening is denied; the corresponding question asks only about the current opening. restore-state projects its earlier-state condition in the same way. Bare again remains legal and ambiguous.",
+      "form": "repeat-event: <EVENT-CLAUSE> | restore-state(<RESULT-STATE>): <CHANGE-OF-STATE-CLAUSE>",
+      "frames": [
+        {
+          "answer": "repeat",
+          "bare": "Mara opened gate G again.",
+          "canonical": "repeat-event: Mara opened gate G.",
+          "careful": "Mara opened gate G, and Mara had opened that same gate before.",
+          "corrupted": "repeat event: Mara opened gate G.",
+          "id": "gate-repeat",
+          "pole": "repeat_event",
+          "question": "Which earlier condition does the message commit to?"
+        },
+        {
+          "answer": "restore",
+          "bare": "Noel opened gate G again.",
+          "canonical": "restore-state(open(gate-G)): Noel opened gate G.",
+          "careful": "Noel opened gate G, and gate G had been open during an earlier interval; this does not require an earlier opening by Noel.",
+          "corrupted": "restore state(open(gate-G)): Noel opened gate G.",
+          "id": "gate-restore",
+          "pole": "restore_state",
+          "question": "Which earlier condition does the message commit to?"
+        },
+        {
+          "answer": "repeat",
+          "bare": "Ivo started service S again.",
+          "canonical": "repeat-event: Ivo started service S.",
+          "careful": "Ivo started service S, and Ivo had started that same service before.",
+          "corrupted": "repeat event: Ivo started service S.",
+          "id": "service-repeat",
+          "pole": "repeat_event",
+          "question": "Which earlier condition does the message commit to?"
+        },
+        {
+          "answer": "restore",
+          "bare": "Priya started service S again.",
+          "canonical": "restore-state(running(service-S)): Priya started service S.",
+          "careful": "Priya started service S, and service S had been running during an earlier interval; this does not require an earlier start by Priya.",
+          "corrupted": "restore state(running(service-S)): Priya started service S.",
+          "id": "service-restore",
+          "pole": "restore_state",
+          "question": "Which earlier condition does the message commit to?"
+        },
+        {
+          "answer": "repeat",
+          "bare": "Chen sealed container C again.",
+          "canonical": "repeat-event: Chen sealed container C.",
+          "careful": "Chen sealed container C, and Chen had sealed that same container before.",
+          "corrupted": "repeat event: Chen sealed container C.",
+          "id": "seal-repeat",
+          "pole": "repeat_event",
+          "question": "Which earlier condition does the message commit to?"
+        },
+        {
+          "answer": "restore",
+          "bare": "Asha sealed container C again.",
+          "canonical": "restore-state(sealed(container-C)): Asha sealed container C.",
+          "careful": "Asha sealed container C, and container C had been sealed during an earlier interval; this does not require an earlier sealing by Asha.",
+          "corrupted": "restore state(sealed(container-C)): Asha sealed container C.",
+          "id": "seal-restore",
+          "pole": "restore_state",
+          "question": "Which earlier condition does the message commit to?"
+        },
+        {
+          "answer": "repeat",
+          "bare": "Omar enabled account A again.",
+          "canonical": "repeat-event: Omar enabled account A.",
+          "careful": "Omar enabled account A, and Omar had enabled that same account before.",
+          "corrupted": "repeat event: Omar enabled account A.",
+          "id": "account-repeat",
+          "pole": "repeat_event",
+          "question": "Which earlier condition does the message commit to?"
+        },
+        {
+          "answer": "restore",
+          "bare": "Bea enabled account A again.",
+          "canonical": "restore-state(enabled(account-A)): Bea enabled account A.",
+          "careful": "Bea enabled account A, and account A had been enabled during an earlier interval; this does not require an earlier enabling by Bea.",
+          "corrupted": "restore state(enabled(account-A)): Bea enabled account A.",
+          "id": "account-restore",
+          "pole": "restore_state",
+          "question": "Which earlier condition does the message commit to?"
+        }
+      ],
+      "key": "event_or_state_recurrence",
+      "public_id": "a-1v2tfbyk5zc0g40w",
+      "rank": 3,
+      "slug": "repeat-event-restore-state",
+      "stage_at_capture": "measured",
+      "title": "repeat-event / restore-state — did ‘again’ repeat the action, or only bring the result back?"
+    },
+    {
+      "choices": {
+        "plural": "The pronoun denotes two or more actors or entities.",
+        "singular": "The pronoun denotes exactly one actor or entity.",
+        "unspecified": "The message does not state whether the pronoun denotes one actor or several."
+      },
+      "english_mapping": "they-one is singular ‘they’: the pronoun denotes exactly one person or entity, without implying gender. they-many is plural ‘they’: the pronoun denotes two or more people or entities. The marker states referent number only. they-many does not assert that every member of a salient group acted, that the action was unanimous, or that the actors acted collectively; identity and distributive-versus-collective force remain separate questions.",
+      "form": "they-one / they-many",
+      "frames": [
+        {
+          "answer": "singular",
+          "bare": "They approved release R.",
+          "canonical": "they-one approved release R.",
+          "careful": "Exactly one person or entity, referred to without specifying gender, approved release R.",
+          "corrupted": "they one approved release R.",
+          "id": "approval-one",
+          "pole": "they_one",
+          "question": "How many approving actors does the pronoun itself denote?"
+        },
+        {
+          "answer": "plural",
+          "bare": "They approved release S.",
+          "canonical": "they-many approved release S.",
+          "careful": "Two or more people or entities approved release S.",
+          "corrupted": "they many approved release S.",
+          "id": "approval-many",
+          "pole": "they_many",
+          "question": "How many approving actors does the pronoun itself denote?"
+        },
+        {
+          "answer": "singular",
+          "bare": "They signed receipt A.",
+          "canonical": "they-one signed receipt A.",
+          "careful": "Exactly one person or entity, referred to without specifying gender, signed receipt A.",
+          "corrupted": "they one signed receipt A.",
+          "id": "receipt-one",
+          "pole": "they_one",
+          "question": "How many signing actors does the pronoun itself denote?"
+        },
+        {
+          "answer": "plural",
+          "bare": "They signed receipt B.",
+          "canonical": "they-many signed receipt B.",
+          "careful": "Two or more people or entities signed receipt B.",
+          "corrupted": "they many signed receipt B.",
+          "id": "receipt-many",
+          "pole": "they_many",
+          "question": "How many signing actors does the pronoun itself denote?"
+        },
+        {
+          "answer": "singular",
+          "bare": "They acknowledged alert X.",
+          "canonical": "they-one acknowledged alert X.",
+          "careful": "Exactly one person or entity, referred to without specifying gender, acknowledged alert X.",
+          "corrupted": "they one acknowledged alert X.",
+          "id": "alert-one",
+          "pole": "they_one",
+          "question": "How many acknowledging actors does the pronoun itself denote?"
+        },
+        {
+          "answer": "plural",
+          "bare": "They acknowledged alert Y.",
+          "canonical": "they-many acknowledged alert Y.",
+          "careful": "Two or more people or entities acknowledged alert Y.",
+          "corrupted": "they many acknowledged alert Y.",
+          "id": "alert-many",
+          "pole": "they_many",
+          "question": "How many acknowledging actors does the pronoun itself denote?"
+        },
+        {
+          "answer": "singular",
+          "bare": "They authorized transfer T1.",
+          "canonical": "they-one authorized transfer T1.",
+          "careful": "Exactly one person or entity, referred to without specifying gender, authorized transfer T1.",
+          "corrupted": "they one authorized transfer T1.",
+          "id": "transfer-one",
+          "pole": "they_one",
+          "question": "How many authorizing actors does the pronoun itself denote?"
+        },
+        {
+          "answer": "plural",
+          "bare": "They authorized transfer T2.",
+          "canonical": "they-many authorized transfer T2.",
+          "careful": "Two or more people or entities authorized transfer T2.",
+          "corrupted": "they many authorized transfer T2.",
+          "id": "transfer-many",
+          "pole": "they_many",
+          "question": "How many authorizing actors does the pronoun itself denote?"
+        }
+      ],
+      "key": "pronoun_number",
+      "public_id": "a-tgtw3zdj0qqws2v4",
+      "rank": 4,
+      "slug": "they-one-they-many-say-whether-they-is-one-actor-or-several",
+      "stage_at_capture": "measured",
+      "title": "they-one / they-many — say whether ‘they’ is one actor or several"
+    },
+    {
+      "choices": {
+        "inferred": "The speaker says the claim was concluded from a stated basis without direct observation.",
+        "observed": "The speaker claims direct observation or measurement and says receipts exist or can be produced.",
+        "reported": "The claim is attributed to a named source and the speaker has not independently verified it.",
+        "unspecified": "The message does not state the speaker's epistemic source for the claim."
+      },
+      "english_mapping": "Leading markers stating the epistemic SOURCE of a factual claim. 'observed: X' = the speaker directly ran, saw, or measured this; receipts exist or can be produced. 'reported(Y): X' = Y states this and the speaker has not independently verified it. 'inferred(Z): X' = concluded from the stated basis Z without direct observation. Bare unmarked claims carry no epistemic standing; receivers verify before acting if stakes warrant. Expands losslessly to standard English attributions: 'I directly observed that...', 'Y reports that...', 'I conclude from Z that...'.",
+      "form": "observed: <claim> | reported(<by>): <claim> | inferred(<from>): <claim>",
+      "frames": [
+        {
+          "answer": "observed",
+          "bare": "Build 812 passed.",
+          "canonical": "observed: Build 812 passed.",
+          "careful": "I directly ran or observed build 812 pass; receipts exist or can be produced.",
+          "corrupted": "observed Build 812 passed.",
+          "id": "build-observed",
+          "pole": "observed",
+          "question": "What epistemic source does the message assign to the speaker's claim?"
+        },
+        {
+          "answer": "reported",
+          "bare": "Build 813 passed.",
+          "canonical": "reported(Mira): Build 813 passed.",
+          "careful": "Mira reports that build 813 passed; I have not independently verified it.",
+          "corrupted": "reported Mira Build 813 passed.",
+          "id": "build-reported",
+          "pole": "reported",
+          "question": "What epistemic source does the message assign to the speaker's claim?"
+        },
+        {
+          "answer": "inferred",
+          "bare": "Build 814 passed.",
+          "canonical": "inferred(log-pattern-L7): Build 814 passed.",
+          "careful": "I conclude from log pattern L7 that build 814 passed, without directly observing it.",
+          "corrupted": "inferred from log-pattern-L7 Build 814 passed.",
+          "id": "build-inferred",
+          "pole": "inferred",
+          "question": "What epistemic source does the message assign to the speaker's claim?"
+        },
+        {
+          "answer": "observed",
+          "bare": "Sensor K reads 18 degrees.",
+          "canonical": "observed: Sensor K reads 18 degrees.",
+          "careful": "I directly observed or measured sensor K reading 18 degrees; receipts exist or can be produced.",
+          "corrupted": "observed Sensor K reads 18 degrees.",
+          "id": "sensor-observed",
+          "pole": "observed",
+          "question": "What epistemic source does the message assign to the speaker's claim?"
+        },
+        {
+          "answer": "reported",
+          "bare": "Part P shipped.",
+          "canonical": "reported(Supplier-Z): Part P shipped.",
+          "careful": "Supplier Z reports that part P shipped; I have not independently verified it.",
+          "corrupted": "reported Supplier-Z Part P shipped.",
+          "id": "supplier-reported",
+          "pole": "reported",
+          "question": "What epistemic source does the message assign to the speaker's claim?"
+        },
+        {
+          "answer": "inferred",
+          "bare": "Archive A is unchanged.",
+          "canonical": "inferred(checksum-match): Archive A is unchanged.",
+          "careful": "I conclude from the checksum match that archive A is unchanged, without directly observing that fact.",
+          "corrupted": "inferred from checksum-match Archive A is unchanged.",
+          "id": "checksum-inferred",
+          "pole": "inferred",
+          "question": "What epistemic source does the message assign to the speaker's claim?"
+        },
+        {
+          "answer": "observed",
+          "bare": "Invoice I contains three lines.",
+          "canonical": "observed: Invoice I contains three lines.",
+          "careful": "I directly observed invoice I containing three lines; receipts exist or can be produced.",
+          "corrupted": "observed Invoice I contains three lines.",
+          "id": "invoice-observed",
+          "pole": "observed",
+          "question": "What epistemic source does the message assign to the speaker's claim?"
+        },
+        {
+          "answer": "reported",
+          "bare": "Service S is healthy.",
+          "canonical": "reported(Status-Monitor): Service S is healthy.",
+          "careful": "Status Monitor reports that service S is healthy; I have not independently verified it.",
+          "corrupted": "reported Status-Monitor Service S is healthy.",
+          "id": "monitor-reported",
+          "pole": "reported",
+          "question": "What epistemic source does the message assign to the speaker's claim?"
+        }
+      ],
+      "key": "claim_source",
+      "public_id": "a-wq8adyzheq50bw17",
+      "rank": 5,
+      "slug": "observed-reported-by-inferred-from-mark-where-a-claim-came-f",
+      "stage_at_capture": "seconded",
+      "title": "observed / reported(<by>) / inferred(<from>) - mark where a claim came from"
+    },
+    {
+      "choices": {
+        "attempt": "An honest failed attempt followed by a failure report can satisfy the instruction.",
+        "ensure": "The required end state must hold; stopping after a failed attempt does not satisfy the instruction.",
+        "unspecified": "The message does not state whether an honest failed attempt can satisfy the instruction."
+      },
+      "english_mapping": "Leading tags on any action instruction. 'attempt: <X>' states the action should be executed and the instruction is satisfied by an honest failure report - English: 'try to X; report either way.' 'ensure: <X>' states <X> must hold on completion - English: 'make X true; do not stop at a failed attempt.' Bare instructions stay legal and unmarked; the tag states the escalation contract explicitly when failure behavior is load-bearing.",
+      "form": "attempt: <X> / ensure: <X>",
+      "frames": [
+        {
+          "answer": "attempt",
+          "bare": "Upload archive A.",
+          "canonical": "attempt: Upload archive A.",
+          "careful": "Try to upload archive A and report success or failure; an honest failed attempt can satisfy this instruction.",
+          "corrupted": "attempt Upload archive A.",
+          "id": "upload-attempt",
+          "pole": "attempt",
+          "question": "If the upload still fails after an honest execution and the failure is reported, is this instruction satisfied?"
+        },
+        {
+          "answer": "ensure",
+          "bare": "Upload archive B.",
+          "canonical": "ensure: Upload archive B.",
+          "careful": "Make archive B successfully uploaded; do not stop at a failed attempt.",
+          "corrupted": "ensure Upload archive B.",
+          "id": "upload-ensure",
+          "pole": "ensure",
+          "question": "If the upload still fails after an honest execution and the failure is reported, is this instruction satisfied?"
+        },
+        {
+          "answer": "attempt",
+          "bare": "Notify recipient R.",
+          "canonical": "attempt: Notify recipient R.",
+          "careful": "Try to notify recipient R and report success or failure; an honest failed attempt can satisfy this instruction.",
+          "corrupted": "attempt Notify recipient R.",
+          "id": "notify-attempt",
+          "pole": "attempt",
+          "question": "If notification still fails after an honest execution and the failure is reported, is this instruction satisfied?"
+        },
+        {
+          "answer": "ensure",
+          "bare": "Notify recipient S.",
+          "canonical": "ensure: Notify recipient S.",
+          "careful": "Make recipient S successfully notified; do not stop at a failed attempt.",
+          "corrupted": "ensure Notify recipient S.",
+          "id": "notify-ensure",
+          "pole": "ensure",
+          "question": "If notification still fails after an honest execution and the failure is reported, is this instruction satisfied?"
+        },
+        {
+          "answer": "attempt",
+          "bare": "Create backup K.",
+          "canonical": "attempt: Create backup K.",
+          "careful": "Try to create backup K and report success or failure; an honest failed attempt can satisfy this instruction.",
+          "corrupted": "attempt Create backup K.",
+          "id": "backup-attempt",
+          "pole": "attempt",
+          "question": "If backup creation still fails after an honest execution and the failure is reported, is this instruction satisfied?"
+        },
+        {
+          "answer": "ensure",
+          "bare": "Create backup L.",
+          "canonical": "ensure: Create backup L.",
+          "careful": "Make backup L successfully created; do not stop at a failed attempt.",
+          "corrupted": "ensure Create backup L.",
+          "id": "backup-ensure",
+          "pole": "ensure",
+          "question": "If backup creation still fails after an honest execution and the failure is reported, is this instruction satisfied?"
+        },
+        {
+          "answer": "attempt",
+          "bare": "Acquire lock M.",
+          "canonical": "attempt: Acquire lock M.",
+          "careful": "Try to acquire lock M and report success or failure; an honest failed attempt can satisfy this instruction.",
+          "corrupted": "attempt Acquire lock M.",
+          "id": "lock-attempt",
+          "pole": "attempt",
+          "question": "If lock acquisition still fails after an honest execution and the failure is reported, is this instruction satisfied?"
+        },
+        {
+          "answer": "ensure",
+          "bare": "Acquire lock N.",
+          "canonical": "ensure: Acquire lock N.",
+          "careful": "Make lock N successfully acquired; do not stop at a failed attempt.",
+          "corrupted": "ensure Acquire lock N.",
+          "id": "lock-ensure",
+          "pole": "ensure",
+          "question": "If lock acquisition still fails after an honest execution and the failure is reported, is this instruction satisfied?"
+        }
+      ],
+      "key": "failure_contract",
+      "public_id": "a-mznv1j4k869me22t",
+      "rank": 6,
+      "slug": "attempt-ensure-say-whether-the-instruction-tolerates-failure",
+      "stage_at_capture": "seconded",
+      "title": "attempt: / ensure: — say whether the instruction tolerates failure"
+    }
+  ],
+  "content_sha256": "2552d6d7a28b7272ce06f45071377f35b52d97ed07da53a445dca0cb1a4495a2",
+  "proposal_snapshot_sha256": "24b35fed36e968ecf4c2c8e5e45781479c0798d5754005e0ce9523bb4c999806",
+  "schema": "ainglish.flagship-cold-clarity-constructs.v1"
+}

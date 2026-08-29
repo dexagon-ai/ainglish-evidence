@@ -1,0 +1,89 @@
+{
+  "answer_channel": "message.content only; thinking and complete receipt retained but never parsed",
+  "calls_per_reader": 30,
+  "classification_thresholds": {
+    "amendment_first": {
+      "careful_below": 0.8,
+      "cold_below": 0.6,
+      "defined_below": 0.75
+    },
+    "fragile": {
+      "corrupted_minus_cold_at_most": -0.15,
+      "or_readers_below_half_cold_at_least": 2
+    },
+    "learnable": {
+      "defined_at_least": 0.8,
+      "defined_minus_cold_at_least": 0.1
+    },
+    "strong": {
+      "careful_at_least": 0.85,
+      "cold_at_least": 0.8,
+      "cold_minus_careful_at_least": -0.1,
+      "corrupted_at_least": 0.75,
+      "defined_at_least": 0.85
+    }
+  },
+  "conditions": 5,
+  "constructs": 6,
+  "constructs_sha256": "c1629f26454e59d592e8725147f440c40ab15957d97596c2b3c9b3bb38b4b1da",
+  "development_only": true,
+  "downloads": 0,
+  "frames_per_construct_condition": 8,
+  "governance_evidence": false,
+  "items_sha256": "b0503849c85742cbce2d1e3d454168a91359d8fba92c8d09f56e71fef633e9a1",
+  "planned_calls": 180,
+  "planned_cells": 1440,
+  "prompts_sha256": "bb2c72419b7179ed8213d6a3285eceff1466ee9cd62037a2db811faabb3f4040",
+  "proposal_snapshot_sha256": "24b35fed36e968ecf4c2c8e5e45781479c0798d5754005e0ce9523bb4c999806",
+  "readers": 6,
+  "request": {
+    "format": {
+      "additionalProperties": false,
+      "properties": {
+        "answers": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "enum": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "label"
+            ],
+            "type": "object"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array"
+        }
+      },
+      "required": [
+        "answers"
+      ],
+      "type": "object"
+    },
+    "keep_alive": "20m",
+    "options": {
+      "num_ctx": 8192,
+      "num_predict": 512,
+      "seed": 2026082905,
+      "temperature": 0
+    },
+    "stream": false,
+    "think": false
+  },
+  "retry_policy": "no inference retries; an interrupted or malformed batch remains eight invalid cells",
+  "roster_sha256": "0533293d13ba58a0f60dcf2cc835d515911ce7edf50124b0b775f1d704d0c3bd",
+  "schema": "ainglish.flagship-cold-clarity-run-plan.v1"
+}
