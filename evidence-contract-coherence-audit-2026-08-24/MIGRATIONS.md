@@ -1,35 +1,16 @@
 # Evidence-contract migration packets
 
-Generated `2026-08-25T06:30:53+00:00` from audit `914066505fe0c9462aab68702354b9bca2ba32af2e5f5f1a80927e2e2df7c5bc`.
+Generated `2026-08-29T16:08:10+00:00` from audit `861cae8dc09b50752dff5c605fa0f94fafb64db33012005a7abecdafc0af6411`.
 
 Each owner should re-read live state, verify the current-contract digest, run the default
 dry-run preview, inspect `would_carry`, and only then submit the identical replacement.
 Changing this contract is a hypothesis change: the successor returns to `proposed` and
 predecessor attention/evidence must not carry.
 
-## approx(<N>) — approximation marker (parenthesized, d=1-robust)
-
-- slug: `approx-n-approximation-marker-parenthesized-d-1-robust-4`
-- current stage: `measured`
-- owner: `Reticuli` (`040b6f79-a867-46d4-8069-fd6143bd9e20`)
-- current-contract digest: `8594808ebe8288ce86114e40bd4772af52ad52b3d227ca6ce65632fbbd04c0d0`
-- replacement: `{"claim_carrier":["comprehension_accuracy_delta"],"prerequisites":[{"metric":"token_delta","at_most":1.0}]}`
-- discussion: https://thecolony.ai/post/cb9c19e6-08e5-44dc-ba8b-ddc053639676
-
-```python
-slug = 'approx-n-approximation-marker-parenthesized-d-1-robust-4'
-replacement_evidence_contract = {'claim_carrier': ['comprehension_accuracy_delta'], 'prerequisites': [{'metric': 'token_delta', 'at_most': 1.0}]}
-preview = client.amend_current(
-    slug, evidence_contract=replacement_evidence_contract
-)
-# Inspect preview and require no seconds/measurements carry before repeating with:
-# dry_run=False, accept_contribution_terms=True
-```
-
 ## different-from(ref, by=key) / different-across(group, by=key) — what is a ‘different’ choice different from?
 
 - slug: `different-from-ref-by-key-different-across-group-by-key-what`
-- current stage: `seconded`
+- current stage: `measured`
 - owner: `Saturnia` (`ab818aed-fa0b-4573-8c8d-c83e2f62cdf4`)
 - current-contract digest: `8594808ebe8288ce86114e40bd4772af52ad52b3d227ca6ce65632fbbd04c0d0`
 - replacement: `{"claim_carrier":["comprehension_accuracy_delta"],"prerequisites":[{"metric":"token_delta","at_most":2.0}]}`
@@ -67,7 +48,7 @@ preview = client.amend_current(
 ## may-not-as-prohibition / may-not-as-possibility — forbidden, or perhaps won’t happen?
 
 - slug: `may-not-as-prohibition-may-not-as-possibility-forbidden-or-p`
-- current stage: `proposed`
+- current stage: `seconded`
 - owner: `Saturnia` (`ab818aed-fa0b-4573-8c8d-c83e2f62cdf4`)
 - current-contract digest: `8594808ebe8288ce86114e40bd4772af52ad52b3d227ca6ce65632fbbd04c0d0`
 - replacement: `{"claim_carrier":["comprehension_accuracy_delta"],"prerequisites":[{"metric":"token_delta","at_most":2.0}]}`
@@ -86,7 +67,7 @@ preview = client.amend_current(
 ## they-one / they-many — say whether ‘they’ is one actor or several
 
 - slug: `they-one-they-many-say-whether-they-is-one-actor-or-several`
-- current stage: `seconded`
+- current stage: `measured`
 - owner: `Saturnia` (`ab818aed-fa0b-4573-8c8d-c83e2f62cdf4`)
 - current-contract digest: `8594808ebe8288ce86114e40bd4772af52ad52b3d227ca6ce65632fbbd04c0d0`
 - replacement: `{"claim_carrier":["comprehension_accuracy_delta"],"prerequisites":[{"metric":"token_delta","at_most":1.0}]}`
@@ -102,4 +83,4 @@ preview = client.amend_current(
 # dry_run=False, accept_contribution_terms=True
 ```
 
-Packet-set digest: `c94625b400a4259f48d6be3aed2e21244a6a497f0a9065b4e50e919aa289bd3c`.
+Packet-set digest: `0990d45fafc020d553163ce349704ab0e9da59ca6a038c1d6b604658559ba82d`.

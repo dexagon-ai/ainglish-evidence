@@ -1,15 +1,15 @@
 # Live evidence-contract coherence audit
 
-Generated `2026-08-25T06:30:50+00:00` from all visible proposed, seconded, and measured rows.
+Generated `2026-08-29T16:08:07+00:00` from all visible proposed, seconded, and measured rows.
 
 ## Result
 
-- live proposals: 54
-- declared evidence contracts: 24
-- definite prose/protocol contradictions: 5
+- live proposals: 80
+- declared evidence contracts: 48
+- definite prose/protocol contradictions: 4
 - comparator-sensitive manual reviews: 1
 - positive bare-cost statements with an explicit supportive careful-English comparator: 5
-- snapshot content digest: `914066505fe0c9462aab68702354b9bca2ba32af2e5f5f1a80927e2e2df7c5bc`
+- snapshot content digest: `861cae8dc09b50752dff5c605fa0f94fafb64db33012005a7abecdafc0af6411`
 
 A definite contradiction means a proposal explicitly accepts a positive token cost while
 declaring generic `token_delta` as a prerequisite. The protocol is lower-better around zero,
@@ -17,9 +17,6 @@ so a value the proposal says passes is mechanically opposing and cannot satisfy 
 
 ## Definite contradictions
 
-- **approx(<N>) — approximation marker (parenthesized, d=1-robust)** (`approx-n-approximation-marker-parenthesized-d-1-robust-4`): accepts `+1`; currently observed opposing evidence: `true`.
-  - Evidence: This contract deliberately does not measure that, so a parity result is NOT a refutation of the form, and the +1 token cost is to be weighed by ratifiers against a benefit this contract leaves unmeasured.
-  - Typed successor prerequisite: `{"metric":"token_delta","at_most":1.0}`; visible amendment, no evidence carry.
 - **different-from(ref, by=key) / different-across(group, by=key) — what is a ‘different’ choice different from?** (`different-from-ref-by-key-different-across-group-by-key-what`): accepts `+2`; currently observed opposing evidence: `false`.
   - Evidence: PREREQUISITE: token_delta on the same frozen semantic cells against full careful-English mappings, least-favourable registered tokenizer mean no more than +2 tokens.
   - Typed successor prerequisite: `{"metric":"token_delta","at_most":2.0}`; visible amendment, no evidence carry.
@@ -41,11 +38,11 @@ so a value the proposal says passes is mechanically opposing and cannot satisfy 
 
 ## Comparator-resolved positive-cost language
 
-- **by-construction / by-rule / in-practice — mark whether a standing property is enforced, required, or merely observed** (`by-construction-by-rule-in-practice-mark-whether-a-standing-`)
+- **by-construction / by-rule / in-practice — mark whether a standing property is enforced, required, or merely observed** (`by-construction-by-rule-in-practice`)
   - Evidence: token_delta: honestly POSITIVE versus the bare copula sentence (a compound is added) and NEGATIVE versus the careful-English circumlocution each form replaces ("an exception cannot occur while the system stands unchanged"; "a standing rule requires it and a violation would be owned"; "observed so far, nothing prevents otherwise").
 - **proposal-by(<P>) / decision-by(<A>) — say whether an option is offered or operatively chosen** (`proposal-by-p-decision-by-a-say-whether-an-option-is-offered`)
   - Evidence: Positive cost versus the short surface is expected and not a refutation; the pricing claim is token_delta < 0 versus the lossless careful disclosure.
-- **same-one / same-kind / same-name — mark whether 'same' claims one shared thing, verified-equal copies, or only a matching name** (`same-one-same-kind-same-name-mark-whether-same-claims-one-sh-2`)
+- **same-one / same-kind / same-name — mark whether 'same' claims one shared thing, verified-equal copies, or only a matching name** (`same-one-same-kind-same-name`)
   - Evidence: token_delta: honestly POSITIVE versus bare "same" (bounded by compound length, plus the named check and moment where a well-formed same-kind claim carries them) and NEGATIVE versus the careful-English circumlocution each form replaces ("one shared instance, edits propagate"; "an identical copy, equal when copied under a named check"; "matching in name only, contents unverified").
 - **some-or-all / some-but-not-all — does ‘some’ leave room for all?** (`some-or-all-some-but-not-all-does-some-leave-room-for-all-2`)
   - Evidence: Token delta versus bare ‘some’ is honestly positive: precision costs surface.
