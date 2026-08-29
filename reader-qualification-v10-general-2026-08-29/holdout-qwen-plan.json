@@ -1,0 +1,172 @@
+{
+  "kind": "ainglish.panel.reader-qualification-plan.v8",
+  "instance": "v10-general-2026-08-29",
+  "result_kind": "ainglish.panel.reader-qualification-result.v8",
+  "evidentiary_status": "instrument qualification only; never proposal evidence",
+  "scope": "general Ainglish comprehension carriers only; not the restricted this-once roster",
+  "phase": "holdout-qwen",
+  "freeze_rule": "Commit and push this fresh holdout, both candidate plans, runner, and static audit before either candidate call.",
+  "candidate": {
+    "lineage": "Qwen 3.6 35B",
+    "producer": "Alibaba Cloud",
+    "source_model": "qwen3.6:35b",
+    "source_manifest_sha256": "07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522",
+    "capabilities": [
+      "completion",
+      "vision",
+      "tools",
+      "thinking"
+    ],
+    "details": {
+      "family": "qwen35moe",
+      "families": [
+        "qwen35moe"
+      ],
+      "parameter_size": "36.0B",
+      "quantization_level": "Q4_K_M",
+      "format": "gguf"
+    },
+    "official_reference": "local digest-pinned Ollama qwen3.6:35b artifact",
+    "eligibility_record": "reader-qualification-v8-2026-08-26/holdout-results-audit.json; qualified 61/64 on a prior fresh holdout",
+    "advertised_thinking_policy": "capability allowed only with transmitted think:false and zero returned thinking bytes"
+  },
+  "runtime": {
+    "ollama_version": "0.32.7",
+    "structured_output_reference": "https://docs.ollama.com/capabilities/structured-outputs"
+  },
+  "format_stage": {
+    "controls": [
+      {
+        "id": "format-01",
+        "round": 1,
+        "target": "A",
+        "instruction": "Store target code A in the answer field."
+      },
+      {
+        "id": "format-02",
+        "round": 1,
+        "target": "B",
+        "instruction": "Store target code B in the answer field."
+      },
+      {
+        "id": "format-03",
+        "round": 1,
+        "target": "C",
+        "instruction": "Store target code C in the answer field."
+      },
+      {
+        "id": "format-04",
+        "round": 2,
+        "target": "A",
+        "instruction": "The required answer value is A."
+      },
+      {
+        "id": "format-05",
+        "round": 2,
+        "target": "B",
+        "instruction": "The required answer value is B."
+      },
+      {
+        "id": "format-06",
+        "round": 2,
+        "target": "C",
+        "instruction": "The required answer value is C."
+      },
+      {
+        "id": "format-07",
+        "round": 3,
+        "target": "A",
+        "instruction": "Copy A into the answer property."
+      },
+      {
+        "id": "format-08",
+        "round": 3,
+        "target": "B",
+        "instruction": "Copy B into the answer property."
+      },
+      {
+        "id": "format-09",
+        "round": 3,
+        "target": "C",
+        "instruction": "Copy C into the answer property."
+      },
+      {
+        "id": "format-10",
+        "round": 4,
+        "target": "A",
+        "instruction": "Return the supplied target, which is A."
+      },
+      {
+        "id": "format-11",
+        "round": 4,
+        "target": "B",
+        "instruction": "Return the supplied target, which is B."
+      },
+      {
+        "id": "format-12",
+        "round": 4,
+        "target": "C",
+        "instruction": "Return the supplied target, which is C."
+      }
+    ],
+    "gate": {
+      "valid_json_cells_required": 12,
+      "schema_exact_cells_required": 12,
+      "target_correct_cells_required": 12,
+      "thinking_bytes_required": 0,
+      "fault_cells_required": 0
+    },
+    "failure_action": "Publish the format result and expose zero semantic holdout items."
+  },
+  "semantic_stage": {
+    "packet": {
+      "file": "reader-qualification-v10-general-2026-08-29/holdout.json",
+      "content_sha256": "06c183392234fd4fcedf24bee6dea3804f62e986cb66bad59f46f85c521d2102"
+    },
+    "prompt_contract": "Given only the ordinary-English premise, classify the hypothesis as entailed, contradicted, or not determined. Return the opaque choice code selected from the supplied mapping.",
+    "gate": {
+      "valid_json_cells_required": 64,
+      "schema_exact_cells_required": 64,
+      "correct_cells_required": 60,
+      "correct_per_axis_required": 7,
+      "correct_per_label_required": 0,
+      "thinking_bytes_required": 0,
+      "fault_cells_required": 0
+    },
+    "pass_meaning": "Qualified ordinary-English reader lineage for prospectively frozen general-scope Ainglish comprehension panels."
+  },
+  "transport": {
+    "adapter": "ollama-native-chat-json-schema-v1",
+    "think": false,
+    "temperature": 0,
+    "seed": 2026082901,
+    "num_ctx": 4096,
+    "max_tokens": 16,
+    "timeout_s": 600,
+    "format": {
+      "type": "object",
+      "properties": {
+        "answer": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C"
+          ]
+        }
+      },
+      "required": [
+        "answer"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "gpu_gate": {
+    "ollama_base_url": "http://127.0.0.1:11434",
+    "minimum_total_free_mib": 36000,
+    "maximum_utilization_percent": 35
+  },
+  "result_file": "holdout-qwen-result.json",
+  "journal_file": "holdout-qwen-attempt-journal.jsonl",
+  "content_sha256": "232dd8e247364a07cdc85f3e6a8110c02070c6376d61dd96d7d55dbe7d68ac3c"
+}

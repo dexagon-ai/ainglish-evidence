@@ -1,0 +1,174 @@
+{
+  "kind": "ainglish.panel.reader-qualification-plan.v8",
+  "instance": "v10-general-2026-08-29",
+  "result_kind": "ainglish.panel.reader-qualification-result.v8",
+  "evidentiary_status": "instrument qualification only; never proposal evidence",
+  "scope": "general Ainglish comprehension carriers only; not the restricted this-once roster",
+  "phase": "holdout-seed",
+  "freeze_rule": "Commit and push this fresh holdout, both candidate plans, runner, and static audit before either candidate call.",
+  "candidate": {
+    "lineage": "Seed-OSS 36B Instruct",
+    "producer": "ByteDance Seed Team",
+    "source_model": "milkey/Seed-OSS-36B-Instruct:Q4_K_M",
+    "source_manifest_sha256": "7a66a2f466bf48fdafa7004a7975a7f5fac6e667a6de7d01751aacb98b3f387c",
+    "capabilities": [
+      "completion",
+      "tools",
+      "thinking"
+    ],
+    "details": {
+      "family": "seed_oss",
+      "families": [
+        "seed_oss"
+      ],
+      "parameter_size": "36.2B",
+      "quantization_level": "Q4_K_M",
+      "format": "gguf"
+    },
+    "registry_reference": "https://ollama.com/milkey/Seed-OSS-36B-Instruct:Q4_K_M",
+    "official_model_reference": "https://huggingface.co/ByteDance-Seed/Seed-OSS-36B-Instruct",
+    "eligibility_record": "https://github.com/reticuli-labs/panel-artifacts/commit/495c75f0; development passed 24/24",
+    "independence_caveat": "Community-uploaded Q4_K_M artifact; all claims bind only the exact acquired digest.",
+    "advertised_thinking_policy": "capability allowed only with transmitted think:false, the manifest-bound zero-budget template, and zero returned thinking bytes",
+    "template_sha256": "260bb0ab1136b500ee639cffc19703df12098b065be34071b20904538c3c26e2"
+  },
+  "runtime": {
+    "ollama_version": "0.32.7",
+    "structured_output_reference": "https://docs.ollama.com/capabilities/structured-outputs"
+  },
+  "format_stage": {
+    "controls": [
+      {
+        "id": "format-01",
+        "round": 1,
+        "target": "A",
+        "instruction": "Store target code A in the answer field."
+      },
+      {
+        "id": "format-02",
+        "round": 1,
+        "target": "B",
+        "instruction": "Store target code B in the answer field."
+      },
+      {
+        "id": "format-03",
+        "round": 1,
+        "target": "C",
+        "instruction": "Store target code C in the answer field."
+      },
+      {
+        "id": "format-04",
+        "round": 2,
+        "target": "A",
+        "instruction": "The required answer value is A."
+      },
+      {
+        "id": "format-05",
+        "round": 2,
+        "target": "B",
+        "instruction": "The required answer value is B."
+      },
+      {
+        "id": "format-06",
+        "round": 2,
+        "target": "C",
+        "instruction": "The required answer value is C."
+      },
+      {
+        "id": "format-07",
+        "round": 3,
+        "target": "A",
+        "instruction": "Copy A into the answer property."
+      },
+      {
+        "id": "format-08",
+        "round": 3,
+        "target": "B",
+        "instruction": "Copy B into the answer property."
+      },
+      {
+        "id": "format-09",
+        "round": 3,
+        "target": "C",
+        "instruction": "Copy C into the answer property."
+      },
+      {
+        "id": "format-10",
+        "round": 4,
+        "target": "A",
+        "instruction": "Return the supplied target, which is A."
+      },
+      {
+        "id": "format-11",
+        "round": 4,
+        "target": "B",
+        "instruction": "Return the supplied target, which is B."
+      },
+      {
+        "id": "format-12",
+        "round": 4,
+        "target": "C",
+        "instruction": "Return the supplied target, which is C."
+      }
+    ],
+    "gate": {
+      "valid_json_cells_required": 12,
+      "schema_exact_cells_required": 12,
+      "target_correct_cells_required": 12,
+      "thinking_bytes_required": 0,
+      "fault_cells_required": 0
+    },
+    "failure_action": "Publish the format result and expose zero semantic holdout items."
+  },
+  "semantic_stage": {
+    "packet": {
+      "file": "reader-qualification-v10-general-2026-08-29/holdout.json",
+      "content_sha256": "06c183392234fd4fcedf24bee6dea3804f62e986cb66bad59f46f85c521d2102"
+    },
+    "prompt_contract": "Given only the ordinary-English premise, classify the hypothesis as entailed, contradicted, or not determined. Return the opaque choice code selected from the supplied mapping.",
+    "gate": {
+      "valid_json_cells_required": 64,
+      "schema_exact_cells_required": 64,
+      "correct_cells_required": 60,
+      "correct_per_axis_required": 7,
+      "correct_per_label_required": 0,
+      "thinking_bytes_required": 0,
+      "fault_cells_required": 0
+    },
+    "pass_meaning": "Qualified ordinary-English reader lineage for prospectively frozen general-scope Ainglish comprehension panels."
+  },
+  "transport": {
+    "adapter": "ollama-native-chat-json-schema-v1",
+    "think": false,
+    "temperature": 0,
+    "seed": 2026082901,
+    "num_ctx": 4096,
+    "max_tokens": 16,
+    "timeout_s": 600,
+    "format": {
+      "type": "object",
+      "properties": {
+        "answer": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C"
+          ]
+        }
+      },
+      "required": [
+        "answer"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "gpu_gate": {
+    "ollama_base_url": "http://127.0.0.1:11434",
+    "minimum_total_free_mib": 30000,
+    "maximum_utilization_percent": 35
+  },
+  "result_file": "holdout-seed-result.json",
+  "journal_file": "holdout-seed-attempt-journal.jsonl",
+  "content_sha256": "f2e3de2f421edbd892778cfd75e7921491d2f567e4e16a688cbbd22ade2f3c95"
+}
