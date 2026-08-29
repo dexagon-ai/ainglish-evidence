@@ -1,0 +1,114 @@
+{
+  "kind": "dexagon.ainglish.language-gap-candidates.v1",
+  "rubric": [
+    "instant_problem",
+    "familiar_ambiguity",
+    "balanced_or_simple_form",
+    "visible_consequence",
+    "clean_seam"
+  ],
+  "candidates": [
+    {
+      "id": "explicit-pronoun-referent",
+      "problem": "When a sentence mentions two things and then says ‘it’, which thing does ‘it’ mean?",
+      "proposed_form": "it(<ref>)",
+      "example": "The service notified the agent after it(service) failed.",
+      "checks": [true, true, true, true, true],
+      "decision": "select",
+      "semantic_neighbors": ["they-one / they-many", "same-one / same-kind / same-name"],
+      "seam": "This marks antecedent identity. It does not mark pronoun number or assert equality between two separately introduced objects."
+    },
+    {
+      "id": "universal-negation-scope",
+      "problem": "Does ‘all replicas are not healthy’ mean none are healthy, or merely that at least one is unhealthy?",
+      "proposed_form": "none(<S>): <P> | not-all(<S>): <P>",
+      "example": "none(replicas): healthy | not-all(replicas): healthy",
+      "checks": [true, true, true, true, true],
+      "decision": "select",
+      "semantic_neighbors": ["some-or-all / some-but-not-all", "whole(<S>) / part(<S>)"],
+      "seam": "none fixes the satisfying count at zero; not-all allows zero through N-1. It does not assert the sample/population boundary, and some-but-not-all separately requires both a satisfying and a non-satisfying member."
+    },
+    {
+      "id": "while-time-versus-contrast",
+      "problem": "Does ‘while’ mean during the same interval or although?",
+      "proposed_form": "while-same-time / while-in-contrast",
+      "example": "while-same-time the backup ran | while-in-contrast the backup ran",
+      "checks": [true, true, true, false, true],
+      "decision": "hold",
+      "semantic_neighbors": [],
+      "seam": "The ambiguity is familiar, but the immediate action difference is often supplied by context."
+    },
+    {
+      "id": "since-time-versus-cause",
+      "problem": "Does ‘since’ locate a time interval or assert a cause?",
+      "proposed_form": "since-time(<event>) / since-cause(<cause>)",
+      "example": "errors stopped since-time(restart) | errors stopped since-cause(restart)",
+      "checks": [true, true, true, true, false],
+      "decision": "reject-neighbor",
+      "semantic_neighbors": ["caused-by(<C>) / co-occurring(<C>)", "as_of(<t>) / until(<t>)"],
+      "seam": "Existing causation and time operators already compose to express the distinction."
+    },
+    {
+      "id": "cancel-keep-versus-restore",
+      "problem": "When an in-progress operation is cancelled, do completed effects remain or get undone?",
+      "proposed_form": "cancel-keep-effects / cancel-restore-state",
+      "example": "cancel-keep-effects(deploy) | cancel-restore-state(deploy)",
+      "checks": [true, true, true, true, false],
+      "decision": "reject-neighbor",
+      "semantic_neighbors": ["all-or-nothing / keep-successes", "repeat-event / restore-state"],
+      "seam": "The retention axis is already registered for partial actions and can be composed with a cancellation directive."
+    },
+    {
+      "id": "approval-content-versus-execution",
+      "problem": "Was a plan accepted as content, or was someone authorized to execute it?",
+      "proposed_form": "approved-as-content / approved-to-execute",
+      "example": "change approved-as-content | change approved-to-execute",
+      "checks": [true, true, true, true, false],
+      "decision": "reject-neighbor",
+      "semantic_neighbors": ["proposal-by / decision-by", "allowed-to", "ack-as-agreement"],
+      "seam": "Existing decision and permission constructs compose without another approval synonym."
+    },
+    {
+      "id": "every-other-scope",
+      "problem": "Does ‘every other item’ mean alternating items or all items except a named one?",
+      "proposed_form": "every-second(<ordered-set>; start=<ref>) / all-except(<set>; excluded=<refs>)",
+      "example": "every-second(backups; start=b1) | all-except(backups; excluded=b1)",
+      "checks": [true, true, false, true, true],
+      "decision": "hold",
+      "semantic_neighbors": ["except_l(<L>)", "in-sequence"],
+      "seam": "Promising, but the two forms currently require asymmetric arguments and are not yet a clean pair."
+    },
+    {
+      "id": "calendar-day-versus-duration",
+      "problem": "Does ‘in one day’ mean the same local time tomorrow or exactly 24 hours later?",
+      "proposed_form": "next-local-day(<time>;<zone>) / after-hours(24)",
+      "example": "retry next-local-day(09:00;Europe/London) | retry after-hours(24)",
+      "checks": [true, true, false, true, true],
+      "decision": "hold",
+      "semantic_neighbors": ["next-up / next-week", "eta(<t>)"],
+      "seam": "Operationally valuable around daylight-saving transitions, but the candidate needs a simpler symmetric surface."
+    },
+    {
+      "id": "support-evidence-versus-capability",
+      "problem": "Does ‘supports’ mean provides evidence for a claim or implements a capability?",
+      "proposed_form": "evidence-for(<claim>) / capable-of(<feature>)",
+      "example": "result evidence-for(H) | client capable-of(streaming)",
+      "checks": [true, true, true, false, true],
+      "decision": "hold",
+      "semantic_neighbors": ["Evidential tags", "able-to / allowed-to"],
+      "seam": "The senses normally have different argument types, so unmarked operational confusion may be too rare."
+    },
+    {
+      "id": "valid-syntax-versus-policy",
+      "problem": "Does ‘valid’ mean well-formed, accepted by a policy, or true?",
+      "proposed_form": "well-formed-under(<grammar>) / accepted-under(<policy>) / true-under(<model>)",
+      "example": "token well-formed-under(jwt) | token accepted-under(auth-policy)",
+      "checks": [true, true, false, true, false],
+      "decision": "hold",
+      "semantic_neighbors": ["test-run / test-passed", "true-as-worded / false-as-worded"],
+      "seam": "The candidate currently mixes three axes and overlaps existing test and truth constructs."
+    }
+  ],
+  "model_calls": 0,
+  "governance_writes": 0
+}

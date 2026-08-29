@@ -1,0 +1,583 @@
+{
+  "kind": "dexagon.ainglish.language-gap-census.v1",
+  "register_snapshot_sha256": "606659c3dfb503161e245b089373562db558642fce50af239c1988f7cf6e48cd",
+  "population": 195,
+  "selected": [
+    "explicit-pronoun-referent",
+    "universal-negation-scope"
+  ],
+  "candidates": [
+    {
+      "id": "explicit-pronoun-referent",
+      "problem": "When a sentence mentions two things and then says ‘it’, which thing does ‘it’ mean?",
+      "proposed_form": "it(<ref>)",
+      "example": "The service notified the agent after it(service) failed.",
+      "checks": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "decision": "select",
+      "semantic_neighbors": [
+        "they-one / they-many",
+        "same-one / same-kind / same-name"
+      ],
+      "seam": "This marks antecedent identity. It does not mark pronoun number or assert equality between two separately introduced objects.",
+      "editorial_score": 5,
+      "top_lexical_neighbors": [
+        {
+          "score": 0.1034,
+          "slug": "falsum-ref-ref-mark-a-claim-dead-when-its-falsifier-fires",
+          "stage": "superseded",
+          "title": "falsum-ref — ⊥(<ref>): mark a claim dead when its falsifier fires",
+          "form": "<claim> ⊥(<instrument>)"
+        },
+        {
+          "score": 0.1034,
+          "slug": "falsum-ref-ref-mark-a-claim-dead-when-its-falsifier-fires-2",
+          "stage": "superseded",
+          "title": "falsum-ref — ⊥(<ref>): mark a claim dead when its falsifier fires",
+          "form": "<claim> ⊥(<instrument>)"
+        },
+        {
+          "score": 0.1034,
+          "slug": "human-needed-why-the-escalation-pin-when-a-human-must-decide",
+          "stage": "superseded",
+          "title": "human_needed(<why>) — the escalation pin (when a human must decide)",
+          "form": "X human_needed(<why>)"
+        },
+        {
+          "score": 0.1034,
+          "slug": "human-needed-why-the-escalation-pin-when-a-human-must-decide-2",
+          "stage": "ratified",
+          "title": "human_needed(<why>) — the escalation pin (when a human must decide)",
+          "form": "X human_needed(<why>)"
+        },
+        {
+          "score": 0.1034,
+          "slug": "mean-of-population-ref-value-median-of-population-ref-value",
+          "stage": "seconded",
+          "title": "mean-of / median-of — which ‘average’ did you report?",
+          "form": "mean-of(<population-ref>) = <value> | median-of(<population-ref>) = <value>"
+        }
+      ]
+    },
+    {
+      "id": "universal-negation-scope",
+      "problem": "Does ‘all replicas are not healthy’ mean none are healthy, or merely that at least one is unhealthy?",
+      "proposed_form": "none(<S>): <P> | not-all(<S>): <P>",
+      "example": "none(replicas): healthy | not-all(replicas): healthy",
+      "checks": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "decision": "select",
+      "semantic_neighbors": [
+        "some-or-all / some-but-not-all",
+        "whole(<S>) / part(<S>)"
+      ],
+      "seam": "none fixes the satisfying count at zero; not-all allows zero through N-1. It does not assert the sample/population boundary, and some-but-not-all separately requires both a satisfying and a non-satisfying member.",
+      "editorial_score": 5,
+      "top_lexical_neighbors": [
+        {
+          "score": 0.1852,
+          "slug": "one-or-more-role-exactly-one-role-does-a-reviewer-require-at",
+          "stage": "measured",
+          "title": "one-or-more(<role>) / exactly-one(<role>) — does ‘a reviewer’ require at least one participant or exactly one?",
+          "form": "one-or-more(<role>): <ACTION-CLAUSE> | exactly-one(<role>): <ACTION-CLAUSE>"
+        },
+        {
+          "score": 0.1739,
+          "slug": "some-or-all-some-but-not-all-does-some-leave-room-for-all",
+          "stage": "superseded",
+          "title": "some-or-all / some-but-not-all — does ‘some’ leave room for all?",
+          "form": "some-or-all / some-but-not-all"
+        },
+        {
+          "score": 0.1739,
+          "slug": "some-or-all-some-but-not-all-does-some-leave-room-for-all-2",
+          "stage": "measured",
+          "title": "some-or-all / some-but-not-all — does ‘some’ leave room for all?",
+          "form": "some-or-all / some-but-not-all"
+        },
+        {
+          "score": 0.1333,
+          "slug": "approximation-marker-2",
+          "stage": "superseded",
+          "title": "~ — approximation marker",
+          "form": "~N  (a ~ is written at line-start or after whitespace; abutting ~N tokens are whitespace-separated)"
+        },
+        {
+          "score": 0.1333,
+          "slug": "approximation-marker-3",
+          "stage": "superseded",
+          "title": "~ — approximation marker",
+          "form": "~N  (a ~ is written at line-start or after whitespace; abutting ~N tokens are whitespace-separated)"
+        }
+      ]
+    },
+    {
+      "id": "while-time-versus-contrast",
+      "problem": "Does ‘while’ mean during the same interval or although?",
+      "proposed_form": "while-same-time / while-in-contrast",
+      "example": "while-same-time the backup ran | while-in-contrast the backup ran",
+      "checks": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "decision": "hold",
+      "semantic_neighbors": [],
+      "seam": "The ambiguity is familiar, but the immediate action difference is often supplied by context.",
+      "editorial_score": 4,
+      "top_lexical_neighbors": [
+        {
+          "score": 0.125,
+          "slug": "each-alone-as-one-distributive-vs-collective-does-the-plural",
+          "stage": "ratified",
+          "title": "each-alone / as-one — distributive vs collective: does the plural act once, or once each?",
+          "form": "each-alone / as-one"
+        },
+        {
+          "score": 0.12,
+          "slug": "test-run-t-test-passed-t-did-tested-mean-the-check-happened-",
+          "stage": "measured",
+          "title": "test-run(<T>) / test-passed(<T>) — did “tested” mean the check happened, or that it succeeded?",
+          "form": "test-run(<T>) / test-passed(<T>)"
+        },
+        {
+          "score": 0.1034,
+          "slug": "each-group-group-set-ref-clause-groups-combined-group-set",
+          "stage": "seconded",
+          "title": "each-group / groups-combined — did the result hold in every group, or only after pooling them?",
+          "form": "each-group(<group-set-ref>): <CLAUSE> | groups-combined(<group-set-ref>): <CLAUSE>"
+        },
+        {
+          "score": 0.1,
+          "slug": "tested-against-revision-pin-a-test-claim-to-the-exact-revisi",
+          "stage": "measured",
+          "title": "tested-against(<revision>) — pin a test claim to the exact revision it ran on",
+          "form": "tested-against(<commit|version|hash>) attached to a claim or result"
+        },
+        {
+          "score": 0.0952,
+          "slug": "some-or-all-some-but-not-all-does-some-leave-room-for-all",
+          "stage": "superseded",
+          "title": "some-or-all / some-but-not-all — does ‘some’ leave room for all?",
+          "form": "some-or-all / some-but-not-all"
+        }
+      ]
+    },
+    {
+      "id": "since-time-versus-cause",
+      "problem": "Does ‘since’ locate a time interval or assert a cause?",
+      "proposed_form": "since-time(<event>) / since-cause(<cause>)",
+      "example": "errors stopped since-time(restart) | errors stopped since-cause(restart)",
+      "checks": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "decision": "reject-neighbor",
+      "semantic_neighbors": [
+        "caused-by(<C>) / co-occurring(<C>)",
+        "as_of(<t>) / until(<t>)"
+      ],
+      "seam": "Existing causation and time operators already compose to express the distinction.",
+      "editorial_score": 4,
+      "top_lexical_neighbors": [
+        {
+          "score": 0.1429,
+          "slug": "must-as-rule-must-as-inference-does-must-impose-a-requiremen",
+          "stage": "seconded",
+          "title": "must-as-rule / must-as-inference — does ‘must’ impose a requirement or report a conclusion?",
+          "form": "must-as-rule / must-as-inference"
+        },
+        {
+          "score": 0.125,
+          "slug": "one-or-more-role-exactly-one-role-does-a-reviewer-require-at",
+          "stage": "measured",
+          "title": "one-or-more(<role>) / exactly-one(<role>) — does ‘a reviewer’ require at least one participant or exactly one?",
+          "form": "one-or-more(<role>): <ACTION-CLAUSE> | exactly-one(<role>): <ACTION-CLAUSE>"
+        },
+        {
+          "score": 0.1154,
+          "slug": "caused-by-c-co-occurring-c-say-whether-you-re-asserting-a-ca",
+          "stage": "superseded",
+          "title": "caused-by(<C>) / co-occurring(<C>) — say whether you're asserting a cause or only a sequence",
+          "form": "Y caused-by(<C>) | Y co-occurring(<C>)"
+        },
+        {
+          "score": 0.1154,
+          "slug": "caused-by-c-co-occurring-c-say-whether-you-re-asserting-a-ca-2",
+          "stage": "superseded",
+          "title": "caused-by(<C>) / co-occurring(<C>) — say whether you're asserting a cause or only a sequence",
+          "form": "Y caused-by(<C>) | Y co-occurring(<C>)"
+        },
+        {
+          "score": 0.1154,
+          "slug": "caused-by-c-co-occurring-c-say-whether-you-re-asserting-a-ca-3",
+          "stage": "seconded",
+          "title": "caused-by(<C>) / co-occurring(<C>) — say whether you're asserting a cause or only a sequence",
+          "form": "Y caused-by(<C>) | Y co-occurring(<C>)"
+        }
+      ]
+    },
+    {
+      "id": "cancel-keep-versus-restore",
+      "problem": "When an in-progress operation is cancelled, do completed effects remain or get undone?",
+      "proposed_form": "cancel-keep-effects / cancel-restore-state",
+      "example": "cancel-keep-effects(deploy) | cancel-restore-state(deploy)",
+      "checks": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "decision": "reject-neighbor",
+      "semantic_neighbors": [
+        "all-or-nothing / keep-successes",
+        "repeat-event / restore-state"
+      ],
+      "seam": "The retention axis is already registered for partial actions and can be composed with a cancellation directive.",
+      "editorial_score": 4,
+      "top_lexical_neighbors": [
+        {
+          "score": 0.1154,
+          "slug": "should-as-rule-should-as-forecast-is-should-a-norm-or-an-exp",
+          "stage": "seconded",
+          "title": "should-as-rule / should-as-forecast — is 'should' a norm or an expectation?",
+          "form": "should-as-rule / should-as-forecast"
+        },
+        {
+          "score": 0.0968,
+          "slug": "proposal-by-p-decision-by-a-say-whether-an-option-is-offered",
+          "stage": "measured",
+          "title": "proposal-by(<P>) / decision-by(<A>) — say whether an option is offered or operatively chosen",
+          "form": "proposal-by(<P>): <X> | decision-by(<A>): <X>"
+        },
+        {
+          "score": 0.0938,
+          "slug": "by-construction-by-rule-in-practice",
+          "stage": "measured",
+          "title": "by-construction / by-rule / in-practice — mark whether a standing property is enforced, required, or merely observed",
+          "form": "by-construction / by-rule / in-practice"
+        },
+        {
+          "score": 0.0938,
+          "slug": "repeat-event-restore-state",
+          "stage": "measured",
+          "title": "repeat-event / restore-state — did ‘again’ repeat the action, or only bring the result back?",
+          "form": "repeat-event: <EVENT-CLAUSE> | restore-state(<RESULT-STATE>): <CHANGE-OF-STATE-CLAUSE>"
+        },
+        {
+          "score": 0.0938,
+          "slug": "repeat-event-restore-state-did-again-repeat-the-action-or-on",
+          "stage": "superseded",
+          "title": "repeat-event / restore-state — did ‘again’ repeat the action, or only bring the result back?",
+          "form": "repeat-event: <EVENT-CLAUSE> | restore-state(<RESULT-STATE>): <CHANGE-OF-STATE-CLAUSE>"
+        }
+      ]
+    },
+    {
+      "id": "approval-content-versus-execution",
+      "problem": "Was a plan accepted as content, or was someone authorized to execute it?",
+      "proposed_form": "approved-as-content / approved-to-execute",
+      "example": "change approved-as-content | change approved-to-execute",
+      "checks": [
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "decision": "reject-neighbor",
+      "semantic_neighbors": [
+        "proposal-by / decision-by",
+        "allowed-to",
+        "ack-as-agreement"
+      ],
+      "seam": "Existing decision and permission constructs compose without another approval synonym.",
+      "editorial_score": 4,
+      "top_lexical_neighbors": [
+        {
+          "score": 0.1429,
+          "slug": "should-as-rule-should-as-forecast-is-should-a-norm-or-an-exp",
+          "stage": "seconded",
+          "title": "should-as-rule / should-as-forecast — is 'should' a norm or an expectation?",
+          "form": "should-as-rule / should-as-forecast"
+        },
+        {
+          "score": 0.1429,
+          "slug": "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a",
+          "stage": "superseded",
+          "title": "will-as-promise / will-as-plan / will-as-forecast — mark whether a future statement commits you, reports your plan, or predicts the world",
+          "form": "will-as-promise / will-as-plan / will-as-forecast"
+        },
+        {
+          "score": 0.1429,
+          "slug": "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a-2",
+          "stage": "seconded",
+          "title": "will-as-promise / will-as-plan / will-as-forecast — mark whether a future statement commits you, reports your plan, or predicts the world",
+          "form": "will-as-promise / will-as-plan / will-as-forecast"
+        },
+        {
+          "score": 0.1379,
+          "slug": "tested-against-revision-pin-a-test-claim-to-the-exact-revisi",
+          "stage": "measured",
+          "title": "tested-against(<revision>) — pin a test claim to the exact revision it ran on",
+          "form": "tested-against(<commit|version|hash>) attached to a claim or result"
+        },
+        {
+          "score": 0.1364,
+          "slug": "must-as-rule-must-as-inference-does-must-impose-a-requiremen",
+          "stage": "seconded",
+          "title": "must-as-rule / must-as-inference — does ‘must’ impose a requirement or report a conclusion?",
+          "form": "must-as-rule / must-as-inference"
+        }
+      ]
+    },
+    {
+      "id": "every-other-scope",
+      "problem": "Does ‘every other item’ mean alternating items or all items except a named one?",
+      "proposed_form": "every-second(<ordered-set>; start=<ref>) / all-except(<set>; excluded=<refs>)",
+      "example": "every-second(backups; start=b1) | all-except(backups; excluded=b1)",
+      "checks": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "decision": "hold",
+      "semantic_neighbors": [
+        "except_l(<L>)",
+        "in-sequence"
+      ],
+      "seam": "Promising, but the two forms currently require asymmetric arguments and are not yet a clean pair.",
+      "editorial_score": 4,
+      "top_lexical_neighbors": [
+        {
+          "score": 0.125,
+          "slug": "one-or-more-role-exactly-one-role-does-a-reviewer-require-at",
+          "stage": "measured",
+          "title": "one-or-more(<role>) / exactly-one(<role>) — does ‘a reviewer’ require at least one participant or exactly one?",
+          "form": "one-or-more(<role>): <ACTION-CLAUSE> | exactly-one(<role>): <ACTION-CLAUSE>"
+        },
+        {
+          "score": 0.1143,
+          "slug": "all-or-nothing-keep-successes-say-what-survives-when-part-of",
+          "stage": "superseded",
+          "title": "all-or-nothing / keep-successes — say what survives when part of a batch fails",
+          "form": "<BOUNDED ACTION-SET>, all-or-nothing | <BOUNDED ACTION-SET>, keep-successes"
+        },
+        {
+          "score": 0.1143,
+          "slug": "all-or-nothing-keep-successes-say-what-survives-when-part-of-2",
+          "stage": "seconded",
+          "title": "all-or-nothing / keep-successes — say what survives when part of a batch fails",
+          "form": "<BOUNDED ACTION-SET>, all-or-nothing | <BOUNDED ACTION-SET>, keep-successes"
+        },
+        {
+          "score": 0.1143,
+          "slug": "supersedes-ref-supplements-ref-say-whether-a-follow-up-repla",
+          "stage": "superseded",
+          "title": "supersedes(ref) / supplements(ref) — say whether a follow-up replaces or adds to earlier instructions",
+          "form": "supersedes(<refs>): <ACTION-CLAUSE> | supplements(<refs>): <ACTION-CLAUSE>"
+        },
+        {
+          "score": 0.1143,
+          "slug": "supersedes-ref-supplements-ref-say-whether-a-follow-up-repla-2",
+          "stage": "seconded",
+          "title": "supersedes(ref) / supplements(ref) — say whether a follow-up replaces or adds to earlier instructions",
+          "form": "supersedes(<refs>): <ACTION-CLAUSE> | supplements(<refs>): <ACTION-CLAUSE>"
+        }
+      ]
+    },
+    {
+      "id": "calendar-day-versus-duration",
+      "problem": "Does ‘in one day’ mean the same local time tomorrow or exactly 24 hours later?",
+      "proposed_form": "next-local-day(<time>;<zone>) / after-hours(24)",
+      "example": "retry next-local-day(09:00;Europe/London) | retry after-hours(24)",
+      "checks": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "decision": "hold",
+      "semantic_neighbors": [
+        "next-up / next-week",
+        "eta(<t>)"
+      ],
+      "seam": "Operationally valuable around daylight-saving transitions, but the candidate needs a simpler symmetric surface.",
+      "editorial_score": 4,
+      "top_lexical_neighbors": [
+        {
+          "score": 0.125,
+          "slug": "each-alone-as-one-distributive-vs-collective-does-the-plural",
+          "stage": "ratified",
+          "title": "each-alone / as-one — distributive vs collective: does the plural act once, or once each?",
+          "form": "each-alone / as-one"
+        },
+        {
+          "score": 0.1212,
+          "slug": "one-or-more-role-exactly-one-role-does-a-reviewer-require-at",
+          "stage": "measured",
+          "title": "one-or-more(<role>) / exactly-one(<role>) — does ‘a reviewer’ require at least one participant or exactly one?",
+          "form": "one-or-more(<role>): <ACTION-CLAUSE> | exactly-one(<role>): <ACTION-CLAUSE>"
+        },
+        {
+          "score": 0.1081,
+          "slug": "each-group-group-set-ref-clause-groups-combined-group-set",
+          "stage": "seconded",
+          "title": "each-group / groups-combined — did the result hold in every group, or only after pooling them?",
+          "form": "each-group(<group-set-ref>): <CLAUSE> | groups-combined(<group-set-ref>): <CLAUSE>"
+        },
+        {
+          "score": 0.098,
+          "slug": "duplicate-filing-filed-twice-in-error-canonical-is-required-",
+          "stage": "withdrawn",
+          "title": "DUPLICATE FILING (filed twice in error) — canonical is required-baseline-author-on-difference-metric-manifests-the-",
+          "form": "DUPLICATE of required-baseline-author-on-difference-metric-manifests-the- (same content, filed 17s later by a re-run). Every difference-metric row MUST declare `baseline_author`; absence = submit-time 422."
+        },
+        {
+          "score": 0.0968,
+          "slug": "you-one-you-all-say-whether-you-addresses-one-recipient-or-t",
+          "stage": "ratified",
+          "title": "you-one / you-all — say whether “you” addresses one recipient or the whole group",
+          "form": "you-one / you-all"
+        }
+      ]
+    },
+    {
+      "id": "support-evidence-versus-capability",
+      "problem": "Does ‘supports’ mean provides evidence for a claim or implements a capability?",
+      "proposed_form": "evidence-for(<claim>) / capable-of(<feature>)",
+      "example": "result evidence-for(H) | client capable-of(streaming)",
+      "checks": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "decision": "hold",
+      "semantic_neighbors": [
+        "Evidential tags",
+        "able-to / allowed-to"
+      ],
+      "seam": "The senses normally have different argument types, so unmarked operational confusion may be too rare.",
+      "editorial_score": 4,
+      "top_lexical_neighbors": [
+        {
+          "score": 0.1379,
+          "slug": "proxy-m-say-when-the-evidence-you-measured-is-a-proxy-for-th",
+          "stage": "superseded",
+          "title": "proxy(<M>) — say when the evidence you measured is a proxy for the claim you're making",
+          "form": "X proxy(<M>)"
+        },
+        {
+          "score": 0.1379,
+          "slug": "proxy-m-say-when-the-evidence-you-measured-is-a-proxy-for-th-2",
+          "stage": "measured",
+          "title": "proxy(<M>) — say when the evidence you measured is a proxy for the claim you're making",
+          "form": "X proxy(<M>)"
+        },
+        {
+          "score": 0.125,
+          "slug": "some-or-all-some-but-not-all-does-some-leave-room-for-all",
+          "stage": "superseded",
+          "title": "some-or-all / some-but-not-all — does ‘some’ leave room for all?",
+          "form": "some-or-all / some-but-not-all"
+        },
+        {
+          "score": 0.125,
+          "slug": "some-or-all-some-but-not-all-does-some-leave-room-for-all-2",
+          "stage": "measured",
+          "title": "some-or-all / some-but-not-all — does ‘some’ leave room for all?",
+          "form": "some-or-all / some-but-not-all"
+        },
+        {
+          "score": 0.1212,
+          "slug": "tested-against-revision-pin-a-test-claim-to-the-exact-revisi",
+          "stage": "measured",
+          "title": "tested-against(<revision>) — pin a test claim to the exact revision it ran on",
+          "form": "tested-against(<commit|version|hash>) attached to a claim or result"
+        }
+      ]
+    },
+    {
+      "id": "valid-syntax-versus-policy",
+      "problem": "Does ‘valid’ mean well-formed, accepted by a policy, or true?",
+      "proposed_form": "well-formed-under(<grammar>) / accepted-under(<policy>) / true-under(<model>)",
+      "example": "token well-formed-under(jwt) | token accepted-under(auth-policy)",
+      "checks": [
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "decision": "hold",
+      "semantic_neighbors": [
+        "test-run / test-passed",
+        "true-as-worded / false-as-worded"
+      ],
+      "seam": "The candidate currently mixes three axes and overlaps existing test and truth constructs.",
+      "editorial_score": 3,
+      "top_lexical_neighbors": [
+        {
+          "score": 0.12,
+          "slug": "must-as-rule-must-as-inference-does-must-impose-a-requiremen",
+          "stage": "seconded",
+          "title": "must-as-rule / must-as-inference — does ‘must’ impose a requirement or report a conclusion?",
+          "form": "must-as-rule / must-as-inference"
+        },
+        {
+          "score": 0.1071,
+          "slug": "one-or-more-role-exactly-one-role-does-a-reviewer-require-at",
+          "stage": "measured",
+          "title": "one-or-more(<role>) / exactly-one(<role>) — does ‘a reviewer’ require at least one participant or exactly one?",
+          "form": "one-or-more(<role>): <ACTION-CLAUSE> | exactly-one(<role>): <ACTION-CLAUSE>"
+        },
+        {
+          "score": 0.1034,
+          "slug": "proposal-by-p-decision-by-a-say-whether-an-option-is-offered",
+          "stage": "measured",
+          "title": "proposal-by(<P>) / decision-by(<A>) — say whether an option is offered or operatively chosen",
+          "form": "proposal-by(<P>): <X> | decision-by(<A>): <X>"
+        },
+        {
+          "score": 0.1,
+          "slug": "by-construction-by-rule-in-practice",
+          "stage": "measured",
+          "title": "by-construction / by-rule / in-practice — mark whether a standing property is enforced, required, or merely observed",
+          "form": "by-construction / by-rule / in-practice"
+        },
+        {
+          "score": 0.1,
+          "slug": "caused-by-c-co-occurring-c-say-whether-you-re-asserting-a-ca",
+          "stage": "superseded",
+          "title": "caused-by(<C>) / co-occurring(<C>) — say whether you're asserting a cause or only a sequence",
+          "form": "Y caused-by(<C>) | Y co-occurring(<C>)"
+        }
+      ]
+    }
+  ],
+  "claim_boundary": "Lexical similarity is a discovery aid. Manual semantic-neighbour review controls the deduplication decision.",
+  "model_calls": 0,
+  "governance_writes": 0,
+  "content_sha256": "ef779a78d9a83970fbeacf7f0d56d992f90979ab528fc2b9436f683a22735458"
+}
