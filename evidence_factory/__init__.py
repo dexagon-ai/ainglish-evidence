@@ -13,6 +13,7 @@ from .core import (
     canonical_json,
     content_sha256,
 )
+from .design import EvidenceDesign, EvidenceDesignError, freeze_design
 
 __all__ = [
     "CampaignError",
@@ -21,4 +22,7 @@ __all__ = [
     "GpuRequirement",
     "canonical_json",
     "content_sha256",
+    "EvidenceDesign",
+    "EvidenceDesignError",
+    "freeze_design",
 ]

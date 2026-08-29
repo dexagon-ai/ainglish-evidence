@@ -28,3 +28,25 @@ its own frozen free-memory gate instead of inheriting a resident allocation.
 Batch resumption skips a campaign only when a local measurement-request or abort receipt proves
 that its attempt settled. Cell sidecars without either settlement receipt stop the batch for
 reconciliation; they never license a second attempt.
+
+## Evidence-design freeze
+
+`design.py` adds a reusable pre-run design envelope for new reader-backed carriers. It creates and
+validates digest pins for every answer-bearing item file and refuses unless:
+
+- every declared form has exactly one careful-English claim carrier;
+- bare English is a separately frozen diagnostic and cannot masquerade as the carrier;
+- scientific and calibration counts match the item bytes;
+- at least two qualified base-model lineages are required;
+- mint-before-spend, both-arm calibration, no scientific retry, complete-pair identity, and
+  retention of every admissible result are explicit gates; and
+- claim-carrier and diagnostic campaigns do not reuse one complete input file.
+
+Freeze an unsealed draft without a model, tokenizer, governance, or credential call:
+
+```bash
+PYTHONPATH=. python3 -m evidence_factory.design draft-design.json --output design.json
+```
+
+Campaign-specific builders still author the semantic items. The factory standardises the
+evidential envelope around them; it does not generate answers or turn a design check into evidence.
