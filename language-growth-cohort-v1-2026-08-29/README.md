@@ -18,6 +18,15 @@ An entry leaves only through a recorded decision: ratification, rejection, narro
 or explicit evidence-blocked deferral. Only then is a replacement admitted. This prevents new ideas
 from hiding unresolved adverse evidence.
 
+## Process correction
+
+Two separately screened proposals were filed after this packet was published, before any cohort
+entry exited. That was stricter than the user's authorisation but contrary to this packet's own
+replacement-pool timing rule. They remain outside the six-entry cohort and are not replacements.
+`process-correction.json` records the deviation; no further discovery candidate may be filed or
+admitted until a cohort exit is recorded. The proposals' semantic and deterministic checks are
+unchanged by this workflow correction.
+
 ## Evidence design
 
 Each entry keeps three questions separate:

@@ -1,0 +1,2465 @@
+{
+  "kind": "dexagon.ainglish.completion-state-recertification-items.v1",
+  "proposal_slug": "stopped-done-under-c-complete-for-r-say-which-claim-your-don",
+  "condition": "definition_conditioned",
+  "reference_card": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.",
+  "contract": {
+    "metric": "comprehension_accuracy_delta",
+    "primary_unit": "exact joint correctness on both questions for one isolated arm",
+    "scientific_rows": 60,
+    "rows_per_form": 20,
+    "arms": [
+      "ainglish",
+      "bare_english",
+      "careful_english"
+    ],
+    "support": "each form: Ainglish minus bare >= 0.15 and Ainglish minus careful >= -0.05",
+    "additional_falsifiers": [
+      "stopped handoff over-read is not at least 0.15 lower than bare",
+      "done-under is confused with complete-for on more than 0.10 of its rows",
+      "complete-for is confused with done-under on more than 0.10 of its rows"
+    ],
+    "reporting": "per form, arm, reader lineage, and question; pooled values are secondary"
+  },
+  "reader_gate": {
+    "minimum_independent_base_lineages": 2,
+    "same_fresh_construct_free_holdout": true,
+    "aliases_quantisations_and_finetunes_do_not_add_lineages": true,
+    "status_at_freeze": "closed: retained local audit has one qualified lineage"
+  },
+  "scientific_rows": [
+    {
+      "id": "stopped-01",
+      "context_id": "completion-context-01",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Ava's work on the customs-clearance packet.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the customs-clearance packet.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava stopped working on the customs-clearance packet; Ava makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "customs-clearance packet",
+        "claim_type": "stopped",
+        "claim_answer_position": 1,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "done-under-01",
+      "context_id": "completion-context-01",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(sandbox customs rules v3): Ava's work on the customs-clearance packet.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the customs-clearance packet.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava reports that the customs-clearance packet works under sandbox customs rules v3; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "customs-clearance packet",
+        "claim_type": "done-under",
+        "claim_answer_position": 2,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "complete-for-01",
+      "context_id": "completion-context-01",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the border-operations team): Ava's work on the customs-clearance packet.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the customs-clearance packet.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava reports that the customs-clearance packet is complete for the border-operations team to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "customs-clearance packet",
+        "claim_type": "complete-for",
+        "claim_answer_position": 0,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "stopped-02",
+      "context_id": "completion-context-02",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Bo's work on the satellite-calibration table.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the satellite-calibration table.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo stopped working on the satellite-calibration table; Bo makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "satellite-calibration table",
+        "claim_type": "stopped",
+        "claim_answer_position": 2,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "done-under-02",
+      "context_id": "completion-context-02",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(simulator build 18 and thermal profile K): Bo's work on the satellite-calibration table.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the satellite-calibration table.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo reports that the satellite-calibration table works under simulator build 18 and thermal profile K; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "satellite-calibration table",
+        "claim_type": "done-under",
+        "claim_answer_position": 0,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "complete-for-02",
+      "context_id": "completion-context-02",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the orbit-planning team): Bo's work on the satellite-calibration table.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the satellite-calibration table.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo reports that the satellite-calibration table is complete for the orbit-planning team to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "satellite-calibration table",
+        "claim_type": "complete-for",
+        "claim_answer_position": 1,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "stopped-03",
+      "context_id": "completion-context-03",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Cy's work on the accommodation matrix.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the accommodation matrix.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy stopped working on the accommodation matrix; Cy makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "accommodation matrix",
+        "claim_type": "stopped",
+        "claim_answer_position": 0,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "done-under-03",
+      "context_id": "completion-context-03",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(the agreed accessibility cases dated 17 May): Cy's work on the accommodation matrix.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the accommodation matrix.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy reports that the accommodation matrix works under the agreed accessibility cases dated 17 May; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "accommodation matrix",
+        "claim_type": "done-under",
+        "claim_answer_position": 1,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "complete-for-03",
+      "context_id": "completion-context-03",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the student-services team): Cy's work on the accommodation matrix.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the accommodation matrix.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy reports that the accommodation matrix is complete for the student-services team to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "accommodation matrix",
+        "claim_type": "complete-for",
+        "claim_answer_position": 2,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "stopped-04",
+      "context_id": "completion-context-04",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Diya's work on the seed-vault inventory.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the seed-vault inventory.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya stopped working on the seed-vault inventory; Diya makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "seed-vault inventory",
+        "claim_type": "stopped",
+        "claim_answer_position": 1,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "done-under-04",
+      "context_id": "completion-context-04",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(vault aisle C and scanner firmware 9): Diya's work on the seed-vault inventory.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the seed-vault inventory.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya reports that the seed-vault inventory works under vault aisle C and scanner firmware 9; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "seed-vault inventory",
+        "claim_type": "done-under",
+        "claim_answer_position": 2,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "complete-for-04",
+      "context_id": "completion-context-04",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the conservation team): Diya's work on the seed-vault inventory.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the seed-vault inventory.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya reports that the seed-vault inventory is complete for the conservation team to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "seed-vault inventory",
+        "claim_type": "complete-for",
+        "claim_answer_position": 0,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "stopped-05",
+      "context_id": "completion-context-05",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Eli's work on the ferry-maintenance checklist.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the ferry-maintenance checklist.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli stopped working on the ferry-maintenance checklist; Eli makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "ferry-maintenance checklist",
+        "claim_type": "stopped",
+        "claim_answer_position": 2,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "done-under-05",
+      "context_id": "completion-context-05",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(dry-dock procedure 6 and vessel class M): Eli's work on the ferry-maintenance checklist.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the ferry-maintenance checklist.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli reports that the ferry-maintenance checklist works under dry-dock procedure 6 and vessel class M; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "ferry-maintenance checklist",
+        "claim_type": "done-under",
+        "claim_answer_position": 0,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "complete-for-05",
+      "context_id": "completion-context-05",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the harbour engineer): Eli's work on the ferry-maintenance checklist.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the ferry-maintenance checklist.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli reports that the ferry-maintenance checklist is complete for the harbour engineer to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "ferry-maintenance checklist",
+        "claim_type": "complete-for",
+        "claim_answer_position": 1,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "stopped-06",
+      "context_id": "completion-context-06",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Ava's work on the wildfire-evacuation map.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the wildfire-evacuation map.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava stopped working on the wildfire-evacuation map; Ava makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "wildfire-evacuation map",
+        "claim_type": "stopped",
+        "claim_answer_position": 0,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "done-under-06",
+      "context_id": "completion-context-06",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(the north-wind scenario and road closures set B): Ava's work on the wildfire-evacuation map.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the wildfire-evacuation map.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava reports that the wildfire-evacuation map works under the north-wind scenario and road closures set B; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "wildfire-evacuation map",
+        "claim_type": "done-under",
+        "claim_answer_position": 1,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "complete-for-06",
+      "context_id": "completion-context-06",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the incident commander): Ava's work on the wildfire-evacuation map.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the wildfire-evacuation map.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava reports that the wildfire-evacuation map is complete for the incident commander to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "wildfire-evacuation map",
+        "claim_type": "complete-for",
+        "claim_answer_position": 2,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "stopped-07",
+      "context_id": "completion-context-07",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Bo's work on the trial-codebook extract.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the trial-codebook extract.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo stopped working on the trial-codebook extract; Bo makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "trial-codebook extract",
+        "claim_type": "stopped",
+        "claim_answer_position": 1,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "done-under-07",
+      "context_id": "completion-context-07",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(synthetic cohort 4 and parser revision 12): Bo's work on the trial-codebook extract.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the trial-codebook extract.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo reports that the trial-codebook extract works under synthetic cohort 4 and parser revision 12; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "trial-codebook extract",
+        "claim_type": "done-under",
+        "claim_answer_position": 2,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "complete-for-07",
+      "context_id": "completion-context-07",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the statistical-review team): Bo's work on the trial-codebook extract.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the trial-codebook extract.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo reports that the trial-codebook extract is complete for the statistical-review team to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "trial-codebook extract",
+        "claim_type": "complete-for",
+        "claim_answer_position": 0,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "stopped-08",
+      "context_id": "completion-context-08",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Cy's work on the museum-provenance ledger.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the museum-provenance ledger.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy stopped working on the museum-provenance ledger; Cy makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "museum-provenance ledger",
+        "claim_type": "stopped",
+        "claim_answer_position": 2,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "done-under-08",
+      "context_id": "completion-context-08",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(the digitised 1998 catalogue and fields P1-P7): Cy's work on the museum-provenance ledger.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the museum-provenance ledger.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy reports that the museum-provenance ledger works under the digitised 1998 catalogue and fields P1-P7; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "museum-provenance ledger",
+        "claim_type": "done-under",
+        "claim_answer_position": 0,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "complete-for-08",
+      "context_id": "completion-context-08",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the collections curator): Cy's work on the museum-provenance ledger.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the museum-provenance ledger.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy reports that the museum-provenance ledger is complete for the collections curator to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "museum-provenance ledger",
+        "claim_type": "complete-for",
+        "claim_answer_position": 1,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "stopped-09",
+      "context_id": "completion-context-09",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Diya's work on the floodgate-inspection record.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the floodgate-inspection record.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya stopped working on the floodgate-inspection record; Diya makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "floodgate-inspection record",
+        "claim_type": "stopped",
+        "claim_answer_position": 0,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "done-under-09",
+      "context_id": "completion-context-09",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(test rig G2 and the low-tide cycle): Diya's work on the floodgate-inspection record.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the floodgate-inspection record.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya reports that the floodgate-inspection record works under test rig G2 and the low-tide cycle; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "floodgate-inspection record",
+        "claim_type": "done-under",
+        "claim_answer_position": 1,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "complete-for-09",
+      "context_id": "completion-context-09",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the water-control team): Diya's work on the floodgate-inspection record.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the floodgate-inspection record.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya reports that the floodgate-inspection record is complete for the water-control team to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "floodgate-inspection record",
+        "claim_type": "complete-for",
+        "claim_answer_position": 2,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "stopped-10",
+      "context_id": "completion-context-10",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Eli's work on the telescope-pointing model.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the telescope-pointing model.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli stopped working on the telescope-pointing model; Eli makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "telescope-pointing model",
+        "claim_type": "stopped",
+        "claim_answer_position": 1,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "done-under-10",
+      "context_id": "completion-context-10",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(simulated mount A and sky grid 2026-Q3): Eli's work on the telescope-pointing model.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the telescope-pointing model.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli reports that the telescope-pointing model works under simulated mount A and sky grid 2026-Q3; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "telescope-pointing model",
+        "claim_type": "done-under",
+        "claim_answer_position": 2,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "complete-for-10",
+      "context_id": "completion-context-10",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the night-observing team): Eli's work on the telescope-pointing model.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the telescope-pointing model.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli reports that the telescope-pointing model is complete for the night-observing team to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "telescope-pointing model",
+        "claim_type": "complete-for",
+        "claim_answer_position": 0,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "stopped-11",
+      "context_id": "completion-context-11",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Ava's work on the crop-quarantine certificate.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the crop-quarantine certificate.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava stopped working on the crop-quarantine certificate; Ava makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "crop-quarantine certificate",
+        "claim_type": "stopped",
+        "claim_answer_position": 2,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "done-under-11",
+      "context_id": "completion-context-11",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(the greenhouse sample set and rulebook 14): Ava's work on the crop-quarantine certificate.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the crop-quarantine certificate.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava reports that the crop-quarantine certificate works under the greenhouse sample set and rulebook 14; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "crop-quarantine certificate",
+        "claim_type": "done-under",
+        "claim_answer_position": 0,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "complete-for-11",
+      "context_id": "completion-context-11",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the port agronomist): Ava's work on the crop-quarantine certificate.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the crop-quarantine certificate.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava reports that the crop-quarantine certificate is complete for the port agronomist to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "crop-quarantine certificate",
+        "claim_type": "complete-for",
+        "claim_answer_position": 1,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "stopped-12",
+      "context_id": "completion-context-12",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Bo's work on the court-transcript index.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the court-transcript index.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo stopped working on the court-transcript index; Bo makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "court-transcript index",
+        "claim_type": "stopped",
+        "claim_answer_position": 0,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "done-under-12",
+      "context_id": "completion-context-12",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(the redacted fixture bundle and index schema 5): Bo's work on the court-transcript index.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the court-transcript index.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo reports that the court-transcript index works under the redacted fixture bundle and index schema 5; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "court-transcript index",
+        "claim_type": "done-under",
+        "claim_answer_position": 1,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "complete-for-12",
+      "context_id": "completion-context-12",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the disclosure team): Bo's work on the court-transcript index.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the court-transcript index.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo reports that the court-transcript index is complete for the disclosure team to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "court-transcript index",
+        "claim_type": "complete-for",
+        "claim_answer_position": 2,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "stopped-13",
+      "context_id": "completion-context-13",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Cy's work on the grid-restoration schedule.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the grid-restoration schedule.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy stopped working on the grid-restoration schedule; Cy makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "grid-restoration schedule",
+        "claim_type": "stopped",
+        "claim_answer_position": 1,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "done-under-13",
+      "context_id": "completion-context-13",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(island-mode simulation R7): Cy's work on the grid-restoration schedule.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the grid-restoration schedule.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy reports that the grid-restoration schedule works under island-mode simulation R7; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "grid-restoration schedule",
+        "claim_type": "done-under",
+        "claim_answer_position": 2,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "complete-for-13",
+      "context_id": "completion-context-13",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the control-room supervisor): Cy's work on the grid-restoration schedule.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the grid-restoration schedule.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy reports that the grid-restoration schedule is complete for the control-room supervisor to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "grid-restoration schedule",
+        "claim_type": "complete-for",
+        "claim_answer_position": 0,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "stopped-14",
+      "context_id": "completion-context-14",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Diya's work on the cold-chain log.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the cold-chain log.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya stopped working on the cold-chain log; Diya makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "cold-chain log",
+        "claim_type": "stopped",
+        "claim_answer_position": 2,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "done-under-14",
+      "context_id": "completion-context-14",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(the mock shipment and sensor profile L4): Diya's work on the cold-chain log.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the cold-chain log.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya reports that the cold-chain log works under the mock shipment and sensor profile L4; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "cold-chain log",
+        "claim_type": "done-under",
+        "claim_answer_position": 0,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "complete-for-14",
+      "context_id": "completion-context-14",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the distribution pharmacist): Diya's work on the cold-chain log.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the cold-chain log.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya reports that the cold-chain log is complete for the distribution pharmacist to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "cold-chain log",
+        "claim_type": "complete-for",
+        "claim_answer_position": 1,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "stopped-15",
+      "context_id": "completion-context-15",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Eli's work on the aircraft-load sheet.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the aircraft-load sheet.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli stopped working on the aircraft-load sheet; Eli makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "aircraft-load sheet",
+        "claim_type": "stopped",
+        "claim_answer_position": 0,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "done-under-15",
+      "context_id": "completion-context-15",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(training flight ZM42 and balance table 11): Eli's work on the aircraft-load sheet.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the aircraft-load sheet.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli reports that the aircraft-load sheet works under training flight ZM42 and balance table 11; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "aircraft-load sheet",
+        "claim_type": "done-under",
+        "claim_answer_position": 1,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "complete-for-15",
+      "context_id": "completion-context-15",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the dispatch officer): Eli's work on the aircraft-load sheet.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the aircraft-load sheet.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli reports that the aircraft-load sheet is complete for the dispatch officer to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "aircraft-load sheet",
+        "claim_type": "complete-for",
+        "claim_answer_position": 2,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "stopped-16",
+      "context_id": "completion-context-16",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Ava's work on the archaeological survey map.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the archaeological survey map.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava stopped working on the archaeological survey map; Ava makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "archaeological survey map",
+        "claim_type": "stopped",
+        "claim_answer_position": 1,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "done-under-16",
+      "context_id": "completion-context-16",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(sector D scans and coordinate frame 3): Ava's work on the archaeological survey map.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the archaeological survey map.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava reports that the archaeological survey map works under sector D scans and coordinate frame 3; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "archaeological survey map",
+        "claim_type": "done-under",
+        "claim_answer_position": 2,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "complete-for-16",
+      "context_id": "completion-context-16",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the field director): Ava's work on the archaeological survey map.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Ava's work on the archaeological survey map.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Ava reports that the archaeological survey map is complete for the field director to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "archaeological survey map",
+        "claim_type": "complete-for",
+        "claim_answer_position": 0,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "stopped-17",
+      "context_id": "completion-context-17",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Bo's work on the water-quality dashboard.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the water-quality dashboard.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo stopped working on the water-quality dashboard; Bo makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "water-quality dashboard",
+        "claim_type": "stopped",
+        "claim_answer_position": 2,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "done-under-17",
+      "context_id": "completion-context-17",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(laboratory fixtures Q1-Q8 and browser set C): Bo's work on the water-quality dashboard.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the water-quality dashboard.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo reports that the water-quality dashboard works under laboratory fixtures Q1-Q8 and browser set C; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "water-quality dashboard",
+        "claim_type": "done-under",
+        "claim_answer_position": 0,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "complete-for-17",
+      "context_id": "completion-context-17",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the public-health analyst): Bo's work on the water-quality dashboard.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Bo's work on the water-quality dashboard.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Bo reports that the water-quality dashboard is complete for the public-health analyst to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "water-quality dashboard",
+        "claim_type": "complete-for",
+        "claim_answer_position": 1,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "stopped-18",
+      "context_id": "completion-context-18",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Cy's work on the emergency-shelter roster.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the emergency-shelter roster.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy stopped working on the emergency-shelter roster; Cy makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "emergency-shelter roster",
+        "claim_type": "stopped",
+        "claim_answer_position": 0,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "done-under-18",
+      "context_id": "completion-context-18",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(exercise roster E9 and duplicate rules 2): Cy's work on the emergency-shelter roster.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the emergency-shelter roster.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy reports that the emergency-shelter roster works under exercise roster E9 and duplicate rules 2; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "emergency-shelter roster",
+        "claim_type": "done-under",
+        "claim_answer_position": 1,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "complete-for-18",
+      "context_id": "completion-context-18",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the shelter coordinator): Cy's work on the emergency-shelter roster.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Cy's work on the emergency-shelter roster.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Cy reports that the emergency-shelter roster is complete for the shelter coordinator to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "work stopped; no result claim",
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "emergency-shelter roster",
+        "claim_type": "complete-for",
+        "claim_answer_position": 2,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "stopped-19",
+      "context_id": "completion-context-19",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Diya's work on the fisheries-quota table.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the fisheries-quota table.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya stopped working on the fisheries-quota table; Diya makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "fisheries-quota table",
+        "claim_type": "stopped",
+        "claim_answer_position": 1,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "done-under-19",
+      "context_id": "completion-context-19",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(the synthetic fleet register and policy year 2030): Diya's work on the fisheries-quota table.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the fisheries-quota table.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya reports that the fisheries-quota table works under the synthetic fleet register and policy year 2030; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "fisheries-quota table",
+        "claim_type": "done-under",
+        "claim_answer_position": 2,
+        "action_answer_position": 0
+      }
+    },
+    {
+      "id": "complete-for-19",
+      "context_id": "completion-context-19",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the quota administrator): Diya's work on the fisheries-quota table.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Diya's work on the fisheries-quota table.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Diya reports that the fisheries-quota table is complete for the quota administrator to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim",
+            "scoped correctness under named conditions"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "fisheries-quota table",
+        "claim_type": "complete-for",
+        "claim_answer_position": 0,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "stopped-20",
+      "context_id": "completion-context-20",
+      "form": "stopped",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: stopped: Eli's work on the radio-frequency licence.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the radio-frequency licence.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli stopped working on the radio-frequency licence; Eli makes no claim that it is correct, complete, or safe to use."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "work stopped; no result claim"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer",
+            "no downstream action is licensed"
+          ],
+          "answer": "no downstream action is licensed"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "radio-frequency licence",
+        "claim_type": "stopped",
+        "claim_answer_position": 2,
+        "action_answer_position": 2
+      }
+    },
+    {
+      "id": "done-under-20",
+      "context_id": "completion-context-20",
+      "form": "done-under",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: done-under(the test application and spectrum plan S6): Eli's work on the radio-frequency licence.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the radio-frequency licence.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli reports that the radio-frequency licence works under the test application and spectrum plan S6; use outside those tested conditions is not licensed."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "scoped correctness under named conditions"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions",
+            "unqualified action by the named consumer"
+          ],
+          "answer": "cautious use inheriting the named conditions"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "radio-frequency licence",
+        "claim_type": "done-under",
+        "claim_answer_position": 0,
+        "action_answer_position": 1
+      }
+    },
+    {
+      "id": "complete-for-20",
+      "context_id": "completion-context-20",
+      "form": "complete-for",
+      "arms": {
+        "ainglish": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: complete-for(the licensing officer): Eli's work on the radio-frequency licence.",
+        "bare_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Done: Eli's work on the radio-frequency licence.",
+        "careful_english": "Reference: `stopped:` says only that work ceased and licenses no downstream action. `done-under(<C>):` says the result works under the named tested conditions C and licenses only cautious use that inherits C. `complete-for(<R>):` says the result is ready for the named consumer R and licenses unqualified action by R.\nMessage: Eli reports that the radio-frequency licence is complete for the licensing officer to act on without an additional completion check."
+      },
+      "questions": [
+        {
+          "id": "claim_type",
+          "question": "Which completion claim does the sender make?",
+          "options": [
+            "scoped correctness under named conditions",
+            "unqualified handoff to the named consumer",
+            "work stopped; no result claim"
+          ],
+          "answer": "unqualified handoff to the named consumer"
+        },
+        {
+          "id": "licensed_action",
+          "question": "What downstream action does the message license?",
+          "options": [
+            "unqualified action by the named consumer",
+            "no downstream action is licensed",
+            "cautious use inheriting the named conditions"
+          ],
+          "answer": "unqualified action by the named consumer"
+        }
+      ],
+      "strata": {
+        "condition": "definition_conditioned",
+        "domain": "radio-frequency licence",
+        "claim_type": "complete-for",
+        "claim_answer_position": 1,
+        "action_answer_position": 0
+      }
+    }
+  ],
+  "calibration_rows": [
+    {
+      "id": "calibration-01",
+      "message": "The north gate is closed.",
+      "question": "Is the north gate open?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "calibration-02",
+      "message": "Mina may use either desk.",
+      "question": "Is Mina forbidden from using both desks?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "calibration-03",
+      "message": "Exactly three samples passed.",
+      "question": "Did at least one sample pass?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes"
+    },
+    {
+      "id": "calibration-04",
+      "message": "The report does not state who approved it.",
+      "question": "Can the approver be identified from the message?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "calibration-05",
+      "message": "Every listed valve was inspected.",
+      "question": "Was each listed valve inspected?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "yes"
+    },
+    {
+      "id": "calibration-06",
+      "message": "The shipment arrives on Tuesday or Wednesday; no day is confirmed.",
+      "question": "Is Tuesday confirmed?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "calibration-07",
+      "message": "Ravi checked the first file but not the second.",
+      "question": "Did Ravi check both files?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "no"
+    },
+    {
+      "id": "calibration-08",
+      "message": "The note says only that testing began.",
+      "question": "Does the note say testing finished?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "no"
+    }
+  ],
+  "model_calls": 0,
+  "governance_writes": 0,
+  "sha256": "28330291a22d19d93c5cf5e74632bf968d1b09b46c7bde2120ff50bf4532ece9"
+}
