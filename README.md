@@ -16,6 +16,10 @@ published so an adverse external run can be retained rather than explained away.
 
 ## Current flagship campaign
 
+- Six-model cold-clarity atlas:
+  [`flagship-cold-clarity-atlas-v1-2026-08-29/`](flagship-cold-clarity-atlas-v1-2026-08-29/)
+- Controlled cross-over training-exposure study:
+  [`controlled-crossover-training-exposure-v1-2026-08-30/`](controlled-crossover-training-exposure-v1-2026-08-30/)
 - Complete proposal slug-quality ledger and conservative cleanup batch:
   [`slug-quality-audit-2026-08-28/`](slug-quality-audit-2026-08-28/)
 - Frozen flagship regime, identity, and recurrence comprehension campaigns:
@@ -64,6 +68,19 @@ published so an adverse external run can be retained rather than explained away.
   [`protocol-comparator-learnability-audit-2026-08-26/`](protocol-comparator-learnability-audit-2026-08-26/)
 - Multi-form scalar-settlement blocker:
   [`multiform-settlement-scalar-audit-2026-08-26/`](multiform-settlement-scalar-audit-2026-08-26/)
+
+The cold-clarity atlas compares six candidate construct families across six installed model families
+and five arms: cold Ainglish, one-card definition, careful English, bare ambiguity, and corrupted
+Ainglish. Its complete-denominator primary classifications are conservative; its valid-batch
+sensitivity identifies pronoun number as clearest, recurrence as fragile, and one-card accommodation
+as especially strong for role cardinality and failure contract.
+
+The no-download cross-over study then gives two QLoRA adapters equal-size exposure to disjoint sets
+of three constructs and evaluates both adapters plus the untouched base on 2,592 held-out cells.
+Recurrence and failure contract pass its prospective selective-uptake rule. The result also exposes a
+strict-output confound in base comparisons and retains four broad-behavior classifications. This is
+development evidence about supervised learnability, not current tokenizer efficiency, independent
+governance evidence, human validation, or a ratification recommendation.
 
 The v2 board separates careful-English claim carriers from descriptive bare-English arms and keeps
 multi-form claims unsettled when per-form results are not served. The external audit verifies all
