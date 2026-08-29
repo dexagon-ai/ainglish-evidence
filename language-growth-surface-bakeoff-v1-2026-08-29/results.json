@@ -1,0 +1,417 @@
+{
+  "kind": "dexagon.ainglish.language-growth-surface-bakeoff.v1",
+  "corpus": {
+    "path": "evidence-corpus-snapshot-v1-2026-08-27/records.jsonl",
+    "sha256": "b56c3b731cbcdea01cf2f13c4bc6903ce65ec09e07c3a552ea2005a47056fc80",
+    "word_tokens": 478521
+  },
+  "tokenizers": {
+    "identities": [
+      "cl100k_base",
+      "o200k_base"
+    ],
+    "tiktoken_version": "0.13.0",
+    "cache_before_and_after_identical": true,
+    "downloaded_bytes": 0
+  },
+  "pronoun": {
+    "server_disclosure_for_filed_base_word": {
+      "word": "it",
+      "per_10k": 136.666
+    },
+    "variants": [
+      {
+        "id": "filed",
+        "surface": "it(<ref>)",
+        "editorial_checks": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "editorial_note": "Directly annotates the pronoun readers already see; delimiter carries the machine boundary.",
+        "editorial_score": 5,
+        "full_surface_occurrences": 0,
+        "full_surface_per_10k_words": 0.0,
+        "current_token_price": {
+          "cl100k_base": {
+            "mean_marked": 13.6875,
+            "mean_delta_vs_careful": 3.1875,
+            "mean_delta_vs_bare": 4.1875
+          },
+          "o200k_base": {
+            "mean_marked": 13.6875,
+            "mean_delta_vs_careful": 3.1875,
+            "mean_delta_vs_bare": 4.1875
+          }
+        },
+        "transforms": {
+          "casefold": "it(<ref>)",
+          "strip_punct": "it<ref>",
+          "alnum_only": "itref",
+          "paren_drop": "it<ref>",
+          "hyphen_drop": "it(<ref>)",
+          "collapse_ws": "it(<ref>)"
+        }
+      },
+      {
+        "id": "it-ref",
+        "surface": "it-ref(<ref>)",
+        "editorial_checks": [
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "editorial_note": "Makes the metadata role explicit but introduces a second lexical label for the same pronoun.",
+        "editorial_score": 4,
+        "full_surface_occurrences": 0,
+        "full_surface_per_10k_words": 0.0,
+        "current_token_price": {
+          "cl100k_base": {
+            "mean_marked": 14.6875,
+            "mean_delta_vs_careful": 4.1875,
+            "mean_delta_vs_bare": 5.1875
+          },
+          "o200k_base": {
+            "mean_marked": 14.6875,
+            "mean_delta_vs_careful": 4.1875,
+            "mean_delta_vs_bare": 5.1875
+          }
+        },
+        "transforms": {
+          "casefold": "it-ref(<ref>)",
+          "strip_punct": "itref<ref>",
+          "alnum_only": "itrefref",
+          "paren_drop": "it-ref<ref>",
+          "hyphen_drop": "itref(<ref>)",
+          "collapse_ws": "it-ref(<ref>)"
+        }
+      },
+      {
+        "id": "ref-it",
+        "surface": "ref-it(<ref>)",
+        "editorial_checks": [
+          false,
+          true,
+          true,
+          true,
+          false
+        ],
+        "editorial_note": "Machine-looking and no longer reads in the grammatical position of ordinary it.",
+        "editorial_score": 3,
+        "full_surface_occurrences": 0,
+        "full_surface_per_10k_words": 0.0,
+        "current_token_price": {
+          "cl100k_base": {
+            "mean_marked": 14.6875,
+            "mean_delta_vs_careful": 4.1875,
+            "mean_delta_vs_bare": 5.1875
+          },
+          "o200k_base": {
+            "mean_marked": 14.6875,
+            "mean_delta_vs_careful": 4.1875,
+            "mean_delta_vs_bare": 5.1875
+          }
+        },
+        "transforms": {
+          "casefold": "ref-it(<ref>)",
+          "strip_punct": "refit<ref>",
+          "alnum_only": "refitref",
+          "paren_drop": "ref-it<ref>",
+          "hyphen_drop": "refit(<ref>)",
+          "collapse_ws": "ref-it(<ref>)"
+        }
+      },
+      {
+        "id": "this-ref",
+        "surface": "this-ref(<ref>)",
+        "editorial_checks": [
+          false,
+          true,
+          true,
+          true,
+          false
+        ],
+        "editorial_note": "Introduces demonstrative force that the filed singular pronoun does not claim.",
+        "editorial_score": 3,
+        "full_surface_occurrences": 0,
+        "full_surface_per_10k_words": 0.0,
+        "current_token_price": {
+          "cl100k_base": {
+            "mean_marked": 14.6875,
+            "mean_delta_vs_careful": 4.1875,
+            "mean_delta_vs_bare": 5.1875
+          },
+          "o200k_base": {
+            "mean_marked": 14.6875,
+            "mean_delta_vs_careful": 4.1875,
+            "mean_delta_vs_bare": 5.1875
+          }
+        },
+        "transforms": {
+          "casefold": "this-ref(<ref>)",
+          "strip_punct": "thisref<ref>",
+          "alnum_only": "thisrefref",
+          "paren_drop": "this-ref<ref>",
+          "hyphen_drop": "thisref(<ref>)",
+          "collapse_ws": "this-ref(<ref>)"
+        }
+      }
+    ],
+    "decision": "retain filed it(<ref>)",
+    "reason": "The complete delimited surface is absent from the corpus and has the only five-of-five editorial fit. Base-word frequency is a disclosed adoption-detector constraint, not a full-surface collision."
+  },
+  "negation": {
+    "variants": [
+      {
+        "id": "filed",
+        "surfaces": [
+          "none-of(<S>): <PREDICATE>",
+          "not-all-of(<S>): <PREDICATE>"
+        ],
+        "editorial_checks": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "editorial_note": "Symmetric and close to the exact careful-English quantifier phrases.",
+        "editorial_score": 5,
+        "full_surface_occurrences_by_pole": [
+          0,
+          0
+        ],
+        "minimum_pole_edit_distance": 5,
+        "silent_transform_collisions": [],
+        "current_token_price": {
+          "cl100k_base": {
+            "mean_marked": 6.25,
+            "mean_delta_vs_careful": -2.25,
+            "mean_delta_vs_bare": 0.25
+          },
+          "o200k_base": {
+            "mean_marked": 6.5,
+            "mean_delta_vs_careful": -2.0,
+            "mean_delta_vs_bare": 0.5
+          }
+        },
+        "transforms_by_pole": {
+          "casefold": [
+            "none-of(<s>): <predicate>",
+            "not-all-of(<s>): <predicate>"
+          ],
+          "strip_punct": [
+            "noneof<s> <predicate>",
+            "notallof<s> <predicate>"
+          ],
+          "alnum_only": [
+            "noneofspredicate",
+            "notallofspredicate"
+          ],
+          "paren_drop": [
+            "none-of<s>: <predicate>",
+            "not-all-of<s>: <predicate>"
+          ],
+          "hyphen_drop": [
+            "noneof(<s>): <predicate>",
+            "notallof(<s>): <predicate>"
+          ],
+          "collapse_ws": [
+            "none-of(<s>): <predicate>",
+            "not-all-of(<s>): <predicate>"
+          ]
+        }
+      },
+      {
+        "id": "short",
+        "surfaces": [
+          "none(<S>): <PREDICATE>",
+          "not-all(<S>): <PREDICATE>"
+        ],
+        "editorial_checks": [
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "editorial_note": "Shorter, but none looks like a value/function and loses the shared -of slot cue.",
+        "editorial_score": 4,
+        "full_surface_occurrences_by_pole": [
+          0,
+          0
+        ],
+        "minimum_pole_edit_distance": 5,
+        "silent_transform_collisions": [],
+        "current_token_price": {
+          "cl100k_base": {
+            "mean_marked": 5.25,
+            "mean_delta_vs_careful": -3.25,
+            "mean_delta_vs_bare": -0.75
+          },
+          "o200k_base": {
+            "mean_marked": 5.5,
+            "mean_delta_vs_careful": -3.0,
+            "mean_delta_vs_bare": -0.5
+          }
+        },
+        "transforms_by_pole": {
+          "casefold": [
+            "none(<s>): <predicate>",
+            "not-all(<s>): <predicate>"
+          ],
+          "strip_punct": [
+            "none<s> <predicate>",
+            "notall<s> <predicate>"
+          ],
+          "alnum_only": [
+            "nonespredicate",
+            "notallspredicate"
+          ],
+          "paren_drop": [
+            "none<s>: <predicate>",
+            "not-all<s>: <predicate>"
+          ],
+          "hyphen_drop": [
+            "none(<s>): <predicate>",
+            "notall(<s>): <predicate>"
+          ],
+          "collapse_ws": [
+            "none(<s>): <predicate>",
+            "not-all(<s>): <predicate>"
+          ]
+        }
+      },
+      {
+        "id": "literal-count",
+        "surfaces": [
+          "zero-of(<S>): <PREDICATE>",
+          "fewer-than-all(<S>): <PREDICATE>"
+        ],
+        "editorial_checks": [
+          true,
+          true,
+          false,
+          true,
+          true
+        ],
+        "editorial_note": "Truth conditions are explicit, but the two poles are visibly asymmetric and the second is long.",
+        "editorial_score": 4,
+        "full_surface_occurrences_by_pole": [
+          0,
+          0
+        ],
+        "minimum_pole_edit_distance": 11,
+        "silent_transform_collisions": [],
+        "current_token_price": {
+          "cl100k_base": {
+            "mean_marked": 6.75,
+            "mean_delta_vs_careful": -1.75,
+            "mean_delta_vs_bare": 0.75
+          },
+          "o200k_base": {
+            "mean_marked": 7.0,
+            "mean_delta_vs_careful": -1.5,
+            "mean_delta_vs_bare": 1.0
+          }
+        },
+        "transforms_by_pole": {
+          "casefold": [
+            "zero-of(<s>): <predicate>",
+            "fewer-than-all(<s>): <predicate>"
+          ],
+          "strip_punct": [
+            "zeroof<s> <predicate>",
+            "fewerthanall<s> <predicate>"
+          ],
+          "alnum_only": [
+            "zeroofspredicate",
+            "fewerthanallspredicate"
+          ],
+          "paren_drop": [
+            "zero-of<s>: <predicate>",
+            "fewer-than-all<s>: <predicate>"
+          ],
+          "hyphen_drop": [
+            "zeroof(<s>): <predicate>",
+            "fewerthanall(<s>): <predicate>"
+          ],
+          "collapse_ws": [
+            "zero-of(<s>): <predicate>",
+            "fewer-than-all(<s>): <predicate>"
+          ]
+        }
+      },
+      {
+        "id": "member-prose",
+        "surfaces": [
+          "no-member-of(<S>): <PREDICATE>",
+          "at-least-one-not(<S>): <PREDICATE>"
+        ],
+        "editorial_checks": [
+          false,
+          true,
+          false,
+          true,
+          false
+        ],
+        "editorial_note": "Verbose and shifts attention from the universal-negation contrast to two unrelated phrases.",
+        "editorial_score": 2,
+        "full_surface_occurrences_by_pole": [
+          0,
+          0
+        ],
+        "minimum_pole_edit_distance": 12,
+        "silent_transform_collisions": [],
+        "current_token_price": {
+          "cl100k_base": {
+            "mean_marked": 7.75,
+            "mean_delta_vs_careful": -0.75,
+            "mean_delta_vs_bare": 1.75
+          },
+          "o200k_base": {
+            "mean_marked": 8.0,
+            "mean_delta_vs_careful": -0.5,
+            "mean_delta_vs_bare": 2.0
+          }
+        },
+        "transforms_by_pole": {
+          "casefold": [
+            "no-member-of(<s>): <predicate>",
+            "at-least-one-not(<s>): <predicate>"
+          ],
+          "strip_punct": [
+            "nomemberof<s> <predicate>",
+            "atleastonenot<s> <predicate>"
+          ],
+          "alnum_only": [
+            "nomemberofspredicate",
+            "atleastonenotspredicate"
+          ],
+          "paren_drop": [
+            "no-member-of<s>: <predicate>",
+            "at-least-one-not<s>: <predicate>"
+          ],
+          "hyphen_drop": [
+            "nomemberof(<s>): <predicate>",
+            "atleastonenot(<s>): <predicate>"
+          ],
+          "collapse_ws": [
+            "no-member-of(<s>): <predicate>",
+            "at-least-one-not(<s>): <predicate>"
+          ]
+        }
+      }
+    ],
+    "decision": "retain filed none-of(<S>) / not-all-of(<S>)",
+    "reason": "It is the only five-of-five symmetric pair, has no full-surface corpus hit or silent transform collapse, and preserves the exact interval distinction."
+  },
+  "claim_boundary": "Current-token price and deterministic surface screens do not establish comprehension, adoption, or future-trained efficiency.",
+  "model_calls": 0,
+  "governance_writes": 0,
+  "content_sha256": "463d8356fbf6809a52a12af35ebf721e25fec38a35679afd94eb4655e84c3bb6"
+}
