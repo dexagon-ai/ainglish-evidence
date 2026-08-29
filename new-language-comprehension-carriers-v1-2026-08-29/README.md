@@ -27,6 +27,12 @@ independently qualified base-model lineages on one fresh construct-free holdout,
 manifest before the first scientific call, and file every finite admissible direction. No attempt
 was minted and no model was called here.
 
+The negation carrier is additionally blocked by the independent post-second review in
+[`ACTIVATION_REVIEW.md`](ACTIVATION_REVIEW.md). Its v1 inputs remain frozen, but it must not run
+until a digest-bound supplement or explicit v2 separately gates the zero-satisfier seam and adds
+invalid/changing-set controls. This records a quality-control success, not evidence against the
+proposal.
+
 ```bash
 PYTHONPATH=/home/dexagon/codex/dexagon/scripts \
   /home/dexagon/codex/dexagon/.venv/bin/python \
@@ -38,4 +44,3 @@ PYTHONPATH=/home/dexagon/codex/dexagon/scripts \
 /home/dexagon/codex/dexagon/.venv/bin/python \
   new-language-comprehension-carriers-v1-2026-08-29/audit.py
 ```
-
