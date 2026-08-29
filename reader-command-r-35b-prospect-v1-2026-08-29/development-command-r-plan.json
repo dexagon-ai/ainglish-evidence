@@ -1,0 +1,194 @@
+{
+  "kind": "ainglish.panel.reader-command-r-development-plan.v1",
+  "result_kind": "ainglish.panel.reader-command-r-development-result.v1",
+  "evidentiary_status": "reader development only; never qualification or proposal evidence",
+  "phase": "development-command-r-35b",
+  "freeze_rule": "This plan and the conditional holdout plan are committed and public before the first Command R call; never tune or retry after observing a cell.",
+  "candidate": {
+    "lineage": "Command R 35B",
+    "producer": "Cohere",
+    "source_model": "command-r:35b-08-2024-q4_K_M",
+    "source_manifest_sha256": "376304b5a50577f311bfc4fb75cc1217e71b77906b48bb07b652647af760a7bd",
+    "capabilities": [
+      "completion",
+      "tools"
+    ],
+    "details": {
+      "family": "command-r",
+      "families": [
+        "command-r"
+      ],
+      "parameter_size": "32.3B",
+      "quantization_level": "Q4_K_M",
+      "format": "gguf",
+      "parent_model": ""
+    },
+    "template_sha256": "922095537bc1278418b3aeff5c9bdde0c61a5c6adb7573498b09791a95044068",
+    "template_length_chars": 2864,
+    "official_reference": "https://ollama.com/library/command-r",
+    "independence_caveat": "Distinct Cohere family from Qwen, Gemma, Ornith, and Seed; the Reticuli host, Ollama runtime, and generic qualification harness remain shared infrastructure."
+  },
+  "runtime": {
+    "ollama_version": "0.32.7",
+    "structured_output_reference": "https://docs.ollama.com/capabilities/structured-outputs"
+  },
+  "format_stage": {
+    "source_plan": {
+      "file": "reader-format-structured-v1-2026-08-26/plan.json",
+      "content_sha256": "780e44ccf6c6ec59b5bc57238e2851d045595b5edb8655b53ef0219dec1f67d8"
+    },
+    "controls": [
+      {
+        "id": "format-01",
+        "round": 1,
+        "target": "A",
+        "instruction": "Store target code A in the answer field."
+      },
+      {
+        "id": "format-02",
+        "round": 1,
+        "target": "B",
+        "instruction": "Store target code B in the answer field."
+      },
+      {
+        "id": "format-03",
+        "round": 1,
+        "target": "C",
+        "instruction": "Store target code C in the answer field."
+      },
+      {
+        "id": "format-04",
+        "round": 2,
+        "target": "A",
+        "instruction": "The required answer value is A."
+      },
+      {
+        "id": "format-05",
+        "round": 2,
+        "target": "B",
+        "instruction": "The required answer value is B."
+      },
+      {
+        "id": "format-06",
+        "round": 2,
+        "target": "C",
+        "instruction": "The required answer value is C."
+      },
+      {
+        "id": "format-07",
+        "round": 3,
+        "target": "A",
+        "instruction": "Copy A into the answer property."
+      },
+      {
+        "id": "format-08",
+        "round": 3,
+        "target": "B",
+        "instruction": "Copy B into the answer property."
+      },
+      {
+        "id": "format-09",
+        "round": 3,
+        "target": "C",
+        "instruction": "Copy C into the answer property."
+      },
+      {
+        "id": "format-10",
+        "round": 4,
+        "target": "A",
+        "instruction": "Return the supplied target, which is A."
+      },
+      {
+        "id": "format-11",
+        "round": 4,
+        "target": "B",
+        "instruction": "Return the supplied target, which is B."
+      },
+      {
+        "id": "format-12",
+        "round": 4,
+        "target": "C",
+        "instruction": "Return the supplied target, which is C."
+      }
+    ],
+    "gate": {
+      "valid_json_cells_required": 12,
+      "schema_exact_cells_required": 12,
+      "target_correct_cells_required": 12,
+      "thinking_bytes_required": 0,
+      "fault_cells_required": 0
+    },
+    "failure_action": "Publish the format result and expose zero semantic items."
+  },
+  "gpu_gate": {
+    "ollama_base_url": "http://127.0.0.1:11434",
+    "minimum_total_free_mib": 36000,
+    "maximum_utilization_percent": 35
+  },
+  "prior_evidence": {
+    "same_digest_public_reader_receipt": {
+      "manifest_hash": "7200b1736f5a760108c5f5305109d2a53f5c5b3415e3ff96bfa87ea389b5ff51",
+      "at": "2026-08-29T11:34:07+00:00",
+      "meaning": "The exact artifact was installed and served by an independent operator on the selection day; this is not a qualification receipt."
+    },
+    "construct_specific_adverse_calibration": {
+      "commit": "6c32a4a75c30c1e1feb41baba79f884857104974",
+      "path": "they-one-they-many-comprehension-2026-08-29/REFUSAL-run1.json",
+      "raw_sha256": "574e90833f4e0a25ed88a35ad0aa8b0e01be4ba79fb6ef327225270f5d57b1b5",
+      "canonical_sha256": "bbae58feda80ce0c1dc0c3b9b7dd4ddbe7a5a2ec60e8d2693764f15f5bd8744c",
+      "command_r_detectable": 0.3333333333333333,
+      "command_r_other": 0.3333333333333333,
+      "command_r_gap": 0,
+      "panel_gap": 0.2916666666666667,
+      "minimum_gap": 0.5,
+      "real_cells_attempted": 0,
+      "interpretation": "Adverse for that construct-specific calibration and disclosed before this plan; not a general disqualification and not evidence in favor of Command R."
+    }
+  },
+  "semantic_stage": {
+    "packet": {
+      "file": "reader-qualification-calibration-v1-2026-08-26/development-packet.json",
+      "content_sha256": "5e4f755594e88b5bb4aefdff89c93b76f7406ee467ecabfe4c02ecb2beb447a7"
+    },
+    "prompt_contract": "Given only the ordinary-English premise, classify the hypothesis as entailed, contradicted, or not determined. Return the opaque choice code selected from the supplied mapping.",
+    "gate": {
+      "valid_json_cells_required": 24,
+      "schema_exact_cells_required": 24,
+      "correct_cells_required": 22,
+      "correct_per_axis_required": 2,
+      "correct_per_label_required": 7,
+      "thinking_bytes_required": 0,
+      "fault_cells_required": 0
+    },
+    "pass_meaning": "Eligible only for the separately frozen v10 holdout; this exposed packet never qualifies the reader."
+  },
+  "transport": {
+    "adapter": "ollama-native-chat-json-schema-v1",
+    "think": false,
+    "temperature": 0,
+    "seed": 2026082967,
+    "num_ctx": 4096,
+    "max_tokens": 16,
+    "timeout_s": 600,
+    "format": {
+      "type": "object",
+      "properties": {
+        "answer": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C"
+          ]
+        }
+      },
+      "required": [
+        "answer"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "result_file": "development-command-r-result.json",
+  "journal_file": "development-command-r-attempt-journal.jsonl",
+  "content_sha256": "3c90b8a8f25907f9b43a5abbadec8a4b8160e230c7ca0e27cc189caae871ab1b"
+}
