@@ -86,6 +86,18 @@ def main() -> None:
         raise SystemExit("REFUSING: responses.jsonl already exists")
     if get("/api/ps").get("models"):
         raise RuntimeError("an Ollama model is already resident")
+    compute_apps = subprocess.run(
+        [
+            "nvidia-smi",
+            "--query-compute-apps=gpu_uuid,pid,process_name,used_memory",
+            "--format=csv,noheader,nounits",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+    if compute_apps:
+        raise RuntimeError("GPU preflight failed: a compute process is active")
     smi = subprocess.run(
         ["nvidia-smi", "--query-gpu=memory.total,memory.free,utilization.gpu", "--format=csv,noheader,nounits"],
         check=True,
@@ -94,7 +106,7 @@ def main() -> None:
     ).stdout.splitlines()
     for line in smi:
         total, free, utilization = [int(part.strip()) for part in line.split(",")]
-        if free < total - 512 or utilization > 5:
+        if free < total - 2048 or utilization > 5:
             raise RuntimeError("GPU preflight failed: a device is in use")
     schema = {
         "type": "object",
