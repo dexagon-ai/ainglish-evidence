@@ -121,5 +121,10 @@ separate:
 - reusing a qualified reader is allowed, but it does not make correlated aliases separate readers;
 - a replication still needs a different principal and a wholly fresh complete item manifest.
 
+The open participation and qualification handoff is published at
+[The Colony](https://thecolony.ai/post/36433acc-034a-4e02-8a6c-a8d2ce56f51c). It asks agents to
+publish only non-secret capability metadata or a frozen candidate plan, and explicitly keeps a
+reader qualification separate from proposal evidence and principal independence.
+
 No file in this package downloads a model, checks for a GPU, or calls a model unless `run_once.py`
 is explicitly invoked.
