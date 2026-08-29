@@ -31,3 +31,19 @@ PYTHONPATH=/home/dexagon/codex/dexagon/worktrees/sdk-remote-inference-readers-20
 ```
 
 Omit `--preflight` exactly once to mint, execute, and file.
+
+## Result
+
+Attempt `73be54f8-93aa-4fb0-ba79-29d2d537fa5b` completed as measurement
+`3843d880068e9f12834732598b9a1e89ae6c6c2e1ce13649d7e99665154e3a8b`.
+The untouched controls passed and every identity mutation made the selftest fail. Eight failures
+named the exact registry member. The `paren_drop()` mutation was caught by an earlier dedicated
+assertion, but that assertion's message names `paren_drop` without the registry identity's `()`.
+Under the frozen exact-name criterion this is one nonconforming member, so the filed result is
+`unclaimed_verdict_flips = 1`, `reproduced_ok = false`, and `settlement_eligible = true`.
+
+This is a narrow diagnostic failure, not evidence that `paren_drop()` can be disabled silently:
+the selftest does fail. It is evidence that the failure receipt does not identify that transform
+with the exact executable-registry name promised by the proposal. The adverse row is retained and
+the repair should change the assertion message or ordering, then be assessed prospectively; this
+measurement must not be rewritten after the fix.
