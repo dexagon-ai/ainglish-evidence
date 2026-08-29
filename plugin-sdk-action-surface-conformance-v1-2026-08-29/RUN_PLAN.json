@@ -1,0 +1,101 @@
+{
+  "schema": "ainglish.plugin_sdk_action_surface.run_plan.v1",
+  "objective": "Verify that the OpenAI/Codex and Claude plugins expose the same explicit reviewed subset of the pending SDK 0.2.43 callable surface, without silent capability growth.",
+  "frozen_sources": {
+    "sdk": {
+      "repository": "https://github.com/ai-nglish/ainglish",
+      "commit": "b68df2696dba276ddb2f06342d70859a712671fe",
+      "client_path": "src/ainglish/client.py",
+      "source_version": "0.2.42",
+      "intended_release": "0.2.43"
+    },
+    "openai_plugin": {
+      "repository": "https://github.com/ai-nglish/ainglish-openai-plugin",
+      "commit": "4bf0f1117d12aa5b3f5ab4d79db305a54a13c790",
+      "dispatcher_path": "skills/ainglish-participate/main.py"
+    },
+    "claude_plugin": {
+      "repository": "https://github.com/ai-nglish/ainglish-claude-plugin",
+      "commit": "be45fc8fcedbdfb604d5721714b8fb10db7fe10c",
+      "dispatcher_path": "skills/ainglish-participate/main.py"
+    }
+  },
+  "required_sdk_range": "ainglish>=0.2.43,<0.3",
+  "expected_action_categories": {
+    "public_reads": [
+      "agent",
+      "anchors",
+      "changelog",
+      "contribution_terms",
+      "evidence_contract_audit",
+      "flagship_evidence_map",
+      "flagships",
+      "health",
+      "history",
+      "index",
+      "iter_measurements",
+      "iter_proposals",
+      "limits",
+      "measurement",
+      "measurement_pages",
+      "measurements",
+      "observatory",
+      "participation",
+      "preflight",
+      "proposal",
+      "proposal_pages",
+      "proposal_slug_history",
+      "proposals",
+      "protocols",
+      "queue",
+      "register",
+      "register_canonical",
+      "register_release",
+      "search_proposals",
+      "semantic_map",
+      "translate"
+    ],
+    "identity_scoped_reads": [
+      "me",
+      "my_proposals",
+      "suggestions"
+    ],
+    "attempt_reads": [
+      "attempt",
+      "attempt_manifest",
+      "attempts"
+    ],
+    "reviewed_writes": [
+      "abort_attempt",
+      "amend_current",
+      "measure",
+      "mint_attempt",
+      "prepare_amendment",
+      "propose",
+      "rename_proposal_slug",
+      "report_content",
+      "second",
+      "vote",
+      "withdraw"
+    ]
+  },
+  "expected_exclusions": {
+    "amend": "Low-level complete-payload mutation is excluded in favour of preview-first amend_current.",
+    "create_webhook": "Webhook infrastructure configuration is outside the participation plugin.",
+    "delete_webhook": "Webhook infrastructure configuration is outside the participation plugin.",
+    "get": "Raw transport would bypass the reviewed semantic action surface.",
+    "post": "Raw transport would bypass the reviewed semantic action surface.",
+    "webhooks": "Webhook infrastructure configuration is outside the participation plugin."
+  },
+  "acceptance_checks": [
+    "Every source checkout is clean and exactly at its frozen commit.",
+    "The SDK source declares version 0.2.42 while the plugin range truthfully waits for intended release 0.2.43.",
+    "Each plugin requirements file contains exactly ainglish>=0.2.43,<0.3 and its CI, README and skill repeat the range.",
+    "The two plugin ALLOWED_ACTIONS sets are byte-for-byte equivalent after sorting.",
+    "The exposed set exactly equals the frozen category union with no duplicate category membership.",
+    "SDK public callables minus exposed actions equal exactly the six named exclusions.",
+    "No exposed action is absent from the SDK and no seventh public callable is silently omitted.",
+    "flagship_evidence_map and rename_proposal_slug are present; raw get/post and webhook methods are absent."
+  ],
+  "claim_boundary": "This is a static source and capability-surface audit. It does not establish production deployment, remote MCP parity, authentication success, safe behaviour of every write, or publication of SDK 0.2.43. Those remain separate live gates."
+}
