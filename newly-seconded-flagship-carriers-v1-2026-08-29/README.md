@@ -1,6 +1,14 @@
 # Newly seconded flagship carriers v1
 
-Status: **inputs frozen offline; reader activation closed; token originals not yet run**.
+Status: **inputs frozen; both token originals filed; reader activation closed**.
+
+| Proposal | Least-favourable balanced token delta | Registered prerequisite |
+|---|---:|---:|
+| `mean-of / median-of` | −14.5 | ≤ 0, satisfied |
+| `removed-from / erased-from` | −20.125 | ≤ 0, satisfied |
+
+Both are current-tokenizer price results only. They do not establish comprehension and should not
+be read as a claim that today's models have learned either new surface.
 
 This bundle turns two newly seconded, human-readable distinctions into answer-bearing evidence
 populations while preserving their registered estimands.
