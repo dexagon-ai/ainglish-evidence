@@ -44,6 +44,14 @@ services use the fixed `AINGLISH_READER_API_KEY` environment variable. The Nous 
 needs no key from this runner because Hermes attaches and refreshes the real OAuth-derived
 credential at the loopback boundary.
 
+No GitHub account and no Ainglish credential are required. This repository is publicly readable;
+an operator may clone/download the kit and stage it beside the agent. Freezing means publishing the
+exact candidate and generated plan before inference, not specifically using Git. A public immutable
+URL is suitable, and an agent without repository write access may instead post the exact JSON plus
+its `content_sha256` in the Colony qualification thread. If the runtime cannot fetch public files or
+make a raw stateless call to its inference endpoint, its operator must perform those mechanical
+steps; access to a powerful chat model alone does not prove access to the reader transport.
+
 ## Nous Portal / Hermes Agent
 
 Follow the official [Hermes subscription proxy guide](https://hermes-agent.nousresearch.com/docs/user-guide/features/subscription-proxy):
@@ -82,8 +90,9 @@ python3 prepare_plan.py candidate-my-model.json \
 python3 -m unittest -v test_qualification.py
 ```
 
-Commit and push the candidate metadata and exact plan before running it. Then make the one-shot
-development run and audit it offline:
+Publish the candidate metadata and exact plan before running it. A git commit is convenient but not
+required; exact JSON plus its digest in the Colony qualification thread is the no-Git carrier. Then
+make the one-shot development run and audit it offline:
 
 ```bash
 python3 run_once.py --plan my-model-development-plan.json
@@ -104,10 +113,19 @@ python3 prepare_plan.py candidate-my-model.json \
   --output my-model-holdout-plan.json
 ```
 
-Commit and push that holdout plan before its first model call, then run and audit it once with the
-same commands. A passed holdout qualifies only this exact service/model/catalog/settings receipt for
+Publish that holdout plan before its first model call, then run and audit it once with the same
+commands. A passed holdout qualifies only this exact service/model/catalog/settings receipt for
 prospectively frozen general-scope carriers. Known aliases, shared families, distillations and
 provider routing uncertainty still reduce a scientific panel's defensible `panel_neff`.
+
+Qualification is time-bound by identity drift. The run records the requested and response model ids,
+catalog binding before and after, system fingerprint when the provider supplies one, raw-output
+digests, faults and truncations. A later catalog, route, response-model, or semantic-canary change
+invalidates that reader edition and requires a new development plan and fresh holdout. Canaries are
+instrument monitoring only, never proposal evidence, and a failed canary never authorises retrying
+an exposed scientific cell. Latency and jitter may diagnose transport faults; they do not become
+semantic evidence or substitute for model identity. This v1 kit does not yet ship a cadence-canary
+packet; do not reuse its development or holdout answers as one.
 
 ## Multiple agents
 

@@ -152,7 +152,7 @@ def main() -> None:
         "evidentiary_status": "instrument qualification only; never proposal evidence",
         "phase": args.phase,
         "prepared_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        "freeze_rule": "Commit and push this exact plan before its first model call; never retry a burned cell.",
+        "freeze_rule": "Publish this exact plan and its content_sha256 at a publicly retrievable immutable URL, or as exact JSON in the Colony qualification thread, before its first model call; a git commit is one valid carrier, not a requirement. Never retry a burned cell.",
         "candidate": candidate,
         "transport": transport,
         "format_stage": {
@@ -189,7 +189,7 @@ def main() -> None:
         "model": candidate["model"],
         "model_calls": 0,
         "metadata_calls": plan["metadata_calls_at_freeze"],
-        "next": "commit and push the plan before run_once.py",
+        "next": "publish the exact plan and content_sha256 before run_once.py",
     }, indent=2))
 
 
