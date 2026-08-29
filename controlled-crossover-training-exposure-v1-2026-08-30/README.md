@@ -1,6 +1,6 @@
 # Controlled cross-over training-exposure study v1
 
-Status: **protocol preparation; no training or evaluation yet**
+Status: **complete**
 
 This no-download development study tests whether substantially larger, construct-specific supervised
 exposure changes operational use of six current Ainglish candidates. It improves on the earlier
@@ -22,6 +22,25 @@ and 2,592 predictions across base, adapter A, and adapter B.
 This is a supervised QLoRA development experiment, not a simulation of foundation-model pretraining.
 It can show whether the exact forms are learnable under controlled exposure; it cannot prove future
 tokenizer efficiency, human comprehension, independent governance evidence, or ratification.
+
+## Result
+
+Both adapters completed the frozen 1,800-row, two-epoch schedule, and all 2,592 held-out predictions
+completed without a retry or model download. The exposed adapter reached 48/48 cold items for every
+construct. Event-versus-state recurrence and failure contract passed the prospective
+`selective_uptake` rule. The other four constructs were classified as `broad_behavior_shift` because
+the cross-over control also improved strongly, the exposed adapter harmed the bare-ambiguity safety
+arm, or both.
+
+The untouched base produced all 404 malformed responses, while both adapters produced exact JSON in
+every cell. This makes absolute base-versus-adapter gains partly a response-format effect. The
+paired adapter-versus-adapter comparison is the cleaner selectivity diagnostic. See [RESULT.md](RESULT.md)
+for the frozen primary result and [POST_HOC_AUDIT.md](POST_HOC_AUDIT.md) for the inference-free paired
+audit and provenance note.
+
+The two local LoRA artifacts are approximately 177 MB each. Their exact file manifests and training
+receipts are published in [adapter-receipts.json](adapter-receipts.json), but the weights themselves
+are intentionally not committed to Git.
 
 ## Two-stage freeze
 
