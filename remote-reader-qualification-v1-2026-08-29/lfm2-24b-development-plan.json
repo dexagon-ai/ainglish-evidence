@@ -1,0 +1,148 @@
+{
+  "kind": "ainglish.panel.remote-reader-qualification-plan.v1",
+  "result_kind": "ainglish.panel.remote-reader-qualification-result.v1",
+  "evidentiary_status": "instrument qualification only; never proposal evidence",
+  "phase": "development",
+  "prepared_at": "2026-08-30T17:01:44.771381+00:00",
+  "freeze_rule": "Publish this exact plan and its content_sha256 at a publicly retrievable immutable URL, or as exact JSON in the Colony qualification thread, before its first model call; a git commit is one valid carrier, not a requirement. Never retry a burned cell.",
+  "candidate": {
+    "name": "dexagon-local-lfm2-24b-q4km",
+    "lineage": "Liquid AI LFM2-24B-A2B",
+    "producer": "Liquid AI",
+    "families": [
+      "lfm2moe"
+    ],
+    "service": "Dexagon local Ollama 0.32.7",
+    "provider": "openai-compatible",
+    "model": "lfm2:24b",
+    "precision": "GGUF Q4_K_M",
+    "model_digest": null,
+    "digest_source": "provider-catalog:openai:/models",
+    "model_catalog_binding": {
+      "source": "openai:/models",
+      "requested_model": "lfm2:24b",
+      "entry_sha256": "sha256:506d34874c46e534e532567eaabe33e8596d7d5178477b3b839557d674bf794b",
+      "weight_identity": "provider-opaque"
+    },
+    "official_reference": "https://ollama.com/library/lfm2",
+    "lineage_caveat": "Ollama artifact sha256:d6c816d74887ed480a3afd5baa2dd2a5987ef6b359b8661e80e1e9fb3501650c; community quantisation and exact upstream conversion provenance are not independently verified."
+  },
+  "transport": {
+    "adapter": "openai-chat-completions-opaque-choice-v1",
+    "base_url": "http://127.0.0.1:11434/v1",
+    "auth_mode": "none",
+    "credential_env_name_recorded": false,
+    "model": "lfm2:24b",
+    "sampling": {
+      "temperature": 0
+    },
+    "max_tokens": 16,
+    "timeout_s": 120
+  },
+  "format_stage": {
+    "answer_protocol": "opaque-choice-v1",
+    "controls": [
+      {
+        "id": "format-01",
+        "round": 1,
+        "target": "A",
+        "instruction": "Return only target code A."
+      },
+      {
+        "id": "format-02",
+        "round": 1,
+        "target": "B",
+        "instruction": "Return only target code B."
+      },
+      {
+        "id": "format-03",
+        "round": 1,
+        "target": "C",
+        "instruction": "Return only target code C."
+      },
+      {
+        "id": "format-04",
+        "round": 2,
+        "target": "A",
+        "instruction": "The required one-byte answer is A."
+      },
+      {
+        "id": "format-05",
+        "round": 2,
+        "target": "B",
+        "instruction": "The required one-byte answer is B."
+      },
+      {
+        "id": "format-06",
+        "round": 2,
+        "target": "C",
+        "instruction": "The required one-byte answer is C."
+      },
+      {
+        "id": "format-07",
+        "round": 3,
+        "target": "A",
+        "instruction": "Copy A and add nothing else."
+      },
+      {
+        "id": "format-08",
+        "round": 3,
+        "target": "B",
+        "instruction": "Copy B and add nothing else."
+      },
+      {
+        "id": "format-09",
+        "round": 3,
+        "target": "C",
+        "instruction": "Copy C and add nothing else."
+      },
+      {
+        "id": "format-10",
+        "round": 4,
+        "target": "A",
+        "instruction": "Select the supplied target, which is A."
+      },
+      {
+        "id": "format-11",
+        "round": 4,
+        "target": "B",
+        "instruction": "Select the supplied target, which is B."
+      },
+      {
+        "id": "format-12",
+        "round": 4,
+        "target": "C",
+        "instruction": "Select the supplied target, which is C."
+      }
+    ],
+    "gate": {
+      "valid_choice_cells_required": 12,
+      "target_correct_cells_required": 12,
+      "fault_cells_required": 0,
+      "truncated_cells_required": 0,
+      "response_model_mismatch_cells_required": 0
+    },
+    "failure_action": "Publish the format result and expose zero semantic items."
+  },
+  "semantic_stage": {
+    "packet": {
+      "file": "reader-qualification-calibration-v1-2026-08-26/development-packet.json",
+      "content_sha256": "5e4f755594e88b5bb4aefdff89c93b76f7406ee467ecabfe4c02ecb2beb447a7"
+    },
+    "prompt_contract": "Given only the ordinary-English premise, classify the hypothesis as entailed, contradicted, or not determined. Return exactly the opaque choice code selected from the supplied mapping and nothing else.",
+    "gate": {
+      "valid_choice_cells_required": 24,
+      "correct_cells_required": 22,
+      "correct_per_axis_required": 2,
+      "correct_per_label_required": 7,
+      "fault_cells_required": 0,
+      "truncated_cells_required": 0,
+      "response_model_mismatch_cells_required": 0
+    },
+    "pass_meaning": "Eligible only for this kit's frozen holdout; never proposal evidence or reader qualification by itself."
+  },
+  "development_receipt": null,
+  "model_calls_at_freeze": 0,
+  "metadata_calls_at_freeze": 1,
+  "content_sha256": "7d4a935ec8bb0c572b94034cbc4aaff33ea626446d1c1b391c1b67620d02e55d"
+}
