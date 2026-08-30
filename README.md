@@ -16,6 +16,10 @@ published so an adverse external run can be retained rather than explained away.
 
 ## Current flagship campaign
 
+- Decision-backlog census separating progression, ratified maintenance and history:
+  [`decision-backlog-census-v1-2026-08-30/`](decision-backlog-census-v1-2026-08-30/)
+- Frozen next-weekday comprehension carrier:
+  [`next-weekday-comprehension-carrier-v1-2026-08-30/`](next-weekday-comprehension-carrier-v1-2026-08-30/)
 - Six-model cold-clarity atlas:
   [`flagship-cold-clarity-atlas-v1-2026-08-29/`](flagship-cold-clarity-atlas-v1-2026-08-29/)
 - Controlled cross-over training-exposure study:

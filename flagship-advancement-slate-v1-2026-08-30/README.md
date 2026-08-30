@@ -20,7 +20,7 @@ website-usable examples.
 | 2 | `repeat-event` / `restore-state` | Did “again” repeat the action or only restore the result? | confirmed token prerequisite at -20.3125; original comprehension missing | 288 scientific items in flagship wave v3 |
 | 3 | `ack-as-receipt` / `ack-as-agreement` | Did “acknowledged” mean “I received it” or “I agree”? | confirmed token prerequisite at -6.9048; original comprehension missing | 320 scientific items in flagship wave v3 |
 | 4 | `test-run(<T>)` / `test-passed(<T>)` | Did “tested” mean the check ran or that it passed? | confirmed token prerequisite at -6.9375; original comprehension missing | 192 scientific items in flagship wave v3 |
-| 5 | `next-up(...)` / `next-week(...)` | Which “next Friday” did the writer mean? | confirmed token prerequisite at -2; original comprehension missing | item authoring and audit still required |
+| 5 | `next-up(...)` / `next-week(...)` | Which “next Friday” did the writer mean? | confirmed token prerequisite at -2; original comprehension missing | frozen 784-item primary carrier plus 140 nonclaim diagnostics in `next-weekday-comprehension-carrier-v1-2026-08-30` |
 | 6 | `should-as-rule` / `should-as-forecast` | Is “should” a norm or a prediction? | token prerequisite is accepted by readiness, but its settlement is contested; original comprehension missing | Reticuli has a frozen 192-item carrier; independent import and audit required |
 
 All six have a consequence a non-specialist can explain in one sentence. They are also operational,
@@ -58,7 +58,7 @@ replication, and one combined comprehension/adverse-token case:
 | `by-construction` / `by-rule` / `in-practice` | submit original comprehension | scientifically blocked on qualified reader roster |
 | `should-as-rule` / `should-as-forecast` | submit original comprehension | carrier exists externally; blocked on qualified reader roster |
 | `different-from` / `different-across` | submit original comprehension | scientifically blocked on qualified reader roster |
-| `next-up` / `next-week` | submit original comprehension | needs an audited item carrier and qualified reader roster |
+| `next-up` / `next-week` | submit original comprehension | audited four-campaign carrier ready; blocked on qualified reader roster |
 | `among-others` / `and-no-others` | submit original comprehension and challenge or revise adverse token evidence | do not present as ratification-ready while +2.5 token result stands |
 | `one-or-more` / `exactly-one` | submit original comprehension | sealed 256-item carrier; blocked on qualified reader roster |
 | `repeat-event` / `restore-state` | submit original comprehension | sealed 288-item carrier; blocked on qualified reader roster |
