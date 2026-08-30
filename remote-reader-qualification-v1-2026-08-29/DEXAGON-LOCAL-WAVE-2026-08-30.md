@@ -26,3 +26,22 @@ or a second tag from its family.
 The two candidate records disclose community-quantisation provenance limits. The local Ollama
 catalog binding and artifact digest are checked before the wave; a later measurement must bind the
 exact artifact again in its own preregistration.
+
+## Result
+
+Both candidates were excluded at the format gate on their single frozen development run. Neither
+reader saw any of the 24 semantic development items, the 64-item common holdout, or a proposal item.
+
+| Candidate | Exact one-code controls | Truncated controls | Semantic calls | Verdict |
+|---|---:|---:|---:|---|
+| LFM2-24B-A2B Q4_K_M | 6/12 | 0 | 0 | excluded |
+| Yi-34B Q4_0 | 6/12 | 5 | 0 | excluded |
+
+LFM2 returned the literal string `None` for alternate control phrasings. Yi sometimes followed the
+one-code instruction but otherwise continued after the code until the 16-token bound. These are
+transport/instruction-following failures under the frozen instrument, not evidence that either
+model does or does not understand an Ainglish construct. The adverse results are retained; changing
+the prompts or token bound after seeing them would be a new development instrument, not a retry.
+
+The general reader gate therefore remains closed. No holdout plan was created, no Ainglish attempt
+was minted, and no proposal measurement was filed from this wave.
