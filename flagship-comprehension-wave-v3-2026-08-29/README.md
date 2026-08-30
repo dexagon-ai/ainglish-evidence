@@ -59,8 +59,11 @@ The remote qualification lane is documented in [`../remote-reader-qualification-
 | `role-cardinality-claim-original` | careful-English claim carrier | 128 | 24 | must be run by a principal independent of proposer Dexagon |
 | `test-outcome-claim-original` | careful-English claim carrier | 96 | 24 | Dexagon may run after the reader gate opens |
 | `acknowledgement-force-claim-original` | careful-English claim carrier | 160 | 24 | Dexagon may run after the reader gate opens |
+| `enumeration-closure-claim-original` | careful-English claim carrier | 200 | 24 | adverse token prerequisite remains visible regardless of comprehension direction |
+| `repetition-restoration-claim-original` | careful-English claim carrier | 128 | 24 | keep event repetition and state restoration separate |
+| `preservation-invariant-claim-recertification` | ratified careful-English recertification carrier | 240 | 24 | continuing evidence; it does not reopen the completed ballot by itself |
 
-The exact canonical item digests, raw-file digests, source-campaign digests, counts, and replication target are in `activation-index.json`. The audit proves that each activation array is exactly the calibration rows followed by the scientific rows from its named frozen source campaigns. It does not count those 512 scientific rows again in the wave total because they are composed duplicates, not new observations.
+The exact canonical item digests, raw-file digests, source-campaign digests, counts, and replication target are in `activation-index.json`. The audit proves that each activation array is exactly the calibration rows followed by the scientific rows from its named frozen source campaigns. It does not count those 1,080 scientific rows again in the wave total because they are composed duplicates, not new observations.
 
 [`ACTIVATION-RUNBOOK.md`](ACTIVATION-RUNBOOK.md) fixes the gate-opening checks, execution order, ownership restrictions, estimand boundaries, and post-measurement ballot discipline.
 
@@ -76,4 +79,4 @@ PYTHONPATH=. python3 flagship-comprehension-wave-v3-2026-08-29/audit.py
 
 `capture.py` is deliberately separate because it performs authenticated live reads and freezes exactly one `live-receipt.json`. It uses the established local Colony token-exchange helper and never reads or prints the underlying credentials itself.
 
-The audit validates all seven evidence-design envelopes, item and content digests, exact sample counts, globally unique contexts and controls, answer/options binding, per-seam balance, role parity, ratified-carrier links, the live-state receipt, and exact-message novelty against earlier repository artifacts.
+The current `activation-audit-v2.json` validates all seven evidence-design envelopes, all seven panel-ready activation inputs, item and content digests, exact sample counts, globally unique contexts and controls, answer/options binding, per-seam balance, role parity, ratified-carrier links, the live-state receipt, and exact-message novelty against earlier repository artifacts. The earlier `audit.json` remains the immutable receipt for the four-seat activation set that preceded this additive completion.

@@ -39,6 +39,21 @@ ACTIVATIONS = {
         "role": "claim_carrier",
         "kind": "original",
     },
+    "enumeration-closure-claim-original": {
+        "design": "enumeration-closure.design.json",
+        "role": "claim_carrier",
+        "kind": "original",
+    },
+    "repetition-restoration-claim-original": {
+        "design": "repetition-restoration.design.json",
+        "role": "claim_carrier",
+        "kind": "original",
+    },
+    "preservation-invariant-claim-recertification": {
+        "design": "preservation-invariant.design.json",
+        "role": "claim_carrier",
+        "kind": "original",
+    },
 }
 
 
@@ -60,6 +75,16 @@ def write_frozen(path: Path, value: object) -> None:
         raise SystemExit(f"REFUSING: frozen activation drift: {path.name}")
     if not path.exists():
         path.write_text(rendered, encoding="utf-8")
+
+
+def write_append_only_index(path: Path, value: dict) -> None:
+    """Allow new activation seats without permitting an existing seat to drift."""
+    if path.exists():
+        existing = json.loads(path.read_text(encoding="utf-8"))
+        for key, row in existing.get("outputs", {}).items():
+            if value["outputs"].get(key) != row:
+                raise SystemExit(f"REFUSING: existing activation drift: {key}")
+    path.write_text(json.dumps(value, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def load_campaign(design: dict, form: str, role: str) -> tuple[str, dict, list[dict]]:
@@ -149,7 +174,7 @@ def main() -> None:
         "content_sha256": "",
     }
     index["content_sha256"] = digest({k: v for k, v in index.items() if k != "content_sha256"})
-    write_frozen(ROOT / "activation-index.json", index)
+    write_append_only_index(ROOT / "activation-index.json", index)
     print(json.dumps({
         "activations": len(outputs),
         "real_items": sum(row["counts"]["real_items"] for row in outputs.values()),

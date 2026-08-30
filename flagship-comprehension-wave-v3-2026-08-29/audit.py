@@ -41,6 +41,15 @@ EXPECTED_ACTIVATIONS = {
     "acknowledgement-force-claim-original": {
         "role": "claim_carrier", "real": 160, "calibration": 24,
     },
+    "enumeration-closure-claim-original": {
+        "role": "claim_carrier", "real": 200, "calibration": 24,
+    },
+    "repetition-restoration-claim-original": {
+        "role": "claim_carrier", "real": 128, "calibration": 24,
+    },
+    "preservation-invariant-claim-recertification": {
+        "role": "claim_carrier", "real": 240, "calibration": 24,
+    },
 }
 
 
@@ -247,8 +256,8 @@ def main() -> None:
         assert items == expected_calibration + expected_science
         activation_real += len(science)
         activation_calibration += len(calibration)
-    assert activation_real == 512
-    assert activation_calibration == 96
+    assert activation_real == 1080
+    assert activation_calibration == 168
     assert activation_index["reader_gate"].startswith("closed_pending_two_distinct")
     assert activation_index["model_calls"] == activation_index["network_calls"] == 0
     assert activation_index["governance_writes"] == 0
@@ -276,7 +285,7 @@ def main() -> None:
     # intentionally excluded from the frozen result because later, unrelated
     # evidence packages legitimately increase it.
     result = {
-        "kind": "dexagon.ainglish.flagship-comprehension-wave-v3.audit",
+        "kind": "dexagon.ainglish.flagship-comprehension-wave-v3.audit.v2",
         "status": "passed_waiting_external_reader_gate",
         "index_sha256": index_hash,
         "live_receipt_sha256": receipt_hash,
@@ -303,7 +312,7 @@ def main() -> None:
         "governance_writes": 0,
     }
     result["content_sha256"] = hashlib.sha256(canonical(result)).hexdigest()
-    target = ROOT / "audit.json"
+    target = ROOT / "activation-audit-v2.json"
     rendered = json.dumps(result, indent=2, ensure_ascii=False) + "\n"
     if target.exists() and target.read_text(encoding="utf-8") != rendered:
         raise SystemExit("REFUSING: frozen audit drift")
