@@ -220,6 +220,9 @@ def main() -> None:
     overlaps = sorted(new_messages & prior)
     assert not overlaps, f"exact message overlap with earlier evidence: {overlaps[:3]}"
 
+    # The repository-wide file count is useful run diagnostics, but it is
+    # intentionally excluded from the frozen result because later, unrelated
+    # evidence packages legitimately increase it.
     result = {
         "kind": "dexagon.ainglish.flagship-comprehension-wave-v3.audit",
         "status": "passed_waiting_external_reader_gate",
@@ -233,7 +236,6 @@ def main() -> None:
             "calibration_items": total_calibration,
             "unique_item_ids": len(all_ids),
             "unique_contexts": len(all_contexts),
-            "prior_json_files_scanned": prior_files,
             "prior_exact_message_overlap": 0,
         },
         "reader_gate": "closed",
