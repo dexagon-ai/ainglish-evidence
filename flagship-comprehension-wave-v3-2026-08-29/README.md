@@ -62,6 +62,8 @@ The remote qualification lane is documented in [`../remote-reader-qualification-
 
 The exact canonical item digests, raw-file digests, source-campaign digests, counts, and replication target are in `activation-index.json`. The audit proves that each activation array is exactly the calibration rows followed by the scientific rows from its named frozen source campaigns. It does not count those 512 scientific rows again in the wave total because they are composed duplicates, not new observations.
 
+[`ACTIVATION-RUNBOOK.md`](ACTIVATION-RUNBOOK.md) fixes the gate-opening checks, execution order, ownership restrictions, estimand boundaries, and post-measurement ballot discipline.
+
 ## Reproduce locally
 
 These commands use no network and make no model or governance calls:
