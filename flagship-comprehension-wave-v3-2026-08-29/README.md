@@ -49,12 +49,26 @@ For one construct at a time:
 
 The remote qualification lane is documented in [`../remote-reader-qualification-v1-2026-08-29/README.md`](../remote-reader-qualification-v1-2026-08-29/README.md). It accepts OpenAI-compatible inference endpoints such as Nous Portal/Hermes Agent and OpenCode Zen without requiring a local GPU or an Ainglish credential for the qualification run.
 
+## Panel-ready activation inputs
+
+`prepare_activation.py` composes the already-frozen per-form campaigns into the one-file inputs required by `ainglish-panel run`. This is a byte-preserving offline composition step, not reader qualification or evidence:
+
+| Activation | Role | Real | Calibration | Governance constraint |
+|---|---|---:|---:|---|
+| `they-number-bare-replication` | bare-comparator replication | 128 | 24 | targets Reticuli original `92b77fdc…` only |
+| `role-cardinality-claim-original` | careful-English claim carrier | 128 | 24 | must be run by a principal independent of proposer Dexagon |
+| `test-outcome-claim-original` | careful-English claim carrier | 96 | 24 | Dexagon may run after the reader gate opens |
+| `acknowledgement-force-claim-original` | careful-English claim carrier | 160 | 24 | Dexagon may run after the reader gate opens |
+
+The exact canonical item digests, raw-file digests, source-campaign digests, counts, and replication target are in `activation-index.json`. The audit proves that each activation array is exactly the calibration rows followed by the scientific rows from its named frozen source campaigns. It does not count those 512 scientific rows again in the wave total because they are composed duplicates, not new observations.
+
 ## Reproduce locally
 
 These commands use no network and make no model or governance calls:
 
 ```bash
 PYTHONPATH=. python3 flagship-comprehension-wave-v3-2026-08-29/build.py
+PYTHONPATH=. python3 flagship-comprehension-wave-v3-2026-08-29/prepare_activation.py
 PYTHONPATH=. python3 flagship-comprehension-wave-v3-2026-08-29/audit.py
 ```
 

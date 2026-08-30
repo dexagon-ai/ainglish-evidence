@@ -27,6 +27,22 @@ EXPECTED = {
     "preservation-invariant": {"forms": 2, "roles": 5, "real": 120, "seams": 1, "per_seam": 120},
 }
 
+EXPECTED_ACTIVATIONS = {
+    "they-number-bare-replication": {
+        "role": "bare_diagnostic", "real": 128, "calibration": 24,
+        "replicates_hash": "92b77fdcc4b1529f6446f1c9756b80cc08acad1c4433bf845e0a95c98b9693b0",
+    },
+    "role-cardinality-claim-original": {
+        "role": "claim_carrier", "real": 128, "calibration": 24,
+    },
+    "test-outcome-claim-original": {
+        "role": "claim_carrier", "real": 96, "calibration": 24,
+    },
+    "acknowledgement-force-claim-original": {
+        "role": "claim_carrier", "real": 160, "calibration": 24,
+    },
+}
+
 
 def canonical(value: object) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
@@ -201,6 +217,42 @@ def main() -> None:
     assert len(all_calibration_pairs) == total_calibration
     assert len(new_messages) == 2 * (total_real + total_calibration)
 
+    activation_index = json.loads((ROOT / "activation-index.json").read_text(encoding="utf-8"))
+    activation_index_hash = checked_hash(activation_index)
+    assert set(activation_index["outputs"]) == set(EXPECTED_ACTIVATIONS)
+    activation_real = 0
+    activation_calibration = 0
+    for key, expected in EXPECTED_ACTIVATIONS.items():
+        row = activation_index["outputs"][key]
+        assert row["campaign_role"] == expected["role"]
+        assert row.get("replicates_hash") == expected.get("replicates_hash")
+        path = ROOT / row["items"]
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == row["file_sha256"]
+        items = json.loads(path.read_text(encoding="utf-8"))
+        assert hashlib.sha256(canonical(items)).hexdigest() == row["items_sha256"]
+        science = [item for item in items if item.get("calibration") is not True]
+        calibration = [item for item in items if item.get("calibration") is True]
+        assert len(science) == row["counts"]["real_items"] == expected["real"]
+        assert len(calibration) == row["counts"]["calibration_items"] == expected["calibration"]
+        expected_calibration = []
+        expected_science = []
+        for source in row["sources"]:
+            source_path = ROOT / source["file"]
+            assert hashlib.sha256(source_path.read_bytes()).hexdigest() == source["file_sha256"]
+            source_items = json.loads(source_path.read_text(encoding="utf-8"))
+            expected_calibration.extend(
+                item for item in source_items if item.get("calibration") is True)
+            expected_science.extend(
+                item for item in source_items if item.get("calibration") is not True)
+        assert items == expected_calibration + expected_science
+        activation_real += len(science)
+        activation_calibration += len(calibration)
+    assert activation_real == 512
+    assert activation_calibration == 96
+    assert activation_index["reader_gate"].startswith("closed_pending_two_distinct")
+    assert activation_index["model_calls"] == activation_index["network_calls"] == 0
+    assert activation_index["governance_writes"] == 0
+
     for row in index["ratified_flagship_gaps"].values():
         assert (ROOT / row["carrier"]).resolve().is_file()
         if row.get("secondary"):
@@ -237,6 +289,13 @@ def main() -> None:
             "unique_item_ids": len(all_ids),
             "unique_contexts": len(all_contexts),
             "prior_exact_message_overlap": 0,
+        },
+        "activation_inputs": {
+            "index_sha256": activation_index_hash,
+            "files": len(EXPECTED_ACTIVATIONS),
+            "scientific_items": activation_real,
+            "calibration_items": activation_calibration,
+            "duplicates_of_frozen_campaigns": True,
         },
         "reader_gate": "closed",
         "model_calls": 0,
