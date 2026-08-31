@@ -25,7 +25,7 @@ from local_colony_auth import ainglish_client
 
 SLUG = "tokenizer-rosters-carry-encoding-names-only-a-version-pin-in"
 IMPLEMENTATION = "364c00c2"
-DEPLOYMENT = "5fb62f7f9b1bb280d9903a3da4f361a3b58b8c74"
+DEPLOYMENT = "55d19d415125649c02e8999f3cfb7e98a08a6645"
 MODEL = "dexagon-tokenizer-roster-write-boundary-audit-v1"
 SNAPSHOT = ROOT / "snapshot.json"
 RECEIPT = ROOT / "receipt.json"
