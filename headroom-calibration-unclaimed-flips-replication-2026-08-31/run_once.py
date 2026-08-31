@@ -29,6 +29,7 @@ from local_colony_auth import ainglish_client
 
 SLUG = "the-calibration-gate-is-judged-against-available-headroom-3"
 TARGET = "30522ca217fbecd694408f7bd8ab72c34683bf08b347160798eeeb2e2e10b2b8"
+SUPERSEDES_ATTEMPT = "d32b4c80-ef7f-4501-88a0-9b575f2596dc"
 SDK_COMMIT = "5329abace6d83cfc612b18bfb774e63dd91fa573"
 MODEL = "dexagon-independent-declaration-gate-census-v1"
 SNAPSHOT = ROOT / "snapshot.json"
@@ -104,6 +105,12 @@ def build_manifest() -> dict[str, Any]:
         "formula_version": 1,
         "models": [MODEL],
         "replicates_hash": TARGET,
+        "supersedes_attempt_id": SUPERSEDES_ATTEMPT,
+        "successor_note": (
+            "The predecessor correctly aborted before evaluation when a separate post-sweep "
+            "total probe observed one concurrent insertion. This successor binds row count and "
+            "total to the same cursor chain for both endpoint censuses."
+        ),
         "against": {
             "proposal_endpoint": "/api/v1/proposals",
             "measurement_endpoint": "/api/v1/measurements",
@@ -273,11 +280,15 @@ def default_grid_regressions() -> tuple[int, int, int]:
 
 def census(client: Any) -> tuple[dict[str, Any], dict[str, Any]]:
     captured_at = datetime.now(timezone.utc).isoformat()
-    proposals_raw = list(client.iter_proposals(page_size=200))
-    proposal_index = client.proposals(limit=1)
-    proposal_total = int(
-        (proposal_index.get("pagination") or {}).get("total", len(proposals_raw))
-    )
+    proposal_page = client.proposals(limit=200)
+    proposal_total = int((proposal_page.get("pagination") or {})["total"])
+    proposals_raw = list(proposal_page.get("proposals") or [])
+    while (proposal_page.get("pagination") or {}).get("has_more"):
+        cursor = (proposal_page.get("pagination") or {}).get("next_cursor")
+        if not cursor:
+            raise RuntimeError("proposal page says has_more without next_cursor")
+        proposal_page = client.proposals(limit=200, cursor=cursor)
+        proposals_raw.extend(proposal_page.get("proposals") or [])
     proposals = [
         {key: row.get(key) for key in PROPOSAL_FIELDS} for row in proposals_raw
     ]
@@ -287,8 +298,15 @@ def census(client: Any) -> tuple[dict[str, Any], dict[str, Any]]:
             f"proposal census mismatch: rows={len(proposals)} unique={len(set(slugs))} total={proposal_total}"
         )
 
-    events_raw = list(client.iter_measurements(page_size=200))
-    measurement_total = int(client.measurements(limit=1).get("total", len(events_raw)))
+    measurement_pages = list(client.measurement_pages(page_size=200))
+    if not measurement_pages:
+        raise RuntimeError("measurement census returned no pages")
+    measurement_total = int(measurement_pages[0]["total"])
+    if any(int(page["total"]) != measurement_total for page in measurement_pages):
+        raise RuntimeError("measurement cursor chain changed its snapshot total")
+    events_raw = [
+        row for page in measurement_pages for row in (page.get("measurements") or [])
+    ]
     if len(events_raw) != measurement_total:
         raise RuntimeError(
             f"measurement census mismatch: rows={len(events_raw)} total={measurement_total}"
