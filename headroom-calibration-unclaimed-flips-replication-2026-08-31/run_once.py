@@ -429,8 +429,13 @@ def preflight(client: Any, manifest: dict[str, Any]) -> dict[str, Any]:
         check=True,
         capture_output=True,
     )
+    tiers = suggestions.get("tiers") or []
+    if isinstance(tiers, dict):
+        tier_names = sorted(tiers)
+    else:
+        tier_names = [str(row.get("tier") or row.get("name")) for row in tiers]
     return {
-        "suggestion_tiers": sorted((suggestions.get("tiers") or {}).keys()),
+        "suggestion_tiers": tier_names,
         "proposal_stage": proposal["stage"],
         "target_valid": True,
         "target_confirmed": False,
