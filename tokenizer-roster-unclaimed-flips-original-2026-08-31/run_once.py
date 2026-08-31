@@ -27,8 +27,15 @@ SLUG = "tokenizer-rosters-carry-encoding-names-only-a-version-pin-in"
 IMPLEMENTATION = "364c00c2"
 DEPLOYMENT = "55d19d415125649c02e8999f3cfb7e98a08a6645"
 MODEL = "dexagon-tokenizer-roster-write-boundary-audit-v1"
+SUPERSEDES_ATTEMPT = "98f70b11-f825-47c5-8749-6eed2cf1cb33"
 SNAPSHOT = ROOT / "snapshot.json"
 RECEIPT = ROOT / "receipt.json"
+BOOTSTRAP = """<?php
+$loader = require __DIR__.'/vendor/autoload.php';
+$loader->setPsr4('App\\\\', [__DIR__.'/src']);
+$loader->setPsr4('App\\\\Tests\\\\', [__DIR__.'/tests']);
+require __DIR__.'/tests/bootstrap.php';
+"""
 TESTS = [
     "testTokenizerRostersRefuseVersionPinnedMembersAndNameTheRemedy",
     "testBareTokenizerRosterWithoutProvenanceIsAcceptedAndExplicitlyWarned",
@@ -77,6 +84,13 @@ def build_manifest() -> dict[str, Any]:
         "metric": "unclaimed_verdict_flips",
         "formula_version": 1,
         "models": [MODEL],
+        "supersedes_attempt_id": SUPERSEDES_ATTEMPT,
+        "successor_note": (
+            "The predecessor was retracted because a stale Composer autoload root made all six "
+            "tests error before assertions; its runner incorrectly filed that harness failure as "
+            "a protocol flip. This successor pins an explicit worktree-local PSR-4 bootstrap and "
+            "aborts on a test-process error or a zero-assertion run."
+        ),
         "against": {
             "repository": "ai-nglish/ainglish-symfony",
             "implementation_commit": git("rev-parse", IMPLEMENTATION),
@@ -104,6 +118,7 @@ def build_manifest() -> dict[str, Any]:
             "surface as one unclaimed verdict flip; file every finite integer."
         ),
         "test_methods": TESTS,
+        "test_bootstrap_sha256": sha256(BOOTSTRAP.encode()),
         "allowed_production_paths": [
             "public/openapi.json",
             "src/Service/MeasurementService.php",
@@ -149,6 +164,8 @@ def preflight(client: Any, manifest: dict[str, Any]) -> dict[str, Any]:
     if any(
         row.get("metric") == "unclaimed_verdict_flips"
         and row.get("evidence_state") == "valid"
+        and not row.get("retraction")
+        and not row.get("voided_at")
         for row in proposal.get("measurements") or []
     ):
         raise RuntimeError("a valid original already exists")
@@ -210,6 +227,7 @@ def integration_tests() -> dict[str, Any]:
             "git", "worktree", "add", "--detach", str(worktree), DEPLOYMENT, cwd=SYMFONY
         )
         os.symlink(SYMFONY / "vendor", worktree / "vendor", target_is_directory=True)
+        (worktree / "audit-bootstrap.php").write_text(BOOTSTRAP, encoding="utf-8")
         image = run(
             "docker", "compose", "images", "-q", "php", cwd=SYMFONY
         ).stdout.strip()
@@ -236,11 +254,18 @@ def integration_tests() -> dict[str, Any]:
             "php",
             "bin/phpunit",
             "tests/MeasurementApiTest.php",
+            "--bootstrap",
+            "audit-bootstrap.php",
             "--filter",
             regex,
         ]
         proc = subprocess.run(command, check=False, text=True, capture_output=True)
         output = (proc.stdout + "\n" + proc.stderr).strip()
+        if proc.returncode >= 2 or "Assertions: 0" in output:
+            raise RuntimeError(
+                "integration harness failed before an admissible assertion result: "
+                + output[-1200:]
+            )
         return {
             "exit_code": proc.returncode,
             "output_sha256": sha256(output.encode()),
