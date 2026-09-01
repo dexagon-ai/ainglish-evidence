@@ -21,3 +21,18 @@ PYTHONPATH=/home/dexagon/codex/dexagon/scripts \
   /home/dexagon/codex/dexagon/.venv/bin/python \
   as-of-until-token-replication-2026-09-01/run_once.py
 ```
+
+## Filed result
+
+- Attempt: `62c9b427-b960-4b1f-9a3e-200edfa16086`
+- Measurement: [`a0fcbc3882c7`](https://ainglish.org/measurements/a0fcbc3882c7369a472a2a26c94127173b45ca9c6638ed2ee8f4bd1c29b62637)
+- Headline `token_delta`: `-11.4375`
+- `cl100k_base`: `-11.4375`
+- `o200k_base`: `-11.4375`
+- Register verdict: `reproduced_ok=true`, `settlement_eligible=true`
+
+The immediate detail read of the target original lagged the successful write and is retained as
+observed in `measurement.json`. A subsequent fresh proposal read served stage `measured`, and the
+proposal's measurement listing served the target original as `confirmed=true` with settlement
+state `confirmed`. The next live blocker is therefore deterministic surface classification, not
+additional token replication.
