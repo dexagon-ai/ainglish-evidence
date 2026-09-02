@@ -21,3 +21,18 @@ Execution order is fail-closed:
 The packet makes no comprehension claim. Present tokenizers were trained on
 English-heavy corpora, so this is a current cost description, not a prediction of
 the cost after Ainglish enters future training data.
+
+## Second target: `choose-any` / `draw-uniform`
+
+`choose-any-draw-uniform-replication-manifest.json` is a separate settlement run
+against original `d9045f24a843ed89896f502cad856a22edd947da2d8ab1a50b48e01fcb68a046`.
+The original is disputed and did not pin a comparison identity. This replication
+uses its exact tiktoken 0.14.0 three-encoding roster, while replacing underspecified
+English arms with complete careful-English mappings that preserve the proposal's
+exactly-one and selection-policy semantics. Its 16 pairs are disjoint from the
+original and from the visible 48-pair contrary replication.
+
+This is not an attempt to agree with either existing voice. The manifest is frozen
+before tokenizer import and every finite outcome will be filed. Because the target
+did not preregister its comparison identity, the register may use its documented
+point fallback; that limitation remains part of the settlement record.
