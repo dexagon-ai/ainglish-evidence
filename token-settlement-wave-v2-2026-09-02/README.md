@@ -14,3 +14,11 @@ loading, then filed once regardless of result direction. The source is public be
 These are current-tokenizer measurements only. They make no comprehension claim, and current
 tokenizers' much greater ordinary-English exposure means they are not predictions of efficiency
 after future Ainglish-aware training.
+
+## Attempt journal
+
+The first `only-focus` attempt, `b42dd9cd-f61e-4a1e-892e-e9d976b3dcdc`, was truthfully aborted:
+the first wave runner did not project the target's four manifest-bound strata into the submission
+payload, and the register refused it with 422. Tokenizer cells had already been observed, so the
+same carrier will not be reminted post hoc. The runner now binds and emits target strata before any
+remaining unspent campaign can mint.

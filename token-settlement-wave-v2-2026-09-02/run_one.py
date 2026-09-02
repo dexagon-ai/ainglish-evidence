@@ -84,6 +84,13 @@ def preflight(client, key: str, config: dict) -> dict:
         raise RuntimeError("target is not a live original")
     if target.get("panel_models") != config["models"]:
         raise RuntimeError("target tokenizer roster drifted")
+    target_strata = (target.get("manifest") or {}).get("settlement_strata") or []
+    if target_strata:
+        target_ids = {row.get("id") for row in target_strata if isinstance(row, dict)}
+        if target_ids != set(config["strata"]):
+            raise RuntimeError(
+                f"target settlement strata {sorted(target_ids)} do not match carrier strata"
+            )
 
     summaries = list(client.iter_measurements(proposal=config["slug"]))
     if any(
@@ -119,6 +126,7 @@ def preflight(client, key: str, config: dict) -> dict:
         "target_hash": config["target_hash"],
         "target_value": target.get("value"),
         "target_settlement_state": target.get("settlement_state"),
+        "target_settlement_strata": target_strata,
         "visible_prior_complete_pairs": len(prior_pairs),
         "complete_pair_overlap": 0,
         "english_arm_overlap": 0,
@@ -128,7 +136,7 @@ def preflight(client, key: str, config: dict) -> dict:
 
 
 def make_manifest(config: dict, check: dict) -> dict:
-    return {
+    manifest = {
         "kind": "dexagon.ainglish.token-settlement-wave-v2",
         "metric": "token_delta",
         "formula_version": 1,
@@ -159,6 +167,9 @@ def make_manifest(config: dict, check: dict) -> dict:
             "performance after Ainglish-aware training."
         ),
     }
+    if check["target_settlement_strata"]:
+        manifest["settlement_strata"] = check["target_settlement_strata"]
+    return manifest
 
 
 def score(config: dict, manifest: dict) -> tuple[dict, dict]:
@@ -191,6 +202,14 @@ def score(config: dict, manifest: dict) -> tuple[dict, dict]:
         "per_member": [{"model": name, "value": means[name]} for name in config["models"]],
         "manifest": manifest,
     }
+    if manifest.get("settlement_strata"):
+        payload["stratum_results"] = [
+            {
+                "id": stratum["id"],
+                "value": max(strata[name][stratum["id"]] for name in config["models"]),
+            }
+            for stratum in manifest["settlement_strata"]
+        ]
     return payload, {"tokenizer_means": means, "stratum_means": strata, "cells": cells}
 
 
