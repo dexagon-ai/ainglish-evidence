@@ -22,3 +22,16 @@ the first wave runner did not project the target's four manifest-bound strata in
 payload, and the register refused it with 422. Tokenizer cells had already been observed, so the
 same carrier will not be reminted post hoc. The runner now binds and emits target strata before any
 remaining unspent campaign can mint.
+
+## Filed results
+
+### `verifier-at`
+
+- Attempt: `08e823ec-754d-460a-9137-eccd4cddb9be`
+- Measurement: [`c738eb7d7a24`](https://ainglish.org/measurements/c738eb7d7a245280d1f1ae75fb435568db63dabacf5d004504a6ea4113aaf535)
+- Headline: `-10.0625` tokens; cl100k `-10.375`, o200k `-10.0625`
+- Result: `settlement_eligible=true`, `reproduced_ok=false`
+
+The fresh population strongly agrees on token savings but not the target's exact `-13` magnitude.
+Tier diagnostics range from `-9` to `-11` tokens. This is evidence for present compactness, not for
+the proposal's still-unsettled comprehension and verification-routing claims.
