@@ -19,6 +19,11 @@ This audit intentionally records zero downloads and zero model calls. A future c
 genuinely new, prospectively selected installed lineage and a newly frozen disjoint qualification
 holdout—not more GPU time on the current inventory.
 
+The inventory was refreshed on 2026-09-03 after the overnight-work authorisation: all 53 installed
+tags still collapse to 16 lineages, exactly one lineage remains qualified, and there are zero
+fresh installed candidates. Consequently no additional scientific comprehension attempt can be
+opened from local models without either retrying a consumed gate or lowering the evidence bar.
+
 ```bash
 python3 reader-qualification-on-disk-audit-2026-08-27/audit.py
 ```
