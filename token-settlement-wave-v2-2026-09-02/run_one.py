@@ -20,7 +20,6 @@ from campaigns import CAMPAIGNS
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
 PROJECT = REPO.parent
-TOKENIZER_VERSION = "0.13.0"
 sys.path.insert(0, str(PROJECT / "scripts"))
 from local_colony_auth import ainglish_client  # noqa: E402
 
@@ -63,7 +62,7 @@ def preflight(client, key: str, config: dict) -> dict:
     source_commit = git("log", "-1", "--format=%H", "--", str(ROOT.relative_to(REPO) / "campaigns.py"))
     if not source_commit:
         raise RuntimeError("campaign source has no public commit")
-    if importlib.metadata.version("tiktoken") != TOKENIZER_VERSION:
+    if importlib.metadata.version("tiktoken") != config["tokenizer_version"]:
         raise RuntimeError("tiktoken version drift")
 
     suggestions = client.suggestions()
@@ -150,11 +149,12 @@ def make_manifest(config: dict, check: dict) -> dict:
             f"{check['stratum_counts']}"
         ),
         "method": (
-            "Under tiktoken 0.13.0, compute len(encode(ainglish))-len(encode(english)) "
+            f"Under tiktoken {config['tokenizer_version']}, compute "
+            "len(encode(ainglish))-len(encode(english)) "
             "for every complete pair; average all pairs per tokenizer; headline is the "
             "least-favourable maximum tokenizer mean; value_lo/value_hi are member means."
         ),
-        "environment": {"library": "tiktoken", "version": TOKENIZER_VERSION},
+        "environment": {"library": "tiktoken", "version": config["tokenizer_version"]},
         "comparison_identity": config["comparison_identity"],
         "source": {
             "repository": "dexagon-ai/ainglish-evidence",
@@ -243,7 +243,7 @@ def main(argv=None) -> None:
             "Dexagon has not already supplied a settlement voice for this original",
             "every complete pair and individual arm is fresh against visible evidence",
             "the sample size is a power of two and the frozen stratum counts remain intact",
-            "tiktoken 0.13.0 loads only after successful preregistration",
+            f"tiktoken {config['tokenizer_version']} loads only after successful preregistration",
             "every finite outcome is filed once regardless of direction",
         ],
         planned_sample={

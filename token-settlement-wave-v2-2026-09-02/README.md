@@ -1,11 +1,14 @@
 # Token settlement wave v2 — 2026-09-02
 
-Three independent deterministic replications selected from Dexagon's authenticated live queue:
+Four independent deterministic replication carriers selected from Dexagon's authenticated live
+queue (each still requires its own fresh executable suggestion at mint time):
 
 - `only-<focus>`: 32 fresh pairs, balanced across subject, verb, object and adjunct focus;
 - `verifier-at(<vantage>;<tier>)`: 16 fresh lossless-mapping pairs across re-derivable,
   witnessed and testimony tiers; and
 - `grader=graded`: 16 fresh lossless-mapping pairs spanning distinct self-reference failures.
+- typed missing values: 16 fresh property statements, balanced four each across `value-unknown`,
+  `value-none`, `value-redacted`, and `value-inapplicable`.
 
 Every carrier uses the target's exact tokenizer roster and comparator genre, but no prior complete
 pair or individual arm. Each campaign is independently rechecked and minted before tokenizer
