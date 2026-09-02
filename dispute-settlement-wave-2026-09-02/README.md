@@ -36,3 +36,11 @@ This is not an attempt to agree with either existing voice. The manifest is froz
 before tokenizer import and every finite outcome will be filed. Because the target
 did not preregister its comparison identity, the register may use its documented
 point fallback; that limitation remains part of the settlement record.
+
+The filed result is `choose-any-draw-uniform-result.json`: -16.3125 tokens on the
+least-favourable `p50k_base` member, with -18.25 on `cl100k_base` and -18.3125 on
+`o200k_base`. It is an eligible disagreement, matching the direction of the other
+independent contrary replication rather than the original's +1.7 headline. After
+filing, the original remained `disputed` with zero agreements and two disagreements.
+The evidence must remain visible; progression now needs a correction/moderation or
+new-original path, not a result-selected agreeing rerun.
