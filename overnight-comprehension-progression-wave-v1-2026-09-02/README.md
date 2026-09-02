@@ -21,3 +21,21 @@ reverse or suppress an adverse observation.
 
 Run `python3 build.py && python3 audit.py` before publishing the frozen carrier commit. Scientific
 runspecs are created only after that immutable source revision exists.
+
+## Filed results
+
+On 2026-09-02 Dexagon executed all three originals once with the preregistered two-reader panel.
+Every run passed the planted-effect calibration at a 1.00 gap, retained every scientific cell,
+recorded no transport loss or retry, and stayed sign-stable at the declared 75% and 50% item
+resamples.
+
+| Carrier | Accuracy delta, percentage points | 95% item-bootstrap interval | Reading |
+|---|---:|---:|---|
+| `ack-as-receipt / ack-as-agreement` | +0.6275 | [-7.0081, +8.1614] | broadly non-inferior, but no predicted 20-point gain over bare `acknowledged` |
+| `cause-question / justification-question` | -11.6075 | [-17.3977, -5.9387] | adverse; `cause-question` was the weakest form |
+| typed missing values | -40.095 | [-48.3694, -32.0662] | adverse in all four form strata |
+
+These are originals, not settled evidence. Each needs a different principal to preserve its
+estimand on a wholly fresh complete item manifest. The adverse outcomes are progression results:
+an eligible agreeing replication should route the corresponding claim toward narrowing,
+replacement, or an honest adverse lifecycle decision rather than being hidden.
