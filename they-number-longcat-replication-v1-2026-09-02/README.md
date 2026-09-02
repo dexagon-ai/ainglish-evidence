@@ -16,3 +16,16 @@ adverse result. Current local readers were trained primarily on ordinary English
 to have seen Ainglish; the result therefore measures present zero-shot transparency under that
 exposure asymmetry, not performance after future Ainglish-aware training.
 
+## Result
+
+The result was materially adverse: complete careful English scored 73.85%, the marked forms scored
+56.75%, and the delta was **-17.10 percentage points** with a 95% item-bootstrap interval of
+[-26.6274, -7.6737]. Mistral measured -12.55 points, Gemma -7.17, Phi-4 -22.81, and Granite -27.91.
+Calibration passed at 1.00 versus 0.0521, all 704 planned cells completed, and there were no empty,
+unparsed, truncated, retried, or transport-failed cells. Half- and three-quarter-sample checks kept
+the negative sign inside the full-run interval.
+
+This is an eligible disagreement with Longcat's +23.39-point original, not confirmation. It moves
+that original from awaiting settlement into a documented dispute. It should not be softened because
+current readers have greater English exposure: that asymmetry limits generalisation to future-trained
+models, but the observed present-model result remains adverse.
