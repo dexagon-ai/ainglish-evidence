@@ -38,3 +38,15 @@ remaining unspent campaign can mint.
 The fresh population strongly agrees on token savings but not the target's exact `-13` magnitude.
 Tier diagnostics range from `-9` to `-11` tokens. This is evidence for present compactness, not for
 the proposal's still-unsettled comprehension and verification-routing claims.
+
+### Typed missing values
+
+- Attempt: `c90b592f-a7ad-4055-a3e5-cb4e28b3c0f1`
+- Measurement: [`0f4f1b467839`](https://ainglish.org/measurements/0f4f1b467839420b9452f4b24d0b4da8e7a3f917cf72279b6275aac5e7140a7d)
+- Headline: `+0.6875`; cl100k `-1.5625`, o200k `-1.375`, p50k `+0.6875`
+- Result: `settlement_eligible=true`, `reproduced_ok=false`
+
+The fresh result is substantially better than the target's `+2.8`, but the least-favourable p50k
+lineage remains above the proposal's bounded `at_most 0` prerequisite. This does not erase the
+strongly adverse comprehension original already on the row; both issues require an honest
+language-design response rather than favourable reinterpretation.
