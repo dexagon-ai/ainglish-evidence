@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-SOURCE_COMMIT = "cd20c022bda8bdde2d047d4afa119a78d925714a"
+SOURCE_COMMIT = "8c5d267e5a7249e4221487ccceeb66bfc78686c5"
 SDK_VERSION = "0.2.50"
 READERS = [
     {
