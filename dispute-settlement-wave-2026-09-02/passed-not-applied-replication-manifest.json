@@ -1,0 +1,86 @@
+{
+  "metric": "token_delta",
+  "models": [
+    "cl100k_base",
+    "o200k_base"
+  ],
+  "method": "token_delta = tokens(ainglish) - tokens(english) per minimal pair (english = the construct's own lossless mapping applied in context; both arms carry the same facts), mean over 16 fresh pairs; value = FLOOR across tokenizer lineages (worst tokenizer, least savings); per_member = per-lineage means; value_lo/value_hi = min/max per-pair delta across both lineages. The comparison identity exactly matches the target original; the power-of-two sample follows current register guidance.",
+  "test_set": [
+    {
+      "english": "The licensing change was accepted but not actually enacted or used.",
+      "ainglish": "The licensing change is passed-not-applied."
+    },
+    {
+      "english": "The logging standard was accepted but not actually enacted or used.",
+      "ainglish": "The logging standard is passed-not-applied."
+    },
+    {
+      "english": "The migration plan was accepted but not actually enacted or used.",
+      "ainglish": "The migration plan is passed-not-applied."
+    },
+    {
+      "english": "The service-level objective was accepted but not actually enacted or used.",
+      "ainglish": "The service-level objective is passed-not-applied."
+    },
+    {
+      "english": "The privacy exemption was accepted but not actually enacted or used.",
+      "ainglish": "The privacy exemption is passed-not-applied."
+    },
+    {
+      "english": "The release freeze was accepted but not actually enacted or used.",
+      "ainglish": "The release freeze is passed-not-applied."
+    },
+    {
+      "english": "The dependency policy was accepted but not actually enacted or used.",
+      "ainglish": "The dependency policy is passed-not-applied."
+    },
+    {
+      "english": "The testing requirement was accepted but not actually enacted or used.",
+      "ainglish": "The testing requirement is passed-not-applied."
+    },
+    {
+      "english": "The encryption rule was accepted but not actually enacted or used.",
+      "ainglish": "The encryption rule is passed-not-applied."
+    },
+    {
+      "english": "The data-export procedure was accepted but not actually enacted or used.",
+      "ainglish": "The data-export procedure is passed-not-applied."
+    },
+    {
+      "english": "The rollback plan was accepted but not actually enacted or used.",
+      "ainglish": "The rollback plan is passed-not-applied."
+    },
+    {
+      "english": "The alert threshold was accepted but not actually enacted or used.",
+      "ainglish": "The alert threshold is passed-not-applied."
+    },
+    {
+      "english": "The branch-protection setting was accepted but not actually enacted or used.",
+      "ainglish": "The branch-protection setting is passed-not-applied."
+    },
+    {
+      "english": "The backup schedule was accepted but not actually enacted or used.",
+      "ainglish": "The backup schedule is passed-not-applied."
+    },
+    {
+      "english": "The support escalation was accepted but not actually enacted or used.",
+      "ainglish": "The support escalation is passed-not-applied."
+    },
+    {
+      "english": "The documentation rewrite was accepted but not actually enacted or used.",
+      "ainglish": "The documentation rewrite is passed-not-applied."
+    }
+  ],
+  "environment": {
+    "library": "tiktoken",
+    "version": "0.13.0"
+  },
+  "comparison_identity": {
+    "comparator_genre": "lossless-mapping-in-context-v1",
+    "pair_rendering": "inline-single-sentence",
+    "tokenizer_roster": [
+      "cl100k_base",
+      "o200k_base"
+    ]
+  }
+}
