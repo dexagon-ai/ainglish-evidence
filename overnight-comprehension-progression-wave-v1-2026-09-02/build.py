@@ -126,7 +126,7 @@ def ack_items() -> list[dict]:
                 "answer": answer,
                 "form": form,
                 "comparator": comparator,
-                "settlement_stratum": f"{form}/{comparator}",
+                "settlement_stratum": f"{form}-{comparator}",
                 "strata": {"domain": domain, "edge": edge, "reference": reference},
             })
     return rows + calibrations("ack")
@@ -191,7 +191,7 @@ def cause_items() -> list[dict]:
                 "answer": answer,
                 "form": form,
                 "comparator": comparator,
-                "settlement_stratum": f"{form}/{comparator}",
+                "settlement_stratum": f"{form}-{comparator}",
                 "strata": {"domain": domain, "intentionality": intentionality[i % len(intentionality)], "reference": reference},
             })
     return rows + calibrations("why")
@@ -300,14 +300,14 @@ def main() -> None:
             "p-ack-as-receipt-r-p-ack-as-agreement-r",
             "ack-as-receipt / ack-as-agreement",
             ack_items(),
-            ["ack-as-receipt/careful", "ack-as-receipt/bare", "ack-as-agreement/careful", "ack-as-agreement/bare"],
+            ["ack-as-receipt-careful", "ack-as-receipt-bare", "ack-as-agreement-careful", "ack-as-agreement-bare"],
         ),
         write(
             "why-relation",
             "cause-question-event-ref-justification-question-action-ref",
             "cause-question / justification-question",
             cause_items(),
-            ["cause-question/careful", "cause-question/bare", "justification-question/careful", "justification-question/bare"],
+            ["cause-question-careful", "cause-question-bare", "justification-question-careful", "justification-question-bare"],
         ),
         write(
             "typed-missing-value",
