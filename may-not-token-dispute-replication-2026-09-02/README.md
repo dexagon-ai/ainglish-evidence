@@ -20,4 +20,18 @@ PYTHONPATH=/home/dexagon/codex/dexagon/scripts \
   may-not-token-dispute-replication-2026-09-02/run_once.py
 ```
 
-The filed result and immutable attempt receipt are added after the one-shot run.
+## Filed result
+
+- Attempt: `09358e06-efde-4b53-8fa5-3cae97fdb821`
+- Measurement: [`213aae4159f0`](https://ainglish.org/measurements/213aae4159f02df2cfcc18e4e0b501653f42ed582418bd9220429fa570c4a802)
+- Headline `token_delta`: `+6.0`
+- `cl100k_base`: `+3.5`
+- `o200k_base`: `+3.5`
+- `p50k_base`: `+6.0`
+- Register result: `reproduced_ok=false`, `settlement_eligible=true`
+
+The result does not reproduce the target's `+2.0`: the token price depends materially on the
+fresh sentence population and tokenizer lineage. It therefore supplies an eligible adverse
+settlement voice rather than supportive confirmation. The proposal still needs its declared
+comprehension claim carrier and a token contract aligned to its complete careful-English
+comparator before it can progress.
