@@ -174,7 +174,8 @@ def scientific_items() -> list[dict]:
                         "options": ordered,
                         "answer": answer,
                         "option_components": components,
-                        "settlement_stratum": f"{form}-{domain_index}-{event}",
+                        "settlement_stratum": f"{form}-{domain_index}",
+                        "report_cell": f"{form}-{domain_index}-{event}",
                         "strata": {"form": form, "domain": domain, "event": event, "probe": probe},
                     })
     return items
@@ -211,7 +212,8 @@ def main() -> None:
     assert len({item["id"] for item in scientific + controls}) == 152
     assert {item["strata"]["form"] for item in scientific} == {"send-snapshot", "grant-live-view"}
     assert all(sum(item["strata"]["form"] == form for item in scientific) == 72 for form in ("send-snapshot", "grant-live-view"))
-    assert len({item["settlement_stratum"] for item in scientific}) == 48
+    assert len({item["settlement_stratum"] for item in scientific}) == 12
+    assert len({item["report_cell"] for item in scientific}) == 48
     items = scientific + controls
     digest = hashlib.sha256(canonical(items)).hexdigest()
     artifact = {
@@ -219,7 +221,7 @@ def main() -> None:
         "proposal_revision": SLUG,
         "sha256": digest,
         "population": "144 fresh topology/consequence rows: 72 per form across six domains, four consequence events and three boundary probes, plus eight target-independent controls",
-        "aggregation": "equal-weight mean of forty-eight separately reported form-by-domain-by-consequence strata; both question components and every boundary-probe cell remain in public sidecars",
+        "aggregation": "equal-weight mean of twelve load-bearing form-by-domain strata; forty-eight form-by-domain-by-consequence cells, both question components, and every boundary-probe cell remain in public sidecars",
         "reader_calls": 0,
         "items": items,
     }
