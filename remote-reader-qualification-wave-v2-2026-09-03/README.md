@@ -42,3 +42,14 @@ lineages pass this common screen.
 The local screens bind the exact digest through Ollama's `/api/tags` immediately
 before the one-shot run. They do not download or alter model weights. Publish
 the generated screen files before making any reader call.
+
+## Local one-shot outcomes
+
+- `local-mistral-small32-24b.result.json`: passed (16/16 detectable; 3/16
+  other), exact model digest and settings recorded in the receipt.
+- `local-qwen38-27b.result.json`: failed (6/16 detectable; 0/16 other). The
+  frozen 64-token transport budget produced truncations. This result is retained
+  as run, with no tuning or retry on the exposed controls.
+
+Only the passing Mistral receipt may be attached to a proposal measurement.
+One local pass is not the two-lineage gate required before target exposure.
