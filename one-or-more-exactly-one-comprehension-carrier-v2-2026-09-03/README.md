@@ -23,3 +23,11 @@ Offline reproduction performs no model, network, or governance calls:
 python3 build.py
 python3 audit.py
 ```
+
+After the carrier, qualification outcomes, and receipt-preserving SDK patch are
+public, `build_runspecs.py` binds their full commit IDs into four immutable
+runspecs. `run_once.py` fresh-reads authenticated suggestions and proposal state,
+mints before target inference, files every finite result once, writes normalized
+cell sidecars, and unloads each declared local model after settlement. It must be
+run with the public receipt-preserving SDK source on `PYTHONPATH`; the released
+0.2.51 wheel silently omits qualification receipts from panel manifests.
