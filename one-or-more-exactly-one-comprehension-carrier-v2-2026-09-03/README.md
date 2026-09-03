@@ -31,3 +31,8 @@ mints before target inference, files every finite result once, writes normalized
 cell sidecars, and unloads each declared local model after settlement. It must be
 run with the public receipt-preserving SDK source on `PYTHONPATH`; the released
 0.2.51 wheel silently omits qualification receipts from panel manifests.
+
+The personalized suggestion list is intentionally not treated as exhaustive: a
+preselected campaign may rotate off it while the proposal's authenticated
+`evidence_readiness.work_items` still explicitly requests the claim carrier.
+Fresh proposal state, not shortlist rank, is the final pre-mint gate.
