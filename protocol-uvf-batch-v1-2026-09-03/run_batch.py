@@ -9,7 +9,6 @@ import json
 import os
 from pathlib import Path
 import re
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -26,7 +25,26 @@ SYMFONY = PROJECT / "ainglish-symfony"
 sys.path.insert(0, str(PROJECT / "scripts"))
 from local_colony_auth import ainglish_client  # noqa: E402
 
-OUT = ROOT / "batch-receipt.json"
+OUT = ROOT / "batch-v2-receipt.json"
+
+PREVIOUS_ABORTS = {
+    "every-act-weighs-one": "9f150eaa-c841-41d5-980d-ca55e6e2e44b",
+    "unscanned-is-not-zero": "448fd393-7d2d-4e04-b864-0d29c03c99c7",
+    "stratified-reporting": "e7fcea89-eb2c-448a-8c6d-5aedb7bc96b1",
+    "adoption-v3-shadow": "a3b8fd18-495a-4d15-acab-55b9d9863d3b",
+    "operator-disclosure": "f0f48877-4466-4397-a09e-d5c927dd7441",
+    "orthogonal-estimand-fields": "a0a961c0-5341-4434-ac92-f5ba54614a22",
+    "deployed-ref-carry": "fe5fcf77-9213-4d58-8011-3cbe5b573855",
+}
+
+DOCKER_IMAGE = os.environ.get("UVF_DOCKER_IMAGE", "ainglish-symfony-php")
+DOCKER_NETWORK = os.environ.get("UVF_DOCKER_NETWORK", "ainglish-symfony_default")
+DB_CONTAINER = os.environ.get("UVF_DB_CONTAINER", "ainglish-symfony-db-1")
+DB_HOST = os.environ.get("UVF_DB_HOST", "db")
+TEST_DATABASE_URL = (
+    f"mysql://aing:aing@{DB_HOST}:3306/ainglish_test"
+    "?serverVersion=mariadb-10.6.27&charset=utf8mb4"
+)
 
 
 def run(*args: str, cwd: Path = SYMFONY, check: bool = True) -> subprocess.CompletedProcess:
@@ -76,7 +94,7 @@ def projection(client) -> dict:
 def build_manifest(key: str, config: dict, proposal: dict) -> dict:
     protocol = proposal.get("protocol_meta") or {}
     return {
-        "kind": "dexagon.ainglish.protocol-uvf-source-and-live-audit.v1",
+        "kind": "dexagon.ainglish.protocol-uvf-source-and-live-audit.v2",
         "metric": "unclaimed_verdict_flips",
         "formula_version": 1,
         "models": [f"dexagon-{key}-source-and-live-audit-v1"],
@@ -89,6 +107,7 @@ def build_manifest(key: str, config: dict, proposal: dict) -> dict:
             "evidence_repository": "dexagon-ai/ainglish-evidence",
             "runner_commit": evidence_git("rev-parse", "HEAD"),
             "runner_path": "protocol-uvf-batch-v1-2026-09-03/run_batch.py",
+            "harness_correction_of_attempt": PREVIOUS_ABORTS[key],
         },
         "claimed_moves": (protocol.get("blast_radius") or {}).get("claimed_moves") or [],
         "refuted_if": protocol.get("refuted_if") or proposal.get("predicted_measurement"),
@@ -96,7 +115,8 @@ def build_manifest(key: str, config: dict, proposal: dict) -> dict:
         "method": (
             "Require the exact implementation commit to be an ancestor of the exact live "
             "deployment and its first-parent changed paths to equal the frozen list. Run the "
-            "campaign's focused deterministic test at the deployed commit. Where a migration "
+            "campaign's focused deterministic test at the deployed commit inside the project's "
+            "PHP image on its MariaDB 10.6 test service. Where a migration "
             "exists, require schema-only SQL with no row mutation. Traverse every proposal and "
             "measurement decision projection twice and require byte-identical digests. A gate "
             "failure aborts rather than becoming supportive evidence; every finite count files once."
@@ -109,6 +129,7 @@ def build_manifest(key: str, config: dict, proposal: dict) -> dict:
             "the exact implementation commit is contained in the exact live deployment",
             "the first-parent diff contains exactly the frozen paths",
             "the public runner is pushed before mint and every focused test runs only after mint",
+            "the corrected container harness reaches MariaDB and executes assertions; connection failures abort",
             "two complete live decision projections agree, excluding concurrent unrelated change",
             "every finite result is filed once, including a positive refutation",
         ],
@@ -139,19 +160,36 @@ def abort_open(client, attempt_id: str, exc: Exception):
     )
 
 
+def docker_php(path: Path, *command: str, check: bool = True) -> subprocess.CompletedProcess:
+    args = [
+        "docker", "run", "--rm", "--user", f"{os.getuid()}:{os.getgid()}",
+        "--network", DOCKER_NETWORK,
+        "-e", "APP_ENV=test", "-e", f"DATABASE_URL={TEST_DATABASE_URL}",
+        "-v", f"{path}:/app", "-v", f"{SYMFONY / 'vendor'}:/app/vendor:ro",
+        "-w", "/app", DOCKER_IMAGE, *command,
+    ]
+    return run(*args, check=check)
+
+
 def test_tree() -> tuple[Path, str]:
     path = Path(tempfile.mkdtemp(prefix="ainglish-uvf-deployed-"))
     run("git", "worktree", "add", "--detach", str(path), DEPLOYED_COMMIT)
-    os.symlink(SYMFONY / "vendor", path / "vendor", target_is_directory=True)
+    run(
+        "docker", "exec", DB_CONTAINER, "mariadb", "-uroot", "-proot", "-e",
+        "CREATE DATABASE IF NOT EXISTS ainglish_test CHARACTER SET utf8mb4 "
+        "COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON ainglish_test.* TO 'aing'@'%';",
+    )
+    docker_php(path, "php", "bin/console", "doctrine:migrations:migrate", "--no-interaction")
     return path, str(path)
 
 
 def focused_test(path: Path, config: dict) -> dict:
     if config.get("tests"):
         command = ["php", "vendor/bin/phpunit", *config["tests"]]
+        done = docker_php(path, *command, check=False)
     else:
         command = [sys.executable, *config["python_test"]]
-    done = run(*command, cwd=path, check=False)
+        done = run(*command, cwd=path, check=False)
     output = (done.stdout + "\n" + done.stderr).strip()
     return {
         "command": command,
@@ -271,16 +309,16 @@ def main() -> None:
     finally:
         if worktree is not None:
             run("git", "worktree", "remove", "--force", str(worktree), check=False)
-            shutil.rmtree(worktree, ignore_errors=True)
 
     receipt = {
-        "kind": "dexagon.ainglish.protocol-uvf-batch-receipt.v1",
+        "kind": "dexagon.ainglish.protocol-uvf-batch-receipt.v2",
         "captured_at": datetime.now(timezone.utc).isoformat(),
         "suggestions_generated_at": suggestions.get("generated_at"),
         "deployment": DEPLOYED_COMMIT,
         "eligible_originals": len(CAMPAIGNS),
         "filed": len(results),
         "held": HELD,
+        "harness_correction_of_attempts": PREVIOUS_ABORTS,
         "stable_live_projection": {"first": first, "second": second},
         "results": results,
     }

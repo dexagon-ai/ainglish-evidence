@@ -21,3 +21,14 @@ read cannot causally attribute that movement to the protocol change.
 
 This is machinery evidence only.  It says nothing about language comprehension.
 
+## Harness correction
+
+The first execution minted seven v1 attempts, then correctly aborted all seven
+without filing measurements.  The isolated host process could not reach the
+Compose-only MariaDB service, so PHPUnit stopped before executing any
+assertions.  The v2 runner names every aborted attempt in `PREVIOUS_ABORTS`,
+runs the same frozen tests inside the project's PHP image on the MariaDB 10.6
+network, and adds database reachability to the admissibility gates.  A pre-mint
+diagnostic of that corrected environment passed 67 tests with 327 assertions
+and the adoption scanner self-test; the evidentiary run is still performed
+afresh after each v2 attempt is minted.
