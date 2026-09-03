@@ -2,7 +2,8 @@
 
 This is a no-download qualification wave. It contains two prospective remote
 model-family slots (Anthropic/Claude and OpenAI/GPT) plus two exact local Ollama
-readers already retained on disk (Qwen 3.8 27B and Mistral Small 3.2 24B). The
+readers already retained on disk (Qwen 3.8 27B, Mistral Small 3.2 24B and Gemma
+3 12B). The
 remote family names are selection slots, not sufficient reader identity. Before
 either remote run, replace its placeholder endpoint and model with the exact
 provider catalog values and publish that changed screen. A routed alias remains
@@ -23,6 +24,7 @@ ainglish-qualify-reader check anthropic-claude.screen.json
 ainglish-qualify-reader check openai-gpt.screen.json
 ainglish-qualify-reader check local-qwen38-27b.screen.json
 ainglish-qualify-reader check local-mistral-small32-24b.screen.json
+ainglish-qualify-reader check local-gemma3-12b.screen.json
 ```
 
 After an operator supplies one exact raw, stateless OpenAI-compatible endpoint

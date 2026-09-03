@@ -69,6 +69,16 @@ CANDIDATES = {
         "lineage_key": "mistralai/mistral-small-3.2-24b",
         "lineage_basis": "Distinct Mistral Small 3.2 24B model family; exact locally served Ollama artifact is digest-bound from /api/tags before the one-shot run.",
     },
+    "local-gemma3-12b": {
+        "name": "local-gemma3-12b-screen",
+        "provider": "ollama",
+        "base_url": "http://127.0.0.1:11434/v1",
+        "api_key_env": "",
+        "model": "dexagon-gemma3-12b-screen:ctx4k",
+        "precision": "q4_k_m",
+        "lineage_key": "google/gemma-3-12b",
+        "lineage_basis": "Distinct Gemma 3 12B model family; exact locally served Ollama artifact is digest-bound from /api/tags before the one-shot run.",
+    },
 }
 
 
