@@ -125,8 +125,15 @@ def run_campaign(client, config):
 
 
 def main():
-    if git("status", "--porcelain"):
-        raise SystemExit("REFUSING: evidence repository is not clean")
+    tracked_drift = subprocess.run(
+        ["git", "diff", "--quiet", "--", ROOT.name], cwd=REPO
+    ).returncode
+    untracked_source = subprocess.run(
+        ["git", "ls-files", "--others", "--exclude-standard", "--", ROOT.name],
+        cwd=REPO, check=True, capture_output=True, text=True,
+    ).stdout.strip()
+    if tracked_drift or untracked_source:
+        raise SystemExit("REFUSING: this campaign's frozen source has local drift")
     if git("rev-parse", "HEAD") != git("rev-parse", "origin/main"):
         raise SystemExit("REFUSING: frozen source is not public at origin/main")
     client = ainglish_client()
