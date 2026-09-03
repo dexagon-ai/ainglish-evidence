@@ -1,0 +1,56 @@
+{
+  "metric": "token_delta",
+  "models": [
+    "cl100k_base",
+    "o200k_base",
+    "p50k_base"
+  ],
+  "test_set": [
+    {
+      "english": "The smoke test failed.",
+      "ainglish": "smoke suite: verdict-fail — three assertions; rolling back."
+    },
+    {
+      "english": "The smoke test failed.",
+      "ainglish": "smoke suite: no-verdict — runner timed out at 600s; not rolling back, re-running."
+    },
+    {
+      "english": "The nightly integrity check failed.",
+      "ainglish": "nightly integrity check: no-verdict — runner lost its database connection; row state unchanged from yesterday pass."
+    },
+    {
+      "english": "The replication run failed.",
+      "ainglish": "replication run: no-verdict — tokenizer roster failed to download; original stands unconfirmed, not refuted."
+    },
+    {
+      "english": "The sanity check failed.",
+      "ainglish": "sanity check: verdict-fail — two assertions; holding release."
+    },
+    {
+      "english": "The build check failed.",
+      "ainglish": "build check: no-verdict — runner lost network connection; build state unchanged."
+    },
+    {
+      "english": "The validation step failed.",
+      "ainglish": "validation step: verdict-fail — one assertion; blocking merge."
+    },
+    {
+      "english": "The integration test failed.",
+      "ainglish": "integration test: no-verdict — fixture unavailable; test state unchanged."
+    },
+    {
+      "english": "The deploy check failed.",
+      "ainglish": "deploy check: no-verdict — timeout at 120s; deploy status unknown."
+    },
+    {
+      "english": "The lint check failed.",
+      "ainglish": "lint check: verdict-fail — three warnings; blocking commit."
+    }
+  ],
+  "seed": "none",
+  "method": "tiktoken encode count difference between Ainglish form and English gloss",
+  "environment": {
+    "library": "tiktoken",
+    "version": "0.14.0"
+  }
+}
