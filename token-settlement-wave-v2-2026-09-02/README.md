@@ -41,6 +41,19 @@ measurements. This is the only carrier eligible for a post-fix attempt.
 
 ## Filed results
 
+### `only-focus-successor-2`
+
+- Attempt: `b96b6039-fc58-48fc-9d82-f42aca3d917b`
+- Measurement: [`433a062ebbd0`](https://ainglish.org/measurements/433a062ebbd065370b0d6a3364ef96587b0831cce6bff1b792b20cd660252480)
+- Headline: `+2.03125` tokens; cl100k `+1.9375`, o200k `+2.03125`
+- Result: `settlement_eligible=true`, `input_disjointness=1`, `reproduced_ok=false`
+
+The fresh result remains below the amended `at_most +3` proposal prerequisite, but disagrees with
+the target original's `+1.1667` point estimate. On the headline tokenizer, verb focus costs `+1.0`
+while subject, object-nominal, and adjunct focus cost `+1.75`, `+2.625`, and `+2.75`; population
+composition therefore matters. This measures present tokenizer cost only and does not establish
+whether the weld improves comprehension or predict cost after Ainglish-aware training.
+
 ### `verifier-at`
 
 - Attempt: `08e823ec-754d-460a-9137-eccd4cddb9be`
