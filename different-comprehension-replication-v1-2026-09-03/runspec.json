@@ -1,0 +1,174 @@
+{
+  "kind": "dexagon.ainglish.different-comprehension-replication-runspec.v1",
+  "construct": "different-from(ref, by=key) / different-across(group, by=key)",
+  "slug": "different-from-ref-by-key-different-across-group-by-key",
+  "metric": "comprehension_accuracy_delta",
+  "replicates_hash": "15bb5a3cc90f945b71752bdae3d93d2702a4cd67af6ea2859948e65d044f33f4",
+  "seed": 2026090311,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "panel_neff": 1,
+  "panel": [
+    {
+      "name": "local-mistral-small32-24b-screen",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "api_key_env": "",
+      "model": "dexagon-mistral-small3.2-24b-screen:ctx4k",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "temperature": 0
+    },
+    {
+      "name": "local-gemma3-12b-screen",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "api_key_env": "",
+      "model": "dexagon-gemma3-12b-screen:ctx4k",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "temperature": 0
+    }
+  ],
+  "models": [
+    "local-mistral-small32-24b-screen@q4_k_m",
+    "local-gemma3-12b-screen@q4_k_m"
+  ],
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "lineage": {
+        "basis": "Distinct Mistral Small 3.2 24B model family; exact locally served Ollama artifact is digest-bound from /api/tags before the one-shot run.",
+        "key": "mistralai/mistral-small-3.2-24b"
+      },
+      "qualified_at": "2026-09-03T14:57:46+00:00",
+      "reader": {
+        "digest_source": "ollama:/api/tags",
+        "model": "dexagon-mistral-small3.2-24b-screen:ctx4k",
+        "model_digest": "sha256:a4eaf1d1a473d2bab0b6c4dae369670f4118c3701181d8c97d3f49e0b686b27c",
+        "precision": "q4_k_m",
+        "provider": "ollama"
+      },
+      "result": {
+        "detectable_correct": 16,
+        "detectable_total": 16,
+        "min_gap_bps": 1250,
+        "min_recovered_bps": 5000,
+        "other_correct": 3,
+        "other_total": 16,
+        "passed": true
+      },
+      "roster_id": "local-mistral-small32-24b-screen@q4_k_m",
+      "screen_sha256": "2e3caa59583780ed04d7b081e9ac258b225eeab9fbbb5c7ef1291a71b287aaa2",
+      "settings_sha256": "7088f78e5354cc275803271212f4425ef02ea76e102352876e5e5f97f75d99b6",
+      "valid_until": "2026-10-03T14:57:46+00:00"
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "lineage": {
+        "basis": "Distinct Gemma 3 12B model family; exact locally served Ollama artifact is digest-bound from /api/tags before the one-shot run.",
+        "key": "google/gemma-3-12b"
+      },
+      "qualified_at": "2026-09-03T14:59:39+00:00",
+      "reader": {
+        "digest_source": "ollama:/api/tags",
+        "model": "dexagon-gemma3-12b-screen:ctx4k",
+        "model_digest": "sha256:09c0a3196388d895fb36f047f4e67d9fd81d7c2845833ea26c9dd8ea33959cfa",
+        "precision": "q4_k_m",
+        "provider": "ollama"
+      },
+      "result": {
+        "detectable_correct": 16,
+        "detectable_total": 16,
+        "min_gap_bps": 1250,
+        "min_recovered_bps": 5000,
+        "other_correct": 5,
+        "other_total": 16,
+        "passed": true
+      },
+      "roster_id": "local-gemma3-12b-screen@q4_k_m",
+      "screen_sha256": "2e3caa59583780ed04d7b081e9ac258b225eeab9fbbb5c7ef1291a71b287aaa2",
+      "settings_sha256": "df0bddb22496b0e50cb65d0456646bedfbc704d12501a09d0295035fff17bfc0",
+      "valid_until": "2026-10-03T14:59:39+00:00"
+    }
+  ],
+  "comparator": {
+    "kind": "complete-careful-english-v1",
+    "description": "Each compact form is compared only with its full registered meaning, including the relation it does not require; bare ambiguous different enters neither arm."
+  },
+  "settlement_strata": [
+    {
+      "id": "different-from",
+      "weight": 1
+    },
+    {
+      "id": "different-across",
+      "weight": 1
+    }
+  ],
+  "training_asymmetry": "The readers were trained primarily on ordinary English and are not assumed to have seen Ainglish. This is present zero-shot evidence, not a forecast after Ainglish-aware training.",
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/69df540d800afae168c14e7670a89ba1baac535c/different-comprehension-replication-v1-2026-09-03/items.json",
+  "items_sha256": "b8cb5c535ccdd1c8d4044938d811b925e655652cf7835254a0830fb196a8586d",
+  "source": {
+    "repository": "dexagon-ai/ainglish-evidence",
+    "commit": "69df540d800afae168c14e7670a89ba1baac535c",
+    "path": "different-comprehension-replication-v1-2026-09-03/items.json"
+  },
+  "concurrency": {
+    "max_in_flight": 2,
+    "per_reader_max_in_flight": {
+      "local-mistral-small32-24b-screen": 1,
+      "local-gemma3-12b-screen": 1
+    }
+  },
+  "attempt": {
+    "proposal_revision": "different-from-ref-by-key-different-across-group-by-key",
+    "estimand": "Fresh-input replication of original manifest 15bb5a3cc90f945b71752bdae3d93d2702a4cd67af6ea2859948e65d044f33f4: the percentage-point exact allocation-compliance accuracy difference, registered compact form minus complete careful-English mapping, over 160 frozen operational items (80 different-from and 80 different-across; twenty domains crossed with all four reference/across truth profiles). The headline is the equal-weight mean of the two separately reported form strata.",
+    "admissibility_gates": [
+      "authenticated suggestions still offer 15bb5a3cc90f945b71752bdae3d93d2702a4cd67af6ea2859948e65d044f33f4 as a confirmation-capable replication immediately before mint",
+      "the proposal remains current at measured stage and its claim-carrier work still names this exact target",
+      "the public 168-item carrier at 69df540d800afae168c14e7670a89ba1baac535c hashes to b8cb5c535ccdd1c8d4044938d811b925e655652cf7835254a0830fb196a8586d",
+      "all 160 scientific complete pairs were generated fresh for this replication with new scenario identifiers, values and wording; no prior item is reused or paraphrased",
+      "the carrier contains exactly 80 rows per form, twenty domains, and forty rows in each crossed truth profile",
+      "repetition is explicitly permitted in the different-from careful-English arm and a reference match is explicitly permitted in the different-across careful-English arm",
+      "the equal-weight headline cannot hide either form, and both arms must be observable in both settlement strata",
+      "Mistral Small 3.2 24B and Gemma 3 12B passed the same public target-independent screen before this carrier was authored",
+      "the two attached qualification receipts are unexpired and match every declared reader roster identity",
+      "the receipt-preserving panel harness is public at ai-nglish/ainglish commit 4f496865774c445b9cc9cdc3ce3beb5d9ecfd57a",
+      "eight construct-free planted controls execute first in both arms for each reader and must recover a gap of at least 0.5",
+      "zero transport faults, response-bound truncations, or missing scientific cells are required; a failed gate produces a typed abort and no retry",
+      "absolute arms, interval, resolution, per-reader values, agreement, every form stratum, and all normalized cells are retained",
+      "every finite supportive, null, adverse, floor-bound, ceiling-bound, or inconclusive outcome is filed exactly once"
+    ],
+    "planned_sample": {
+      "metric": "comprehension_accuracy_delta",
+      "comparison": "registered compact form versus complete careful-English mapping",
+      "scientific_items": 160,
+      "calibration_items": 8,
+      "forms": {
+        "different-from": 80,
+        "different-across": 80
+      },
+      "truth_profiles": {
+        "both": 40,
+        "reference-only": 40,
+        "across-only": 40,
+        "neither": 40
+      },
+      "domains": 20,
+      "readers": 2,
+      "reader_families": [
+        "Mistral Small 3.2 24B",
+        "Gemma 3 12B"
+      ],
+      "panel_members": 2,
+      "panel_neff": 1,
+      "real_cells": 320,
+      "calibration_cells": 32,
+      "sdk_version": "0.2.52",
+      "sdk_commit": "4f496865774c445b9cc9cdc3ce3beb5d9ecfd57a",
+      "items_commit": "69df540d800afae168c14e7670a89ba1baac535c",
+      "replicates_hash": "15bb5a3cc90f945b71752bdae3d93d2702a4cd67af6ea2859948e65d044f33f4"
+    }
+  }
+}
