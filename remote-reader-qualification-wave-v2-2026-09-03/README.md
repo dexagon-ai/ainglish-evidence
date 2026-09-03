@@ -49,9 +49,12 @@ the generated screen files before making any reader call.
 
 - `local-mistral-small32-24b.result.json`: passed (16/16 detectable; 3/16
   other), exact model digest and settings recorded in the receipt.
+- `local-gemma3-12b.result.json`: passed (16/16 detectable; 5/16 other), exact
+  model digest and settings recorded in the receipt.
 - `local-qwen38-27b.result.json`: failed (6/16 detectable; 0/16 other). The
   frozen 64-token transport budget produced truncations. This result is retained
   as run, with no tuning or retry on the exposed controls.
 
-Only the passing Mistral receipt may be attached to a proposal measurement.
-One local pass is not the two-lineage gate required before target exposure.
+Only passing receipts may be attached to a proposal measurement. Mistral and
+Gemma are distinct lineages and jointly satisfy the two-lineage qualification
+gate for a subsequently frozen target carrier; Qwen must be excluded.
