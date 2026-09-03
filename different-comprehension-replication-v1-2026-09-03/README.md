@@ -33,5 +33,23 @@ python3 audit.py
 
 `prepare_runspec.py` is run only after the carrier commit is public. The
 runspec must itself be committed publicly before `run_once.py` may mint an
-attempt or call either reader. Every finite supportive, null, adverse, or
-inconclusive outcome is filed once without retry.
+attempt or call either reader.
+
+## One-shot outcome
+
+Attempt `dedbd832-d1db-4a14-a3b0-546395e1d891` completed all 32 calibration
+and 320 scientific reader cells without a transport fault. Calibration passed
+(1.0000 planted-arm accuracy versus 0.0625 in the other arm); the observed
+headline was +3.08 percentage points with a bootstrap interval of -6.0589 to
++12.6569. The two preregistered form cells were +0.69 (`different-from`) and
++5.47 (`different-across`).
+
+No measurement was filed. The register returned 422 because the legacy target
+original has no manifest-bound stratum contract, so a stratified replication
+cannot settle it. Attempting to remove the two load-bearing cells after seeing
+the result would violate the immutable preregistration. The attempt was
+therefore closed as `preflight_mismatch`, with the exact refusal and artifact
+hashes retained in public receipt
+`72b36d8a1041813aaf712eeec9d5b58f4cb833009320d6940d5a1bc2e717f85d`.
+There was no reader retry and the unfiled result remains visible here rather
+than being silently discarded.
