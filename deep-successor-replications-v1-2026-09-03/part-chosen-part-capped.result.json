@@ -1,0 +1,232 @@
+{
+  "kind": "ainglish.token-measurement-result.v1",
+  "state": "computed_not_submitted",
+  "payload": {
+    "metric": "token_delta",
+    "value": -9.75,
+    "value_lo": -9.75,
+    "value_hi": -9.75,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base"
+    ],
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": -9.75
+      },
+      {
+        "model": "o200k_base",
+        "value": -9.75
+      }
+    ],
+    "manifest": {
+      "kind": "dexagon.ainglish.deep-successor-fresh-replication.v1",
+      "metric": "token_delta",
+      "construct": "part-chosen / part-capped",
+      "models": [
+        "cl100k_base",
+        "o200k_base"
+      ],
+      "test_set": [
+        {
+          "stratum": "part-chosen",
+          "english": "I examined the 57 cases that the risk-score-decile rule selected from the 561 filed cases; that rule determined which cases entered the examination.",
+          "ainglish": "part-chosen(risk-score-decile): I examined 57 of the 561 filed cases."
+        },
+        {
+          "stratum": "part-chosen",
+          "english": "I verified the 41 objects that the hash-prefix-3c rule selected from the 707 stored objects; that rule determined which objects entered verification.",
+          "ainglish": "part-chosen(hash-prefix-3c): I verified 41 of the 707 stored objects."
+        },
+        {
+          "stratum": "part-chosen",
+          "english": "I checked the 63 licences that the June-renewal rule selected from the 418 active licences; that rule determined which licences entered the check.",
+          "ainglish": "part-chosen(june-renewal): I checked 63 of the 418 active licences."
+        },
+        {
+          "stratum": "part-chosen",
+          "english": "I decoded the 88 packets that seeded lottery 204 selected from the 900 captured packets; the lottery determined which packets entered decoding.",
+          "ainglish": "part-chosen(seeded-lottery-204): I decoded 88 of the 900 captured packets."
+        },
+        {
+          "stratum": "part-chosen",
+          "english": "I visited the 52 depots that the north-zone rule selected from the 319 listed depots; that rule determined which depots entered the visit.",
+          "ainglish": "part-chosen(north-zone): I visited 52 of the 319 listed depots."
+        },
+        {
+          "stratum": "part-chosen",
+          "english": "I reconciled the 76 accounts that the suffix-X rule selected from the 602 open accounts; that rule determined which accounts entered reconciliation.",
+          "ainglish": "part-chosen(suffix-x): I reconciled 76 of the 602 open accounts."
+        },
+        {
+          "stratum": "part-chosen",
+          "english": "I assessed the 64 claims that stratified-sample-v9 selected from the 512 settled claims; that rule determined which claims entered assessment.",
+          "ainglish": "part-chosen(stratified-sample-v9): I assessed 64 of the 512 settled claims."
+        },
+        {
+          "stratum": "part-chosen",
+          "english": "I labelled the 39 images that the low-confidence rule selected from the 285 queued images; that rule determined which images entered labelling.",
+          "ainglish": "part-chosen(low-confidence): I labelled 39 of the 285 queued images."
+        },
+        {
+          "stratum": "part-capped",
+          "english": "I resolved 150 of the 694 tickets; the pager API stopped at its 150-ticket limit, so I could not resolve the remaining tickets.",
+          "ainglish": "part-capped(pager-api-150): I resolved 150 of the 694 tickets."
+        },
+        {
+          "stratum": "part-capped",
+          "english": "I searched 82 of the 431 archives; the forty-five-minute scan budget expired, so I could not search the remaining archives.",
+          "ainglish": "part-capped(scan-budget-45m): I searched 82 of the 431 archives."
+        },
+        {
+          "stratum": "part-capped",
+          "english": "I inspected 47 of the 260 sites; my access covered only the eastern zone, so I could not inspect the remaining sites.",
+          "ainglish": "part-capped(access-east): I inspected 47 of the 260 sites."
+        },
+        {
+          "stratum": "part-capped",
+          "english": "I reconstructed 69 of the 344 traces; the twelve-gigabyte memory ceiling stopped reconstruction, so I could not process the remainder.",
+          "ainglish": "part-capped(memory-12gb): I reconstructed 69 of the 344 traces."
+        },
+        {
+          "stratum": "part-capped",
+          "english": "I reviewed 84 of the 506 messages; the service retained only twenty-one days, so I could not review the older messages.",
+          "ainglish": "part-capped(retention-21d): I reviewed 84 of the 506 messages."
+        },
+        {
+          "stratum": "part-capped",
+          "english": "I compared 750 of the 1,936 rows; the export ended at its 750-row ceiling, so I could not compare the remaining rows.",
+          "ainglish": "part-capped(export-750): I compared 750 of the 1,936 rows."
+        },
+        {
+          "stratum": "part-capped",
+          "english": "I tested 200 of the 1,108 endpoints; the rate limiter stopped the run at 200 checks, so I could not test the remaining endpoints.",
+          "ainglish": "part-capped(rate-limit-200): I tested 200 of the 1,108 endpoints."
+        },
+        {
+          "stratum": "part-capped",
+          "english": "I read 58 of the 247 meters; the field unit exhausted its battery, so I could not read the remaining meters.",
+          "ainglish": "part-capped(battery-stop): I read 58 of the 247 meters."
+        }
+      ],
+      "settlement_strata": [
+        {
+          "id": "part-capped",
+          "weight": 1
+        },
+        {
+          "id": "part-chosen",
+          "weight": 1
+        }
+      ],
+      "estimand_contract": {
+        "kind": "ainglish.estimand-shadow.v1",
+        "unit_span": "complete message",
+        "contrast": "Ainglish form versus complete careful English",
+        "population": "16 frozen fresh pairs across part-capped and part-chosen",
+        "aggregation": {
+          "reducer": "least_favourable",
+          "rule": "equal item mean per stratum, weighted by stratum share, then maximum tokenizer mean"
+        },
+        "governance_effect": "report_only"
+      },
+      "replicates_hash": "13a722dd4d8b0206a42ff6450c5de1fea05a0f828d14254c61889bd7af894e83",
+      "method": "Canonical SDK token runner; count every complete pair under each target tokenizer, preserve target strata and least-favourable aggregation, and file every finite direction once.",
+      "source": {
+        "repository": "dexagon-ai/ainglish-evidence",
+        "path": "deep-successor-replications-v1-2026-09-03/campaigns.py",
+        "commit": "6da5a8d97a37f82c0f2a128a7dcdb192a7fff71a"
+      },
+      "evidentiary_limit": "Current tokenizer cost only; not comprehension and not a forecast of future Ainglish-aware training or tokenizers.",
+      "comparison_identity": {
+        "comparator_genre": "complete-careful-english-boundary-source-v1",
+        "pair_rendering": "standalone-coverage-report",
+        "kind": "ainglish.token-comparison-identity.v1",
+        "items_sha256": "efbb3e1bfc85e7b9483611724ca6b59c25781f75fb885ec763bed95c77a40a12",
+        "item_count": 16,
+        "tokenizer_roster": [
+          "cl100k_base",
+          "o200k_base"
+        ],
+        "comparator": "Ainglish form versus complete careful English",
+        "population": "16 frozen fresh pairs across part-capped and part-chosen",
+        "aggregation": "equal item mean per stratum, weighted by stratum share, then maximum tokenizer mean",
+        "unit_span": "complete message"
+      },
+      "items_sha256": "efbb3e1bfc85e7b9483611724ca6b59c25781f75fb885ec763bed95c77a40a12",
+      "interval_kind": "member_span",
+      "tokenizer_provenance": {
+        "kind": "ainglish.tiktoken-provenance.v1",
+        "library": "tiktoken",
+        "library_version": "0.13.0",
+        "encodings": [
+          "cl100k_base",
+          "o200k_base"
+        ]
+      }
+    },
+    "attempt_id": "eff909e4-7b10-4c6c-bfe1-61476788f4f0",
+    "replicates_hash": "13a722dd4d8b0206a42ff6450c5de1fea05a0f828d14254c61889bd7af894e83",
+    "stratum_results": [
+      {
+        "id": "part-capped",
+        "value": -10.125
+      },
+      {
+        "id": "part-chosen",
+        "value": -9.375
+      }
+    ]
+  },
+  "audit": {
+    "manifest_commitment": "8ea1753ec7082aaa733fbde9128b07b0889be3657a0b07572a34d3fa25d9b429",
+    "items_sha256": "efbb3e1bfc85e7b9483611724ca6b59c25781f75fb885ec763bed95c77a40a12",
+    "pair_count": 16,
+    "by_tokenizer": [
+      {
+        "model": "cl100k_base",
+        "mean": -9.75,
+        "strata": [
+          {
+            "id": "part-capped",
+            "weight": 1.0,
+            "share": 0.5,
+            "item_count": 8,
+            "value": -10.125
+          },
+          {
+            "id": "part-chosen",
+            "weight": 1.0,
+            "share": 0.5,
+            "item_count": 8,
+            "value": -9.375
+          }
+        ]
+      },
+      {
+        "model": "o200k_base",
+        "mean": -9.75,
+        "strata": [
+          {
+            "id": "part-capped",
+            "weight": 1.0,
+            "share": 0.5,
+            "item_count": 8,
+            "value": -10.125
+          },
+          {
+            "id": "part-chosen",
+            "weight": 1.0,
+            "share": 0.5,
+            "item_count": 8,
+            "value": -9.375
+          }
+        ]
+      }
+    ],
+    "headline_rule": "maximum tokenizer mean (least favourable)",
+    "headline_model": "cl100k_base"
+  },
+  "next": "Submit result.payload unchanged with client.measure(slug, result['payload'])."
+}

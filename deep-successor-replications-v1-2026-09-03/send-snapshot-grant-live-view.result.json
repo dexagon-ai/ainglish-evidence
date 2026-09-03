@@ -1,0 +1,232 @@
+{
+  "kind": "ainglish.token-measurement-result.v1",
+  "state": "computed_not_submitted",
+  "payload": {
+    "metric": "token_delta",
+    "value": -14.0625,
+    "value_lo": -14.6875,
+    "value_hi": -14.0625,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base"
+    ],
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": -14.6875
+      },
+      {
+        "model": "o200k_base",
+        "value": -14.0625
+      }
+    ],
+    "manifest": {
+      "kind": "dexagon.ainglish.deep-successor-fresh-replication.v1",
+      "metric": "token_delta",
+      "construct": "send-snapshot / grant-live-view",
+      "models": [
+        "cl100k_base",
+        "o200k_base"
+      ],
+      "test_set": [
+        {
+          "stratum": "send-snapshot",
+          "english": "Send Leto an independent fixed copy of the incident map at revision r23; later edits or revoked source access cannot alter or withdraw that copy.",
+          "ainglish": "send-snapshot(incident-map@r23, to=Leto)."
+        },
+        {
+          "stratum": "send-snapshot",
+          "english": "Send the audit team an independent fixed copy of the inventory as of 2026-09-02; later changes to the canonical inventory cannot alter or withdraw that copy.",
+          "ainglish": "send-snapshot(inventory@2026-09-02, to=audit-team)."
+        },
+        {
+          "stratum": "send-snapshot",
+          "english": "Send Vela an independent fixed copy of policy version 31; later policy revisions or access revocation cannot alter or withdraw that copy.",
+          "ainglish": "send-snapshot(policy@v31, to=Vela)."
+        },
+        {
+          "stratum": "send-snapshot",
+          "english": "Send the archive desk an independent fixed copy of the index at digest sha256-7b2d; later index edits cannot alter or withdraw that copy.",
+          "ainglish": "send-snapshot(index@sha256-7b2d, to=archive-desk)."
+        },
+        {
+          "stratum": "send-snapshot",
+          "english": "Did Neri send legal an independent fixed copy of contract revision c9 that later source changes cannot alter or withdraw?",
+          "ainglish": "Did Neri send-snapshot(contract@c9, to=legal)?"
+        },
+        {
+          "stratum": "send-snapshot",
+          "english": "Do not send operations an independent fixed copy of the current rota; operations must continue reading the changing canonical rota.",
+          "ainglish": "Do not send-snapshot(rota@current, to=operations)."
+        },
+        {
+          "stratum": "send-snapshot",
+          "english": "Mara requested an independent fixed copy of blueprint issue 14 for procurement; later blueprint edits or access revocation cannot alter or withdraw it.",
+          "ainglish": "Mara requested send-snapshot(blueprint@issue-14, to=procurement)."
+        },
+        {
+          "stratum": "send-snapshot",
+          "english": "Send the regulator an independent fixed copy of the emissions report at filing f6; later source corrections cannot alter or withdraw that copy.",
+          "ainglish": "send-snapshot(emissions-report@f6, to=regulator)."
+        },
+        {
+          "stratum": "grant-live-view",
+          "english": "Grant Leto revocable read-only access to the canonical incident map, showing its current contents on each successful read; do not send an independent fixed copy.",
+          "ainglish": "grant-live-view(incident-map, to=Leto)."
+        },
+        {
+          "stratum": "grant-live-view",
+          "english": "Grant the audit team revocable read-only access to the canonical inventory, showing its current contents on each successful read; do not send an independent fixed copy.",
+          "ainglish": "grant-live-view(inventory, to=audit-team)."
+        },
+        {
+          "stratum": "grant-live-view",
+          "english": "Grant Vela revocable read-only access to the canonical policy, showing its current contents on each successful read; do not send an independent fixed copy.",
+          "ainglish": "grant-live-view(policy, to=Vela)."
+        },
+        {
+          "stratum": "grant-live-view",
+          "english": "Grant the archive desk revocable read-only access to the canonical index, showing its current contents on each successful read; do not send an independent fixed copy.",
+          "ainglish": "grant-live-view(index, to=archive-desk)."
+        },
+        {
+          "stratum": "grant-live-view",
+          "english": "Did Neri grant legal revocable read-only access to the canonical contract, showing current contents without sending a fixed copy?",
+          "ainglish": "Did Neri grant-live-view(contract, to=legal)?"
+        },
+        {
+          "stratum": "grant-live-view",
+          "english": "Do not grant operations revocable read-only access to the canonical rota, and do not expose that live object to operations.",
+          "ainglish": "Do not grant-live-view(rota, to=operations)."
+        },
+        {
+          "stratum": "grant-live-view",
+          "english": "Mara requested revocable read-only access for procurement to the canonical blueprint, showing current contents without sending a fixed copy.",
+          "ainglish": "Mara requested grant-live-view(blueprint, to=procurement)."
+        },
+        {
+          "stratum": "grant-live-view",
+          "english": "Grant the regulator revocable read-only access to the canonical emissions report, showing its current contents on each successful read; do not send an independent fixed copy.",
+          "ainglish": "grant-live-view(emissions-report, to=regulator)."
+        }
+      ],
+      "settlement_strata": [
+        {
+          "id": "grant-live-view",
+          "weight": 1
+        },
+        {
+          "id": "send-snapshot",
+          "weight": 1
+        }
+      ],
+      "estimand_contract": {
+        "kind": "ainglish.estimand-shadow.v1",
+        "unit_span": "complete message",
+        "contrast": "Ainglish form versus complete careful English",
+        "population": "16 frozen fresh pairs across grant-live-view and send-snapshot",
+        "aggregation": {
+          "reducer": "least_favourable",
+          "rule": "equal item mean per stratum, weighted by stratum share, then maximum tokenizer mean"
+        },
+        "governance_effect": "report_only"
+      },
+      "replicates_hash": "74365dc61028e7b0f0590faf4537bdcb779fdbf8997d7eba736a7e65b24fedc5",
+      "method": "Canonical SDK token runner; count every complete pair under each target tokenizer, preserve target strata and least-favourable aggregation, and file every finite direction once.",
+      "source": {
+        "repository": "dexagon-ai/ainglish-evidence",
+        "path": "deep-successor-replications-v1-2026-09-03/campaigns.py",
+        "commit": "6da5a8d97a37f82c0f2a128a7dcdb192a7fff71a"
+      },
+      "evidentiary_limit": "Current tokenizer cost only; not comprehension and not a forecast of future Ainglish-aware training or tokenizers.",
+      "comparison_identity": {
+        "comparator_genre": "complete-careful-english-topology-v1",
+        "pair_rendering": "typed-action-in-context",
+        "kind": "ainglish.token-comparison-identity.v1",
+        "items_sha256": "907b72bcf6fa7d46046a4763d6784432fa2b298c378f36aebdbdc3f5b6633975",
+        "item_count": 16,
+        "tokenizer_roster": [
+          "cl100k_base",
+          "o200k_base"
+        ],
+        "comparator": "Ainglish form versus complete careful English",
+        "population": "16 frozen fresh pairs across grant-live-view and send-snapshot",
+        "aggregation": "equal item mean per stratum, weighted by stratum share, then maximum tokenizer mean",
+        "unit_span": "complete message"
+      },
+      "items_sha256": "907b72bcf6fa7d46046a4763d6784432fa2b298c378f36aebdbdc3f5b6633975",
+      "interval_kind": "member_span",
+      "tokenizer_provenance": {
+        "kind": "ainglish.tiktoken-provenance.v1",
+        "library": "tiktoken",
+        "library_version": "0.13.0",
+        "encodings": [
+          "cl100k_base",
+          "o200k_base"
+        ]
+      }
+    },
+    "attempt_id": "0267a14f-7ded-41b8-9501-07ad40d66dc0",
+    "replicates_hash": "74365dc61028e7b0f0590faf4537bdcb779fdbf8997d7eba736a7e65b24fedc5",
+    "stratum_results": [
+      {
+        "id": "grant-live-view",
+        "value": -16.5
+      },
+      {
+        "id": "send-snapshot",
+        "value": -11.625
+      }
+    ]
+  },
+  "audit": {
+    "manifest_commitment": "0a2b697e002740fb6ea0680b5c1fa4917890a7b1e61d900db9b482c7a6b4936c",
+    "items_sha256": "907b72bcf6fa7d46046a4763d6784432fa2b298c378f36aebdbdc3f5b6633975",
+    "pair_count": 16,
+    "by_tokenizer": [
+      {
+        "model": "cl100k_base",
+        "mean": -14.6875,
+        "strata": [
+          {
+            "id": "grant-live-view",
+            "weight": 1.0,
+            "share": 0.5,
+            "item_count": 8,
+            "value": -17.5
+          },
+          {
+            "id": "send-snapshot",
+            "weight": 1.0,
+            "share": 0.5,
+            "item_count": 8,
+            "value": -11.875
+          }
+        ]
+      },
+      {
+        "model": "o200k_base",
+        "mean": -14.0625,
+        "strata": [
+          {
+            "id": "grant-live-view",
+            "weight": 1.0,
+            "share": 0.5,
+            "item_count": 8,
+            "value": -16.5
+          },
+          {
+            "id": "send-snapshot",
+            "weight": 1.0,
+            "share": 0.5,
+            "item_count": 8,
+            "value": -11.625
+          }
+        ]
+      }
+    ],
+    "headline_rule": "maximum tokenizer mean (least favourable)",
+    "headline_model": "o200k_base"
+  },
+  "next": "Submit result.payload unchanged with client.measure(slug, result['payload'])."
+}
