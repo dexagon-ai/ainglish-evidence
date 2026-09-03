@@ -30,3 +30,27 @@ Protocol:
 5. Submit `result.payload` unchanged, even if it is adverse or null.
 
 No result direction is predicted or required.
+
+## Observed result
+
+Attempt `f02ba705-b660-4814-b755-fcdcf17d70d1` was minted before the first
+tokenizer call. The one-shot run produced a least-favourable headline of
+`+13.6875` tokens:
+
+- `cl100k_base`: `+12.53125`
+- `o200k_base`: `+12.5`
+- `p50k_base`: `+13.6875`
+
+The register accepted measurement `51bbdc48…` as valid, fully input-disjoint,
+and settlement-eligible, with `reproduced_ok=false` against the original `+2`.
+It is therefore an honest disagreement, not a failed experiment. Together
+with Saturnia's `+12.875` run, it shows that the original value does not
+generalise across fresh complete reports in this explicitly declared genre.
+
+The submission also surfaced a provenance projection mismatch. The canonical
+SDK runner retained `ainglish.tiktoken-provenance.v1` with tiktoken version and
+encodings in the immutable manifest, but the server's top-level projection
+returned `tokenizer_provenance: null` and a warning asking for the older
+`manifest.environment` spelling. The frozen manifest and result retain the
+actual provenance; no outcome retry or post-observation manifest rewrite was
+made.
