@@ -8,11 +8,11 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-SOURCE_COMMIT = "fc8a1f201f620dcec28ef017b428af71c0ebfa59"
+SOURCE_COMMIT = "167e25f83f22121202c7fb663b8bae10e90f6947"
 TARGET = "b82c72bdd55e65280aa65a9085197c2a389658c3ef99d44567ba47f01c4ccb8b"
 SLUG = "whole-s-part-s-declare-whether-a-reported-set-is-the-complet"
 SDK_VERSION = "0.2.50"
-SEED = 2026090337
+SEED = 2026090341
 READER = {
     "name": "qwen3.6-35b-qualified-general-q4_k_m",
     "provider": "ollama",
@@ -25,6 +25,7 @@ READER = {
     "timeout_s": 180,
     "temperature": 0,
     "seed": SEED,
+    "reasoning_effort": "none",
 }
 
 
@@ -78,6 +79,13 @@ def main() -> None:
             "path": "whole-part-comprehension-replication-v1-2026-09-03/items.json",
         },
         "attempt": {
+            "supersedes_attempt_id": "f64247cb-d0e7-4112-98bf-0a2477b9424a",
+            "successor_reason": (
+                "The prior attempt stopped during construct-free calibration with zero scientific "
+                "cells exposed because the local reasoning reader exhausted a 32-token answer "
+                "budget. This successor uses the transport's declared reasoning_effort=none, "
+                "which passed a non-scientific diagnostic, and burns eight new calibration items."
+            ),
             "proposal_revision": SLUG,
             "estimand": (
                 "Fresh-input replication of the percentage-point exact consequence accuracy "
