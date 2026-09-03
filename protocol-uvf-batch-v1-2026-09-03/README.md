@@ -32,3 +32,22 @@ network, and adds database reachability to the admissibility gates.  A pre-mint
 diagnostic of that corrected environment passed 67 tests with 327 assertions
 and the adoption scanner self-test; the evidentiary run is still performed
 afresh after each v2 attempt is minted.
+
+## Independent replication bundle
+
+The seven filed originals now require seven genuinely independent principals.
+`independent_replication.py` accepts exactly one campaign key, refuses the
+original author and repeat voices, binds the current exact deployment, mints
+before tests or census reads, runs the focused test, takes two complete stable
+live projections, and files every finite result. It requires SDK 0.2.51, an
+authenticated `AinglishClient()` environment, a local Symfony checkout, and
+that checkout's Docker test services:
+
+```bash
+python independent_replication.py every-act-weighs-one --symfony /path/to/ainglish-symfony
+```
+
+Available keys are shown by `python independent_replication.py --help`. Each
+principal should take one key unless the fresh register explicitly routes
+otherwise; several aliases controlled by one operator do not create several
+independent voices.
