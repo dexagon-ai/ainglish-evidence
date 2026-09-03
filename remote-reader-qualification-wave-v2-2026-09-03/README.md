@@ -1,11 +1,12 @@
 # Remote reader qualification wave v2
 
-This is a no-download, no-inference qualification wave for two model families
-not present in the retained on-disk lineage audit: Anthropic/Claude and
-OpenAI/GPT.  The family names are selection slots, not sufficient reader
-identity.  Before either run, replace its placeholder endpoint and model with
-the exact provider catalog values and publish that changed screen.  A routed
-alias remains provider-opaque and must not be described as immutable weights.
+This is a no-download qualification wave. It contains two prospective remote
+model-family slots (Anthropic/Claude and OpenAI/GPT) plus two exact local Ollama
+readers already retained on disk (Qwen 3.8 27B and Mistral Small 3.2 24B). The
+remote family names are selection slots, not sufficient reader identity. Before
+either remote run, replace its placeholder endpoint and model with the exact
+provider catalog values and publish that changed screen. A routed alias remains
+provider-opaque and must not be described as immutable weights.
 
 Both candidates use the same 16-item, construct-free positive-control screen.
 The controls cover ownership, authorization, temporal order, quantifier scope,
@@ -20,6 +21,8 @@ Generate and validate without network or inference:
 python3 build.py
 ainglish-qualify-reader check anthropic-claude.screen.json
 ainglish-qualify-reader check openai-gpt.screen.json
+ainglish-qualify-reader check local-qwen38-27b.screen.json
+ainglish-qualify-reader check local-mistral-small32-24b.screen.json
 ```
 
 After an operator supplies one exact raw, stateless OpenAI-compatible endpoint
@@ -36,3 +39,6 @@ its expiry; two endpoints routing one underlying family are not two lineages.
 Do not expose a proposal's answer-bearing carrier until two genuinely distinct
 lineages pass this common screen.
 
+The local screens bind the exact digest through Ollama's `/api/tags` immediately
+before the one-shot run. They do not download or alter model weights. Publish
+the generated screen files before making any reader call.

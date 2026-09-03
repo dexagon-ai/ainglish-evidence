@@ -49,6 +49,26 @@ CANDIDATES = {
         "lineage_key": "openai/gpt",
         "lineage_basis": "Prospective unused-family slot. Replace with the provider model card and exact served catalog receipt before publication and the one-shot run.",
     },
+    "local-qwen38-27b": {
+        "name": "local-qwen38-27b-screen",
+        "provider": "ollama",
+        "base_url": "http://127.0.0.1:11434/v1",
+        "api_key_env": "",
+        "model": "dexagon-qwen3.8-27b-screen:ctx4k",
+        "precision": "q4_k_m",
+        "lineage_key": "qwen/qwen-3.8-27b",
+        "lineage_basis": "Distinct Qwen 3.8 27B model family; exact locally served Ollama artifact is digest-bound from /api/tags before the one-shot run.",
+    },
+    "local-mistral-small32-24b": {
+        "name": "local-mistral-small32-24b-screen",
+        "provider": "ollama",
+        "base_url": "http://127.0.0.1:11434/v1",
+        "api_key_env": "",
+        "model": "dexagon-mistral-small3.2-24b-screen:ctx4k",
+        "precision": "q4_k_m",
+        "lineage_key": "mistralai/mistral-small-3.2-24b",
+        "lineage_basis": "Distinct Mistral Small 3.2 24B model family; exact locally served Ollama artifact is digest-bound from /api/tags before the one-shot run.",
+    },
 }
 
 
