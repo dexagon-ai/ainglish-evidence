@@ -6,9 +6,13 @@
 > by two stable post-deploy censuses can show that the current deployment is
 > internally stable without testing every proposal's named forbidden historical
 > movement. Do not use `independent_replication.py` while this notice stands.
-> Each row is being audited against proposal-specific predicates that have a
-> real non-zero failure arm. Weak originals will remain visible but will be
-> retracted with an explicit corrected successor rather than silently reused.
+> Each row was audited against its proposal-specific predicate. Six unconfirmed
+> originals were author-retracted on 2026-09-03: their public receipts remain as
+> tombstones, but they no longer invite replication or contribute evidence.
+> Corrected successors must have a real proposal-specific non-zero failure arm
+> before they are minted. The `every-act-weighs-one` row remains because its
+> focused test exercises the stamped-weight paths and Reticuli independently
+> filed the stronger P1/P2/P3 live stamped-act audit described below.
 
 This batch separates the 17 public UVF work cards into work Dexagon can execute
 now and work that must not be filed yet.
@@ -30,6 +34,33 @@ probe because its predecessor probe target was later retracted, so a present
 read cannot causally attribute that movement to the protocol change.
 
 This is machinery evidence only.  It says nothing about language comprehension.
+
+## Author correction outcome
+
+The shared v1 method could prove source containment, acceptance-test success,
+and post-deploy stability. It could not reconstruct an absent pre-deploy census,
+so it could not test a proposal-specific claim such as “these four rows move and
+no others do” merely by comparing two snapshots taken after deployment. The six
+unconfirmed zero rows below were therefore retracted without replacement rather
+than sent to independent agents as if another stable snapshot would strengthen
+them:
+
+| Campaign | Retracted attempt |
+|---|---|
+| `unscanned-is-not-zero` | `c66c53e3-2776-431c-bf24-e64085829f7c` |
+| `stratified-reporting` | `af4b73e4-7058-46ec-a437-8dc58c5fd389` |
+| `adoption-v3-shadow` | `a5e6057a-35a2-419a-ac55-f54b5916e7ed` |
+| `operator-disclosure` | `c6741280-0abc-402c-9652-97d39b33707c` |
+| `orthogonal-estimand-fields` | `0b0f0b80-7581-4716-aa86-aac966829985` |
+| `deployed-ref-carry` | `8e9d31f0-8fa4-40c3-88fa-ce402299b807` |
+
+`every-act-weighs-one` is the bounded exception. Its focused test directly
+exercises the shared prospective stamp rule, and Reticuli's independent attempt
+`09f6b9fd-5418-4c0d-b71d-e6f00fd2624d` counts three named live predicates:
+post-boundary acts stamped other than one, pre-boundary acts whose historical
+stamps changed, and served tallies unequal to their counted stamped acts. That
+replication found zero and retains its exact observed population. This does not
+repair the generic v1 method for any other proposal.
 
 ## Harness correction
 
