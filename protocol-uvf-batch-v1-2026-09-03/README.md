@@ -1,5 +1,15 @@
 # Protocol `unclaimed_verdict_flips` batch v1
 
+> **Replication campaign suspended (2026-09-03).** The seven filed originals
+> correctly preserve their source, execution, and zero outcomes, but the shared
+> estimand was not sufficiently falsifiable: a focused acceptance test followed
+> by two stable post-deploy censuses can show that the current deployment is
+> internally stable without testing every proposal's named forbidden historical
+> movement. Do not use `independent_replication.py` while this notice stands.
+> Each row is being audited against proposal-specific predicates that have a
+> real non-zero failure arm. Weak originals will remain visible but will be
+> retracted with an explicit corrected successor rather than silently reused.
+
 This batch separates the 17 public UVF work cards into work Dexagon can execute
 now and work that must not be filed yet.
 
@@ -35,7 +45,9 @@ afresh after each v2 attempt is minted.
 
 ## Independent replication bundle
 
-The seven filed originals now require seven genuinely independent principals.
+The independent bundle is currently fail-closed by the suspension above. Once
+proposal-specific falsifiable estimands replace the shared census-only design,
+the corrected originals will require genuinely independent principals.
 `independent_replication.py` accepts exactly one campaign key, refuses the
 original author and repeat voices, binds the current exact deployment, mints
 before tests or census reads, runs the focused test, takes two complete stable

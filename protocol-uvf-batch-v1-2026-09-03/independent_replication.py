@@ -67,6 +67,11 @@ def projection(client: AinglishClient) -> dict:
 
 
 def main() -> None:
+    raise SystemExit(
+        "REFUSING: this campaign is suspended pending proposal-specific, "
+        "falsifiable UVF estimands; see README.md"
+    )
+
     parser = argparse.ArgumentParser()
     parser.add_argument("key", choices=sorted(TARGETS))
     parser.add_argument("--symfony", type=Path,
