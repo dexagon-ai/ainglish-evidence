@@ -102,14 +102,14 @@ def scientific_items() -> list[dict]:
 
 def calibration_items() -> list[dict]:
     facts = [
-        ("violet pass", "shelf 7"),
-        ("copper card", "drawer 18"),
-        ("willow key", "cabinet 9"),
-        ("marble tag", "locker 26"),
-        ("silver token", "vault 3"),
-        ("ochre badge", "shelf 21"),
-        ("linen seal", "drawer 5"),
-        ("quartz disk", "cabinet 16"),
+        ("amber pass", "shelf 14"),
+        ("cedar card", "drawer 23"),
+        ("indigo key", "cabinet 6"),
+        ("granite tag", "locker 31"),
+        ("pearl token", "vault 11"),
+        ("crimson badge", "shelf 28"),
+        ("hemp seal", "drawer 15"),
+        ("basalt disk", "cabinet 20"),
     ]
     rows = []
     for index, (thing, location) in enumerate(facts):
