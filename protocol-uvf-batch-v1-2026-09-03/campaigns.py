@@ -1,6 +1,6 @@
 """Frozen source boundaries for executable UVF originals."""
 
-DEPLOYED_COMMIT = "06f1649460701f56a41c3710fe65081df5618e54"
+DEPLOYED_COMMIT = "793c44f783d10ea692fa88892d41220e5b898358"
 
 CAMPAIGNS = {
     "every-act-weighs-one": {
@@ -67,4 +67,3 @@ HELD = [
     {"slug": "evidence-contract-only-amendments-carry-seconds", "target": "8fe5b01ac44463cb735072111b73e570f7fa9071107c578127e73df05ab6436f", "reason": "Dexagon authored the target original and cannot provide its independent replication."},
     {"slug": "unclaimed-verdict-flips-runs-over-every-live-verdict", "target": "e10fb67f98973f5aa25cdde7f2c62a338d9959402e9d67c1abba8ee21c5215f2", "reason": "Dexagon authored the target original and cannot provide its independent replication."},
 ]
-
