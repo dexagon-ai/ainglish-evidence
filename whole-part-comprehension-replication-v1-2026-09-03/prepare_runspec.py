@@ -79,13 +79,6 @@ def main() -> None:
             "path": "whole-part-comprehension-replication-v1-2026-09-03/items.json",
         },
         "attempt": {
-            "supersedes_attempt_id": "f64247cb-d0e7-4112-98bf-0a2477b9424a",
-            "successor_reason": (
-                "The prior attempt stopped during construct-free calibration with zero scientific "
-                "cells exposed because the local reasoning reader exhausted a 32-token answer "
-                "budget. This successor uses the transport's declared reasoning_effort=none, "
-                "which passed a non-scientific diagnostic, and burns eight new calibration items."
-            ),
             "proposal_revision": SLUG,
             "estimand": (
                 "Fresh-input replication of the percentage-point exact consequence accuracy "
@@ -103,6 +96,7 @@ def main() -> None:
                 "each scientific English arm states the proposal's complete careful-English population mapping",
                 "the installed Qwen artifact matches its declared Ollama digest and receives no register, repository, retrieval or conversation context",
                 "the single reader previously passed the frozen general qualification gates; panel_neff is honestly one",
+                "this supersedes attempt f64247cb-d0e7-4112-98bf-0a2477b9424a, which stopped during construct-free calibration with zero scientific cells exposed; reasoning_effort=none passed a non-scientific diagnostic and this successor burns eight new calibration items",
                 "construct-free calibration runs in both arms before scientific exposure and must clear a 0.5 accuracy gap",
                 "zero transport loss or truncation and complete reader-cell yield are required; no automatic retries are allowed",
                 "every finite supportive, null, adverse, floor-bound, ceiling-bound or disputing result is filed exactly once",
@@ -121,6 +115,7 @@ def main() -> None:
                 "sdk_version": SDK_VERSION,
                 "source_commit": SOURCE_COMMIT,
                 "replicates_hash": TARGET,
+                "supersedes_attempt_id": "f64247cb-d0e7-4112-98bf-0a2477b9424a",
             },
         },
     }
