@@ -29,7 +29,15 @@ remaining unspent campaign can mint.
 The `only-focus-successor` carrier is a separate 32-pair population: every complete pair and
 individual arm is fresh against the public proposal evidence, while the four focus-site strata,
 bare-placement comparator, tokenizer roster, and target original remain unchanged. It replaces
-the burned carrier rather than rerunning it, and its outcome will be filed once without tuning.
+the burned carrier rather than rerunning it. Attempt `d064806c-dc77-4831-8f80-a8bdc17c0349`
+was also truthfully aborted after tokenizer exposure: the runner selected the worst member
+independently in each stratum, so those stratum values did not aggregate to the single
+worst-member headline and the SDK refused the inconsistent payload before submission.
+
+The runner now chooses the worst member from its manifest-weighted aggregate and emits that same
+member's stratum values. `only-focus-successor-2` freezes another wholly new 32-pair population;
+the preflight also excludes individual arms retained by local aborted attempts, not just public
+measurements. This is the only carrier eligible for a post-fix attempt.
 
 ## Filed results
 

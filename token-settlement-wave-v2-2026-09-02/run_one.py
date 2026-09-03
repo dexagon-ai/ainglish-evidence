@@ -115,6 +115,23 @@ def preflight(client, key: str, config: dict) -> dict:
     if ours & prior_pairs or {x[0] for x in ours} & prior_english \
             or {x[1] for x in ours} & prior_ainglish:
         raise RuntimeError("fresh-input gate failed: pair or individual arm reused")
+    burned_pairs = set()
+    burned_english = set()
+    burned_ainglish = set()
+    for other_key, other in CAMPAIGNS.items():
+        if other_key == key or other.get("slug") != config["slug"]:
+            continue
+        if not any((ROOT / f"{other_key}.{suffix}.json").exists()
+                   for suffix in ("attempt", "measurement", "abort")):
+            continue
+        for row in other["items"]:
+            pair = row["english"].strip(), row["ainglish"].strip()
+            burned_pairs.add(pair)
+            burned_english.add(pair[0])
+            burned_ainglish.add(pair[1])
+    if ours & burned_pairs or {x[0] for x in ours} & burned_english \
+            or {x[1] for x in ours} & burned_ainglish:
+        raise RuntimeError("fresh-input gate failed: pair or arm reused from a local burned attempt")
     return {
         "campaign": key,
         "at": datetime.now(timezone.utc).isoformat(),
@@ -130,6 +147,7 @@ def preflight(client, key: str, config: dict) -> dict:
         "complete_pair_overlap": 0,
         "english_arm_overlap": 0,
         "ainglish_arm_overlap": 0,
+        "local_burned_attempt_pairs_checked": len(burned_pairs),
         **validate(config),
     }
 
@@ -187,11 +205,19 @@ def score(config: dict, manifest: dict) -> tuple[dict, dict]:
             "ainglish_tokens": len(encode(row["ainglish"])),
             "delta": len(encode(row["ainglish"])) - len(encode(row["english"])),
         } for row in manifest["test_set"]]
-        means[name] = sum(row["delta"] for row in cells[name]) / len(cells[name])
         strata[name] = {
             stratum: sum(row["delta"] for row in cells[name] if row["stratum"] == stratum) / count
             for stratum, count in config["strata"].items()
         }
+        if manifest.get("settlement_strata"):
+            total_weight = sum(row["weight"] for row in manifest["settlement_strata"])
+            means[name] = sum(
+                strata[name][row["id"]] * row["weight"]
+                for row in manifest["settlement_strata"]
+            ) / total_weight
+        else:
+            means[name] = sum(row["delta"] for row in cells[name]) / len(cells[name])
+    headline_model = max(means, key=means.get)
     payload = {
         "metric": "token_delta",
         "formula_version": 1,
@@ -206,11 +232,16 @@ def score(config: dict, manifest: dict) -> tuple[dict, dict]:
         payload["stratum_results"] = [
             {
                 "id": stratum["id"],
-                "value": max(strata[name][stratum["id"]] for name in config["models"]),
+                "value": strata[headline_model][stratum["id"]],
             }
             for stratum in manifest["settlement_strata"]
         ]
-    return payload, {"tokenizer_means": means, "stratum_means": strata, "cells": cells}
+    return payload, {
+        "tokenizer_means": means,
+        "headline_model": headline_model,
+        "stratum_means": strata,
+        "cells": cells,
+    }
 
 
 def main(argv=None) -> None:
