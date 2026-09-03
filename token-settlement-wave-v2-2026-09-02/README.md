@@ -26,6 +26,11 @@ payload, and the register refused it with 422. Tokenizer cells had already been 
 same carrier will not be reminted post hoc. The runner now binds and emits target strata before any
 remaining unspent campaign can mint.
 
+The `only-focus-successor` carrier is a separate 32-pair population: every complete pair and
+individual arm is fresh against the public proposal evidence, while the four focus-site strata,
+bare-placement comparator, tokenizer roster, and target original remain unchanged. It replaces
+the burned carrier rather than rerunning it, and its outcome will be filed once without tuning.
+
 ## Filed results
 
 ### `verifier-at`
