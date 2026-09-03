@@ -1,0 +1,165 @@
+{
+  "kind": "ainglish.token-measurement-result.v1",
+  "state": "computed_not_submitted",
+  "payload": {
+    "metric": "token_delta",
+    "value": -7.8125,
+    "value_lo": -7.8125,
+    "value_hi": -7.8125,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base"
+    ],
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": -7.8125
+      },
+      {
+        "model": "o200k_base",
+        "value": -7.8125
+      }
+    ],
+    "manifest": {
+      "metric": "token_delta",
+      "construct": "attempt: / ensure:",
+      "models": [
+        "cl100k_base",
+        "o200k_base"
+      ],
+      "replicates_hash": "368021d8306cdaee937fce51c0963a2382cc299ad1f6e2d4fee255d58d2f26b8",
+      "test_set": [
+        {
+          "id": "attempt-cache",
+          "english": "Try to refresh the cache; if it fails, report the failure honestly, and that completes this instruction.",
+          "ainglish": "attempt: refresh the cache; report failure if it does not work."
+        },
+        {
+          "id": "attempt-backup",
+          "english": "Try to create tonight's backup; report either success or an honest failure, with no guarantee of success.",
+          "ainglish": "attempt: create tonight's backup; report either outcome."
+        },
+        {
+          "id": "attempt-contact",
+          "english": "Try to contact the maintainer; an honest report that contact failed is an acceptable completion.",
+          "ainglish": "attempt: contact the maintainer; report if contact fails."
+        },
+        {
+          "id": "attempt-parse",
+          "english": "Try to parse the damaged record; if it cannot be parsed, report that failure and stop.",
+          "ainglish": "attempt: parse the damaged record; report failure and stop if needed."
+        },
+        {
+          "id": "attempt-reserve",
+          "english": "Try to reserve a worker; if none is available, report that fact as the completed result.",
+          "ainglish": "attempt: reserve a worker; report unavailability as the result."
+        },
+        {
+          "id": "attempt-fetch",
+          "english": "Try to fetch the optional metadata; report success or failure, and do not treat failure as noncompliance.",
+          "ainglish": "attempt: fetch the optional metadata; report either outcome."
+        },
+        {
+          "id": "attempt-unlock",
+          "english": "Try to unlock the archived file; if the key fails, report that honestly and consider the instruction complete.",
+          "ainglish": "attempt: unlock the archived file; report honestly if the key fails."
+        },
+        {
+          "id": "attempt-notify",
+          "english": "Try to notify the secondary endpoint; an honest delivery-failure report satisfies this instruction.",
+          "ainglish": "attempt: notify the secondary endpoint; report delivery failure honestly."
+        },
+        {
+          "id": "ensure-schema",
+          "english": "Make the output conform to the schema; do not stop merely because the first validation attempt fails.",
+          "ainglish": "ensure: the output conforms to the schema."
+        },
+        {
+          "id": "ensure-encryption",
+          "english": "Make sure every stored copy is encrypted; a failed attempt does not complete this instruction.",
+          "ainglish": "ensure: every stored copy is encrypted."
+        },
+        {
+          "id": "ensure-delivery",
+          "english": "Make the notice reach every recipient; do not stop at an unsuccessful delivery attempt.",
+          "ainglish": "ensure: the notice reaches every recipient."
+        },
+        {
+          "id": "ensure-cleanup",
+          "english": "Make all temporary files absent on completion; trying and failing to remove them is insufficient.",
+          "ainglish": "ensure: all temporary files are absent on completion."
+        },
+        {
+          "id": "ensure-permission",
+          "english": "Make the service account have read-only access; do not finish while the required permission is missing.",
+          "ainglish": "ensure: the service account has read-only access."
+        },
+        {
+          "id": "ensure-checksum",
+          "english": "Make the published checksum match the artifact; a failed comparison must be repaired before completion.",
+          "ainglish": "ensure: the published checksum matches the artifact."
+        },
+        {
+          "id": "ensure-replica",
+          "english": "Make at least two healthy replicas exist at completion; an unsuccessful creation attempt is not enough.",
+          "ainglish": "ensure: at least two healthy replicas exist at completion."
+        },
+        {
+          "id": "ensure-audit",
+          "english": "Make every rejected row appear in the audit log; do not stop after a logging attempt that loses rows.",
+          "ainglish": "ensure: every rejected row appears in the audit log."
+        }
+      ],
+      "runner": {
+        "repository": "ai-nglish/ainglish",
+        "commit": "3b6825d5d7398271a5b81a65b2c350bb1047c8db",
+        "path": "src/ainglish/token_measurement.py"
+      },
+      "design_note": "Fresh usage examples replace the target's definition-versus-form pair. Every comparator states the same attempt-or-ensure completion contract as its marked arm; no arm relies on omitted context.",
+      "items_sha256": "1af5107b420178f8cce5b748f682ecd0cb840ac7a5351f2d480fe3bbbc4f6278",
+      "comparison_identity": {
+        "kind": "ainglish.token-comparison-identity.v1",
+        "items_sha256": "1af5107b420178f8cce5b748f682ecd0cb840ac7a5351f2d480fe3bbbc4f6278",
+        "item_count": 16,
+        "tokenizer_roster": [
+          "cl100k_base",
+          "o200k_base"
+        ],
+        "comparator": "marked Ainglish instruction versus its complete careful-English escalation contract",
+        "population": "16 frozen fresh action instructions across operations, data, communication, access and validation, balanced eight attempt and eight ensure",
+        "aggregation": "equal item mean within tokenizer, then maximum tokenizer mean",
+        "unit_span": "complete action instruction"
+      },
+      "interval_kind": "member_span",
+      "tokenizer_provenance": {
+        "kind": "ainglish.tiktoken-provenance.v1",
+        "library": "tiktoken",
+        "library_version": "0.13.0",
+        "encodings": [
+          "cl100k_base",
+          "o200k_base"
+        ]
+      }
+    },
+    "attempt_id": "ba8fd848-7c6d-45eb-9beb-80a8932ad4a3",
+    "replicates_hash": "368021d8306cdaee937fce51c0963a2382cc299ad1f6e2d4fee255d58d2f26b8"
+  },
+  "audit": {
+    "manifest_commitment": "2876ab562571075806b51376957ae8cb7ce2d1b6c01937015f7c6c010ce99c79",
+    "items_sha256": "1af5107b420178f8cce5b748f682ecd0cb840ac7a5351f2d480fe3bbbc4f6278",
+    "pair_count": 16,
+    "by_tokenizer": [
+      {
+        "model": "cl100k_base",
+        "mean": -7.8125
+      },
+      {
+        "model": "o200k_base",
+        "mean": -7.8125
+      }
+    ],
+    "headline_rule": "maximum tokenizer mean (least favourable)",
+    "headline_model": "cl100k_base"
+  },
+  "next": "Submit result.payload unchanged with client.measure(slug, result['payload'])."
+}
