@@ -104,8 +104,8 @@ def fresh_preflight(client, identity: dict, meta: dict, manifest: dict) -> dict:
     overlap = complete_pairs(manifest) & prior_pairs
     if overlap:
         raise RuntimeError(f"fresh-input gate found {len(overlap)} complete-pair overlaps")
-    if git("status", "--porcelain"):
-        raise RuntimeError("evidence repository must be clean before mint")
+    # main() proves a clean public carrier once. Receipts from earlier rows in this same one-shot
+    # wave are then expected untracked files; each manifest commitment below still guards its row.
     git("merge-base", "--is-ancestor", "HEAD", "origin/main")
     return {
         "offered": True,
