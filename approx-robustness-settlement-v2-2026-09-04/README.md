@@ -13,3 +13,10 @@ the installed SDK had advanced from the bound 0.2.52 to 0.2.53. The carrier was
 left untouched and the runspec was transparently rebound to 0.2.53 after checking
 that release's changes: it adds the read-only decision projection and clarifies
 legacy-repair guidance, without changing the robustness-v4 estimator.
+
+A second pre-mint activation exposed a stale local guard: it looked only in the
+proposal's declared evidence-contract work items, while this legacy auxiliary
+robustness target correctly appears in personalised suggestions and the live
+measurement list. The corrected guard now requires all three live facts: the
+exact hash is personally offered, the exact measurement is still present, and
+its settlement state is `awaiting` and unconfirmed.

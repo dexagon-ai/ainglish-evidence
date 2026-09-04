@@ -47,8 +47,20 @@ def main() -> None:
     suggestions = client.suggestions()
     offered = {row.get("replicates_hash") for row in suggestions.get("suggestions", []) if row.get("tier") == "replications"}
     proposal = client.proposal(spec["slug"], authenticated=True)
-    live_targets = {target for item in (proposal.get("evidence_readiness") or {}).get("work_items", []) for target in (item.get("target_hashes") or [])}
-    if TARGET not in offered or TARGET not in live_targets:
+    live_target = next(
+        (
+            row
+            for row in proposal.get("measurements", [])
+            if row.get("manifest_hash") == TARGET
+        ),
+        None,
+    )
+    if (
+        TARGET not in offered
+        or live_target is None
+        or live_target.get("settlement_state") != "awaiting"
+        or live_target.get("confirmed") is not False
+    ):
         raise SystemExit("REFUSING: fresh live state no longer offers this exact robustness target")
     items, digest = panel_harness.fetch_items(spec["items_url"], spec["items_sha256"])
     manifest = dict(spec, items=items, items_sha256=digest)
