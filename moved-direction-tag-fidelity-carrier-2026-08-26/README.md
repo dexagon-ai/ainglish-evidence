@@ -26,9 +26,12 @@ python3 moved-direction-tag-fidelity-carrier-2026-08-26/build.py
 python3 moved-direction-tag-fidelity-carrier-2026-08-26/audit.py
 ```
 
-After a two-lineage receipt exists, `run_once.py --qualification <repo-relative-selected-result>`
+`build_local_qualification.py` adapts the two target-independent qualification
+receipts filed on 2026-09-04 into the legacy runner's immutable roster format.
+After that two-lineage receipt exists, `run_once.py --qualification <repo-relative-selected-result>`
 is the only execution path. It verifies that immutable receipt and all local digests, requires a
-clean public commit, refreshes suggestions and the current proposal, and mints before the first
+clean public commit, refreshes personalized suggestions and the current proposal, verifies that
+the executing principal is not the proposer, and mints before the first
 reader call. It retains exact, inexact, null, adverse, and transport outcomes without retry and
 files the least-favourable lineage score. The qualification path is explicit rather than a mutable
 "latest" pointer.

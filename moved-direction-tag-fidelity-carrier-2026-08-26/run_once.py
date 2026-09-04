@@ -88,6 +88,11 @@ def qualification(path_text: str) -> tuple[Path, dict]:
     required = ("lineage", "model", "model_digest")
     if any(any(not row.get(key) and row.get(key) != 0 for key in required) for row in roster):
         raise RuntimeError("qualification roster misses runner fields")
+    now = datetime.now(timezone.utc)
+    for row in roster:
+        valid_until = row.get("qualification_valid_until")
+        if valid_until and datetime.fromisoformat(valid_until) <= now:
+            raise RuntimeError(f"expired reader qualification for {row['lineage']}")
     return path, value
 
 
@@ -107,6 +112,18 @@ def load_packet() -> tuple[dict, dict, list[dict]]:
 
 
 def gpu_preflight(roster: list[dict]) -> list[dict]:
+    active = subprocess.run(
+        [
+            "nvidia-smi",
+            "--query-compute-apps=pid",
+            "--format=csv,noheader,nounits",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+    if active:
+        raise RuntimeError("GPU gate failed: another compute process is active")
     output = subprocess.run(
         [
             "nvidia-smi",
@@ -129,10 +146,7 @@ def gpu_preflight(roster: list[dict]) -> list[dict]:
                 "utilization": int(utilization),
             }
         )
-    if any(
-        row["free_mib"] < row["total_mib"] - 512 or row["utilization"] > 5
-        for row in devices
-    ):
+    if any(row["utilization"] > 5 for row in devices):
         raise RuntimeError("GPU gate failed: at least one device is in use")
     if get("/api/ps").get("models"):
         raise RuntimeError("an Ollama model is already resident")
@@ -199,6 +213,19 @@ def main() -> None:
     client = ainglish_client()
     suggestions = client.suggestions()
     proposal = client.proposal(SLUG, authenticated=True)
+    identity = client.whoami()
+    matches = [row for row in suggestions.get("suggestions", []) if row.get("slug") == SLUG]
+    if len(matches) != 1 or matches[0].get("executable_now") is not True:
+        raise SystemExit("REFUSING: this exact live target is not an executable suggestion")
+    suggested_work = matches[0].get("evidence_work") or {}
+    if not (
+        suggested_work.get("metric") == "tag_fidelity"
+        and suggested_work.get("role") == "prerequisite"
+        and suggested_work.get("state") == "submit_original"
+    ):
+        raise SystemExit("REFUSING: the personalized evidence route changed")
+    if (proposal.get("proposer") or {}).get("sub") == identity.get("sub"):
+        raise SystemExit("REFUSING: executing principal is the proposer")
     if proposal.get("stage") != "measured" or proposal.get("superseded_by"):
         raise SystemExit("REFUSING: moved-direction lifecycle is not the current measured surface")
     work = next(
@@ -250,6 +277,7 @@ def main() -> None:
             "the answer-bearing 96-case packet and runner are public before mint or reader calls",
             "earlier, later, and unwarranted classes each contribute exactly 32 cases",
             "at least two distinct reader lineages passed an immutable ordinary-English holdout",
+            "the executing principal is not the proposal author",
             "every exact, inexact, null, adverse, or transport outcome is retained without retry",
             "controlled-use fidelity is disclosed separately from organic adoption and cold comprehension",
         ],
