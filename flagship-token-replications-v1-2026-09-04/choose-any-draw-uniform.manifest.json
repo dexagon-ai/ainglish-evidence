@@ -1,0 +1,74 @@
+{
+  "metric": "token_delta",
+  "construct": "choose-any / draw-uniform",
+  "models": [
+    "cl100k_base",
+    "o200k_base",
+    "p50k_base"
+  ],
+  "replicates_hash": "c5a59293fc3392aa05e9e4c163114bc5facf2bb6ba431c835f51d35a17ca846c",
+  "test_set": [
+    {
+      "id": "choose-any-01",
+      "english": "Select any one mirror from the healthy set.",
+      "ainglish": "choose-any(healthy-mirrors)."
+    },
+    {
+      "id": "draw-uniform-01",
+      "english": "Draw one shard from the pool with equal probability for every shard.",
+      "ainglish": "draw-uniform(shard-pool)."
+    },
+    {
+      "id": "choose-any-02",
+      "english": "Choose any one approver from the available set.",
+      "ainglish": "choose-any(available-approvers)."
+    },
+    {
+      "id": "draw-uniform-02",
+      "english": "Select one test case with equal probability for every case.",
+      "ainglish": "draw-uniform(test-cases)."
+    },
+    {
+      "id": "choose-any-03",
+      "english": "Pick any one endpoint from the reachable set.",
+      "ainglish": "choose-any(reachable-endpoints)."
+    },
+    {
+      "id": "draw-uniform-03",
+      "english": "Draw one reviewer with equal probability for every eligible reviewer.",
+      "ainglish": "draw-uniform(eligible-reviewers)."
+    },
+    {
+      "id": "choose-any-04",
+      "english": "Select any one replica from the ready set.",
+      "ainglish": "choose-any(ready-replicas)."
+    },
+    {
+      "id": "draw-uniform-04",
+      "english": "Choose one candidate with equal probability for every candidate.",
+      "ainglish": "draw-uniform(candidates)."
+    },
+    {
+      "id": "choose-any-05",
+      "english": "Pick any one archive from the complete set.",
+      "ainglish": "choose-any(complete-archives)."
+    },
+    {
+      "id": "draw-uniform-05",
+      "english": "Select one backup with equal probability for every backup.",
+      "ainglish": "draw-uniform(backups)."
+    }
+  ],
+  "seed": "deterministic-no-randomness-20260904",
+  "method": "tiktoken encode count difference between each complete Ainglish message and its lossless English comparator; equal item mean per tokenizer; headline is the maximum tokenizer mean",
+  "environment": {
+    "library": "tiktoken",
+    "version": "0.14.0"
+  },
+  "replication_contract": {
+    "comparator": "Ainglish selection-operation pin versus an English instruction preserving arbitrary versus equal-probability choice",
+    "population": "10 wholly fresh complete messages balanced across the construct poles",
+    "aggregation": "equal item mean, then maximum tokenizer mean",
+    "result_shape": "aggregate_only"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "metric": "token_delta",
+  "construct": "on-purpose / by-accident",
+  "models": [
+    "cl100k_base",
+    "o200k_base",
+    "p50k_base"
+  ],
+  "replicates_hash": "6bb303132426134e9f52866310fcd38950dbb3a1c32697038f4f909c92329a89",
+  "test_set": [
+    {
+      "id": "on-purpose-01",
+      "english": "I rotated the signing key deliberately.",
+      "ainglish": "I rotated the signing key on-purpose."
+    },
+    {
+      "id": "by-accident-01",
+      "english": "I invalidated the cache by accident; I did not foresee that outcome.",
+      "ainglish": "I invalidated the cache by-accident."
+    },
+    {
+      "id": "on-purpose-02",
+      "english": "I paused the import deliberately.",
+      "ainglish": "I paused the import on-purpose."
+    },
+    {
+      "id": "by-accident-02",
+      "english": "I removed the label by accident; I did not foresee that outcome.",
+      "ainglish": "I removed the label by-accident."
+    },
+    {
+      "id": "on-purpose-03",
+      "english": "I quarantined the worker deliberately.",
+      "ainglish": "I quarantined the worker on-purpose."
+    },
+    {
+      "id": "by-accident-03",
+      "english": "I truncated the log by accident; I did not foresee that outcome.",
+      "ainglish": "I truncated the log by-accident."
+    },
+    {
+      "id": "on-purpose-04",
+      "english": "I delayed the notification deliberately.",
+      "ainglish": "I delayed the notification on-purpose."
+    },
+    {
+      "id": "by-accident-04",
+      "english": "I exposed the draft by accident; I did not foresee that outcome.",
+      "ainglish": "I exposed the draft by-accident."
+    }
+  ],
+  "seed": "deterministic-no-randomness-20260904",
+  "method": "tiktoken encode count difference between each complete Ainglish message and its lossless English comparator; equal item mean per tokenizer; headline is the maximum tokenizer mean",
+  "environment": {
+    "library": "tiktoken",
+    "version": "0.14.0"
+  },
+  "replication_contract": {
+    "comparator": "Ainglish adverbial intention pin versus its lossless deliberate or unforeseen-outcome gloss",
+    "population": "8 wholly fresh complete messages balanced across the construct poles",
+    "aggregation": "equal item mean, then maximum tokenizer mean",
+    "result_shape": "aggregate_only"
+  }
+}
