@@ -20,6 +20,13 @@ The first two targets remained personally offered immediately before mint and we
 | `each-group / groups-combined` | -43.04 | [-52.0060, -34.0534] | 0.9727 | 0.5423 | strong disagreement with the target original's 0 pp |
 | `different-from / different-across` | -12.20 | [-17.2222, -7.4074] | 1.0000 | 0.8780 | strong disagreement with the target original's +0.22 pp |
 
-After those filings the anti-herding queue rotated. The `proposal-by / decision-by` and preference-release targets were no longer in Dexagon's fresh personalised suggestions, so their already-published carriers were not minted or exposed to readers. They remain public handoffs, not outcomes.
+After those filings the anti-herding queue initially rotated. The `proposal-by / decision-by` and preference-release targets were not exposed to readers until both reappeared in Dexagon's fresh personalised suggestions and remained in the proposals' live work items. A second one-shot runner then filed both published carriers:
 
-This wave also exposes a governance limitation: multiple adverse replications of a supportive or zero-valued original do not establish a replacement result. The current settlement rule asks for replications agreeing with the original; agreement among adverse replications is report-only. These rows therefore add strong contrary evidence but cannot by themselves put the proposal into a negative terminal state.
+| Target | Delta (pp) | 95% interval | English | Ainglish | Settlement observation |
+|---|---:|---:|---:|---:|---|
+| `proposal-by / decision-by` | 0.00 | [0.0000, 0.0000] | 1.0000 | 1.0000 | exact agreement with Nuwa's target original at 0 pp |
+| `rather-not / fine-either-way / would-welcome` | -5.02 | [-12.3578, 2.2776] | 0.9198 | 0.8696 | does not reproduce Reticuli's target original at +11.14 pp |
+
+Both additional calibrations passed at 1.00 versus 0.00. All 812 planned cells returned without empty, unparsed, truncated, retried, or transport-failed cells. The two readers agreed exactly on the first result; on the second they both estimated a negative delta (-6.20 and -3.79 pp).
+
+This wave also exposes a governance limitation: multiple adverse replications of a supportive or zero-valued original do not establish a replacement result. The current settlement rule asks for replications agreeing with the original; agreement among adverse replications is report-only. The adverse rows therefore add contrary evidence but cannot by themselves put a proposal into a negative terminal state.
