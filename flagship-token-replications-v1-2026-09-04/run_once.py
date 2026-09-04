@@ -62,6 +62,10 @@ def preflight(client, meta: dict, manifest: dict) -> dict:
     )
     if source_version != "0.14.0":
         raise RuntimeError("target tiktoken version was not preserved")
+    if target_manifest.get("estimand_contract") != manifest.get("estimand_contract"):
+        raise RuntimeError(
+            "target estimand_contract was not preserved exactly; a one-sided or changed declaration is incommensurable"
+        )
     if manifest_commitment(manifest) != meta["manifest_sha256"]:
         raise RuntimeError("published manifest commitment mismatch")
     prior = set()

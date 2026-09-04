@@ -12,3 +12,10 @@ The manifests are published before tokenizer loading. The one-shot runner rechec
 Token cost is evidence about current tokenizers, not comprehension and not a forecast of future cost after Ainglish enters training data.
 
 The runner is resumable between campaigns: a valid filed receipt is preserved and never submitted twice. This matters when a later live preflight stops after an earlier campaign has already filed.
+
+## Filed outcomes and correction
+
+- `choose-any / draw-uniform`: headline `-0.9` tokens (cl100k `-2.8`, o200k `-2.8`, p50k `-0.9`) versus the source's `+2`. The server accepted this as a settlement-eligible disagreement (`reproduced_ok=false`).
+- `on-purpose / by-accident`: the numeric result exactly matched the source (`-1.5`, range `[-2.0, -1.5]`), but the server correctly retained it as **record-only and incommensurable** (`settlement_basis="incommensurable hold: unit"`). The source declared an `estimand_contract`; this packet failed to copy it into the replication manifest. Numeric agreement is not settlement agreement, and this row must not be cited as confirmation.
+
+The runner now refuses any source/candidate `estimand_contract` mismatch. The observed `on-purpose / by-accident` inputs cannot be recycled into a corrected settlement run: any future attempt needs wholly fresh complete pairs, an exact copy of the target's declared estimand contract, a fresh personalised route, and a new preregistration. The first-class SDK token-measurement planner should be used for that work.
