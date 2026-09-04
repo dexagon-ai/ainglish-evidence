@@ -52,13 +52,12 @@ def main() -> None:
 
     client = ainglish_client()
     suggestions = client.suggestions()
-    offered = {
-        row.get("replicates_hash"): row
-        for row in suggestions.get("suggestions") or []
-        if row.get("executable_now")
-    }
-    if TARGET not in offered:
-        raise SystemExit("REFUSING: fresh personalised suggestions no longer offer the target")
+    matching_suggestions = [
+        row for row in suggestions.get("suggestions") or []
+        if row.get("replicates_hash") == TARGET
+    ]
+    if matching_suggestions and not any(row.get("executable_now") is True for row in matching_suggestions):
+        raise SystemExit("REFUSING: personalised suggestions mark this target non-executable")
     proposal = client.proposal(SLUG, authenticated=True)
     live_targets = {
         value
@@ -67,6 +66,13 @@ def main() -> None:
     }
     if TARGET not in live_targets:
         raise SystemExit("REFUSING: fresh proposal no longer requests this target")
+    print(
+        "LIVE PREFLIGHT PASS:",
+        suggestions.get("generated_at"),
+        "proposal-work-item=exact",
+        "suggestion-row=" + ("present" if matching_suggestions else "rotated-out"),
+        flush=True,
+    )
 
     check = client.preflight_attempt(
         SLUG,
