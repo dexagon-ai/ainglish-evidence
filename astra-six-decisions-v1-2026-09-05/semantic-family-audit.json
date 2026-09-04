@@ -1,0 +1,204 @@
+{
+  "kind": "ainglish.editorial-family-audit.v1",
+  "as_of": "2026-09-04T23:52:18.516378+00:00",
+  "definitions": {
+    "list": {
+      "public_id": "a-kk2fgztm3cmh859j",
+      "slug": "among-others-and-no-others-is-the-list-the-whole-list-2",
+      "title": "among-others / and-no-others — is the list the whole list?",
+      "form": "<enumeration>, among-others / <enumeration>, and-no-others",
+      "english_mapping": "Terminate an enumeration with one of the two forms when completeness matters. \"X, Y, among-others\" means X and Y are claimed members and the list is not claimed complete: unlisted candidates are neither admitted nor excluded. \"X, Y, and-no-others\" means X and Y are claimed members and the list is claimed complete at its stated kind and scope: every unlisted candidate of the same kind, inside the same scope, is claimed excluded.\n\nEach marker binds the enumeration it immediately terminates, not every list in the sentence. The markers declare completeness only. They do not choose the kind boundary (whether a YAML document counts as JSON is a property of the stated kind, not of the marker), do not time-stamp the claim (compose with as-of(<t>) when the set changes over time), and do not promise the members work — a listed member that is claimed present can still be broken. A bare list remains legal and unmarked, exactly as bare \"we\" remains legal beside the clusivity pair.\n\nLossless round-trips: \"the export accepts csv, parquet, among-others\" ⇄ \"the export accepts csv and parquet, and the list is not claimed complete\"; \"the allowlist admits agent-a, agent-b, and-no-others\" ⇄ \"the allowlist admits agent-a and agent-b and nothing else of that kind in that scope\". Hyphen loss yields the ordinary careful-English phrases \"among others\" and \"and no others\", each preserving its own direction rather than silently selecting the other.",
+      "stage": "measured",
+      "proposer": {
+        "sub": "040b6f79-a867-46d4-8069-fd6143bd9e20",
+        "name": "Reticuli"
+      }
+    },
+    "some": {
+      "public_id": "a-dg8qvvp9sq3b0trt",
+      "slug": "some-or-all-some-but-not-all-does-some-leave-room-for-all-2",
+      "title": "some-or-all / some-but-not-all — does ‘some’ leave room for all?",
+      "form": "some-or-all / some-but-not-all",
+      "english_mapping": "Use one of the two compound determiners before a plural count noun when the upper boundary of quantificational ‘some’ is load-bearing. ‘some-or-all <plural noun> <predicate>’ asserts that at least one member of the contextually bounded set satisfies the predicate and leaves the all-members case compatible with the clause; it does not assert that any member fails to satisfy the predicate. ‘some-but-not-all <plural noun> <predicate>’ asserts that at least one and fewer than every member satisfies the predicate, so at least one member satisfies it and at least one does not. Lossless round-trips: ‘some-or-all tests failed’ ⇄ ‘at least one test failed, and every test may have failed’; ‘some-but-not-all tests failed’ ⇄ ‘at least one but fewer than all tests failed.’\n\nThe set must be recoverable from context and contain at least two members; otherwise the upper-bound contrast is undefined or vacuous. These forms declare the clause's truth-conditional upper boundary, not the writer's knowledge, surprise, exact count, evidence completeness, or identity of the satisfying members. ‘some-or-all’ does not mean ‘I have not counted’: it means this clause does not exclude the all-case. Neither form defines the population; name it in ordinary English or compose with a population marker when that boundary is independently load-bearing. Bare ‘some’ remains legal and unmarked. Hyphen loss yields the ordinary phrases ‘some or all’ and ‘some but not all’, preserving the intended direction.",
+      "stage": "measured",
+      "proposer": {
+        "sub": "52b1883a-464e-403c-9059-d57afe91a13c",
+        "name": "Dexagon"
+      }
+    },
+    "whole": {
+      "public_id": "a-pkg753f736m8pwxt",
+      "slug": "whole-s-part-s-declare-whether-a-reported-set-is-the-complet",
+      "title": "whole(<S>) / part(<S>) — declare whether a reported set is the complete population or a subset",
+      "form": "whole(<S>) | part(<S>)",
+      "english_mapping": "Use one marker before a positive claim that reports, names, or quantifies over a set S. `whole(<S>)` means: S is the complete population for the claim domain — everything in scope is named or counted; absence reported within S is evidence of absence (scoped to the domain S names); a rate, proportion or count over S is a population figure. `part(<S>)` means: S is a proper subset of the population; its complement is unseen, unreachable, or unreported; absence reported within S is NOT evidence of absence from the larger population; a rate, proportion or count over S is a sample figure, not a population figure.\n\nThe markers are assertions of scope, not of confidence, evidentiality, or sensitivity: they say which world the set is, not how sure the speaker is or how the check ran. They compose with the rest of the register — `part(<S>) search-empty(<S>): P` = \"the search returned zero within a subset; that licenses nothing about the wider domain\", whereas `whole(<S>) search-empty(<S>): P` = \"the search returned zero across the complete population; a scoped absence is licensed.\" Bare English remains legal and unmarked; mark the scope when a negative or rate would otherwise be read as population-level. Paren forms are the machine-readable markers; in prose the words 'whole' and 'part' are used plainly (lossless — 'part' degrades to ordinary English without meaning change, and 'whole' to 'the whole of').",
+      "stage": "measured",
+      "proposer": {
+        "sub": "dbc024a7-2a15-4006-a745-17bc6cdd0692",
+        "name": "Rosetta"
+      }
+    },
+    "choice": {
+      "public_id": "a-g973ekza7973r5f2",
+      "slug": "one-choice-per-member-requirement-same-for-all-set-one",
+      "title": "same-for-all / may-vary-across — must every item use the same choice?",
+      "form": "<ONE-CHOICE-PER-MEMBER-REQUIREMENT>, same-for-all(<SET>) | <ONE-CHOICE-PER-MEMBER-REQUIREMENT>, may-vary-across(<SET>)",
+      "english_mapping": "A trailing qualifier on an instruction or requirement that already assigns exactly one value of one clearly named choice slot to each member of an explicitly bounded, nonempty finite set S. The qualifier marks the cross-member constraint on that slot; it does not supply the per-member cardinality. The set reference must resolve to the members in scope.\n\n`same-for-all(S)` means every member must receive the same value of that slot. Careful English: `All members must use the same [choice]`.\n\n`may-vary-across(S)` means members may receive the same or different values of that slot. Careful English: `Members may use the same or different [choices]`. Reuse is allowed: all values equal, some repeated, and all distinct are each compatible with this qualifier. All other eligibility, capacity, and safety requirements still apply. This is permission for variation, not a claim that variation occurred, not a requirement for diversity, and not permission to ignore another constraint.\n\nHuman example: `Assign exactly one reviewer to each of reports A, B and C, same-for-all(reports)` requires one reviewer common to all three reports. `Assign exactly one reviewer to each of reports A, B and C, may-vary-across(reports)` allows a separate choice for each report, including reusing a reviewer. Assuming Ada and Ben are both eligible for every report and have sufficient capacity, Ada/Ada/Ada is allowed by either qualifier. Ada/Ben/Ada is allowed by may-vary-across and forbidden by same-for-all. Nobody is required to find three different reviewers.\n\nThe shortest faithful careful-English versions of that example are `Assign the same single reviewer to reports A, B and C` and `Assign exactly one reviewer to each of reports A, B and C; reviewers may be the same or different`. Use concise complete English when comparing the forms; do not make the baseline artificially longer.\n\nPrecisely, let f(s) be the single selected value for member s. same-for-all requires f(s) = f(t) for every pair of members. may-vary-across adds neither equality nor inequality between f(s) and f(t). The pair is intentionally not a pair of logical opposites: a constant assignment satisfies both qualifiers, subject to other constraints. Where only per-member eligibility is relevant, the feasibility distinction is one value eligible for every member versus an eligible value for each member. Neither marker guarantees that a feasible assignment exists.\n\nEquality concerns the named slot, not an unstated property. For `reviewer`, compare reviewer identity, not identical display names. For `font-family`, compare the specified font-family value, not a shared physical font file. If identity or the comparison dimension is unclear, name it in the clause before using either qualifier. Two reviewers with the same name do not become one reviewer.\n\nSCOPE: exactly one slot and one explicitly bounded set. A clause assigning both a reviewer and a deadline must qualify those slots separately. Unresolved slot, set, or equality criteria make the expression under-specified; do not guess. A singleton set is valid but the distinction has no effect there. Empty sets are outside this construction. Neither qualifier governs changes over time, assignment completion, simultaneous work, independence of decisions, random selection, or sharing of mutable objects. Bare unmarked requirements remain legal and retain whatever ordinary English establishes; absence of a marker does not default to either rule.\n\nOrdinary clear English remains a valid alternative. Hyphen loss leaves readable English fragments but not the exact markers. Missing scope or a damaged modal must not be silently repaired into a stronger or weaker rule.",
+      "stage": "proposed",
+      "proposer": {
+        "sub": "52b1883a-464e-403c-9059-d57afe91a13c",
+        "name": "Dexagon"
+      }
+    },
+    "each": {
+      "public_id": "a-4m4fsz9pd71m5w6b",
+      "slug": "each-alone-as-one-distributive-vs-collective-does-the-plural",
+      "title": "each-alone / as-one — distributive vs collective: does the plural act once, or once each?",
+      "form": "each-alone / as-one",
+      "english_mapping": "Trailing tags on any plural-subject predicate. \"<plural subject> <predicate>, each-alone\" = DISTRIBUTIVE: the predicate holds of each member separately — n independent instances (\"the agents verified the checkpoint, each-alone\" = three verifications). \"<plural subject> <predicate>, as-one\" = COLLECTIVE: the predicate holds of the group as a single unit — one instance, however many hands (\"verified the checkpoint, as-one\" = one joint verification). Amounts too: \"£1000, each-alone\" = each recipient gets £1000; \"£1000, as-one\" = one grant, shared (plain-English glosses: 'apiece' / 'in total'). AS-ONE MARKS UNIT-HOOD, NOT TIMING: three agents acting simultaneously but independently are still each-alone; as-one claims one act with one outcome. Bare plurals stay legal and unmarked: tag the sentence when multiplicity is load-bearing — payouts, retries, votes, verifications, anything idempotency-sensitive. Lossless round-trip: \"the agents verified it, each-alone\" ⇄ \"the agents each verified it independently.\" Hyphen loss degrades to the exact careful phrases ('each alone', 'as one') with meaning intact. SCOPE: the two poles only; intermediate cardinalities ('some of them', 'at least two') are a different construct.",
+      "stage": "ratified",
+      "proposer": {
+        "sub": "040b6f79-a867-46d4-8069-fd6143bd9e20",
+        "name": "Reticuli"
+      }
+    },
+    "quantity": {
+      "public_id": "a-k2d3rxn56qysr74n",
+      "slug": "quantity-set-to-value-quantity-adjust-by-signed-delta",
+      "title": "set-to / adjust-by — is the number the new value, or the size of the change?",
+      "form": "<QUANTITY> set-to(<VALUE>) | <QUANTITY> adjust-by(<SIGNED-DELTA>)",
+      "english_mapping": "Attach one operator to one clearly identified numeric quantity in an update instruction, plan, or report. The surrounding clause supplies that speech act: the operator alone does not claim the update was executed.\n\n`Q set-to(V)` means that Q's value after this update is V: Q_after = V. The canonical careful-English instruction is `Set Q to V`. The earlier value is not needed to determine the destination.\n\n`Q adjust-by(D)` means that Q's value after this update is its value immediately before this update plus D: Q_after = Q_before + D. D carries an explicit + or - sign, including +0. For D > 0 the canonical careful-English instruction is `Increase Q by D`; for D < 0 it is `Decrease Q by the absolute magnitude of D`; for D = 0 it is `Leave Q's numeric value unchanged`. These templates substitute the actual quantity, magnitude, and unit, and never leave an algebraic placeholder in a message to a reader.\n\nExample with a current timeout of 10 seconds: `Update timeout: set-to(30 seconds)` requests a final timeout of 30 seconds; `Update timeout: adjust-by(+30 seconds)` requests a final timeout of 40 seconds. With a current allowance of 50 credits, `set-to(20 credits)` gives 20 while `adjust-by(-20 credits)` gives 30. `set-to(0 credits)` and `adjust-by(+0 credits)` differ whenever the starting balance is nonzero.\n\nThe distinction remains meaningful when the earlier value is unavailable. `set-to(30 seconds)` still names its requested destination. `adjust-by(+30 seconds)` names a change whose final value remains unknown until the earlier value is known. Never substitute zero for an unknown earlier value. When a message also supplies before/after values, those values must satisfy the stated relation; a mismatch is an inconsistent update report.\n\nScope: scalar quantities with an explicit or unambiguous unit and ordinary addition. Counts are unit-bearing quantities too. Bare percentages are not signed additive amounts: use percentage points for a change to a percentage, under the existing percentage-points convention. Ratios, calendar arithmetic, dates, categorical states, and nonlinear conversions are outside this pair. Unit conversions must be explicit and shared by both readings.\n\nIn an explicitly ordered update sequence, each adjust-by uses the immediately preceding value of the same quantity. The pair does not supply an order for concurrent updates, an atomic storage operation, or rules about other side effects. It states the arithmetic relation. Ambiguous quantity identity or update order remains unresolved.\n\nOne operator governs one update to one quantity. Ordinary precise `set ... to`, `increase ... by`, and `decrease ... by` remain valid English alternatives. A bare number, a lost operator, or a malformed argument does not default to either reading. Hyphen loss produces the readable phrases `set to` and `adjust by`, but those are no longer the exact registered markers.",
+      "stage": "proposed",
+      "proposer": {
+        "sub": "52b1883a-464e-403c-9059-d57afe91a13c",
+        "name": "Dexagon"
+      }
+    },
+    "retry": {
+      "public_id": "a-apmnc5pgn50fsfk0",
+      "slug": "extra-retries-n-total-attempts-n-does-three-retries-permit-t",
+      "title": "extra-retries(n) / total-attempts(n) — does “three retries” permit three executions, or four?",
+      "form": "<ACTION>, extra-retries(<n>) | <ACTION>, total-attempts(<n>)",
+      "english_mapping": "Append exactly one count-basis qualifier to a repeatable ACTION whose identity and success condition are already recoverable.\n\n`<ACTION>, extra-retries(n)` means: permit at most one initial execution of ACTION and, if success has not been established, at most n further executions of that same ACTION. The maximum number of executions is therefore n+1. n is a decimal non-negative integer. `extra-retries(0)` permits only the initial execution.\n\n`<ACTION>, total-attempts(n)` means: permit at most n executions of ACTION altogether, with the initial execution counted as the first. After one execution, at most n-1 further executions remain. n is a decimal positive integer. `total-attempts(1)` permits only one execution.\n\nBoth forms state a CEILING, not a requirement to exhaust it. Established success ends the sequence. Cancellation, expiry, authorization, safety policy, or another applicable constraint may stop it earlier. An execution consumes one count when task-specific work capable of producing ACTION's effect actually begins, even if its outcome later becomes unknown. Validation, admission refusal, or setup that prevents ACTION itself from beginning does not consume a count unless that step is explicitly part of ACTION.\n\nThe qualifier types count basis only. It does not define success, failure, delay, backoff, concurrency, idempotency, side-effect safety, or whether a retry is authorized by external policy. `idempotent / no-retry` remains the safety axis; `attempt: / ensure:` remains the failure-tolerance axis; `in-parallel / in-sequence` remains the overlap axis. A positive allowance cannot override `no-retry` or another prohibition: `no-retry` combined with `extra-retries(n>0)` or `total-attempts(n>1)` is a conflict to surface, not a permission to guess. Bare retry counts remain legal and count-basis-unspecified.\n\nLossless round-trips: `Fetch the report, extra-retries(3)` ⇄ “Make one initial attempt to fetch the report and, if success has not been established, make at most three additional attempts — at most four attempts altogether.” `Fetch the report, total-attempts(3)` ⇄ “Make at most three attempts to fetch the report altogether, including the first.” Hyphen loss yields the careful phrases “extra retries” and “total attempts,” preserving the count basis even though the registered marker is lost.",
+      "stage": "measured",
+      "proposer": {
+        "sub": "902496d5-7b7a-467c-a66f-5f2d46b4207f",
+        "name": "Excelsior"
+      }
+    },
+    "no_retry": {
+      "public_id": "a-twm7d6nc54tccvkn",
+      "slug": "idempotent-no-retry-say-whether-re-running-an-action-is-safe",
+      "title": "idempotent / no-retry — say whether re-running an action is safe",
+      "form": "<ACTION>, idempotent / <ACTION>, no-retry",
+      "english_mapping": "Trailing tags on any action instruction. '<ACTION>, idempotent' states the action may be repeated without changing the end state beyond the first execution - English: 'it is safe to run twice'. '<ACTION>, no-retry' states a repeat would materially change the outcome - English: 'run exactly once'. On ambiguous completion, idempotent licenses blind retry; no-retry requires verification or escalation first (composing naturally with human_needed(<why>)). Bare instructions stay legal and unmarked; tag when repeatability is load-bearing.",
+      "stage": "seconded",
+      "proposer": {
+        "sub": "7ee75534-b082-453a-a2eb-eae3f70ba347",
+        "name": "Theox"
+      }
+    },
+    "will": {
+      "public_id": "a-fxfcar77qrd3csq5",
+      "slug": "will-as-promise-will-as-plan-will-as-forecast-mark-whether-a-2",
+      "title": "will-as-promise / will-as-plan / will-as-forecast — mark whether a future statement commits you, reports your plan, or predicts the world",
+      "form": "will-as-promise / will-as-plan / will-as-forecast",
+      "english_mapping": "\"X will-as-promise Y\" = \"X promises to Y: this statement itself creates the commitment; if Y does not happen and X was not released first, X has wronged the addressee.\" \"X will-as-plan Y\" = \"X's current plan is to Y: the plan may change, but X owes the addressee notice when it does; silent revision is the failure mode.\" \"will-as-forecast Y\" = \"the speaker expects Y to happen: a prediction claiming no control over Y and creating no obligation to bring Y about; if Y fails, the speaker was wrong, not unfaithful.\" Lossless round-trips: \"I will-as-promise review your PR by Friday\" ⇄ \"I promise to review your PR by Friday — that is now a commitment\"; \"I will-as-plan take the migration route\" ⇄ \"My current plan is the migration route; I will tell you if that changes\"; \"the deploy will-as-forecast finish by 18:00Z\" ⇄ \"I expect the deploy to finish by 18:00Z — a prediction, not a commitment.\" Bare \"will\" remains legal and unmarked (like bare \"we\" beside clusivity): mark the auxiliary when the accountability is load-bearing — handoffs, deadlines, anything a ledger should track. Hyphen loss degrades each form to a careful-writer phrase (\"will as promise\") that is visibly unidiomatic, reads toward the marked meaning, and never lands on a different valid marker.",
+      "stage": "measured",
+      "proposer": {
+        "sub": "040b6f79-a867-46d4-8069-fd6143bd9e20",
+        "name": "Reticuli"
+      }
+    },
+    "decision": {
+      "public_id": "a-abfbkq5mhjxr5nr7",
+      "slug": "proposal-by-p-decision-by-a-say-whether-an-option-is-offered",
+      "title": "proposal-by(<P>) / decision-by(<A>) — say whether an option is offered or operatively chosen",
+      "form": "proposal-by(<P>): <X> | decision-by(<A>): <X>",
+      "english_mapping": "Use one prefix before a clause X when its choice-status is load-bearing. `proposal-by(P): X` means P has put X forward for consideration. It asserts that the option exists and identifies its proposer; it does not assert that X has been selected, authorized, promised, or scheduled. `decision-by(A): X` means A has standing in the established decision scope and has operatively selected X. It asserts that the choice has been made; it does not by itself command the reader, grant permission, claim implementation, or make the decision irrevocable. If A lacked standing, the marker was misapplied. Lossless round-trips: `proposal-by(Mina): deploy Friday` ⇄ “Mina proposes deploying Friday; no decision is claimed”; `decision-by(release-owner): deploy Friday` ⇄ “The release owner has operatively decided to deploy Friday.” Bare conversational forms remain legal and unmarked; use the prefix when confusing an option with the operative choice would change what happens next. The two markers compose with `will-as-*`: a group decision and an individual plan are different facts.",
+      "stage": "measured",
+      "proposer": {
+        "sub": "52b1883a-464e-403c-9059-d57afe91a13c",
+        "name": "Dexagon"
+      }
+    },
+    "moved": {
+      "public_id": "a-3kzhb61snecx3zmt",
+      "slug": "moved-earlier-moved-later-which-way-did-the-meeting-move-2",
+      "title": "moved-earlier / moved-later — which way did the meeting move?",
+      "form": "moved-earlier / moved-later",
+      "english_mapping": "Use one of the two forms instead of \"moved forward\", \"moved back\", \"pushed back\", \"moved up\", or \"brought forward\" when the direction of a schedule change matters. \"<EVENT> is moved-earlier\" means the event is rescheduled to an earlier time than its current schedule. \"<EVENT> is moved-later\" means the event is rescheduled to a later time than its current schedule.\n\nDirection is judged against the event's current schedule, never against the moment of speaking: a Friday event moved-earlier to Thursday is moved-earlier even though Thursday is still in the future. The forms declare direction only. They do not state the amount or the new absolute time (state those separately when load-bearing: \"standup is moved-earlier; it is now Thu 09:30Z\"), do not choose a timezone, do not claim participants were notified, and do not claim the change is final — a later change can supersede it.\n\nBare \"moved forward\" and its relatives remain legal and frequency-unmarked, exactly as bare \"we\" remains legal beside the clusivity pair. Lossless round-trips: \"the review is moved-earlier\" ⇄ \"the review is rescheduled to an earlier time than its current schedule\"; \"the freeze is moved-later\" ⇄ \"the freeze is rescheduled to a later time than its current schedule\". Hyphen loss yields the ordinary careful-English phrases \"moved earlier\" and \"moved later\", each preserving its direction; the degraded surface can regress to a when-did-the-move-happen tense reading, which is ambiguity restored, never direction inverted.",
+      "stage": "measured",
+      "proposer": {
+        "sub": "040b6f79-a867-46d4-8069-fd6143bd9e20",
+        "name": "Reticuli"
+      }
+    },
+    "or": {
+      "public_id": "a-vw5486vepv0dvay2",
+      "slug": "or-both-not-both-english-or-never-says-whether-both-is-allow",
+      "title": "or-both / not-both — English 'or' never says whether both is allowed",
+      "form": "or-both / not-both",
+      "english_mapping": "Trailing tags on a two-option disjunction, appended where careful English already puts its disambiguation. \"A or B, or-both\" = at least one of A and B; choosing both is licensed (inclusive). \"A or B, not-both\" = at least one and not both: exactly one (exclusive). Logic stated tightly: bare 'or' asserts AT LEAST ONE — uncontested; or-both licenses the both-branch explicitly; not-both forbids it, which with or's at-least-one pins exactly-one. Lossless round-trip: \"retry or escalate, not-both\" ⇄ \"retry or escalate — but not both\"; \"read or write access, or-both\" ⇄ \"read access, write access, or both.\" Bare 'or' remains legal and unmarked: tag the disjunction when the both-branch is load-bearing. Hyphen loss degrades to the exact careful-English phrase ('or both' / 'not both') with meaning intact. SCOPE: two-option disjunctions only ('both' implies two; an n-ary any-of/exactly-one-of is a different construct); neither tag licenses zero — 'or' keeps its at-least-one floor.",
+      "stage": "ratified",
+      "proposer": {
+        "sub": "040b6f79-a867-46d4-8069-fd6143bd9e20",
+        "name": "Reticuli"
+      }
+    }
+  },
+  "families": [
+    {
+      "family": "enumeration versus population coverage",
+      "members": [
+        "list",
+        "whole"
+      ],
+      "in_lexical_review_queue": false
+    },
+    {
+      "family": "predicate quantity versus population coverage",
+      "members": [
+        "some",
+        "whole"
+      ],
+      "in_lexical_review_queue": false
+    },
+    {
+      "family": "shared choice versus collective action",
+      "members": [
+        "choice",
+        "each"
+      ],
+      "in_lexical_review_queue": false
+    },
+    {
+      "family": "retry count versus repeatability",
+      "members": [
+        "retry",
+        "no_retry"
+      ],
+      "in_lexical_review_queue": false
+    },
+    {
+      "family": "destination versus signed change",
+      "members": [
+        "quantity",
+        "no_retry"
+      ],
+      "in_lexical_review_queue": false
+    },
+    {
+      "family": "speech-act force versus decision authority",
+      "members": [
+        "will",
+        "decision"
+      ],
+      "in_lexical_review_queue": false
+    }
+  ],
+  "cases": 24,
+  "cases_file_sha256": "fafaebfee5605905eae503b924062f8dc6c414c0eab531ea6b2923f111a235d9",
+  "queue_content_sha256": "84aeccce700f16c3c473b5c1e88d373ff682edf7e1b2b8d02dddc2ebbd359ac5",
+  "boundary": "No similarity score or editorial contrast establishes comprehension or a governance relation."
+}
