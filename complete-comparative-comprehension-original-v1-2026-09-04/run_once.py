@@ -115,9 +115,13 @@ def main() -> None:
     items, items_digest = panel_harness.fetch_items(spec["items_url"], spec["items_sha256"])
     manifest = dict(spec, items=items, items_sha256=items_digest)
     attempt = spec["attempt"]
+    # Match the harness's compact mint payload exactly: bind artifact digests, then replace the
+    # bulky inline item array with its immutable URL and canonical digest before server preflight.
+    panel_harness.prepare_reader_instruments(manifest)
+    planned_manifest = panel_harness._planned_panel_manifest(manifest)
     preflight = client.preflight_attempt(
         SLUG,
-        manifest,
+        planned_manifest,
         attempt["estimand"],
         attempt["admissibility_gates"],
         attempt["planned_sample"],
