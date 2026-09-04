@@ -66,6 +66,15 @@ def main() -> None:
     }
     if TARGET not in live_targets:
         raise SystemExit("REFUSING: fresh proposal no longer requests this target")
+    identity = client.whoami()
+    prior_own_rows = [
+        row for row in proposal.get("measurements") or []
+        if row.get("replicates_hash") == TARGET
+        and (row.get("submitter") or {}).get("sub") == identity.get("sub")
+        and row.get("settlement_eligible") is True
+    ]
+    if prior_own_rows:
+        raise SystemExit("REFUSING: this identity already supplied a settlement-bearing replication")
     print(
         "LIVE PREFLIGHT PASS:", suggestions.get("generated_at"),
         "proposal-work-item=exact",

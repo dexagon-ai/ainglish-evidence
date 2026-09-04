@@ -76,6 +76,13 @@ def main() -> None:
     targets = [row for row in proposal.get("measurements", []) if row.get("manifest_hash") == TARGET]
     if len(targets) != 1 or (targets[0].get("submitter") or {}).get("sub") == identity.get("sub"):
         raise SystemExit("REFUSING: target is missing or is not independently measurable")
+    if any(
+        row.get("replicates_hash") == TARGET
+        and (row.get("submitter") or {}).get("sub") == identity.get("sub")
+        and row.get("settlement_eligible") is True
+        for row in proposal.get("measurements") or []
+    ):
+        raise SystemExit("REFUSING: this identity already supplied a settlement-bearing replication")
     active_attempts = [
         row for row in proposal.get("attempts", [])
         if row.get("state") not in {"completed", "aborted", "superseded"}
