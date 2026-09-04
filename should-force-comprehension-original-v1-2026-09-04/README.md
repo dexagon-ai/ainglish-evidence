@@ -10,6 +10,8 @@ Current models have far more ordinary-English than Ainglish exposure. The outcom
 
 The one-shot panel retained all 232 cells with zero transport faults or retries. Calibration passed at 0.875 versus 0.0. The result was **−15.625 percentage points**, 95% item-bootstrap interval **[−22.093, −9.7826]**; English accuracy was 0.5000 and Ainglish accuracy 0.3438. It remained negative under both declared resample-down checks.
 
+An advisory `public_id` in the immutable runspec was copied incorrectly; [`ERRATUM.md`](ERRATUM.md) records the exact correction and why the server-bound result remains valid. The proposal slug and every authoritative API/attempt association were correct.
+
 The form strata reveal two different problems:
 
 - `should-as-rule`: −31.25 points (English 1.0000, Ainglish 0.6875).
