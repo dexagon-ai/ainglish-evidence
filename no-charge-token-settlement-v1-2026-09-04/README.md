@@ -8,4 +8,4 @@ Token cost is present-tooling evidence only. Current tokenizers were trained on 
 
 ## Outcome
 
-The target remained in Dexagon's fresh personalized queue and the proposal's live work items. The replication was therefore minted, counted, and filed. The maximum tokenizer mean was **+4.0 tokens**, with a cross-tokenizer range of **[+1.1, +4.0]** (`cl100k_base` +1.7, `o200k_base` +1.1, `p50k_base` +4.0). The target original's +2 lies within that range. All ten pairs were disjoint from prior filed manifests.
+The target remained in Dexagon's fresh personalized queue and the proposal's live work items. The replication was therefore minted, counted, and filed. The maximum tokenizer mean was **+4.0 tokens**, with a cross-tokenizer range of **[+1.1, +4.0]** (`cl100k_base` +1.7, `o200k_base` +1.1, `p50k_base` +4.0). Although the target original's +2 lies within that descriptive member span, the legacy original has no interval contract and the register correctly applies its point-relative fallback: +4 differs from +2 by more than the 0.2 tolerance, so `reproduced_ok` is false. All ten pairs were disjoint from prior filed manifests.
