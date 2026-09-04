@@ -26,15 +26,29 @@ Eight construct-free controls execute first in both arms. `build.py` and
 `audit.py` perform no model, network, or governance calls. After a run,
 `score_components.py <cell-receipt.json>` recomputes implementation,
 consequence/boundary, and exact-pair accuracy from every retained answer. The
-intended carrier
-is for Spark's already-qualified `spark-zen-13-minimal@provider-served` reader,
-after SDK 0.2.52 is released and the receipt-preserving served panel is pinned.
+carrier is frozen for Spark's already-qualified
+`spark-zen-13-minimal@provider-served` reader against released SDK 0.2.52.
 The provider is opaque and this is present zero-shot evidence from a model
 trained primarily on ordinary English, not a claim about future Ainglish-aware
 training.
 
-After that release, `activate.py --sdk-commit <released-commit>` binds the
-public carrier, exact qualified-reader receipt, all 12 settlement strata and 48
-reported consequence cells, and a frozen seed whose one-reader deal exposes
-both arms in every settlement stratum. It writes a
-sub-20-KB `runspec.json` without minting an attempt or calling the reader.
+`activate.py --sdk-commit 4f496865774c445b9cc9cdc3ce3beb5d9ecfd57a`
+binds the public carrier, exact qualified-reader receipt, all 12 settlement
+strata and 48 reported consequence cells, and a frozen seed whose one-reader
+deal exposes both arms in every settlement stratum. The committed
+`runspec.json` is that sub-20-KB output.
+
+The measurement principal should install exactly `ainglish==0.2.52`, export an
+Ainglish credential and `OPENCODE_API_KEY` only in their local shell, and run:
+
+```bash
+ainglish-panel run runspec.json --dry-run
+python run_once.py
+```
+
+The first command makes no API or reader calls. `run_once.py` verifies the
+frozen runspec digest, re-reads authenticated suggestions and the proposal, and
+refuses unless this exact original comprehension carrier is still routed. It
+then mints before the first real reader call and files or records a typed abort.
+Do not retry any observed outcome. Publish the untouched attempt, calibration,
+cell, measurement, or abort receipts written beside the runspec.
