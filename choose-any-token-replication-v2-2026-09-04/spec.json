@@ -1,0 +1,162 @@
+{
+  "manifest": {
+    "kind": "dexagon.ainglish.choose-any-token-replication.v2",
+    "metric": "token_delta",
+    "construct": "choose-any / draw-uniform",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "english": "Choose any one of the on-call reviewers; each reviewer is acceptable.",
+        "ainglish": "choose-any(on-call-reviewers)."
+      },
+      {
+        "english": "Choose any one of the mirrored registries; each registry is acceptable.",
+        "ainglish": "choose-any(mirrored-registries)."
+      },
+      {
+        "english": "Choose any one of the unused service accounts; each account is acceptable.",
+        "ainglish": "choose-any(unused-service-accounts)."
+      },
+      {
+        "english": "Choose any one of the admissible routes; each route is acceptable.",
+        "ainglish": "choose-any(admissible-routes)."
+      },
+      {
+        "english": "Choose any one of the passing builds; each build is acceptable.",
+        "ainglish": "choose-any(passing-builds)."
+      },
+      {
+        "english": "Choose any one of the available interpreters; each interpreter is acceptable.",
+        "ainglish": "choose-any(available-interpreters)."
+      },
+      {
+        "english": "Choose any one of the verified snapshots; each snapshot is acceptable.",
+        "ainglish": "choose-any(verified-snapshots)."
+      },
+      {
+        "english": "Choose any one of the compatible adapters; each adapter is acceptable.",
+        "ainglish": "choose-any(compatible-adapters)."
+      },
+      {
+        "english": "Draw one of the candidate shards so that each shard has equal probability.",
+        "ainglish": "draw-uniform(candidate-shards)."
+      },
+      {
+        "english": "Draw one of the eligible auditors so that each auditor has equal probability.",
+        "ainglish": "draw-uniform(eligible-auditors)."
+      },
+      {
+        "english": "Draw one of the healthy replicas so that each replica has equal probability.",
+        "ainglish": "draw-uniform(healthy-replicas)."
+      },
+      {
+        "english": "Draw one of the unresolved tickets so that each ticket has equal probability.",
+        "ainglish": "draw-uniform(unresolved-tickets)."
+      },
+      {
+        "english": "Draw one of the validated checkpoints so that each checkpoint has equal probability.",
+        "ainglish": "draw-uniform(validated-checkpoints)."
+      },
+      {
+        "english": "Draw one of the permitted regions so that each region has equal probability.",
+        "ainglish": "draw-uniform(permitted-regions)."
+      },
+      {
+        "english": "Draw one of the complete samples so that each sample has equal probability.",
+        "ainglish": "draw-uniform(complete-samples)."
+      },
+      {
+        "english": "Draw one of the independent readers so that each reader has equal probability.",
+        "ainglish": "draw-uniform(independent-readers)."
+      }
+    ],
+    "estimand_contract": {
+      "kind": "ainglish.estimand-shadow.v1",
+      "unit_span": "complete message",
+      "contrast": "Ainglish form versus complete careful English",
+      "population": "16 frozen fresh operational instructions balanced 8/8 across choose-any and draw-uniform",
+      "aggregation": {
+        "reducer": "least_favourable",
+        "rule": "equal pair mean, then maximum tokenizer mean"
+      },
+      "governance_effect": "report_only"
+    },
+    "replicates_hash": "b69c504b32ada4a6c2563049fa4ca75e4223930d1c5714d4bfcd198b8121b1cd",
+    "method": "Canonical SDK two-phase token runner; freeze before tokenizer loading and file every finite direction once.",
+    "source": {
+      "repository": "dexagon-ai/ainglish-evidence",
+      "path": "choose-any-token-replication-v2-2026-09-04/build.py"
+    },
+    "evidentiary_limit": "Current tokenizer cost only; not comprehension and not a forecast of Ainglish-aware models or tokenizers."
+  },
+  "replication_target_manifest": {
+    "metric": "token_delta",
+    "formula_version": 1,
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "environment": {
+      "library": "tiktoken",
+      "version": "0.14.0"
+    },
+    "method": "For each tokenizer and pair, len(encode(ainglish))-len(encode(english)); equal mean over all 12 fresh pairs per tokenizer; headline = maximum tokenizer mean (least-favourable), lo/hi = tokenizer span. Comparator: complete-careful-English (full semantics stated once, plainly) — mid-explicitness between d9045f24 terse glosses and 8b57208e fully-spelled-out glosses, to test comparator-relativity of token_delta.",
+    "seed": 9,
+    "test_set": [
+      {
+        "ainglish": "choose-any(standby-nodes).",
+        "english": "Choose any one of the standby nodes; every node is acceptable."
+      },
+      {
+        "ainglish": "choose-any(open-tickets).",
+        "english": "Choose any one of the open tickets; every ticket is acceptable."
+      },
+      {
+        "ainglish": "choose-any(free-rooms).",
+        "english": "Choose any one of the free rooms; every room is acceptable."
+      },
+      {
+        "ainglish": "choose-any(spare-batteries).",
+        "english": "Choose any one of the spare batteries; every battery is acceptable."
+      },
+      {
+        "ainglish": "choose-any(draft-proposals).",
+        "english": "Choose any one of the draft proposals; every proposal is acceptable."
+      },
+      {
+        "ainglish": "choose-any(backup-routes).",
+        "english": "Choose any one of the backup routes; every route is acceptable."
+      },
+      {
+        "ainglish": "draw-uniform(eligible-reviewers).",
+        "english": "Draw one reviewer uniformly at random from the eligible reviewers."
+      },
+      {
+        "ainglish": "draw-uniform(candidate-servers).",
+        "english": "Draw one server uniformly at random from the candidate servers."
+      },
+      {
+        "ainglish": "draw-uniform(test-accounts).",
+        "english": "Draw one account uniformly at random from the test accounts."
+      },
+      {
+        "ainglish": "draw-uniform(sample-parcels).",
+        "english": "Draw one parcel uniformly at random from the sample parcels."
+      },
+      {
+        "ainglish": "draw-uniform(backup-slots).",
+        "english": "Draw one slot uniformly at random from the backup slots."
+      },
+      {
+        "ainglish": "draw-uniform(seed-phrases).",
+        "english": "Draw one phrase uniformly at random from the seed phrases."
+      }
+    ],
+    "replicates_hash": "d9045f24a843ed89896f502cad856a22edd947da2d8ab1a50b48e01fcb68a046"
+  }
+}

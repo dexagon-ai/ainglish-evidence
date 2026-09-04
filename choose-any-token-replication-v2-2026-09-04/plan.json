@@ -1,0 +1,154 @@
+{
+  "kind": "ainglish.token-measurement-plan.v1",
+  "state": "prepared_not_run",
+  "manifest": {
+    "kind": "dexagon.ainglish.choose-any-token-replication.v2",
+    "metric": "token_delta",
+    "construct": "choose-any / draw-uniform",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "english": "Choose any one of the on-call reviewers; each reviewer is acceptable.",
+        "ainglish": "choose-any(on-call-reviewers)."
+      },
+      {
+        "english": "Choose any one of the mirrored registries; each registry is acceptable.",
+        "ainglish": "choose-any(mirrored-registries)."
+      },
+      {
+        "english": "Choose any one of the unused service accounts; each account is acceptable.",
+        "ainglish": "choose-any(unused-service-accounts)."
+      },
+      {
+        "english": "Choose any one of the admissible routes; each route is acceptable.",
+        "ainglish": "choose-any(admissible-routes)."
+      },
+      {
+        "english": "Choose any one of the passing builds; each build is acceptable.",
+        "ainglish": "choose-any(passing-builds)."
+      },
+      {
+        "english": "Choose any one of the available interpreters; each interpreter is acceptable.",
+        "ainglish": "choose-any(available-interpreters)."
+      },
+      {
+        "english": "Choose any one of the verified snapshots; each snapshot is acceptable.",
+        "ainglish": "choose-any(verified-snapshots)."
+      },
+      {
+        "english": "Choose any one of the compatible adapters; each adapter is acceptable.",
+        "ainglish": "choose-any(compatible-adapters)."
+      },
+      {
+        "english": "Draw one of the candidate shards so that each shard has equal probability.",
+        "ainglish": "draw-uniform(candidate-shards)."
+      },
+      {
+        "english": "Draw one of the eligible auditors so that each auditor has equal probability.",
+        "ainglish": "draw-uniform(eligible-auditors)."
+      },
+      {
+        "english": "Draw one of the healthy replicas so that each replica has equal probability.",
+        "ainglish": "draw-uniform(healthy-replicas)."
+      },
+      {
+        "english": "Draw one of the unresolved tickets so that each ticket has equal probability.",
+        "ainglish": "draw-uniform(unresolved-tickets)."
+      },
+      {
+        "english": "Draw one of the validated checkpoints so that each checkpoint has equal probability.",
+        "ainglish": "draw-uniform(validated-checkpoints)."
+      },
+      {
+        "english": "Draw one of the permitted regions so that each region has equal probability.",
+        "ainglish": "draw-uniform(permitted-regions)."
+      },
+      {
+        "english": "Draw one of the complete samples so that each sample has equal probability.",
+        "ainglish": "draw-uniform(complete-samples)."
+      },
+      {
+        "english": "Draw one of the independent readers so that each reader has equal probability.",
+        "ainglish": "draw-uniform(independent-readers)."
+      }
+    ],
+    "replicates_hash": "b69c504b32ada4a6c2563049fa4ca75e4223930d1c5714d4bfcd198b8121b1cd",
+    "method": "Canonical SDK two-phase token runner; freeze before tokenizer loading and file every finite direction once.",
+    "source": {
+      "repository": "dexagon-ai/ainglish-evidence",
+      "path": "choose-any-token-replication-v2-2026-09-04/build.py"
+    },
+    "evidentiary_limit": "Current tokenizer cost only; not comprehension and not a forecast of Ainglish-aware models or tokenizers.",
+    "items_sha256": "9acd148ddcf1ece8eef9e9a7997e24c20939a12213fe879790469d470503a158",
+    "comparison_identity": {
+      "kind": "ainglish.token-comparison-identity.v1",
+      "items_sha256": "9acd148ddcf1ece8eef9e9a7997e24c20939a12213fe879790469d470503a158",
+      "item_count": 16,
+      "tokenizer_roster": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "comparator": "Ainglish form versus complete careful English",
+      "population": "16 frozen fresh operational instructions balanced 8/8 across choose-any and draw-uniform",
+      "aggregation": "equal pair mean, then maximum tokenizer mean",
+      "unit_span": "complete message"
+    },
+    "interval_kind": "member_span",
+    "tokenizer_provenance": {
+      "kind": "ainglish.tiktoken-provenance.v1",
+      "library": "tiktoken",
+      "library_version": "0.14.0",
+      "encodings": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ]
+    }
+  },
+  "manifest_commitment": "82472923940398c701a7d3e2ca126e697be357e6b1b46fbfb0946a1f5618e2ce",
+  "estimand_contract_policy": {
+    "attached": false,
+    "register_gate": "unit_declared_one_sided",
+    "reason": "the replication target declares no estimand_contract; a one-sided unit_span is held by the register (incommensurable hold: unit), so the design declaration is kept in plan.design_declaration and the mint estimand, not in the manifest",
+    "target_legacy_estimand_matches": null
+  },
+  "design_declaration": {
+    "kind": "ainglish.estimand-shadow.v1",
+    "unit_span": "complete message",
+    "contrast": "Ainglish form versus complete careful English",
+    "population": "16 frozen fresh operational instructions balanced 8/8 across choose-any and draw-uniform",
+    "aggregation": {
+      "reducer": "least_favourable",
+      "rule": "equal pair mean, then maximum tokenizer mean"
+    },
+    "governance_effect": "report_only"
+  },
+  "replication_target": {
+    "manifest_hash": "b69c504b32ada4a6c2563049fa4ca75e4223930d1c5714d4bfcd198b8121b1cd",
+    "estimand_contract_declared": false
+  },
+  "items_sha256": "9acd148ddcf1ece8eef9e9a7997e24c20939a12213fe879790469d470503a158",
+  "pair_count": 16,
+  "sample_size_rule": {
+    "kind": "power-of-two-v1",
+    "item_count": 16,
+    "passed": true
+  },
+  "mint": {
+    "estimand": "token_delta over complete message: Ainglish form versus complete careful English; population: 16 frozen fresh operational instructions balanced 8/8 across choose-any and draw-uniform; aggregation: equal pair mean, then maximum tokenizer mean",
+    "admissibility_gates": [
+      "every declared tiktoken encoding loads",
+      "every frozen English and Ainglish string is countable"
+    ],
+    "planned_sample": {
+      "items": 16,
+      "tokenizers": 3
+    }
+  },
+  "next": "Mint plan.manifest with client.mint_attempt(...) before running this plan."
+}
