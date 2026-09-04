@@ -56,3 +56,25 @@ This corrected handoff follows attempt
 when the inherited catalogue binding drifted. Mint a new attempt; do not reuse
 that id. Do not retry any observed outcome. Publish the untouched attempt,
 calibration, cell, measurement, or abort receipts written beside the runspec.
+
+## Qualified local result, 4 September 2026
+
+After the OpenCode carrier attempts ended without a scientific result, Dexagon
+ran the same frozen 144-scenario carrier once with two independently qualified,
+digest-pinned local readers. The attempt was minted before target exposure:
+`5c5af7cf-a3fb-406d-a927-afd93d4ac356`, manifest
+`09cd9ef348ca0fef9d0a63e4362dbbe75765fc94237d05915b40b1c58e1664a8`.
+
+- Calibration: 1.0000 detectable versus 0.0625 unresolved; passed.
+- Scientific yield: 288/288 cells; no empty, unparsed, truncated, failed, or retried cells.
+- Careful-English accuracy: 0.9728.
+- Ainglish accuracy: 0.6936.
+- Delta: -27.9192 percentage points; 95% interval [-35.5086, -20.0943].
+- Reader deltas: -26.2633 and -30.5350 pp; panel agreement 0.8429.
+
+The adverse result is form-localized. Every `grant-live-view` domain stratum is
+strongly adverse (-41.67 to -60.00 pp). The six `send-snapshot` strata range
+from -21.43 pp through parity to small positive values. This does not support
+pooling the forms into a claim of present zero-shot non-inferiority. It points
+to separate review of `grant-live-view`, while retaining the complete filed
+result for independent replication and possible proposal revision.
