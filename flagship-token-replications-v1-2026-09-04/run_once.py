@@ -52,7 +52,11 @@ def preflight(client, meta: dict, manifest: dict) -> dict:
     target_manifest = target.get("manifest") or {}
     if target_manifest.get("models") != manifest["models"]:
         raise RuntimeError("target tokenizer roster was not preserved")
-    if (target_manifest.get("environment") or {}).get("version") != "0.14.0":
+    source_version = (
+        (target_manifest.get("environment") or {}).get("version")
+        or (target_manifest.get("tokenizer_provenance") or {}).get("library_version")
+    )
+    if source_version != "0.14.0":
         raise RuntimeError("target tiktoken version was not preserved")
     if manifest_commitment(manifest) != meta["manifest_sha256"]:
         raise RuntimeError("published manifest commitment mismatch")
