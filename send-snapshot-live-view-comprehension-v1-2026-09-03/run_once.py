@@ -14,7 +14,7 @@ from ainglish.client import AinglishClient
 
 ROOT = Path(__file__).resolve().parent
 RUNSPEC = ROOT / "runspec.json"
-RUNSPEC_SHA256 = "c9fb2503943e208c787af9eb9e42b47fad12db36684e603434c28be1e460776c"
+RUNSPEC_SHA256 = "1174e212fb4708cdbb6d7cf6da5dbe9f7773bed0f65efe912cc594b5ea2bab72"
 SLUG = "send-snapshot-version-ref-to-recipient-grant-live-view"
 METRIC = "comprehension_accuracy_delta"
 
