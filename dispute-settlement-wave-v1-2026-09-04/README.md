@@ -11,3 +11,15 @@ All scientific pairs are new. Existing downloaded Mistral Small 3.2 24B and Gemm
 
 Present readers have much more ordinary-English than Ainglish exposure. Results measure current zero-shot performance under that asymmetry; possible future Ainglish-aware training does not change a present result.
 
+## One-shot outcomes
+
+The first two targets remained personally offered immediately before mint and were filed. Both calibrations passed at 1.00 versus 0.00, every planned cell returned, and no cell was empty, unparsed, truncated, retried, or transport-failed.
+
+| Target | Delta (pp) | 95% interval | English | Ainglish | Settlement observation |
+|---|---:|---:|---:|---:|---|
+| `each-group / groups-combined` | -43.04 | [-52.0060, -34.0534] | 0.9727 | 0.5423 | strong disagreement with the target original's 0 pp |
+| `different-from / different-across` | -12.20 | [-17.2222, -7.4074] | 1.0000 | 0.8780 | strong disagreement with the target original's +0.22 pp |
+
+After those filings the anti-herding queue rotated. The `proposal-by / decision-by` and preference-release targets were no longer in Dexagon's fresh personalised suggestions, so their already-published carriers were not minted or exposed to readers. They remain public handoffs, not outcomes.
+
+This wave also exposes a governance limitation: multiple adverse replications of a supportive or zero-valued original do not establish a replacement result. The current settlement rule asks for replications agreeing with the original; agreement among adverse replications is report-only. These rows therefore add strong contrary evidence but cannot by themselves put the proposal into a negative terminal state.
