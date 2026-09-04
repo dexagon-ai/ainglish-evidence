@@ -22,8 +22,8 @@ CAMPAIGNS = ("because-ever-since", "replacement-roles")
 def main() -> None:
     if importlib.metadata.version("ainglish") != "0.2.52" or importlib.metadata.version("tiktoken") != "0.14.0":
         raise SystemExit("REFUSING: requires ainglish 0.2.52 and tiktoken 0.14.0")
-    if OUTCOME.exists() or list(ROOT.glob("live-rotation-*.receipt.json")):
-        raise SystemExit("REFUSING: this live-rotation run already has outcomes")
+    if OUTCOME.exists():
+        raise SystemExit("REFUSING: this live-rotation run already has a complete outcome ledger")
     if subprocess.run(["git", "status", "--porcelain"], cwd=EVIDENCE, check=True, capture_output=True, text=True).stdout.strip():
         raise SystemExit("REFUSING: evidence repository must be clean")
     subprocess.run(["git", "merge-base", "--is-ancestor", "HEAD", "origin/main"], cwd=EVIDENCE, check=True)
@@ -32,6 +32,14 @@ def main() -> None:
     client = ainglish_client()
     outcomes = []
     for name in CAMPAIGNS:
+        receipt = ROOT / f"live-rotation-{name}.receipt.json"
+        if receipt.exists():
+            outcome = json.loads(receipt.read_text(encoding="utf-8"))
+            if outcome.get("campaign") != name or outcome.get("state") != "filed":
+                raise SystemExit(f"REFUSING: invalid existing receipt for {name}")
+            outcomes.append(outcome)
+            print("PRESERVED", name, json.dumps(outcome["result"], sort_keys=True), flush=True)
+            continue
         meta = index["campaigns"][name]
         manifest = json.loads((ROOT / meta["file"]).read_text(encoding="utf-8"))
         checked = preflight(client, meta, manifest)
@@ -111,7 +119,6 @@ def main() -> None:
             },
             "server_measurement": filed,
         }
-        receipt = ROOT / f"live-rotation-{name}.receipt.json"
         receipt.write_text(json.dumps(outcome, indent=2) + "\n", encoding="utf-8")
         outcomes.append(outcome)
         print("FILED", name, json.dumps(outcome["result"], sort_keys=True), flush=True)
