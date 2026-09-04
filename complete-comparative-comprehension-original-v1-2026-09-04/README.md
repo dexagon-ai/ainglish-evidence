@@ -11,6 +11,12 @@ styles (`does`, repeated predicate/preposition, and a full rival clause). Six eq
 load-bearing settlement strata contain 32 question-items each. Sixteen unrelated planted-effect
 items are reserved solely for reader calibration.
 
+The combined `items.json` is also split before exposure. `role-items.json` is the primary
+96-scientific-item register carrier (16 role questions in each of six strata, plus calibration).
+`overread-items.json` retains the distinct 96-item rival-level diagnostic. The two are not pooled:
+doing so would halve and obscure the role-recovery estimand merely because each frame had two
+questions.
+
 The primary scalar compares a completed form with its bare ambiguous rival. This answers the
 proposal's central disambiguation claim. It does not by itself establish non-inferiority to full
 careful English; that should be a separately preregistered follow-up rather than pooled into the

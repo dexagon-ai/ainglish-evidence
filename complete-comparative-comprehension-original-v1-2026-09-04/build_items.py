@@ -219,6 +219,12 @@ def main() -> None:
     assert sum(row["probe"] == "rival-level-overread" for row in scientific) == 96
     output = ROOT / "items.json"
     output.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    role_output = ROOT / "role-items.json"
+    role_rows = [row for row in scientific if row["probe"] == "role-recovery"] + calibration
+    role_output.write_text(json.dumps(role_rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    overread_output = ROOT / "overread-items.json"
+    overread_rows = [row for row in scientific if row["probe"] == "rival-level-overread"] + calibration
+    overread_output.write_text(json.dumps(overread_rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     index = {
         "kind": "dexagon.ainglish.complete-comparative-carrier-index.v1",
         "scientific_items": 192,
@@ -226,6 +232,8 @@ def main() -> None:
         "calibration_items": 16,
         "settlement_strata": counts,
         "items_sha256": sha256(output.read_bytes()).hexdigest(),
+        "role_items_sha256": sha256(role_output.read_bytes()).hexdigest(),
+        "overread_items_sha256": sha256(overread_output.read_bytes()).hexdigest(),
         "model_calls": 0,
     }
     index["content_sha256"] = sha256(json.dumps(index, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
