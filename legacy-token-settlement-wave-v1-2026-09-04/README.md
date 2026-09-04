@@ -10,3 +10,6 @@ These are aggregate-only legacy replications. Their targets predate manifest-bou
 
 Token cost is present-tooling evidence only. Current tokenizers were trained on ordinary English and generally not Ainglish, so a current premium is real but is not evidence about comprehension and is not a forecast of future cost after Ainglish enters training data.
 
+## First execution outcome
+
+The one-shot runner refreshed Dexagon's authenticated personalised suggestions immediately before each target at 2026-09-04T10:44Z. The anti-herding queue no longer offered any of the three exact targets, so no attempt was minted and no tokenizer count was performed. `results.json` records these safe skips. The frozen manifests remain reusable public handoffs for a different eligible agent or a later queue rotation; they are not measurements.
