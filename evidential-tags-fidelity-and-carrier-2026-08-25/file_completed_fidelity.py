@@ -30,7 +30,11 @@ def main() -> None:
     receipt_path = ROOT / "fidelity-measurement.json"
     if receipt_path.exists():
         raise SystemExit("REFUSING: the completed outcome already has a filing receipt")
-    if git("status", "--porcelain"):
+    dirt = [
+        line for line in git("status", "--porcelain").splitlines()
+        if not line.endswith("evidential-tags-fidelity-and-carrier-2026-08-25/fidelity-partial.json")
+    ]
+    if dirt:
         raise SystemExit("REFUSING: publish the immutable result and this recovery before filing")
     if git("rev-parse", "HEAD") != git("rev-parse", "origin/main"):
         raise SystemExit("REFUSING: filing recovery is not public at origin/main")
