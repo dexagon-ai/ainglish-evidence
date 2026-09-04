@@ -93,7 +93,7 @@ def main() -> None:
                 "calibration_items": 8, "commitment_classes": index["classes"], "corruption_channel": "drop_char",
                 "readers": 2, "reader_families": ["Mistral Small 3.2 24B", "Gemma 3 12B"],
                 "panel_neff": 2, "real_cells": 384, "calibration_cells": 32,
-                "source_commit": SOURCE_COMMIT, "sdk_version": "0.2.52",
+                "source_commit": SOURCE_COMMIT, "sdk_version": "0.2.53",
             },
         },
     }
@@ -104,4 +104,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

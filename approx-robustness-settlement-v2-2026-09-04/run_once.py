@@ -28,8 +28,8 @@ def get_json(url: str) -> dict:
 
 
 def main() -> None:
-    if sdk_version != "0.2.52":
-        raise SystemExit(f"REFUSING: SDK {sdk_version} != frozen 0.2.52")
+    if sdk_version != "0.2.53":
+        raise SystemExit(f"REFUSING: SDK {sdk_version} != frozen 0.2.53")
     if list(ROOT.glob("runspec.attempt-*.json")) or (ROOT / "result.json").exists():
         raise SystemExit("REFUSING: this one-shot directory already contains an outcome")
     spec = json.loads((ROOT / "runspec.json").read_text(encoding="utf-8"))
@@ -76,4 +76,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

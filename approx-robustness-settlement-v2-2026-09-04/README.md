@@ -8,3 +8,8 @@ The packet uses two already-downloaded, digest-bound local reader artifacts. It 
 
 Current zero-shot readers have far more ordinary-English than Ainglish exposure. The result is a present robustness observation, not a prediction after future Ainglish-aware training.
 
+The first activation check on 2026-09-04 refused before mint or model use because
+the installed SDK had advanced from the bound 0.2.52 to 0.2.53. The carrier was
+left untouched and the runspec was transparently rebound to 0.2.53 after checking
+that release's changes: it adds the read-only decision projection and clarifies
+legacy-repair guidance, without changing the robustness-v4 estimator.
