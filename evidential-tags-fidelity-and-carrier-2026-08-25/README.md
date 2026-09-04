@@ -22,6 +22,13 @@ is still missing, call server preflight, mint before inference, prohibit retries
 finite direction. This activation does not authorize the dormant comprehension carrier: another
 principal must first independently replicate a fidelity result at or above the declared floor.
 
+The one-shot execution completed all 192 frozen reader-case cells, but its first filing request used
+the readers' display names in `per_member` while the immutable manifest correctly used the qualified
+precision-suffixed roster IDs. The server rejected that payload without closing the attempt.
+`file_completed_fidelity.py` is a filing-only recovery: it verifies the committed manifest, result,
+attempt and roster mapping, makes no model call, and submits the same scores under the already-declared
+roster identities. Re-running inference after a result exists remains forbidden.
+
 The reader roster must separately pass the cross-vendor ordinary-English qualification gate.
 `build_items.py` itself makes no external, governance, tokenizer, or model calls.
 
