@@ -231,9 +231,9 @@ def main() -> None:
         "frames": 96,
         "calibration_items": 16,
         "settlement_strata": counts,
-        "items_sha256": sha256(output.read_bytes()).hexdigest(),
-        "role_items_sha256": sha256(role_output.read_bytes()).hexdigest(),
-        "overread_items_sha256": sha256(overread_output.read_bytes()).hexdigest(),
+        "items_sha256": sha256(json.dumps(rows, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest(),
+        "role_items_sha256": sha256(json.dumps(role_rows, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest(),
+        "overread_items_sha256": sha256(json.dumps(overread_rows, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest(),
         "model_calls": 0,
     }
     index["content_sha256"] = sha256(json.dumps(index, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
