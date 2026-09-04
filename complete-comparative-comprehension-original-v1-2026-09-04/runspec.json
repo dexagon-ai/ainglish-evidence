@@ -1,0 +1,223 @@
+{
+  "kind": "dexagon.ainglish.complete-comparative-comprehension-runspec.v1",
+  "construct": "complete-the-comparative — explicit rival grammatical role",
+  "public_id": "a-xswxcqjeh8ad5gv3",
+  "slug": "complete-the-comparative-when-the-clause-before-a-degree",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026090417,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "panel_neff": 2,
+  "panel": [
+    {
+      "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "api": "openai",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "precision": "q4_k_m",
+      "max_tokens": 32,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090417
+    },
+    {
+      "name": "gemma3-12b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "api": "openai",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "max_tokens": 32,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090417
+    }
+  ],
+  "models": [
+    "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+    "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+  ],
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "lineage": {
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Mistral Small 3.2 24B Instruct 2506 Q4_K_M.",
+        "key": "mistral-small-3.2-24b-instruct-2506"
+      },
+      "qualified_at": "2026-09-04T15:50:33+00:00",
+      "reader": {
+        "digest_source": "ollama:/api/tags",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+        "precision": "q4_k_m",
+        "provider": "ollama"
+      },
+      "result": {
+        "detectable_correct": 8,
+        "detectable_total": 8,
+        "min_gap_bps": 2500,
+        "min_recovered_bps": 7500,
+        "other_correct": 0,
+        "other_total": 8,
+        "passed": true
+      },
+      "roster_id": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+      "screen_sha256": "6546df8a9a09d81dc7a9bbe48834461b501593a493b3bf323574a48c8ad4c8bd",
+      "settings_sha256": "0392e7f8ad23b6b43ea45f73310eccd4436ea926cbfa3e19e5e79f66b15eb911",
+      "valid_until": "2026-10-04T15:50:33+00:00"
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "lineage": {
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Gemma 3 12B IT Q4_K_M.",
+        "key": "gemma-3-12b-it"
+      },
+      "qualified_at": "2026-09-04T15:51:08+00:00",
+      "reader": {
+        "digest_source": "ollama:/api/tags",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+        "precision": "q4_k_m",
+        "provider": "ollama"
+      },
+      "result": {
+        "detectable_correct": 8,
+        "detectable_total": 8,
+        "min_gap_bps": 2500,
+        "min_recovered_bps": 7500,
+        "other_correct": 1,
+        "other_total": 8,
+        "passed": true
+      },
+      "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+      "screen_sha256": "6546df8a9a09d81dc7a9bbe48834461b501593a493b3bf323574a48c8ad4c8bd",
+      "settings_sha256": "8d2f6913ccadc130df105def1590f01bad85febbd6608314d6910c7e963979ce",
+      "valid_until": "2026-10-04T15:51:08+00:00"
+    }
+  ],
+  "comparator": {
+    "kind": "bare-role-ambiguous-english-v1",
+    "description": "The same fresh frame with the role-completing words removed. The hidden ledger fixes the intended role; exact recovery is scored against that intent."
+  },
+  "comparison_identity": {
+    "comparator_genre": "bare-role-ambiguous-english-v1",
+    "pair_rendering": "same frame; completed rival role versus bare rival; held-out three-way exact role choice",
+    "reader_roster": [
+      "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+      "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+    ],
+    "forms": [
+      "doer-completed",
+      "done-to-completed",
+      "full-rival-clause"
+    ],
+    "context_types": [
+      "type-live",
+      "type-clash"
+    ],
+    "role_sites": [
+      "direct-object",
+      "kept-preposition",
+      "adjective-complement"
+    ],
+    "target_estimand": "equal-weight six-stratum completed-minus-bare exact role-recovery accuracy"
+  },
+  "settlement_strata": [
+    {
+      "id": "doer-live",
+      "weight": 1
+    },
+    {
+      "id": "doer-clash",
+      "weight": 1
+    },
+    {
+      "id": "done-to-live",
+      "weight": 1
+    },
+    {
+      "id": "done-to-clash",
+      "weight": 1
+    },
+    {
+      "id": "full-live",
+      "weight": 1
+    },
+    {
+      "id": "full-clash",
+      "weight": 1
+    }
+  ],
+  "settlement_item_field": "settlement_stratum",
+  "settlement_rule": "manifest-weighted arms and value; every form-by-context stratum is load-bearing",
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/924d1462de24b7a2e1bc0c0ebf3aba3d5115b6cd/complete-comparative-comprehension-original-v1-2026-09-04/role-items.json",
+  "items_sha256": "46c5b0ef65b2a1b04c8713ed8574eb6b7298e39073ee2ba1fc2bc1e8bc463e60",
+  "source": {
+    "repository": "dexagon-ai/ainglish-evidence",
+    "commit": "924d1462de24b7a2e1bc0c0ebf3aba3d5115b6cd",
+    "path": "complete-comparative-comprehension-original-v1-2026-09-04/role-items.json"
+  },
+  "concurrency": {
+    "max_in_flight": 2,
+    "per_reader_max_in_flight": {
+      "mistral-small3.2-24b-opaque-choice-q4_k_m": 1,
+      "gemma3-12b-opaque-choice-q4_k_m": 1
+    }
+  },
+  "training_asymmetry": "The reader artifacts were trained on ordinary English and are not assumed to have seen Ainglish. This estimates current zero-shot role transparency, not performance after future Ainglish training.",
+  "attempt": {
+    "proposal_revision": "complete-the-comparative-when-the-clause-before-a-degree",
+    "estimand": "Percentage-point exact role-recovery accuracy difference, role-completed comparative minus its same-frame bare-rival comparator, over 96 frozen fresh items; equal-weight mean of six separately reported form-by-context strata (doer/done-to/full crossed with type-live/type-clash), two qualified reader lineages. Rival absolute-level over-reading is a separately frozen diagnostic and is not pooled into this scalar. Retain absolute arms, interval, calibration, yield, per-reader and every stratum.",
+    "admissibility_gates": [
+      "fresh authenticated suggestions and proposal detail still request an original comprehension_accuracy_delta immediately before mint",
+      "the proposal remains current at measured stage and the executing principal is not the proposer",
+      "the public role carrier hashes to 46c5b0ef65b2a1b04c8713ed8574eb6b7298e39073ee2ba1fc2bc1e8bc463e60 and contains exactly 96 scientific plus 16 target-independent calibration items",
+      "the six settlement strata each contain exactly 16 role-recovery items and carry equal weight",
+      "doer, done-to and full-clause forms are crossed with type-live and type-clash contexts; all three live role sites remain represented",
+      "the separately frozen rival-level over-reading probe is excluded from this scalar rather than diluting role recovery",
+      "both exact local reader configurations retain passing target-independent qualification receipts at mint time",
+      "both reader artifacts still match their declared Ollama sha256 digests and run at temperature zero with the frozen seed",
+      "construct-free calibration executes first and each reader must show explicit-minus-unresolved gap at least 0.5",
+      "no reader receives repository access, retrieval, conversation history or a register definition beyond the presented cell",
+      "zero response-bound truncations and full cell yield are required; any transport or format fault produces a typed abort without retry",
+      "every finite supportive, adverse or null outcome is filed exactly once without item or prompt tuning",
+      "the already satisfied token prerequisite is retained and not represented as a comprehension result"
+    ],
+    "planned_sample": {
+      "comparison": "role-completed comparative versus same-frame bare rival",
+      "scientific_items": 96,
+      "calibration_items": 16,
+      "forms": {
+        "doer-completed": 32,
+        "done-to-completed": 32,
+        "full-rival-clause": 32
+      },
+      "contexts": {
+        "type-live": 48,
+        "type-clash": 48
+      },
+      "settlement_strata": {
+        "doer-live": 16,
+        "doer-clash": 16,
+        "done-to-live": 16,
+        "done-to-clash": 16,
+        "full-live": 16,
+        "full-clash": 16
+      },
+      "readers": 2,
+      "reader_lineages": [
+        "mistral-small-3.2-24b-instruct-2506",
+        "gemma-3-12b-it"
+      ],
+      "panel_neff": 2,
+      "real_cells": 192,
+      "calibration_cells": 64,
+      "sdk_version": "0.2.53",
+      "source_commit": "924d1462de24b7a2e1bc0c0ebf3aba3d5115b6cd"
+    }
+  },
+  "content_sha256": "275a8240057603bb495d50e5710e88765e46757e5e20e482afe5c5a533978b23"
+}
