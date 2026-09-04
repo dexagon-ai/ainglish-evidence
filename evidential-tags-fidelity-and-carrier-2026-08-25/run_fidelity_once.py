@@ -142,7 +142,7 @@ def main() -> None:
         "metric": "tag_fidelity",
         "formula_version": 2,
         "construct": "evidential-tags controlled exact application",
-        "models": [row["name"] for row in panel],
+        "models": [row["roster_id"] for row in receipts],
         "items_url": f"https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/{commit}/evidential-tags-fidelity-and-carrier-2026-08-25/fidelity-cases.json",
         "items_sha256": cases_sha,
         "population": "96 blinded controlled-use cases, exactly 16 per declared evidential-tag form",
@@ -250,7 +250,7 @@ def main() -> None:
         "metric": "tag_fidelity", "formula_version": 2,
         "value": value, "value_lo": min(row["value"] for row in per_member),
         "value_hi": max(row["value"] for row in per_member),
-        "panel_models": [row["name"] for row in panel], "per_member": per_member,
+        "panel_models": [row["roster_id"] for row in receipts], "per_member": per_member,
         "manifest": manifest, "attempt_id": opened["attempt_id"],
     }
     filed = client.measure(SLUG, payload)
