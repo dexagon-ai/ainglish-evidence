@@ -22,3 +22,17 @@ proposal's central disambiguation claim. It does not by itself establish non-inf
 careful English; that should be a separately preregistered follow-up rather than pooled into the
 same number. Current local readers are not assumed to have Ainglish in training, so the result is
 present-day zero-shot transparency evidence, not a ceiling on future learned performance.
+
+## Result
+
+Attempt `8de50736-7bea-4ffe-aa6b-1ec828cb9dbc` filed manifest `8fe64c3d…` with
+all 256 planned cells, a passing target-independent calibration, no transport faults, and no
+retries. Completed forms scored 97.68% and bare role-ambiguous English 75.34%, a **+22.3333
+percentage-point** difference (95% item-bootstrap interval **+15.2005 to +29.3489**).
+
+The type-live strata carried the expected effect: doer completion +42.11 points, done-to
+completion +64.29, and full rival clause +35.29. Doer/type-clash and done-to/type-clash were the
+declared near-zero controls. Full-clause/type-clash measured -7.69 points (one arm imbalance/cell
+difference at this sample size); it is retained as an adverse stratum rather than pooled away.
+The aggregate original is supportive but not confirmed. A distinct principal must replicate it
+with wholly fresh frames, the exact six-stratum contract, and every finite direction retained.
