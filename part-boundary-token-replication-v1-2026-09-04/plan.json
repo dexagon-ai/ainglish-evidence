@@ -1,0 +1,202 @@
+{
+  "kind": "ainglish.token-measurement-plan.v1",
+  "state": "prepared_not_run",
+  "manifest": {
+    "kind": "dexagon.ainglish.part-boundary-token-replication.v1",
+    "metric": "token_delta",
+    "construct": "part-chosen / part-capped",
+    "models": [
+      "cl100k_base",
+      "o200k_base"
+    ],
+    "test_set": [
+      {
+        "english": "I sampled the 42 repositories that the language-stratum rule chose, out of the 281 indexed; the rule picked which repositories to sample.",
+        "ainglish": "part-chosen(language-stratum): the 42 repositories.",
+        "stratum": "part-chosen"
+      },
+      {
+        "english": "I reviewed the 65 invoices that the month-end rule chose, out of the 390 issued; the rule picked which invoices to review.",
+        "ainglish": "part-chosen(month-end): the 65 invoices.",
+        "stratum": "part-chosen"
+      },
+      {
+        "english": "I inspected the 88 images that random seed 314 chose, out of the 712 stored; that rule picked which images to inspect.",
+        "ainglish": "part-chosen(random-seed-314): the 88 images.",
+        "stratum": "part-chosen"
+      },
+      {
+        "english": "I checked the 31 branches that the risk-band rule chose, out of the 186 active; the rule picked which branches to check.",
+        "ainglish": "part-chosen(risk-band): the 31 branches.",
+        "stratum": "part-chosen"
+      },
+      {
+        "english": "I audited the 57 consent records that the renewal-window rule chose, out of the 329 retained; the rule picked which records to audit.",
+        "ainglish": "part-chosen(renewal-window): the 57 consent records.",
+        "stratum": "part-chosen"
+      },
+      {
+        "english": "I traced the 46 requests that the endpoint-family rule chose, out of the 275 logged; the rule picked which requests to trace.",
+        "ainglish": "part-chosen(endpoint-family): the 46 requests.",
+        "stratum": "part-chosen"
+      },
+      {
+        "english": "I examined the 79 translations that the locale-quota rule chose, out of the 488 available; the rule picked which translations to examine.",
+        "ainglish": "part-chosen(locale-quota): the 79 translations.",
+        "stratum": "part-chosen"
+      },
+      {
+        "english": "I read the 26 incident notes that the severity-pair rule chose, out of the 169 filed; the rule picked which notes to read.",
+        "ainglish": "part-chosen(severity-pair): the 26 incident notes.",
+        "stratum": "part-chosen"
+      },
+      {
+        "english": "I examined 150 of the 521 repositories; the API stopped at 150, so I could not examine the remaining 371 repositories.",
+        "ainglish": "part-capped(api-page-150): the 150 repositories.",
+        "stratum": "part-capped"
+      },
+      {
+        "english": "I reviewed 400 of the 733 invoices; the export stopped at 400 rows, so I could not review the remaining 333 invoices.",
+        "ainglish": "part-capped(export-row-400): the 400 invoices.",
+        "stratum": "part-capped"
+      },
+      {
+        "english": "I inspected 73 of the 406 images; the scan timed out after 75 seconds, so I could not inspect the remaining images.",
+        "ainglish": "part-capped(timeout-75s): the 73 images.",
+        "stratum": "part-capped"
+      },
+      {
+        "english": "I checked 45 of the 138 branches; the quota stopped me at 45, so I could not check the remaining 93 branches.",
+        "ainglish": "part-capped(quota-45): the 45 branches.",
+        "stratum": "part-capped"
+      },
+      {
+        "english": "I audited 61 of the 347 consent records; my permission covered only division east, so I could not audit the remainder.",
+        "ainglish": "part-capped(permission-east): the 61 consent records.",
+        "stratum": "part-capped"
+      },
+      {
+        "english": "I traced 82 of the 294 requests; the twelve-gigabyte memory limit stopped the trace, so I could not examine the remainder.",
+        "ainglish": "part-capped(memory-12gb): the 82 requests.",
+        "stratum": "part-capped"
+      },
+      {
+        "english": "I examined 104 of the 519 translations; the archive exposed only forty-five days, so I could not examine the older translations.",
+        "ainglish": "part-capped(archive-window-45d): the 104 translations.",
+        "stratum": "part-capped"
+      },
+      {
+        "english": "I read 800 of the 1,491 incident notes; the console stopped at 800, so I could not read the remaining 691 notes.",
+        "ainglish": "part-capped(console-limit-800): the 800 incident notes.",
+        "stratum": "part-capped"
+      }
+    ],
+    "settlement_strata": [
+      {
+        "id": "part-capped",
+        "weight": 1
+      },
+      {
+        "id": "part-chosen",
+        "weight": 1
+      }
+    ],
+    "comparison_identity": {
+      "comparator_genre": "complete-careful-english-boundary-source-v1",
+      "pair_rendering": "standalone-coverage-report",
+      "kind": "ainglish.token-comparison-identity.v1",
+      "items_sha256": "2887add7ecb830c13a76466b8aedf02eec6117f83cb9f01c9869ddb52d6cbd67",
+      "item_count": 16,
+      "tokenizer_roster": [
+        "cl100k_base",
+        "o200k_base"
+      ],
+      "comparator": "Ainglish form versus complete careful English",
+      "population": "16 frozen fresh pairs across part-capped and part-chosen",
+      "aggregation": "equal item mean per stratum, weighted by stratum share, then maximum tokenizer mean",
+      "unit_span": "complete message"
+    },
+    "estimand_contract": {
+      "kind": "ainglish.estimand-shadow.v1",
+      "unit_span": "complete message",
+      "contrast": "Ainglish form versus complete careful English",
+      "population": "16 frozen fresh pairs across part-capped and part-chosen",
+      "aggregation": {
+        "reducer": "least_favourable",
+        "rule": "equal item mean per stratum, weighted by stratum share, then maximum tokenizer mean"
+      },
+      "governance_effect": "report_only"
+    },
+    "replicates_hash": "13a722dd4d8b0206a42ff6450c5de1fea05a0f828d14254c61889bd7af894e83",
+    "method": "Canonical SDK two-phase token runner; exact target estimand and strata; freeze before tokenizer loading; file every finite direction once.",
+    "source": {
+      "repository": "dexagon-ai/ainglish-evidence",
+      "path": "part-boundary-token-replication-v1-2026-09-04/build.py"
+    },
+    "evidentiary_limit": "Present tokenizer cost against complete careful English; not comprehension or future Ainglish-aware cost.",
+    "items_sha256": "2887add7ecb830c13a76466b8aedf02eec6117f83cb9f01c9869ddb52d6cbd67",
+    "interval_kind": "member_span",
+    "tokenizer_provenance": {
+      "kind": "ainglish.tiktoken-provenance.v1",
+      "library": "tiktoken",
+      "library_version": "0.14.0",
+      "encodings": [
+        "cl100k_base",
+        "o200k_base"
+      ]
+    }
+  },
+  "manifest_commitment": "93bf55901d2f456b76a3b4258444ae7465a4f3598075ad622189c58bcb3f3455",
+  "estimand_contract_policy": {
+    "attached": true,
+    "reason": "the replication target declares the same estimand_contract"
+  },
+  "design_declaration": {
+    "kind": "ainglish.estimand-shadow.v1",
+    "unit_span": "complete message",
+    "contrast": "Ainglish form versus complete careful English",
+    "population": "16 frozen fresh pairs across part-capped and part-chosen",
+    "aggregation": {
+      "reducer": "least_favourable",
+      "rule": "equal item mean per stratum, weighted by stratum share, then maximum tokenizer mean"
+    },
+    "governance_effect": "report_only"
+  },
+  "replication_target": {
+    "manifest_hash": "13a722dd4d8b0206a42ff6450c5de1fea05a0f828d14254c61889bd7af894e83",
+    "estimand_contract_declared": true
+  },
+  "items_sha256": "2887add7ecb830c13a76466b8aedf02eec6117f83cb9f01c9869ddb52d6cbd67",
+  "pair_count": 16,
+  "settlement_strata": [
+    {
+      "id": "part-capped",
+      "weight": 1.0,
+      "share": 0.5,
+      "item_count": 8
+    },
+    {
+      "id": "part-chosen",
+      "weight": 1.0,
+      "share": 0.5,
+      "item_count": 8
+    }
+  ],
+  "sample_size_rule": {
+    "kind": "power-of-two-v1",
+    "item_count": 16,
+    "passed": true
+  },
+  "mint": {
+    "estimand": "token_delta over complete message: Ainglish form versus complete careful English; population: 16 frozen fresh pairs across part-capped and part-chosen; aggregation: equal item mean per stratum, weighted by stratum share, then maximum tokenizer mean",
+    "admissibility_gates": [
+      "every declared tiktoken encoding loads",
+      "every frozen English and Ainglish string is countable"
+    ],
+    "planned_sample": {
+      "items": 16,
+      "tokenizers": 2
+    }
+  },
+  "next": "Mint plan.manifest with client.mint_attempt(...) before running this plan."
+}
