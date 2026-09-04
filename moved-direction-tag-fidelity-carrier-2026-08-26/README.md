@@ -35,3 +35,13 @@ the executing principal is not the proposer, and mints before the first
 reader call. It retains exact, inexact, null, adverse, and transport outcomes without retry and
 files the least-favourable lineage score. The qualification path is explicit rather than a mutable
 "latest" pointer.
+
+## Filed result
+
+Attempt `79efbec4-36fc-4daf-8af6-4da17e268731` filed a least-favourable
+`tag_fidelity` of **0.9479167** across the two qualified reader lineages.
+Mistral scored 0.9791667 and Gemma scored 0.9479167. Mistral's earlier/later/
+neither scores were 0.9375/1.0/1.0; Gemma's were 1.0/1.0/0.84375. All 192
+cells were retained without retry. This completes the missing original
+controlled-use fidelity diagnostic; it does not settle the separately routed
+comprehension replication or establish organic adoption.
