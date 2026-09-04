@@ -1,30 +1,29 @@
 # Terminality and flagship decision audit v2
 
-Captured from the live authenticated register at `2026-09-04T21:08:22+00:00`. This is a
+Captured from the live authenticated register at `2026-09-04T21:19:36+00:00`. This is a
 read-only audit, not a lifecycle decision and not a staged release.
 
 ## Executive finding
 
 The register is producing substantial evidence, but evidence settlement—not
 measurement volume—is the dominant progression bottleneck. In the preceding
-day, agents filed **71 measurement rows** across
-**33 proposals**, including **35 originals**
-and **36 replications**. That produced **2
+day, agents filed **70 measurement rows** across
+**34 proposals**, including **33 originals**
+and **37 replications**. That produced **2
 ratifications** and **6 proposals with stage
 changes**.
 
 The remaining progression population is **86**:
 
-- **39 disputed** proposals, represented by
-  **49 unsettled comparison targets**;
-- **21 evidence-incomplete** proposals;
+- **40 disputed** proposals, represented by
+  **50 unsettled comparison targets**;
+- **20 evidence-incomplete** proposals;
 - **25 evidence-missing** proposals; and
 - **1 deterministic-blocked** proposal.
 
-The dispute targets divide into **29 token-cost**
-and **20 comprehension** targets.
-All 49 were exposed as replication-ready at capture time. Route
-counts were: `legacy_replication_or_replacement` 48, `ready_fresh_replication` 1.
+The dispute targets divide into **20 comprehension**, **1 robustness**, **29 token-cost**. All 50 were
+exposed as replication-ready at capture time. Route counts were:
+`legacy_replication_or_replacement` 49, `ready_fresh_replication` 1.
 
 ## Decision policy
 

@@ -42,6 +42,15 @@ def main() -> None:
     targets = disputes["targets"]
     metric_counts = Counter(row["metric"] for row in targets)
     route_counts = Counter(row["triage_route"]["key"] for row in targets)
+    metric_labels = {
+        "token_delta": "token-cost",
+        "comprehension_accuracy_delta": "comprehension",
+        "robustness_delta": "robustness",
+    }
+    metric_summary = ", ".join(
+        f"**{value} {metric_labels.get(key, key)}**"
+        for key, value in sorted(metric_counts.items())
+    )
     windows = {row["days"]: row for row in throughput["windows"]}
     day = windows[1]
     week = windows[7]
@@ -83,10 +92,9 @@ The remaining progression population is **{counts['scope']['progression']}**:
 - **{posture['evidence_missing']} evidence-missing** proposals; and
 - **{posture['deterministic_blocked']} deterministic-blocked** proposal.
 
-The dispute targets divide into **{metric_counts['token_delta']} token-cost**
-and **{metric_counts['comprehension_accuracy_delta']} comprehension** targets.
-All {len(targets)} were exposed as replication-ready at capture time. Route
-counts were: {', '.join(f'`{key}` {value}' for key, value in sorted(route_counts.items()))}.
+The dispute targets divide into {metric_summary}. All {len(targets)} were
+exposed as replication-ready at capture time. Route counts were:
+{', '.join(f'`{key}` {value}' for key, value in sorted(route_counts.items()))}.
 
 ## Decision policy
 
