@@ -1,0 +1,177 @@
+{
+  "kind": "ainglish.token-measurement-result.v1",
+  "state": "computed_not_submitted",
+  "payload": {
+    "metric": "token_delta",
+    "value": 0.75,
+    "value_lo": 0.4375,
+    "value_hi": 0.75,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": 0.4375
+      },
+      {
+        "model": "o200k_base",
+        "value": 0.4375
+      },
+      {
+        "model": "p50k_base",
+        "value": 0.75
+      }
+    ],
+    "manifest": {
+      "metric": "token_delta",
+      "construct": "<HH:MM>Z | <HH:MM>@<IANA-zone>",
+      "models": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "replicates_hash": "287f3c7750198bd138a3582833b3c87d12c36f5f66c8bc1a7c9cb831de5e692b",
+      "test_set": [
+        {
+          "id": "z-maintenance",
+          "english": "The maintenance freeze begins at 06:15 UTC.",
+          "ainglish": "The maintenance freeze begins 06:15Z."
+        },
+        {
+          "id": "z-audit",
+          "english": "The audit cutoff is at 22:40 UTC.",
+          "ainglish": "The audit cutoff is 22:40Z."
+        },
+        {
+          "id": "z-market",
+          "english": "The market opens at 07:05 UTC.",
+          "ainglish": "The market opens 07:05Z."
+        },
+        {
+          "id": "z-snapshot",
+          "english": "The snapshot was captured at 03:25 UTC.",
+          "ainglish": "The snapshot was captured 03:25Z."
+        },
+        {
+          "id": "z-message",
+          "english": "The message arrived at 11:50 UTC.",
+          "ainglish": "The message arrived 11:50Z."
+        },
+        {
+          "id": "z-batch",
+          "english": "The settlement batch runs at 19:10 UTC.",
+          "ainglish": "The settlement batch runs 19:10Z."
+        },
+        {
+          "id": "z-embargo",
+          "english": "The publication embargo lifts at 00:30 UTC.",
+          "ainglish": "The publication embargo lifts 00:30Z."
+        },
+        {
+          "id": "z-key-rotation",
+          "english": "The key rotation occurs at 16:45 UTC.",
+          "ainglish": "The key rotation occurs 16:45Z."
+        },
+        {
+          "id": "zone-berlin",
+          "english": "The review begins at 08:30 Berlin time on 12 February 2027.",
+          "ainglish": "The review begins 08:30@Europe/Berlin on 12 February 2027."
+        },
+        {
+          "id": "zone-singapore",
+          "english": "The support handover starts at 17:20 Singapore time on 6 March 2027.",
+          "ainglish": "The support handover starts 17:20@Asia/Singapore on 6 March 2027."
+        },
+        {
+          "id": "zone-sydney",
+          "english": "The incident review opens at 09:10 Sydney time on 18 July 2027.",
+          "ainglish": "The incident review opens 09:10@Australia/Sydney on 18 July 2027."
+        },
+        {
+          "id": "zone-chicago",
+          "english": "The filing deadline is at 13:55 Chicago time on 9 November 2027.",
+          "ainglish": "The filing deadline is 13:55@America/Chicago on 9 November 2027."
+        },
+        {
+          "id": "zone-johannesburg",
+          "english": "The archive export begins at 21:35 Johannesburg time on 22 January 2027.",
+          "ainglish": "The archive export begins 21:35@Africa/Johannesburg on 22 January 2027."
+        },
+        {
+          "id": "zone-auckland",
+          "english": "The ballot opens at 10:25 Auckland time on 14 April 2027.",
+          "ainglish": "The ballot opens 10:25@Pacific/Auckland on 14 April 2027."
+        },
+        {
+          "id": "zone-sao-paulo",
+          "english": "The broadcast starts at 18:05 Sao Paulo time on 27 August 2027.",
+          "ainglish": "The broadcast starts 18:05@America/Sao_Paulo on 27 August 2027."
+        },
+        {
+          "id": "zone-kolkata",
+          "english": "The data refresh completes at 04:50 Kolkata time on 3 December 2027.",
+          "ainglish": "The data refresh completes 04:50@Asia/Kolkata on 3 December 2027."
+        }
+      ],
+      "runner": {
+        "repository": "ai-nglish/ainglish",
+        "commit": "9bb31166b7b99b5d0a399f0b8001c8fceba7f885",
+        "path": "src/ainglish/token_measurement.py"
+      },
+      "design_note": "Every pair keeps the event and date fixed and changes only the explicit time-zone rendering. Bare wall time is excluded because it is the proposal's ambiguity arm, not the complete mapping comparator.",
+      "items_sha256": "b94af9f6aaab675754983d95b02d97f20daedd1036678207ee2b5aa851d71629",
+      "comparison_identity": {
+        "kind": "ainglish.token-comparison-identity.v1",
+        "items_sha256": "b94af9f6aaab675754983d95b02d97f20daedd1036678207ee2b5aa851d71629",
+        "item_count": 16,
+        "tokenizer_roster": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ],
+        "comparator": "marked UTC or IANA-zone wall time versus its complete UTC or named-city-time English mapping",
+        "population": "16 frozen fresh coordination messages balanced eight attached-Z and eight IANA-zone forms across operational domains",
+        "aggregation": "equal item mean within tokenizer, then maximum tokenizer mean",
+        "unit_span": "complete coordination message"
+      },
+      "interval_kind": "member_span",
+      "tokenizer_provenance": {
+        "kind": "ainglish.tiktoken-provenance.v1",
+        "library": "tiktoken",
+        "library_version": "0.14.0",
+        "encodings": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ]
+      }
+    },
+    "attempt_id": "5823a416-ea90-4f6f-b11e-8438cae190c4",
+    "replicates_hash": "287f3c7750198bd138a3582833b3c87d12c36f5f66c8bc1a7c9cb831de5e692b"
+  },
+  "audit": {
+    "manifest_commitment": "c287fa6302b5b9deed8155052f0bf60584d362f5674ebda309cb725bc764d425",
+    "items_sha256": "b94af9f6aaab675754983d95b02d97f20daedd1036678207ee2b5aa851d71629",
+    "pair_count": 16,
+    "by_tokenizer": [
+      {
+        "model": "cl100k_base",
+        "mean": 0.4375
+      },
+      {
+        "model": "o200k_base",
+        "mean": 0.4375
+      },
+      {
+        "model": "p50k_base",
+        "mean": 0.75
+      }
+    ],
+    "headline_rule": "maximum tokenizer mean (least favourable)",
+    "headline_model": "p50k_base"
+  },
+  "next": "Submit result.payload unchanged with client.measure(slug, result['payload'])."
+}
