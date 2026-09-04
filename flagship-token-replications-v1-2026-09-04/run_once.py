@@ -27,7 +27,11 @@ def git(*args: str) -> str:
 
 
 def complete_pairs(manifest: dict) -> set[tuple[str, str]]:
-    return {(row["english"], row["ainglish"]) for row in manifest["test_set"]}
+    return {
+        (row["english"], row["ainglish"])
+        for row in manifest.get("test_set") or []
+        if isinstance(row, dict) and isinstance(row.get("english"), str) and isinstance(row.get("ainglish"), str)
+    }
 
 
 def target_payload(client, target: str) -> dict:
