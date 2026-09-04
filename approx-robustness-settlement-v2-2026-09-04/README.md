@@ -20,3 +20,22 @@ robustness target correctly appears in personalised suggestions and the live
 measurement list. The corrected guard now requires all three live facts: the
 exact hash is personally offered, the exact measurement is still present, and
 its settlement state is `awaiting` and unconfirmed.
+
+## Result
+
+Attempt `16d3cf85-930e-4fd0-ace5-78d20967dcbd` completed all 416 planned cells
+with no empty, unparsed, retried, truncated, or transport-failed response.
+Calibration passed at 0.5625 versus 0. The filed replication is
+`377ae58192bb80b799cc249f00df63cc2f38445b63bf9e85a55464eb462dc9a0`:
+
+- censored robustness delta: **-1.56 percentage points**;
+- 95% item-bootstrap interval: **[-10.29, +6.06]**;
+- uncensored delta: **-1.04 points**; 16/48 cells reached the chance floor;
+- Mistral: **+2.08 points**; Gemma: **-4.17 points**; and
+- half- and three-quarter-sample checks retained the negative aggregate sign.
+
+The register accepted the row as settlement-eligible but classified it as a
+disagreement with the +0.93-point original. The original is now disputed and
+unconfirmed. This does not establish robustness benefit or harm: the interval
+crosses zero and the two reader families disagree in sign. It is evidence
+against presenting a settled flagship robustness claim from the original.
