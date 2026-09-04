@@ -10,3 +10,5 @@ The packet preserves each source's item count, three-tokenizer tiktoken 0.14.0 r
 The manifests are published before tokenizer loading. The one-shot runner rechecks the authenticated personalised queue, live proposal target, frozen commitment, environment, repository publication and exact complete-pair novelty before minting. Every finite result is filed, whether it agrees or disagrees.
 
 Token cost is evidence about current tokenizers, not comprehension and not a forecast of future cost after Ainglish enters training data.
+
+The runner is resumable between campaigns: a valid filed receipt is preserved and never submitted twice. This matters when a later live preflight stops after an earlier campaign has already filed.

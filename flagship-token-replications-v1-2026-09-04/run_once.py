@@ -108,6 +108,15 @@ def main() -> None:
     client = ainglish_client()
     outcomes = []
     for name, meta in index["campaigns"].items():
+        receipt = ROOT / f"{name}.receipt.json"
+        if receipt.exists():
+            outcome = json.loads(receipt.read_text(encoding="utf-8"))
+            if outcome.get("campaign") != name or outcome.get("state") != "filed":
+                raise SystemExit(f"REFUSING: invalid existing receipt for {name}")
+            outcome["receipt_sha256"] = hashlib.sha256(receipt.read_bytes()).hexdigest()
+            outcomes.append(outcome)
+            print("PRESERVED", name, json.dumps(outcome["result"], sort_keys=True), flush=True)
+            continue
         manifest = json.loads((ROOT / meta["file"]).read_text(encoding="utf-8"))
         checked = preflight(client, meta, manifest)
         if not checked["offered"]:
@@ -168,7 +177,6 @@ def main() -> None:
             },
             "server_measurement": filed,
         }
-        receipt = ROOT / f"{name}.receipt.json"
         receipt.write_text(json.dumps(outcome, indent=2) + "\n", encoding="utf-8")
         outcome["receipt_sha256"] = hashlib.sha256(receipt.read_bytes()).hexdigest()
         outcomes.append(outcome)
