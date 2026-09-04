@@ -1,0 +1,176 @@
+{
+  "instrument": {
+    "answer_protocol": "opaque-choice-v1",
+    "api": "openai",
+    "base_url": "http://127.0.0.1:11434/v1",
+    "digest_source": "ollama:/api/tags",
+    "instrument_preparation": {
+      "binding": "ollama:/api/tags",
+      "entry_point": "prepare_reader_instruments"
+    },
+    "max_tokens": 32,
+    "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+    "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+    "name": "gemma3-12b-opaque-choice-q4_k_m",
+    "num_ctx": "provider-default",
+    "precision": "q4_k_m",
+    "provider": "ollama",
+    "reasoning_effort": "provider-default",
+    "seed": 2026090405,
+    "temperature": 0,
+    "timeout_s": 120,
+    "top_k": "provider-default",
+    "top_p": "provider-default"
+  },
+  "kind": "ainglish.reader-qualification-run.v1",
+  "observations": [
+    {
+      "answer": "Mira",
+      "cell": "detectable",
+      "control_id": "owner-rollback",
+      "correct": true,
+      "expected": "Mira"
+    },
+    {
+      "answer": "cannot tell",
+      "cell": "other",
+      "control_id": "owner-rollback",
+      "correct": false,
+      "expected": "Mira"
+    },
+    {
+      "answer": "Jo",
+      "cell": "detectable",
+      "control_id": "author-release",
+      "correct": true,
+      "expected": "Jo"
+    },
+    {
+      "answer": "cannot tell",
+      "cell": "other",
+      "control_id": "author-release",
+      "correct": false,
+      "expected": "Jo"
+    },
+    {
+      "answer": "South",
+      "cell": "detectable",
+      "control_id": "key-holder",
+      "correct": true,
+      "expected": "South"
+    },
+    {
+      "answer": "North",
+      "cell": "other",
+      "control_id": "key-holder",
+      "correct": false,
+      "expected": "South"
+    },
+    {
+      "answer": "red",
+      "cell": "detectable",
+      "control_id": "queue-owner",
+      "correct": true,
+      "expected": "red"
+    },
+    {
+      "answer": "blue",
+      "cell": "other",
+      "control_id": "queue-owner",
+      "correct": false,
+      "expected": "red"
+    },
+    {
+      "answer": "Leeds",
+      "cell": "detectable",
+      "control_id": "backup-location",
+      "correct": true,
+      "expected": "Leeds"
+    },
+    {
+      "answer": "cannot tell",
+      "cell": "other",
+      "control_id": "backup-location",
+      "correct": false,
+      "expected": "Leeds"
+    },
+    {
+      "answer": "Tao",
+      "cell": "detectable",
+      "control_id": "reviewer-record",
+      "correct": true,
+      "expected": "Tao"
+    },
+    {
+      "answer": "cannot tell",
+      "cell": "other",
+      "control_id": "reviewer-record",
+      "correct": false,
+      "expected": "Tao"
+    },
+    {
+      "answer": "8443",
+      "cell": "detectable",
+      "control_id": "service-port",
+      "correct": true,
+      "expected": "8443"
+    },
+    {
+      "answer": "8443",
+      "cell": "other",
+      "control_id": "service-port",
+      "correct": true,
+      "expected": "8443"
+    },
+    {
+      "answer": "west",
+      "cell": "detectable",
+      "control_id": "deployment-region",
+      "correct": true,
+      "expected": "west"
+    },
+    {
+      "answer": "east",
+      "cell": "other",
+      "control_id": "deployment-region",
+      "correct": false,
+      "expected": "west"
+    }
+  ],
+  "receipt": {
+    "kind": "ainglish.reader-qualification.v1",
+    "lineage": {
+      "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Gemma 3 12B IT Q4_K_M.",
+      "key": "gemma-3-12b-it"
+    },
+    "qualified_at": "2026-09-04T15:51:08+00:00",
+    "reader": {
+      "digest_source": "ollama:/api/tags",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "provider": "ollama"
+    },
+    "result": {
+      "detectable_correct": 8,
+      "detectable_total": 8,
+      "min_gap_bps": 2500,
+      "min_recovered_bps": 7500,
+      "other_correct": 1,
+      "other_total": 8,
+      "passed": true
+    },
+    "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+    "screen_sha256": "6546df8a9a09d81dc7a9bbe48834461b501593a493b3bf323574a48c8ad4c8bd",
+    "settings_sha256": "8d2f6913ccadc130df105def1590f01bad85febbd6608314d6910c7e963979ce",
+    "valid_until": "2026-10-04T15:51:08+00:00"
+  },
+  "screen": {
+    "controls": 8,
+    "kind": "ainglish.reader-qualification-screen.v1",
+    "ordering": "detectable then other; one call per cell; no retry",
+    "sha256": "6546df8a9a09d81dc7a9bbe48834461b501593a493b3bf323574a48c8ad4c8bd"
+  },
+  "status": "passed",
+  "truth_boundary": "Qualification tests this exact reader/settings combination on target-independent controls. It is not target evidence, model-family independence, or a promise of future provider stability."
+}
