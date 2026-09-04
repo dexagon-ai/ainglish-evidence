@@ -1,0 +1,152 @@
+{
+  "manifest": {
+    "kind": "dexagon.ainglish.dispatched-delivered-token-replication.v1",
+    "metric": "token_delta",
+    "construct": "dispatched / delivered",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "english": "I handed the incident summary to the Matrix transport at 18:20 UTC; I have no evidence that the recipient received it.",
+        "ainglish": "dispatched(matrix): the incident summary at 18:20 UTC."
+      },
+      {
+        "english": "Our service handed the invoice to the print-mail provider; we do not know whether it arrived at the customer.",
+        "ainglish": "dispatched(print-mail-provider): the customer invoice."
+      },
+      {
+        "english": "I handed the job result to the callback transport; its acceptance identifier does not show arrival at the recipient.",
+        "ainglish": "dispatched(callback-transport): the job result."
+      },
+      {
+        "english": "The worker handed the alert to the pager gateway; nobody on the recipient side has witnessed its arrival.",
+        "ainglish": "dispatched(pager-gateway): the alert."
+      },
+      {
+        "english": "I handed the patch archive to the SFTP transport; I have no evidence that it reached the maintainer.",
+        "ainglish": "dispatched(sftp-transport): the patch archive."
+      },
+      {
+        "english": "Our relay accepted custody of the audit export; we do not know whether the destination received it.",
+        "ainglish": "dispatched(our-relay): the audit export."
+      },
+      {
+        "english": "I handed the notification to the SMS gateway; its provider receipt confirms custody but not recipient arrival.",
+        "ainglish": "dispatched(sms-gateway): the notification."
+      },
+      {
+        "english": "The publisher handed the event to the MQTT broker; no subscriber-side receipt is available.",
+        "ainglish": "dispatched(mqtt-broker): the event."
+      },
+      {
+        "english": "The recipient's mail server witnessed the compliance report arrive in the recipient mailbox.",
+        "ainglish": "delivered(recipient-mail-server): the compliance report."
+      },
+      {
+        "english": "The destination webhook witnessed the signed payload arrive at the recipient endpoint.",
+        "ainglish": "delivered(destination-webhook): the signed payload."
+      },
+      {
+        "english": "The recipient's inbox agent witnessed the scheduling notice arrive in the recipient inbox.",
+        "ainglish": "delivered(recipient-inbox-agent): the scheduling notice."
+      },
+      {
+        "english": "The receiving SFTP server witnessed the backup archive arrive at the recipient account.",
+        "ainglish": "delivered(receiving-sftp-server): the backup archive."
+      },
+      {
+        "english": "The customer portal witnessed the refund statement arrive in the customer's document store.",
+        "ainglish": "delivered(customer-portal): the refund statement."
+      },
+      {
+        "english": "The downstream queue consumer witnessed the order event arrive in the recipient queue.",
+        "ainglish": "delivered(downstream-queue-consumer): the order event."
+      },
+      {
+        "english": "The partner's API witnessed the revocation notice arrive at the partner endpoint.",
+        "ainglish": "delivered(partner-api): the revocation notice."
+      },
+      {
+        "english": "The recipient witnessed the contract copy arrive and confirmed that arrival to us.",
+        "ainglish": "delivered(recipient): the contract copy."
+      }
+    ],
+    "estimand_contract": {
+      "kind": "ainglish.estimand-shadow.v1",
+      "unit_span": "complete message",
+      "contrast": "Ainglish form versus its complete careful-English meaning",
+      "population": "16 frozen fresh transit-status reports balanced 8/8 across dispatched and delivered",
+      "aggregation": {
+        "reducer": "least_favourable",
+        "rule": "equal pair mean, then maximum tokenizer mean (least-favourable)"
+      },
+      "governance_effect": "report_only"
+    },
+    "replicates_hash": "f4ad52b176c68b733641eb90d518e8c705aa9537626c9afad83151e806df97f1",
+    "method": "Canonical SDK two-phase token runner; freeze before tokenizer loading and file every finite direction once.",
+    "source": {
+      "repository": "dexagon-ai/ainglish-evidence",
+      "path": "dispatched-delivered-token-replication-v1-2026-09-04/build.py"
+    },
+    "evidentiary_limit": "Present tokenizer cost under complete semantic comparators; not comprehension, adoption, or future Ainglish-aware tokenizer cost."
+  },
+  "replication_target_manifest": {
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "english": "I sent the reply via SMTP.",
+        "ainglish": "dispatched(smtp-relay): the reply to jonathan, 2026-07-09."
+      },
+      {
+        "english": "The reply arrived at the recipient server.",
+        "ainglish": "delivered(recipient-mta): the reply to jonathan, per their 250 at 09:14Z."
+      },
+      {
+        "english": "I sent the summary via DM API.",
+        "ainglish": "dispatched(colony-dm-api): the summary to kannaka — the endpoint returned success and I hold no witness to arrival."
+      },
+      {
+        "english": "The email was sent via SMTP relay.",
+        "ainglish": "dispatched(smtp-relay): the notification, 2026-08-15."
+      },
+      {
+        "english": "The webhook confirmed delivery.",
+        "ainglish": "delivered(webhook-endpoint): the payload, per their 200 at 14:30Z."
+      },
+      {
+        "english": "I dispatched the request via HTTP.",
+        "ainglish": "dispatched(http-client): the request to api.example.com."
+      },
+      {
+        "english": "The message was received by the queue.",
+        "ainglish": "delivered(message-queue): the event, per consumer log at 10:05Z."
+      },
+      {
+        "english": "I sent the file via SFTP.",
+        "ainglish": "dispatched(sftp-server): the backup archive, 2026-08-20."
+      },
+      {
+        "english": "The recipient acknowledged receipt.",
+        "ainglish": "delivered(recipient-ack): the document, per their reply at 16:45Z."
+      },
+      {
+        "english": "I posted the event to the message bus.",
+        "ainglish": "dispatched(message-bus): the event, topic: orders.created."
+      }
+    ],
+    "seed": "none",
+    "method": "tiktoken encode count difference between Ainglish form and English gloss",
+    "environment": {
+      "library": "tiktoken",
+      "version": "0.14.0"
+    }
+  }
+}
