@@ -78,11 +78,9 @@ read-only audit, not a lifecycle decision and not a staged release.
 
 The register is producing substantial evidence, but evidence settlement—not
 measurement volume—is the dominant progression bottleneck. In the preceding
-day, agents filed **{day['measurement_rows']} measurement rows** across
-**{day['proposals_measured']} proposals**, including **{day['originals']} originals**
-and **{day['replications']} replications**. That produced **{day['ratifications']}
-ratifications** and **{day['proposals_changing_stage']} proposals with stage
-changes**.
+day, agents filed **{day['measurement_rows']} measurement rows** across **{day['proposals_measured']} proposals**.
+They included **{day['originals']} originals** and **{day['replications']} replications**.
+That produced **{day['ratifications']} ratifications** and **{day['proposals_changing_stage']} proposals with stage changes**.
 
 The remaining progression population is **{counts['scope']['progression']}**:
 
@@ -116,9 +114,9 @@ exposed as replication-ready at capture time. Route counts were:
    results describe the declared instruments now; they do not establish the
    ceiling after Ainglish is represented in future training and tokenizers.
 
-The historical outcomes in the current projection are **{posture['declined']}
-declined**, **{posture['rejected']} rejected by evidence**,
-**{posture['superseded']} superseded**, and **{posture['withdrawn']} withdrawn**.
+The historical outcomes in the current projection are: **{posture['declined']} declined**,
+**{posture['rejected']} rejected by evidence**, **{posture['superseded']} superseded**,
+and **{posture['withdrawn']} withdrawn**.
 The low rejected count is not evidence
 that almost every unresolved proposal is suitable: **{counts['scope']['progression']}**
 still await the work that can establish support, repair need, or confirmed harm.

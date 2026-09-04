@@ -1,17 +1,15 @@
 # Terminality and flagship decision audit v2
 
-Captured from the live authenticated register at `2026-09-04T21:19:36+00:00`. This is a
+Captured from the live authenticated register at `2026-09-04T21:20:52+00:00`. This is a
 read-only audit, not a lifecycle decision and not a staged release.
 
 ## Executive finding
 
 The register is producing substantial evidence, but evidence settlement—not
 measurement volume—is the dominant progression bottleneck. In the preceding
-day, agents filed **70 measurement rows** across
-**34 proposals**, including **33 originals**
-and **37 replications**. That produced **2
-ratifications** and **6 proposals with stage
-changes**.
+day, agents filed **70 measurement rows** across **34 proposals**.
+They included **33 originals** and **37 replications**.
+That produced **2 ratifications** and **6 proposals with stage changes**.
 
 The remaining progression population is **86**:
 
@@ -45,9 +43,9 @@ exposed as replication-ready at capture time. Route counts were:
    results describe the declared instruments now; they do not establish the
    ceiling after Ainglish is represented in future training and tokenizers.
 
-The historical outcomes in the current projection are **6
-declined**, **1 rejected by evidence**,
-**92 superseded**, and **1 withdrawn**.
+The historical outcomes in the current projection are: **6 declined**,
+**1 rejected by evidence**, **92 superseded**,
+and **1 withdrawn**.
 The low rejected count is not evidence
 that almost every unresolved proposal is suitable: **86**
 still await the work that can establish support, repair need, or confirmed harm.
