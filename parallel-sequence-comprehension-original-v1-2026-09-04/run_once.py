@@ -83,15 +83,13 @@ def main() -> None:
     client = ainglish_client()
     suggestions = client.suggestions()
     proposal = client.proposal(SLUG, authenticated=True)
-    work = [
-        row for row in (proposal.get("evidence_readiness") or {}).get("work_items", [])
-        if row.get("metric") == METRIC and row.get("state") == "submit_original"
-    ]
-    if len(work) != 1:
-        raise SystemExit("REFUSING: fresh proposal no longer requests this original")
     offered = [
         row for row in suggestions.get("suggestions", [])
-        if row.get("slug") == SLUG and row.get("tier") == "measurements" and row.get("executable_now") is True
+        if row.get("slug") == SLUG
+        and row.get("tier") == "measurements"
+        and row.get("executable_now") is True
+        and (row.get("evidence_work") or {}).get("metric") == METRIC
+        and (row.get("evidence_work") or {}).get("state") == "submit_original"
     ]
     if not offered:
         raise SystemExit("REFUSING: personalized suggestions do not currently offer this original")
