@@ -36,6 +36,7 @@ def items():
                        if form == 'extra-retries' else
                        f'Make at most {n} executions of “{action}” altogether, including the first execution.')
             options = [str(maximum), str(maximum + 1), str(maximum - 1), 'the maximum is not specified']
+            english = english.replace('1 additional executions', '1 additional execution').replace('at most 1 executions', 'at most 1 execution')
             shift = (i + (form == 'total-attempts')) % 4
             rows.append({'id': f'astra-retry-{form}-{i:02}', 'english': english,
                          'ainglish': f'{action}, {form}({n}).',
@@ -105,7 +106,7 @@ def main():
                               'real_cells':256, 'calibration_cells':32,
                               'interpretation':'Interval entirely below -5pp is current-reader inferiority; crossing -5 is inconclusive for NI, not a reason to extend. Numerical settlement is reported separately.',
                               'exposure':'Cold compact forms; English-trained readers. No inference about future adapted models.',
-                              'source_commit':commit, 'sdk_base':'0.2.53 plus reviewed-local PR158 rounding and PR159 workflow patches'}
+                              'source_commit':commit, 'sdk_base':'0.2.53 plus locally tested, unmerged PR158 rounding and PR159 workflow patches'}
         }
     }, receipts)
     write('runspec-retry.json', spec)
