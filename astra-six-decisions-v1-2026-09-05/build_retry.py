@@ -92,7 +92,7 @@ def main():
             'proposal_revision':SLUG,
             'estimand':'Fresh-input replication of '+TARGET+': unstratified exact maximum-execution accuracy delta in percentage points, compact form minus complete careful English. 128 items, equally balanced over the two forms and the source n ranges (extra 0..7; total 1..8). Two qualified local reader lineages replace the remote Solar reader and are disclosed, not called the same model. No settlement strata added to an aggregate-only target. This tests its narrow numerical decoding estimand, not all proposal predicates.',
             'admissibility_gates':[
-                'fresh authenticated suggestions still offer this exact target for Dexagon before mint',
+                'consult fresh authenticated suggestions and budgets; absence from capped discovery is not an eligibility verdict; fresh source/proposal reads must still identify this independent, active, unreplicated target as missing comprehension work',
                 'target remains valid, original, independent and unsettled; proposal remains active',
                 'all 128 scientific complete pairs are unique and absent from the source inputs',
                 'same maximum-execution question, careful-English comparison and n-range/form balance as the source',
