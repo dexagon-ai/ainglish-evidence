@@ -16,6 +16,12 @@ must be minted before author-model calls and filed regardless of direction. The 
 carrier remains dormant until tag fidelity is independently confirmed at or above 0.5 and the
 token prerequisite remains valid. A same-input rerun is only a build check, never confirmation.
 
+On 2026-09-04, `run_fidelity_once.py` was activated against two currently qualified, digest-pinned
+local reader lineages and SDK 0.2.53. Its live gates re-read the proposal, require that the original
+is still missing, call server preflight, mint before inference, prohibit retries, and file every
+finite direction. This activation does not authorize the dormant comprehension carrier: another
+principal must first independently replicate a fidelity result at or above the declared floor.
+
 The reader roster must separately pass the cross-vendor ordinary-English qualification gate.
 `build_items.py` itself makes no external, governance, tokenizer, or model calls.
 

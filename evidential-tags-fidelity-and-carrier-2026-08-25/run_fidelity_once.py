@@ -17,7 +17,7 @@ from ainglish.client import manifest_commitment
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
 PROJECT = REPO.parent
-QUALIFICATION = REPO / "reader-qualification-v5-2026-08-25" / "selected-result.json"
+QUALIFICATION = REPO / "send-snapshot-live-view-comprehension-v1-2026-09-03" / "runspec-local-qualified.json"
 SLUG = "evidential-tags-obs-inf-rep-src-with-instrument-recall-and-p-2"
 sys.path.insert(0, str(PROJECT / "scripts"))
 from local_colony_auth import ainglish_client  # noqa: E402
@@ -105,19 +105,38 @@ def main() -> None:
     if len(cases) != 96 or cases_sha != index["fidelity"]["sha256"]:
         raise SystemExit("REFUSING: fidelity population drift")
     qualification = json.loads(QUALIFICATION.read_text())
-    if not qualification.get("roster_ready"):
-        raise SystemExit("REFUSING: reader roster did not qualify")
-    panel = qualification.get("fixed_roster", [])
+    receipts = qualification.get("reader_qualifications") or []
+    if len(receipts) != 2 or not all(row.get("result", {}).get("passed") for row in receipts):
+        raise SystemExit("REFUSING: current target-independent reader roster did not qualify")
+    now = datetime.now(timezone.utc)
+    if any(datetime.fromisoformat(row["valid_until"]) <= now for row in receipts):
+        raise SystemExit("REFUSING: a reader qualification has expired")
+    receipt_by_digest = {row["reader"]["model_digest"]: row for row in receipts}
+    panel = []
+    for reader in qualification.get("panel") or []:
+        receipt = receipt_by_digest.get(reader.get("model_digest"))
+        if not receipt:
+            raise SystemExit("REFUSING: panel reader has no matching qualification receipt")
+        panel.append({**reader, "lineage": receipt["lineage"]["key"]})
     if len({row["lineage"] for row in panel}) < 2:
         raise SystemExit("REFUSING: fewer than two qualified reader lineages")
     devices = gpu_preflight(panel)
     client = ainglish_client()
+    identity = client.whoami()
     suggestions = client.suggestions()
     proposal = client.proposal(SLUG, authenticated=True)
     if proposal.get("stage") != "measured" or proposal.get("superseded_by"):
         raise SystemExit("REFUSING: evidential-tags lifecycle is not the current measured surface")
+    if (proposal.get("proposer") or {}).get("sub") == identity.get("sub"):
+        raise SystemExit("REFUSING: the executing principal is the proposer")
     if any(row.get("metric") == "tag_fidelity" and not row.get("is_replication") for row in proposal.get("measurements", [])):
         raise SystemExit("REFUSING: a tag_fidelity original already exists")
+    work = {
+        row.get("metric"): row
+        for row in (proposal.get("evidence_readiness") or {}).get("work_items") or []
+    }.get("tag_fidelity") or {}
+    if work.get("state") != "submit_original":
+        raise SystemExit(f"REFUSING: fresh proposal no longer requests tag_fidelity original: {work!r}")
     manifest = {
         "kind": "ainglish.evidential-tags-controlled-fidelity-manifest.v1",
         "metric": "tag_fidelity",
@@ -129,13 +148,19 @@ def main() -> None:
         "population": "96 blinded controlled-use cases, exactly 16 per declared evidential-tag form",
         "aggregation": "least-favourable exact tag-application fraction across qualified reader lineages",
         "source": {"repository": "dexagon-ai/ainglish-evidence", "commit": commit},
-        "qualification_sha256": qualification["content_sha256"],
+        "qualification_sha256": hashlib.sha256(canonical({
+            "panel": qualification.get("panel"),
+            "reader_qualifications": receipts,
+        })).hexdigest(),
+        "reader_qualifications": receipts,
+        "training_asymmetry": (
+            "These present readers were trained primarily on ordinary English and are not "
+            "assumed to have seen Ainglish. This controlled audit measures current zero-shot "
+            "tag application, not expected performance after Ainglish-aware training."
+        ),
     }
-    opened = client.mint_attempt(
-        SLUG,
-        manifest=manifest,
-        estimand="The least-favourable exact warranted-prefix application fraction across every cell of a frozen balanced 96-case controlled-use audit and every separately qualified reader lineage.",
-        admissibility_gates=[
+    estimand = "The least-favourable exact warranted-prefix application fraction across every cell of a frozen balanced 96-case controlled-use audit and every separately qualified reader lineage."
+    gates = [
             "fresh authenticated suggestions and a fresh proposal read precede mint",
             "the current lifecycle has no tag_fidelity original",
             "the answer-bearing 96-case population and runner are public before mint or model calls",
@@ -143,17 +168,29 @@ def main() -> None:
             "at least two distinct reader lineages passed the frozen ordinary-English holdout",
             "every exact, inexact, null, adverse, or transport outcome is retained without retry",
             "this controlled-use estimand is disclosed separately from organic adoption fidelity",
-        ],
-        planned_sample={
+        ]
+    planned_sample = {
             "metric": "tag_fidelity", "cases": 96, "cases_per_form": 16,
             "readers": len(panel), "reader_lineages": [row["lineage"] for row in panel],
             "cells": 96 * len(panel), "items_sha256": cases_sha,
-        },
+        }
+    server_preflight = client.preflight_attempt(
+        SLUG, manifest, estimand, gates, planned_sample,
+        proposal_revision=SLUG,
+    )
+    opened = client.mint_attempt(
+        SLUG,
+        manifest=manifest,
+        estimand=estimand,
+        admissibility_gates=gates,
+        planned_sample=planned_sample,
+        proposal_revision=SLUG,
         store_manifest=True,
     )["attempt"]
     attempt_path.write_text(json.dumps({
         "attempt": opened, "source_commit": commit, "suggestions_generated_at": suggestions.get("generated_at"),
         "gpu_preflight": devices, "manifest_commitment": manifest_commitment(manifest),
+        "server_preflight": server_preflight,
     }, indent=2) + "\n")
     rows = []
     try:
