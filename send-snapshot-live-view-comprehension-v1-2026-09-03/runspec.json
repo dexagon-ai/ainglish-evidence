@@ -1,0 +1,166 @@
+{
+  "construct": "send-snapshot / grant-live-view — fixed copy versus changing canonical source",
+  "slug": "send-snapshot-version-ref-to-recipient-grant-live-view",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 3191947,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "panel_neff": 1,
+  "panel": [
+    {
+      "name": "spark-zen-13-minimal",
+      "provider": "opencode-zen",
+      "base_url": "https://opencode.ai/zen/v1",
+      "api": "responses",
+      "api_key_env": "OPENCODE_API_KEY",
+      "model": "muse-spark-1.3-contributor-free",
+      "precision": "provider-served",
+      "reasoning_effort": "minimal",
+      "max_tokens": 1024,
+      "timeout_s": 120
+    }
+  ],
+  "models": [
+    "spark-zen-13-minimal@provider-served"
+  ],
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "spark-zen-13-minimal@provider-served",
+      "reader": {
+        "provider": "opencode-zen",
+        "model": "muse-spark-1.3-contributor-free",
+        "precision": "provider-served",
+        "digest_source": "provider-opaque"
+      },
+      "lineage": {
+        "key": "meta/muse-spark",
+        "basis": "OpenCode Zen hosted muse-spark-1.3-contributor-free via responses API (Zen catalogs Muse under /responses, not chat completions). Provider-opaque: no weight digest exposed; catalog binding intentionally omitted after live preflight_mismatch drift observed 2026-09-02. reasoning_effort minimal + max_tokens 1024: Zen 1.3 spends ~27 reasoning tokens on trivial probes and goes incomplete at low/256 (253 reasoning tokens, no output); temperature omitted because reasoning models reject it. Deviations from template chat-wire defaults are declared here, not hidden."
+      },
+      "screen_sha256": "2e3caa59583780ed04d7b081e9ac258b225eeab9fbbb5c7ef1291a71b287aaa2",
+      "settings_sha256": "003266a8e67bf7c516c249af23d00eabc7c56fbce6c82f80445a7ec4c74d45a7",
+      "qualified_at": "2026-09-03T10:57:58+00:00",
+      "valid_until": "2026-10-03T10:57:58+00:00",
+      "result": {
+        "detectable_correct": 14,
+        "detectable_total": 16,
+        "other_correct": 1,
+        "other_total": 16,
+        "min_gap_bps": 1250,
+        "min_recovered_bps": 5000,
+        "passed": true
+      }
+    }
+  ],
+  "comparator": {
+    "kind": "complete-careful-english-v1",
+    "description": "each compact form versus its complete fixed-copy or revocable-live-view mapping; bare share is excluded from the accuracy estimand"
+  },
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/3737485bf7c7f0a8efd60034b189e41809b92126/send-snapshot-live-view-comprehension-v1-2026-09-03/items.json",
+  "items_sha256": "26ec5c7674b5c0a54e3543a1e415e46b534c7647213d060c3d68d388bfcbbfc3",
+  "settlement_strata": [
+    {
+      "id": "grant-live-view-1",
+      "weight": 1
+    },
+    {
+      "id": "grant-live-view-2",
+      "weight": 1
+    },
+    {
+      "id": "grant-live-view-3",
+      "weight": 1
+    },
+    {
+      "id": "grant-live-view-4",
+      "weight": 1
+    },
+    {
+      "id": "grant-live-view-5",
+      "weight": 1
+    },
+    {
+      "id": "grant-live-view-6",
+      "weight": 1
+    },
+    {
+      "id": "send-snapshot-1",
+      "weight": 1
+    },
+    {
+      "id": "send-snapshot-2",
+      "weight": 1
+    },
+    {
+      "id": "send-snapshot-3",
+      "weight": 1
+    },
+    {
+      "id": "send-snapshot-4",
+      "weight": 1
+    },
+    {
+      "id": "send-snapshot-5",
+      "weight": 1
+    },
+    {
+      "id": "send-snapshot-6",
+      "weight": 1
+    }
+  ],
+  "concurrency": {
+    "max_in_flight": 1,
+    "per_reader_max_in_flight": {
+      "spark-zen-13-minimal": 1
+    }
+  },
+  "training_asymmetry": "The provider-served reader was trained primarily on ordinary English and is not assumed to have seen Ainglish. This measures present zero-shot comprehension, not the expected efficiency of a future Ainglish-aware model.",
+  "attempt": {
+    "proposal_revision": "send-snapshot-version-ref-to-recipient-grant-live-view",
+    "estimand": "Original comprehension claim carrier: the equal-weight mean across 12 form-by-domain strata of exact two-question accuracy in the registered compact form minus its complete careful-English mapping, over 144 fresh operational scenarios. All 48 form-by-domain-by-consequence cells plus implementation and consequence scores remain separately recoverable diagnostics.",
+    "admissibility_gates": [
+      "authenticated suggestions still request an original comprehension_accuracy_delta measurement immediately before mint",
+      "the proposal remains current at measured stage and its evidence contract still lacks comprehension_accuracy_delta",
+      "the public 144+8 carrier at 3737485bf7c7f0a8efd60034b189e41809b92126 hashes canonically to 26ec5c7674b5c0a54e3543a1e415e46b534c7647213d060c3d68d388bfcbbfc3",
+      "the carrier contains exactly 72 scenarios per form, 12 load-bearing form-by-domain strata, and all 48 required form-by-domain-by-consequence report cells",
+      "every scenario exposes two separately recoverable questions and a complete four-way Cartesian answer set",
+      "the frozen seed exposes both comparison arms inside every one of the 12 settlement strata for Spark's exact reader identity",
+      "the same frozen deal exposes both comparison arms in every one of the 48 separately reported consequence cells",
+      "the receipt-preserving panel harness is the released ainglish 0.2.52 source at commit 4f496865774c445b9cc9cdc3ce3beb5d9ecfd57a",
+      "Spark's exact OpenCode Zen reader and settings passed the public target-independent screen before this target carrier was frozen",
+      "the attached qualification receipt remains valid and exactly names the declared roster identity",
+      "eight construct-free calibrations execute first in both arms and must recover a gap of at least 0.5",
+      "zero transport faults, response-bound truncations, or missing scientific cells are required",
+      "absolute arms, replayable interval, all 12 settlement strata, 48 report cells, and every normalized answer are retained",
+      "every finite supportive, null, adverse, floor-bound, ceiling-bound, or inconclusive outcome is filed exactly once",
+      "bare share is never used as an accuracy comparator against a hidden intended topology"
+    ],
+    "planned_sample": {
+      "metric": "comprehension_accuracy_delta",
+      "comparison": "registered compact form versus complete careful-English mapping",
+      "scientific_scenarios": 144,
+      "calibration_items": 8,
+      "forms": {
+        "send-snapshot": 72,
+        "grant-live-view": 72
+      },
+      "domains": 6,
+      "consequence_events": 4,
+      "boundary_probes": 3,
+      "settlement_strata": 12,
+      "reported_consequence_cells": 48,
+      "questions_per_scenario": 2,
+      "readers": 1,
+      "reader_lineages": [
+        "meta/muse-spark"
+      ],
+      "panel_members": 1,
+      "panel_neff": 1,
+      "real_cells": 144,
+      "calibration_cells": 16,
+      "sdk_version": "0.2.52",
+      "sdk_commit": "4f496865774c445b9cc9cdc3ce3beb5d9ecfd57a",
+      "items_commit": "3737485bf7c7f0a8efd60034b189e41809b92126"
+    }
+  }
+}

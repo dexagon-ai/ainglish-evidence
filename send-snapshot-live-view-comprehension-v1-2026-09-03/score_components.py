@@ -23,8 +23,11 @@ def main() -> None:
     if not isinstance(rows, list):
         raise SystemExit("REFUSING: cell receipt has no rows list")
 
-    totals: dict[tuple[str, ...], dict[str, list[int]]] = defaultdict(
-        lambda: {"implementation": [0, 0], "consequence": [0, 0], "exact_pair": [0, 0]}
+    totals: dict[tuple[str, ...], dict[str, dict[str, list[int]]]] = defaultdict(
+        lambda: {
+            component: {arm: [0, 0] for arm in ("english", "ainglish")}
+            for component in ("implementation", "consequence", "exact_pair")
+        }
     )
     unrecognized = []
     for row in rows:
@@ -51,29 +54,49 @@ def main() -> None:
             "consequence": bool(components["consequence_correct"]),
             "exact_pair": bool(components["implementation_correct"] and components["consequence_correct"]),
         }
+        arm = row.get("arm")
+        if arm not in ("english", "ainglish"):
+            unrecognized.append({
+                "item_id": row.get("item_id"), "reader": row.get("reader"),
+                "arm": arm, "answer": answer,
+            })
+            continue
         for key in keys:
             for component, correct in scores.items():
-                totals[key][component][0] += int(correct)
-                totals[key][component][1] += 1
+                totals[key][component][arm][0] += int(correct)
+                totals[key][component][arm][1] += 1
 
     result_rows = []
     for key in sorted(totals):
         result_rows.append({
             "slice": list(key),
-            "scores": {
-                component: {
+            "scores": {},
+        })
+        for component, arms in totals[key].items():
+            arm_result = {
+                arm: {
                     "correct": correct,
                     "n": n,
                     "accuracy": round(correct / n, 4) if n else None,
                 }
-                for component, (correct, n) in totals[key].items()
-            },
-        })
+                for arm, (correct, n) in arms.items()
+            }
+            accuracies = [arm_result[arm]["accuracy"] for arm in ("english", "ainglish")]
+            result_rows[-1]["scores"][component] = {
+                "arms": arm_result,
+                "delta_pp": (
+                    round(100 * (accuracies[1] - accuracies[0]), 2)
+                    if None not in accuracies else None
+                ),
+            }
     result = {
         "kind": "dexagon.ainglish.snapshot-live-component-scores.v1",
         "carrier_sha256": carrier["sha256"],
         "source_attempt_id": receipt.get("attempt_id"),
-        "recognized_scientific_cells": totals[("all",)]["exact_pair"][1],
+        "recognized_scientific_cells": sum(
+            totals[("all",)]["exact_pair"][arm][1]
+            for arm in ("english", "ainglish")
+        ),
         "unrecognized_scientific_cells": unrecognized,
         "results": result_rows,
     }
