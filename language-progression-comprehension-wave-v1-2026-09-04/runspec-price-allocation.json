@@ -1,0 +1,111 @@
+{
+  "kind": "dexagon.ainglish.language-progression-comprehension-runspec.v1",
+  "construct": "no-charge / available-now",
+  "public_id": "a-yc4193gwc2e87zkn",
+  "slug": "offer-is-no-charge-billing-scope-resource-is-available-now",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026090406,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "panel_neff": 2,
+  "panel": [
+    {
+      "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "max_tokens": 32,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090406
+    },
+    {
+      "name": "gemma3-12b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "max_tokens": 32,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090406
+    }
+  ],
+  "comparator": {
+    "kind": "complete-careful-english-v1",
+    "description": "Each compact form is compared with its complete careful-English meaning; bare ambiguity is absent from the scalar."
+  },
+  "comparison_identity": {
+    "comparator_genre": "complete-careful-English-v1",
+    "pair_rendering": "held-out exact consequence question",
+    "reader_roster": [
+      "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "gemma3-12b-opaque-choice-q4_k_m"
+    ],
+    "form_strata": [
+      "no-charge",
+      "available-now"
+    ]
+  },
+  "settlement_strata": [
+    {
+      "id": "no-charge",
+      "weight": 1
+    },
+    {
+      "id": "available-now",
+      "weight": 1
+    }
+  ],
+  "training_asymmetry": "Present readers have ordinary-English training and are not assumed to have seen Ainglish. Results measure current zero-shot transparency, not future post-training efficiency.",
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/bef3db880b651417da575ea9190a51e8029d0ebd/language-progression-comprehension-wave-v1-2026-09-04/price-allocation.items.json",
+  "items_sha256": "93559938867c6281aee1452563d030cd7f6a39bf9e5661eb7a7adee471ae9173",
+  "source": {
+    "repository": "dexagon-ai/ainglish-evidence",
+    "commit": "bef3db880b651417da575ea9190a51e8029d0ebd",
+    "path": "language-progression-comprehension-wave-v1-2026-09-04/price-allocation.items.json"
+  },
+  "attempt": {
+    "proposal_revision": "offer-is-no-charge-billing-scope-resource-is-available-now",
+    "estimand": "Percentage-point exact-answer accuracy difference, registered compact form minus complete careful-English mapping, over 32 frozen items for no-charge / available-now; equal-weight mean of the separately reported strata (no-charge, available-now). Interpret non-inferiority at -5 percentage points; retain absolute arms, per-reader results, intervals, calibration, yield and every stratum.",
+    "admissibility_gates": [
+      "authenticated suggestions and a fresh proposal read still request this exact original comprehension_accuracy_delta immediately before mint",
+      "the executing principal is not the proposal's proposer and has not already filed this original",
+      "the published answer-bearing array hashes to 93559938867c6281aee1452563d030cd7f6a39bf9e5661eb7a7adee471ae9173 and contains exactly 32 scientific plus 16 calibration items",
+      "every English arm states the complete careful meaning; bare ambiguous English does not enter the scalar",
+      "both local reader artifacts match the declared Ollama digests and run statelessly at temperature 0 with the frozen seed",
+      "construct-free calibration executes first and must show an explicit-minus-unresolved gap of at least 0.5 for each reader",
+      "every form stratum remains separately visible and carries equal weight in the primary estimand",
+      "no reader receives repository access, retrieval, conversation history or a register definition beyond the presented cell",
+      "zero response-bound truncations and full cell yield are required; transport or format failure produces a typed abort without retry",
+      "every finite supportive, adverse or null result is filed exactly once",
+      "a settlement-bearing replication requires a different principal and wholly fresh complete items"
+    ],
+    "planned_sample": {
+      "comparison": "registered compact form versus complete careful-English mapping",
+      "scientific_items": 32,
+      "calibration_items": 16,
+      "readers": 2,
+      "reader_families": [
+        "Mistral Small 3.2 24B",
+        "Gemma 3 12B"
+      ],
+      "panel_neff": 2,
+      "real_cells": 64,
+      "calibration_cells": 64,
+      "settlement_strata": {
+        "available-now": 16,
+        "no-charge": 16
+      },
+      "noninferiority_margin_pp": -5,
+      "sdk_version": "0.2.52",
+      "source_commit": "bef3db880b651417da575ea9190a51e8029d0ebd"
+    }
+  },
+  "content_sha256": "69439b244df514b6c73b28e0da469434caed0c78d870d21e1cfd6e8d9b448745"
+}
