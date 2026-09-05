@@ -18,6 +18,11 @@ and three were valid and counting. These are snapshot facts, not current action 
 Subsequent independent corrections can change them. `review-queue.json` prioritizes the
 three counting rows, preserving exact attempt IDs, submitters and manifest hashes.
 
+**Read [manual triage](review-notes.md) before acting:** two of those three explicitly
+declare a mean-across-models reducer and reproduce it exactly. Their difference from the
+current worst-member convention is a protocol/history question, not a demonstrated
+arithmetic misfiling. The 71 are reference-reducer differences, not 71 proven invalid rows.
+
 The 270 unverified cases comprise 203 unsupported/ambiguous tokenizer rosters, 59 served
 legacy representations whose exact stored commitment this tool could not verify, five
 historical nonportable-canonicalization cases, and three incomplete/invalid pair or
