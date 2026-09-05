@@ -14,6 +14,8 @@ Start here:
 - [Six-source settlement audit and the ten instruction-scope gold conflicts](settlement-audit/README.md).
 - [Formal ballots, adverse decisions and the current release boundary](BALLOT-DECISIONS.md).
 - [Fresh public readback](final-readback.json) and [same-input cost audit](cost-audit.json).
+- [Closing readback](closed-readback.json): all six posted comments, six measurements,
+  and three historical invalid-result annotations verified after the handoffs.
 
 The main decision-relevant contrast is **verdict/no-verdict +9.6 pp against bare
 “failed”, but −6.545 pp against complete English**. Both arms, every condition and
