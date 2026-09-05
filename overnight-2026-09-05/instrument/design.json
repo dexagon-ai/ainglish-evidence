@@ -1,0 +1,22 @@
+{
+  "kind": "ainglish.instrument-development.overnight.v1",
+  "created_at": "2026-09-05T21:44:36.037529+00:00",
+  "configurations_per_reader": 1,
+  "reader_settings": "Unchanged digest-bound local Mistral Small 3.2 24B Q4 and Gemma 3 12B Q4; max_tokens=64, seed=2026090581, temperature=0.",
+  "change": "Control includes an honest not-determined option, not an instruction to guess. Known and unknown answer positions independently balanced over all distinct position pairs.",
+  "order": [
+    "12 development controls per reader",
+    "24 untouched validation controls per reader"
+  ],
+  "max_calls": 144,
+  "retries": 0,
+  "gates": [
+    "Each reader passes SDK >=.5 planted-key gap and >=.95 recovery.",
+    "Each reader has >=.95 semantic accuracy separately on explicit and under-specified arms.",
+    "Zero off-option, absent, truncated or transport-fault outputs.",
+    "Any development failure prevents validation. Any validation failure prevents target studies. No second configuration in this batch."
+  ],
+  "interpretation": "SDK other_correct counts matches to the planted key, NOT semantic accuracy of the information-absent arm. That arm has its own independently specified not-determined key and semantic accuracy is reported separately.",
+  "prior_failures": "Earlier studies and the forced-guess control abort remain final. No rescoring, deletion or replacement of prior observations.",
+  "target_exposure": "These controls contain no Ainglish target constructs. Screens are not language-performance measurements."
+}
