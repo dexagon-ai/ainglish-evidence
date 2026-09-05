@@ -1,0 +1,181 @@
+{
+  "construct": "mean-of(<population-ref>) = <value> | median-of(<population-ref>) = <value>",
+  "slug": "mean-of-population-ref-value-median-of-population-ref-value",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026090584,
+  "models": [
+    "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+    "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+  ],
+  "panel": [
+    {
+      "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "api": "openai",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090581
+    },
+    {
+      "name": "gemma3-12b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "api": "openai",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090581
+    }
+  ],
+  "panel_neff": 2,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "admissibility": {
+    "kind": "ainglish.panel.admissibility.v1",
+    "per_reader_calibration": true,
+    "max_off_option_cells": 0,
+    "max_absent_cells": 0,
+    "max_truncated_cells": 0,
+    "max_transport_fault_cells": 0
+  },
+  "comparator": {
+    "kind": "complete-english-validity-diagnostics-v1",
+    "description": "Identical operational context; complete task-specific English. See frozen DESIGN.md for primary, diagnostic and visible-reference boundaries."
+  },
+  "comparison_identity": {
+    "comparator_genre": "complete-english-validity-diagnostics-v1",
+    "exposure": "cold-no-added-reference",
+    "form_strata": [
+      "mean-of",
+      "median-of"
+    ],
+    "reader_class": "two fixed qualified local digest-bound Q4 readers",
+    "pair_rendering": "mean.consequences",
+    "diagnostic_only": true
+  },
+  "settlement_strata": [
+    {
+      "id": "mean-of",
+      "weight": 1
+    },
+    {
+      "id": "median-of",
+      "weight": 1
+    }
+  ],
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/011d2298035a01ed2c64abcfef6d44656a4c25d3/postdeploy-wave-2026-09-05/frozen/mean.consequences.items.json",
+  "items_sha256": "ada37fb778f4793f52b8efb5350befe8137cb7b0f2f358a6f741cab4d5c69391",
+  "estimand_contract": {
+    "kind": "ainglish.estimand-contract.v2",
+    "population": "128 new authored mean.consequences items, repeated paired frames and fixed local readers; not arbitrary prose or humans",
+    "item_set_construction": {
+      "answer_format": "one opaque letter; meanings in common question",
+      "conditions": [
+        "mean-of",
+        "median-of"
+      ],
+      "design": "postdeploy-heldout-v1",
+      "gold": "independent rational arithmetic or exhaustive assignment validation",
+      "items": 128,
+      "reference_budget_words_per_arm": 0
+    },
+    "reader_class": "Exact Mistral Small 3.2 24B Q4 and Gemma 3 12B Q4 digests, temperature 0, maximum 64 output tokens; target-independent qualification before exposure",
+    "window": "cold-no-added-reference; stateless one-shot cells, no target retries, model training or adaptive selection",
+    "selection_rules": {
+      "gates": "per-reader unrelated control gap >= .5 and zero off-option/absent/truncated/transport faults",
+      "publication": "all admitted directions filed; every failed comparison remains an abort; no favourable-outcome gate",
+      "weighting": "equal declared conditions; preserve every form and hard case"
+    },
+    "governance_effect": "report_only"
+  },
+  "attempt": {
+    "proposal_revision": "mean-of-population-ref-value-median-of-population-ref-value",
+    "estimand": "New mean.consequences original; 128 items in 2 equal conditions. Two exact qualified readers, Ainglish minus complete English accuracy in percentage points. Separate diagnostic/brief-reference scope; never independent confirmation or future training.",
+    "admissibility_gates": [
+      "frozen design, gold and analysis published before target reader calls",
+      "visible nonterminal proposal, unchanged mapping and every declared prerequisite satisfied",
+      "exact unexpired reader qualifications and only already-local models; do not displace unrelated workloads",
+      "all readers clear eight target-independent planted controls; zero off-option/absent/truncated/transport faults",
+      "every finite admitted result is filed; an abort remains public and is never retried",
+      "report-only per-condition minus5 margin and base-frame intervals do not filter outcomes"
+    ],
+    "planned_sample": {
+      "scientific_items": 128,
+      "calibration_items": 8,
+      "readers": 2,
+      "real_calls": 256,
+      "calibration_calls": 32,
+      "source_commit": "011d2298035a01ed2c64abcfef6d44656a4c25d3",
+      "mapping_sha256": "321bc2ffa3cfc18fc3284548a1ed8fda6cc338837d98e462ae25d23df99aa71d",
+      "analysis_seed": 2026090583,
+      "base_frame_bootstrap_draws": 2000,
+      "diagnostic_only": true
+    }
+  },
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "mistral-small-3.2-24b-instruct-2506",
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Mistral Small 3.2 24B Instruct 2506 Q4_K_M."
+      },
+      "screen_sha256": "237a2bbfbaff8ec86b9d0066055397a3280f5ea346041cfa09fdb480246402d2",
+      "settings_sha256": "969293a8a40abacff8143ba78ccd12d595898e5146e3ebb053558a4dca307695",
+      "qualified_at": "2026-09-05T18:57:20+00:00",
+      "valid_until": "2026-09-12T18:57:20+00:00",
+      "result": {
+        "detectable_correct": 8,
+        "detectable_total": 8,
+        "other_correct": 0,
+        "other_total": 8,
+        "min_gap_bps": 2500,
+        "min_recovered_bps": 7500,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "gemma-3-12b-it",
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Gemma 3 12B IT Q4_K_M."
+      },
+      "screen_sha256": "237a2bbfbaff8ec86b9d0066055397a3280f5ea346041cfa09fdb480246402d2",
+      "settings_sha256": "b2aa8e9ab084bc1c806bc8fe07c11721c87049838729b9e71af07c1d8610688f",
+      "qualified_at": "2026-09-05T18:57:42+00:00",
+      "valid_until": "2026-09-12T18:57:42+00:00",
+      "result": {
+        "detectable_correct": 8,
+        "detectable_total": 8,
+        "other_correct": 0,
+        "other_total": 8,
+        "min_gap_bps": 2500,
+        "min_recovered_bps": 7500,
+        "passed": true
+      }
+    }
+  ]
+}
