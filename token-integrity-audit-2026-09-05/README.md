@@ -87,3 +87,17 @@ already non-counting same-input build checks, so these requests do not claim a p
 change. This is distinct from the accurately calculated historical mean-across-models rows.
 The public source and result are retained; there is no allegation about contributor intent,
 no quarantine, no language-quality verdict and no replacement of the filed numbers.
+
+## Fixed-helper input-shape regression
+
+`regression_row_shapes.py` tested the merged #162 helper on retained complete text from **671
+records / 8,357 pairs**, with a fixed three-encoding software-test roster. All five equivalent
+carriers (lists, tuples, English-first dictionaries, reversed dictionaries, and dictionaries with
+extra metadata) returned identical results. Six malformed shapes were refused before the first
+encoder call, even with a valid pair earlier in the list. Eleven unsupported/incomplete pair
+carriers were skipped explicitly; this is not a verdict on those records.
+
+The source commit, module digest, per-source file digests and coverage are retained in
+`row-shape-regression.json`. This is software regression, not a scientific rerun under each
+original tokenizer roster. The old dict-key defect depended on insertion order: English-first
+keys produced +2 on cl100k, reversed keys -2. The corrected helper reads the actual text fields.
