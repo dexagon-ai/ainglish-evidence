@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import sys
 import time
 import urllib.request
 from unittest.mock import patch
@@ -22,21 +23,30 @@ def live_models():
     with urllib.request.urlopen('http://127.0.0.1:11434/api/ps', timeout=10) as r:
         return json.load(r)['models']
 
-def run():
+def run(continue_unobserved=False):
     validate()
-    assert not (ROOT / 'campaign-start.json').exists(), 'Campaign already started: reconcile retained records, never rerun'
-    assert not live_models(), 'Do not displace another loaded inference workload'
+    prefix = 'unobserved-continuation' if continue_unobserved else 'campaign'
+    order = [entry for entry in ORDER if entry != ('verdict', 'bare')] if continue_unobserved else ORDER
+    assert not (ROOT / (prefix+'-start.json')).exists(), 'Campaign already started: reconcile retained records, never rerun'
+    allowed = {r['model'] for r in json.loads((ROOT/'mean.careful.runspec.json').read_text())['panel']}
+    assert all(m.get('name', m.get('model')) in allowed for m in live_models()), 'Do not displace another loaded inference workload'
+    if continue_unobserved:
+        for name, condition in order:
+            stem = name+'.'+condition
+            failure = json.loads((ROOT/(stem+'.exception.json')).read_text())
+            assert failure['calls_retained'] == 0 and failure['attempt_id'] is None
+            assert not any((ROOT/(stem+suffix)).exists() for suffix in ['.opened.json', '.intent.json', '.calls.jsonl'])
     gpu = subprocess.run(['nvidia-smi', '--query-gpu=memory.free', '--format=csv,noheader,nounits'],
                          check=True, capture_output=True, text=True).stdout
-    assert sum(int(x) for x in gpu.splitlines()) > 40000
-    save('campaign-start.json', {'at': now(), 'pid': os.getpid(), 'order': ORDER, 'gpu_free_mib': gpu.splitlines(),
+    assert sum(int(x) for x in gpu.splitlines()) > (14000 if live_models() else 40000)
+    save(prefix+'-start.json', {'at': now(), 'pid': os.getpid(), 'order': order, 'gpu_free_mib': gpu.splitlines(),
          'downloads': 0, 'inference_retries': 0, 'sdk_panel_sha256': hashlib.sha256(Path(panel.__file__).read_bytes()).hexdigest()})
     client = ainglish_client(); outcomes = []
-    for name, condition in ORDER:
+    for name, condition in order:
         stem = name + '.' + condition
         opened, count, journal = {}, 0, None
         try:
-            spec = json.loads((ROOT / (stem+'.runspec.json')).read_text())
+            spec = json.loads((ROOT / (stem+('.preflight-fixed.runspec.json' if continue_unobserved else '.runspec.json'))).read_text())
             sample = spec['attempt']['planned_sample']
             assert all(m.get('name', m.get('model')) in {r['model'] for r in spec['panel']} for m in live_models()), 'Unrelated loaded workload appeared'
             suggestions = client.suggestions(proposal=IDS[name])
@@ -96,14 +106,14 @@ def run():
                 outcomes.append({'condition': stem, 'status': 'filed', 'calls': count, 'manifest_hash': summary['manifest_hash'], 'value': summary['value']})
                 print(stem, 'FILED', summary['value'], summary['manifest_hash'], flush=True)
         except (Exception, SystemExit) as exc:
-            save(stem+'.exception.json', {'at': now(), 'exception_type': type(exc).__name__, 'message': str(exc),
+            save(stem+('.continuation-exception.json' if continue_unobserved else '.exception.json'), {'at': now(), 'exception_type': type(exc).__name__, 'message': str(exc),
                 'calls_retained': count, 'attempt_id': opened.get('attempt', {}).get('attempt_id'),
                 'recovery': 'inspect retained attempt and submission payload; no inference rerun'})
             outcomes.append({'condition': stem, 'status': 'exception-requires-reconciliation', 'calls': count})
             print(stem, type(exc).__name__, 'retained; no retry', flush=True)
         finally:
             if journal is not None: journal.close()
-    save('campaign-finished.json', {'at': now(), 'outcomes': outcomes})
+    save(prefix+'-finished.json', {'at': now(), 'outcomes': outcomes})
     print(json.dumps(outcomes), flush=True)
 
-if __name__ == '__main__': run()
+if __name__ == '__main__': run('--continue-unobserved' in sys.argv)
