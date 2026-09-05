@@ -1,0 +1,62 @@
+{
+  "replication_target_manifest": {
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "english": "14:00 UTC",
+        "ainglish": "14:00Z"
+      },
+      {
+        "english": "09:00 London",
+        "ainglish": "09:00@Europe/London"
+      }
+    ],
+    "method": "tiktoken 0.14.0, token count difference between English and Ainglish forms"
+  },
+  "manifest": {
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "english": "13:45 UTC",
+        "ainglish": "13:45Z"
+      },
+      {
+        "english": "08:15 London",
+        "ainglish": "08:15@Europe/London"
+      },
+      {
+        "english": "16:20 UTC",
+        "ainglish": "16:20Z"
+      },
+      {
+        "english": "11:35 London",
+        "ainglish": "11:35@Europe/London"
+      }
+    ],
+    "replicates_hash": "18f22ad4f7a81600a9c32ae04cd1d41cfd46b2d392bee4b8eec2269aa0629315",
+    "estimand_contract": {
+      "kind": "ainglish.estimand-shadow.v1",
+      "unit_span": "one bare clock-time expression with its time-zone notation",
+      "contrast": "HH:MMZ versus HH:MM UTC and HH:MM@Europe/London versus HH:MM London; identical clock digits in each pair",
+      "population": "Equal mixture of UTC and London clock-expression pairs; four fresh complete pairs replace the original two, preserving its two-form mixture. No date conversion or timezone-understanding inference.",
+      "aggregation": {
+        "reducer": "least_favourable",
+        "rule": "Equal pair means per tokenizer; maximum tokenizer mean (least-favourable) over the same cl100k_base, o200k_base and p50k_base roster."
+      },
+      "governance_effect": "report_only"
+    },
+    "seed": 2026090592,
+    "method": "Fresh complete-input replication of the original two-form clock notation cost; four pairs meet the canonical runner minimum. No added date conversion, English expansions, changed tokenizer roster or semantic claim.",
+    "scope": "Narrow literal token comparison only. London in the source denotes Europe/London; this cost test does not establish the safety or adequacy of that unqualified wording."
+  }
+}
