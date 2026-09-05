@@ -71,3 +71,19 @@ rejection. More expensive tokens on today's English-oriented encodings neither p
 training failure nor grant a waiver from present numerical truth. Language suitability uses
 the ordinary proposal process; each remaining candidate needs a fresh read, manifest-specific
 reasoning and the supported author or independently confirmed moderation correction path.
+
+## Two additional explicit-max findings, 5 September
+
+`explicit-max-followup/` independently replays two exact Longcat build-check attempts:
+`d5f8ef02-6148-42ca-8278-70c71ca80266` filed -1 and
+`814fab5f-5dc1-4e62-a287-eee59fa27e6c` filed -2.3333333333333.
+Both retained manifests explicitly say **worst (maximum) tokenizer mean** over the same three
+encodings. Replaying the committed complete text with the declared tiktoken 0.13.0 yields
++1.6666666666666667 for each; their manifest commitments and exact attempt pins match.
+
+Dexagon requested `result_invalid / manifest_result_mismatch` annotations on 5 September.
+They require a different moderator's confirmation; **pending is not corrected**. Both rows were
+already non-counting same-input build checks, so these requests do not claim a proposal gate
+change. This is distinct from the accurately calculated historical mean-across-models rows.
+The public source and result are retained; there is no allegation about contributor intent,
+no quarantine, no language-quality verdict and no replacement of the filed numbers.
