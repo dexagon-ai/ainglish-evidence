@@ -1,0 +1,105 @@
+{
+  "kind": "ainglish.token-measurement-plan.v1",
+  "state": "prepared_not_run",
+  "manifest": {
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "english": "13:45 UTC",
+        "ainglish": "13:45Z"
+      },
+      {
+        "english": "08:15 London",
+        "ainglish": "08:15@Europe/London"
+      },
+      {
+        "english": "16:20 UTC",
+        "ainglish": "16:20Z"
+      },
+      {
+        "english": "11:35 London",
+        "ainglish": "11:35@Europe/London"
+      }
+    ],
+    "replicates_hash": "18f22ad4f7a81600a9c32ae04cd1d41cfd46b2d392bee4b8eec2269aa0629315",
+    "seed": 2026090592,
+    "method": "Fresh complete-input replication of the original two-form clock notation cost; four pairs meet the canonical runner minimum. No added date conversion, English expansions, changed tokenizer roster or semantic claim.",
+    "scope": "Narrow literal token comparison only. London in the source denotes Europe/London; this cost test does not establish the safety or adequacy of that unqualified wording.",
+    "items_sha256": "cde2f258774c3b7b624f23b33c75f79cbb79da8b063f72a97d53c6b8c64116c5",
+    "comparison_identity": {
+      "kind": "ainglish.token-comparison-identity.v1",
+      "items_sha256": "cde2f258774c3b7b624f23b33c75f79cbb79da8b063f72a97d53c6b8c64116c5",
+      "item_count": 4,
+      "tokenizer_roster": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "comparator": "HH:MMZ versus HH:MM UTC and HH:MM@Europe/London versus HH:MM London; identical clock digits in each pair",
+      "population": "Equal mixture of UTC and London clock-expression pairs; four fresh complete pairs replace the original two, preserving its two-form mixture. No date conversion or timezone-understanding inference.",
+      "aggregation": "Equal pair means per tokenizer; maximum tokenizer mean (least-favourable) over the same cl100k_base, o200k_base and p50k_base roster.",
+      "unit_span": "one bare clock-time expression with its time-zone notation"
+    },
+    "interval_kind": "member_span",
+    "tokenizer_provenance": {
+      "kind": "ainglish.tiktoken-provenance.v1",
+      "library": "tiktoken",
+      "library_version": "0.14.0",
+      "encodings": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ]
+    }
+  },
+  "manifest_commitment": "c96438434c27a3343e9ae6eadc9d8115017e0afd981c47b5aaf08147a2ebb73a",
+  "estimand_contract_policy": {
+    "attached": false,
+    "register_gate": "unit_declared_one_sided",
+    "reason": "the replication target declares no estimand_contract; a one-sided unit_span is held by the register (incommensurable hold: unit), so the design declaration is kept in plan.design_declaration and the mint estimand, not in the manifest",
+    "target_legacy_estimand_matches": null
+  },
+  "design_declaration": {
+    "kind": "ainglish.estimand-shadow.v1",
+    "unit_span": "one bare clock-time expression with its time-zone notation",
+    "contrast": "HH:MMZ versus HH:MM UTC and HH:MM@Europe/London versus HH:MM London; identical clock digits in each pair",
+    "population": "Equal mixture of UTC and London clock-expression pairs; four fresh complete pairs replace the original two, preserving its two-form mixture. No date conversion or timezone-understanding inference.",
+    "aggregation": {
+      "reducer": "least_favourable",
+      "rule": "Equal pair means per tokenizer; maximum tokenizer mean (least-favourable) over the same cl100k_base, o200k_base and p50k_base roster."
+    },
+    "governance_effect": "report_only"
+  },
+  "replication_target": {
+    "manifest_hash": "18f22ad4f7a81600a9c32ae04cd1d41cfd46b2d392bee4b8eec2269aa0629315",
+    "estimand_contract_declared": false
+  },
+  "items_sha256": "cde2f258774c3b7b624f23b33c75f79cbb79da8b063f72a97d53c6b8c64116c5",
+  "pair_count": 4,
+  "sample_size_rule": {
+    "kind": "power-of-two-v1",
+    "item_count": 4,
+    "passed": true
+  },
+  "mint": {
+    "estimand": "token_delta over one bare clock-time expression with its time-zone notation: HH:MMZ versus HH:MM UTC and HH:MM@Europe/London versus HH:MM London; identical clock digits in each pair; population: Equal mixture of UTC and London clock-expression pairs; four fresh complete pairs replace the original two, preserving its two-form mixture. No date conversion or timezone-understanding inference.; aggregation: Equal pair means per tokenizer; maximum tokenizer mean (least-favourable) over the same cl100k_base, o200k_base and p50k_base roster.",
+    "admissibility_gates": [
+      "every declared tiktoken encoding loads",
+      "every frozen English and Ainglish string is countable",
+      "fresh source active original and Dexagon has no prior settlement voice on this source",
+      "same 0.14.0 declared tokenizer implementation; all cached encodings; no counts before mint",
+      "preserve equal two-form mixture and least-favourable member aggregation; wholly fresh complete string pairs; all directions filed"
+    ],
+    "planned_sample": {
+      "items": 4,
+      "tokenizers": 3,
+      "mapping_sha256": "48a312dae04c1867e574b7ef8f2f96c5e0281f5b49011c4597a9eb0bd44eeaf8"
+    }
+  },
+  "next": "Mint plan.manifest with client.mint_attempt(...) before running this plan."
+}

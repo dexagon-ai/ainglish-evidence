@@ -11,7 +11,7 @@ def main():
   assert not (OUT/(name+'.opened.json')).exists()
   c=ainglish_client();suggestions=c.suggestions(proposal=IDS[name])
   p=c.proposal(c.proposal_slug_history(IDS[name])['current_slug'],authenticated=True)
-  plan=json.loads((OUT/(name+'.plan.json')).read_text())
+  plan=json.loads((OUT/'compact'/(name+'.plan.json')).read_text())
   assert p['stage'] in ['seconded','measured'] and p['publication_status']=='visible'
   assert hashlib.sha256(p['english_mapping'].encode()).hexdigest()==plan['mint']['planned_sample']['mapping_sha256']
   if 'token_delta' in p['evidence_readiness']['satisfied']:
