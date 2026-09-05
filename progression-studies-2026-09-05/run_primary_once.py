@@ -36,11 +36,16 @@ def individually_gated_reader(data, readers, ask):
                 if gap<0.5: raise RuntimeError('Prospective per-reader calibration gap failed: '+r['name'])
             passed=True
         answer=ask(reader,text,question,options)
+        # The ordinary SDK yield guard permits a bounded proportion of off-option answers.
+        # Our stricter prospective zero-off-option rule must be enforced here, not merely
+        # written in a runspec. Added after auditing/retracting the first will study; no rerun.
+        if panel.is_absent(answer) or str(answer) not in options:
+            raise RuntimeError('Declared zero-off-option gate: reader '+reader['name']+
+                ', answer '+repr(str(answer))+', question '+question)
         if key in controls:
             ident,arm,gold=controls[key]
             cell=(reader['name'],ident,arm)
             assert cell not in observed,'no calibration cell retry'
-            if panel.is_absent(answer):raise RuntimeError('Missing calibration answer; no real spend')
             observed[cell]=str(answer).casefold()==str(gold).casefold()
         return answer
     return ask_once

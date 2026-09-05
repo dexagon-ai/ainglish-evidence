@@ -1,16 +1,25 @@
 # Results and next decisions
 
-All three prospectively frozen full-careful primaries completed once and were filed
-through the SDK. No model was downloaded, no reader cell retried, and no adverse result
-withheld. Each panel used the same two already qualified local reader lineages and passed
-eight separate target-independent controls in both arms: 1.00 versus 0.00 on each reader.
-Together: **1,280 real cells plus 96 calibration cells**.
+**Correction after filing:** the will study has been author-retracted. Its retained Mistral
+English cells `will-1-19` and `will-1-55` contain off-option answers, violating the runspec's
+zero-unparsed-answer gate. My wrapper failed to enforce that stricter gate; SDK acceptance
+did not establish compliance. All original inputs, cells and scores remain available as a
+failure record. No rerun or replacement score is substituted. The wrapper now refuses a
+single off-option answer, covered by a regression test.
 
-| New original | Delta, percentage points | Filed 95% item-bootstrap interval | English / Ainglish accuracy |
-|---|---:|---|---|
-| [Regime joint consequences](https://ainglish.org/measurements/93cbb70a7b274b44a02ce9e45115444f4750b49b23e3635bca0df79a979e0fdd) | -41.3633 | [-48.8848, -33.1499] | 62.27% / 20.91% |
-| [Both quantifier bounds](https://ainglish.org/measurements/eb9044ee9f2686c774df16b2c428e72a44f49796196899a097f2c6a549591580) | -31.00 | [-39.1052, -22.7788] | 56.46% / 25.46% |
-| [Promise/plan/forecast accountability](https://ainglish.org/measurements/17e39d2b675bcb44f2a3679acc207f21b91b5bf4181df2505ee83140c6a14fbd) | -38.90 | [-46.2998, -31.4465] | 65.59% / 26.69% |
+Three prospectively frozen full-careful primaries ran once and were initially filed through
+the SDK; **two remain valid, awaiting independent replication**, and one is retracted.
+No model was downloaded, no reader cell retried, and no adverse result withheld. Each panel
+used the same two already qualified local reader lineages and passed eight separate
+target-independent controls in both arms: 1.00 versus 0.00 on each reader. Together:
+**1,280 real cells plus 96 calibration cells**, including the retracted study's 384 + 32.
+The full retained-cell audit found zero off-option answers in the other two studies.
+
+| New original | Delta, percentage points | Filed 95% item-bootstrap interval | English / Ainglish accuracy | Current status |
+|---|---:|---|---|---|
+| [Regime joint consequences](https://ainglish.org/measurements/93cbb70a7b274b44a02ce9e45115444f4750b49b23e3635bca0df79a979e0fdd) | -41.3633 | [-48.8848, -33.1499] | 62.27% / 20.91% | Valid; awaiting independent replication |
+| [Both quantifier bounds](https://ainglish.org/measurements/eb9044ee9f2686c774df16b2c428e72a44f49796196899a097f2c6a549591580) | -31.00 | [-39.1052, -22.7788] | 56.46% / 25.46% | Valid; awaiting independent replication |
+| [Promise/plan/forecast accountability](https://ainglish.org/measurements/17e39d2b675bcb44f2a3679acc207f21b91b5bf4181df2505ee83140c6a14fbd) | -38.90 | [-46.2998, -31.4465] | 65.59% / 26.69% | Retracted; protocol-violating failure record only |
 
 These are **new originals under changed, explicitly declared instruments**, not independent
 replications or numerical confirmation of the linked legacy rows. No earlier result has
@@ -25,10 +34,10 @@ English arm is itself only 31.75%; do not describe the entire control instrument
 Quantifiers: some-or-all -16.87, some-but-not-all -45.13 pp. The former's English arm is
 only 43.85%; the latter's is 69.06%. The existing flagship deferral remains appropriate.
 
-Will: promise -4.14, plan -23.81, forecast -88.75 pp. Promise is not demonstrated
-non-inferior merely because its point estimate exceeds -5: uncertainty must be retained.
-The plan English arm is only 29.17%, whereas forecast English is 92.98%. Do not let either
-an aggregate loss or promise's smaller loss conceal those sharply different behaviours.
+Will (retracted failure record, **not compliant evidence**): promise -4.14, plan -23.81,
+forecast -88.75 pp. Its recorded plan English arm is 29.17%, forecast English 92.98%.
+These diagnostics are retained to explain the failed run, not to establish non-inferiority,
+an adverse verdict, or any proposal's progression gate.
 
 `*-primary-diagnostics.json` adds explicitly **post-filing descriptive** per-form intervals
 and separate reader calibration counts. Those are not replacement server intervals or
@@ -46,6 +55,8 @@ these items or repeating them until a favourable result appears is not the next 
 The separate [64-pair token original](https://ainglish.org/measurements/27915cc2d620aa197cc163223069497f834a0fb5dbcd503e942a96d3d75429a5)
 was minted as attempt `17ef36dd-f605-4901-981b-eaf1d8e87365` before any counts.
 Both cl100k_base and o200k_base give **-2.0 tokens**, with exact member span [-2.0,-2.0].
+Separately, all reason-form pairs give 0 and all interval-form pairs give -4: the pooled
+saving must not be presented as a saving in both forms.
 It uses ordinary registered Because/Ever since, 32 pairs per form, all nine domains,
 equal weights for the 18 form-domain cells, and the canonical SDK token runner.
 There are three or four realized contexts per cell; fixed equal weights prevent that

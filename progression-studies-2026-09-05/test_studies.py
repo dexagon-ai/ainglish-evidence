@@ -82,4 +82,24 @@ class StudyTests(unittest.TestCase):
             gate(readers[0],row['english'],row['question'],row['options'])
         self.assertEqual(32,len(spent),'even a pooled 0.5 pass cannot buy a real call with a flat reader')
 
+    def test_strict_study_gate_refuses_one_off_option_after_clean_calibration(self):
+        from run_primary_once import individually_gated_reader
+        data=self.data('regime');readers=[{'name':'a'},{'name':'b'}]
+        controls=[r for r in data if r.get('calibration')]
+        lookup={(r[arm],r['question']):(r,arm) for r in controls for arm in ['english','ainglish']}
+        calls=[]
+        def fake(reader,text,question,options):
+            calls.append(text)
+            if (text,question) not in lookup:return 'D: 1: notify when the plan changes; 2: y'
+            r,arm=lookup[(text,question)]
+            return r['answer'] if arm=='ainglish' else 'the information does not determine who'
+        gate=individually_gated_reader(data,readers,fake)
+        for reader in readers:
+            for r in controls:
+                for arm in ['english','ainglish']:gate(reader,r[arm],r['question'],r['options'])
+        r=data[0]
+        with self.assertRaisesRegex(RuntimeError,'zero-off-option'):
+            gate(readers[0],r['english'],r['question'],r['options'])
+        self.assertEqual(33,len(calls),'one offending call, not a retry or a completed panel')
+
 if __name__=='__main__': unittest.main()

@@ -1,14 +1,17 @@
 # The next four measurement designs
 
-These are **zero-reader-spend kits**, not completed studies or authorization to bypass
-the register. `next-kits-v1-index.json` pins each reviewed item array; earlier unpublished
+These were frozen as **zero-reader-spend kits**, not authorization to bypass the register.
+The will kit subsequently ran once but was author-retracted for two off-option answers
+violating its zero-unparsed gate; see [RESULTS.md](RESULTS.md). Its bytes and failure record
+remain intact; do not rerun it to replace that outcome. The other three reader kits remain
+unspent. `next-kits-v1-index.json` pins each reviewed item array; earlier unpublished
 drafts were revised before model calls. `test_next_kits.py` independently enumerates
 assignment constraints and uses symbolic affine arithmetic to check quantity gold.
 
 | Proposal | Primary kit | What it now resolves | Remaining gate or coverage |
 |---|---:|---|---|
-| will-as-promise / plan / forecast | 192 + 8 controls | Separate forms; unreleased/released outcomes; quiet/notified plan changes; failed predictions, including external actors | Final source-linked runspec and fresh readiness check; bare-will diagnostic stays separate |
-| because / ever since | 288 + 8 controls | Nine domains, four asserted-axis cells, question/clause order; ordinary registered surfaces, not invented function calls | Token prerequisite is unresolved; prepare the separate faithful cost packet before reader spend. Bare, aspect-malformed, date/duration and robustness diagnostics remain separate |
+| will-as-promise / plan / forecast | 192 + 8 controls | Separate forms; unreleased/released outcomes; quiet/notified plan changes; failed predictions, including external actors | Executed once, then retracted for its strict yield-gate violation. Bare-will diagnostic stays separate |
+| because / ever since | 288 + 8 controls | Nine domains, four asserted-axis cells, question/clause order; ordinary registered surfaces, not invented function calls | Faithful token original filed at -2; independent replication still needed before reader spend. Bare, aspect-malformed, date/duration and robustness diagnostics remain separate |
 | set-to / adjust-by | 192 + 8 controls | Six equal form-by-case strata; four unit domains; signed/zero updates; unknown state; ordered composition | Still needs a third independent second and final preregistration. Add independent semantic review of consequence coverage |
 | same-for-all / may-vary-across | 192 + 8 controls | Six rule-by-task strata; complete assignment enumeration, reuse, mixed choices, no common candidate, capacity, same-name identities | Still needs a third independent second and final preregistration. Singleton/scope-loss diagnostics are separate below |
 
