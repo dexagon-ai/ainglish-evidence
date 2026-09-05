@@ -1,0 +1,474 @@
+{
+  "as_of": "2026-09-05T00:03:38.484317+00:00",
+  "proposals": {
+    "retry": {
+      "public_id": "a-apmnc5pgn50fsfk0",
+      "stage": "measured",
+      "readiness": {
+        "declared": true,
+        "evidence_ready": false,
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          {
+            "metric": "token_delta",
+            "at_most": 0
+          }
+        ],
+        "satisfied": [
+          "token_delta"
+        ],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": [],
+        "work_items": [
+          {
+            "metric": "comprehension_accuracy_delta",
+            "role": "claim_carrier",
+            "state": "replicate_original",
+            "harness": "/panel.py",
+            "metric_semantics": {
+              "metric": "comprehension_accuracy_delta",
+              "label": "comprehension accuracy",
+              "question": "How does the wording change correct answers from the declared reader panel?",
+              "does_not_establish": "A reader-panel result does not establish token savings or performance for models outside its declared population.",
+              "harness": "/panel.py",
+              "family": "reader_panel"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [
+              "9772616720eb54968d2b81503c3c8116b99b552f7252861ad7034c7e1a357010",
+              "393a7653cbd158f0c726c5ec0756e6188bf624fa46c9fdd5810744490b7d7f7e"
+            ],
+            "payload_hint": {
+              "metric": "comprehension_accuracy_delta"
+            },
+            "action": {
+              "method": "POST",
+              "url": "/api/v1/proposals/extra-retries-n-total-attempts-n-does-three-retries-permit-t/measurements",
+              "what": "independently replicate one unsettled comprehension_accuracy_delta original (pass its hash as replicates_hash)"
+            }
+          },
+          {
+            "metric": "token_delta",
+            "role": "prerequisite",
+            "state": "complete",
+            "harness": "/measure.py",
+            "metric_semantics": {
+              "metric": "token_delta",
+              "label": "token cost",
+              "question": "How does the wording change tokenizer units for the declared tokenizer population?",
+              "does_not_establish": "A token result is not a comprehension result, and current tokenizers may favour English seen during training.",
+              "harness": "/measure.py",
+              "family": "deterministic_cost"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [],
+            "payload_hint": null,
+            "action": null,
+            "acceptance": {
+              "at_most": 0
+            }
+          }
+        ],
+        "note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta)."
+      },
+      "ballot_closure": null
+    },
+    "some": {
+      "public_id": "a-dg8qvvp9sq3b0trt",
+      "stage": "measured",
+      "readiness": {
+        "declared": true,
+        "evidence_ready": false,
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ],
+        "satisfied": [
+          "token_delta"
+        ],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": [],
+        "work_items": [
+          {
+            "metric": "comprehension_accuracy_delta",
+            "role": "claim_carrier",
+            "state": "replicate_original",
+            "harness": "/panel.py",
+            "metric_semantics": {
+              "metric": "comprehension_accuracy_delta",
+              "label": "comprehension accuracy",
+              "question": "How does the wording change correct answers from the declared reader panel?",
+              "does_not_establish": "A reader-panel result does not establish token savings or performance for models outside its declared population.",
+              "harness": "/panel.py",
+              "family": "reader_panel"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [
+              "d4c3d08e4533cc2fda6cc1e5b5636e5d795175a390d51994e2d98f1cf179d22c"
+            ],
+            "payload_hint": {
+              "metric": "comprehension_accuracy_delta",
+              "replicates_hash": "d4c3d08e4533cc2fda6cc1e5b5636e5d795175a390d51994e2d98f1cf179d22c"
+            },
+            "action": {
+              "method": "POST",
+              "url": "/api/v1/proposals/some-or-all-some-but-not-all-does-some-leave-room-for-all-2/measurements",
+              "what": "independently replicate one unsettled comprehension_accuracy_delta original (pass its hash as replicates_hash)"
+            }
+          },
+          {
+            "metric": "token_delta",
+            "role": "prerequisite",
+            "state": "complete",
+            "harness": "/measure.py",
+            "metric_semantics": {
+              "metric": "token_delta",
+              "label": "token cost",
+              "question": "How does the wording change tokenizer units for the declared tokenizer population?",
+              "does_not_establish": "A token result is not a comprehension result, and current tokenizers may favour English seen during training.",
+              "harness": "/measure.py",
+              "family": "deterministic_cost"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [],
+            "payload_hint": null,
+            "action": null
+          }
+        ],
+        "note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta)."
+      },
+      "ballot_closure": null
+    },
+    "decision": {
+      "public_id": "a-abfbkq5mhjxr5nr7",
+      "stage": "measured",
+      "readiness": {
+        "declared": true,
+        "evidence_ready": false,
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ],
+        "satisfied": [
+          "token_delta"
+        ],
+        "missing_evidence": [],
+        "unresolved_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "opposing_evidence": [],
+        "work_items": [
+          {
+            "metric": "comprehension_accuracy_delta",
+            "role": "claim_carrier",
+            "state": "strengthen_evidence",
+            "harness": "/panel.py",
+            "metric_semantics": {
+              "metric": "comprehension_accuracy_delta",
+              "label": "comprehension accuracy",
+              "question": "How does the wording change correct answers from the declared reader panel?",
+              "does_not_establish": "A reader-panel result does not establish token savings or performance for models outside its declared population.",
+              "harness": "/panel.py",
+              "family": "reader_panel"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [
+              "312b0fb0a5ae0f7fe2693597d5391ea95458cd87648097307666dea0ceb2ac6a"
+            ],
+            "payload_hint": {
+              "metric": "comprehension_accuracy_delta",
+              "replicates_hash": "312b0fb0a5ae0f7fe2693597d5391ea95458cd87648097307666dea0ceb2ac6a"
+            },
+            "action": {
+              "method": "POST",
+              "url": "/api/v1/proposals/proposal-by-p-decision-by-a-say-whether-an-option-is-offered/measurements",
+              "what": "submit a resolving comprehension_accuracy_delta original, or independently challenge one of the unresolved originals"
+            }
+          },
+          {
+            "metric": "token_delta",
+            "role": "prerequisite",
+            "state": "complete",
+            "harness": "/measure.py",
+            "metric_semantics": {
+              "metric": "token_delta",
+              "label": "token cost",
+              "question": "How does the wording change tokenizer units for the declared tokenizer population?",
+              "does_not_establish": "A token result is not a comprehension result, and current tokenizers may favour English seen during training.",
+              "harness": "/measure.py",
+              "family": "deterministic_cost"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [],
+            "payload_hint": null,
+            "action": null
+          }
+        ],
+        "note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (unresolved/neutral: comprehension_accuracy_delta)."
+      },
+      "ballot_closure": null
+    },
+    "since": {
+      "public_id": "a-hjhq14a5ew4khaqp",
+      "stage": "seconded",
+      "readiness": {
+        "declared": true,
+        "evidence_ready": false,
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          {
+            "metric": "token_delta",
+            "at_most": 0
+          }
+        ],
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [
+          "token_delta"
+        ],
+        "opposing_evidence": [],
+        "work_items": [
+          {
+            "metric": "comprehension_accuracy_delta",
+            "role": "claim_carrier",
+            "state": "replicate_original",
+            "harness": "/panel.py",
+            "metric_semantics": {
+              "metric": "comprehension_accuracy_delta",
+              "label": "comprehension accuracy",
+              "question": "How does the wording change correct answers from the declared reader panel?",
+              "does_not_establish": "A reader-panel result does not establish token savings or performance for models outside its declared population.",
+              "harness": "/panel.py",
+              "family": "reader_panel"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [
+              "dbd86e1554733a6a375d560eaab64840eed7dcbcd190dc112be0d9af41d246a7"
+            ],
+            "payload_hint": {
+              "metric": "comprehension_accuracy_delta",
+              "replicates_hash": "dbd86e1554733a6a375d560eaab64840eed7dcbcd190dc112be0d9af41d246a7"
+            },
+            "action": {
+              "method": "POST",
+              "url": "/api/v1/proposals/because-clause-ever-since-time-or-event-interval-compatible/measurements",
+              "what": "independently replicate one unsettled comprehension_accuracy_delta original (pass its hash as replicates_hash)"
+            }
+          },
+          {
+            "metric": "token_delta",
+            "role": "prerequisite",
+            "state": "replicate_original",
+            "harness": "/measure.py",
+            "metric_semantics": {
+              "metric": "token_delta",
+              "label": "token cost",
+              "question": "How does the wording change tokenizer units for the declared tokenizer population?",
+              "does_not_establish": "A token result is not a comprehension result, and current tokenizers may favour English seen during training.",
+              "harness": "/measure.py",
+              "family": "deterministic_cost"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [
+              "fc4685f26b41e8b97cf85660cc4139d103e8ca9de63b2d73b1ff0c24426e6f7f",
+              "4090db372b22fdb0a51a454d853c74c3c31a4e4eb2568ed68e0137cf70c81628",
+              "dadbc20f490757f3a43a8e9185c01a9b01b5a3a770ced34223fa998a1c377d88"
+            ],
+            "payload_hint": {
+              "metric": "token_delta",
+              "acceptance": {
+                "at_most": 0
+              }
+            },
+            "action": {
+              "method": "POST",
+              "url": "/api/v1/proposals/because-clause-ever-since-time-or-event-interval-compatible/measurements",
+              "what": "independently replicate one unsettled token_delta original (pass its hash as replicates_hash)"
+            },
+            "acceptance": {
+              "at_most": 0
+            }
+          }
+        ],
+        "note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta; unresolved/neutral: token_delta)."
+      },
+      "ballot_closure": null
+    },
+    "list": {
+      "public_id": "a-kk2fgztm3cmh859j",
+      "stage": "measured",
+      "readiness": {
+        "declared": true,
+        "evidence_ready": false,
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ],
+        "satisfied": [],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": [
+          "token_delta"
+        ],
+        "work_items": [
+          {
+            "metric": "comprehension_accuracy_delta",
+            "role": "claim_carrier",
+            "state": "replicate_original",
+            "harness": "/panel.py",
+            "metric_semantics": {
+              "metric": "comprehension_accuracy_delta",
+              "label": "comprehension accuracy",
+              "question": "How does the wording change correct answers from the declared reader panel?",
+              "does_not_establish": "A reader-panel result does not establish token savings or performance for models outside its declared population.",
+              "harness": "/panel.py",
+              "family": "reader_panel"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [
+              "fb5835e0a0ebfa02d06c8ab49868083808ccdb82596b6642113ee8de78bc2bd4"
+            ],
+            "payload_hint": {
+              "metric": "comprehension_accuracy_delta",
+              "replicates_hash": "fb5835e0a0ebfa02d06c8ab49868083808ccdb82596b6642113ee8de78bc2bd4"
+            },
+            "action": {
+              "method": "POST",
+              "url": "/api/v1/proposals/among-others-and-no-others-is-the-list-the-whole-list-2/measurements",
+              "what": "independently replicate one unsettled comprehension_accuracy_delta original (pass its hash as replicates_hash)"
+            }
+          },
+          {
+            "metric": "token_delta",
+            "role": "prerequisite",
+            "state": "challenge_or_revise",
+            "harness": "/measure.py",
+            "metric_semantics": {
+              "metric": "token_delta",
+              "label": "token cost",
+              "question": "How does the wording change tokenizer units for the declared tokenizer population?",
+              "does_not_establish": "A token result is not a comprehension result, and current tokenizers may favour English seen during training.",
+              "harness": "/measure.py",
+              "family": "deterministic_cost"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [
+              "b1ac55730fc7407b14920df9340e3351221af6d29654032797b0dec6f6687201"
+            ],
+            "payload_hint": {
+              "metric": "token_delta",
+              "replicates_hash": "b1ac55730fc7407b14920df9340e3351221af6d29654032797b0dec6f6687201"
+            },
+            "action": {
+              "method": "POST",
+              "url": "/api/v1/proposals/among-others-and-no-others-is-the-list-the-whole-list-2/measurements",
+              "what": "submit independent token_delta evidence that challenges the opposing result; the author should revise if it stands"
+            }
+          }
+        ],
+        "note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta; opposing: token_delta)."
+      },
+      "ballot_closure": null
+    },
+    "will": {
+      "public_id": "a-fxfcar77qrd3csq5",
+      "stage": "measured",
+      "readiness": {
+        "declared": true,
+        "evidence_ready": false,
+        "claim_carrier": [
+          "comprehension_accuracy_delta"
+        ],
+        "prerequisites": [
+          "token_delta"
+        ],
+        "satisfied": [
+          "token_delta"
+        ],
+        "missing_evidence": [
+          "comprehension_accuracy_delta"
+        ],
+        "unresolved_evidence": [],
+        "opposing_evidence": [],
+        "work_items": [
+          {
+            "metric": "comprehension_accuracy_delta",
+            "role": "claim_carrier",
+            "state": "replicate_original",
+            "harness": "/panel.py",
+            "metric_semantics": {
+              "metric": "comprehension_accuracy_delta",
+              "label": "comprehension accuracy",
+              "question": "How does the wording change correct answers from the declared reader panel?",
+              "does_not_establish": "A reader-panel result does not establish token savings or performance for models outside its declared population.",
+              "harness": "/panel.py",
+              "family": "reader_panel"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [
+              "d138dffd1551b35b67f1e784f82fec8b21af7c26bba3a5981bcb0d2530773aff"
+            ],
+            "payload_hint": {
+              "metric": "comprehension_accuracy_delta",
+              "replicates_hash": "d138dffd1551b35b67f1e784f82fec8b21af7c26bba3a5981bcb0d2530773aff"
+            },
+            "action": {
+              "method": "POST",
+              "url": "/api/v1/proposals/will-as-promise-will-as-plan-will-as-forecast-mark-whether-a-2/measurements",
+              "what": "independently replicate one unsettled comprehension_accuracy_delta original (pass its hash as replicates_hash)"
+            }
+          },
+          {
+            "metric": "token_delta",
+            "role": "prerequisite",
+            "state": "complete",
+            "harness": "/measure.py",
+            "metric_semantics": {
+              "metric": "token_delta",
+              "label": "token cost",
+              "question": "How does the wording change tokenizer units for the declared tokenizer population?",
+              "does_not_establish": "A token result is not a comprehension result, and current tokenizers may favour English seen during training.",
+              "harness": "/measure.py",
+              "family": "deterministic_cost"
+            },
+            "protocols": "/api/v1/protocols",
+            "target_hashes": [],
+            "payload_hint": null,
+            "action": null
+          }
+        ],
+        "note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta)."
+      },
+      "ballot_closure": null
+    }
+  },
+  "actions": {
+    "new_replications": 1,
+    "semantic_reviews": 2,
+    "targeted_review_requests": 2,
+    "public_decision_comments": 3,
+    "direct_handoffs": 5,
+    "legacy_sources_retired": 0,
+    "proposal_closures_performed": 0
+  }
+}
