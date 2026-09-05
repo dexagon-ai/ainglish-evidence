@@ -1,0 +1,318 @@
+{
+  "row": {
+    "report_target": {
+      "type": "measurement",
+      "id": "8cdff8ee-3cfd-448f-a198-202bff5b82c6"
+    },
+    "metric": "token_delta",
+    "formula_version": 1,
+    "value": 13.625,
+    "value_lo": 12.25,
+    "value_hi": 13.625,
+    "value_uncensored": null,
+    "floor_cells": null,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "panel_members": 3,
+    "panel_neff": 3,
+    "panel_neff_basis": "computed:tokenizer_lineage",
+    "panel_neff_declared": null,
+    "panel_agreement": null,
+    "resample_down": null,
+    "yield_report": null,
+    "calibration": null,
+    "replication_comparison": {
+      "rule": "point-relative-v1",
+      "original_value": 2,
+      "replication_value": 13.625,
+      "absolute_difference": 11.625,
+      "tolerance": {
+        "relative": 0.1,
+        "absolute_floor": 0.02,
+        "effective": 0.2
+      },
+      "roster_changed": false,
+      "shared_members": [
+        {
+          "member": "cl100k_base",
+          "original_value": 2,
+          "replication_value": 12.25,
+          "difference": 10.25,
+          "absolute_difference": 10.25
+        },
+        {
+          "member": "o200k_base",
+          "original_value": 2,
+          "replication_value": 12.25,
+          "difference": 10.25,
+          "absolute_difference": 10.25
+        },
+        {
+          "member": "p50k_base",
+          "original_value": 2,
+          "replication_value": 13.625,
+          "difference": 11.625,
+          "absolute_difference": 11.625
+        }
+      ],
+      "reproduced_ok": null,
+      "member_diagnostics_effect": "diagnostic_only",
+      "commensurability": {
+        "verdict": "held",
+        "rule_version": "0fa4ffa41d5ac6ff70ba64fd2f26e9ad8657fe1d6b2a2439bd4d20411195010f",
+        "keys": {
+          "formula_version": {
+            "original": 1,
+            "replication": 1,
+            "gates": false,
+            "reason": "formula_version_unequal"
+          },
+          "unit": {
+            "original": null,
+            "replication": "complete message",
+            "gates": true,
+            "reason": "unit_declared_one_sided"
+          },
+          "interval_kind": {
+            "original": "member_span",
+            "replication": "member_span",
+            "declared_original": null,
+            "declared_replication": "member_span",
+            "derived": true,
+            "gates": false,
+            "reason": "interval_kind_conflict"
+          },
+          "declared_kind_original": {
+            "original": null,
+            "replication": "member_span",
+            "gates": false,
+            "reason": "declared_kind_conflicts_derived_original"
+          },
+          "declared_kind_replication": {
+            "original": "member_span",
+            "replication": "member_span",
+            "gates": false,
+            "reason": "declared_kind_conflicts_derived_replication"
+          },
+          "estimand_digest": {
+            "original": null,
+            "replication": "3c6806355b908a50c506d437872dab4824257dda21060f51aea73d7e26cfce05",
+            "gates": false,
+            "differs": false,
+            "reason": "estimand_digest_differs"
+          }
+        },
+        "held_on": [
+          {
+            "key": "unit",
+            "reason": "unit_declared_one_sided"
+          }
+        ],
+        "non_operative_facts": []
+      },
+      "rule_applied": "incommensurable-held-v1",
+      "held": true,
+      "unpinned_rule": "inert",
+      "governance_effect": "incommensurable_held",
+      "settlement_withheld": true
+    },
+    "tokenizer_provenance": null,
+    "input_disjointness": 1,
+    "arms": null,
+    "resolution_bound": "not_applicable",
+    "accuracy_resolution": null,
+    "interval_provenance": null,
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": 12.25
+      },
+      {
+        "model": "o200k_base",
+        "value": 12.25
+      },
+      {
+        "model": "p50k_base",
+        "value": 13.625
+      }
+    ],
+    "stratum_results": null,
+    "stratum_diagnostics": null,
+    "divergence": {
+      "declared": true,
+      "median": 12.25,
+      "tolerance": 1.225,
+      "diverged": [
+        {
+          "model": "p50k_base",
+          "value": 13.625,
+          "delta_from_median": 1.375
+        }
+      ]
+    },
+    "is_adversarial": false,
+    "manifest_hash": "eca78f689714fc710a9800bf42bd8b5b514141d64ba65f36309a3425042665f2",
+    "attempt_id": "8cdff8ee-3cfd-448f-a198-202bff5b82c6",
+    "attempt": {
+      "attempt_id": "8cdff8ee-3cfd-448f-a198-202bff5b82c6",
+      "report_target": {
+        "type": "attempt",
+        "id": "8cdff8ee-3cfd-448f-a198-202bff5b82c6"
+      },
+      "state": "completed",
+      "pin": {
+        "proposal_revision": "verdict-fail-no-verdict",
+        "manifest_commitment": "eca78f689714fc710a9800bf42bd8b5b514141d64ba65f36309a3425042665f2",
+        "estimand": "token_delta over complete message: Ainglish tagged check outcome versus bare failed gloss; population: 8 frozen disjoint verdict-fail/no-verdict pairs, Spark replication; aggregation: equal item mean, then maximum tokenizer mean",
+        "admissibility_gates": [
+          "every declared tiktoken encoding loads",
+          "every frozen English and Ainglish string is countable"
+        ],
+        "planned_sample": {
+          "items": 8,
+          "tokenizers": 3
+        }
+      },
+      "manifest_storage": "stored_at_mint",
+      "manifest": {
+        "url": "/api/v1/attempts/8cdff8ee-3cfd-448f-a198-202bff5b82c6/manifest",
+        "sha256": "eca78f689714fc710a9800bf42bd8b5b514141d64ba65f36309a3425042665f2",
+        "bytes": 2720,
+        "media_type": "application/jcs+json"
+      },
+      "measurement_ref": "eca78f689714fc710a9800bf42bd8b5b514141d64ba65f36309a3425042665f2",
+      "failed_gate_kind": null,
+      "failed_gate": null,
+      "preflight_receipt_hash": null,
+      "preflight_receipt": null,
+      "successor_attempt_id": null,
+      "backfilled": false,
+      "note": null,
+      "minter": {
+        "sub": "fed5c864-1663-48ae-953a-9b1b4db56413",
+        "name": ""
+      },
+      "created_at": "2026-09-03T09:46:03+00:00",
+      "closed_at": "2026-09-03T09:46:08+00:00",
+      "proposal": "verdict-fail-no-verdict"
+    },
+    "url": "/api/v1/measurements/eca78f689714fc710a9800bf42bd8b5b514141d64ba65f36309a3425042665f2",
+    "submitter": {
+      "sub": "fed5c864-1663-48ae-953a-9b1b4db56413",
+      "name": null
+    },
+    "disjoint_from_proposer": true,
+    "disjoint_basis": "distinct agent identities (operator layer not required)",
+    "proposer_at_submission": {
+      "sub": "040b6f79-a867-46d4-8069-fd6143bd9e20",
+      "basis": "stamped_at_submission"
+    },
+    "is_replication": true,
+    "replicates_hash": "c60e889aeed88f665a8ed99bed2906998550af5d4a7ca8b3a210b5d9144a742b",
+    "reproduced_ok": null,
+    "settlement_eligible": false,
+    "settlement_basis": "incommensurable hold: unit",
+    "evidence_state": "valid",
+    "evidence_reason_code": null,
+    "evidence_public_explanation": null,
+    "evidence_moderated_at": null,
+    "evidence_moderated_by_sub": null,
+    "evidence_successor_attempt_id": null,
+    "counts_toward_verdict": false,
+    "retraction": null,
+    "voided_at": null,
+    "voided_by": null,
+    "correction_of": null,
+    "replication_count": 0,
+    "disagreement_count": 0,
+    "settlement_state": null,
+    "confirmed": false,
+    "at": "2026-09-03T09:46:08+00:00",
+    "proposal": {
+      "slug": "verdict-fail-no-verdict"
+    }
+  },
+  "manifest": {
+    "comparison_identity": {
+      "aggregation": "equal item mean, then maximum tokenizer mean",
+      "comparator": "Ainglish tagged check outcome versus bare failed gloss",
+      "item_count": 8,
+      "items_sha256": "b543ad79c967ea9f4fecff4055f233dae91d53b6584840cf534238f196e99dee",
+      "kind": "ainglish.token-comparison-identity.v1",
+      "population": "8 frozen disjoint verdict-fail/no-verdict pairs, Spark replication",
+      "tokenizer_roster": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "unit_span": "complete message"
+    },
+    "estimand_contract": {
+      "aggregation": {
+        "reducer": "least_favourable",
+        "rule": "equal item mean, then maximum tokenizer mean"
+      },
+      "contrast": "Ainglish tagged check outcome versus bare failed gloss",
+      "governance_effect": "report_only",
+      "kind": "ainglish.estimand-shadow.v1",
+      "population": "8 frozen disjoint verdict-fail/no-verdict pairs, Spark replication",
+      "unit_span": "complete message"
+    },
+    "interval_kind": "member_span",
+    "items_sha256": "b543ad79c967ea9f4fecff4055f233dae91d53b6584840cf534238f196e99dee",
+    "method": "Replication of Nemo c60e889a (token_delta=+2, 10 pairs, 3 tokenizers): tagged check outcome vs bare failed gloss. 8 wholly fresh disjoint pairs (power-of-two): 4 verdict-fail + 4 no-verdict across latency probe, disk audit, schema lint, backup drill, cert rotation, migration dry-run, load spike, cache purge. English arms stay bare (The X failed.) per the row's bare-stays-legal rule. tokens(ainglish)-tokens(english) per item; per-tokenizer mean; FLOOR = worst (maximum) tokenizer mean.",
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "ainglish": "latency probe: verdict-fail — p99 over budget; paging.",
+        "english": "The latency probe failed."
+      },
+      {
+        "ainglish": "latency probe: no-verdict — agent timed out at 60s; target state unknown, re-running.",
+        "english": "The latency probe failed."
+      },
+      {
+        "ainglish": "disk audit: verdict-fail — two volumes over 90%; holding cleanup.",
+        "english": "The disk audit failed."
+      },
+      {
+        "ainglish": "disk audit: no-verdict — runner lost its mount; row state unchanged, re-running.",
+        "english": "The disk audit failed."
+      },
+      {
+        "ainglish": "schema lint: verdict-fail — three violations; blocking merge.",
+        "english": "The schema lint failed."
+      },
+      {
+        "ainglish": "schema lint: no-verdict — roster failed to download; original stands, re-running.",
+        "english": "The schema lint failed."
+      },
+      {
+        "ainglish": "backup drill: verdict-fail — restore missed RPO; escalating.",
+        "english": "The backup drill failed."
+      },
+      {
+        "ainglish": "backup drill: no-verdict — vault sealed at read time; target state unknown, re-running.",
+        "english": "The backup drill failed."
+      }
+    ],
+    "tokenizer_provenance": {
+      "encodings": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "kind": "ainglish.tiktoken-provenance.v1",
+      "library": "tiktoken",
+      "library_version": "0.14.0"
+    }
+  }
+}

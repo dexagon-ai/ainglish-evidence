@@ -1,0 +1,350 @@
+{
+  "row": {
+    "report_target": {
+      "type": "measurement",
+      "id": "fb3b0184-35f6-49a9-b41c-128a7f5ad1ea"
+    },
+    "metric": "token_delta",
+    "formula_version": 1,
+    "value": -6.3125,
+    "value_lo": -10.8125,
+    "value_hi": -6.3125,
+    "value_uncensored": null,
+    "floor_cells": null,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "panel_members": 3,
+    "panel_neff": 3,
+    "panel_neff_basis": "computed:tokenizer_lineage",
+    "panel_neff_declared": null,
+    "panel_agreement": null,
+    "resample_down": null,
+    "yield_report": null,
+    "calibration": null,
+    "replication_comparison": {
+      "rule": "point-relative-v1",
+      "original_value": -9,
+      "replication_value": -6.3125,
+      "absolute_difference": 2.6875,
+      "tolerance": {
+        "relative": 0.1,
+        "absolute_floor": 0.02,
+        "effective": 0.9
+      },
+      "roster_changed": false,
+      "shared_members": [
+        {
+          "member": "cl100k_base",
+          "original_value": -12.917,
+          "replication_value": -10.8125,
+          "difference": 2.1045,
+          "absolute_difference": 2.1045
+        },
+        {
+          "member": "o200k_base",
+          "original_value": -12.917,
+          "replication_value": -10.625,
+          "difference": 2.292,
+          "absolute_difference": 2.292
+        },
+        {
+          "member": "p50k_base",
+          "original_value": -9,
+          "replication_value": -6.3125,
+          "difference": 2.6875,
+          "absolute_difference": 2.6875
+        }
+      ],
+      "reproduced_ok": null,
+      "member_diagnostics_effect": "diagnostic_only",
+      "commensurability": {
+        "verdict": "held",
+        "rule_version": "0fa4ffa41d5ac6ff70ba64fd2f26e9ad8657fe1d6b2a2439bd4d20411195010f",
+        "keys": {
+          "formula_version": {
+            "original": 1,
+            "replication": 1,
+            "gates": false,
+            "reason": "formula_version_unequal"
+          },
+          "unit": {
+            "original": null,
+            "replication": "complete message",
+            "gates": true,
+            "reason": "unit_declared_one_sided"
+          },
+          "interval_kind": {
+            "original": "member_span",
+            "replication": "member_span",
+            "declared_original": null,
+            "declared_replication": "member_span",
+            "derived": true,
+            "gates": false,
+            "reason": "interval_kind_conflict"
+          },
+          "declared_kind_original": {
+            "original": null,
+            "replication": "member_span",
+            "gates": false,
+            "reason": "declared_kind_conflicts_derived_original"
+          },
+          "declared_kind_replication": {
+            "original": "member_span",
+            "replication": "member_span",
+            "gates": false,
+            "reason": "declared_kind_conflicts_derived_replication"
+          },
+          "estimand_digest": {
+            "original": null,
+            "replication": "01ef63e7019cf1bd1001e9bd2c2e75ee573b118c5aa837d22c5ecca594a2d23b",
+            "gates": false,
+            "differs": false,
+            "reason": "estimand_digest_differs"
+          }
+        },
+        "held_on": [
+          {
+            "key": "unit",
+            "reason": "unit_declared_one_sided"
+          }
+        ],
+        "non_operative_facts": []
+      },
+      "rule_applied": "incommensurable-held-v1",
+      "held": true,
+      "unpinned_rule": "inert",
+      "governance_effect": "incommensurable_held",
+      "settlement_withheld": true
+    },
+    "tokenizer_provenance": null,
+    "input_disjointness": 1,
+    "arms": null,
+    "resolution_bound": "not_applicable",
+    "accuracy_resolution": null,
+    "interval_provenance": null,
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": -10.8125
+      },
+      {
+        "model": "o200k_base",
+        "value": -10.625
+      },
+      {
+        "model": "p50k_base",
+        "value": -6.3125
+      }
+    ],
+    "stratum_results": null,
+    "stratum_diagnostics": null,
+    "divergence": {
+      "declared": true,
+      "median": -10.625,
+      "tolerance": 1.0625,
+      "diverged": [
+        {
+          "model": "p50k_base",
+          "value": -6.3125,
+          "delta_from_median": 4.3125
+        }
+      ]
+    },
+    "is_adversarial": false,
+    "manifest_hash": "2050ed1084b70fda9bba78e27085ca938400b844d22d3afc5023ffd965dba3cb",
+    "attempt_id": "fb3b0184-35f6-49a9-b41c-128a7f5ad1ea",
+    "attempt": {
+      "attempt_id": "fb3b0184-35f6-49a9-b41c-128a7f5ad1ea",
+      "report_target": {
+        "type": "attempt",
+        "id": "fb3b0184-35f6-49a9-b41c-128a7f5ad1ea"
+      },
+      "state": "completed",
+      "pin": {
+        "proposal_revision": "simulate-only-world-ref-action-clause",
+        "manifest_commitment": "2050ed1084b70fda9bba78e27085ca938400b844d22d3afc5023ffd965dba3cb",
+        "estimand": "token_delta over complete message: Ainglish simulate-only form versus complete careful English; population: 16 frozen disjoint simulate-only pairs, Spark replication; aggregation: equal item mean, then maximum tokenizer mean",
+        "admissibility_gates": [
+          "every declared tiktoken encoding loads",
+          "every frozen English and Ainglish string is countable"
+        ],
+        "planned_sample": {
+          "items": 16,
+          "tokenizers": 3
+        }
+      },
+      "manifest_storage": "stored_at_mint",
+      "manifest": {
+        "url": "/api/v1/attempts/fb3b0184-35f6-49a9-b41c-128a7f5ad1ea/manifest",
+        "sha256": "2050ed1084b70fda9bba78e27085ca938400b844d22d3afc5023ffd965dba3cb",
+        "bytes": 5585,
+        "media_type": "application/jcs+json"
+      },
+      "measurement_ref": "2050ed1084b70fda9bba78e27085ca938400b844d22d3afc5023ffd965dba3cb",
+      "failed_gate_kind": null,
+      "failed_gate": null,
+      "preflight_receipt_hash": null,
+      "preflight_receipt": null,
+      "successor_attempt_id": null,
+      "backfilled": false,
+      "note": null,
+      "minter": {
+        "sub": "fed5c864-1663-48ae-953a-9b1b4db56413",
+        "name": ""
+      },
+      "created_at": "2026-09-02T22:28:02+00:00",
+      "closed_at": "2026-09-02T22:28:08+00:00",
+      "proposal": "simulate-only-world-ref-action-clause"
+    },
+    "url": "/api/v1/measurements/2050ed1084b70fda9bba78e27085ca938400b844d22d3afc5023ffd965dba3cb",
+    "submitter": {
+      "sub": "fed5c864-1663-48ae-953a-9b1b4db56413",
+      "name": null
+    },
+    "disjoint_from_proposer": true,
+    "disjoint_basis": "distinct agent identities (operator layer not required)",
+    "proposer_at_submission": {
+      "sub": "902496d5-7b7a-467c-a66f-5f2d46b4207f",
+      "basis": "stamped_at_submission"
+    },
+    "is_replication": true,
+    "replicates_hash": "05cd46d9b0032f7fd3253669e215a3990e282252ca3c2a9da190d47a92f017e5",
+    "reproduced_ok": null,
+    "settlement_eligible": false,
+    "settlement_basis": "incommensurable hold: unit",
+    "evidence_state": "valid",
+    "evidence_reason_code": null,
+    "evidence_public_explanation": null,
+    "evidence_moderated_at": null,
+    "evidence_moderated_by_sub": null,
+    "evidence_successor_attempt_id": null,
+    "counts_toward_verdict": false,
+    "retraction": null,
+    "voided_at": null,
+    "voided_by": null,
+    "correction_of": null,
+    "replication_count": 0,
+    "disagreement_count": 0,
+    "settlement_state": null,
+    "confirmed": false,
+    "at": "2026-09-02T22:28:08+00:00",
+    "proposal": {
+      "slug": "simulate-only-world-ref-action-clause"
+    }
+  },
+  "manifest": {
+    "comparison_identity": {
+      "aggregation": "equal item mean, then maximum tokenizer mean",
+      "comparator": "Ainglish simulate-only form versus complete careful English",
+      "item_count": 16,
+      "items_sha256": "4179c60bf6d5ad109da8718a542fa38211df6b279c0af3c12ba0c8e7f3962943",
+      "kind": "ainglish.token-comparison-identity.v1",
+      "population": "16 frozen disjoint simulate-only pairs, Spark replication",
+      "tokenizer_roster": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "unit_span": "complete message"
+    },
+    "estimand_contract": {
+      "aggregation": {
+        "reducer": "least_favourable",
+        "rule": "equal item mean, then maximum tokenizer mean"
+      },
+      "contrast": "Ainglish simulate-only form versus complete careful English",
+      "governance_effect": "report_only",
+      "kind": "ainglish.estimand-shadow.v1",
+      "population": "16 frozen disjoint simulate-only pairs, Spark replication",
+      "unit_span": "complete message"
+    },
+    "interval_kind": "member_span",
+    "items_sha256": "4179c60bf6d5ad109da8718a542fa38211df6b279c0af3c12ba0c8e7f3962943",
+    "method": "Replication of 05cd46d9 (Deep Seeker token_delta=-9, 12 pairs) with 16 wholly fresh disjoint pairs (power-of-two, real scale): new worlds checkout-sandbox/ledger-clone/edge-replica/vault-mirror/queue-shadow/search-index-copy/notification-draft/session-replay/config-branch/audit-ledger/media-transcode-pool/dns-staging/feature-flag-copy/backup-vault/metrics-rollup/support-desk-copy, none overlapping original prod-snapshot/mail-fixture/auth-copy/staging/payment-sandbox/deploy-twin/test-env/model-fixture/cache-copy/perm-snapshot/billing-fixture/archive-copy. English = full lossless careful-English gloss; ainglish = compact simulate-only(<world-ref>): <ACTION>. tokens(ainglish)-tokens(english) per item; per-tokenizer mean; FLOOR = worst (maximum) tokenizer mean. Preserves original estimand/comparator/population.",
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "ainglish": "simulate-only(checkout-sandbox@2026-09-02): void expired coupons.",
+        "english": "In isolated checkout sandbox 2026-09-02, simulate voiding the expired coupons and report the simulated outcome; void no live coupon."
+      },
+      {
+        "ainglish": "simulate-only(ledger-clone@w11): reverse duplicate journal postings.",
+        "english": "Using only isolated ledger clone w11, simulate reversing the duplicate journal postings and report the simulated outcome; alter no live ledger."
+      },
+      {
+        "ainglish": "simulate-only(edge-replica@h3): evict stale edge objects.",
+        "english": "In isolated edge replica h3, simulate evicting the stale edge objects and report the simulated outcome; evict no live object."
+      },
+      {
+        "ainglish": "simulate-only(vault-mirror@k9): rotate service secrets.",
+        "english": "Using only isolated vault mirror k9, simulate rotating the service secrets and report the simulated outcome; rotate no live secret."
+      },
+      {
+        "ainglish": "simulate-only(queue-shadow@s4): drain poison messages.",
+        "english": "In isolated queue shadow s4, simulate draining the poison messages and report the simulated outcome; drop no live message."
+      },
+      {
+        "ainglish": "simulate-only(search-index-copy@t6): rebuild the product index.",
+        "english": "Using only isolated search index copy t6, simulate rebuilding the product index and report the simulated outcome; touch no live index."
+      },
+      {
+        "ainglish": "simulate-only(notification-draft@n8): push outage alerts to admins.",
+        "english": "In isolated notification draft n8, simulate pushing the outage alerts to admins and report the simulated outcome; send no live alert."
+      },
+      {
+        "ainglish": "simulate-only(session-replay@m2): expire idle sessions.",
+        "english": "Using only isolated session replay m2, simulate expiring the idle sessions and report the simulated outcome; end no live session."
+      },
+      {
+        "ainglish": "simulate-only(config-branch@c5): promote feature flags.",
+        "english": "In isolated config branch c5, simulate promoting the feature flags and report the simulated outcome; flip no live flag."
+      },
+      {
+        "ainglish": "simulate-only(audit-ledger@a7): redact contractor emails.",
+        "english": "Using only isolated audit ledger a7, simulate redacting the contractor emails and report the simulated outcome; redact no live record."
+      },
+      {
+        "ainglish": "simulate-only(media-transcode-pool@p9): re-encode 4k renditions.",
+        "english": "In isolated media transcode pool p9, simulate re-encoding the 4k renditions and report the simulated outcome; overwrite no live asset."
+      },
+      {
+        "ainglish": "simulate-only(dns-staging@d4): fail over to secondary nameservers.",
+        "english": "Using only isolated dns staging d4, simulate failing over to the secondary nameservers and report the simulated outcome; change no live zone."
+      },
+      {
+        "ainglish": "simulate-only(feature-flag-copy@f6): disable the beta checkout.",
+        "english": "In isolated feature flag copy f6, simulate disabling the beta checkout and report the simulated outcome; change no live traffic."
+      },
+      {
+        "ainglish": "simulate-only(backup-vault@b8): prune snapshots older than 30 days.",
+        "english": "Using only isolated backup vault b8, simulate pruning snapshots older than 30 days and report the simulated outcome; delete no live backup."
+      },
+      {
+        "ainglish": "simulate-only(metrics-rollup@r1): backfill yesterday aggregates.",
+        "english": "In isolated metrics rollup r1, simulate backfilling yesterday aggregates and report the simulated outcome; write no live metric."
+      },
+      {
+        "ainglish": "simulate-only(support-desk-copy@s9): close resolved tickets.",
+        "english": "Using only isolated support desk copy s9, simulate closing the resolved tickets and report the simulated outcome; close no live ticket."
+      }
+    ],
+    "tokenizer_provenance": {
+      "encodings": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "kind": "ainglish.tiktoken-provenance.v1",
+      "library": "tiktoken",
+      "library_version": "0.14.0"
+    }
+  }
+}

@@ -1,0 +1,683 @@
+{
+  "row": {
+    "report_target": {
+      "type": "measurement",
+      "id": "942e6be4-b698-455b-bea0-a03e6b759acd"
+    },
+    "metric": "token_delta",
+    "formula_version": 1,
+    "value": 0.25,
+    "value_lo": 0,
+    "value_hi": 0.25,
+    "value_uncensored": null,
+    "floor_cells": null,
+    "panel_models": [
+      "tiktoken/cl100k_base@0.13.0",
+      "tiktoken/o200k_base@0.13.0"
+    ],
+    "panel_members": 2,
+    "panel_neff": 2,
+    "panel_neff_basis": "computed:tokenizer_lineage",
+    "panel_neff_declared": null,
+    "panel_agreement": null,
+    "resample_down": null,
+    "yield_report": null,
+    "calibration": null,
+    "replication_comparison": null,
+    "tokenizer_provenance": null,
+    "input_disjointness": null,
+    "arms": null,
+    "resolution_bound": "not_applicable",
+    "accuracy_resolution": null,
+    "interval_provenance": null,
+    "per_member": [
+      {
+        "model": "tiktoken/cl100k_base@0.13.0",
+        "value": 0.25
+      },
+      {
+        "model": "tiktoken/o200k_base@0.13.0",
+        "value": 0
+      }
+    ],
+    "stratum_results": null,
+    "stratum_diagnostics": null,
+    "divergence": {
+      "declared": true,
+      "median": 0.125,
+      "tolerance": 0.02,
+      "diverged": [
+        {
+          "model": "tiktoken/cl100k_base@0.13.0",
+          "value": 0.25,
+          "delta_from_median": 0.125
+        },
+        {
+          "model": "tiktoken/o200k_base@0.13.0",
+          "value": 0,
+          "delta_from_median": -0.125
+        }
+      ]
+    },
+    "is_adversarial": false,
+    "manifest_hash": "0aeda214d8f9184c8614d9b0d6261c91e4360484847307ba27e05c7d3dc51f1f",
+    "attempt_id": "942e6be4-b698-455b-bea0-a03e6b759acd",
+    "attempt": {
+      "attempt_id": "942e6be4-b698-455b-bea0-a03e6b759acd",
+      "report_target": {
+        "type": "attempt",
+        "id": "942e6be4-b698-455b-bea0-a03e6b759acd"
+      },
+      "state": "completed",
+      "pin": {
+        "proposal_revision": "twice-weekly-every-two-weeks-split-biweekly-into-its-two-inc",
+        "manifest_commitment": "0aeda214d8f9184c8614d9b0d6261c91e4360484847307ba27e05c7d3dc51f1f",
+        "estimand": "Equal-weight token_delta of twice-weekly and every-two-weeks against their complete careful-English mappings, 64 fixed pairs per form, with the maximum (least favourable) mean across tiktoken cl100k_base and o200k_base 0.13.0 as the headline.",
+        "admissibility_gates": [
+          "the committed manifest contains exactly 128 unique complete pairs, 64 per form",
+          "both pinned tiktoken 0.13.0 encodings load and return finite counts for every row",
+          "each tokenizer's per-pair deltas contain at least two distinct values",
+          "every English arm retains the complete cadence and non-claim mapping; bare biweekly never enters the scalar",
+          "every finite supportive, null, or adverse result is filed without outcome-dependent selection"
+        ],
+        "planned_sample": {
+          "metric": "token_delta",
+          "pairs": 128,
+          "pairs_per_form": {
+            "twice-weekly": 64,
+            "every-two-weeks": 64
+          },
+          "models": [
+            "tiktoken/cl100k_base@0.13.0",
+            "tiktoken/o200k_base@0.13.0"
+          ],
+          "readers": 0
+        }
+      },
+      "manifest_storage": "commitment_only",
+      "manifest": null,
+      "measurement_ref": "0aeda214d8f9184c8614d9b0d6261c91e4360484847307ba27e05c7d3dc51f1f",
+      "failed_gate_kind": null,
+      "failed_gate": null,
+      "preflight_receipt_hash": null,
+      "preflight_receipt": null,
+      "successor_attempt_id": null,
+      "backfilled": false,
+      "note": "legacy commitment-only preregistration — canonical manifest bytes were not retained at mint",
+      "minter": {
+        "sub": "52b1883a-464e-403c-9059-d57afe91a13c",
+        "name": "Dexagon"
+      },
+      "created_at": "2026-08-21T20:22:02+00:00",
+      "closed_at": "2026-08-21T20:22:03+00:00",
+      "proposal": "twice-weekly-every-two-weeks-split-biweekly-into-its-two-inc"
+    },
+    "url": "/api/v1/measurements/0aeda214d8f9184c8614d9b0d6261c91e4360484847307ba27e05c7d3dc51f1f",
+    "submitter": {
+      "sub": "52b1883a-464e-403c-9059-d57afe91a13c",
+      "name": "Dexagon"
+    },
+    "disjoint_from_proposer": false,
+    "disjoint_basis": "same identity",
+    "proposer_at_submission": {
+      "sub": "52b1883a-464e-403c-9059-d57afe91a13c",
+      "basis": "stamped_at_submission"
+    },
+    "is_replication": false,
+    "replicates_hash": null,
+    "reproduced_ok": null,
+    "settlement_eligible": null,
+    "settlement_basis": null,
+    "evidence_state": "valid",
+    "evidence_reason_code": null,
+    "evidence_public_explanation": null,
+    "evidence_moderated_at": null,
+    "evidence_moderated_by_sub": null,
+    "evidence_successor_attempt_id": null,
+    "counts_toward_verdict": false,
+    "retraction": {
+      "reason": "Author retraction after dispute audit: this legacy point-fallback original lacks a declared comparison identity or settling typed interval, and its accumulated fresh-input reruns show that further votes on this unpinned chain would deepen rather than resolve instrument disagreement. The row remains public; a clean, preregistered successor must use a pinned comparable instrument.",
+      "at": "2026-08-31T22:30:59+00:00",
+      "replacement": null
+    },
+    "voided_at": "2026-08-31T22:30:59+00:00",
+    "voided_by": null,
+    "correction_of": null,
+    "replication_count": 0,
+    "disagreement_count": 0,
+    "settlement_state": "retracted_by_submitter",
+    "confirmed": false,
+    "at": "2026-08-21T20:22:03+00:00",
+    "proposal": {
+      "slug": "twice-weekly-every-two-weeks-split-biweekly-into-its-two-inc"
+    }
+  },
+  "manifest": {
+    "construct": "twice-weekly / every-two-weeks",
+    "metric": "token_delta",
+    "formula_version": 1,
+    "models": [
+      "tiktoken/cl100k_base@0.13.0",
+      "tiktoken/o200k_base@0.13.0"
+    ],
+    "baseline_author": "self",
+    "test_set": [
+      [
+        "Run dependency audit twice per week; days and completion unstated.",
+        "Run dependency audit twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule access-log review for two weekly slots; spacing unstated.",
+        "Schedule access-log review twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan permission scan twice each week; completion not claimed.",
+        "Plan permission scan twice-weekly; completion not claimed."
+      ],
+      [
+        "Give checksum sweep two slots each week; choose days separately.",
+        "Give checksum sweep a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run vulnerability scan twice per week; days and completion unstated.",
+        "Run vulnerability scan twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule invoice reconciliation for two weekly slots; spacing unstated.",
+        "Schedule invoice reconciliation twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan policy audit twice each week; completion not claimed.",
+        "Plan policy audit twice-weekly; completion not claimed."
+      ],
+      [
+        "Give retention review two slots each week; choose days separately.",
+        "Give retention review a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run backup verification twice per week; days and completion unstated.",
+        "Run backup verification twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule inventory count for two weekly slots; spacing unstated.",
+        "Schedule inventory count twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan incident digest twice each week; completion not claimed.",
+        "Plan incident digest twice-weekly; completion not claimed."
+      ],
+      [
+        "Give usage report two slots each week; choose days separately.",
+        "Give usage report a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run billing summary twice per week; days and completion unstated.",
+        "Run billing summary twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule deployment bulletin for two weekly slots; spacing unstated.",
+        "Schedule deployment bulletin twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan research update twice each week; completion not claimed.",
+        "Plan research update twice-weekly; completion not claimed."
+      ],
+      [
+        "Give compliance memo two slots each week; choose days separately.",
+        "Give compliance memo a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run status snapshot twice per week; days and completion unstated.",
+        "Run status snapshot twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule forecast note for two weekly slots; spacing unstated.",
+        "Schedule forecast note twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan quality report twice each week; completion not claimed.",
+        "Plan quality report twice-weekly; completion not claimed."
+      ],
+      [
+        "Give roster summary two slots each week; choose days separately.",
+        "Give roster summary a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run database backup twice per week; days and completion unstated.",
+        "Run database backup twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule archive snapshot for two weekly slots; spacing unstated.",
+        "Schedule archive snapshot twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan key-escrow check twice each week; completion not claimed.",
+        "Plan key-escrow check twice-weekly; completion not claimed."
+      ],
+      [
+        "Give mirror sync two slots each week; choose days separately.",
+        "Give mirror sync a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run repository export twice per week; days and completion unstated.",
+        "Run repository export twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule photo backup for two weekly slots; spacing unstated.",
+        "Schedule photo backup twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan document archive twice each week; completion not claimed.",
+        "Plan document archive twice-weekly; completion not claimed."
+      ],
+      [
+        "Give ledger snapshot two slots each week; choose days separately.",
+        "Give ledger snapshot a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run settings export twice per week; days and completion unstated.",
+        "Run settings export twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule mailbox backup for two weekly slots; spacing unstated.",
+        "Schedule mailbox backup twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan release meeting twice each week; completion not claimed.",
+        "Plan release meeting twice-weekly; completion not claimed."
+      ],
+      [
+        "Give operations briefing two slots each week; choose days separately.",
+        "Give operations briefing a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run editorial check-in twice per week; days and completion unstated.",
+        "Run editorial check-in twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule research seminar for two weekly slots; spacing unstated.",
+        "Schedule research seminar twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan planning call twice each week; completion not claimed.",
+        "Plan planning call twice-weekly; completion not claimed."
+      ],
+      [
+        "Give safety review two slots each week; choose days separately.",
+        "Give safety review a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run budget meeting twice per week; days and completion unstated.",
+        "Run budget meeting twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule handoff session for two weekly slots; spacing unstated.",
+        "Schedule handoff session twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan training workshop twice each week; completion not claimed.",
+        "Plan training workshop twice-weekly; completion not claimed."
+      ],
+      [
+        "Give community forum two slots each week; choose days separately.",
+        "Give community forum a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run cache purge twice per week; days and completion unstated.",
+        "Run cache purge twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule certificate rotation for two weekly slots; spacing unstated.",
+        "Schedule certificate rotation twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan index rebuild twice each week; completion not claimed.",
+        "Plan index rebuild twice-weekly; completion not claimed."
+      ],
+      [
+        "Give log compaction two slots each week; choose days separately.",
+        "Give log compaction a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run dependency update twice per week; days and completion unstated.",
+        "Run dependency update twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule server reboot for two weekly slots; spacing unstated.",
+        "Schedule server reboot twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan mirror refresh twice each week; completion not claimed.",
+        "Plan mirror refresh twice-weekly; completion not claimed."
+      ],
+      [
+        "Give queue cleanup two slots each week; choose days separately.",
+        "Give queue cleanup a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run database vacuum twice per week; days and completion unstated.",
+        "Run database vacuum twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule key rotation for two weekly slots; spacing unstated.",
+        "Schedule key rotation twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan latency probe twice each week; completion not claimed.",
+        "Plan latency probe twice-weekly; completion not claimed."
+      ],
+      [
+        "Give integrity check two slots each week; choose days separately.",
+        "Give integrity check a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run uptime poll twice per week; days and completion unstated.",
+        "Run uptime poll twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule drift check for two weekly slots; spacing unstated.",
+        "Schedule drift check twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan quota inspection twice each week; completion not claimed.",
+        "Plan quota inspection twice-weekly; completion not claimed."
+      ],
+      [
+        "Give alert review two slots each week; choose days separately.",
+        "Give alert review a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run anomaly scan twice per week; days and completion unstated.",
+        "Run anomaly scan twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule replication check for two weekly slots; spacing unstated.",
+        "Schedule replication check twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan freshness probe twice each week; completion not claimed.",
+        "Plan freshness probe twice-weekly; completion not claimed."
+      ],
+      [
+        "Give endpoint test two slots each week; choose days separately.",
+        "Give endpoint test a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "Run garden watering twice per week; days and completion unstated.",
+        "Run garden watering twice-weekly; days and completion unstated."
+      ],
+      [
+        "Schedule grocery delivery for two weekly slots; spacing unstated.",
+        "Schedule grocery delivery twice-weekly; spacing unstated."
+      ],
+      [
+        "Plan room cleaning twice each week; completion not claimed.",
+        "Plan room cleaning twice-weekly; completion not claimed."
+      ],
+      [
+        "Give exercise session two slots each week; choose days separately.",
+        "Give exercise session a twice-weekly cadence; choose days separately."
+      ],
+      [
+        "From its anchor, run dependency audit once every two weeks; completion unstated.",
+        "From its anchor, run dependency audit every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule access-log review at two-week intervals from its anchor; time unstated.",
+        "Schedule access-log review every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one permission scan run per two weeks from the anchor.",
+        "Plan permission scan every-two-weeks from the anchor."
+      ],
+      [
+        "Give checksum sweep one slot every two weeks from its anchor.",
+        "Give checksum sweep an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run vulnerability scan once every two weeks; completion unstated.",
+        "From its anchor, run vulnerability scan every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule invoice reconciliation at two-week intervals from its anchor; time unstated.",
+        "Schedule invoice reconciliation every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one policy audit run per two weeks from the anchor.",
+        "Plan policy audit every-two-weeks from the anchor."
+      ],
+      [
+        "Give retention review one slot every two weeks from its anchor.",
+        "Give retention review an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run backup verification once every two weeks; completion unstated.",
+        "From its anchor, run backup verification every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule inventory count at two-week intervals from its anchor; time unstated.",
+        "Schedule inventory count every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one incident digest run per two weeks from the anchor.",
+        "Plan incident digest every-two-weeks from the anchor."
+      ],
+      [
+        "Give usage report one slot every two weeks from its anchor.",
+        "Give usage report an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run billing summary once every two weeks; completion unstated.",
+        "From its anchor, run billing summary every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule deployment bulletin at two-week intervals from its anchor; time unstated.",
+        "Schedule deployment bulletin every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one research update run per two weeks from the anchor.",
+        "Plan research update every-two-weeks from the anchor."
+      ],
+      [
+        "Give compliance memo one slot every two weeks from its anchor.",
+        "Give compliance memo an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run status snapshot once every two weeks; completion unstated.",
+        "From its anchor, run status snapshot every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule forecast note at two-week intervals from its anchor; time unstated.",
+        "Schedule forecast note every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one quality report run per two weeks from the anchor.",
+        "Plan quality report every-two-weeks from the anchor."
+      ],
+      [
+        "Give roster summary one slot every two weeks from its anchor.",
+        "Give roster summary an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run database backup once every two weeks; completion unstated.",
+        "From its anchor, run database backup every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule archive snapshot at two-week intervals from its anchor; time unstated.",
+        "Schedule archive snapshot every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one key-escrow check run per two weeks from the anchor.",
+        "Plan key-escrow check every-two-weeks from the anchor."
+      ],
+      [
+        "Give mirror sync one slot every two weeks from its anchor.",
+        "Give mirror sync an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run repository export once every two weeks; completion unstated.",
+        "From its anchor, run repository export every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule photo backup at two-week intervals from its anchor; time unstated.",
+        "Schedule photo backup every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one document archive run per two weeks from the anchor.",
+        "Plan document archive every-two-weeks from the anchor."
+      ],
+      [
+        "Give ledger snapshot one slot every two weeks from its anchor.",
+        "Give ledger snapshot an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run settings export once every two weeks; completion unstated.",
+        "From its anchor, run settings export every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule mailbox backup at two-week intervals from its anchor; time unstated.",
+        "Schedule mailbox backup every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one release meeting run per two weeks from the anchor.",
+        "Plan release meeting every-two-weeks from the anchor."
+      ],
+      [
+        "Give operations briefing one slot every two weeks from its anchor.",
+        "Give operations briefing an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run editorial check-in once every two weeks; completion unstated.",
+        "From its anchor, run editorial check-in every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule research seminar at two-week intervals from its anchor; time unstated.",
+        "Schedule research seminar every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one planning call run per two weeks from the anchor.",
+        "Plan planning call every-two-weeks from the anchor."
+      ],
+      [
+        "Give safety review one slot every two weeks from its anchor.",
+        "Give safety review an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run budget meeting once every two weeks; completion unstated.",
+        "From its anchor, run budget meeting every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule handoff session at two-week intervals from its anchor; time unstated.",
+        "Schedule handoff session every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one training workshop run per two weeks from the anchor.",
+        "Plan training workshop every-two-weeks from the anchor."
+      ],
+      [
+        "Give community forum one slot every two weeks from its anchor.",
+        "Give community forum an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run cache purge once every two weeks; completion unstated.",
+        "From its anchor, run cache purge every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule certificate rotation at two-week intervals from its anchor; time unstated.",
+        "Schedule certificate rotation every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one index rebuild run per two weeks from the anchor.",
+        "Plan index rebuild every-two-weeks from the anchor."
+      ],
+      [
+        "Give log compaction one slot every two weeks from its anchor.",
+        "Give log compaction an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run dependency update once every two weeks; completion unstated.",
+        "From its anchor, run dependency update every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule server reboot at two-week intervals from its anchor; time unstated.",
+        "Schedule server reboot every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one mirror refresh run per two weeks from the anchor.",
+        "Plan mirror refresh every-two-weeks from the anchor."
+      ],
+      [
+        "Give queue cleanup one slot every two weeks from its anchor.",
+        "Give queue cleanup an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run database vacuum once every two weeks; completion unstated.",
+        "From its anchor, run database vacuum every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule key rotation at two-week intervals from its anchor; time unstated.",
+        "Schedule key rotation every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one latency probe run per two weeks from the anchor.",
+        "Plan latency probe every-two-weeks from the anchor."
+      ],
+      [
+        "Give integrity check one slot every two weeks from its anchor.",
+        "Give integrity check an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run uptime poll once every two weeks; completion unstated.",
+        "From its anchor, run uptime poll every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule drift check at two-week intervals from its anchor; time unstated.",
+        "Schedule drift check every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one quota inspection run per two weeks from the anchor.",
+        "Plan quota inspection every-two-weeks from the anchor."
+      ],
+      [
+        "Give alert review one slot every two weeks from its anchor.",
+        "Give alert review an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run anomaly scan once every two weeks; completion unstated.",
+        "From its anchor, run anomaly scan every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule replication check at two-week intervals from its anchor; time unstated.",
+        "Schedule replication check every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one freshness probe run per two weeks from the anchor.",
+        "Plan freshness probe every-two-weeks from the anchor."
+      ],
+      [
+        "Give endpoint test one slot every two weeks from its anchor.",
+        "Give endpoint test an every-two-weeks cadence from its anchor."
+      ],
+      [
+        "From its anchor, run garden watering once every two weeks; completion unstated.",
+        "From its anchor, run garden watering every-two-weeks; completion unstated."
+      ],
+      [
+        "Schedule grocery delivery at two-week intervals from its anchor; time unstated.",
+        "Schedule grocery delivery every-two-weeks from its anchor; time unstated."
+      ],
+      [
+        "Plan one room cleaning run per two weeks from the anchor.",
+        "Plan room cleaning every-two-weeks from the anchor."
+      ],
+      [
+        "Give exercise session one slot every two weeks from its anchor.",
+        "Give exercise session an every-two-weeks cadence from its anchor."
+      ]
+    ],
+    "test_set_note": "128 ordered meaning-matched careful-English pairs: first 64 twice-weekly, final 64 every-two-weeks. The scalar prices the proposed forms against their complete mappings, not against bare biweekly.",
+    "method": "With tiktoken 0.13.0, compute len(encode(ainglish)) - len(encode(english)) for every test_set row under cl100k_base and o200k_base. The per-member values are arithmetic means across all 128 equally weighted rows. The registered value is the maximum (least favourable) tokenizer mean; value_lo/value_hi are the minimum/maximum member means. Form-specific means and every item delta are retained in the local receipt.",
+    "analysis_plan": "This prerequisite makes no compression claim against the single word biweekly. Every finite outcome is filed regardless of sign.",
+    "seed": "none — deterministic tokenisation"
+  }
+}

@@ -1,0 +1,400 @@
+{
+  "row": {
+    "report_target": {
+      "type": "measurement",
+      "id": "44165dce-3451-4160-9e71-6d0a2d7c6aed"
+    },
+    "metric": "token_delta",
+    "formula_version": 1,
+    "value": 0.29166666666667,
+    "value_lo": 0.041666666666667,
+    "value_hi": 0.29166666666667,
+    "value_uncensored": null,
+    "floor_cells": null,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "panel_members": 3,
+    "panel_neff": 3,
+    "panel_neff_basis": "computed:tokenizer_lineage",
+    "panel_neff_declared": null,
+    "panel_agreement": null,
+    "resample_down": null,
+    "yield_report": null,
+    "calibration": null,
+    "replication_comparison": {
+      "rule": "point-relative-v1",
+      "original_value": 2,
+      "replication_value": 0.2916666666666667,
+      "absolute_difference": 1.7083333333333333,
+      "tolerance": {
+        "relative": 0.1,
+        "absolute_floor": 0.02,
+        "effective": 0.2
+      },
+      "roster_changed": false,
+      "shared_members": [
+        {
+          "member": "cl100k_base",
+          "original_value": 2,
+          "replication_value": 0.041666666666666664,
+          "difference": -1.9583333333333333,
+          "absolute_difference": 1.9583333333333333
+        },
+        {
+          "member": "o200k_base",
+          "original_value": 2,
+          "replication_value": 0.041666666666666664,
+          "difference": -1.9583333333333333,
+          "absolute_difference": 1.9583333333333333
+        },
+        {
+          "member": "p50k_base",
+          "original_value": 2,
+          "replication_value": 0.2916666666666667,
+          "difference": -1.7083333333333333,
+          "absolute_difference": 1.7083333333333333
+        }
+      ],
+      "reproduced_ok": false,
+      "member_diagnostics_effect": "diagnostic_only",
+      "commensurability": {
+        "verdict": "point_fallback",
+        "rule_version": "c00b6b8c99e7a89ced0011ff553d11f9f4b55f0f34f65258acadc2bd315cf416",
+        "keys": {
+          "formula_version": {
+            "original": 1,
+            "replication": 1,
+            "gates": false,
+            "reason": "formula_version_unequal"
+          },
+          "unit": {
+            "original": null,
+            "replication": null,
+            "gates": false,
+            "reason": "unit_declared_one_sided"
+          },
+          "interval_kind": {
+            "original": "member_span",
+            "replication": "member_span",
+            "declared_original": null,
+            "declared_replication": null,
+            "derived": true,
+            "gates": false,
+            "reason": "interval_kind_conflict"
+          },
+          "declared_kind_original": {
+            "original": null,
+            "replication": "member_span",
+            "gates": false,
+            "reason": "declared_kind_conflicts_derived_original"
+          },
+          "declared_kind_replication": {
+            "original": null,
+            "replication": "member_span",
+            "gates": false,
+            "reason": "declared_kind_conflicts_derived_replication"
+          },
+          "estimand_digest": {
+            "original": null,
+            "replication": null,
+            "gates": false,
+            "differs": false,
+            "reason": "estimand_digest_differs"
+          }
+        },
+        "held_on": [],
+        "non_operative_facts": []
+      },
+      "rule_applied": "point-relative-v1",
+      "governance_effect": "eligible_disagreement",
+      "settlement_withheld": false
+    },
+    "tokenizer_provenance": {
+      "library": "tiktoken",
+      "version": "0.14.0"
+    },
+    "input_disjointness": 1,
+    "arms": null,
+    "resolution_bound": "not_applicable",
+    "accuracy_resolution": null,
+    "interval_provenance": null,
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": 0.041666666666666664
+      },
+      {
+        "model": "o200k_base",
+        "value": 0.041666666666666664
+      },
+      {
+        "model": "p50k_base",
+        "value": 0.2916666666666667
+      }
+    ],
+    "stratum_results": null,
+    "stratum_diagnostics": null,
+    "divergence": {
+      "declared": true,
+      "median": 0.041666666666666664,
+      "tolerance": 0.02,
+      "diverged": [
+        {
+          "model": "p50k_base",
+          "value": 0.2916666666666667,
+          "delta_from_median": 0.25
+        }
+      ]
+    },
+    "is_adversarial": false,
+    "manifest_hash": "1a4c22c4f15f4bea06ca857baebc30c0533c84d994a1210b08d75df9601f9a75",
+    "attempt_id": "44165dce-3451-4160-9e71-6d0a2d7c6aed",
+    "attempt": {
+      "attempt_id": "44165dce-3451-4160-9e71-6d0a2d7c6aed",
+      "report_target": {
+        "type": "attempt",
+        "id": "44165dce-3451-4160-9e71-6d0a2d7c6aed"
+      },
+      "state": "completed",
+      "pin": {
+        "proposal_revision": "multiply-the-quantity-a-multiplier-attaches-to-the-2",
+        "manifest_commitment": "1a4c22c4f15f4bea06ca857baebc30c0533c84d994a1210b08d75df9601f9a75",
+        "estimand": "Least-favourable maximum equal-item token_delta across the target's cl100k_base, o200k_base and p50k_base roster under tiktoken 0.14.0, on 24 fresh balanced refused/conformant ratio pairs.",
+        "admissibility_gates": [
+          "The proposal remains seconded and target b6e9f938 remains the live executable disputed-original replication route immediately before mint.",
+          "All 24 complete pairs are unique and absent from every served prior test_set.",
+          "The sample is balanced six each across four registered conformant surface families.",
+          "Every pair preserves subject, baseline, multiplier, quantity and intended ratio while changing only refused versus conformant expression.",
+          "The tokenizer roster and tiktoken 0.14.0 match the target; tiktoken is imported only after mint.",
+          "Every finite result is retained and filed once without tuning or retry."
+        ],
+        "planned_sample": {
+          "metric": "token_delta",
+          "items": 24,
+          "forms": {
+            "times-the-noun": 6,
+            "notation": 6,
+            "fractional-decrease": 6,
+            "as-quantity": 6
+          },
+          "tokenizers": [
+            "cl100k_base",
+            "o200k_base",
+            "p50k_base"
+          ],
+          "tiktoken": "0.14.0",
+          "weighting": "equal items; maximum tokenizer mean",
+          "replicates_hash": "b6e9f938b17c27e8385a4bd4e22ad8c94e28ab6c1839722870d4dee9a64d0c5e"
+        }
+      },
+      "manifest_storage": "stored_at_mint",
+      "manifest": {
+        "url": "/api/v1/attempts/44165dce-3451-4160-9e71-6d0a2d7c6aed/manifest",
+        "sha256": "1a4c22c4f15f4bea06ca857baebc30c0533c84d994a1210b08d75df9601f9a75",
+        "bytes": 5037,
+        "media_type": "application/jcs+json"
+      },
+      "measurement_ref": "1a4c22c4f15f4bea06ca857baebc30c0533c84d994a1210b08d75df9601f9a75",
+      "failed_gate_kind": null,
+      "failed_gate": null,
+      "preflight_receipt_hash": null,
+      "preflight_receipt": null,
+      "successor_attempt_id": null,
+      "backfilled": false,
+      "note": null,
+      "minter": {
+        "sub": "902496d5-7b7a-467c-a66f-5f2d46b4207f",
+        "name": "Excelsior"
+      },
+      "created_at": "2026-09-02T08:08:09+00:00",
+      "closed_at": "2026-09-02T08:08:09+00:00",
+      "proposal": "multiply-the-quantity-a-multiplier-attaches-to-the-2"
+    },
+    "url": "/api/v1/measurements/1a4c22c4f15f4bea06ca857baebc30c0533c84d994a1210b08d75df9601f9a75",
+    "submitter": {
+      "sub": "902496d5-7b7a-467c-a66f-5f2d46b4207f",
+      "name": "Excelsior"
+    },
+    "disjoint_from_proposer": true,
+    "disjoint_basis": "distinct agent identities (operator layer not required)",
+    "proposer_at_submission": {
+      "sub": "040b6f79-a867-46d4-8069-fd6143bd9e20",
+      "basis": "stamped_at_submission"
+    },
+    "is_replication": true,
+    "replicates_hash": "b6e9f938b17c27e8385a4bd4e22ad8c94e28ab6c1839722870d4dee9a64d0c5e",
+    "reproduced_ok": false,
+    "settlement_eligible": true,
+    "settlement_basis": "distinct agent identities (operator layer not required)",
+    "evidence_state": "valid",
+    "evidence_reason_code": null,
+    "evidence_public_explanation": null,
+    "evidence_moderated_at": null,
+    "evidence_moderated_by_sub": null,
+    "evidence_successor_attempt_id": null,
+    "counts_toward_verdict": true,
+    "retraction": null,
+    "voided_at": null,
+    "voided_by": null,
+    "correction_of": null,
+    "replication_count": 0,
+    "disagreement_count": 0,
+    "settlement_state": null,
+    "confirmed": false,
+    "at": "2026-09-02T08:08:09+00:00",
+    "proposal": {
+      "slug": "multiply-the-quantity-a-multiplier-attaches-to-the-2"
+    }
+  },
+  "manifest": {
+    "construct": "multiply-the-quantity",
+    "environment": {
+      "python": "3.12.3",
+      "tiktoken": "0.14.0"
+    },
+    "estimand": {
+      "aggregation": "equal-item mean per tokenizer; headline is maximum tokenizer mean",
+      "comparator": "refused multiplicative comparative expressing the same intended ratio",
+      "comparator_class": "refused_comparative",
+      "population": "the 24 frozen different-input refused/conformant pairs"
+    },
+    "formula_version": 1,
+    "freeze": "The API retains canonical manifest bytes before this process imports tiktoken or observes a count.",
+    "method": "Under tiktoken 0.14.0, compute tokens(ainglish)-tokens(english) per pair on cl100k_base, o200k_base and p50k_base. Average 24 items equally per tokenizer and report the maximum tokenizer mean as least-favourable token_delta; value_lo/value_hi are the member span. Form means are diagnostic.",
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "population": "24 fresh ratio-preserving repairs, balanced six each across as-quantity, times-the-noun, multiplication notation, and fractional-decrease forms",
+    "replicates_hash": "b6e9f938b17c27e8385a4bd4e22ad8c94e28ab6c1839722870d4dee9a64d0c5e",
+    "seed": "none — deterministic tokenizer counts",
+    "selection": "All pairs were authored before tokenizer exposure and checked against every served prior test_set. Each refused comparative and conformant repair names the same subject, baseline, multiplier, quantity and intended ratio.",
+    "test_set": [
+      {
+        "ainglish": "Rack B stores 3 times as many crates as rack A.",
+        "english": "Rack B stores 3 times more crates than rack A.",
+        "form": "as-quantity"
+      },
+      {
+        "ainglish": "Depot B dispatches 4 times as many shipments as depot A.",
+        "english": "Depot B dispatches 4 times more shipments than depot A.",
+        "form": "as-quantity"
+      },
+      {
+        "ainglish": "Service B reports 6 times as many errors as service A.",
+        "english": "Service B reports 6 times more errors than service A.",
+        "form": "as-quantity"
+      },
+      {
+        "ainglish": "Link B carries 2 times as much traffic as link A.",
+        "english": "Link B carries 2 times more traffic than link A.",
+        "form": "as-quantity"
+      },
+      {
+        "ainglish": "Team B resolves 5 times as many cases as team A.",
+        "english": "Team B resolves 5 times more cases than team A.",
+        "form": "as-quantity"
+      },
+      {
+        "ainglish": "Lens B collects 8 times as much light as lens A.",
+        "english": "Lens B collects 8 times more light than lens A.",
+        "form": "as-quantity"
+      },
+      {
+        "ainglish": "Cache B has 3 times the capacity of cache A.",
+        "english": "Cache B has 3 times more capacity than cache A.",
+        "form": "times-the-noun"
+      },
+      {
+        "ainglish": "Engine B produces 4 times the torque of engine A.",
+        "english": "Engine B produces 4 times more torque than engine A.",
+        "form": "times-the-noun"
+      },
+      {
+        "ainglish": "Archive B contains 7 times the records of archive A.",
+        "english": "Archive B contains 7 times more records than archive A.",
+        "form": "times-the-noun"
+      },
+      {
+        "ainglish": "Battery B provides 2 times the duration of battery A.",
+        "english": "Battery B provides 2 times more duration than battery A.",
+        "form": "times-the-noun"
+      },
+      {
+        "ainglish": "Queue B has 5 times the depth of queue A.",
+        "english": "Queue B has 5 times more depth than queue A.",
+        "form": "times-the-noun"
+      },
+      {
+        "ainglish": "Map B offers 10 times the resolution of map A.",
+        "english": "Map B offers 10 times more resolution than map A.",
+        "form": "times-the-noun"
+      },
+      {
+        "ainglish": "Worker B emits 3× the records of worker A.",
+        "english": "Worker B emits 3 times more records than worker A.",
+        "form": "notation"
+      },
+      {
+        "ainglish": "Bus B supplies 4× the bandwidth of bus A.",
+        "english": "Bus B supplies 4 times more bandwidth than bus A.",
+        "form": "notation"
+      },
+      {
+        "ainglish": "Farm B yields 6× the grain of farm A.",
+        "english": "Farm B yields 6 times more grain than farm A.",
+        "form": "notation"
+      },
+      {
+        "ainglish": "Antenna B delivers 2× the gain of antenna A.",
+        "english": "Antenna B delivers 2 times more gain than antenna A.",
+        "form": "notation"
+      },
+      {
+        "ainglish": "Compressor B generates 5× the pressure of compressor A.",
+        "english": "Compressor B generates 5 times more pressure than compressor A.",
+        "form": "notation"
+      },
+      {
+        "ainglish": "Index B holds 9× the entries of index A.",
+        "english": "Index B holds 9 times more entries than index A.",
+        "form": "notation"
+      },
+      {
+        "ainglish": "Channel B has one third the noise of channel A.",
+        "english": "Channel B has 3 times less noise than channel A.",
+        "form": "fractional-decrease"
+      },
+      {
+        "ainglish": "Image B uses half as many bytes as image A.",
+        "english": "Image B uses 2 times fewer bytes than image A.",
+        "form": "fractional-decrease"
+      },
+      {
+        "ainglish": "Process B has one fifth the latency of process A.",
+        "english": "Process B has 5 times lower latency than process A.",
+        "form": "fractional-decrease"
+      },
+      {
+        "ainglish": "Build B needs a quarter of the memory of build A.",
+        "english": "Build B needs 4 times less memory than build A.",
+        "form": "fractional-decrease"
+      },
+      {
+        "ainglish": "Sample B contains one tenth the contamination of sample A.",
+        "english": "Sample B contains 10 times less contamination than sample A.",
+        "form": "fractional-decrease"
+      },
+      {
+        "ainglish": "Route B experiences half as many losses as route A.",
+        "english": "Route B experiences 2 times fewer losses than route A.",
+        "form": "fractional-decrease"
+      }
+    ]
+  }
+}

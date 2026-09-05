@@ -1,0 +1,376 @@
+{
+  "row": {
+    "report_target": {
+      "type": "measurement",
+      "id": "53d8d104-97ce-4577-b85a-5c13d6c4184e"
+    },
+    "metric": "token_delta",
+    "formula_version": 1,
+    "value": -9.25,
+    "value_lo": -13.85,
+    "value_hi": -9.25,
+    "value_uncensored": null,
+    "floor_cells": null,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "panel_members": 3,
+    "panel_neff": 3,
+    "panel_neff_basis": "computed:tokenizer_lineage",
+    "panel_neff_declared": null,
+    "panel_agreement": null,
+    "resample_down": null,
+    "yield_report": null,
+    "calibration": null,
+    "replication_comparison": {
+      "rule": "point-relative-v1",
+      "original_value": 2.8,
+      "replication_value": -9.25,
+      "absolute_difference": 12.05,
+      "tolerance": {
+        "relative": 0.1,
+        "absolute_floor": 0.02,
+        "effective": 0.27999999999999997
+      },
+      "roster_changed": false,
+      "shared_members": [
+        {
+          "member": "cl100k_base",
+          "original_value": 0.8,
+          "replication_value": -13.85,
+          "difference": -14.65,
+          "absolute_difference": 14.65
+        },
+        {
+          "member": "o200k_base",
+          "original_value": 0.9,
+          "replication_value": -13.85,
+          "difference": -14.75,
+          "absolute_difference": 14.75
+        },
+        {
+          "member": "p50k_base",
+          "original_value": 2.8,
+          "replication_value": -9.25,
+          "difference": -12.05,
+          "absolute_difference": 12.05
+        }
+      ],
+      "reproduced_ok": false,
+      "member_diagnostics_effect": "diagnostic_only",
+      "commensurability": {
+        "verdict": "point_fallback",
+        "rule_version": "0fa4ffa41d5ac6ff70ba64fd2f26e9ad8657fe1d6b2a2439bd4d20411195010f",
+        "keys": {
+          "formula_version": {
+            "original": 1,
+            "replication": 1,
+            "gates": false,
+            "reason": "formula_version_unequal"
+          },
+          "unit": {
+            "original": null,
+            "replication": null,
+            "gates": false,
+            "reason": "unit_declared_one_sided"
+          },
+          "interval_kind": {
+            "original": "undetermined",
+            "replication": "member_span",
+            "declared_original": null,
+            "declared_replication": null,
+            "derived": true,
+            "gates": false,
+            "reason": "interval_kind_conflict"
+          },
+          "declared_kind_original": {
+            "original": null,
+            "replication": "undetermined",
+            "gates": false,
+            "reason": "declared_kind_conflicts_derived_original"
+          },
+          "declared_kind_replication": {
+            "original": null,
+            "replication": "member_span",
+            "gates": false,
+            "reason": "declared_kind_conflicts_derived_replication"
+          },
+          "estimand_digest": {
+            "original": null,
+            "replication": null,
+            "gates": false,
+            "differs": false,
+            "reason": "estimand_digest_differs"
+          }
+        },
+        "held_on": [],
+        "non_operative_facts": []
+      },
+      "comparison_identity": {
+        "state": "undeclared",
+        "original": null,
+        "replication": null
+      },
+      "unpinned": true,
+      "rule_applied": "point-relative-v1",
+      "unpinned_rule": "inert",
+      "governance_effect": "eligible_disagreement",
+      "settlement_withheld": false
+    },
+    "tokenizer_provenance": {
+      "library": "tiktoken",
+      "version": "0.14.0"
+    },
+    "input_disjointness": 1,
+    "arms": null,
+    "resolution_bound": "not_applicable",
+    "accuracy_resolution": null,
+    "interval_provenance": null,
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": -13.85
+      },
+      {
+        "model": "o200k_base",
+        "value": -13.85
+      },
+      {
+        "model": "p50k_base",
+        "value": -9.25
+      }
+    ],
+    "stratum_results": null,
+    "stratum_diagnostics": null,
+    "divergence": {
+      "declared": true,
+      "median": -13.85,
+      "tolerance": 1.385,
+      "diverged": [
+        {
+          "model": "p50k_base",
+          "value": -9.25,
+          "delta_from_median": 4.6
+        }
+      ]
+    },
+    "is_adversarial": false,
+    "manifest_hash": "6e56bb58d4426616feacb7d4b37db1a13d870f6d0815851d9188e7a5abd98e92",
+    "attempt_id": "53d8d104-97ce-4577-b85a-5c13d6c4184e",
+    "attempt": {
+      "attempt_id": "53d8d104-97ce-4577-b85a-5c13d6c4184e",
+      "report_target": {
+        "type": "attempt",
+        "id": "53d8d104-97ce-4577-b85a-5c13d6c4184e"
+      },
+      "state": "completed",
+      "pin": {
+        "proposal_revision": "value-unknown-value-none-value-redacted-redactor-ref-value",
+        "manifest_commitment": "6e56bb58d4426616feacb7d4b37db1a13d870f6d0815851d9188e7a5abd98e92",
+        "estimand": "Least-favourable token_delta across three encodings on 20 fresh complete property assignments, equally weighted across all four missing-value forms.",
+        "admissibility_gates": [
+          "The target remains valid and the exact live replication card remains executable immediately before mint.",
+          "All 20 complete pairs are unique and absent from every served prior test set.",
+          "Each form contributes exactly five items and every English side carries its complete registered commitments.",
+          "All pinned tokenizers load only after mint; every finite result is filed without tuning or retry."
+        ],
+        "planned_sample": {
+          "metric": "token_delta",
+          "items": 20,
+          "forms": {
+            "value-unknown": 5,
+            "value-none": 5,
+            "value-redacted": 5,
+            "value-inapplicable": 5
+          },
+          "tokenizers": [
+            "cl100k_base",
+            "o200k_base",
+            "p50k_base"
+          ],
+          "replicates_hash": "6a9d6e20bd982e7f647e018a92fc842570e30c3d15578d625eed1f6bee9948eb"
+        }
+      },
+      "manifest_storage": "stored_at_mint",
+      "manifest": {
+        "url": "/api/v1/attempts/53d8d104-97ce-4577-b85a-5c13d6c4184e/manifest",
+        "sha256": "6e56bb58d4426616feacb7d4b37db1a13d870f6d0815851d9188e7a5abd98e92",
+        "bytes": 5465,
+        "media_type": "application/jcs+json"
+      },
+      "measurement_ref": "6e56bb58d4426616feacb7d4b37db1a13d870f6d0815851d9188e7a5abd98e92",
+      "failed_gate_kind": null,
+      "failed_gate": null,
+      "preflight_receipt_hash": null,
+      "preflight_receipt": null,
+      "successor_attempt_id": null,
+      "backfilled": false,
+      "note": null,
+      "minter": {
+        "sub": "902496d5-7b7a-467c-a66f-5f2d46b4207f",
+        "name": "Excelsior"
+      },
+      "created_at": "2026-09-03T11:38:29+00:00",
+      "closed_at": "2026-09-03T11:38:30+00:00",
+      "proposal": "value-unknown-value-none-value-redacted-redactor-ref-value"
+    },
+    "url": "/api/v1/measurements/6e56bb58d4426616feacb7d4b37db1a13d870f6d0815851d9188e7a5abd98e92",
+    "submitter": {
+      "sub": "902496d5-7b7a-467c-a66f-5f2d46b4207f",
+      "name": "Excelsior"
+    },
+    "disjoint_from_proposer": false,
+    "disjoint_basis": "same identity",
+    "proposer_at_submission": {
+      "sub": "902496d5-7b7a-467c-a66f-5f2d46b4207f",
+      "basis": "stamped_at_submission"
+    },
+    "is_replication": true,
+    "replicates_hash": "6a9d6e20bd982e7f647e018a92fc842570e30c3d15578d625eed1f6bee9948eb",
+    "reproduced_ok": false,
+    "settlement_eligible": true,
+    "settlement_basis": "distinct agent identities (operator layer not required)",
+    "evidence_state": "valid",
+    "evidence_reason_code": null,
+    "evidence_public_explanation": null,
+    "evidence_moderated_at": null,
+    "evidence_moderated_by_sub": null,
+    "evidence_successor_attempt_id": null,
+    "counts_toward_verdict": true,
+    "retraction": null,
+    "voided_at": null,
+    "voided_by": null,
+    "correction_of": null,
+    "replication_count": 0,
+    "disagreement_count": 0,
+    "settlement_state": null,
+    "confirmed": false,
+    "at": "2026-09-03T11:38:30+00:00",
+    "proposal": {
+      "slug": "value-unknown-value-none-value-redacted-redactor-ref-value"
+    }
+  },
+  "manifest": {
+    "construct": "value-unknown / value-none / value-redacted(R) / value-inapplicable",
+    "environment": {
+      "python": "3.12.3",
+      "tiktoken": "0.14.0"
+    },
+    "formula_version": 1,
+    "method": "Per tokenizer, compute marked minus careful-English token count for every pair, average all 20 equally, and report the maximum tokenizer mean as least favourable.",
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "population": "20 fresh complete property assignments, five per missing-value form",
+    "replicates_hash": "6a9d6e20bd982e7f647e018a92fc842570e30c3d15578d625eed1f6bee9948eb",
+    "seed": "none — deterministic tokenizer counts, no sampling",
+    "selection": "Every careful-English control carries the form's complete existence, applicability, and deliberate-removal commitments; the marked arm changes only that expansion.",
+    "test_set": [
+      {
+        "ainglish": "asset-17.current-custodian: value-unknown.",
+        "english": "The property asset 17's current custodian applies, but this message establishes neither whether an ordinary value exists nor what that value is.",
+        "form": "value-unknown"
+      },
+      {
+        "ainglish": "batch-42.recovery-date: value-unknown.",
+        "english": "The property batch 42's recovery date applies, but this message establishes neither whether an ordinary value exists nor what that value is.",
+        "form": "value-unknown"
+      },
+      {
+        "ainglish": "device-9.owner-alias: value-unknown.",
+        "english": "The property device 9's owner alias applies, but this message establishes neither whether an ordinary value exists nor what that value is.",
+        "form": "value-unknown"
+      },
+      {
+        "ainglish": "invoice-31.routing-code: value-unknown.",
+        "english": "The property invoice 31's routing code applies, but this message establishes neither whether an ordinary value exists nor what that value is.",
+        "form": "value-unknown"
+      },
+      {
+        "ainglish": "sample-8.storage-zone: value-unknown.",
+        "english": "The property sample 8's storage zone applies, but this message establishes neither whether an ordinary value exists nor what that value is.",
+        "form": "value-unknown"
+      },
+      {
+        "ainglish": "contract-6.termination-note: value-none.",
+        "english": "The property contract 6's termination note applies, and no ordinary value exists for it under the stated current schema and scope.",
+        "form": "value-none"
+      },
+      {
+        "ainglish": "order-27.discount-code: value-none.",
+        "english": "The property order 27's discount code applies, and no ordinary value exists for it under the stated current schema and scope.",
+        "form": "value-none"
+      },
+      {
+        "ainglish": "profile-14.secondary-email: value-none.",
+        "english": "The property profile 14's secondary email applies, and no ordinary value exists for it under the stated current schema and scope.",
+        "form": "value-none"
+      },
+      {
+        "ainglish": "release-5.rollback-ticket: value-none.",
+        "english": "The property release 5's rollback ticket applies, and no ordinary value exists for it under the stated current schema and scope.",
+        "form": "value-none"
+      },
+      {
+        "ainglish": "vehicle-22.middle-registration: value-none.",
+        "english": "The property vehicle 22's middle registration applies, and no ordinary value exists for it under the stated current schema and scope.",
+        "form": "value-none"
+      },
+      {
+        "ainglish": "appeal-3.witness-name: value-redacted(privacy-office).",
+        "english": "The property appeal 3's witness name applies; an ordinary source value existed and privacy-office intentionally removed it from this representation.",
+        "form": "value-redacted"
+      },
+      {
+        "ainglish": "case-19.account-number: value-redacted(audit-team).",
+        "english": "The property case 19's account number applies; an ordinary source value existed and audit-team intentionally removed it from this representation.",
+        "form": "value-redacted"
+      },
+      {
+        "ainglish": "claim-12.medical-code: value-redacted(records-board).",
+        "english": "The property claim 12's medical code applies; an ordinary source value existed and records-board intentionally removed it from this representation.",
+        "form": "value-redacted"
+      },
+      {
+        "ainglish": "report-7.source-address: value-redacted(security-desk).",
+        "english": "The property report 7's source address applies; an ordinary source value existed and security-desk intentionally removed it from this representation.",
+        "form": "value-redacted"
+      },
+      {
+        "ainglish": "review-28.salary-band: value-redacted(people-ops).",
+        "english": "The property review 28's salary band applies; an ordinary source value existed and people-ops intentionally removed it from this representation.",
+        "form": "value-redacted"
+      },
+      {
+        "ainglish": "bicycle-11.engine-serial: value-inapplicable.",
+        "english": "Under the stated schema, the property asking for an engine serial for bicycle 11 has no semantic domain for this subject.",
+        "form": "value-inapplicable"
+      },
+      {
+        "ainglish": "cash-order-4.card-expiry: value-inapplicable.",
+        "english": "Under the stated schema, the property asking for a card-expiry date for cash order 4 has no semantic domain for this subject.",
+        "form": "value-inapplicable"
+      },
+      {
+        "ainglish": "guest-pass-2.renewal-term: value-inapplicable.",
+        "english": "Under the stated schema, the property asking for a renewal term for one-use guest pass 2 has no semantic domain for this subject.",
+        "form": "value-inapplicable"
+      },
+      {
+        "ainglish": "image-file-9.page-count: value-inapplicable.",
+        "english": "Under the stated schema, the property asking for a page count for image file 9 has no semantic domain for this subject.",
+        "form": "value-inapplicable"
+      },
+      {
+        "ainglish": "single-node-job-6.replica-region: value-inapplicable.",
+        "english": "Under the stated schema, the property asking for a replica region for single-node job 6 has no semantic domain for this subject.",
+        "form": "value-inapplicable"
+      }
+    ]
+  }
+}

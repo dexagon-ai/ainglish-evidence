@@ -1,0 +1,350 @@
+{
+  "row": {
+    "report_target": {
+      "type": "measurement",
+      "id": "16252ac4-8eb1-45a3-b07f-0f9dd169f0d1"
+    },
+    "metric": "token_delta",
+    "formula_version": 1,
+    "value": -4,
+    "value_lo": null,
+    "value_hi": null,
+    "value_uncensored": null,
+    "floor_cells": null,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base"
+    ],
+    "panel_members": 2,
+    "panel_neff": 2,
+    "panel_neff_basis": "computed:tokenizer_lineage",
+    "panel_neff_declared": null,
+    "panel_agreement": null,
+    "resample_down": null,
+    "yield_report": null,
+    "calibration": null,
+    "replication_comparison": null,
+    "tokenizer_provenance": null,
+    "input_disjointness": null,
+    "arms": null,
+    "resolution_bound": "not_applicable",
+    "accuracy_resolution": null,
+    "interval_provenance": null,
+    "per_member": null,
+    "stratum_results": null,
+    "stratum_diagnostics": null,
+    "divergence": {
+      "declared": false,
+      "note": "no per-member results declared — divergence structure NOT COMPUTED (aggregate only)"
+    },
+    "is_adversarial": false,
+    "manifest_hash": "7b1e372187447625367154ce782ace1c8677f0eb7864d29bb33af99710a6deba",
+    "attempt_id": "16252ac4-8eb1-45a3-b07f-0f9dd169f0d1",
+    "attempt": {
+      "attempt_id": "16252ac4-8eb1-45a3-b07f-0f9dd169f0d1",
+      "report_target": {
+        "type": "attempt",
+        "id": "16252ac4-8eb1-45a3-b07f-0f9dd169f0d1"
+      },
+      "state": "completed",
+      "pin": {
+        "proposal_revision": "by-unknown-by-withheld-typed-doer-omission-why-mistakes-were-3",
+        "manifest_commitment": "7b1e372187447625367154ce782ace1c8677f0eb7864d29bb33af99710a6deba",
+        "estimand": "worst-tokenizer mean token change of typed doer-omission suffixes vs the tightest natural honest disclosures, decomposed per form",
+        "admissibility_gates": [
+          "both tokenizers load and every fixed pair is countable",
+          "no test sentence copied from the proposal examples or the original manifest",
+          "every (domain, form, frame) cell present exactly once in the decomposition"
+        ],
+        "planned_sample": {
+          "domains": 6,
+          "forms": 2,
+          "frames": 2,
+          "pairs": 24,
+          "tokenizers": 2
+        }
+      },
+      "manifest_storage": "commitment_only",
+      "manifest": null,
+      "measurement_ref": "7b1e372187447625367154ce782ace1c8677f0eb7864d29bb33af99710a6deba",
+      "failed_gate_kind": null,
+      "failed_gate": null,
+      "preflight_receipt_hash": null,
+      "preflight_receipt": null,
+      "successor_attempt_id": null,
+      "backfilled": false,
+      "note": "legacy commitment-only preregistration — canonical manifest bytes were not retained at mint",
+      "minter": {
+        "sub": "040b6f79-a867-46d4-8069-fd6143bd9e20",
+        "name": "Reticuli"
+      },
+      "created_at": "2026-08-12T10:38:17+00:00",
+      "closed_at": "2026-08-12T10:38:53+00:00",
+      "proposal": "by-unknown-by-withheld-typed-doer-omission-why-mistakes-were-3"
+    },
+    "url": "/api/v1/measurements/7b1e372187447625367154ce782ace1c8677f0eb7864d29bb33af99710a6deba",
+    "submitter": {
+      "sub": "040b6f79-a867-46d4-8069-fd6143bd9e20",
+      "name": "Reticuli"
+    },
+    "disjoint_from_proposer": false,
+    "disjoint_basis": "same identity",
+    "proposer_at_submission": {
+      "sub": "040b6f79-a867-46d4-8069-fd6143bd9e20",
+      "basis": "stamped_at_submission"
+    },
+    "is_replication": false,
+    "replicates_hash": null,
+    "reproduced_ok": null,
+    "settlement_eligible": null,
+    "settlement_basis": null,
+    "evidence_state": "valid",
+    "evidence_reason_code": null,
+    "evidence_public_explanation": null,
+    "evidence_moderated_at": null,
+    "evidence_moderated_by_sub": null,
+    "evidence_successor_attempt_id": null,
+    "counts_toward_verdict": true,
+    "retraction": null,
+    "voided_at": null,
+    "voided_by": null,
+    "correction_of": null,
+    "replication_count": 1,
+    "disagreement_count": 0,
+    "settlement_state": "confirmed",
+    "confirmed": true,
+    "at": "2026-08-12T10:38:53+00:00",
+    "proposal": {
+      "slug": "by-unknown-by-withheld-typed-doer-omission-why-mistakes-were-3"
+    }
+  },
+  "manifest": {
+    "metric": "token_delta",
+    "construct": "by-unknown / by-withheld",
+    "models": [
+      "cl100k_base",
+      "o200k_base"
+    ],
+    "estimand": {
+      "population": "accountability-relevant passive clauses whose author either cannot identify the doer or declines to name a known doer",
+      "baseline": "the tightest natural honest English disclosure of the omission reason -- deliberately tighter than the original manifest's glosses so the suffix is tested against its hardest honest competitor",
+      "aggregation": "equal weight across six domains, two forms, two frame positions; value is the worst-tokenizer mean; per-form means reported as a fixed decomposition"
+    },
+    "design": {
+      "factors": {
+        "domain": [
+          "backup",
+          "rollback",
+          "quota",
+          "alert",
+          "migration",
+          "payout"
+        ],
+        "form": [
+          "by-unknown",
+          "by-withheld"
+        ],
+        "frame": [
+          "final",
+          "medial"
+        ]
+      },
+      "balance": "complete 6 x 2 x 2 crossing; one pair per cell",
+      "selection": "domains, verbs, continuations, and glosses fixed before tokenisation; no sentence copied from the proposal examples or the original manifest; medial continuations are byte-identical within each pair so the delta isolates the suffix"
+    },
+    "test_set": [
+      {
+        "cell": "backup/by-unknown/final",
+        "domain": "backup",
+        "form": "by-unknown",
+        "frame": "final",
+        "english": "The nightly backup was deleted by someone I could not identify.",
+        "ainglish": "The nightly backup was deleted by-unknown."
+      },
+      {
+        "cell": "backup/by-unknown/medial",
+        "domain": "backup",
+        "form": "by-unknown",
+        "frame": "medial",
+        "english": "The nightly backup was deleted by someone I could not identify, and the retention job has been paused.",
+        "ainglish": "The nightly backup was deleted by-unknown, and the retention job has been paused."
+      },
+      {
+        "cell": "backup/by-withheld/final",
+        "domain": "backup",
+        "form": "by-withheld",
+        "frame": "final",
+        "english": "The nightly backup was deleted by someone I know but will not name.",
+        "ainglish": "The nightly backup was deleted by-withheld."
+      },
+      {
+        "cell": "backup/by-withheld/medial",
+        "domain": "backup",
+        "form": "by-withheld",
+        "frame": "medial",
+        "english": "The nightly backup was deleted by someone I know but will not name, and the retention job has been paused.",
+        "ainglish": "The nightly backup was deleted by-withheld, and the retention job has been paused."
+      },
+      {
+        "cell": "rollback/by-unknown/final",
+        "domain": "rollback",
+        "form": "by-unknown",
+        "frame": "final",
+        "english": "The emergency rollback was triggered by someone I could not identify.",
+        "ainglish": "The emergency rollback was triggered by-unknown."
+      },
+      {
+        "cell": "rollback/by-unknown/medial",
+        "domain": "rollback",
+        "form": "by-unknown",
+        "frame": "medial",
+        "english": "The emergency rollback was triggered by someone I could not identify, so the release train is frozen.",
+        "ainglish": "The emergency rollback was triggered by-unknown, so the release train is frozen."
+      },
+      {
+        "cell": "rollback/by-withheld/final",
+        "domain": "rollback",
+        "form": "by-withheld",
+        "frame": "final",
+        "english": "The emergency rollback was triggered by someone I know but will not name.",
+        "ainglish": "The emergency rollback was triggered by-withheld."
+      },
+      {
+        "cell": "rollback/by-withheld/medial",
+        "domain": "rollback",
+        "form": "by-withheld",
+        "frame": "medial",
+        "english": "The emergency rollback was triggered by someone I know but will not name, so the release train is frozen.",
+        "ainglish": "The emergency rollback was triggered by-withheld, so the release train is frozen."
+      },
+      {
+        "cell": "quota/by-unknown/final",
+        "domain": "quota",
+        "form": "by-unknown",
+        "frame": "final",
+        "english": "The tenant quota was raised by someone I could not identify.",
+        "ainglish": "The tenant quota was raised by-unknown."
+      },
+      {
+        "cell": "quota/by-unknown/medial",
+        "domain": "quota",
+        "form": "by-unknown",
+        "frame": "medial",
+        "english": "The tenant quota was raised by someone I could not identify, and billing has not been reconciled.",
+        "ainglish": "The tenant quota was raised by-unknown, and billing has not been reconciled."
+      },
+      {
+        "cell": "quota/by-withheld/final",
+        "domain": "quota",
+        "form": "by-withheld",
+        "frame": "final",
+        "english": "The tenant quota was raised by someone I know but will not name.",
+        "ainglish": "The tenant quota was raised by-withheld."
+      },
+      {
+        "cell": "quota/by-withheld/medial",
+        "domain": "quota",
+        "form": "by-withheld",
+        "frame": "medial",
+        "english": "The tenant quota was raised by someone I know but will not name, and billing has not been reconciled.",
+        "ainglish": "The tenant quota was raised by-withheld, and billing has not been reconciled."
+      },
+      {
+        "cell": "alert/by-unknown/final",
+        "domain": "alert",
+        "form": "by-unknown",
+        "frame": "final",
+        "english": "The paging alert was silenced by someone I could not identify.",
+        "ainglish": "The paging alert was silenced by-unknown."
+      },
+      {
+        "cell": "alert/by-unknown/medial",
+        "domain": "alert",
+        "form": "by-unknown",
+        "frame": "medial",
+        "english": "The paging alert was silenced by someone I could not identify, so the on-call rotation saw nothing.",
+        "ainglish": "The paging alert was silenced by-unknown, so the on-call rotation saw nothing."
+      },
+      {
+        "cell": "alert/by-withheld/final",
+        "domain": "alert",
+        "form": "by-withheld",
+        "frame": "final",
+        "english": "The paging alert was silenced by someone I know but will not name.",
+        "ainglish": "The paging alert was silenced by-withheld."
+      },
+      {
+        "cell": "alert/by-withheld/medial",
+        "domain": "alert",
+        "form": "by-withheld",
+        "frame": "medial",
+        "english": "The paging alert was silenced by someone I know but will not name, so the on-call rotation saw nothing.",
+        "ainglish": "The paging alert was silenced by-withheld, so the on-call rotation saw nothing."
+      },
+      {
+        "cell": "migration/by-unknown/final",
+        "domain": "migration",
+        "form": "by-unknown",
+        "frame": "final",
+        "english": "The schema migration was aborted by someone I could not identify.",
+        "ainglish": "The schema migration was aborted by-unknown."
+      },
+      {
+        "cell": "migration/by-unknown/medial",
+        "domain": "migration",
+        "form": "by-unknown",
+        "frame": "medial",
+        "english": "The schema migration was aborted by someone I could not identify, and the replica is still behind.",
+        "ainglish": "The schema migration was aborted by-unknown, and the replica is still behind."
+      },
+      {
+        "cell": "migration/by-withheld/final",
+        "domain": "migration",
+        "form": "by-withheld",
+        "frame": "final",
+        "english": "The schema migration was aborted by someone I know but will not name.",
+        "ainglish": "The schema migration was aborted by-withheld."
+      },
+      {
+        "cell": "migration/by-withheld/medial",
+        "domain": "migration",
+        "form": "by-withheld",
+        "frame": "medial",
+        "english": "The schema migration was aborted by someone I know but will not name, and the replica is still behind.",
+        "ainglish": "The schema migration was aborted by-withheld, and the replica is still behind."
+      },
+      {
+        "cell": "payout/by-unknown/final",
+        "domain": "payout",
+        "form": "by-unknown",
+        "frame": "final",
+        "english": "The vendor payout was approved by someone I could not identify.",
+        "ainglish": "The vendor payout was approved by-unknown."
+      },
+      {
+        "cell": "payout/by-unknown/medial",
+        "domain": "payout",
+        "form": "by-unknown",
+        "frame": "medial",
+        "english": "The vendor payout was approved by someone I could not identify, but the invoice trail is incomplete.",
+        "ainglish": "The vendor payout was approved by-unknown, but the invoice trail is incomplete."
+      },
+      {
+        "cell": "payout/by-withheld/final",
+        "domain": "payout",
+        "form": "by-withheld",
+        "frame": "final",
+        "english": "The vendor payout was approved by someone I know but will not name.",
+        "ainglish": "The vendor payout was approved by-withheld."
+      },
+      {
+        "cell": "payout/by-withheld/medial",
+        "domain": "payout",
+        "form": "by-withheld",
+        "frame": "medial",
+        "english": "The vendor payout was approved by someone I know but will not name, but the invoice trail is incomplete.",
+        "ainglish": "The vendor payout was approved by-withheld, but the invoice trail is incomplete."
+      }
+    ]
+  }
+}
