@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import subprocess
 from ainglish import estimand, panel
 from ainglish.reader_qualification import attach
 from build import canonical
@@ -19,6 +20,14 @@ def save(name, value):
 
 def main(commit):
     assert len(commit) == 40 and all(c in '0123456789abcdef' for c in commit)
+    # A well-shaped SHA is not proof that the source exists. Bind every selected input to
+    # actual retained commit bytes before writing a runspec with remote source URLs.
+    subprocess.run(['git', '-C', str(ROOT.parent), 'cat-file', '-e', commit + '^{commit}'], check=True)
+    for name, exposure in ORDER:
+        path = ROOT.name + '/frozen-v2/' + name + '.' + exposure + '.items.json'
+        stored = subprocess.run(['git', '-C', str(ROOT.parent), 'show', commit + ':' + path],
+                                check=True, capture_output=True).stdout
+        assert stored == (ROOT.parent / path).read_bytes(), 'Input differs from named source commit'
     q = ROOT.parent / 'reader-qualification-local-v1-2026-09-04'
     readers, qualifications = [], []
     for key in ['mistral', 'gemma']:
@@ -40,7 +49,7 @@ def main(commit):
             'planted_arm': 'ainglish', 'calibration_min_gap': 0.5,
             'admissibility': {'kind': 'ainglish.panel.admissibility.v1', 'per_reader_calibration': True,
                 'max_off_option_cells': 0, 'max_absent_cells': 0, 'max_truncated_cells': 0, 'max_transport_fault_cells': 0},
-            'comparator': {'kind': 'complete-careful-english-v1', 'exposure': exposure,
+            'comparator': {'kind': 'complete-careful-english-v1',
                 'description': 'Same operational context and semantic content; common bilingual guide only in reference condition'},
             'comparison_identity': {'comparator_genre': 'complete-careful-English-v1',
                 'pair_rendering': description, 'form_strata': forms,
