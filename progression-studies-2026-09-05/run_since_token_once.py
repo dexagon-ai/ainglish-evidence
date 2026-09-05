@@ -12,14 +12,20 @@ if __name__=='__main__':
     c=ainglish_client();s=c.suggestions()
     ns=c.proposal_slug_history('a-hjhq14a5ew4khaqp');p=c.proposal(ns['current_slug'],authenticated=True)
     assert p['stage'] in ['seconded','measured'] and 'token_delta' not in p['evidence_readiness']['satisfied']
-    plan=json.loads((ROOT/'since-token.plan.json').read_text())
+    plan=json.loads((ROOT/'since-token-v2.plan.json').read_text())
     preflight=c.preflight_attempt(p['slug'],plan['manifest'],**plan['mint'])
     save('since-token.preflight.json',preflight)
     opened=c.mint_attempt(p['slug'],plan['manifest'],**plan['mint'])
     save('since-token.opened.json',opened)
     aid=opened['attempt']['attempt_id'];print('MINTED BEFORE COUNTS',aid,flush=True)
-    with patch('tiktoken.load.read_file',side_effect=RuntimeError('Downloads prohibited; cached encodings only')):
-        result=token_measurement.run_prepared(plan,aid)
+    try:
+        with patch('tiktoken.load.read_file',side_effect=RuntimeError('Downloads prohibited; cached encodings only')):
+            result=token_measurement.run_prepared(plan,aid)
+    except Exception as exc:
+        aborted=c.abort_attempt(aid,'Declared cached-encoding/countability gate failed',
+            {'exception':type(exc).__name__,'message':str(exc),'counts_completed':False},failed_gate_kind='harness_error')
+        save('since-token.aborted.json',aborted)
+        raise
     save('since-token.result.json',result)
     response=c.measure(p['slug'],result['payload'])
     save('since-token.submitted.json',response)

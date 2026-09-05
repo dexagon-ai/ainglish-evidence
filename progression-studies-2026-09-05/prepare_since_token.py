@@ -19,11 +19,11 @@ if __name__=='__main__':
     rows=[]
     for i in range(32):
         domain,event,main=DOMAINS[i%9]
-        prefix=f'For journal T{12100+i}, at the reference date, '
+        prefix=f'Record T{12100+i}, now: '
         rows.append({'english':prefix+f'{event} explains why {main}.',
-            'ainglish':prefix+f'Because {event}, {main}.','stratum':'reason:'+domain})
-        rows.append({'english':prefix+f'{main} throughout the interval from when {event} through the reference date.',
-            'ainglish':prefix+f'Ever since {event}, {main}.','stratum':'interval:'+domain})
+            'ainglish':prefix+f'Because {event}, {main}.','stratum':f'r:d{i%9}'})
+        rows.append({'english':prefix+f'{main} throughout the interval from when {event} through now.',
+            'ainglish':prefix+f'Ever since {event}, {main}.','stratum':f'i:d{i%9}'})
     assert len(rows)==64 and len({(x['english'],x['ainglish']) for x in rows})==64
     declaration=estimand.declaration(unit_span='one complete reason or through-reference interval claim',
         contrast='Registered ordinary Because/Ever since wording minus concise complete English with the same reason or interval assertion; no invented marker syntax, bare-since comparison or explicit no-cause padding',
@@ -31,14 +31,16 @@ if __name__=='__main__':
         reducer='least_favourable',aggregation_rule='For each tokenizer, equal-weight mean of the 18 form-domain cell means; report maximum tokenizer mean (least-favourable), with exact member-span bounds')
     spec={'manifest':{'metric':'token_delta','models':['cl100k_base','o200k_base'],'test_set':rows,
         'seed':2026090521,'estimand_contract':declaration,
-        'settlement_strata':[{'id':form+':'+domain,'weight':1} for form in ['reason','interval'] for domain,_,_ in DOMAINS],
+        'settlement_strata':[{'id':form+':d'+str(i),'weight':1} for form in ['r','i'] for i in range(9)],
+        'stratum_legend':{'r':'reason','i':'interval','domains':[x[0] for x in DOMAINS]},
         'legacy_contract_repair_of':'03f86227-8d19-4f54-b7b2-47408e36711f',
         'method':'New original under the registered surfaces; not a replication of the invalid invented-wrapper source. Canonical SDK token_measurement prepare -> mint -> run_prepared -> verify -> measure. No encoding before mint.',
         'scope':'Current reference tokenizer cost only. This result does not measure comprehension or establish future-trained efficiency.'}}
-    save('since-token.spec.json',spec)
+    save('since-token-v2.spec.json',spec)
     plan=token_measurement.prepare(spec)
     plan['mint']['admissibility_gates'] += ['live proposal active and token prerequisite unresolved',
         'use existing cached encodings only; no network downloads','every finite result filed once, including a positive cost',
         'unchanged exact form/domain corpus and weights; current costs do not predict future tokenizer training']
-    save('since-token.plan.json',plan)
+    assert len(json.dumps(plan['manifest'],ensure_ascii=False,sort_keys=True,separators=(',',':')).encode())<=20000
+    save('since-token-v2.plan.json',plan)
     print(plan['manifest_commitment'],plan['pair_count'],'prepared; zero counts')
