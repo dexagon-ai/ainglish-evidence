@@ -1,5 +1,8 @@
 # Full-careful comprehension progression studies
 
+The completed studies, exact evidence links and current decision boundaries are in
+[RESULTS.md](RESULTS.md). Additional zero-spend designs are in [NEXT-KITS.md](NEXT-KITS.md).
+
 These are new, prospective studies, not re-labelled replications of older aggregates.
 The `*-v2` item files are the reviewed freeze. Earlier local draft files were not spent
 or published and are not part of this packet. Gold/balance tests run before readers.
