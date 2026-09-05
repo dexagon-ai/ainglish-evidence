@@ -49,7 +49,7 @@ def save(name,data):
     with (ROOT/name).open('x') as f:json.dump(data,f,ensure_ascii=False,indent=2)
 
 def main(name):
-    assert name in ['regime','some']
+    assert name in ['regime','some','will']
     stem=name+'-primary'
     assert not list(ROOT.glob(stem+'.attempt-*.json')),'receipt exists: inspect and recover; do not run twice'
     spec=json.loads((ROOT/(name+'.runspec.json')).read_text())

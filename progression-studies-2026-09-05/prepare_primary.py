@@ -8,10 +8,11 @@ from ainglish.reader_qualification import attach
 from local_colony_auth import ainglish_client
 
 ROOT=Path(__file__).resolve().parent
-SOURCES={'regime':'bf6a6e1c-f6c0-458d-bf8b-0cf33ef80b95','some':'245ed98c-7e94-4f3c-ba88-80982fc71f3a'}
+SOURCES={'regime':'bf6a6e1c-f6c0-458d-bf8b-0cf33ef80b95','some':'245ed98c-7e94-4f3c-ba88-80982fc71f3a',
+         'will':'e42f0bab-1036-4059-88ea-4a4fe0078ce7'}
 def canonical(x):return json.dumps(x,sort_keys=True,ensure_ascii=False,separators=(',',':')).encode()
 
-def main(commit):
+def main(commit,names):
     assert len(commit)==40 and all(c in '0123456789abcdef' for c in commit)
     qualified=ROOT.parent/'reader-qualification-local-v1-2026-09-04'
     readers,receipts=[],[]
@@ -21,13 +22,16 @@ def main(commit):
         assert qualification['status']=='passed'
         readers.append(screen['reader']);receipts.append(qualification['receipt'])
     c=ainglish_client()
-    for offset,name in enumerate(['regime','some'],1):
-        data=json.loads((ROOT/(name+'.items-v2.json')).read_text())
+    for name in names:
+        offset={'regime':1,'some':2,'will':3}[name]
+        itemfile=name+('.kit-v1.json' if name=='will' else '.items-v2.json')
+        data=json.loads((ROOT/itemfile).read_text())
         p=json.loads((ROOT/(name+'.proposal.json')).read_text())
         real=[x for x in data if not x.get('calibration')]
         strata=list(dict.fromkeys(x['settlement_stratum'] for x in real))
-        description=('exact joint possibility/counterexample-consequence recovery on standing-property claims' if name=='regime'
-                     else 'exact joint lower/upper quantifier-bound recovery on bounded populations with at least two members')
+        description={'regime':'exact joint possibility/counterexample-consequence recovery on standing-property claims',
+            'some':'exact joint lower/upper quantifier-bound recovery on bounded populations with at least two members',
+            'will':'exact joint owed-action and later breach recovery, with outcome-release and plan-notice conditions separated'}[name]
         spec={
             'construct':p['form'],'slug':p['slug'],'metric':'comprehension_accuracy_delta',
             'seed':2026090510+offset,'panel':readers,'panel_neff':2,
@@ -37,7 +41,7 @@ def main(commit):
             'comparison_identity':{'comparator_genre':'complete-careful-English-v1','pair_rendering':description,
                 'form_strata':strata,'reader_class':'two qualified cold local Q4 reader lineages; no definition exposure'},
             'settlement_strata':[{'id':x,'weight':1} for x in strata],
-            'items_url':f'https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/{commit}/{ROOT.name}/{name}.items-v2.json',
+            'items_url':f'https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/{commit}/{ROOT.name}/{itemfile}',
             'items_sha256':hashlib.sha256(canonical(data)).hexdigest(),
             'estimand_contract':estimand.declaration_v2(
                 population=description+'; the fixed eight-domain template population, not arbitrary natural-language messages',
@@ -70,4 +74,4 @@ def main(commit):
         with (ROOT/(name+'.runspec.json')).open('x') as f:json.dump(spec,f,ensure_ascii=False,indent=2)
         print(name,spec['items_sha256'])
 
-if __name__=='__main__':main(sys.argv[1])
+if __name__=='__main__':main(sys.argv[1],sys.argv[2:] or ['regime','some'])
