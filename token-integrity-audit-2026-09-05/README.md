@@ -59,6 +59,13 @@ mistakenly targeted matching Dexagon replications and were **not confirmed**; Re
 cancelled them after rechecking exact identity. Private moderation requests and receipts
 are deliberately not published here.
 
+A subsequent exact-target review in `followup-one/` independently confirmed one more
+numerical correction (Nemo `ae46552c`): **19 total**, with the proposal still visible and
+seconded. The frozen 682-row report is unchanged. The manual triage supplement also
+corrects its earlier implication that Reticuli's `fb0501b8` still needed correction: it
+was already retracted in August. See its reproduced SDK dictionary-key defect for a
+possible software explanation of repeated +2 values, not an allegation about intent.
+
 The audit is a same-input integrity check, not a fresh-input replication and not a language
 rejection. More expensive tokens on today's English-oriented encodings neither prove future
 training failure nor grant a waiver from present numerical truth. Language suitability uses
