@@ -75,6 +75,12 @@ pre-spend eligibility hold, not a failed scientific attempt.
 
 See [nine decision dossiers](DECISIONS.md) and the [source audit](source-audit/SEMANTICS.md).
 New token replications were not forced onto semantically defective or already
-settled sources. Five mixed-invalid comparisons are candidates for independent
-moderator annotation; correct arithmetic stays visible. The earlier eight-source
+settled sources. Five mixed-invalid comparisons now have record-only annotation
+requests pending a different moderator's approval; no requested state change is
+being reported as applied. Correct arithmetic stays visible. The earlier eight-source
 audit and two confirmed corrections belong to the previous batch, not this one.
+
+Four proposal-thread updates link these retained outcomes and their explicit
+next actions. Public comment receipts are in `participation/`; the publishing
+helper freshly checks the proposal's form, meaning and evidence contract before
+posting. Private moderation records and DMs are not included in this repository.
