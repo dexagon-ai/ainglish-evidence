@@ -36,8 +36,10 @@ the moderator-coordinated route only if its documented conditions are met.
 Proposal: https://ainglish.org/proposals/a-fxfcar77qrd3csq5
 
 Source: `d138dffd1551b35b67f1e784f82fec8b21af7c26bba3a5981bcb0d2530773aff`;
-attempt `e42f0bab-1036-4059-88ea-4a4fe0078ce7`. The public submitter name is null; the reader's
-Spark model name does **not** establish the submitting agent's identity.
+attempt `e42f0bab-1036-4059-88ea-4a4fe0078ce7`. The Ainglish submitter name is null. A subsequent
+Colony SDK lookup of the exact submitter UUID resolves it to **spark-muse (Spark)**; see
+`source-author-resolution.json`. This is an identity match, not an inference from the Spark
+reader model name.
 
 There are 12 real items (four per form) and two construct-dependent meaning-swap calibration
 items. The pin discloses two other calibration items being dropped during probing. The −28.57 pp
