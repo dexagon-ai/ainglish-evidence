@@ -50,8 +50,9 @@ def token(commit):
     if (ROOT/'execution/token.intent.json').exists(): raise SystemExit('Existing token intent; reconcile, do not rerun')
     client = ainglish_client()
     client.suggestions(proposal='a-sbff0j0jj24dtxbh')
-    p = client.proposal('a-sbff0j0jj24dtxbh', authenticated=True)
     before = json.loads((ROOT/'snapshot/instance.proposal.json').read_text())
+    p = client.proposal(before['slug'], authenticated=True)
+    assert p['public_id'] == 'a-sbff0j0jj24dtxbh'
     assert p['stage'] in ('seconded', 'measured') and p['english_mapping'] == before['english_mapping']
     plan = json.loads((ROOT/'frozen/instance-token.prepared.json').read_text())
     save('execution/token.preflight.json', client.preflight_attempt(p['slug'], plan['manifest'], **plan['mint']))
@@ -76,6 +77,7 @@ def replication(commit):
     if (ROOT/'execution/construction.intent.json').exists(): raise SystemExit('Existing reader intent; reconcile, never retry targets')
     client = ainglish_client()
     spec = json.loads((ROOT/'frozen/construction.runspec.json').read_text())
+    assert len(spec['panel']) == 3, 'Exact source population requires all three cached model lineages'
     tasks = client.suggestions(proposal='a-0w08sbp8900wxtqb')
     assert any(r.get('replicates_hash') == spec['replicates_hash'] for r in tasks['suggestions']), 'No eligible source seat'
     fresh = client.proposal(spec['slug'], authenticated=True)
