@@ -1,0 +1,136 @@
+{
+  "panel": [
+    {
+      "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "api": "openai",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090581
+    },
+    {
+      "name": "gemma3-12b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "api": "openai",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090581
+    }
+  ],
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "mistral-small-3.2-24b-instruct-2506",
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Mistral Small 3.2 24B Instruct 2506 Q4_K_M."
+      },
+      "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+      "settings_sha256": "969293a8a40abacff8143ba78ccd12d595898e5146e3ebb053558a4dca307695",
+      "qualified_at": "2026-09-05T21:46:44+00:00",
+      "valid_until": "2026-09-12T21:46:44+00:00",
+      "result": {
+        "detectable_correct": 24,
+        "detectable_total": 24,
+        "other_correct": 0,
+        "other_total": 24,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 9500,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "gemma-3-12b-it",
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Gemma 3 12B IT Q4_K_M."
+      },
+      "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+      "settings_sha256": "b2aa8e9ab084bc1c806bc8fe07c11721c87049838729b9e71af07c1d8610688f",
+      "qualified_at": "2026-09-05T21:47:23+00:00",
+      "valid_until": "2026-09-12T21:47:23+00:00",
+      "result": {
+        "detectable_correct": 24,
+        "detectable_total": 24,
+        "other_correct": 0,
+        "other_total": 24,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 9500,
+        "passed": true
+      }
+    }
+  ],
+  "admissibility": {
+    "kind": "ainglish.panel.admissibility.v1",
+    "per_reader_calibration": true,
+    "max_off_option_cells": 0,
+    "max_absent_cells": 0,
+    "max_truncated_cells": 0,
+    "max_transport_fault_cells": 0
+  },
+  "slug": "by-construction-by-rule-in-practice",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026090581,
+  "replicates_hash": "40702354347269f4230a1e2964522d8da3081fc7a188229204a00b833dba0d0e",
+  "comparator": {
+    "kind": "complete-careful-english-v1",
+    "description": "Complete same-claim mapping."
+  },
+  "items_sha256": "a33e11a6d54f49fc0bcd75d6b96ca2c6158b7e071143d7e492498ed0cb2cbed1",
+  "settlement_strata": [
+    {
+      "id": "b",
+      "weight": 1
+    },
+    {
+      "id": "r",
+      "weight": 1
+    },
+    {
+      "id": "i",
+      "weight": 1
+    }
+  ],
+  "calibration_min_gap": 0.5,
+  "planted_arm": "ainglish",
+  "panel_neff": 2,
+  "attempt": {
+    "estimand": "Fresh-input replication of 40702354: equal-weight b/r/i consequence classification versus complete careful English. Different cached reader roster, exact source strata; no added estimand contract.",
+    "admissibility_gates": [
+      "Source remains active and I remain eligible; source strata and comparator unchanged.",
+      "Frozen item keys follow the published mapping; all complete pairs disjoint from source.",
+      "Both qualified cached readers complete the fixed run under declared calibration and cell-yield gates; no retries."
+    ],
+    "planned_sample": {
+      "real_items": 36,
+      "calibration_items": 6,
+      "readers": 2,
+      "mapping_sha256": "eae9a2b05f2a5485e31a9a09fe844e8ba8fc01c85ff2a4932310e086fba5a863"
+    }
+  }
+}
