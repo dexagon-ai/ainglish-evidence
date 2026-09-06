@@ -1,0 +1,260 @@
+{
+  "slug": "prob-event-p-odds-for-event-favourable-unfavourable-odds",
+  "construct": "prob(<event>)=<p> | odds-for(<event>)=<favourable>:<unfavourable> | odds-against(<event>)=<unfavourable>:<favourable> — refuse bare ‘odds <a>:<b>’ when orientation matters",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026090596,
+  "models": [
+    "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+    "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+  ],
+  "panel": [
+    {
+      "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "api": "openai",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090581
+    },
+    {
+      "name": "gemma3-12b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "api": "openai",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090581
+    }
+  ],
+  "panel_neff": 2,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "admissibility": {
+    "kind": "ainglish.panel.admissibility.v1",
+    "per_reader_calibration": true,
+    "max_off_option_cells": 0,
+    "max_absent_cells": 0,
+    "max_truncated_cells": 0,
+    "max_transport_fault_cells": 0
+  },
+  "comparator": {
+    "kind": "complete-careful-english-v1",
+    "description": "Identical contextual facts in both arms; direct complete English for the question asked. Scope and omitted dimensions are explicit in DESIGN.md."
+  },
+  "comparison_identity": {
+    "comparator_genre": "complete-careful-english-v1",
+    "exposure": "cold-no-added-reference",
+    "form_strata": [
+      "prob:payout",
+      "prob:calibration",
+      "prob:frequency",
+      "prob:causation",
+      "prob:rounding",
+      "odds-for:payout",
+      "odds-for:calibration",
+      "odds-for:frequency",
+      "odds-for:causation",
+      "odds-for:rounding",
+      "odds-against:payout",
+      "odds-against:calibration",
+      "odds-against:frequency",
+      "odds-against:causation",
+      "odds-against:rounding"
+    ],
+    "reader_class": "two exact local digest-bound qualified Q4 readers",
+    "pair_rendering": "probability.boundaries",
+    "diagnostic_only": true
+  },
+  "settlement_strata": [
+    {
+      "id": "prob:payout",
+      "weight": 1
+    },
+    {
+      "id": "prob:calibration",
+      "weight": 1
+    },
+    {
+      "id": "prob:frequency",
+      "weight": 1
+    },
+    {
+      "id": "prob:causation",
+      "weight": 1
+    },
+    {
+      "id": "prob:rounding",
+      "weight": 1
+    },
+    {
+      "id": "odds-for:payout",
+      "weight": 1
+    },
+    {
+      "id": "odds-for:calibration",
+      "weight": 1
+    },
+    {
+      "id": "odds-for:frequency",
+      "weight": 1
+    },
+    {
+      "id": "odds-for:causation",
+      "weight": 1
+    },
+    {
+      "id": "odds-for:rounding",
+      "weight": 1
+    },
+    {
+      "id": "odds-against:payout",
+      "weight": 1
+    },
+    {
+      "id": "odds-against:calibration",
+      "weight": 1
+    },
+    {
+      "id": "odds-against:frequency",
+      "weight": 1
+    },
+    {
+      "id": "odds-against:causation",
+      "weight": 1
+    },
+    {
+      "id": "odds-against:rounding",
+      "weight": 1
+    }
+  ],
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/f1a7160a92ec3d11c892ef4ba53369e9613e5472/overnight-2026-09-05/frozen/probability.boundaries.items.json",
+  "items_sha256": "14046a8994a73e8120eaec31f4d24244c6c7b206de0fa51d96162d55312f5333",
+  "estimand_contract": {
+    "kind": "ainglish.estimand-contract.v2",
+    "population": "120 fixed authored probability.boundaries cases; two named local reader configurations, not humans or random prose",
+    "item_set_construction": {
+      "answer_format": "opaque option letters",
+      "conditions": [
+        "prob:payout",
+        "prob:calibration",
+        "prob:frequency",
+        "prob:causation",
+        "prob:rounding",
+        "odds-for:payout",
+        "odds-for:calibration",
+        "odds-for:frequency",
+        "odds-for:causation",
+        "odds-for:rounding",
+        "odds-against:payout",
+        "odds-against:calibration",
+        "odds-against:frequency",
+        "odds-against:causation",
+        "odds-against:rounding"
+      ],
+      "control_items": 12,
+      "design": "overnight-unknown-aware-control-v1",
+      "gold": "arithmetic/exhaustive assignment/date-zone checks plus explicit mapping audit",
+      "items": 120,
+      "reference_budget_words_per_arm": 0
+    },
+    "reader_class": "Existing Mistral Small 3.2 24B and Gemma 3 12B Q4 exact digests, temperature0, max64 output tokens, target-independent development then untouched validation",
+    "window": "cold-no-added-reference; stateless cells; no target retries, training or adaptive reader selection",
+    "selection_rules": {
+      "gates": "per-reader calibration >=.5, zero malformed/absent/truncated/transport cells",
+      "stop": "any scientific abort stops remaining reader studies; independent CPU/UI work continues",
+      "weighting": "equal declared strata; all directions filed"
+    },
+    "governance_effect": "report_only"
+  },
+  "attempt": {
+    "proposal_revision": "prob-event-p-odds-for-event-favourable-unfavourable-odds",
+    "estimand": "New probability.boundaries original, 120 items and 15 equally weighted conditions. Ainglish minus English accuracy in percentage points; not independent replication or future-trained performance.",
+    "admissibility_gates": [
+      "Published frozen design/gold before inference; no changes to earlier records",
+      "Live visible seconded/measured proposal, unchanged mapping and all declared prerequisites satisfied",
+      "Exact unexpired qualifications, already-local models only, no displacement of unrelated workloads",
+      "Each reader clears twelve target-independent controls at >=.5 planted-key gap; zero off-option, absent, truncated or transport cells",
+      "All finite admitted directions filed; any abort stops remaining scientific reader studies without retry",
+      "Reference contrasts, condition margins and cluster analyses are reported separately and do not select results"
+    ],
+    "planned_sample": {
+      "scientific_items": 120,
+      "calibration_items": 12,
+      "readers": 2,
+      "real_calls": 240,
+      "calibration_calls": 48,
+      "source_commit": "f1a7160a92ec3d11c892ef4ba53369e9613e5472",
+      "mapping_sha256": "c09f52044945ff14d69b058e8bbd9115946e135cc0866aa29e9fb4c9e1e93877",
+      "analysis_seed": 2026090597,
+      "cluster_bootstrap_draws": 2000,
+      "diagnostic_only": true
+    }
+  },
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "mistral-small-3.2-24b-instruct-2506",
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Mistral Small 3.2 24B Instruct 2506 Q4_K_M."
+      },
+      "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+      "settings_sha256": "969293a8a40abacff8143ba78ccd12d595898e5146e3ebb053558a4dca307695",
+      "qualified_at": "2026-09-05T21:46:44+00:00",
+      "valid_until": "2026-09-12T21:46:44+00:00",
+      "result": {
+        "detectable_correct": 24,
+        "detectable_total": 24,
+        "other_correct": 0,
+        "other_total": 24,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 9500,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "gemma-3-12b-it",
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Gemma 3 12B IT Q4_K_M."
+      },
+      "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+      "settings_sha256": "b2aa8e9ab084bc1c806bc8fe07c11721c87049838729b9e71af07c1d8610688f",
+      "qualified_at": "2026-09-05T21:47:23+00:00",
+      "valid_until": "2026-09-12T21:47:23+00:00",
+      "result": {
+        "detectable_correct": 24,
+        "detectable_total": 24,
+        "other_correct": 0,
+        "other_total": 24,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 9500,
+        "passed": true
+      }
+    }
+  ]
+}
