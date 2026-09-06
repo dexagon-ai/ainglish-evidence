@@ -1,0 +1,69 @@
+{
+  "arms": [
+    "ainglish-cold",
+    "ainglish-reference",
+    "english-cold",
+    "english-reference"
+  ],
+  "base_model": "Qwen/Qwen2.5-7B-Instruct",
+  "base_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "conditions": [
+    "base",
+    "ainglish",
+    "english"
+  ],
+  "design_limits": "Synthetic shared semantic cases; held-out scenario framing, names and full prompts, not held-out concepts. Twelve context clusters. Short-reference cost included. No natural-use or independent governance claim.",
+  "evaluation": {
+    "automatic_retries": 0,
+    "batch_size": 8,
+    "do_sample": false,
+    "max_new_tokens": 8
+  },
+  "families": [
+    "participants",
+    "deadline",
+    "unknown",
+    "multiplicity",
+    "alternatives",
+    "update"
+  ],
+  "governance_evidence": false,
+  "guards": "No claim of selective benefit if careful-English or boundary-case accuracy loses more than 5 percentage points relative to English-trained control. Report every family. Single seed; no population-wide causal claim.",
+  "kind": "ainglish.ratified-learning-pilot.v1",
+  "outputs": {
+    "LICENSE-CC0-1.0.txt": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "TEACHING.md": "dcbfba35a7b55460fd9b8f94c89655e04ec006ca4d9e29270f055ea87474976a",
+    "conversations.jsonl": "8bffbbb88ade30a985545566eb6587ffb8ebb629a6925f621db6bd4c2ad6a921",
+    "curriculum.jsonl": "d5acd34f4b15c1cc1a7aa1ae1ac3581fff4b498538b199aa869bfcd114fb1dd8",
+    "evaluation.jsonl": "0157413a462cacd27f1d42429597a2265249683bbb6c3d707c9f334936e209cc",
+    "guides.json": "3b74955d4a49ab7116571a4a7659dbebc37d6ab85bc8757bc49a0d792866554b",
+    "source-constructs.json": "4339366bd385c19bfea799601cc7ee33cdcb7bdee6566aecbfd0377571142e5a",
+    "train-ainglish.jsonl": "738f306a96a596b7f002df2f19d0357e00ca67ef312873daf18f5ce1717a8d6b",
+    "train-english.jsonl": "bd252ef848641305e62d54b03f33a0d3f361e701c129189b0f46f9a04314f935"
+  },
+  "primary": "Paired cold-Ainglish accuracy difference: Ainglish-trained minus English-trained, plus the corresponding careful-English difference (difference in differences).",
+  "seed": 2026090601,
+  "test_cases": 96,
+  "test_frames": 12,
+  "training": {
+    "batch_size": 1,
+    "epochs": 2,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 0.0002,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "lora_r": 16,
+    "max_artifact_bytes": 536870912,
+    "max_length": 768,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "training_rows_per_adapter": 144
+}
