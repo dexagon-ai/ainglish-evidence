@@ -1,0 +1,96 @@
+{
+  "kind": "ainglish.communication-diagnostic.posthoc-format-audit.v1",
+  "posthoc": true,
+  "changes_frozen_gate": false,
+  "new_reader_calls": 0,
+  "counts": {
+    "one_field_ainglish_requested_values_correct": 6,
+    "one_field_ainglish_extra_keys": 6,
+    "one_field_english_requested_values_correct": 6,
+    "one_field_english_extra_keys": 6,
+    "ainglish_strict_parsed": 2,
+    "ainglish_punctuation_parsed": 96,
+    "ainglish_punctuation_correct": 34,
+    "english_strict_parsed": 43,
+    "english_punctuation_parsed": 96,
+    "english_punctuation_correct": 53
+  },
+  "examples": [
+    {
+      "id": "handoff/5/00000",
+      "arm": "ainglish",
+      "raw": "Team: we-excluding-you:\nDeadline: start-by(18:00 UTC):\nWork: each-alone:\nOptions: red or blue, not-both:\nUpdate: C: supersedes(A): perform the named check:",
+      "intended": {
+        "include_recipient": false,
+        "finish_deadline": false,
+        "collective": false,
+        "both_allowed": false,
+        "old_A_active": false
+      },
+      "punctuation_only_decoded": {
+        "include_recipient": false,
+        "finish_deadline": false,
+        "collective": false,
+        "both_allowed": false,
+        "old_A_active": false
+      }
+    },
+    {
+      "id": "handoff/5/00001",
+      "arm": "ainglish",
+      "raw": "Team: we-excluding-you:\nDeadline: start-by(18:00 UTC):\nWork: each-alone:\nOptions: red or blue, not-both:\nUpdate: C: supersedes(A): perform the named check:",
+      "intended": {
+        "include_recipient": false,
+        "finish_deadline": false,
+        "collective": false,
+        "both_allowed": false,
+        "old_A_active": true
+      },
+      "punctuation_only_decoded": {
+        "include_recipient": false,
+        "finish_deadline": false,
+        "collective": false,
+        "both_allowed": false,
+        "old_A_active": false
+      }
+    },
+    {
+      "id": "handoff/5/10000",
+      "arm": "english",
+      "raw": "Team: the acting team includes you:\nDeadline: the check must start by 18:00 UTC:\nWork: each team member performs their own named check:\nOptions: choose exactly one of red and blue:\nUpdate: C replaces A with the instruction to perform the named check:",
+      "intended": {
+        "include_recipient": true,
+        "finish_deadline": false,
+        "collective": false,
+        "both_allowed": false,
+        "old_A_active": false
+      },
+      "punctuation_only_decoded": {
+        "include_recipient": true,
+        "finish_deadline": false,
+        "collective": false,
+        "both_allowed": false,
+        "old_A_active": false
+      }
+    },
+    {
+      "id": "handoff/5/10001",
+      "arm": "english",
+      "raw": "Team: the acting team includes you:\nDeadline: the check must start by 18:00 UTC:\nWork: each team member performs their own named check:\nOptions: choose exactly one of red and blue:\nUpdate: C adds the instruction to perform the named check while A remains active:",
+      "intended": {
+        "include_recipient": true,
+        "finish_deadline": false,
+        "collective": false,
+        "both_allowed": false,
+        "old_A_active": true
+      },
+      "punctuation_only_decoded": {
+        "include_recipient": true,
+        "finish_deadline": false,
+        "collective": false,
+        "both_allowed": false,
+        "old_A_active": true
+      }
+    }
+  ]
+}
