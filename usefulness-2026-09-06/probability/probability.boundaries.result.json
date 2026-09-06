@@ -1,0 +1,2503 @@
+{
+  "metric": "comprehension_accuracy_delta",
+  "value": -6.5887,
+  "resample_down": [
+    {
+      "kept_fraction": 0.75,
+      "items": 90,
+      "value": -5.4947,
+      "sign_flipped": false,
+      "outside_interval": false
+    },
+    {
+      "kept_fraction": 0.5,
+      "items": 60,
+      "value": -13.5553,
+      "sign_flipped": false,
+      "outside_interval": true
+    }
+  ],
+  "yield_report": {
+    "cells": 288,
+    "empty": 0,
+    "unparsed": 0,
+    "dead_rate": 0.0,
+    "per_cell": {
+      "gemma3-12b-opaque-choice-q4_k_m/ainglish": {
+        "n": 76,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "gemma3-12b-opaque-choice-q4_k_m/english": {
+        "n": 68,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "mistral-small3.2-24b-opaque-choice-q4_k_m/ainglish": {
+        "n": 66,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "mistral-small3.2-24b-opaque-choice-q4_k_m/english": {
+        "n": 78,
+        "empty": 0,
+        "unparsed": 0
+      }
+    }
+  },
+  "calibration": {
+    "planted_arm": "ainglish",
+    "detectable": 1.0,
+    "other": 0.0,
+    "gap": 1.0,
+    "headroom": 1.0,
+    "recovered": 1.0,
+    "min_gap": 0.5,
+    "min_recovered": null,
+    "rule": "absolute-gap-v1",
+    "passed": true,
+    "admissibility": {
+      "kind": "ainglish.panel.admissibility-observation.v1",
+      "scope": "all started calibration and real cells; no retries",
+      "counts": {
+        "max_off_option_cells": 0,
+        "max_absent_cells": 0,
+        "max_truncated_cells": 0,
+        "max_transport_fault_cells": 0
+      },
+      "by_stage": {
+        "calibration": {
+          "max_off_option_cells": 0,
+          "max_absent_cells": 0,
+          "max_truncated_cells": 0,
+          "max_transport_fault_cells": 0
+        },
+        "real": {
+          "max_off_option_cells": 0,
+          "max_absent_cells": 0,
+          "max_truncated_cells": 0,
+          "max_transport_fault_cells": 0
+        }
+      }
+    },
+    "by_reader": {
+      "mistral-small3.2-24b-opaque-choice-q4_k_m": {
+        "detectable": 1.0,
+        "other": 0.0,
+        "gap": 1.0,
+        "headroom": 1.0,
+        "recovered": 1.0,
+        "passed": true,
+        "failure": null
+      },
+      "gemma3-12b-opaque-choice-q4_k_m": {
+        "detectable": 1.0,
+        "other": 0.0,
+        "gap": 1.0,
+        "headroom": 1.0,
+        "recovered": 1.0,
+        "passed": true,
+        "failure": null
+      }
+    }
+  },
+  "value_lo": -13.5074,
+  "value_hi": 1.0726,
+  "arms": {
+    "english": 0.9033,
+    "ainglish": 0.8375,
+    "chance": 0.5
+  },
+  "panel_models": [
+    "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+    "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+  ],
+  "panel_members": 2,
+  "is_adversarial": false,
+  "panel_agreement": 0.8833,
+  "per_member": [
+    {
+      "model": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "value": -5.9047,
+      "precision": "q4_k_m"
+    },
+    {
+      "model": "gemma3-12b-opaque-choice-q4_k_m",
+      "value": -6.064,
+      "precision": "q4_k_m"
+    }
+  ],
+  "manifest": {
+    "construct": "prob(<event>)=<p> | odds-for(<event>)=<favourable>:<unfavourable> | odds-against(<event>)=<unfavourable>:<favourable> — refuse bare ‘odds <a>:<b>’ when orientation matters",
+    "metric": "comprehension_accuracy_delta",
+    "seed": 2026090596,
+    "comparator": {
+      "kind": "complete-careful-english-v1",
+      "description": "Identical contextual facts in both arms; direct complete English for the question asked. Scope and omitted dimensions are explicit in DESIGN.md."
+    },
+    "items_sha256": "14046a8994a73e8120eaec31f4d24244c6c7b206de0fa51d96162d55312f5333",
+    "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/f1a7160a92ec3d11c892ef4ba53369e9613e5472/overnight-2026-09-05/frozen/probability.boundaries.items.json",
+    "models": [
+      "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+      "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+    ],
+    "admissibility": {
+      "kind": "ainglish.panel.admissibility.v1",
+      "per_reader_calibration": true,
+      "max_off_option_cells": 0,
+      "max_absent_cells": 0,
+      "max_truncated_cells": 0,
+      "max_transport_fault_cells": 0
+    },
+    "reader_qualifications": [
+      {
+        "kind": "ainglish.reader-qualification.v1",
+        "roster_id": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+        "reader": {
+          "provider": "ollama",
+          "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+          "precision": "q4_k_m",
+          "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+          "digest_source": "ollama:/api/tags"
+        },
+        "lineage": {
+          "key": "mistral-small-3.2-24b-instruct-2506",
+          "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Mistral Small 3.2 24B Instruct 2506 Q4_K_M."
+        },
+        "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+        "settings_sha256": "969293a8a40abacff8143ba78ccd12d595898e5146e3ebb053558a4dca307695",
+        "qualified_at": "2026-09-05T21:46:44+00:00",
+        "valid_until": "2026-09-12T21:46:44+00:00",
+        "result": {
+          "detectable_correct": 24,
+          "detectable_total": 24,
+          "other_correct": 0,
+          "other_total": 24,
+          "min_gap_bps": 5000,
+          "min_recovered_bps": 9500,
+          "passed": true
+        }
+      },
+      {
+        "kind": "ainglish.reader-qualification.v1",
+        "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+        "reader": {
+          "provider": "ollama",
+          "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+          "precision": "q4_k_m",
+          "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+          "digest_source": "ollama:/api/tags"
+        },
+        "lineage": {
+          "key": "gemma-3-12b-it",
+          "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Gemma 3 12B IT Q4_K_M."
+        },
+        "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+        "settings_sha256": "b2aa8e9ab084bc1c806bc8fe07c11721c87049838729b9e71af07c1d8610688f",
+        "qualified_at": "2026-09-05T21:47:23+00:00",
+        "valid_until": "2026-09-12T21:47:23+00:00",
+        "result": {
+          "detectable_correct": 24,
+          "detectable_total": 24,
+          "other_correct": 0,
+          "other_total": 24,
+          "min_gap_bps": 5000,
+          "min_recovered_bps": 9500,
+          "passed": true
+        }
+      }
+    ],
+    "readers": [
+      {
+        "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "provider": "ollama",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "api": "openai",
+        "base_url": "http://127.0.0.1:11434/v1",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+        "digest_source": "ollama:/api/tags",
+        "instrument_preparation": {
+          "entry_point": "prepare_reader_instruments",
+          "binding": "ollama:/api/tags"
+        },
+        "answer_protocol": "opaque-choice-v1",
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": 2026090581,
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      },
+      {
+        "name": "gemma3-12b-opaque-choice-q4_k_m",
+        "provider": "ollama",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "api": "openai",
+        "base_url": "http://127.0.0.1:11434/v1",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+        "digest_source": "ollama:/api/tags",
+        "instrument_preparation": {
+          "entry_point": "prepare_reader_instruments",
+          "binding": "ollama:/api/tags"
+        },
+        "answer_protocol": "opaque-choice-v1",
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": 2026090581,
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      }
+    ],
+    "instrument_preparation": {
+      "entry_point": "prepare_reader_instruments",
+      "binding": [
+        {
+          "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+          "digest_source": "ollama:/api/tags"
+        },
+        {
+          "reader": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+          "digest_source": "ollama:/api/tags"
+        }
+      ]
+    },
+    "item_counts": {
+      "real": 120,
+      "calibration": 12
+    },
+    "interval_kind": "bootstrap_items",
+    "interval_estimator": {
+      "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+      "algorithm": "sha256-counter-modulo-v1",
+      "draws": 2000,
+      "sampling_unit": "item",
+      "quantiles": [
+        "0.025",
+        "0.975"
+      ],
+      "items_index_sha256": "39138ddabeac922ff1cb3cb8474595121b6374f0ccb909fc3fa7e8af551060c2"
+    },
+    "settlement_strata": [
+      {
+        "id": "prob:payout",
+        "weight": 1
+      },
+      {
+        "id": "prob:calibration",
+        "weight": 1
+      },
+      {
+        "id": "prob:frequency",
+        "weight": 1
+      },
+      {
+        "id": "prob:causation",
+        "weight": 1
+      },
+      {
+        "id": "prob:rounding",
+        "weight": 1
+      },
+      {
+        "id": "odds-for:payout",
+        "weight": 1
+      },
+      {
+        "id": "odds-for:calibration",
+        "weight": 1
+      },
+      {
+        "id": "odds-for:frequency",
+        "weight": 1
+      },
+      {
+        "id": "odds-for:causation",
+        "weight": 1
+      },
+      {
+        "id": "odds-for:rounding",
+        "weight": 1
+      },
+      {
+        "id": "odds-against:payout",
+        "weight": 1
+      },
+      {
+        "id": "odds-against:calibration",
+        "weight": 1
+      },
+      {
+        "id": "odds-against:frequency",
+        "weight": 1
+      },
+      {
+        "id": "odds-against:causation",
+        "weight": 1
+      },
+      {
+        "id": "odds-against:rounding",
+        "weight": 1
+      }
+    ],
+    "settlement_item_field": "settlement_stratum",
+    "settlement_rule": "manifest-weighted arms and value; every stratum load-bearing",
+    "calibration": {
+      "planted_arm": "ainglish",
+      "min_gap": 0.5,
+      "min_recovered": null,
+      "rule": "absolute-gap-v1",
+      "ordering": "calibration-first",
+      "arm_exposure": "both-arms-per-reader-item",
+      "cells": 48
+    },
+    "difficulty": {
+      "annotated": false
+    },
+    "harness": "ainglish-panel/0.2.55",
+    "transport": {
+      "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m": {
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": 2026090581,
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      },
+      "gemma3-12b-opaque-choice-q4_k_m@q4_k_m": {
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": 2026090581,
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      }
+    },
+    "concurrency": {
+      "max_in_flight": 1,
+      "per_reader_max_in_flight": {
+        "mistral-small3.2-24b-opaque-choice-q4_k_m": 1,
+        "gemma3-12b-opaque-choice-q4_k_m": 1
+      },
+      "result_order": "deterministic-plan-order",
+      "calibration_barrier": true,
+      "automatic_retries": false
+    },
+    "transport_faults": {
+      "total": 0,
+      "retried": false,
+      "per_cell": {}
+    },
+    "transport_truncations": {
+      "total": 0,
+      "per_reader_cell": {},
+      "by_cell": {
+        "english": 0,
+        "ainglish": 0
+      },
+      "imbalanced_across_cells": false
+    },
+    "protocol": "panel.py counterbalanced real arms + both-arms-per-reader-item planted-effect calibration gate"
+  },
+  "interval_provenance": {
+    "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+    "metric": "comprehension_accuracy_delta",
+    "estimator": "manifest_weighted_stratum_accuracy_delta_pp",
+    "algorithm": {
+      "name": "sha256-counter-modulo-v1",
+      "draws": 2000,
+      "accepted_draws": 1782,
+      "sampling_unit": "item",
+      "lower_quantile": {
+        "numerator": 25,
+        "denominator": 1000,
+        "index_rule": "floor"
+      },
+      "upper_quantile": {
+        "numerator": 975,
+        "denominator": 1000,
+        "index_rule": "floor"
+      }
+    },
+    "seed": 2026090596,
+    "items": [
+      {
+        "id": "prob-balanced-v2-0-odds-against-calibration",
+        "stratum": "odds-against:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-0-odds-against-causation",
+        "stratum": "odds-against:causation"
+      },
+      {
+        "id": "prob-balanced-v2-0-odds-against-frequency",
+        "stratum": "odds-against:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-0-odds-against-payout",
+        "stratum": "odds-against:payout"
+      },
+      {
+        "id": "prob-balanced-v2-0-odds-against-rounding",
+        "stratum": "odds-against:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-0-odds-for-calibration",
+        "stratum": "odds-for:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-0-odds-for-causation",
+        "stratum": "odds-for:causation"
+      },
+      {
+        "id": "prob-balanced-v2-0-odds-for-frequency",
+        "stratum": "odds-for:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-0-odds-for-payout",
+        "stratum": "odds-for:payout"
+      },
+      {
+        "id": "prob-balanced-v2-0-odds-for-rounding",
+        "stratum": "odds-for:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-0-prob-calibration",
+        "stratum": "prob:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-0-prob-causation",
+        "stratum": "prob:causation"
+      },
+      {
+        "id": "prob-balanced-v2-0-prob-frequency",
+        "stratum": "prob:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-0-prob-payout",
+        "stratum": "prob:payout"
+      },
+      {
+        "id": "prob-balanced-v2-0-prob-rounding",
+        "stratum": "prob:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-1-odds-against-calibration",
+        "stratum": "odds-against:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-1-odds-against-causation",
+        "stratum": "odds-against:causation"
+      },
+      {
+        "id": "prob-balanced-v2-1-odds-against-frequency",
+        "stratum": "odds-against:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-1-odds-against-payout",
+        "stratum": "odds-against:payout"
+      },
+      {
+        "id": "prob-balanced-v2-1-odds-against-rounding",
+        "stratum": "odds-against:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-1-odds-for-calibration",
+        "stratum": "odds-for:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-1-odds-for-causation",
+        "stratum": "odds-for:causation"
+      },
+      {
+        "id": "prob-balanced-v2-1-odds-for-frequency",
+        "stratum": "odds-for:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-1-odds-for-payout",
+        "stratum": "odds-for:payout"
+      },
+      {
+        "id": "prob-balanced-v2-1-odds-for-rounding",
+        "stratum": "odds-for:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-1-prob-calibration",
+        "stratum": "prob:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-1-prob-causation",
+        "stratum": "prob:causation"
+      },
+      {
+        "id": "prob-balanced-v2-1-prob-frequency",
+        "stratum": "prob:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-1-prob-payout",
+        "stratum": "prob:payout"
+      },
+      {
+        "id": "prob-balanced-v2-1-prob-rounding",
+        "stratum": "prob:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-2-odds-against-calibration",
+        "stratum": "odds-against:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-2-odds-against-causation",
+        "stratum": "odds-against:causation"
+      },
+      {
+        "id": "prob-balanced-v2-2-odds-against-frequency",
+        "stratum": "odds-against:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-2-odds-against-payout",
+        "stratum": "odds-against:payout"
+      },
+      {
+        "id": "prob-balanced-v2-2-odds-against-rounding",
+        "stratum": "odds-against:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-2-odds-for-calibration",
+        "stratum": "odds-for:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-2-odds-for-causation",
+        "stratum": "odds-for:causation"
+      },
+      {
+        "id": "prob-balanced-v2-2-odds-for-frequency",
+        "stratum": "odds-for:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-2-odds-for-payout",
+        "stratum": "odds-for:payout"
+      },
+      {
+        "id": "prob-balanced-v2-2-odds-for-rounding",
+        "stratum": "odds-for:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-2-prob-calibration",
+        "stratum": "prob:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-2-prob-causation",
+        "stratum": "prob:causation"
+      },
+      {
+        "id": "prob-balanced-v2-2-prob-frequency",
+        "stratum": "prob:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-2-prob-payout",
+        "stratum": "prob:payout"
+      },
+      {
+        "id": "prob-balanced-v2-2-prob-rounding",
+        "stratum": "prob:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-3-odds-against-calibration",
+        "stratum": "odds-against:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-3-odds-against-causation",
+        "stratum": "odds-against:causation"
+      },
+      {
+        "id": "prob-balanced-v2-3-odds-against-frequency",
+        "stratum": "odds-against:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-3-odds-against-payout",
+        "stratum": "odds-against:payout"
+      },
+      {
+        "id": "prob-balanced-v2-3-odds-against-rounding",
+        "stratum": "odds-against:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-3-odds-for-calibration",
+        "stratum": "odds-for:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-3-odds-for-causation",
+        "stratum": "odds-for:causation"
+      },
+      {
+        "id": "prob-balanced-v2-3-odds-for-frequency",
+        "stratum": "odds-for:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-3-odds-for-payout",
+        "stratum": "odds-for:payout"
+      },
+      {
+        "id": "prob-balanced-v2-3-odds-for-rounding",
+        "stratum": "odds-for:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-3-prob-calibration",
+        "stratum": "prob:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-3-prob-causation",
+        "stratum": "prob:causation"
+      },
+      {
+        "id": "prob-balanced-v2-3-prob-frequency",
+        "stratum": "prob:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-3-prob-payout",
+        "stratum": "prob:payout"
+      },
+      {
+        "id": "prob-balanced-v2-3-prob-rounding",
+        "stratum": "prob:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-4-odds-against-calibration",
+        "stratum": "odds-against:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-4-odds-against-causation",
+        "stratum": "odds-against:causation"
+      },
+      {
+        "id": "prob-balanced-v2-4-odds-against-frequency",
+        "stratum": "odds-against:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-4-odds-against-payout",
+        "stratum": "odds-against:payout"
+      },
+      {
+        "id": "prob-balanced-v2-4-odds-against-rounding",
+        "stratum": "odds-against:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-4-odds-for-calibration",
+        "stratum": "odds-for:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-4-odds-for-causation",
+        "stratum": "odds-for:causation"
+      },
+      {
+        "id": "prob-balanced-v2-4-odds-for-frequency",
+        "stratum": "odds-for:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-4-odds-for-payout",
+        "stratum": "odds-for:payout"
+      },
+      {
+        "id": "prob-balanced-v2-4-odds-for-rounding",
+        "stratum": "odds-for:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-4-prob-calibration",
+        "stratum": "prob:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-4-prob-causation",
+        "stratum": "prob:causation"
+      },
+      {
+        "id": "prob-balanced-v2-4-prob-frequency",
+        "stratum": "prob:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-4-prob-payout",
+        "stratum": "prob:payout"
+      },
+      {
+        "id": "prob-balanced-v2-4-prob-rounding",
+        "stratum": "prob:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-5-odds-against-calibration",
+        "stratum": "odds-against:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-5-odds-against-causation",
+        "stratum": "odds-against:causation"
+      },
+      {
+        "id": "prob-balanced-v2-5-odds-against-frequency",
+        "stratum": "odds-against:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-5-odds-against-payout",
+        "stratum": "odds-against:payout"
+      },
+      {
+        "id": "prob-balanced-v2-5-odds-against-rounding",
+        "stratum": "odds-against:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-5-odds-for-calibration",
+        "stratum": "odds-for:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-5-odds-for-causation",
+        "stratum": "odds-for:causation"
+      },
+      {
+        "id": "prob-balanced-v2-5-odds-for-frequency",
+        "stratum": "odds-for:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-5-odds-for-payout",
+        "stratum": "odds-for:payout"
+      },
+      {
+        "id": "prob-balanced-v2-5-odds-for-rounding",
+        "stratum": "odds-for:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-5-prob-calibration",
+        "stratum": "prob:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-5-prob-causation",
+        "stratum": "prob:causation"
+      },
+      {
+        "id": "prob-balanced-v2-5-prob-frequency",
+        "stratum": "prob:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-5-prob-payout",
+        "stratum": "prob:payout"
+      },
+      {
+        "id": "prob-balanced-v2-5-prob-rounding",
+        "stratum": "prob:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-6-odds-against-calibration",
+        "stratum": "odds-against:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-6-odds-against-causation",
+        "stratum": "odds-against:causation"
+      },
+      {
+        "id": "prob-balanced-v2-6-odds-against-frequency",
+        "stratum": "odds-against:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-6-odds-against-payout",
+        "stratum": "odds-against:payout"
+      },
+      {
+        "id": "prob-balanced-v2-6-odds-against-rounding",
+        "stratum": "odds-against:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-6-odds-for-calibration",
+        "stratum": "odds-for:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-6-odds-for-causation",
+        "stratum": "odds-for:causation"
+      },
+      {
+        "id": "prob-balanced-v2-6-odds-for-frequency",
+        "stratum": "odds-for:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-6-odds-for-payout",
+        "stratum": "odds-for:payout"
+      },
+      {
+        "id": "prob-balanced-v2-6-odds-for-rounding",
+        "stratum": "odds-for:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-6-prob-calibration",
+        "stratum": "prob:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-6-prob-causation",
+        "stratum": "prob:causation"
+      },
+      {
+        "id": "prob-balanced-v2-6-prob-frequency",
+        "stratum": "prob:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-6-prob-payout",
+        "stratum": "prob:payout"
+      },
+      {
+        "id": "prob-balanced-v2-6-prob-rounding",
+        "stratum": "prob:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-7-odds-against-calibration",
+        "stratum": "odds-against:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-7-odds-against-causation",
+        "stratum": "odds-against:causation"
+      },
+      {
+        "id": "prob-balanced-v2-7-odds-against-frequency",
+        "stratum": "odds-against:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-7-odds-against-payout",
+        "stratum": "odds-against:payout"
+      },
+      {
+        "id": "prob-balanced-v2-7-odds-against-rounding",
+        "stratum": "odds-against:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-7-odds-for-calibration",
+        "stratum": "odds-for:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-7-odds-for-causation",
+        "stratum": "odds-for:causation"
+      },
+      {
+        "id": "prob-balanced-v2-7-odds-for-frequency",
+        "stratum": "odds-for:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-7-odds-for-payout",
+        "stratum": "odds-for:payout"
+      },
+      {
+        "id": "prob-balanced-v2-7-odds-for-rounding",
+        "stratum": "odds-for:rounding"
+      },
+      {
+        "id": "prob-balanced-v2-7-prob-calibration",
+        "stratum": "prob:calibration"
+      },
+      {
+        "id": "prob-balanced-v2-7-prob-causation",
+        "stratum": "prob:causation"
+      },
+      {
+        "id": "prob-balanced-v2-7-prob-frequency",
+        "stratum": "prob:frequency"
+      },
+      {
+        "id": "prob-balanced-v2-7-prob-payout",
+        "stratum": "prob:payout"
+      },
+      {
+        "id": "prob-balanced-v2-7-prob-rounding",
+        "stratum": "prob:rounding"
+      }
+    ],
+    "readers": [
+      "gemma3-12b-opaque-choice-q4_k_m",
+      "mistral-small3.2-24b-opaque-choice-q4_k_m"
+    ],
+    "cells": [
+      {
+        "item_id": "prob-balanced-v2-0-odds-against-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-against-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-against-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-against-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-against-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-against-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-against-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-against-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-against-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-against-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-for-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-for-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-for-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-for-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-for-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-for-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-for-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-for-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-for-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-odds-for-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-prob-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-prob-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-prob-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-prob-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-prob-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-prob-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-prob-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-0-prob-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-0-prob-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-0-prob-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-against-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-against-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-against-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-against-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-against-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-against-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-against-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-against-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-against-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-against-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-for-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-for-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-for-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-for-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-for-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-for-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-for-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-for-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-for-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-odds-for-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-prob-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-prob-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-prob-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-prob-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-prob-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-prob-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-prob-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-prob-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-prob-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-1-prob-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-against-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-against-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-against-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-against-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-against-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-against-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-against-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-against-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-against-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-against-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-for-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-for-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-for-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-for-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-for-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-for-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-for-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-for-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-for-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-odds-for-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-prob-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-prob-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-prob-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-prob-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-prob-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-prob-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-prob-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-2-prob-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-2-prob-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-2-prob-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-against-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-against-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-against-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-against-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-against-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-against-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-against-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-against-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-against-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-against-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-for-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-for-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-for-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-for-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-for-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-for-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-for-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-for-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-for-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-odds-for-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-prob-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-prob-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-prob-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-3-prob-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-3-prob-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-prob-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-prob-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-prob-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-prob-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-3-prob-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-against-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-against-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-against-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-against-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-against-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-against-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-against-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-against-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-against-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-against-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-for-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-for-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-for-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-for-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-for-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-for-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-for-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-for-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-for-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-odds-for-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-prob-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-prob-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-prob-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-prob-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-prob-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-prob-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-prob-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-4-prob-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-4-prob-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-4-prob-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-against-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-against-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-against-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-against-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-against-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-against-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-against-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-against-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-against-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-against-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-for-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-for-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-for-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-for-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-for-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-for-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-for-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-for-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-for-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-odds-for-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-prob-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-prob-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-prob-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-prob-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-prob-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-prob-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-prob-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-prob-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-prob-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-5-prob-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-against-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-against-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-against-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-against-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-against-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-against-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-against-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-against-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-against-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-against-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-for-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-for-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-for-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-for-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-for-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-for-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-for-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-for-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-for-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-odds-for-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-prob-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-prob-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-prob-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-prob-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-prob-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-prob-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-prob-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-prob-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-6-prob-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-6-prob-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-against-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-against-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-against-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-against-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-against-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-against-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-against-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-against-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-against-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-against-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-for-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-for-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-for-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-for-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-for-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-for-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-for-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-for-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-for-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-odds-for-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-prob-calibration",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-prob-calibration",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-prob-causation",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-7-prob-causation",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "prob-balanced-v2-7-prob-frequency",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-prob-frequency",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-prob-payout",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-prob-payout",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-prob-rounding",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "prob-balanced-v2-7-prob-rounding",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      }
+    ],
+    "content_sha256": "a8673b62e5711f8d667ff5b2a9b2aca1517c710cb1e53adf799f2d6925288b43"
+  },
+  "stratum_results": [
+    {
+      "id": "prob:payout",
+      "value": 34.55,
+      "arms": {
+        "english": 0.4545,
+        "ainglish": 0.8,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "prob:calibration",
+      "value": 0.0,
+      "arms": {
+        "english": 1.0,
+        "ainglish": 1.0,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "prob:frequency",
+      "value": 0.0,
+      "arms": {
+        "english": 1.0,
+        "ainglish": 1.0,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "prob:causation",
+      "value": -25.0,
+      "arms": {
+        "english": 0.875,
+        "ainglish": 0.625,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "prob:rounding",
+      "value": 0.0,
+      "arms": {
+        "english": 1.0,
+        "ainglish": 1.0,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "odds-for:payout",
+      "value": -50.0,
+      "arms": {
+        "english": 1.0,
+        "ainglish": 0.5,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "odds-for:calibration",
+      "value": -11.11,
+      "arms": {
+        "english": 1.0,
+        "ainglish": 0.8889,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "odds-for:frequency",
+      "value": 11.11,
+      "arms": {
+        "english": 0.8889,
+        "ainglish": 1.0,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "odds-for:causation",
+      "value": -30.77,
+      "arms": {
+        "english": 1.0,
+        "ainglish": 0.6923,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "odds-for:rounding",
+      "value": 0.0,
+      "arms": {
+        "english": 1.0,
+        "ainglish": 1.0,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "odds-against:payout",
+      "value": -15.87,
+      "arms": {
+        "english": 0.7143,
+        "ainglish": 0.5556,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "odds-against:calibration",
+      "value": 0.0,
+      "arms": {
+        "english": 0.875,
+        "ainglish": 0.875,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "odds-against:frequency",
+      "value": 16.67,
+      "arms": {
+        "english": 0.8333,
+        "ainglish": 1.0,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "odds-against:causation",
+      "value": -37.5,
+      "arms": {
+        "english": 1.0,
+        "ainglish": 0.625,
+        "chance": 0.5
+      }
+    },
+    {
+      "id": "odds-against:rounding",
+      "value": 9.09,
+      "arms": {
+        "english": 0.9091,
+        "ainglish": 1.0,
+        "chance": 0.5
+      }
+    }
+  ],
+  "panel_neff": 2,
+  "panel_neff_basis": "declared:reader-axis-unvalidated",
+  "attempt_id": "638d2aab-f063-48c2-bb8f-7d27ab7af3b4"
+}
