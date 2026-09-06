@@ -17,3 +17,13 @@ bounded five-proposal dispute set. Public evidence is not automatically good
 evidence, and formal replication eligibility is not semantic certification.
 
 No human-validation campaign or public-domain release is staged.
+
+Completed work and its limitations are in [RESULTS.md](RESULTS.md). The exact
+since run specification is retained in `since.careful.runspec.json`; the frozen
+manifest, filed result, raw calls and answer cells preserve what actually ran.
+Do not rerun the completed submission script to obtain a preferred result.
+Independent settlement requires a fresh eligible attempt and wholly fresh inputs
+under the same comparison contract, not replaying these exposed answers.
+
+[FOLLOWUP.md](FOLLOWUP.md) separates actions already filed from decisions still
+requiring another participant.
