@@ -1,0 +1,41 @@
+{
+  "kind": "ainglish.definition-amortisation.v1",
+  "depths": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
+  "models": [
+    "cl100k_base",
+    "o200k_base",
+    "p50k_base"
+  ],
+  "policies": [
+    "once",
+    "each_turn"
+  ],
+  "common": "Noor is speaking to Mira. Noor and Ivo are always in the team; each message states whether Mira joins it. Everyone has permission. All times refer to the same known day in UTC. Each named review is a distinct authorized task.",
+  "ainglish_reference": "\"we-including-you <predicate>\" = \"we — and that includes you, the reader — <predicate>\": first-person plural, addressee INCLUDED; the reader is among those expected to act. \"we-excluding-you <predicate>\" = \"we, not including you, <predicate>\": addressee EXCLUDED; the reader is informed, not tasked. Lossless round-trip: \"we-including-you will verify the anchors\" ⇄ \"We — and that includes you — will verify the anchors.\" Bare 'we' remains legal and unmarked (like bare claims beside claim-tag): mark the pronoun when the participant set is load-bearing — task assignment, commitments, permissions. Hyphen loss degrades to the careful-writer phrase ('we including you') with meaning intact.\n\nTrailing tags on any plural-subject predicate. \"<plural subject> <predicate>, each-alone\" = DISTRIBUTIVE: the predicate holds of each member separately — n independent instances (\"the agents verified the checkpoint, each-alone\" = three verifications). \"<plural subject> <predicate>, as-one\" = COLLECTIVE: the predicate holds of the group as a single unit — one instance, however many hands (\"verified the checkpoint, as-one\" = one joint verification). Amounts too: \"£1000, each-alone\" = each recipient gets £1000; \"£1000, as-one\" = one grant, shared (plain-English glosses: 'apiece' / 'in total'). AS-ONE MARKS UNIT-HOOD, NOT TIMING: three agents acting simultaneously but independently are still each-alone; as-one claims one act with one outcome. Bare plurals stay legal and unmarked: tag the sentence when multiplicity is load-bearing — payouts, retries, votes, verifications, anything idempotency-sensitive. Lossless round-trip: \"the agents verified it, each-alone\" ⇄ \"the agents each verified it independently.\" Hyphen loss degrades to the exact careful phrases ('each alone', 'as one') with meaning intact. SCOPE: the two poles only; intermediate cardinalities ('some of them', 'at least two') are a different construct.\n\nAttach one phase-qualified deadline to an ACTION clause. `X start-by(t)` means that genuine execution of X begins at or before instant t. Acknowledging X, promising to do it, putting it in a queue, reserving capacity, or scheduling a future start does not satisfy the marker unless that administrative act is itself X. The first task-specific step that can advance X toward its stated outcome does. `X complete-by(t)` means that X's declared successful-completion condition is satisfied at or before t. A process that merely stops, times out, is cancelled, or reaches a terminal failure has not satisfied `complete-by`.\n\nThe deadline is inclusive: an event exactly at t qualifies. `start-by` imposes no completion deadline. `complete-by` imposes no separately stated earliest-start constraint, although a non-instantaneous action must logically have started early enough to complete. If X has an explicit completion predicate, that predicate governs; otherwise the ordinary stated task goal governs. An author who cannot identify a completion condition cannot truthfully use `complete-by` as if elapsed time alone made the task successful.\n\nLossless round-trips: `req: upload the archive start-by(17:00Z)` ⇄ “Please begin actual archive-upload execution no later than 17:00Z; it need not be finished then.” `will: upload the archive complete-by(17:00Z)` ⇄ “I commit that the archive upload's success condition will be satisfied no later than 17:00Z.” Hyphen loss yields the ordinary phrases “start by” and “complete by.”\n\nSCOPE: the markers type which event a deadline constrains; they do not themselves request, promise, report, prioritize, retry, cancel, or prove that the event occurred. Illocutionary force comes separately from `req:`, `will:`, or other discourse context. `<t>` must independently denote an instant; use an absolute timestamp or anchored deixis where needed. Time zone, clock source, completion predicate, and consequences of missing the deadline remain separately stated.",
+  "contexts": 4,
+  "estimand": "Serialized conversation TEXT token volume, and sum of serialized input histories plus authored replies across calls. No provider chat-template or billing claim.",
+  "incumbency": "Primary scenario assumes ordinary English is known and Ainglish must be taught with the three full registered definitions. This asymmetric startup cost is explicit, not a matched training comparison.",
+  "acknowledgements": "Authored complete English confirmations are identical across language arms. No model produced or validated these conversations.",
+  "once": "Full Ainglish guide once at conversation start; history is still retransmitted at each stateless request.",
+  "each_turn": "Full Ainglish guide in each user turn; all prior copies remain in the transmitted history.",
+  "unmodelled": [
+    "Provider framing, cache discounts, retries, truncation policy, actual comprehension, future tokenizer vocabulary changes."
+  ],
+  "limits": [
+    "Four authored noun contexts and cycled choice patterns, not independent task samples.",
+    "A byte/token break-even cannot establish understanding or successful operations.",
+    "Large histories may exceed an actual model context limit. Counts do not claim those histories were executed.",
+    "Training weights cannot change segmentation under these fixed tokenizers."
+  ],
+  "governance_evidence": false,
+  "inference_calls": 0
+}
