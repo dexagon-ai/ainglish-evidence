@@ -89,6 +89,11 @@ there were no real actions. Intervals cluster by episode. Composition covers
 48 participant/deadline and 24 multiplicity/alternative cases with four joint
 answers, not arbitrary nesting. Accuracy is low in both languages; the largest
 Ainglish score is only 37.5%. This does not support deployment-grade composition.
+In the participant/deadline cases the observed start and completion timestamps
+coincide, so these cases test joint membership and deadline status, **not the
+ability to distinguish a met start deadline from a missed completion deadline**.
+That phase-separation contrast needs a future prospective test; the present rows
+and scores are not changed to add it after seeing results.
 All per-family/arm scores, decoded answer counts, constant-label and literal
 semantic-answer-text baselines, native costs, discordant IDs and paired intervals
 are in `RESEARCH-RESULTS.json`. A literal-answer baseline does not exhaust all
@@ -112,3 +117,5 @@ sealed at `44727be` before evaluation. `analyse_research.py` independently check
 frozen digests, expected unique target coverage, raw answer decoding and receipts
 before writing the report. Bootstrap draws: 2,000, seed 2026090613. Analysis made
 no new model calls. The original pilot's exact 10-gain/10-loss rescore is included.
+Running the analysis again verifies an existing report exactly and refuses a
+different result; it does not overwrite raw records or rerun inference.

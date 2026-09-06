@@ -123,7 +123,10 @@ def main():
             r['case_id']=r['id'];r['decoded']=r['raw']
     report['old_pilot_discordance']={f or 'overall':pair([r for r in a if f is None or r['family']==f],[r for r in e if f is None or r['family']==f]) for f in [None]+families}
     destination=ROOT/'RESEARCH-RESULTS.json'
-    with destination.open('x') as h: json.dump(report,h,indent=2,ensure_ascii=False);h.write('\n')
+    if destination.exists():
+        assert json.loads(destination.read_text())==report, 'Computed report differs; retain both and investigate, never overwrite'
+    else:
+        with destination.open('x') as h: json.dump(report,h,indent=2,ensure_ascii=False);h.write('\n')
     print(json.dumps({'calls':report['calls'],'primary':{k:{f:round(v['delta_pp'],3) for f,v in r.items()} for k,r in report['primary'].items() if isinstance(r,dict)},'point_guards':report['primary']['all_point_guards_pass'],'old_discordance':{k:len(report['old_pilot_discordance']['overall'][k]) for k in ['gained','lost']}}))
 
 

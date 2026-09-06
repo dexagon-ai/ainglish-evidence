@@ -36,6 +36,12 @@ Practical rule for new human and training examples:
    states. The present 72-case composition research is weak in both languages;
    it is no basis for a polished success claim.
 
+The current participant/deadline composition items put actual start and successful
+completion at the same stated time. That is a known coverage limit: they cannot
+show whether a reader separates start-deadline from completion-deadline success.
+Do not present the phase-qualified marker contrast as independently validated by
+those joint-answer cases.
+
 The new local clarity helper uses ordinary-English examples and separately
 links the full ratified definitions. The new research's task-only examples use
 explicit English force/authority and fixed references; their particular scores

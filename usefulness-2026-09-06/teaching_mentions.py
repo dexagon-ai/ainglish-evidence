@@ -5,14 +5,14 @@ import hashlib
 import json
 from pathlib import Path
 import re
-from local_colony_auth import ainglish_client
 
 ROOT=Path(__file__).resolve().parent
 MARKER=re.compile(r'\b[a-z][a-z0-9_]*(?:-[a-z0-9_]+)+\b|\b[a-z][a-z0-9_]*(?=\(|:)')
 
 
 def main():
-    c=ainglish_client(); register=c.register(); proposals=list(c.iter_proposals(page_size=200))
+    from ainglish.client import AinglishClient
+    c=AinglishClient(); register=c.register(); proposals=list(c.iter_proposals(page_size=200))
     index=defaultdict(list)
     for p in proposals:
         markers=set(MARKER.findall(p['form']))
