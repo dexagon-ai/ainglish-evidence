@@ -5,13 +5,13 @@ The existing published v3 pack was pinned at manifest SHA-256
 and processed through the current SDK ingestion implementation. No pack files
 changed and no model was downloaded or trained.
 
-Canonical filtering retains69instruction rows,21parallel pairs and27complete
+Canonical filtering retains 69 instruction rows, 21 parallel pairs and 27 complete
 definition documents. Opting into explicitly non-normative examples gives153
-instructions and63pairs; it does not change27definition documents. Every kept
+instructions and 63 pairs; it does not change the 27 definition documents. Every kept
 source row remains byte-value equivalent after JSON decoding, with provenance.
 
 The actual CLI excluded three deliberately copied public training rows used as
-test canaries, leaving66canonical instructions. Those became content-preserving
+test canaries, leaving 66 canonical instructions. Those became content-preserving
 user/assistant chat envelopes. The canaries test exclusion plumbing, not an
 independent holdout. Exact deduplication cannot detect unknown paraphrase or
 template leakage, and the test proves hyphen removal is not treated as identity.
