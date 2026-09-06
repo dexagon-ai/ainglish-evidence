@@ -1,0 +1,45 @@
+{
+  "kind": "ainglish.cached-reader-diagnostic.v1",
+  "governance_evidence": false,
+  "models": [
+    [
+      "qwen2.5:7b",
+      "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e"
+    ],
+    [
+      "gemma3:12b",
+      "f4031aab637d1ffa37b42570452ae0e4fad0314754d17ded67322e4b95836f8a"
+    ],
+    [
+      "mistral-small3.2:24b-instruct-2506-q4_K_M",
+      "5a408ab55df5c1b5cf46533c368813b30bf9e4d8fc39263bf2a3338cfa3b895b"
+    ]
+  ],
+  "options": {
+    "num_gpu": 0,
+    "num_thread": 8,
+    "num_ctx": 8192,
+    "num_predict": 512,
+    "temperature": 0,
+    "seed": 20260907
+  },
+  "controls": 16,
+  "minimum_controls_correct": 14,
+  "control_truncations_allowed": 0,
+  "target_dimensions": [
+    2,
+    5
+  ],
+  "target_calls_per_qualified_model": 216,
+  "selection": "All 2- and 5-field reference cases from the published diagnostic, both languages, all three contexts. The one-field irrelevant-key issue is not being retested. No writers, adapters, retries or target-selected substitutions.",
+  "qualification": "Each model must pass its target-independent compound five-field screen before seeing any target. Failed models are reported, not replaced. Target accuracy does not redefine qualification.",
+  "analysis": "Exact JSON protocol and exact boolean joint accuracy by language, dimension and authored context. Show absolute counts and format errors separately, no pooled cross-family success claim.",
+  "tokens": "Native Ollama prompt_eval_count and eval_count are retained with raw responses. Generated token IDs are unavailable; no exact output-ID recount claim.",
+  "resources": "CPU-only request, verify size_vram=0 after every call; one model at a time; no service restart, downloads or unrelated-model eviction. Stop on uncertain transport or <3GiB available RAM.",
+  "limits": [
+    "Qwen GGUF differs from the earlier native NF4 reader; not a same-configuration repeat.",
+    "Previously published synthetic cases, not a fresh independent holdout or human evidence.",
+    "Three model families do not prove independent training corpora. Both language guides are visible.",
+    "This does not settle any proposal or unlock the separate failed adapter-training gate."
+  ]
+}
