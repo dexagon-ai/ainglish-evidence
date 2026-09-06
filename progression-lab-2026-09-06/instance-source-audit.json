@@ -1,0 +1,64 @@
+{
+  "kind": "ainglish.source-semantic-audit.v1",
+  "at": "2026-09-06T17:44:50.679847+00:00",
+  "source_hash": "03fec16568541ed4c56966f11b85957c6810b6f01cc8c0b752aefd022efdb0df",
+  "attempt_id": "130770cd-0f93-4bf7-b653-b27dca6520a8",
+  "proposal": "a-sbff0j0jj24dtxbh",
+  "mapping": "`X same-instance-as(Y)` states that the resolved references X and Y denote one and the same individual entity in the governing identity system. It does not state that the entity is unchanged from an earlier snapshot, that two independently stored copies will remain synchronized, or that any particular property has a desired value. `X value-equal-to(Y, by=K)` states that X and Y have equal resolved values under named projection or key K at the comparison point. They may be distinct entities, and equality on K does not imply equality on any unmentioned property. K is mandatory and must resolve to an auditable projection such as ISBN-edition, content checksum, model digest, account balance, configuration fields, or measured quantity. If time can change the result, compose the existing `as_of(t)` pin; neither form silently chooses an epoch. The claims may be composed when both identity and a pinned value matter. Bare ‘same’ remains ordinary English, but is refused in load-bearing instructions where instance identity versus value equality changes what may be substituted, mutated, returned, billed, or audited. Hyphen loss yields the ordinary phrases ‘same instance as’ and ‘value equal to’, which preserve the distinction rather than invert it.",
+  "mapping_sha256": "5628a2f32675eafc4d86825302cf467b4762b40528a1444717447a01d0ecccd5",
+  "pairs": [
+    {
+      "english": "The scanner and copy-A resolve to the very same physical book copy.",
+      "ainglish": "scan-target same-instance-as(copy-A)."
+    },
+    {
+      "english": "Copy B is a distinct copy whose ISBN and edition match copy A.",
+      "ainglish": "copy-B value-equal-to(copy-A, by=ISBN-edition)."
+    },
+    {
+      "english": "Did they read the same book—one physical copy, or two copies of the same edition?",
+      "ainglish": "same-instance-as(copy-A) vs value-equal-to(copy-A, by=ISBN-edition)."
+    },
+    {
+      "english": "The scanner target and copy-A are references to the very same physical copy.",
+      "ainglish": "scan-target same-instance-as(copy-A)."
+    },
+    {
+      "english": "Copy B is a distinct copy with the same ISBN and edition as copy A.",
+      "ainglish": "copy-B value-equal-to(copy-A, by=ISBN-edition)."
+    },
+    {
+      "english": "The librarian's scan target and copy A are references to the same physical copy.",
+      "ainglish": "scan-target same-instance-as(copy-A)."
+    },
+    {
+      "english": "Copy B matches copy A in title and edition.",
+      "ainglish": "copy-B value-equal-to(copy-A, by=ISBN-edition)."
+    },
+    {
+      "english": "They read the same book—one physical copy, not two copies of the same edition.",
+      "ainglish": "same-instance-as(copy-A)."
+    }
+  ],
+  "findings": [
+    {
+      "pair": 2,
+      "problem": "English asserts copy-B is distinct from copy-A. The value-equality marker explicitly permits either distinct or identical entities; it does not assert distinctness."
+    },
+    {
+      "pair": 3,
+      "problem": "English is a question about two possible reading histories. The Ainglish side is a vs-separated pair of unary fragments lacking X, not the same question or a complete registered claim."
+    },
+    {
+      "pair": 5,
+      "problem": "Again, English asserts distinct copies while value-equal-to only asserts equality on the named key."
+    },
+    {
+      "pair": 8,
+      "problem": "English asserts a reading event and one shared physical copy. The Ainglish side lacks the mandatory X reference and does not preserve the reading-event assertion."
+    }
+  ],
+  "requested_state": "record_only",
+  "reason_code": "other",
+  "boundary": "Semantic comparator audit, not a tokenizer recount or accusation of fabricated arithmetic. Retain the numeric result and original bytes; the mixed/under-specified pair set cannot establish the declared complete-claim prerequisite. No successor or self-confirmation is implied."
+}

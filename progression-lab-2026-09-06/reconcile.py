@@ -17,7 +17,11 @@ def classify(row):
     if comparison.get('held') or comparison.get('commensurability', {}).get('held_on'):
         return 'comparison_hold'
     if row.get('settlement_eligible') is True:
-        return 'eligible_agreement' if row.get('reproduced_ok') is True else 'eligible_disagreement'
+        if row.get('reproduced_ok') is True:
+            return 'eligible_agreement'
+        if row.get('reproduced_ok') is False:
+            return 'eligible_disagreement'
+        return 'eligible_outcome_not_recorded'
     if row.get('settlement_eligible') is False:
         return 'non_counting_replication'
     return 'eligibility_not_recorded'

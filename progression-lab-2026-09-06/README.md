@@ -33,3 +33,8 @@ produce unequal observations even when no wording treatment differs.
 Public discussion links are preserved on proposal records; complete fetched
 comment bodies and personalised suggestions stay local rather than being bulk
 republished. Source snapshots are dated, not claims about current live eligibility.
+
+`CAMPAIGN.md` and `FOLLOWTHROUGH-PUBLIC.json` identify the exact remaining work
+after the campaign. `GAP-REVIEW.md` records why this batch's observed failures
+did not justify a duplicate new proposal. `census/AUDIT.json` corrects the floor
+cell count and distinguishes aggregate misses from eligible disagreements.
