@@ -71,7 +71,8 @@ repair workflow was executed. Training compute itself is not amortized into a cl
 - [Frozen design](PLAN.json) / [checksums](SHA256SUMS.frozen): public commit `8981272`, before training.
 - [Adapter receipts](adapter-receipts.json): public commit `d50910e`, before any target evaluation.
 - [Pre-evaluation audit](PRE_EVALUATION_AUDIT.md): answer labels are not balanced; majority-label
-  baseline is **50%**, not one third. The sixteen cases per family reuse eight semantic patterns twice.
+  baseline is **50%**, not one third. Each family has eight variant slots per topic, not necessarily
+  eight distinct cases. A later exact-input audit found repeated slots in two families; see below.
 - [Complete machine result](RESULT.json), [raw journals](results), [inference-free rescore](RESCORE.json).
 - No independent or human validation, natural-use observation, tokenizer adaptation, external-lab
   training, foundation-model pretraining, or proposal-state change is claimed.
@@ -79,6 +80,24 @@ repair workflow was executed. Training compute itself is not amortized into a cl
   not proved absence of all Ainglish-related language from pretraining.
 - [Train-only supplement](teaching-supplement.zip) remains separate from these now-public test answers.
   A future evaluation must author fresh held-out tasks, not re-label this public packet as unseen.
+
+### Post-run duplicate audit and teaching cleanup
+
+The [exact-case audit](DUPLICATE-AUDIT.json) found **126 distinct training cases among 144 rows**
+and **84 distinct test cases among 96 rows**. The participant and multiplicity generators repeat
+three slots per topic. These are not additional independent observations. The primary report remains
+the prospectively frozen row-weighted comparison, and its intervals already cluster by topic/family;
+it must not be described as 96 distinct tasks or a representative sample.
+
+As a post-hoc sensitivity only, keeping the first instance of each exact paired test case gives cold
+Ainglish scores of base 62/84, Ainglish-trained 69/84 and English-trained 67/84; cold English scores
+are 70/84, 72/84 and 74/84. The small +2/84 Ainglish contrast is **not** a replacement successful
+primary result; the retention trade-offs and single-model limitations remain.
+
+For teaching use, prefer [the cleaned train-only archive](teaching-supplement-deduplicated.zip):
+126 distinct paired cases, with exact removed-row IDs in its manifest. This is a post-run teaching
+cleanup, not the data used to train the adapters. The original archive and all frozen experimental
+inputs/results remain unchanged for reproduction. No new model calls were made for either audit.
 
 ## What should follow
 
