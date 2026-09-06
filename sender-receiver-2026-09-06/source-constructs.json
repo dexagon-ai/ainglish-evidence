@@ -1,0 +1,97 @@
+{
+  "entries": {
+    "alternatives": {
+      "content_digest": "e9e96915f9002e8932ae1d3490e3c52a6bc96134606df1cc4522a387f989aaa7",
+      "english_mapping": "Trailing tags on a two-option disjunction, appended where careful English already puts its disambiguation. \"A or B, or-both\" = at least one of A and B; choosing both is licensed (inclusive). \"A or B, not-both\" = at least one and not both: exactly one (exclusive). Logic stated tightly: bare 'or' asserts AT LEAST ONE — uncontested; or-both licenses the both-branch explicitly; not-both forbids it, which with or's at-least-one pins exactly-one. Lossless round-trip: \"retry or escalate, not-both\" ⇄ \"retry or escalate — but not both\"; \"read or write access, or-both\" ⇄ \"read access, write access, or both.\" Bare 'or' remains legal and unmarked: tag the disjunction when the both-branch is load-bearing. Hyphen loss degrades to the exact careful-English phrase ('or both' / 'not both') with meaning intact. SCOPE: two-option disjunctions only ('both' implies two; an n-ary any-of/exactly-one-of is a different construct); neither tag licenses zero — 'or' keeps its at-least-one floor.",
+      "form": "or-both / not-both",
+      "form_constraints": null,
+      "kind": "lexical",
+      "ratified_at": "2026-08-11T07:10:15Z",
+      "ratified_version": "0.9.0",
+      "rights_basis": "contribution-terms-v1.1",
+      "slot": {
+        "not-both": "exclusive disjunction: at least one and not both — exactly one of the two",
+        "or-both": "inclusive disjunction made explicit: at least one of the two; choosing both is licensed"
+      },
+      "slug": "or-both-not-both-english-or-never-says-whether-both-is-allow",
+      "status": "current",
+      "supersedes": null,
+      "title": "or-both / not-both — English 'or' never says whether both is allowed"
+    },
+    "deadline": {
+      "content_digest": "f01ef081d22231fd49f7cc7984952d61a6cfe8d90cd6230d2d51f81e57da1c33",
+      "english_mapping": "Attach one phase-qualified deadline to an ACTION clause. `X start-by(t)` means that genuine execution of X begins at or before instant t. Acknowledging X, promising to do it, putting it in a queue, reserving capacity, or scheduling a future start does not satisfy the marker unless that administrative act is itself X. The first task-specific step that can advance X toward its stated outcome does. `X complete-by(t)` means that X's declared successful-completion condition is satisfied at or before t. A process that merely stops, times out, is cancelled, or reaches a terminal failure has not satisfied `complete-by`.\n\nThe deadline is inclusive: an event exactly at t qualifies. `start-by` imposes no completion deadline. `complete-by` imposes no separately stated earliest-start constraint, although a non-instantaneous action must logically have started early enough to complete. If X has an explicit completion predicate, that predicate governs; otherwise the ordinary stated task goal governs. An author who cannot identify a completion condition cannot truthfully use `complete-by` as if elapsed time alone made the task successful.\n\nLossless round-trips: `req: upload the archive start-by(17:00Z)` ⇄ “Please begin actual archive-upload execution no later than 17:00Z; it need not be finished then.” `will: upload the archive complete-by(17:00Z)` ⇄ “I commit that the archive upload's success condition will be satisfied no later than 17:00Z.” Hyphen loss yields the ordinary phrases “start by” and “complete by.”\n\nSCOPE: the markers type which event a deadline constrains; they do not themselves request, promise, report, prioritize, retry, cancel, or prove that the event occurred. Illocutionary force comes separately from `req:`, `will:`, or other discourse context. `<t>` must independently denote an instant; use an absolute timestamp or anchored deixis where needed. Time zone, clock source, completion predicate, and consequences of missing the deadline remain separately stated.",
+      "form": "<ACTION> start-by(<t>) | <ACTION> complete-by(<t>)",
+      "form_constraints": null,
+      "kind": "grammatical",
+      "ratified_at": "2026-08-12T10:39:59Z",
+      "ratified_version": "0.16.0",
+      "rights_basis": "contribution-terms-v1.1",
+      "slot": {
+        "complete-by": "the action's declared successful-completion condition is satisfied at or before t; merely stopping or failing does not count",
+        "start-by": "the action has genuinely begun at or before t; acknowledgement, scheduling, or mere queueing does not count"
+      },
+      "slug": "start-by-complete-by-say-which-task-event-a-deadline-constra",
+      "status": "current",
+      "supersedes": null,
+      "title": "start-by / complete-by — say which task event a deadline constrains"
+    },
+    "multiplicity": {
+      "content_digest": "f9d88646783d832d8b1222f6357d39498bc72dd02553d30b76bdee1c8d40bf58",
+      "english_mapping": "Trailing tags on any plural-subject predicate. \"<plural subject> <predicate>, each-alone\" = DISTRIBUTIVE: the predicate holds of each member separately — n independent instances (\"the agents verified the checkpoint, each-alone\" = three verifications). \"<plural subject> <predicate>, as-one\" = COLLECTIVE: the predicate holds of the group as a single unit — one instance, however many hands (\"verified the checkpoint, as-one\" = one joint verification). Amounts too: \"£1000, each-alone\" = each recipient gets £1000; \"£1000, as-one\" = one grant, shared (plain-English glosses: 'apiece' / 'in total'). AS-ONE MARKS UNIT-HOOD, NOT TIMING: three agents acting simultaneously but independently are still each-alone; as-one claims one act with one outcome. Bare plurals stay legal and unmarked: tag the sentence when multiplicity is load-bearing — payouts, retries, votes, verifications, anything idempotency-sensitive. Lossless round-trip: \"the agents verified it, each-alone\" ⇄ \"the agents each verified it independently.\" Hyphen loss degrades to the exact careful phrases ('each alone', 'as one') with meaning intact. SCOPE: the two poles only; intermediate cardinalities ('some of them', 'at least two') are a different construct.",
+      "form": "each-alone / as-one",
+      "form_constraints": null,
+      "kind": "lexical",
+      "ratified_at": "2026-08-21T14:58:42Z",
+      "ratified_version": "0.33.0",
+      "rights_basis": "contribution-terms-v1.1",
+      "slot": {
+        "as-one": "collective: the predicate holds of the group as a single unit — one instance",
+        "each-alone": "distributive: the predicate holds of each member separately — n independent instances"
+      },
+      "slug": "each-alone-as-one-distributive-vs-collective-does-the-plural",
+      "status": "current",
+      "supersedes": null,
+      "title": "each-alone / as-one — distributive vs collective: does the plural act once, or once each?"
+    },
+    "participants": {
+      "content_digest": "3e95ec52fe84dfd519dc4dc222bbf6048f7b5f137da6bd896625d98f567cc6cb",
+      "english_mapping": "\"we-including-you <predicate>\" = \"we — and that includes you, the reader — <predicate>\": first-person plural, addressee INCLUDED; the reader is among those expected to act. \"we-excluding-you <predicate>\" = \"we, not including you, <predicate>\": addressee EXCLUDED; the reader is informed, not tasked. Lossless round-trip: \"we-including-you will verify the anchors\" ⇄ \"We — and that includes you — will verify the anchors.\" Bare 'we' remains legal and unmarked (like bare claims beside claim-tag): mark the pronoun when the participant set is load-bearing — task assignment, commitments, permissions. Hyphen loss degrades to the careful-writer phrase ('we including you') with meaning intact.",
+      "form": "we-including-you / we-excluding-you",
+      "form_constraints": null,
+      "kind": "lexical",
+      "ratified_at": "2026-08-11T07:27:01Z",
+      "ratified_version": "0.10.0",
+      "rights_basis": "contribution-terms-v1.1",
+      "slot": {
+        "we-excluding-you": "first-person plural, addressee EXCLUDED — the reader is informed, not tasked",
+        "we-including-you": "first-person plural, addressee INCLUDED — the reader is among those expected to act"
+      },
+      "slug": "we-including-you-we-excluding-you-clusivity-mark-whether-we--4",
+      "status": "current",
+      "supersedes": "we-including-you-we-excluding-you-clusivity-mark-whether-we--3",
+      "title": "we-including-you / we-excluding-you — clusivity: mark whether 'we' includes the reader"
+    },
+    "update": {
+      "content_digest": "c184f3a20a58b31f4f08b47c2e652ec8106ab53131dd5a739e3fd6bdbf44ccc2",
+      "english_mapping": "Use one prefix before a newly issued ACTION-CLAUSE when that clause has an explicit lifecycle relation to one or more earlier action-bearing directives or commitments.\n\n`supersedes(<refs>): X` means that, when the marked update reaches its declared instruction-ledger receipt/commit event, every uniquely resolved active clause named in `<refs>` stops imposing its still-uncompleted obligations. X becomes active under the force expressed by its own clause. This is whole-clause replacement, not a field patch: any requirement from a referenced clause that must survive must be restated in X or left in a separately referenced clause. The relation is prospective. Work already completed and effects already produced remain historical facts; they are not undone, repeated, or compensated unless X explicitly requests that action.\n\nThe receipt/commit event is a semantic linearisation point supplied by the conversation or instruction ledger, not the first byte seen by any worker. This marker changes obligation state; it does not atomically stop a physical process. Work already dispatched or in flight may be uncancellable and may produce effects after the referenced obligation retires. The recipient MUST surface that in-flight state and any late effect separately. If the issuer needs cancellation, rollback, or compensation, X must request it explicitly and the execution protocol must provide the corresponding synchronisation mechanism. If concurrent updates have no authoritative order or commit event, the relation is UNRESOLVED and must not be guessed from local arrival order.\n\n`supplements(<refs>): X` means that every uniquely resolved active clause named in `<refs>` remains active and X becomes active alongside it. The prefix grants neither clause precedence and does not reinterpret the earlier text. If X and a retained clause cannot jointly be satisfied, the combined instruction set is contradictory and the recipient must surface that conflict; it must not silently choose the newer clause, the older clause, or whichever is easier.\n\n`<refs>` is an explicit non-empty list of immutable, uniquely resolvable message or clause identifiers. Adjacency, recency, “the previous instruction,” topic similarity, and delivery order are not references. Multiple references are all-or-nothing: if any member is missing, ambiguous, inactive, self-referential, cyclic, duplicated under incompatible identities, or outside the updater's authority, the entire marked unit is INVALID. In that state X does not fall back to a standalone instruction; the recipient asks for repair instead of guessing a partial update.\n\nThe authenticated speaker must be the issuer of each referenced speech act or possess independently established authority to update it. The marker records an intended language relation; it does not confer authority, revoke platform capabilities, invalidate cryptographic credentials, or override a higher-priority policy. An altered identifier that resolves to the wrong live clause is a wrong-target update, not successful recovery.\n\nRelations are reference-local. If B supplements A and C later supersedes only A, B remains active because C did not name it. To replace both, C must explicitly name both. If B supersedes A and C supersedes B, A and B are inactive and C is active. A pure withdrawal with no successor is outside this pair, as are factual correction and claim falsification; use ordinary explicit withdrawal or the claim-lifecycle constructs rather than inventing an empty X.\n\nThe following clause carries its own normal force and scope: for example, `supersedes(msg-17): req: upload only report.pdf`. `req:`, `will:`, deadlines, delegation qualifiers, conditions, and scheduling markers compose inside X. A relation presented inside `force-suspended` is mentioned and inert. Bare follow-ups remain legal and update-unspecified; the register does not impose a hidden last-message-wins default.",
+      "form": "supersedes(<refs>): <ACTION-CLAUSE> | supplements(<refs>): <ACTION-CLAUSE>",
+      "form_constraints": null,
+      "kind": "discourse",
+      "ratified_at": "2026-09-01T15:54:10Z",
+      "ratified_version": "0.43.0",
+      "rights_basis": "contribution-terms-v1.1",
+      "slot": {
+        "supersedes(<refs>):": "retire exactly the referenced active clauses' uncompleted obligations and replace them with the following clause",
+        "supplements(<refs>):": "keep exactly the referenced active clauses and add the following clause without implied precedence"
+      },
+      "slug": "supersedes-ref-supplements-ref-say-whether-a-follow-up-repla-2",
+      "status": "current",
+      "supersedes": "supersedes-ref-supplements-ref-say-whether-a-follow-up-repla",
+      "title": "supersedes(ref) / supplements(ref) — say whether a follow-up replaces or adds to earlier instructions"
+    }
+  },
+  "register_digest": "4d9a8c3214d6c8fd075bac32c17fdf25a94c81f06c15e091daebb27046e443ad",
+  "source_sha256": "3ebcf38710cd0e24551c197d9217c5dd0ab88732bf5966bcc33fdb14991f3133",
+  "source_url": "https://ainglish.org/releases/ainglish-core-v3/register.json"
+}

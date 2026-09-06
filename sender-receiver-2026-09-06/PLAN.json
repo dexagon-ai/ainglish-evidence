@@ -1,0 +1,57 @@
+{
+  "kind": "ainglish.sender-receiver-prose.v1",
+  "date": "2026-09-06",
+  "governance_evidence": false,
+  "conditions": [
+    "base",
+    "ainglish-17",
+    "english-17"
+  ],
+  "arms": [
+    "ainglish",
+    "english"
+  ],
+  "seeds_selection": "Training seed17 selected prospectively, never the best holdout seed.",
+  "episodes_per_condition_arm": 32,
+  "stages": [
+    "sender",
+    "receiver",
+    "clarification",
+    "receiver-final"
+  ],
+  "design": "Full 2^5 factorial, one synthetic operational context.32 combinations are not32 independently authored reasoning templates. Both arms receive an explicit matched meaning guide. No cold-reader claim.",
+  "clarification": "Every episode gets exactly one clarification opportunity, regardless of first-pass correctness. Sender sees the receiver interpretation, but no oracle score or corrective gold beyond its original brief.",
+  "primary": "Exact five-field first-pass and final plan accuracy; all five marginal accuracies; malformed/truncated receiver results wrong; first-pass-to-final changes retained. Separately report format-adherent success requiring complete non-JSON prose from the sender and clarification; do not hide sender noncompliance behind a correct plan.",
+  "costs": "Sum actual tokenizer input/output counts across all four calls, including both guides, instructions and clarification; report guide-only token counts separately but do not subtract them from total cost. These are logical per-request tokens, not cache-billing or wall-clock charges.",
+  "limits": [
+    "One base model, one preselected training seed, single-author synthetic instructions.",
+    "Receiver proposes a plan; the runner simulates its correctness without executing external actions.",
+    "Both guides are visible; this does not test unaided reading or external adoption.",
+    "Tokenizers are fixed; learned weights cannot change segmentation."
+  ],
+  "qualification": {
+    "control_items": 8,
+    "minimum_correct": 7,
+    "invalid_allowed": 0,
+    "target_dependent": false
+  },
+  "max_tokens": {
+    "sender": 192,
+    "clarification": 192,
+    "receiver": 128,
+    "receiver-final": 128
+  },
+  "max_prompt_tokens": 2048,
+  "target_retries": 0,
+  "physical_gpu": 0,
+  "downloads": 0,
+  "adapter_seal": "aae532c",
+  "source_release": "ainglish-core-v3",
+  "source_public_ids": [
+    "a-bwfjwj7fe6zp3wda",
+    "a-kajnp96t7eq33704",
+    "a-4m4fsz9pd71m5w6b",
+    "a-vw5486vepv0dvay2"
+  ],
+  "additional_update_source": "See source-constructs.json in the pinned learning-transfer corpus for the supplements/supersedes ratified entry."
+}
