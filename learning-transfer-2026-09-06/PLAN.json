@@ -1,0 +1,60 @@
+{
+  "kind": "ainglish.multi-seed-reasoning-transfer.v1",
+  "seed": 17,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "base_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "training": {
+    "batch_size": 1,
+    "epochs": 2,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 0.0002,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "lora_r": 16,
+    "max_artifact_bytes": 536870912,
+    "max_length": 768,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "conditions": [
+    "base",
+    "ainglish-17",
+    "english-17",
+    "ainglish-29",
+    "english-29",
+    "ainglish-43",
+    "english-43"
+  ],
+  "sources": {
+    "register": "https://ainglish.org/releases/ainglish-core-v3/register.json",
+    "source_mapping_sha256": "4339366bd385c19bfea799601cc7ee33cdcb7bdee6566aecbfd0377571142e5a",
+    "training_grammar_sha256": "f141e22df6968c199b1d11dfc7f6d26087a8de9b4062a16b1493c6b5bcc7146e",
+    "trainer_sha256": "746903f033ff1a392352776d7eb62b5b84224ad1e3e945d8773b9a743491753b"
+  },
+  "scope": "Six ratified families only.336 distinct lexical training cases from established grammars;216 held-out cases from36 newly authored reasoning structures. They are synthetic single-author cases, not216 independent templates or a human study. Training domains and test domains are disjoint.",
+  "primary": "For each seed, cold-A accuracy after A-training minus matched E-training on the new reasoning holdout; also English retention versus base. Report every family and seed, not the best seed.",
+  "guards": {
+    "family_point_floor_pp": -5,
+    "overall_point_floor_pp": -5,
+    "minimum_correct_controls": 11,
+    "control_items": 12,
+    "target_retries": 0,
+    "downloads": 0,
+    "physical_gpu": 0,
+    "host_disk_reserve_gib": 10,
+    "max_prompt_tokens": 2048
+  },
+  "composition": "Full participant inclusion x deadline event x physically distinct start/finish traces; and multiplicity x disjunction x submitted choice. Separate marginal and joint accuracy; repeated domain variants cluster by authored frame.",
+  "analysis": "Keep all outcomes including malformed and truncated outputs. 2,000 paired frame-cluster bootstrap draws at seed2026090633. Three training seeds are not three base-model families. Family point floors are screens, not proofs of non-inferiority. No governance or ratification effect."
+}
