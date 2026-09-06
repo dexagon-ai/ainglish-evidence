@@ -1,0 +1,38 @@
+{
+  "kind": "ainglish.communication-diagnostic.v1",
+  "governance_evidence": false,
+  "snapshot": "/home/dexagon/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+  "arms": [
+    "ainglish",
+    "english"
+  ],
+  "conditions": [
+    "base"
+  ],
+  "greedy": true,
+  "max_prompt_tokens": 4096,
+  "receiver_cap": 256,
+  "sender_cap": 512,
+  "controls_per_role": 8,
+  "minimum_control_correct": 7,
+  "qualification": "Both target-independent package reader and fixed-line writer screens must score at least7/8, with zero truncated calls. Otherwise no language targets. This is interface sensitivity, not target accuracy.",
+  "cases": 114,
+  "full_cases": 96,
+  "contexts": 3,
+  "target_calls": 612,
+  "primary": [
+    "Known-correct-message receiver exact accuracy by language, context and dimensions.",
+    "Constrained sender parse rate and exact intended-message accuracy, with truncation separate.",
+    "Receiver accuracy against intended brief and, where parsable, against actual sender meaning."
+  ],
+  "next_training_gate": "At least80% exact known-correct-message accuracy in EACH language arm of the full-five-field condition; at least80% sender outputs parsed in EACH language; zero control truncations. Gate is checked before any communication-adapter training.",
+  "no_retry": "No outcome-selected call repetitions. Safe restart may reuse verified completed cells but refuses uncertain in-flight calls.",
+  "limits": [
+    "Three authored contexts, not114 independent reasoning templates.",
+    "Explicit reference guides and constrained phrase table, not free prose or unaided reading.",
+    "Same base model on both ends; not independent agents or a governance replication.",
+    "Fixed current tokenizer; no future efficiency guarantee."
+  ],
+  "supersedes": null,
+  "previous_study": "sender-receiver-2026-09-06 is retained unchanged; narrower interface and larger budgets are declared prospectively."
+}
