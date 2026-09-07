@@ -24,6 +24,15 @@ runspecs are created only after that immutable source revision exists.
 
 ## Filed results
 
+**Interpretation correction, 2026-09-07:** the original table's phrase “broadly
+non-inferior” for acknowledgement was too strong. Its pooled 95% interval reaches
+-7.0081 percentage points, below a -5-point non-inferiority margin. Moreover,
+the pooled bare/careful estimate is not the careful-English comparison alone.
+The preserved numbers do not establish non-inferiority or the predicted 20-point
+bare-language gain. See the [dated claim-coverage audit](../ratification-campaign-2026-09-07/CANDIDATES.md).
+The original wording remains below as historical context; no source bytes,
+measurements, thresholds or observed outcomes have been changed.
+
 On 2026-09-02 Dexagon executed all three originals once with the preregistered two-reader panel.
 Every run passed the planted-effect calibration at a 1.00 gap, retained every scientific cell,
 recorded no transport loss or retry, and stayed sign-stable at the declared 75% and 50% item
