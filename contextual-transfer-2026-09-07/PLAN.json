@@ -1,0 +1,66 @@
+{
+  "kind": "ainglish.contextual-structural-transfer.v1",
+  "seed": 17,
+  "seeds": [
+    17,
+    29
+  ],
+  "base_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "training": {
+    "batch_size": 2,
+    "epochs": 1,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 0.0002,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "lora_r": 16,
+    "max_artifact_bytes": 536870912,
+    "max_length": 1024,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "conditions": [
+    "base",
+    "ainglish-17",
+    "english-17",
+    "ainglish-29",
+    "english-29"
+  ],
+  "training_rows_per_arm": 768,
+  "contextual_teaching_rows": 576,
+  "identical_english_rehearsal_rows": 192,
+  "holdout_cases": 192,
+  "authored_structural_frames": 24,
+  "target_calls_per_condition": 480,
+  "max_target_calls": 2400,
+  "guards": {
+    "max_prompt_tokens": 2048,
+    "minimum_correct_controls": 11,
+    "control_items": 12,
+    "maximum_truncations_controls": 0,
+    "minimum_ram_before_load_gib": 14,
+    "physical_gpu": 0,
+    "physical_disk_reserve_gib": 15,
+    "target_retries": 0,
+    "downloads": 0
+  },
+  "primary": "For each fixed seed: Ainglish-trained minus matched English-trained accuracy on the Ainglish structural holdout without a glossary. Task-local facts and ledger boundary rules are supplied equally in both languages. Report all24 frames and six families; do not select the better seed.",
+  "retention": "Ainglish-trained minus base on paired careful English structural tasks, and separately96 ordinary English items. Same -5pp point screen overall and per language family; point estimates are screens, not statistical non-inferiority proofs.",
+  "analysis": "2000 paired bootstrap draws resampling24 authored structural frames, seed2026090770. Every output and failed qualification retained. Qualification is per model condition; unqualified conditions have no invented target score. Ordinary-English rehearsal/retention are related authored families, not an independent benchmark.",
+  "changes": "Larger contextual curriculum, common ordinary-English rehearsal, four-choice answer alignment, one epoch with batch2. Multiple changes plus a changed holdout prevent a causal attribution versus earlier runs.",
+  "limits": [
+    "One cached Qwen2.5-7B family, two training seeds, synthetic single-author tasks. Not independent human validation or governance evidence.",
+    "192 semantic configurations instantiate24 authored frames. More domains or rows are not192 independent task structures.",
+    "Frames exercise reference tracking, temporal state, action traces, joint constraints and boundaries absent from the simple single-question teaching rows. Task-local background sometimes supplies relevant boundary rules in both arms; this is not wholly unassisted understanding. Related reasoning may occur in prior published tests; novelty is relative to this frozen training split, not globally unseen concepts.",
+    "The model and fixed tokenizer already know English. This is modest adapter learning, not a future large-scale pretraining or tokenizer-replacement forecast.",
+    "All four adapters must be trained and publicly digest-sealed before any heldout evaluation. No adaptive epochs, favourable seed selection, post-hoc re-scoring or uncertain-call retry.",
+    "No full model checkpoints or downloads. Existing cached models remain untouched. Total new adapter allowance is2GiB with at least15GiB physical host reserve."
+  ]
+}
