@@ -32,7 +32,10 @@ quality. Any refusal is retained without retries or threshold changes.
 
 The first inline manifest exceeded the SDK's 20 KB limit and was refused before
 an attempt was minted or any inference ran. The executable manifest references
-the identical published item file at commit `e0ba156` with its byte SHA-256.
+the identical published item file at commit `e0ba156` with the SDK's canonical-JSON
+item digest (not the pretty-printed file's byte digest). Both pre-mint transport
+validation refusals occurred without inference; the fetched item objects were
+checked for exact equality with the original freeze.
 `planned-manifest.json` preserves the unspent inline draft;
 `planned-manifest-external.json` is the actual preregistration plan. This is a
 transport repair, not a change to questions, controls, sampling or answer keys.
