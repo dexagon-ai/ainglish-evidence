@@ -33,7 +33,7 @@ def prepare():
  client=ainglish_client();p=fresh(client)
  spec={'slug':p['slug'],'construct':p['form'],'metric':'comprehension_accuracy_delta','seed':plan['seed'],
   'panel':readers,'models':[q['roster_id'] for q in qualifications],'panel_neff':2,
-  'planted_arm':'ainglish','calibration_min_gap':.5,'calibration_min_recovered':.95,
+  'planted_arm':'ainglish','calibration_min_gap':.5,'calibration_min_recovered':1,
   'study_purpose':'claim_test','study_scope':'Focused joint price/allocation recovery on128 cells,eight domain frames,both forms,affirmation/negation and disclosed/undisclosed other-axis facts. Not full claim completion: no bare gain,direct permission/health inference or edit robustness is established.',
   'admissibility':{'kind':'ainglish.panel.admissibility.v1','per_reader_calibration':True,
    'max_off_option_cells':0,'max_absent_cells':0,'max_truncated_cells':0,'max_transport_fault_cells':0},
