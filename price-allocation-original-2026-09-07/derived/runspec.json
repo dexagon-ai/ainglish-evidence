@@ -1,0 +1,186 @@
+{
+  "slug": "offer-is-no-charge-billing-scope-resource-is-available-now",
+  "construct": "<OFFER> is no-charge(<billing-scope>) | <RESOURCE> is available-now(<allocation-scope>)",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 20260907032,
+  "panel": [
+    {
+      "name": "Dexagon-Sept7-Gemma12",
+      "provider": "ollama",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "base_url": "http://127.0.0.1:11438/v1",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "answer_protocol": "opaque-choice-v1",
+      "temperature": 0,
+      "max_tokens": 128,
+      "timeout_s": 180,
+      "seed": 20260907031,
+      "digest_source": "ollama:/api/tags",
+      "_ainglish_instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      }
+    },
+    {
+      "name": "Dexagon-Sept7-Mistral24",
+      "provider": "ollama",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "base_url": "http://127.0.0.1:11438/v1",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "precision": "q4_k_m",
+      "answer_protocol": "opaque-choice-v1",
+      "temperature": 0,
+      "max_tokens": 128,
+      "timeout_s": 180,
+      "seed": 20260907031,
+      "digest_source": "ollama:/api/tags",
+      "_ainglish_instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      }
+    }
+  ],
+  "models": [
+    "Dexagon-Sept7-Gemma12@q4_k_m",
+    "Dexagon-Sept7-Mistral24@q4_k_m"
+  ],
+  "panel_neff": 2,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "calibration_min_recovered": 1,
+  "study_purpose": "claim_test",
+  "study_scope": "Focused joint price/allocation recovery on128 cells,eight domain frames,both forms,affirmation/negation and disclosed/undisclosed other-axis facts. Not full claim completion: no bare gain,direct permission/health inference or edit robustness is established.",
+  "admissibility": {
+    "kind": "ainglish.panel.admissibility.v1",
+    "per_reader_calibration": true,
+    "max_off_option_cells": 0,
+    "max_absent_cells": 0,
+    "max_truncated_cells": 0,
+    "max_transport_fault_cells": 0
+  },
+  "comparator": {
+    "kind": "complete-careful-english-v1",
+    "description": "Same complete scoped claim and shared facts; shortest adequate meaning-complete English for invoice charge or present allocation. No bare ambiguity arm in this scalar."
+  },
+  "comparison_identity": {
+    "comparator_genre": "complete-careful-english-v1",
+    "exposure": "cold-no-added-reference",
+    "pair_rendering": "price-allocation-joint-128-v1",
+    "reader_class": "Two fixed qualified cached ctx4k Q4 readers;serial reader-outermost cells",
+    "form_strata": [
+      "no-charge",
+      "available-now"
+    ]
+  },
+  "settlement_strata": [
+    {
+      "id": "no-charge",
+      "weight": 1
+    },
+    {
+      "id": "available-now",
+      "weight": 1
+    }
+  ],
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/c164e9a1964bbd8f977eb283ca6059c835f940fd/price-allocation-original-2026-09-07/items.json",
+  "items_sha256": "129cbabe10df35abfcd5e510c822ba97e765f2a3f0626f4290c9292623113e65",
+  "estimand_contract": {
+    "kind": "ainglish.estimand-contract.v2",
+    "population": "Eight authored domain frames crossed with form, affirmation/explicit negation, latent other-axis truth and whether the other axis is actually reported.128 semantic cells, not128 independently authored templates.",
+    "item_set_construction": {
+      "answer_format": "one opaque choice from9 joint yes/no/not-determined vectors",
+      "design": "price-allocation-joint-128-v1",
+      "domains": 8,
+      "forms": 2,
+      "items": 128,
+      "negation": "ordinary scoped negation included and reported apart",
+      "unknown": "unreported other axis is not determined"
+    },
+    "reader_class": "Exact Gemma12 and Mistral24 literal-reader ctx4k Q4 derivatives;temperature0,output128,seed20260907031",
+    "window": "stateless cold single-shot cells;serial reader blocks after all calibration;no target retries",
+    "selection_rules": {
+      "gates": "both neutral screens passed,per-reader calibration,zero transport/yield faults",
+      "publication": "every finite admitted direction filed;failed gate retained without rerun",
+      "weighting": "equal form strata;all domains,polarities and information states retained"
+    },
+    "governance_effect": "report_only"
+  },
+  "attempt": {
+    "proposal_revision": "offer-is-no-charge-billing-scope-resource-is-available-now",
+    "estimand": "New original:128 complete joint price/allocation cases in two equal form strata;two fixed qualified cached readers;Ainglish minus careful-English accuracy. Report adverse/null values and absolute accuracies. No bare-arm or full-prediction completion claim.",
+    "admissibility_gates": [
+      "Both predeclared exact-reader screens pass, then per-reader fresh calibration passes; no target calls before authenticated SDK preregistration.",
+      "Proposal remains visible nonterminal with unchanged mapping and token prerequisite satisfied; original-author or external gates are not bypassed.",
+      "Zero absent,off-option,truncated or transport-fault cells; preserve every admitted direction and any failed-gate abort without target retries."
+    ],
+    "planned_sample": {
+      "scientific_items": 128,
+      "calibration_items": 8,
+      "readers": 2,
+      "target_calls": 256,
+      "calibration_calls": 32,
+      "source_commit": "c164e9a1964bbd8f977eb283ca6059c835f940fd",
+      "mapping_sha256": "c2038313ea0627b3f6a65826711cb6a285af20fefc3f67eb93d7028ff56aa663",
+      "qualification_results_sha256": "4ba293d26e807d1265c6090abfead6ecc85d7ab25756e4d0c0fbae6c10e7e7df"
+    }
+  },
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "Dexagon-Sept7-Gemma12@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "gemma3",
+        "basis": "Distinct cached base families; derivatives include fixed literal-reader system prompt and4096 context. This does not establish independent training data."
+      },
+      "screen_sha256": "bac8320e3e85a18914913fb1b0d7c77f7617e1065c649faabe60dbe3426ecb52",
+      "settings_sha256": "d454839a818da90f6ce66757ddb1bfbc0a596bcf66dc5c37187b9ec923061207",
+      "qualified_at": "2026-09-07T10:35:57+00:00",
+      "valid_until": "2026-09-14T10:35:57+00:00",
+      "result": {
+        "detectable_correct": 14,
+        "detectable_total": 14,
+        "other_correct": 0,
+        "other_total": 14,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 9500,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "Dexagon-Sept7-Mistral24@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "mistral-small3.2",
+        "basis": "Distinct cached base families; derivatives include fixed literal-reader system prompt and4096 context. This does not establish independent training data."
+      },
+      "screen_sha256": "3d208741341d6027bf6fbf74fc1b561d998bf63f952ba4215a08a098d49d4f3a",
+      "settings_sha256": "4dbdc1b18f5d8c3b69d4e39b5efb488eb6737a8766d93f39c2971d767a22c8d8",
+      "qualified_at": "2026-09-07T10:36:47+00:00",
+      "valid_until": "2026-09-14T10:36:47+00:00",
+      "result": {
+        "detectable_correct": 14,
+        "detectable_total": 14,
+        "other_correct": 0,
+        "other_total": 14,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 9500,
+        "passed": true
+      }
+    }
+  ]
+}
