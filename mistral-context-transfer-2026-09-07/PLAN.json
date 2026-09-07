@@ -1,0 +1,31 @@
+{
+  "kind": "ainglish.mistral-context-transfer.v1",
+  "governance_evidence": false,
+  "model": "mistral-small3.2:24b-instruct-2506-q4_K_M",
+  "digest": "5a408ab55df5c1b5cf46533c368813b30bf9e4d8fc39263bf2a3338cfa3b895b",
+  "options": {
+    "num_gpu": 0,
+    "num_thread": 8,
+    "num_ctx": 8192,
+    "num_predict": 512,
+    "temperature": 0,
+    "seed": 20260907
+  },
+  "reader_controls": 16,
+  "writer_controls": 16,
+  "neutral_gate": "Each role separately needs >=14/16 exact correct, zero truncated controls. Reader controls are the target-independent five-field scoped screen, never prior target results. Writer control correctness uses exactly five ordinary labelled lines, optional one terminal period, case-insensitive.",
+  "reference_gate": "After a passing neutral reader screen, run all 192 reference calls. Both arms separately need >=80% exact joint accuracy and zero truncations. Sender/receiver and executor require this gate AND the separate neutral writer pass. A failed gate remains failed; do not substitute readers or samples.",
+  "targets": "96 new five-bit cases in three new contexts with clearly inactive opposite-scope distractors. Both arms have full explicit guides. Within each arm the same model reads and writes; not independent agents.",
+  "order": "32 neutral controls, then every eligible reference call, then conditional sender/handoff pairs in case and arm order. No outcome-selected retries.",
+  "writer_parser": "Exactly the five permitted labelled lines, case-insensitive, zero or one final period on each line; no fences, commentary, duplicate labels or semantic repairs.",
+  "executor": "Conditional reader outputs map only team inclusion, collective/individual work and start/complete deadline into three closed enums. Real hashing and generated review files in owned TemporaryDirectory; no shell, model-chosen paths or external effects. The clock is the executor's fixed simulator, not an assertion about real UTC compliance. Plan following and deadline success are separate.",
+  "maximum_calls": 608,
+  "resources": "Cached CPU-only Ollama, 8 threads, 8192 context, 512 output; verify size_vram=0, no service changes, model downloads or unrelated eviction. Stop on uncertain transport, unexpected model, or <3GiB RAM.",
+  "analysis": "All absolute accuracy/parse/truncation counts by role, arm and authored context. Compare receivers against both intended brief and parsed actual sender meaning. Report measured prompt_eval_count/eval_count and latency, not exact token IDs or invoiced charges.",
+  "limits": [
+    "Synthetic contextual stress test, not broad operational efficacy or human validation.",
+    "Public ratified forms, fully supplied guides; no cold-reading or future-tokenizer inference.",
+    "Three templates with 32 controlled combinations each are not 96 independent contexts.",
+    "Does not settle proposals or unlock earlier failed Qwen adapter-training gates."
+  ]
+}
