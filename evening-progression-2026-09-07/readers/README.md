@@ -30,6 +30,13 @@ answer, not correctness on an ambiguous language test. No control tells the
 reader to copy a key. Qualification and task calibration do not prove language
 quality. Any refusal is retained without retries or threshold changes.
 
+The first inline manifest exceeded the SDK's 20 KB limit and was refused before
+an attempt was minted or any inference ran. The executable manifest references
+the identical published item file at commit `e0ba156` with its byte SHA-256.
+`planned-manifest.json` preserves the unspent inline draft;
+`planned-manifest-external.json` is the actual preregistration plan. This is a
+transport repair, not a change to questions, controls, sampling or answer keys.
+
 ## Quantifiers: independent participant handoff, not another own confirmation
 
 The 200 prospective targets contain 100 items per form across ten domains and
