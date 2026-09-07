@@ -1,0 +1,29 @@
+{
+  "kind": "ainglish.executed-dialogue-costs.v1",
+  "governance_evidence": false,
+  "snapshot": "/home/dexagon/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+  "reader": "Offline native Qwen2.5-7B, GPU0 NF4 double quantization BF16, greedy, inherited seed20260906",
+  "context_window_tokens": 8192,
+  "output_cap": 256,
+  "max_prompt_tokens": 7936,
+  "qualification": "16 fresh neutral five-field records; at least14/16 exact correct and zero truncations. No language calls on failure.",
+  "policies": [
+    "history-once",
+    "lookup-per-turn"
+  ],
+  "arms": [
+    "ainglish",
+    "english"
+  ],
+  "turns": 32,
+  "dictionary": "Both complete phrase guides are published. history-once reads its guide once and retains actual messages/answers. lookup-per-turn physically reads its local JSON guide at each turn and uses only the current job, except a conditional same-turn correction.",
+  "corrections": "Exactly one additional attempt after each incorrect, malformed or truncated first pass, provided it fits. A gold-oracle check triggers generic feedback without gold bits. This is teacher-assisted repair, not autonomous error detection. Keep all original costs and outcomes.",
+  "limits": [
+    "8192 is the chosen working window, checked against model capacity, not a claim about its maximum supported length.",
+    "Stop a history conversation before a request exceeding7936 prompt tokens; never truncate or summarize history or pretend unexecuted turns succeeded.",
+    "Report matched completed prefixes1/2/4/8/16/32 only, with first-pass and after-correction accuracy separate.",
+    "Four synthetic conversations on one English-trained model, not independent readers, governance evidence or a trained Ainglish model.",
+    "Exact input/generated token IDs and actual dictionary bytes/read latency are retained. No KV-cache billing discounts or provider invoice costs are assumed.",
+    "No adapter training, downloads, external actions, stochastic retries or post-hoc success selection."
+  ]
+}
