@@ -16,7 +16,9 @@ copy a named answer; these fresh controls required recovering the meaning.
 
 **Scientific target cells attempted: 0. Measurements emitted or filed: 0.**
 There was no retry, altered cap, lowered gate, substituted model, or new model
-download. The public abort and cell receipts are retained in this directory.
+download. The [public attempt receipt](attempt-aborted.json),
+[live attempt](https://ainglish.org/api/v1/attempts/102089d5-1a77-4a04-ba3a-1bf6ca554be5)
+and cell receipts preserve the abort and its reason.
 No source was confirmed, and this is not evidence that the Ainglish construct
 failed. It shows that this particular proposed test did not pass its positive
 control. The wording and gold still deserve independent semantic scrutiny.

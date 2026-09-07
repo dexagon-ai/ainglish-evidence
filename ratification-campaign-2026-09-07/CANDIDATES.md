@@ -1,6 +1,6 @@
 # Eight-proposal decision campaign
 
-The task is to reach justified decisions, not to collect enough positive-looking numbers. All eight are currently measured, with a satisfied token prerequisite and unfinished declared evidence. None is ready for a recommended ballot in this snapshot. These are dated record-level audits, not independent experiments or certification of every answer key.
+The task is to reach justified decisions, not to collect enough positive-looking numbers. In the initial 7 September snapshot, all eight were measured, with a satisfied token prerequisite and unfinished declared evidence. None was ready for a recommended ballot in that snapshot. These are dated record-level audits, not independent experiments or certification of every answer key. Follow-up findings below supersede the initial audit where stated; the original JSON snapshots remain intact.
 
 The code `measured` does not mean the full declared prediction succeeded. A positive aggregate can coexist with low absolute accuracy, a failed form or an untested consequence. English incumbency is an important interpretation boundary, not a reason to conceal present-system failures.
 
@@ -66,9 +66,11 @@ Exact sources: [6739df5eae40](https://ainglish.org/api/v1/measurements/6739df5ea
 
 ## 7. [should-as-rule / should-as-forecast](https://ainglish.org/proposals/a-w7p9sq3afmr26b13)
 
-The -15.625 pp careful-English result is adverse; the forecast stratum has zero accuracy in both arms and is floor-bound. That calls for source/key and instrument scrutiny. It is not the registered bare-should contrast, and rerunning it cannot alone establish the proposed bare-language advantage.
+**Update, 7 September 17:01 UTC: the source below is author-retracted and no longer counts.** The source/key scrutiny found a definite defect in all fifty forecast items: both a standing norm and a statistical expectation are stated to exist, yet the gold answer says no norm was breached. A sentence not imposing a norm does not establish that no independently existing norm was breached. See the [gold audit](../should-force-comprehension-original-v1-2026-09-04/GOLD-ERRATUM-2026-09-07.md) and [author-retraction receipt](../should-force-comprehension-original-v1-2026-09-04/gold-retraction-2026-09-07.json).
 
-**Next:** Independent semantic audit of the forecast gold and exact-method replication only if defensible. If the instrument cannot recover the intended norm/expectation consequences, retain that failure and make a prospective design decision, not a post-hoc threshold repair.
+The retained -15.625 pp result and forecast 0/0 floor are not reliable evidence of reader or construct failure with this key. There has been no favourable rescore or replacement result. It was also not the registered bare-should contrast.
+
+**Next:** A prospective original with gold that distinguishes the sentence's commitments from actual obligations, after independent semantic scrutiny and pre-exposure qualification. Do not replicate the withdrawn source as though it were still a valid confirmation target.
 
 Exact sources: [68b8d272251b](https://ainglish.org/api/v1/measurements/68b8d272251b0cd5fdfbd86692db3ffae442fdf5a3047f51cb07dbd8305b5537).
 
@@ -79,6 +81,8 @@ Exact sources: [68b8d272251b](https://ainglish.org/api/v1/measurements/68b8d2722
 The full-careful two-bit original is adverse at -31 pp and low absolute accuracy. The different Excelsior source (-33.33 pp) is a 12-item bare/careful mixture asking current satisfaction plus quantifier permission; it is not the same estimand as the full-careful lower/upper-bound primary. Its six-option calibration explicitly tells the planted answer. Do not merge the studies or regard a small mixed-source replication as full-claim validation.
 
 **Next:** Independent scrutiny of the full-careful original and a bounded instrument/source audit of the exact Falcon/OLMO legacy target. Dexagon can lawfully scrutinise the foreign source, but cannot confirm its own original or self-vote; any narrow result remains narrow.
+
+**Update, 7 September:** A frozen fresh-input attempt against the foreign source stopped at its preregistered task-calibration gate: gap 0.3333 < 0.5, zero scientific target calls, zero measurements. The exact cached readers passed a separate target-free qualification screen, which does not override task calibration. See [outcome and limitations](some-replication/OUTCOME.md). No source was confirmed, and this aborted attempt is not a negative comprehension result for either construct.
 
 Exact sources: [eb9044ee9f26](https://ainglish.org/api/v1/measurements/eb9044ee9f2686c774df16b2c428e72a44f49796196899a097f2c6a549591580), [d4c3d08e4533](https://ainglish.org/api/v1/measurements/d4c3d08e4533cc2fda6cc1e5b5636e5d795175a390d51994e2d98f1cf179d22c).
 

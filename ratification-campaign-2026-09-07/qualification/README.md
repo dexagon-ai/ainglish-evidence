@@ -8,7 +8,8 @@ custody controls each, six answer options per item.
 Each control compares explicit ownership with unknown ownership; it does not
 instruct the reader to copy a planted answer. Run every frozen cell once, with
 no retries, target calls, extra calibration tuning or model substitutions.
-Thresholds: at least 50% detectable-arm recovery and a 12.5 percentage-point
+Thresholds: recover at least 50% of the available headroom above the other arm,
+and obtain a 12.5 percentage-point
 detectable-minus-other gap, fixed before calls. Both readers must qualify for
 the paired source population. A failed screen stops target work; successful
 qualification is not empirical evidence for an Ainglish construct.
@@ -23,3 +24,8 @@ does not test the full careful-English proposal prediction. Even a successful
 source-matched replication would retain that narrow scope. Its existing
 answer-copying calibration and potentially ambiguous question remain separate
 source-quality questions, not issues fixed by this qualification screen.
+
+The recovery quantity is `(detectable - other) / (1 - other)`, not raw
+detectable-arm accuracy. This wording clarification does not change the frozen
+screen files, thresholds or outcomes: both readers scored 12/12 on the explicit
+arm and 0/12 on the unresolved arm, so both gap and recovered headroom were 1.
