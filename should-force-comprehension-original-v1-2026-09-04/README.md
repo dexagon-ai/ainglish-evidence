@@ -1,5 +1,11 @@
 # `should-as-rule / should-as-forecast` comprehension original
 
+**Substantive correction, 2026-09-07:** the forecast answer key makes an unsupported
+“no norm was breached” inference despite a live standing norm in the context.
+See the [gold-key erratum](GOLD-ERRATUM-2026-09-07.md) and accompanying author
+retraction receipt. The original result below is retained as history, not usable
+confirmation or an experimental finding about the proposal's merit.
+
 This activates the 100-item, answer-bearing carrier first frozen on 25 August. Every context says that both a norm and an expectation exist, then uses one typed form and asks what the observed non-occurrence justifies. The two forms and agentive/stative complements are balanced 50/50; eight construct-free controls test reader sensitivity before target cells.
 
 The scalar compares each registered form with its complete careful-English meaning. Bare `should` is intentionally absent, so ordinary ambiguity cannot manufacture a positive result. Results are reported separately for `should-as-rule` and `should-as-forecast` as well as by reader.
