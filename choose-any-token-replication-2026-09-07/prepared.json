@@ -1,0 +1,107 @@
+{
+  "kind": "ainglish.token-measurement-plan.v1",
+  "state": "prepared_not_run",
+  "manifest": {
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "estimand_contract": {
+      "kind": "ainglish.estimand-shadow.v1",
+      "unit_span": "pair",
+      "contrast": "token_delta",
+      "population": "cl100k_base/o200k_base/p50k_base",
+      "aggregation": {
+        "reducer": "least_favourable",
+        "rule": "maximum tokenizer mean"
+      },
+      "governance_effect": "report_only"
+    },
+    "interval_kind": "member_span",
+    "tokenizer_provenance": {
+      "kind": "ainglish.tiktoken-provenance.v1",
+      "library": "tiktoken",
+      "library_version": "0.14.0",
+      "encodings": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ]
+    },
+    "test_set": [
+      {
+        "english": "Choose exactly one member of eligible-translators; any eligible member is acceptable and no probability distribution is required.",
+        "ainglish": "choose-any(eligible-translators)."
+      },
+      {
+        "english": "Draw exactly one eligible member of backup-routers using a random procedure that gives every distinct eligible member equal probability.",
+        "ainglish": "draw-uniform(backup-routers)."
+      },
+      {
+        "english": "Please make one equal-probability draw from the frozen document-batches@2026-09-07 set.",
+        "ainglish": "draw-uniform(document-batches@2026-09-07)."
+      },
+      {
+        "english": "Choose exactly one from eligible-test-shards; any member is fine.",
+        "ainglish": "choose-any(eligible-test-shards)."
+      }
+    ],
+    "replicates_hash": "7ddf8b714cff39ca2f19d01690b384c0ef364e5aee0d8b70d3cf82f628684747",
+    "items_sha256": "e994ae27f96077d56581e8d9d4947a9538ad9f6800f929aeed878d40dfa1bdb8",
+    "comparison_identity": {
+      "kind": "ainglish.token-comparison-identity.v1",
+      "items_sha256": "e994ae27f96077d56581e8d9d4947a9538ad9f6800f929aeed878d40dfa1bdb8",
+      "item_count": 4,
+      "tokenizer_roster": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "comparator": "token_delta",
+      "population": "cl100k_base/o200k_base/p50k_base",
+      "aggregation": "maximum tokenizer mean",
+      "unit_span": "pair"
+    }
+  },
+  "manifest_commitment": "f8c2d4df0378c943a47fa35d870464e8b7d1547ea74a1989fa9429fc8b861c7e",
+  "estimand_contract_policy": {
+    "attached": true,
+    "reason": "the replication target declares the same estimand_contract"
+  },
+  "design_declaration": {
+    "kind": "ainglish.estimand-shadow.v1",
+    "unit_span": "pair",
+    "contrast": "token_delta",
+    "population": "cl100k_base/o200k_base/p50k_base",
+    "aggregation": {
+      "reducer": "least_favourable",
+      "rule": "maximum tokenizer mean"
+    },
+    "governance_effect": "report_only"
+  },
+  "replication_target": {
+    "manifest_hash": "7ddf8b714cff39ca2f19d01690b384c0ef364e5aee0d8b70d3cf82f628684747",
+    "estimand_contract_declared": true
+  },
+  "items_sha256": "e994ae27f96077d56581e8d9d4947a9538ad9f6800f929aeed878d40dfa1bdb8",
+  "pair_count": 4,
+  "sample_size_rule": {
+    "kind": "power-of-two-v1",
+    "item_count": 4,
+    "passed": true
+  },
+  "mint": {
+    "estimand": "token_delta over pair: token_delta; population: cl100k_base/o200k_base/p50k_base; aggregation: maximum tokenizer mean",
+    "admissibility_gates": [
+      "every declared tiktoken encoding loads",
+      "every frozen English and Ainglish string is countable"
+    ],
+    "planned_sample": {
+      "items": 4,
+      "tokenizers": 3
+    }
+  },
+  "next": "Mint plan.manifest with client.mint_attempt(...) before running this plan."
+}
