@@ -4,6 +4,8 @@ Prospective studies and posthoc source audits are separate here. Correction
 records preserve old values; they are not fresh-input replications. Teaching
 examples, exact arithmetic and successful UI tests are not reader evidence.
 
+The completed run is summarised in [Results and remaining actions](RESULTS.md).
+
 ## Frozen cost studies
 
 - no-undo / can-undo: 64 complete report pairs, 32 per form, against concise
@@ -24,8 +26,8 @@ The frozen context artifact resolves the references in both arms and is charged
 to neither. Token results price the declared sentences, not an entire exchange
 including teaching/context. The generated references and template variants are
 not hundreds of independent semantic populations. All outcomes and individual
-form/tokenizer results will be retained. No scientific result exists at this
-preparation commit; minting must precede counting.
+form/tokenizer results are retained. The original preparation commit `f99e300`
+preceded all five token runs; minting preceded counting in every case.
 
 English is the incumbent in these existing models/tokenizers. Present token
 premiums do not establish permanent inefficiency; future training benefits are
