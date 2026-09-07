@@ -1,0 +1,2875 @@
+{
+  "panel": [
+    {
+      "name": "falcon3-10b-qualification-v7-c8647169c2b9",
+      "provider": "ollama",
+      "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://localhost:11434/v1",
+      "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0
+    },
+    {
+      "name": "olmo2-13b-qualification-v7-cd836509a1a0",
+      "provider": "ollama",
+      "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://localhost:11434/v1",
+      "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0
+    }
+  ],
+  "models": [
+    "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+    "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m"
+  ],
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "tii/falcon3",
+        "basis": "Separate Falcon3 and OLMo2 model families; exact cached serving artifact bound to the foreign source digest. This does not establish operator independence."
+      },
+      "screen_sha256": "23af7fb410f662c7960a01022b5928e05ab73d91b95211d3759c20d8b204965f",
+      "settings_sha256": "d8e2b851e70b0daabc0610916ca67bf69986277d433c8753b88cac67cc70f027",
+      "qualified_at": "2026-09-07T16:30:34+00:00",
+      "valid_until": "2026-09-14T16:30:34+00:00",
+      "result": {
+        "detectable_correct": 12,
+        "detectable_total": 12,
+        "other_correct": 0,
+        "other_total": 12,
+        "min_gap_bps": 1250,
+        "min_recovered_bps": 5000,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "allenai/olmo2",
+        "basis": "Separate Falcon3 and OLMo2 model families; exact cached serving artifact bound to the foreign source digest. This does not establish operator independence."
+      },
+      "screen_sha256": "23af7fb410f662c7960a01022b5928e05ab73d91b95211d3759c20d8b204965f",
+      "settings_sha256": "f13eaea1cb80fe0dba28f673a336ace188885f808242d677ebeab8bb6fda8084",
+      "qualified_at": "2026-09-07T16:30:57+00:00",
+      "valid_until": "2026-09-14T16:30:57+00:00",
+      "result": {
+        "detectable_correct": 12,
+        "detectable_total": 12,
+        "other_correct": 0,
+        "other_total": 12,
+        "min_gap_bps": 1250,
+        "min_recovered_bps": 5000,
+        "passed": true
+      }
+    }
+  ],
+  "kind": "dexagon.ainglish.night-careful-readers.v1",
+  "public_id": "a-6974j2deetg3rcb5",
+  "slug": "verdict-fail-no-verdict",
+  "construct": "verdict-fail / no-verdict",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026090803,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "panel_neff": 2,
+  "comparator": {
+    "kind": "careful-english-v1",
+    "description": "128 authored targets, 64 per tag over CI/monitor/verifier/measurement. Complete careful-English comparator, same visible result anchor in both arms. The paired bare-anchored contrast is frozen at the same time and shares target worlds: it is NOT independent confirmation. Frames and anchor variants are correlated."
+  },
+  "items": [
+    {
+      "id": "verdict-000",
+      "english": "Fictional CI report about the package signature. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the package signature. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "package signature",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-001",
+      "english": "Fictional CI report about the package signature. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the package signature. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "package signature",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-002",
+      "english": "Fictional CI report about the package signature. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the package signature. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "package signature",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-003",
+      "english": "Fictional CI report about the package signature. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the package signature. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "package signature",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-004",
+      "english": "Fictional CI report about the package signature. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the package signature. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "package signature",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-005",
+      "english": "Fictional CI report about the package signature. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the package signature. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "package signature",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-006",
+      "english": "Fictional CI report about the package signature. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the package signature. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "package signature",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-007",
+      "english": "Fictional CI report about the package signature. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the package signature. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "package signature",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-008",
+      "english": "Fictional CI report about the migration output. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the migration output. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "migration output",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-009",
+      "english": "Fictional CI report about the migration output. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the migration output. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "migration output",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-010",
+      "english": "Fictional CI report about the migration output. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the migration output. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "migration output",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-011",
+      "english": "Fictional CI report about the migration output. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the migration output. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "migration output",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-012",
+      "english": "Fictional CI report about the migration output. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the migration output. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "migration output",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-013",
+      "english": "Fictional CI report about the migration output. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the migration output. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "migration output",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-014",
+      "english": "Fictional CI report about the migration output. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the migration output. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "migration output",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-015",
+      "english": "Fictional CI report about the migration output. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the migration output. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "migration output",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-016",
+      "english": "Fictional CI report about the binary checksum. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the binary checksum. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "binary checksum",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-017",
+      "english": "Fictional CI report about the binary checksum. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the binary checksum. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "binary checksum",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-018",
+      "english": "Fictional CI report about the binary checksum. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the binary checksum. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "binary checksum",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-019",
+      "english": "Fictional CI report about the binary checksum. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the binary checksum. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "binary checksum",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-020",
+      "english": "Fictional CI report about the binary checksum. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the binary checksum. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "binary checksum",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-021",
+      "english": "Fictional CI report about the binary checksum. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the binary checksum. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "binary checksum",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-022",
+      "english": "Fictional CI report about the binary checksum. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the binary checksum. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "binary checksum",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-023",
+      "english": "Fictional CI report about the binary checksum. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the binary checksum. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "binary checksum",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-024",
+      "english": "Fictional CI report about the test fixture. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the test fixture. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "test fixture",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-025",
+      "english": "Fictional CI report about the test fixture. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the test fixture. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "test fixture",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-026",
+      "english": "Fictional CI report about the test fixture. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the test fixture. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "test fixture",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-027",
+      "english": "Fictional CI report about the test fixture. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the test fixture. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "test fixture",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-028",
+      "english": "Fictional CI report about the test fixture. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the test fixture. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "test fixture",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-029",
+      "english": "Fictional CI report about the test fixture. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the test fixture. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "test fixture",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-030",
+      "english": "Fictional CI report about the test fixture. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional CI report about the test fixture. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "CI",
+      "frame": "test fixture",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-031",
+      "english": "Fictional CI report about the test fixture. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional CI report about the test fixture. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "CI",
+      "frame": "test fixture",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-032",
+      "english": "Fictional monitor report about the reservoir sensor. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the reservoir sensor. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "reservoir sensor",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-033",
+      "english": "Fictional monitor report about the reservoir sensor. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the reservoir sensor. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "reservoir sensor",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-034",
+      "english": "Fictional monitor report about the reservoir sensor. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the reservoir sensor. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "reservoir sensor",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-035",
+      "english": "Fictional monitor report about the reservoir sensor. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the reservoir sensor. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "reservoir sensor",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-036",
+      "english": "Fictional monitor report about the reservoir sensor. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the reservoir sensor. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "reservoir sensor",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-037",
+      "english": "Fictional monitor report about the reservoir sensor. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the reservoir sensor. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "reservoir sensor",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-038",
+      "english": "Fictional monitor report about the reservoir sensor. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the reservoir sensor. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "reservoir sensor",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-039",
+      "english": "Fictional monitor report about the reservoir sensor. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the reservoir sensor. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "reservoir sensor",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-040",
+      "english": "Fictional monitor report about the relay line. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the relay line. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "relay line",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-041",
+      "english": "Fictional monitor report about the relay line. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the relay line. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "relay line",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-042",
+      "english": "Fictional monitor report about the relay line. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the relay line. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "relay line",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-043",
+      "english": "Fictional monitor report about the relay line. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the relay line. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "relay line",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-044",
+      "english": "Fictional monitor report about the relay line. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the relay line. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "relay line",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-045",
+      "english": "Fictional monitor report about the relay line. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the relay line. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "relay line",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-046",
+      "english": "Fictional monitor report about the relay line. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the relay line. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "relay line",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-047",
+      "english": "Fictional monitor report about the relay line. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the relay line. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "relay line",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-048",
+      "english": "Fictional monitor report about the coolant circuit. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the coolant circuit. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "coolant circuit",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-049",
+      "english": "Fictional monitor report about the coolant circuit. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the coolant circuit. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "coolant circuit",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-050",
+      "english": "Fictional monitor report about the coolant circuit. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the coolant circuit. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "coolant circuit",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-051",
+      "english": "Fictional monitor report about the coolant circuit. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the coolant circuit. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "coolant circuit",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-052",
+      "english": "Fictional monitor report about the coolant circuit. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the coolant circuit. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "coolant circuit",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-053",
+      "english": "Fictional monitor report about the coolant circuit. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the coolant circuit. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "coolant circuit",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-054",
+      "english": "Fictional monitor report about the coolant circuit. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the coolant circuit. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "coolant circuit",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-055",
+      "english": "Fictional monitor report about the coolant circuit. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the coolant circuit. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "coolant circuit",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-056",
+      "english": "Fictional monitor report about the pressure gauge. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the pressure gauge. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "pressure gauge",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-057",
+      "english": "Fictional monitor report about the pressure gauge. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the pressure gauge. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "pressure gauge",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-058",
+      "english": "Fictional monitor report about the pressure gauge. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the pressure gauge. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "pressure gauge",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-059",
+      "english": "Fictional monitor report about the pressure gauge. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the pressure gauge. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "pressure gauge",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-060",
+      "english": "Fictional monitor report about the pressure gauge. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the pressure gauge. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "pressure gauge",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-061",
+      "english": "Fictional monitor report about the pressure gauge. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the pressure gauge. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "pressure gauge",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-062",
+      "english": "Fictional monitor report about the pressure gauge. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional monitor report about the pressure gauge. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "monitor",
+      "frame": "pressure gauge",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-063",
+      "english": "Fictional monitor report about the pressure gauge. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional monitor report about the pressure gauge. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "monitor",
+      "frame": "pressure gauge",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-064",
+      "english": "Fictional verifier report about the archive seal. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the archive seal. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "archive seal",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-065",
+      "english": "Fictional verifier report about the archive seal. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the archive seal. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "archive seal",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-066",
+      "english": "Fictional verifier report about the archive seal. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the archive seal. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "archive seal",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-067",
+      "english": "Fictional verifier report about the archive seal. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the archive seal. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "archive seal",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-068",
+      "english": "Fictional verifier report about the archive seal. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the archive seal. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "archive seal",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-069",
+      "english": "Fictional verifier report about the archive seal. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the archive seal. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "archive seal",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-070",
+      "english": "Fictional verifier report about the archive seal. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the archive seal. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "archive seal",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-071",
+      "english": "Fictional verifier report about the archive seal. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the archive seal. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "archive seal",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-072",
+      "english": "Fictional verifier report about the submitted certificate. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the submitted certificate. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "submitted certificate",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-073",
+      "english": "Fictional verifier report about the submitted certificate. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the submitted certificate. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "submitted certificate",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-074",
+      "english": "Fictional verifier report about the submitted certificate. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the submitted certificate. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "submitted certificate",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-075",
+      "english": "Fictional verifier report about the submitted certificate. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the submitted certificate. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "submitted certificate",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-076",
+      "english": "Fictional verifier report about the submitted certificate. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the submitted certificate. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "submitted certificate",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-077",
+      "english": "Fictional verifier report about the submitted certificate. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the submitted certificate. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "submitted certificate",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-078",
+      "english": "Fictional verifier report about the submitted certificate. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the submitted certificate. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "submitted certificate",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-079",
+      "english": "Fictional verifier report about the submitted certificate. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the submitted certificate. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "submitted certificate",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-080",
+      "english": "Fictional verifier report about the parcel weight. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the parcel weight. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "parcel weight",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-081",
+      "english": "Fictional verifier report about the parcel weight. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the parcel weight. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "parcel weight",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-082",
+      "english": "Fictional verifier report about the parcel weight. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the parcel weight. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "parcel weight",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-083",
+      "english": "Fictional verifier report about the parcel weight. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the parcel weight. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "parcel weight",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-084",
+      "english": "Fictional verifier report about the parcel weight. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the parcel weight. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "parcel weight",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-085",
+      "english": "Fictional verifier report about the parcel weight. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the parcel weight. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "parcel weight",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-086",
+      "english": "Fictional verifier report about the parcel weight. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the parcel weight. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "parcel weight",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-087",
+      "english": "Fictional verifier report about the parcel weight. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the parcel weight. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "parcel weight",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-088",
+      "english": "Fictional verifier report about the ledger total. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the ledger total. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "ledger total",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-089",
+      "english": "Fictional verifier report about the ledger total. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the ledger total. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "ledger total",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-090",
+      "english": "Fictional verifier report about the ledger total. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the ledger total. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "ledger total",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-091",
+      "english": "Fictional verifier report about the ledger total. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the ledger total. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "ledger total",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-092",
+      "english": "Fictional verifier report about the ledger total. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the ledger total. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "ledger total",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-093",
+      "english": "Fictional verifier report about the ledger total. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the ledger total. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "ledger total",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-094",
+      "english": "Fictional verifier report about the ledger total. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional verifier report about the ledger total. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "verifier",
+      "frame": "ledger total",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-095",
+      "english": "Fictional verifier report about the ledger total. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional verifier report about the ledger total. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "verifier",
+      "frame": "ledger total",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-096",
+      "english": "Fictional measurement report about the sample purity. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the sample purity. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "sample purity",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-097",
+      "english": "Fictional measurement report about the sample purity. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the sample purity. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "sample purity",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-098",
+      "english": "Fictional measurement report about the sample purity. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the sample purity. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "sample purity",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-099",
+      "english": "Fictional measurement report about the sample purity. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the sample purity. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "sample purity",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-100",
+      "english": "Fictional measurement report about the sample purity. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the sample purity. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "sample purity",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-101",
+      "english": "Fictional measurement report about the sample purity. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the sample purity. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "sample purity",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-102",
+      "english": "Fictional measurement report about the sample purity. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the sample purity. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "sample purity",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-103",
+      "english": "Fictional measurement report about the sample purity. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the sample purity. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "sample purity",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-104",
+      "english": "Fictional measurement report about the timing trace. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the timing trace. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "timing trace",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-105",
+      "english": "Fictional measurement report about the timing trace. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the timing trace. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "timing trace",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-106",
+      "english": "Fictional measurement report about the timing trace. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the timing trace. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "timing trace",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-107",
+      "english": "Fictional measurement report about the timing trace. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the timing trace. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "timing trace",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-108",
+      "english": "Fictional measurement report about the timing trace. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the timing trace. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "timing trace",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-109",
+      "english": "Fictional measurement report about the timing trace. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the timing trace. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "timing trace",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-110",
+      "english": "Fictional measurement report about the timing trace. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the timing trace. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "timing trace",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-111",
+      "english": "Fictional measurement report about the timing trace. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the timing trace. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "timing trace",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-112",
+      "english": "Fictional measurement report about the optical reading. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the optical reading. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "optical reading",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-113",
+      "english": "Fictional measurement report about the optical reading. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the optical reading. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "optical reading",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-114",
+      "english": "Fictional measurement report about the optical reading. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the optical reading. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "optical reading",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-115",
+      "english": "Fictional measurement report about the optical reading. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the optical reading. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "optical reading",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-116",
+      "english": "Fictional measurement report about the optical reading. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the optical reading. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "optical reading",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-117",
+      "english": "Fictional measurement report about the optical reading. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the optical reading. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "optical reading",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-118",
+      "english": "Fictional measurement report about the optical reading. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the optical reading. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "optical reading",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-119",
+      "english": "Fictional measurement report about the optical reading. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the optical reading. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "optical reading",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-120",
+      "english": "Fictional measurement report about the voltage sample. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the voltage sample. Anchor: The completed log records an out-of-spec target and no intervening repair. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "voltage sample",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-121",
+      "english": "Fictional measurement report about the voltage sample. Anchor: The process exited before reading the target. Its condition has not been established. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the voltage sample. Anchor: The process exited before reading the target. Its condition has not been established. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "voltage sample",
+      "anchor_variant": 0,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-122",
+      "english": "Fictional measurement report about the voltage sample. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the voltage sample. Anchor: The final signed finding identifies a defect in the target; its state has not changed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "cannot tell",
+        "yes"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "voltage sample",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-123",
+      "english": "Fictional measurement report about the voltage sample. Anchor: The connection failed before assessment began. No other assessment is available. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the voltage sample. Anchor: The connection failed before assessment began. No other assessment is available. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "cannot tell",
+        "yes",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "voltage sample",
+      "anchor_variant": 1,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-124",
+      "english": "Fictional measurement report about the voltage sample. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the voltage sample. Anchor: All required checks ran and found the target noncompliant; no correction followed. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "no",
+        "yes",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "voltage sample",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-125",
+      "english": "Fictional measurement report about the voltage sample. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the voltage sample. Anchor: The run was cancelled without evaluating the target. Its condition remains unestablished. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "voltage sample",
+      "anchor_variant": 2,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-126",
+      "english": "Fictional measurement report about the voltage sample. Anchor: The persisted result marks the target defective; this remains the current state. Status: ran and found the target defective.",
+      "ainglish": "Fictional measurement report about the voltage sample. Anchor: The persisted result marks the target defective; this remains the current state. Status: verdict-fail.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "no",
+        "cannot tell"
+      ],
+      "answer": "yes",
+      "settlement_stratum": "verdict-fail",
+      "domain": "measurement",
+      "frame": "voltage sample",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": true,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-127",
+      "english": "Fictional measurement report about the voltage sample. Anchor: A retry is required because no assessment was produced. No other result is known. Status: did not reach a judgement about the target.",
+      "ainglish": "Fictional measurement report about the voltage sample. Anchor: A retry is required because no assessment was produced. No other result is known. Status: no-verdict.",
+      "question": "Is the thing being checked now known to be broken?",
+      "options": [
+        "yes",
+        "cannot tell",
+        "no"
+      ],
+      "answer": "cannot tell",
+      "settlement_stratum": "no-verdict",
+      "domain": "measurement",
+      "frame": "voltage sample",
+      "anchor_variant": 3,
+      "oracle": {
+        "known_defective": false,
+        "absence_of_judgement_is_success": false
+      }
+    },
+    {
+      "id": "verdict-careful-control-0",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "The handoff assigns the inspection card to Anu or Cato; the recipient is not recorded.",
+      "ainglish": "The handoff assigns the inspection card to Anu, not Cato.",
+      "question": "Who receives the inspection card?",
+      "options": [
+        "Anu",
+        "Bryn",
+        "Cato",
+        "Deni",
+        "Elin",
+        "cannot determine"
+      ],
+      "answer": "Anu"
+    },
+    {
+      "id": "verdict-careful-control-1",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "The handoff assigns the harbour key to Bryn or Deni; the recipient is not recorded.",
+      "ainglish": "The handoff assigns the harbour key to Bryn, not Deni.",
+      "question": "Who receives the harbour key?",
+      "options": [
+        "Anu",
+        "Bryn",
+        "Cato",
+        "Deni",
+        "Elin",
+        "cannot determine"
+      ],
+      "answer": "Bryn"
+    },
+    {
+      "id": "verdict-careful-control-2",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "The handoff assigns the linen docket to Cato or Elin; the recipient is not recorded.",
+      "ainglish": "The handoff assigns the linen docket to Cato, not Elin.",
+      "question": "Who receives the linen docket?",
+      "options": [
+        "Anu",
+        "Bryn",
+        "Cato",
+        "Deni",
+        "Elin",
+        "cannot determine"
+      ],
+      "answer": "Cato"
+    },
+    {
+      "id": "verdict-careful-control-3",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "The handoff assigns the station ledger to Deni or Anu; the recipient is not recorded.",
+      "ainglish": "The handoff assigns the station ledger to Deni, not Anu.",
+      "question": "Who receives the station ledger?",
+      "options": [
+        "Anu",
+        "Bryn",
+        "Cato",
+        "Deni",
+        "Elin",
+        "cannot determine"
+      ],
+      "answer": "Deni"
+    },
+    {
+      "id": "verdict-careful-control-4",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "The handoff assigns the tool receipt to Elin or Bryn; the recipient is not recorded.",
+      "ainglish": "The handoff assigns the tool receipt to Elin, not Bryn.",
+      "question": "Who receives the tool receipt?",
+      "options": [
+        "Anu",
+        "Bryn",
+        "Cato",
+        "Deni",
+        "Elin",
+        "cannot determine"
+      ],
+      "answer": "Elin"
+    },
+    {
+      "id": "verdict-careful-control-5",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "The handoff assigns the visitor badge to Anu or Cato; the recipient is not recorded.",
+      "ainglish": "The handoff assigns the visitor badge to Anu, not Cato.",
+      "question": "Who receives the visitor badge?",
+      "options": [
+        "Bryn",
+        "Cato",
+        "Deni",
+        "Elin",
+        "cannot determine",
+        "Anu"
+      ],
+      "answer": "Anu"
+    },
+    {
+      "id": "verdict-careful-control-6",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "The handoff assigns the orange folder to Bryn or Deni; the recipient is not recorded.",
+      "ainglish": "The handoff assigns the orange folder to Bryn, not Deni.",
+      "question": "Who receives the orange folder?",
+      "options": [
+        "Bryn",
+        "Anu",
+        "Cato",
+        "Deni",
+        "Elin",
+        "cannot determine"
+      ],
+      "answer": "Bryn"
+    },
+    {
+      "id": "verdict-careful-control-7",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "The handoff assigns the loan slip to Cato or Elin; the recipient is not recorded.",
+      "ainglish": "The handoff assigns the loan slip to Cato, not Elin.",
+      "question": "Who receives the loan slip?",
+      "options": [
+        "Anu",
+        "Cato",
+        "Bryn",
+        "Deni",
+        "Elin",
+        "cannot determine"
+      ],
+      "answer": "Cato"
+    },
+    {
+      "id": "verdict-careful-control-8",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "The handoff assigns the meeting notes to Deni or Anu; the recipient is not recorded.",
+      "ainglish": "The handoff assigns the meeting notes to Deni, not Anu.",
+      "question": "Who receives the meeting notes?",
+      "options": [
+        "Anu",
+        "Bryn",
+        "Deni",
+        "Cato",
+        "Elin",
+        "cannot determine"
+      ],
+      "answer": "Deni"
+    },
+    {
+      "id": "verdict-careful-control-9",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "The handoff assigns the dispatch envelope to Elin or Bryn; the recipient is not recorded.",
+      "ainglish": "The handoff assigns the dispatch envelope to Elin, not Bryn.",
+      "question": "Who receives the dispatch envelope?",
+      "options": [
+        "Anu",
+        "Bryn",
+        "Cato",
+        "Elin",
+        "Deni",
+        "cannot determine"
+      ],
+      "answer": "Elin"
+    }
+  ],
+  "items_sha256": "1e0960ec015d9e43bbd8057e2d2b0e1fab73ec65b19dc846846fbce231033c61",
+  "settlement_strata": [
+    {
+      "id": "verdict-fail",
+      "weight": 1
+    },
+    {
+      "id": "no-verdict",
+      "weight": 1
+    }
+  ],
+  "attempt": {
+    "proposal_revision": "verdict-fail-no-verdict",
+    "estimand": "128 authored targets, 64 per tag over CI/monitor/verifier/measurement. Complete careful-English comparator, same visible result anchor in both arms. The paired bare-anchored contrast is frozen at the same time and shares target worlds: it is NOT independent confirmation. Frames and anchor variants are correlated.",
+    "admissibility_gates": [
+      "fresh resolving-original eligibility and unchanged claim before mint",
+      "exact two qualified cached readers only; no downloads, substitutions or retries",
+      "ten target-independent custody controls first, each reader planted-gap threshold 0.5",
+      "zero target inference before qualification/calibration gate passes",
+      "all contrasts frozen together; preserve adverse/null results, per-form values and absolute accuracy",
+      "official item-bootstrap intervals do not make template variants independent domains; report this limitation"
+    ],
+    "planned_sample": {
+      "target_items": 128,
+      "calibration_items": 10,
+      "readers": 2,
+      "seed": 2026090803,
+      "scope": "128 authored targets, 64 per tag over CI/monitor/verifier/measurement. Complete careful-English comparator, same visible result anchor in both arms. The paired bare-anchored contrast is frozen at the same time and shares target worlds: it is NOT independent confirmation. Frames and anchor variants are correlated."
+    }
+  }
+}
