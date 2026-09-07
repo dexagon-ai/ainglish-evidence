@@ -41,13 +41,13 @@ exists anywhere.
 | 4 | Durable experiment runtime | Hash-chained, single-writer journals retain exact requests and native-HF input/output token IDs. Resource guards cover physical host disk and occupied devices. Safe completed-prefix continuation is tested; uncertain calls are never replayed automatically. |
 | 5 | Isolate writer, reader, format and budget | [612 target calls plus 16 controls](../communication-diagnostics-2026-09-06/READING.md) completed without truncation. The predeclared five-field training gate failed. Strict and post-hoc format results remain separate. |
 | 6 | Matched communication-adapter learning | **Held at the failed gate.** [Conditional design](../disposable-task-benchmark-2026-09-07/COMMUNICATION-TRAINING.md) prepared; no new adapter training presented as completed. |
-| 7 | Cached cross-family robustness | The [first strict screen](../cached-reader-diagnostic-2026-09-07/RESULTS.json) failed for all three readers. A [prospectively changed wrapper protocol](../cached-reader-semantic-2026-09-07/PLAN.json) qualified only Mistral. Its comparison is continuing from an exact journal prefix after a shared-service interruption. No failed reader was replaced or retried. |
+| 7 | Cached cross-family robustness | The first strict screen failed for all three readers. The [prospectively changed wrapper protocol](../cached-reader-semantic-2026-09-07/READING.md) qualified only Mistral; all 216 target answers and 48 neutral-screen answers are now retained and audited. Five-field reference reading scored 96/96 in each language. Two-field outputs all failed the exact-key protocol; the [post-hoc shape audit](../cached-reader-semantic-2026-09-07/SHAPE-AUDIT.md) explains why. The exact completed prefix was reused after a shared-service interruption; no scientific call was retried. |
 | 8 | Definition startup and amortisation | [Frozen offline accounting](../definition-amortisation-2026-09-07/RESULTS.md) across three tokenizers, four contexts and 1–128 turns. A shorter final transcript on two encoders did not make the full replayed-request total cheaper. This is not provider billing or a comprehension test. |
 | 9 | Disposable local-task benchmark | [Closed-schema executor and tests](../disposable-task-benchmark-2026-09-07/STATUS.md) prepared, with actual bounded temporary-directory IO and explicit simulated timing. **Model-driven execution held**, not run through the failed qualification gate. |
 | 10 | Explain missing work and its effect | Shared website/API explanations distinguish originals, independent replications, different metrics and author action. Settlement text explicitly includes the original finding in the majority arithmetic. |
 | 11 | Shared CSS and responsive checks | Twelve repeated style groups consolidated; 32 same-DOM computed-style cells have no final differences. 248 whole-site viewport cells, 28 scripted journey tasks and real 400% browser zoom checks passed. These are automated fixtures, not human usability certification. |
 | 12 | Whole-conversation flagship examples | Three ratified distinctions compose into a sender message, English confirmation and illustrated consequence. All eight choices tested at four widths, keyboard reset and no-JavaScript defaults included. A shared hidden-button bug was found and fixed. No model calls or operational action occurs in the demo. |
-| 13 | Human research comparison | Website cards put the completed free-prose failure and narrower diagnostic beside the earlier learning studies. Exposure conditions, denominators, failed guards and pinned source links stay visible. No pooled project success rate. |
+| 13 | Human research comparison | Website cards put the completed free-prose failure and narrower diagnostic beside the earlier learning studies; the completed cached-reader comparison is being added to the same focused review. Exposure conditions, denominators, failed guards and pinned source links stay visible. No pooled project success rate. |
 | 14 | Training ingestion rehearsal | [Six real SDK projections](../training-ingestion-rehearsal-2026-09-07/READING.md) from the existing pinned v3 pack, including exact exclusion canaries and 66 content-preserving chat envelopes. No source-pack mutation, new release, external ingestion or model training claimed. |
 
 Five focused website change sets and one SDK change were submitted for
@@ -69,6 +69,18 @@ shows that a JSON fence explained the first Gemma and Mistral failures. The
 successor declared its more permissive wrapper **before** using fresh neutral
 controls; the old failures were not reclassified. Different neutral vocabulary
 also changed, so these are not a causal estimate of the wrapper change alone.
+
+The completed Mistral comparison shows that this particular guided reader can
+recover all five choices in all 96 cases per language. Both languages reached
+the same ceiling: this is not evidence of an Ainglish advantage. Three authored
+contexts and previously published cases do not establish broad generalisation.
+Its two-field failures were output-shape refusals, not a clean estimate of
+semantic error; the separate post-hoc audit does not rewrite their zero scores.
+
+The final live snapshot at 01:31 UTC on 7 September still showed three
+release-ready entries, no eligible ballots for these six candidates, and both
+source-correction requests pending. No new substantive coordination replies
+had arrived. Those are dated observations, not guarantees of the current queue.
 
 Likewise, the [definition-cost curves](../definition-amortisation-2026-09-07/RESULTS.md)
 distinguish a stored transcript from repeatedly sending its whole history. They
