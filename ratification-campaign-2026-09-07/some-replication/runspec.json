@@ -1,0 +1,501 @@
+{
+  "kind": "dexagon.ainglish.some-quantifier-narrow-replication.v1",
+  "construct": "some-or-all / some-but-not-all",
+  "public_id": "a-dg8qvvp9sq3b0trt",
+  "slug": "some-or-all-some-but-not-all-does-some-leave-room-for-all-2",
+  "metric": "comprehension_accuracy_delta",
+  "replicates_hash": "d4c3d08e4533cc2fda6cc1e5b5636e5d795175a390d51994e2d98f1cf179d22c",
+  "seed": 2026090717,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "panel_neff": 1,
+  "panel": [
+    {
+      "name": "falcon3-10b-qualification-v7-c8647169c2b9",
+      "provider": "ollama",
+      "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://localhost:11434/v1",
+      "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0
+    },
+    {
+      "name": "olmo2-13b-qualification-v7-cd836509a1a0",
+      "provider": "ollama",
+      "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://localhost:11434/v1",
+      "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0
+    }
+  ],
+  "models": [
+    "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+    "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m"
+  ],
+  "comparator": {
+    "kind": "balanced-bare-and-complete-careful-english-v1",
+    "description": "Within each bounded population/count cell, one English comparator uses ambiguous bare some and one states the complete lower/upper mapping."
+  },
+  "items": [
+    {
+      "id": "dx-ratification-some-01",
+      "english": "Some of the catalogue drawers received an inventory label. The bounded population has 7 members; exactly 0 received an inventory label.",
+      "ainglish": "some-or-all catalogue drawers received an inventory label. The bounded population has 7 members; exactly 0 received an inventory label.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "yes / no",
+        "no / yes",
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes"
+      ],
+      "answer": "no / yes",
+      "strata": {
+        "domain": "archive",
+        "form": "some-or-all",
+        "comparator": "bare",
+        "observed_count": "0-of-7"
+      }
+    },
+    {
+      "id": "dx-ratification-some-02",
+      "english": "Some of the catalogue drawers received an inventory label. The bounded population has 7 members; exactly 0 received an inventory label.",
+      "ainglish": "some-but-not-all catalogue drawers received an inventory label. The bounded population has 7 members; exactly 0 received an inventory label.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "no / yes",
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no"
+      ],
+      "answer": "no / no",
+      "strata": {
+        "domain": "archive",
+        "form": "some-but-not-all",
+        "comparator": "bare",
+        "observed_count": "0-of-7"
+      }
+    },
+    {
+      "id": "dx-ratification-some-03",
+      "english": "At least one of the catalogue drawers received an inventory label; the message remains compatible with every member satisfying that predicate. The bounded population has 7 members; exactly 0 received an inventory label.",
+      "ainglish": "some-or-all catalogue drawers received an inventory label. The bounded population has 7 members; exactly 0 received an inventory label.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no",
+        "no / yes"
+      ],
+      "answer": "no / yes",
+      "strata": {
+        "domain": "archive",
+        "form": "some-or-all",
+        "comparator": "careful",
+        "observed_count": "0-of-7"
+      }
+    },
+    {
+      "id": "dx-ratification-some-04",
+      "english": "At least one of the catalogue drawers received an inventory label, and at least one did not; the message excludes every member satisfying that predicate. The bounded population has 7 members; exactly 0 received an inventory label.",
+      "ainglish": "some-but-not-all catalogue drawers received an inventory label. The bounded population has 7 members; exactly 0 received an inventory label.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no",
+        "no / yes",
+        "no / no"
+      ],
+      "answer": "no / no",
+      "strata": {
+        "domain": "archive",
+        "form": "some-but-not-all",
+        "comparator": "careful",
+        "observed_count": "0-of-7"
+      }
+    },
+    {
+      "id": "dx-ratification-some-05",
+      "english": "Some of the habitat plots received a soil survey. The bounded population has 8 members; exactly 1 received a soil survey.",
+      "ainglish": "some-or-all habitat plots received a soil survey. The bounded population has 8 members; exactly 1 received a soil survey.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no",
+        "no / yes",
+        "no / no",
+        "unknown / yes"
+      ],
+      "answer": "yes / yes",
+      "strata": {
+        "domain": "conservation",
+        "form": "some-or-all",
+        "comparator": "bare",
+        "observed_count": "1-of-8"
+      }
+    },
+    {
+      "id": "dx-ratification-some-06",
+      "english": "Some of the habitat plots received a soil survey. The bounded population has 8 members; exactly 1 received a soil survey.",
+      "ainglish": "some-but-not-all habitat plots received a soil survey. The bounded population has 8 members; exactly 1 received a soil survey.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "yes / yes",
+        "yes / no",
+        "no / yes",
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown"
+      ],
+      "answer": "yes / no",
+      "strata": {
+        "domain": "conservation",
+        "form": "some-but-not-all",
+        "comparator": "bare",
+        "observed_count": "1-of-8"
+      }
+    },
+    {
+      "id": "dx-ratification-some-07",
+      "english": "At least one of the habitat plots received a soil survey; the message remains compatible with every member satisfying that predicate. The bounded population has 8 members; exactly 1 received a soil survey.",
+      "ainglish": "some-or-all habitat plots received a soil survey. The bounded population has 8 members; exactly 1 received a soil survey.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "yes / no",
+        "no / yes",
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes"
+      ],
+      "answer": "yes / yes",
+      "strata": {
+        "domain": "conservation",
+        "form": "some-or-all",
+        "comparator": "careful",
+        "observed_count": "1-of-8"
+      }
+    },
+    {
+      "id": "dx-ratification-some-08",
+      "english": "At least one of the habitat plots received a soil survey, and at least one did not; the message excludes every member satisfying that predicate. The bounded population has 8 members; exactly 1 received a soil survey.",
+      "ainglish": "some-but-not-all habitat plots received a soil survey. The bounded population has 8 members; exactly 1 received a soil survey.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "no / yes",
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no"
+      ],
+      "answer": "yes / no",
+      "strata": {
+        "domain": "conservation",
+        "form": "some-but-not-all",
+        "comparator": "careful",
+        "observed_count": "1-of-8"
+      }
+    },
+    {
+      "id": "dx-ratification-some-09",
+      "english": "Some of the freight lockers received a routing card. The bounded population has 9 members; exactly 9 received a routing card.",
+      "ainglish": "some-or-all freight lockers received a routing card. The bounded population has 9 members; exactly 9 received a routing card.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no",
+        "no / yes"
+      ],
+      "answer": "yes / yes",
+      "strata": {
+        "domain": "shipping",
+        "form": "some-or-all",
+        "comparator": "bare",
+        "observed_count": "9-of-9"
+      }
+    },
+    {
+      "id": "dx-ratification-some-10",
+      "english": "Some of the freight lockers received a routing card. The bounded population has 9 members; exactly 9 received a routing card.",
+      "ainglish": "some-but-not-all freight lockers received a routing card. The bounded population has 9 members; exactly 9 received a routing card.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no",
+        "no / yes",
+        "no / no"
+      ],
+      "answer": "no / no",
+      "strata": {
+        "domain": "shipping",
+        "form": "some-but-not-all",
+        "comparator": "bare",
+        "observed_count": "9-of-9"
+      }
+    },
+    {
+      "id": "dx-ratification-some-11",
+      "english": "At least one of the freight lockers received a routing card; the message remains compatible with every member satisfying that predicate. The bounded population has 9 members; exactly 9 received a routing card.",
+      "ainglish": "some-or-all freight lockers received a routing card. The bounded population has 9 members; exactly 9 received a routing card.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no",
+        "no / yes",
+        "no / no",
+        "unknown / yes"
+      ],
+      "answer": "yes / yes",
+      "strata": {
+        "domain": "shipping",
+        "form": "some-or-all",
+        "comparator": "careful",
+        "observed_count": "9-of-9"
+      }
+    },
+    {
+      "id": "dx-ratification-some-12",
+      "english": "At least one of the freight lockers received a routing card, and at least one did not; the message excludes every member satisfying that predicate. The bounded population has 9 members; exactly 9 received a routing card.",
+      "ainglish": "some-but-not-all freight lockers received a routing card. The bounded population has 9 members; exactly 9 received a routing card.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "yes / yes",
+        "yes / no",
+        "no / yes",
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown"
+      ],
+      "answer": "no / no",
+      "strata": {
+        "domain": "shipping",
+        "form": "some-but-not-all",
+        "comparator": "careful",
+        "observed_count": "9-of-9"
+      }
+    },
+    {
+      "id": "dx-ratification-some-cal-01",
+      "calibration": true,
+      "english": "There are 0 marked members in a population of 7; the quantified requirement is not available.",
+      "ainglish": "At least one marked member is required; every member being marked is permitted. There are 0 marked members in a population of 7.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "yes / no",
+        "no / yes",
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes"
+      ],
+      "answer": "no / yes",
+      "strata": {
+        "control": "construct-free-planted-effect"
+      }
+    },
+    {
+      "id": "dx-ratification-some-cal-02",
+      "calibration": true,
+      "english": "There are 1 marked members in a population of 8; the quantified requirement is not available.",
+      "ainglish": "At least one marked member is required; every member being marked is permitted. There are 1 marked members in a population of 8.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "no / yes",
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no"
+      ],
+      "answer": "yes / yes",
+      "strata": {
+        "control": "construct-free-planted-effect"
+      }
+    },
+    {
+      "id": "dx-ratification-some-cal-03",
+      "calibration": true,
+      "english": "There are 9 marked members in a population of 9; the quantified requirement is not available.",
+      "ainglish": "At least one marked member is required; every member being marked is permitted. There are 9 marked members in a population of 9.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no",
+        "no / yes"
+      ],
+      "answer": "yes / yes",
+      "strata": {
+        "control": "construct-free-planted-effect"
+      }
+    },
+    {
+      "id": "dx-ratification-some-cal-04",
+      "calibration": true,
+      "english": "There are 0 marked members in a population of 7; the quantified requirement is not available.",
+      "ainglish": "At least one marked member and at least one unmarked member are required; every member being marked is excluded. There are 0 marked members in a population of 7.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "unknown / yes",
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no",
+        "no / yes",
+        "no / no"
+      ],
+      "answer": "no / no",
+      "strata": {
+        "control": "construct-free-planted-effect"
+      }
+    },
+    {
+      "id": "dx-ratification-some-cal-05",
+      "calibration": true,
+      "english": "There are 1 marked members in a population of 8; the quantified requirement is not available.",
+      "ainglish": "At least one marked member and at least one unmarked member are required; every member being marked is excluded. There are 1 marked members in a population of 8.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "unknown / unknown",
+        "yes / yes",
+        "yes / no",
+        "no / yes",
+        "no / no",
+        "unknown / yes"
+      ],
+      "answer": "yes / no",
+      "strata": {
+        "control": "construct-free-planted-effect"
+      }
+    },
+    {
+      "id": "dx-ratification-some-cal-06",
+      "calibration": true,
+      "english": "There are 9 marked members in a population of 9; the quantified requirement is not available.",
+      "ainglish": "At least one marked member and at least one unmarked member are required; every member being marked is excluded. There are 9 marked members in a population of 9.",
+      "question": "Given the stated population and count: (1) is the message satisfied now; (2) does its quantifier permit every member to satisfy the predicate?",
+      "options": [
+        "yes / yes",
+        "yes / no",
+        "no / yes",
+        "no / no",
+        "unknown / yes",
+        "unknown / unknown"
+      ],
+      "answer": "no / no",
+      "strata": {
+        "control": "construct-free-planted-effect"
+      }
+    }
+  ],
+  "items_sha256": "b9851e6ba3f97a53ec175ad0bbefbb22af3a4c4a609fa50cd7167a5fe6f1e5af",
+  "attempt": {
+    "proposal_revision": "some-or-all-some-but-not-all-does-some-leave-room-for-all-2",
+    "estimand": "Independent fresh-input replication of d4c3d08e: aggregate Ainglish-minus-English exact-answer accuracy on 12 authored none/one/all bounded-count cells, both forms and equal bare/careful comparators, exact Falcon3/OLMo2 reader artifacts. Not the distinct full-careful claim or Dexagon original.",
+    "admissibility_gates": [
+      "fresh authenticated exact-source suggestion remains executable and source remains valid",
+      "all complete item triples differ from served prior carriers; twelve real cells retain both forms, both comparators and none/one/all counts",
+      "both exact cached artifacts retain the frozen qualified settings; no model substitution or downloads",
+      "all calibration cells execute before any scientific cell and the planted gap is at least 0.5",
+      "zero retries, transport faults, truncations or commitment mismatch; preserve any refusal",
+      "file every finite outcome once regardless of direction; do not claim full-prediction completion from this mixed instrument"
+    ],
+    "planned_sample": {
+      "real_items": 12,
+      "calibration_items": 6,
+      "readers": 2,
+      "authored_worlds": 3,
+      "form_counts": {
+        "some-or-all": 6,
+        "some-but-not-all": 6
+      },
+      "comparator_counts": {
+        "bare": 6,
+        "careful": 6
+      },
+      "seed": 2026090717,
+      "legacy_panel_neff_declaration": 1
+    }
+  },
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "tii/falcon3",
+        "basis": "Separate Falcon3 and OLMo2 model families; exact cached serving artifact bound to the foreign source digest. This does not establish operator independence."
+      },
+      "screen_sha256": "23af7fb410f662c7960a01022b5928e05ab73d91b95211d3759c20d8b204965f",
+      "settings_sha256": "d8e2b851e70b0daabc0610916ca67bf69986277d433c8753b88cac67cc70f027",
+      "qualified_at": "2026-09-07T16:30:34+00:00",
+      "valid_until": "2026-09-14T16:30:34+00:00",
+      "result": {
+        "detectable_correct": 12,
+        "detectable_total": 12,
+        "other_correct": 0,
+        "other_total": 12,
+        "min_gap_bps": 1250,
+        "min_recovered_bps": 5000,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "allenai/olmo2",
+        "basis": "Separate Falcon3 and OLMo2 model families; exact cached serving artifact bound to the foreign source digest. This does not establish operator independence."
+      },
+      "screen_sha256": "23af7fb410f662c7960a01022b5928e05ab73d91b95211d3759c20d8b204965f",
+      "settings_sha256": "f13eaea1cb80fe0dba28f673a336ace188885f808242d677ebeab8bb6fda8084",
+      "qualified_at": "2026-09-07T16:30:57+00:00",
+      "valid_until": "2026-09-14T16:30:57+00:00",
+      "result": {
+        "detectable_correct": 12,
+        "detectable_total": 12,
+        "other_correct": 0,
+        "other_total": 12,
+        "min_gap_bps": 1250,
+        "min_recovered_bps": 5000,
+        "passed": true
+      }
+    }
+  ]
+}
