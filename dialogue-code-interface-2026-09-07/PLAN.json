@@ -1,0 +1,50 @@
+{
+  "kind": "ainglish.dialogue-code-interface.v1",
+  "governance_evidence": false,
+  "snapshot": "/home/dexagon/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+  "reader": "Cached native Qwen2.5-7B, GPU0 NF4 double quantization BF16, greedy, seed20260906; no adapter.",
+  "qualification": {
+    "neutral_cases": 32,
+    "minimum_exact_correct": 28,
+    "require_all_valid": true,
+    "maximum_truncations": 0
+  },
+  "qualification_boundary": "Checks the prospective response interface, not semantic ability on Ainglish or the task population.",
+  "change_reason": "Previous JSON screen scored4/16; raw outputs include broken magnetic keys and a flexible field stuck false. New fixed positional Y/N code and explicitly stated present/absent controls are declared prospectively, not post-hoc repair of those outputs. Both wrapper and controls change, so this does not isolate a causal wrapper effect.",
+  "policies": [
+    "history-once",
+    "lookup-per-turn"
+  ],
+  "arms": [
+    "ainglish",
+    "english"
+  ],
+  "contexts": [
+    "kite-festival",
+    "seed-library",
+    "print-workshop"
+  ],
+  "turns_per_context": 32,
+  "max_initial_calls": 384,
+  "max_repair_calls": 384,
+  "max_total_calls": 800,
+  "context_window_tokens": 8192,
+  "output_cap": 64,
+  "max_prompt_tokens": 8128,
+  "repair": "At most one gold-oracle-triggered generic correction per wrong/malformed/truncated response, only if the complete prompt fits. No gold bits, no selection of favourable retries.",
+  "resource_guards": {
+    "minimum_host_free_gib": 15,
+    "minimum_ram_before_load_gib": 14,
+    "gpu": "physical0 idle; never evict"
+  },
+  "limits": [
+    "Three authored scenario frames with32 factorial configurations each, not96 independent contexts or agents.",
+    "Both full language guides are visible. This is guided current-model research, not governance evidence, cold reading or a trained future model.",
+    "A strictly smaller output surface can improve formatting without improving semantic understanding. First-pass validity and exact correctness remain separate.",
+    "history-once retains actual requests and answers; lookup-per-turn reads the physical local dictionary on every turn and discards prior closed jobs.",
+    "Stop before an oversized prompt; never silently truncate, summarize, or report unexecuted turns as successful.",
+    "Record exact input/generated token IDs, actual dictionary bytes/read latency and all repair costs. No KV-cache discount, provider invoice or human usability claim.",
+    "Generic corrective feedback uses a gold oracle; this is not autonomous error detection.",
+    "The old4/16 qualification and zero language calls remain unchanged. No model downloads or uncertain-call retries."
+  ]
+}
