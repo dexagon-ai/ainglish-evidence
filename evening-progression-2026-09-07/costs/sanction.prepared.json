@@ -1,0 +1,195 @@
+{
+  "kind": "ainglish.token-measurement-plan.v1",
+  "state": "prepared_not_run",
+  "manifest": {
+    "metric": "token_delta",
+    "construct": "sanction-allow / sanction-penalize",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "stratum": "allow",
+        "english": "The banking commission formally permitted the lender to open office 9.",
+        "ainglish": "sanction-allow(banking-commission): the lender may open office-9."
+      },
+      {
+        "stratum": "allow",
+        "english": "The research board formally permitted the vaccine trial to recruit adults.",
+        "ainglish": "sanction-allow(research-board): the vaccine trial may recruit adults."
+      },
+      {
+        "stratum": "allow",
+        "english": "The borough council formally permitted the fair to operate on Fridays.",
+        "ainglish": "sanction-allow(borough-council): the fair may operate on Fridays."
+      },
+      {
+        "stratum": "allow",
+        "english": "The flight regulator formally permitted the carrier to serve Riga.",
+        "ainglish": "sanction-allow(flight-regulator): the carrier may serve Riga."
+      },
+      {
+        "stratum": "allow",
+        "english": "The privacy commission formally permitted the clinic to release anonymised images.",
+        "ainglish": "sanction-allow(privacy-commission): the clinic may release anonymised images."
+      },
+      {
+        "stratum": "allow",
+        "english": "The ballot authority formally permitted the coalition to register its slate.",
+        "ainglish": "sanction-allow(ballot-authority): the coalition may register its slate."
+      },
+      {
+        "stratum": "allow",
+        "english": "The harbour board formally permitted the freighter to use berth 8.",
+        "ainglish": "sanction-allow(harbour-board): the freighter may use berth-8."
+      },
+      {
+        "stratum": "allow",
+        "english": "The protocol council formally permitted edition 6 to be distributed.",
+        "ainglish": "sanction-allow(protocol-council): edition-6 may be distributed."
+      },
+      {
+        "stratum": "penalize",
+        "english": "The finance board formally imposed a penalty on the broker: trades suspended for 14 days.",
+        "ainglish": "sanction-penalize(finance-board): the broker, trades suspended for 14 days."
+      },
+      {
+        "stratum": "penalize",
+        "english": "The ethics panel formally imposed a penalty on the laboratory: grants suspended for two years.",
+        "ainglish": "sanction-penalize(ethics-panel): the laboratory, grants suspended for two years."
+      },
+      {
+        "stratum": "penalize",
+        "english": "The athletics union formally imposed a penalty on the team: home ground closed for three matches.",
+        "ainglish": "sanction-penalize(athletics-union): the team, home ground closed for three matches."
+      },
+      {
+        "stratum": "penalize",
+        "english": "The competition commission formally imposed a penalty on the wholesaler: fined 3 million pounds.",
+        "ainglish": "sanction-penalize(competition-commission): the wholesaler, fined 3 million pounds."
+      },
+      {
+        "stratum": "penalize",
+        "english": "The licensing board formally imposed a penalty on the dentist: licence suspended for four months.",
+        "ainglish": "sanction-penalize(licensing-board): the dentist, licence suspended for four months."
+      },
+      {
+        "stratum": "penalize",
+        "english": "The water authority formally imposed a penalty on the factory: effluent volume restricted to 80 litres daily.",
+        "ainglish": "sanction-penalize(water-authority): the factory, effluent volume restricted to 80 litres daily."
+      },
+      {
+        "stratum": "penalize",
+        "english": "The education board formally imposed a penalty on the instructor: barred from residential trips this semester.",
+        "ainglish": "sanction-penalize(education-board): the instructor, barred from residential trips this semester."
+      },
+      {
+        "stratum": "penalize",
+        "english": "The international council formally imposed a penalty on the territory: weapons imports restricted for one year.",
+        "ainglish": "sanction-penalize(international-council): the territory, weapons imports restricted for one year."
+      }
+    ],
+    "estimand_contract": {
+      "kind": "ainglish.estimand-shadow.v1",
+      "unit_span": "one complete report of a formal act by a named authority, including the authority, the target, the polarity and the specifics of the act",
+      "contrast": "Registered sanction-allow / sanction-penalize form minus complete careful English stating the same authority, target, polarity and specifics with the explicit competitor verbs (formally permitted / approved; formally imposed a penalty, fine, restriction or embargo) — the comparator the proposal's own example pairs use",
+      "population": "16 prospective authored formal-act reports: 8 permissions and 8 penalties across 16 distinct authorities and domains (finance, research ethics, municipal, aviation, data protection, elections, ports, standards, sport, competition, medicine, environment, schools, international security); identical facts in both arms; not random natural prose",
+      "aggregation": {
+        "reducer": "least_favourable",
+        "rule": "Equal item mean over all 16 pairs within each tokenizer; maximum tokenizer mean (least-favourable) across cl100k_base, o200k_base and p50k_base. Bounds are tokenizer member span, not a population confidence interval."
+      },
+      "governance_effect": "report_only"
+    },
+    "comparison_identity": {
+      "comparator_genre": "complete-careful-english-explicit-verb-v1",
+      "pair_rendering": "formal-act-report",
+      "kind": "ainglish.token-comparison-identity.v1",
+      "tokenizer_roster": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "comparator": "Registered sanction-allow / sanction-penalize form minus complete careful English stating the same authority, target, polarity and specifics with the explicit competitor verbs (formally permitted / approved; formally imposed a penalty, fine, restriction or embargo) — the comparator the proposal's own example pairs use",
+      "population": "16 prospective authored formal-act reports: 8 permissions and 8 penalties across 16 distinct authorities and domains (finance, research ethics, municipal, aviation, data protection, elections, ports, standards, sport, competition, medicine, environment, schools, international security); identical facts in both arms; not random natural prose",
+      "aggregation": "Equal item mean over all 16 pairs within each tokenizer; maximum tokenizer mean (least-favourable) across cl100k_base, o200k_base and p50k_base. Bounds are tokenizer member span, not a population confidence interval.",
+      "unit_span": "one complete report of a formal act by a named authority, including the authority, the target, the polarity and the specifics of the act",
+      "items_sha256": "1c8fa22b1a9af62b58b7e492008a6a519af05f950759f7f72ee2a9cb6f4eb03a",
+      "item_count": 16
+    },
+    "method": "Fresh-input independent replication of 2f1dbe79a8922712f186da6acf8336878a31aed81a135621d4ab339fdc1c247f; same complete formal-act comparator, 16 reports balanced 8/8, exact three tokenizer lineages and original estimand contract. No prior complete pair reused.",
+    "interval_kind": "member_span",
+    "tokenizer_provenance": {
+      "kind": "ainglish.tiktoken-provenance.v1",
+      "library": "tiktoken",
+      "library_version": "0.14.0",
+      "encodings": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ]
+    },
+    "replicates_hash": "2f1dbe79a8922712f186da6acf8336878a31aed81a135621d4ab339fdc1c247f",
+    "shared_context": {
+      "url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/main/evening-progression-2026-09-07/costs/context-649447acb84dff74a62efc88296ea439ceaf02a49039b46009ee6edd68ecad7f.json",
+      "sha256": "649447acb84dff74a62efc88296ea439ceaf02a49039b46009ee6edd68ecad7f",
+      "digest_recipe": "SHA-256 of Ainglish canonical JSON",
+      "charged_to_neither_arm": true
+    },
+    "items_sha256": "1c8fa22b1a9af62b58b7e492008a6a519af05f950759f7f72ee2a9cb6f4eb03a"
+  },
+  "manifest_commitment": "9206059c96a6d677c4104cc43d06a1d3285c50723eedaff520811eb0f31971f9",
+  "estimand_contract_policy": {
+    "attached": true,
+    "reason": "the replication target declares the same estimand_contract"
+  },
+  "design_declaration": {
+    "kind": "ainglish.estimand-shadow.v1",
+    "unit_span": "one complete report of a formal act by a named authority, including the authority, the target, the polarity and the specifics of the act",
+    "contrast": "Registered sanction-allow / sanction-penalize form minus complete careful English stating the same authority, target, polarity and specifics with the explicit competitor verbs (formally permitted / approved; formally imposed a penalty, fine, restriction or embargo) — the comparator the proposal's own example pairs use",
+    "population": "16 prospective authored formal-act reports: 8 permissions and 8 penalties across 16 distinct authorities and domains (finance, research ethics, municipal, aviation, data protection, elections, ports, standards, sport, competition, medicine, environment, schools, international security); identical facts in both arms; not random natural prose",
+    "aggregation": {
+      "reducer": "least_favourable",
+      "rule": "Equal item mean over all 16 pairs within each tokenizer; maximum tokenizer mean (least-favourable) across cl100k_base, o200k_base and p50k_base. Bounds are tokenizer member span, not a population confidence interval."
+    },
+    "governance_effect": "report_only"
+  },
+  "replication_target": {
+    "manifest_hash": "2f1dbe79a8922712f186da6acf8336878a31aed81a135621d4ab339fdc1c247f",
+    "estimand_contract_declared": true
+  },
+  "items_sha256": "1c8fa22b1a9af62b58b7e492008a6a519af05f950759f7f72ee2a9cb6f4eb03a",
+  "pair_count": 16,
+  "transport_limits": {
+    "kind": "ainglish.inline-token-limits.v1",
+    "max_canonical_bytes": 131072,
+    "max_pairs": 512,
+    "max_text_bytes_per_arm": 4096,
+    "max_regex_piece_bytes": 512,
+    "max_regex_piece_squared_byte_sum": 8000000,
+    "encodings": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "rule": "Complete inline pairs only; no URL fetching or approximate splitting. Aggregate piece work sums squared UTF-8 piece lengths over both arms and every declared tokenizer, before vocabulary loading. The same canonical-byte cap applies at mint and filing."
+  },
+  "sample_size_rule": {
+    "kind": "power-of-two-v1",
+    "item_count": 16,
+    "passed": true
+  },
+  "mint": {
+    "estimand": "token_delta over one complete report of a formal act by a named authority, including the authority, the target, the polarity and the specifics of the act: Registered sanction-allow / sanction-penalize form minus complete careful English stating the same authority, target, polarity and specifics with the explicit competitor verbs (formally permitted / approved; formally imposed a penalty, fine, restriction or embargo) — the comparator the proposal's own example pairs use; population: 16 prospective authored formal-act reports: 8 permissions and 8 penalties across 16 distinct authorities and domains (finance, research ethics, municipal, aviation, data protection, elections, ports, standards, sport, competition, medicine, environment, schools, international security); identical facts in both arms; not random natural prose; aggregation: Equal item mean over all 16 pairs within each tokenizer; maximum tokenizer mean (least-favourable) across cl100k_base, o200k_base and p50k_base. Bounds are tokenizer member span, not a population confidence interval.",
+    "admissibility_gates": [
+      "every declared tiktoken encoding loads",
+      "every frozen English and Ainglish string is countable"
+    ],
+    "planned_sample": {
+      "items": 16,
+      "tokenizers": 3
+    }
+  },
+  "next": "Mint plan.manifest with client.mint_attempt(...) before running this plan."
+}
