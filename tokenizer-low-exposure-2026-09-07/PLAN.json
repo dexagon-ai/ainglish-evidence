@@ -1,0 +1,89 @@
+{
+  "kind": "ainglish.low-exposure-tokenizer-study.v1",
+  "random_seed": 20260907,
+  "training_bytes_per_cell": 4000000,
+  "english_eval_bytes": 1000000,
+  "mixtures": [
+    {
+      "nominal_max_fraction": 0.001,
+      "occurrences": 41,
+      "unique_records": 41,
+      "ordered_id_sha256": "a46ad3614193e23ca62fbb78dc95aa670377fa5a098dd2e212f40dd3f83fbed7",
+      "arms": {
+        "ainglish": {
+          "exposure_bytes": 3109,
+          "achieved_fraction": 0.00077725,
+          "exposure_sha256": "9c124648ea83784b3927cca05b09e7710e5a04a0a6745bf364be978eac5609c2"
+        },
+        "english": {
+          "exposure_bytes": 3957,
+          "achieved_fraction": 0.00098925,
+          "exposure_sha256": "22691d1ac65351972a41aa8505bac9f78909a4322091a65b4615e1506fac5a7e"
+        }
+      }
+    },
+    {
+      "nominal_max_fraction": 0.01,
+      "occurrences": 358,
+      "unique_records": 358,
+      "ordered_id_sha256": "0538233a1e113ed8a47bc758dde362736d5a4dfce1c12257cbb273c18fce062c",
+      "arms": {
+        "ainglish": {
+          "exposure_bytes": 31433,
+          "achieved_fraction": 0.00785825,
+          "exposure_sha256": "99523313af2177cc40b7d5644205082e6dea16c72380720d79c7b99a42caefa5"
+        },
+        "english": {
+          "exposure_bytes": 39925,
+          "achieved_fraction": 0.00998125,
+          "exposure_sha256": "e71f8cd98255a122e245ff1355a6a7af2c64516274576ccf645efe0a3284e746"
+        }
+      }
+    },
+    {
+      "nominal_max_fraction": 0.05,
+      "occurrences": 1386,
+      "unique_records": 576,
+      "ordered_id_sha256": "e042bea77abd58b94674bdb7018a895f87b254b09e846a3a3bddb884288f84ef",
+      "arms": {
+        "ainglish": {
+          "exposure_bytes": 160851,
+          "achieved_fraction": 0.04021275,
+          "exposure_sha256": "f6b39e3cb5ac08aa2dc2c397bdc0186b34de76ef3a4ea69791243890e8cf3463"
+        },
+        "english": {
+          "exposure_bytes": 199977,
+          "achieved_fraction": 0.04999425,
+          "exposure_sha256": "abcdfd279a0d95246a347c9e629c3b9879c33cfc2436a5ee2ced3f17e84ddf7b"
+        }
+      }
+    }
+  ],
+  "vocabulary_sizes": [
+    8000,
+    16000
+  ],
+  "presegmentation": [
+    "bytelevel-regex",
+    "whitespace-preserving"
+  ],
+  "cells": 28,
+  "conditions": [
+    "background-only",
+    "paired-A-exposure",
+    "paired-English-exposure"
+  ],
+  "tokenizers_version": "0.22.2",
+  "corpus_sha256": "b87af1edc03137e926981322cc7ce22f6972116b9a8a1b292fda345ed26beffe",
+  "teaching_sha256": "020ba8ec949b91ccab5e80928c76657541cde54e4e95f122cccac5e85e93bdb9",
+  "boundaries": [
+    "Same record IDs and occurrence counts in paired arms; achieved byte fractions differ and are reported.",
+    "4MB total byte budget; the shorter teaching arm receives more of the fixed background prefix. This is byte-budget matched, not identical background exposure.",
+    "Whole records split by deterministic ID hash before UTF8-safe budget clipping; documents do not cross splits.",
+    "Literal filtering only: the background is not certified free of semantic Ainglish influence.",
+    "All 256 byte tokens supplied; every heldout string must decode byte-exactly. No unknown-token collapse or whitespace loss receives credit.",
+    "New lexical Ainglish cases share the authored teaching frames; this is not independent grammar transfer.",
+    "Local newly trained BPEs are not production tokenizers, model weight training, adoption or a forecast. No downloads or raw background redistribution."
+  ],
+  "analysis": "Every cell reports totals on the same heldout English documents, synthetic code, punctuation/Unicode and paired language cases. Report costs against each matched background-only tokenizer, plus paired-A versus paired-English exposure. No best-cell selection."
+}
