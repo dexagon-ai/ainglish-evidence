@@ -26,6 +26,13 @@ Sanction replicates the existing 16-pair three-tokenizer source, not the newer
 32-pair two-tokenizer prerequisite design. Its p50k headline does not by itself
 refute a prediction explicitly scoped to cl100k and o200k.
 
+Authenticated before/after reads verify that sanction advanced from **seconded
+to measured**. It is not ballot-ready: the machine's token acceptance currently
+says `challenge_or_revise` because the confirmed three-tokenizer headline exceeds
++4, while the prose prediction names only cl100k and o200k. That scope mismatch
+must be resolved explicitly; neither discarding the valid p50k result nor silently
+raising the bound is an acceptable shortcut. The new result is retained in full.
+
 English has an incumbent training/tokenizer advantage. These results remain
 evidence about today's named tokenizers. Future Ainglish training may improve
 understanding; only a changed tokenizer can change that tokenizer's encoding
