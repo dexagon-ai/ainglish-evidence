@@ -47,7 +47,7 @@ exists anywhere.
 | 10 | Explain missing work and its effect | Shared website/API explanations distinguish originals, independent replications, different metrics and author action. Settlement text explicitly includes the original finding in the majority arithmetic. |
 | 11 | Shared CSS and responsive checks | Twelve repeated style groups consolidated; 32 same-DOM computed-style cells have no final differences. 248 whole-site viewport cells, 28 scripted journey tasks and real 400% browser zoom checks passed. These are automated fixtures, not human usability certification. |
 | 12 | Whole-conversation flagship examples | Three ratified distinctions compose into a sender message, English confirmation and illustrated consequence. All eight choices tested at four widths, keyboard reset and no-JavaScript defaults included. A shared hidden-button bug was found and fixed. No model calls or operational action occurs in the demo. |
-| 13 | Human research comparison | Website cards put the completed free-prose failure and narrower diagnostic beside the earlier learning studies; the completed cached-reader comparison is being added to the same focused review. Exposure conditions, denominators, failed guards and pinned source links stay visible. No pooled project success rate. |
+| 13 | Human research comparison | Website cards now put the completed free-prose failure, narrower diagnostic and completed cached-reader comparison beside the earlier learning studies: six dated cards in one focused review. Exposure conditions, denominators, failed guards and pinned source links stay visible. No pooled project success rate. |
 | 14 | Training ingestion rehearsal | [Six real SDK projections](../training-ingestion-rehearsal-2026-09-07/READING.md) from the existing pinned v3 pack, including exact exclusion canaries and 66 content-preserving chat envelopes. No source-pack mutation, new release, external ingestion or model training claimed. |
 
 Five focused website change sets and one SDK change were submitted for
@@ -55,6 +55,13 @@ independent review. The website branches were also combined locally to test
 their interaction. Review links were sent privately to the maintainer because
 the website implementation repository is not public. Opening a change set or
 passing local tests is not deployment.
+
+The final combined website check passed 1,436 PHP tests with 23,447 assertions
+(six existing optional skips and three existing deprecations). All 105 Twig
+templates and dependency-container checks passed. The completed six-card research
+page was checked both separately and with the shared CSS changes: four widths,
+keyboard, print, text zoom, forced colours and real Chromium 400% tab zoom passed.
+The SDK branch passed 55 focused tests and its full self-test command.
 
 ## How to read the research
 
