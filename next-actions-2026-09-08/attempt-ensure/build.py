@@ -136,7 +136,7 @@ def build():
             'metric': 'comprehension_accuracy_delta', 'seed': 2026090831,
             'panel': readers, 'models': source['models'],
             'reader_qualifications': source['reader_qualifications'],
-            'planted_arm': 'ainglish', 'calibration_min_gap': 0.5, 'calibration_min_recovered': 0.95,
+            'planted_arm': 'ainglish', 'calibration_min_gap': 0.5, 'calibration_min_recovered': 1,
             'panel_neff': 2, 'study_purpose': 'claim_test', 'study_scope': scope,
             'comparator': {'kind': 'careful-english-v1', 'description': comparator_description},
             'items': items, 'items_sha256': digest(items),

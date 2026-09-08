@@ -16,6 +16,8 @@ Two cached model families, Mistral Small 3.2 24B and Gemma 3 12B, use the exact 
 
 Twelve target-independent parcel-custody controls precede all targets; each reader must reach the frozen 0.5 detectability gap and 0.95 recovered accuracy. The official panel randomly assigns one arm per item per reader. Maximum 48 calibration calls plus 512 target calls. No retries, replacements or optional stopping. Transport failures and refusals retain an abort journal. No new weights or tokenizer downloads are needed.
 
+Preflight caught a portability issue before mint or any reader call: decimal `0.95` cannot be committed under the current PHP-compatible manifest canonicalizer. The runspec therefore represents recovery as integer `1`. With exactly 12 controls, both thresholds require exactly 12 correct answers, so this changes no possible admission verdict. The original freeze and this no-spend correction remain in git history; targets and analysis are unchanged.
+
 ## Interpretation fixed before results
 
 Report absolute accuracy, raw counts and Ainglish-minus-English differences for each tag, all eight tag/context strata, each reader and each probe. Preserve the literal author prediction that either tag should not have more errors than its careful-English gloss. Report estimates and intervals without inventing an author-declared tolerance; an interval spanning harm is inconclusive, not demonstrated equivalence. No conclusion of full refutation or support will be based solely on an unconfirmed point estimate.
