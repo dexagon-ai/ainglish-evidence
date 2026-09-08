@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT / 'execution'
 spec = json.loads((ROOT / 'runspec.json').read_text())
 result = json.loads((OUT / 'measurement-after.json').read_text())
-files = list(OUT.glob('attempt-ensure.attempt-*.cells.json'))
+files = [p for p in OUT.glob('attempt-ensure.attempt-*.cells.json') if '.calibration.' not in p.name]
 assert len(files) == 1
 cells = json.loads(files[0].read_text())['rows']
 items = [x for x in spec['items'] if not x.get('calibration')]

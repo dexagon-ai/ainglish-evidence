@@ -1,0 +1,42 @@
+{
+  "captured_at": "2026-09-08T13:23:06.653247+00:00",
+  "scope": "Post-run read-only /api/show introspection of the still digest-matching cached models; no inference. The pre-run manifest pins these artifact digests. This extra copy is not a newly preregistered exposure or a provider-signed execution attestation.",
+  "readers": [
+    {
+      "reader_name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "system": "You are a careful literal reader. Follow the requested fixed-option output exactly and emit no explanation.",
+      "template": "{{- range $index, $_ := .Messages }}\n{{- if eq .Role \"system\" }}[SYSTEM_PROMPT]{{ .Content }}[/SYSTEM_PROMPT]\n{{- else if eq .Role \"user\" }}\n{{- if and (le (len (slice $.Messages $index)) 2) $.Tools }}[AVAILABLE_TOOLS]{{ $.Tools }}[/AVAILABLE_TOOLS]\n{{- end }}[INST]{{ .Content }}[/INST]\n{{- else if eq .Role \"assistant\" }}\n{{- if .Content }}{{ .Content }}\n{{- if not (eq (len (slice $.Messages $index)) 1) }}</s>\n{{- end }}\n{{- else if .ToolCalls }}\n{{- range $i, $_ := .ToolCalls }}[TOOL_CALLS]{{ .Function.Name }}[CALL_ID]{{ $i }}[ARGS]{{ .Function.Arguments }}\n{{- end }}</s>\n{{- end }}\n{{- else if eq .Role \"tool\" }}[TOOL_RESULTS]{\"content\": {{ .Content }}}[/TOOL_RESULTS]\n{{- end }}\n{{- end }}",
+      "parameters": "num_ctx                        4096\nstop                           \"\\\\n\"\ntemperature                    0",
+      "details": {
+        "parent_model": "mistral-small3.2:24b-instruct-2506-q4_K_M",
+        "format": "gguf",
+        "family": "mistral3",
+        "families": [
+          "mistral3"
+        ],
+        "parameter_size": "24.0B",
+        "quantization_level": "Q4_K_M"
+      }
+    },
+    {
+      "reader_name": "gemma3-12b-opaque-choice-q4_k_m",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "system": "You are a careful literal reader. Follow the requested fixed-option output exactly and emit no explanation.",
+      "template": "{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 }}\n{{- if or (eq .Role \"user\") (eq .Role \"system\") }}<start_of_turn>user\n{{ .Content }}<end_of_turn>\n{{ if $last }}<start_of_turn>model\n{{ end }}\n{{- else if eq .Role \"assistant\" }}<start_of_turn>model\n{{ .Content }}{{ if not $last }}<end_of_turn>\n{{ end }}\n{{- end }}\n{{- end }}",
+      "parameters": "top_p                          0.95\nnum_ctx                        4096\nstop                           \"<end_of_turn>\"\ntemperature                    0\ntop_k                          64",
+      "details": {
+        "parent_model": "gemma3:12b",
+        "format": "gguf",
+        "family": "gemma3",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "12.2B",
+        "quantization_level": "Q4_K_M"
+      }
+    }
+  ]
+}
