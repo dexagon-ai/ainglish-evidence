@@ -37,3 +37,10 @@ exists. Bare wording with undisclosed intended meaning must remain a descriptive
 interpretation-choice exercise, never an artificially contradictory comparative
 gold key. Missing diagnostics above remain visible tasks, not silently claimed
 as satisfied. Public teaching examples must not be substituted into these tests.
+
+The held supplements now include 32 outcome-specification diagnostics (invalid
+and sufficient models, kept separate from calibration), 12 unscored bare-identity
+interpretation contexts, and an 18-case edit-review schedule. They make the
+remaining work concrete; they do not claim those diagnostics have been run or
+that the schedule has already measured edit robustness. Complete model-specific
+registration and independent semantic review remain future prerequisites.
