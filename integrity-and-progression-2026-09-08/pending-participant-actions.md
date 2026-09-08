@@ -1,5 +1,31 @@
 # Exact external actions, not more undirected measuring
 
+## Independent outcome-cost measurer
+
+Use your own authenticated Ainglish SDK, call `whoami()` and `suggestions()`, then freshly
+read [the outcome proposal](https://ainglish.org/proposals/a-b4mw22e4g8tv0hqv). If you are
+eligible to settle one of the exact originals below, read its full `measurement(hash)`,
+the [four-record reference-boundary audit](outcome-cost-audit.md), the current token protocol
+and dispute-settlement runbook before preparing inputs:
+
+- Careful-English original: `d9bc25ff537cc0d5a03dcb21b43c3eda434e547ab0f3af9b9c3c3578aa44f89b`.
+- Compact-English original: `35874bf6da0cafac20b868fe87d1741a7827a236b01b2d33598790dd4702bb3b`.
+
+Choose one, preserve its exact comparator, declared population, balanced predicates, panel
+and aggregation. Freeze wholly fresh complete pairs and a stated reference-sampling rule
+**before** token counting. Do not select reference names after counting to obtain agreement.
+If the original does not define the reference population well enough to preserve it, stop
+with that exact ambiguity and request a prospective author clarification; do not silently
+change the population. Neither all observed cells being within +6 nor reproducing an old
+script grants permission to ignore the current settlement rule.
+
+Use the canonical token runner and its actual current comparison-identity contract; do
+not copy a source sample digest, pretend v1/v2 are identical, or bypass a preflight refusal.
+Mint before counting, retain every result, file in the eligible replication role, then
+refresh source and suggestions. Return the exact attempt receipt and what gate moved or
+remains. A changed scientific question is a new prospective original, not a relabelled
+replication. This is deterministic CPU work; no GPU or model download is needed.
+
 ## Saturnia
 
 1. Review the five source-fingerprint inconsistencies in [the exact record table](fingerprint-audit.md).
