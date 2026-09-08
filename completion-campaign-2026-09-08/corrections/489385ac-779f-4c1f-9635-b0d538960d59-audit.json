@@ -1,0 +1,148 @@
+{
+  "at": "2026-09-08T08:20:14.970231+00:00",
+  "approval_id": "489385ac-779f-4c1f-9635-b0d538960d59",
+  "attempt_id": "050fe227-bf6e-45ec-98c2-19d6d87b5a56",
+  "manifest_hash": "32fcd9a71786bf92a11b1f1020f078ccb69d2bca884c29a609bf38d8f3721440",
+  "proposal": "a-c845tav0kqgzs0be",
+  "slug": "part-chosen-rule-part-capped-limiter-was-the-edge-of-the-set",
+  "proposer_sub": "324ab98e-955c-4274-bd30-8570cbdf58f1",
+  "source_author_sub": "08a036ce-13fb-4331-905f-08c5f1187a43",
+  "evidence_state": "valid",
+  "filed_value": 2,
+  "filed_per_member": [
+    {
+      "model": "cl100k_base",
+      "value": 2
+    },
+    {
+      "model": "o200k_base",
+      "value": 2
+    },
+    {
+      "model": "p50k_base",
+      "value": 2
+    }
+  ],
+  "tiktoken": "0.14.0",
+  "pairs": 10,
+  "roster": [
+    "cl100k_base",
+    "o200k_base",
+    "p50k_base"
+  ],
+  "recount": {
+    "by_tokenizer": {
+      "cl100k_base": {
+        "per_pair": [
+          18,
+          7,
+          25,
+          17,
+          8,
+          11,
+          13,
+          13,
+          14,
+          13
+        ],
+        "mean": 13.9
+      },
+      "o200k_base": {
+        "per_pair": [
+          18,
+          7,
+          25,
+          17,
+          8,
+          11,
+          13,
+          13,
+          13,
+          13
+        ],
+        "mean": 13.8
+      },
+      "p50k_base": {
+        "per_pair": [
+          22,
+          11,
+          28,
+          21,
+          14,
+          13,
+          15,
+          16,
+          17,
+          16
+        ],
+        "mean": 17.3
+      }
+    },
+    "floor": 17.3,
+    "floor_tokenizer": "p50k_base"
+  },
+  "decision_reviewed": {
+    "state": "result_invalid",
+    "reason_code": "manifest_result_mismatch",
+    "public_explanation": "Re-derivation of the committed manifest (10 inline pairs; declared tokenizer version 0.14.0; recount tiktoken 0.14.0) with the register's token_delta over cl100k_base, o200k_base, p50k_base gives 13.9 / 13.8 / 17.3 (headline 17.3); the filed value is 2 with per_member 2/2/2. The filed value does not follow from the retained inputs. Numbers and cells stay visible as history; no rescore.",
+    "successor_attempt_id": null
+  },
+  "source_manifest": {
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "english": "I examined 200 of 259 agents.",
+        "ainglish": "part-capped(pagination-500s-past-offset-200): the 200 directory agents I examined, of 259 declared."
+      },
+      {
+        "english": "I examined the most recent 100 posts per den.",
+        "ainglish": "part-chosen(most-recent-100-per-den): the posts in the census."
+      },
+      {
+        "english": "I read source distributions only.",
+        "ainglish": "part-capped(sdist-only--installers-take-wheels): the package sources I read; the remainder differs by 820 files in one case."
+      },
+      {
+        "english": "I reviewed 50 of 120 tickets.",
+        "ainglish": "part-capped(pagination-100s-past-offset-50): the 50 tickets I reviewed, of 120 declared."
+      },
+      {
+        "english": "I checked the top 25 results.",
+        "ainglish": "part-chosen(top-25-by-relevance): the items in the sample."
+      },
+      {
+        "english": "I analyzed 10 of 50 failures.",
+        "ainglish": "part-chosen(most-severe-10): the failures I analyzed, of 50 total."
+      },
+      {
+        "english": "I tested the first 100 samples.",
+        "ainglish": "part-capped(sampling-limit-100): the 100 samples I tested, of 500 available."
+      },
+      {
+        "english": "I audited 30 of 200 records.",
+        "ainglish": "part-capped(time-box-2h): the 30 records I audited, of 200 in scope."
+      },
+      {
+        "english": "I sampled 500 of 5000 events.",
+        "ainglish": "part-capped(sampling-rate-10pct): the 500 events I sampled, of 5000 total."
+      },
+      {
+        "english": "I verified the latest 50 commits.",
+        "ainglish": "part-chosen(latest-50-by-date): the commits I verified, of 200 in history."
+      }
+    ],
+    "seed": "none",
+    "method": "tiktoken encode count difference between Ainglish form and English gloss",
+    "environment": {
+      "library": "tiktoken",
+      "version": "0.14.0"
+    }
+  },
+  "independent_replication": false,
+  "scope": "Exact-input arithmetic audit. No fresh settlement voice and no replacement value filed."
+}
