@@ -1,0 +1,134 @@
+{
+  "kind": "ainglish.token-measurement-result.v1",
+  "state": "computed_not_submitted",
+  "payload": {
+    "metric": "token_delta",
+    "value": -2.25,
+    "value_lo": -5.125,
+    "value_hi": -2.25,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": -4.625
+      },
+      {
+        "model": "o200k_base",
+        "value": -5.125
+      },
+      {
+        "model": "p50k_base",
+        "value": -2.25
+      }
+    ],
+    "manifest": {
+      "metric": "token_delta",
+      "models": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "test_set": [
+        {
+          "english": "The courier is forbidden to open the crate; this makes no prediction.",
+          "ainglish": "The courier may-not-as-prohibition open the crate."
+        },
+        {
+          "english": "The inspection might not finish; this imposes no rule.",
+          "ainglish": "The inspection may-not-as-possibility finish."
+        },
+        {
+          "english": "Guests are forbidden to enter the laboratory; this makes no prediction about whether they will try.",
+          "ainglish": "Guests may-not-as-prohibition enter the laboratory."
+        },
+        {
+          "english": "The parcel might not arrive in time; this imposes no rule about whether it should.",
+          "ainglish": "The parcel may-not-as-possibility arrive in time."
+        },
+        {
+          "english": "The assistant is forbidden to circulate the minutes; this makes no prediction about their intent.",
+          "ainglish": "The assistant may-not-as-prohibition circulate the minutes."
+        },
+        {
+          "english": "The scan might not succeed on the first attempt; this imposes no rule about retries.",
+          "ainglish": "The scan may-not-as-possibility succeed on the first attempt."
+        },
+        {
+          "english": "The recorder is forbidden to overwrite the archive; this makes no prediction about whether it tries.",
+          "ainglish": "The recorder may-not-as-prohibition overwrite the archive."
+        },
+        {
+          "english": "The delivery might not complete before the cutoff; this imposes no rule about the deadline.",
+          "ainglish": "The delivery may-not-as-possibility complete before the cutoff."
+        }
+      ],
+      "estimand_contract": {
+        "kind": "ainglish.estimand-shadow.v1",
+        "unit_span": "pair",
+        "contrast": "token_delta",
+        "population": "cl100k_base/o200k_base/p50k_base",
+        "aggregation": {
+          "reducer": "least_favourable",
+          "rule": "maximum tokenizer mean"
+        },
+        "governance_effect": "report_only"
+      },
+      "comparison_identity": {
+        "kind": "ainglish.token-comparison-identity.v1",
+        "tokenizer_roster": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ],
+        "comparator": "token_delta",
+        "population": "cl100k_base/o200k_base/p50k_base",
+        "aggregation": "maximum tokenizer mean",
+        "unit_span": "pair",
+        "items_sha256": "305faa795e083bcea6a71b455a91ba718ee10d1d836836ad5307aeae213dd745",
+        "item_count": 8
+      },
+      "interval_kind": "member_span",
+      "tokenizer_provenance": {
+        "kind": "ainglish.tiktoken-provenance.v1",
+        "library": "tiktoken",
+        "library_version": "0.14.0",
+        "encodings": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ]
+      },
+      "replicates_hash": "57da213b073c357a381be95c47122ecd18b493087f86528c0bcddaa52bc03dc4",
+      "method": "Fresh-input independent replication; eight pairs preserving the source template-class mix, full meaning comparator, exact tokenizer population and least-favourable reducer. Not a bare-English cost claim, not proof of comprehension. No prior complete pair reused.",
+      "items_sha256": "305faa795e083bcea6a71b455a91ba718ee10d1d836836ad5307aeae213dd745"
+    },
+    "attempt_id": "4aa5e3f0-da6e-473e-9508-516fee2ce22f",
+    "replicates_hash": "57da213b073c357a381be95c47122ecd18b493087f86528c0bcddaa52bc03dc4"
+  },
+  "audit": {
+    "manifest_commitment": "bdf171f937cebf26686a4a437b0bb179fcab7e82ed7b2ec6ef3550fd90421289",
+    "items_sha256": "305faa795e083bcea6a71b455a91ba718ee10d1d836836ad5307aeae213dd745",
+    "pair_count": 8,
+    "by_tokenizer": [
+      {
+        "model": "cl100k_base",
+        "mean": -4.625
+      },
+      {
+        "model": "o200k_base",
+        "mean": -5.125
+      },
+      {
+        "model": "p50k_base",
+        "mean": -2.25
+      }
+    ],
+    "headline_rule": "maximum tokenizer mean (least favourable)",
+    "headline_model": "p50k_base"
+  },
+  "next": "Submit result.payload unchanged with client.measure(slug, result['payload'])."
+}

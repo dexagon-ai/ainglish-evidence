@@ -1,0 +1,2410 @@
+{
+  "metric": "comprehension_accuracy_delta",
+  "value": -15.635,
+  "resample_down": [
+    {
+      "kept_fraction": 0.75,
+      "items": 96,
+      "value": -15.425,
+      "sign_flipped": false,
+      "outside_interval": false
+    },
+    {
+      "kept_fraction": 0.5,
+      "items": 64,
+      "value": -15.67,
+      "sign_flipped": false,
+      "outside_interval": false
+    }
+  ],
+  "yield_report": {
+    "cells": 296,
+    "empty": 0,
+    "unparsed": 0,
+    "dead_rate": 0.0,
+    "per_cell": {
+      "falcon3-10b-qualification-v7-c8647169c2b9/ainglish": {
+        "n": 76,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "falcon3-10b-qualification-v7-c8647169c2b9/english": {
+        "n": 72,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "olmo2-13b-qualification-v7-cd836509a1a0/ainglish": {
+        "n": 85,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "olmo2-13b-qualification-v7-cd836509a1a0/english": {
+        "n": 63,
+        "empty": 0,
+        "unparsed": 0
+      }
+    }
+  },
+  "calibration": {
+    "planted_arm": "ainglish",
+    "detectable": 1.0,
+    "other": 0.5,
+    "gap": 0.5,
+    "headroom": 0.5,
+    "recovered": 1.0,
+    "min_gap": 0.5,
+    "min_recovered": null,
+    "rule": "absolute-gap-v1",
+    "passed": true
+  },
+  "value_lo": -25.8929,
+  "value_hi": -5.0318,
+  "arms": {
+    "english": 0.7909,
+    "ainglish": 0.6346,
+    "chance": 0.3333
+  },
+  "panel_models": [
+    "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+    "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m"
+  ],
+  "panel_members": 2,
+  "is_adversarial": false,
+  "panel_agreement": 0.5672,
+  "per_member": [
+    {
+      "model": "falcon3-10b-qualification-v7-c8647169c2b9",
+      "value": 0.685,
+      "precision": "q4_k_m"
+    },
+    {
+      "model": "olmo2-13b-qualification-v7-cd836509a1a0",
+      "value": -28.07,
+      "precision": "q4_k_m"
+    }
+  ],
+  "manifest": {
+    "construct": "verdict-fail / no-verdict",
+    "metric": "comprehension_accuracy_delta",
+    "seed": 2026090803,
+    "comparator": {
+      "kind": "careful-english-v1",
+      "description": "128 authored targets, 64 per tag over CI/monitor/verifier/measurement. Complete careful-English comparator, same visible result anchor in both arms. The paired bare-anchored contrast is frozen at the same time and shares target worlds: it is NOT independent confirmation. Frames and anchor variants are correlated."
+    },
+    "items_sha256": "1e0960ec015d9e43bbd8057e2d2b0e1fab73ec65b19dc846846fbce231033c61",
+    "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/a2f4abf55522a6f853aed12cf66bf49cdab18f65/night-progression-2026-09-07/readers/verdict-careful/items.json",
+    "models": [
+      "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+      "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m"
+    ],
+    "reader_qualifications": [
+      {
+        "kind": "ainglish.reader-qualification.v1",
+        "roster_id": "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+        "reader": {
+          "provider": "ollama",
+          "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+          "precision": "q4_k_m",
+          "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+          "digest_source": "ollama:/api/tags"
+        },
+        "lineage": {
+          "key": "tii/falcon3",
+          "basis": "Separate Falcon3 and OLMo2 model families; exact cached serving artifact bound to the foreign source digest. This does not establish operator independence."
+        },
+        "screen_sha256": "23af7fb410f662c7960a01022b5928e05ab73d91b95211d3759c20d8b204965f",
+        "settings_sha256": "d8e2b851e70b0daabc0610916ca67bf69986277d433c8753b88cac67cc70f027",
+        "qualified_at": "2026-09-07T16:30:34+00:00",
+        "valid_until": "2026-09-14T16:30:34+00:00",
+        "result": {
+          "detectable_correct": 12,
+          "detectable_total": 12,
+          "other_correct": 0,
+          "other_total": 12,
+          "min_gap_bps": 1250,
+          "min_recovered_bps": 5000,
+          "passed": true
+        }
+      },
+      {
+        "kind": "ainglish.reader-qualification.v1",
+        "roster_id": "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m",
+        "reader": {
+          "provider": "ollama",
+          "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+          "precision": "q4_k_m",
+          "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+          "digest_source": "ollama:/api/tags"
+        },
+        "lineage": {
+          "key": "allenai/olmo2",
+          "basis": "Separate Falcon3 and OLMo2 model families; exact cached serving artifact bound to the foreign source digest. This does not establish operator independence."
+        },
+        "screen_sha256": "23af7fb410f662c7960a01022b5928e05ab73d91b95211d3759c20d8b204965f",
+        "settings_sha256": "f13eaea1cb80fe0dba28f673a336ace188885f808242d677ebeab8bb6fda8084",
+        "qualified_at": "2026-09-07T16:30:57+00:00",
+        "valid_until": "2026-09-14T16:30:57+00:00",
+        "result": {
+          "detectable_correct": 12,
+          "detectable_total": 12,
+          "other_correct": 0,
+          "other_total": 12,
+          "min_gap_bps": 1250,
+          "min_recovered_bps": 5000,
+          "passed": true
+        }
+      }
+    ],
+    "readers": [
+      {
+        "name": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "provider": "ollama",
+        "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "api": "openai",
+        "base_url": "http://localhost:11434/v1",
+        "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+        "digest_source": "ollama:/api/tags",
+        "instrument_preparation": {
+          "entry_point": "prepare_reader_instruments",
+          "binding": "ollama:/api/tags"
+        },
+        "answer_protocol": "opaque-choice-v1",
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": "provider-default",
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      },
+      {
+        "name": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "provider": "ollama",
+        "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "api": "openai",
+        "base_url": "http://localhost:11434/v1",
+        "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+        "digest_source": "ollama:/api/tags",
+        "instrument_preparation": {
+          "entry_point": "prepare_reader_instruments",
+          "binding": "ollama:/api/tags"
+        },
+        "answer_protocol": "opaque-choice-v1",
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": "provider-default",
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      }
+    ],
+    "instrument_preparation": {
+      "entry_point": "prepare_reader_instruments",
+      "binding": [
+        {
+          "reader": "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+          "digest_source": "ollama:/api/tags"
+        },
+        {
+          "reader": "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m",
+          "digest_source": "ollama:/api/tags"
+        }
+      ]
+    },
+    "item_counts": {
+      "real": 128,
+      "calibration": 10
+    },
+    "interval_kind": "bootstrap_items",
+    "interval_estimator": {
+      "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+      "algorithm": "sha256-counter-modulo-v1",
+      "draws": 2000,
+      "sampling_unit": "item",
+      "quantiles": [
+        "0.025",
+        "0.975"
+      ],
+      "items_index_sha256": "62b9b0cbcd3a6cb080ed5f7f32a41969ad5d0b26e6e756abffd7db4530e64916"
+    },
+    "settlement_strata": [
+      {
+        "id": "verdict-fail",
+        "weight": 1
+      },
+      {
+        "id": "no-verdict",
+        "weight": 1
+      }
+    ],
+    "settlement_item_field": "settlement_stratum",
+    "settlement_rule": "manifest-weighted arms and value; every stratum load-bearing",
+    "calibration": {
+      "planted_arm": "ainglish",
+      "min_gap": 0.5,
+      "min_recovered": null,
+      "rule": "absolute-gap-v1",
+      "ordering": "calibration-first",
+      "arm_exposure": "both-arms-per-reader-item",
+      "cells": 40
+    },
+    "difficulty": {
+      "annotated": false
+    },
+    "harness": "ainglish-panel/0.2.56",
+    "transport": {
+      "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m": {
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": "provider-default",
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      },
+      "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m": {
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": "provider-default",
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      }
+    },
+    "concurrency": {
+      "max_in_flight": 1,
+      "per_reader_max_in_flight": {
+        "falcon3-10b-qualification-v7-c8647169c2b9": 1,
+        "olmo2-13b-qualification-v7-cd836509a1a0": 1
+      },
+      "result_order": "deterministic-plan-order",
+      "calibration_barrier": true,
+      "automatic_retries": false
+    },
+    "transport_faults": {
+      "total": 0,
+      "retried": false,
+      "per_cell": {}
+    },
+    "transport_truncations": {
+      "total": 0,
+      "per_reader_cell": {},
+      "by_cell": {
+        "english": 0,
+        "ainglish": 0
+      },
+      "imbalanced_across_cells": false
+    },
+    "protocol": "panel.py counterbalanced real arms + both-arms-per-reader-item planted-effect calibration gate"
+  },
+  "interval_provenance": {
+    "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+    "metric": "comprehension_accuracy_delta",
+    "estimator": "manifest_weighted_stratum_accuracy_delta_pp",
+    "algorithm": {
+      "name": "sha256-counter-modulo-v1",
+      "draws": 2000,
+      "accepted_draws": 2000,
+      "sampling_unit": "item",
+      "lower_quantile": {
+        "numerator": 25,
+        "denominator": 1000,
+        "index_rule": "floor"
+      },
+      "upper_quantile": {
+        "numerator": 975,
+        "denominator": 1000,
+        "index_rule": "floor"
+      }
+    },
+    "seed": 2026090803,
+    "items": [
+      {
+        "id": "verdict-000",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-001",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-002",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-003",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-004",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-005",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-006",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-007",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-008",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-009",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-010",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-011",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-012",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-013",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-014",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-015",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-016",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-017",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-018",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-019",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-020",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-021",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-022",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-023",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-024",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-025",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-026",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-027",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-028",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-029",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-030",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-031",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-032",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-033",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-034",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-035",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-036",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-037",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-038",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-039",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-040",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-041",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-042",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-043",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-044",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-045",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-046",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-047",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-048",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-049",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-050",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-051",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-052",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-053",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-054",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-055",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-056",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-057",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-058",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-059",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-060",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-061",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-062",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-063",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-064",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-065",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-066",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-067",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-068",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-069",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-070",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-071",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-072",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-073",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-074",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-075",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-076",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-077",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-078",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-079",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-080",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-081",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-082",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-083",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-084",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-085",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-086",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-087",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-088",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-089",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-090",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-091",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-092",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-093",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-094",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-095",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-096",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-097",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-098",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-099",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-100",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-101",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-102",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-103",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-104",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-105",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-106",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-107",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-108",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-109",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-110",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-111",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-112",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-113",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-114",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-115",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-116",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-117",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-118",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-119",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-120",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-121",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-122",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-123",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-124",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-125",
+        "stratum": "no-verdict"
+      },
+      {
+        "id": "verdict-126",
+        "stratum": "verdict-fail"
+      },
+      {
+        "id": "verdict-127",
+        "stratum": "no-verdict"
+      }
+    ],
+    "readers": [
+      "falcon3-10b-qualification-v7-c8647169c2b9",
+      "olmo2-13b-qualification-v7-cd836509a1a0"
+    ],
+    "cells": [
+      {
+        "item_id": "verdict-000",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-000",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-001",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-001",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-002",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-002",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-003",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-003",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-004",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-004",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-005",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-005",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-006",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-006",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-007",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-007",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-008",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-008",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-009",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-009",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-010",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-010",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-011",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-011",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-012",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-012",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-013",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-013",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-014",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-014",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-015",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-015",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-016",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-016",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-017",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-017",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-018",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-018",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-019",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-019",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-020",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-020",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-021",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-021",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-022",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-022",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-023",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-023",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-024",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-024",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-025",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-025",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-026",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-026",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-027",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-027",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-028",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-028",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-029",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-029",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-030",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-030",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-031",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-031",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-032",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-032",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-033",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-033",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-034",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-034",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-035",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-035",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-036",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-036",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-037",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-037",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-038",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-038",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-039",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-039",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-040",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-040",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-041",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-041",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-042",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-042",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-043",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-043",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-044",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-044",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-045",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-045",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-046",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-046",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-047",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-047",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-048",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-048",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-049",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-049",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-050",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-050",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-051",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-051",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-052",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-052",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-053",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-053",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-054",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-054",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-055",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-055",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-056",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-056",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-057",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-057",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-058",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-058",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-059",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-059",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-060",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-060",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-061",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-061",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-062",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-062",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-063",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-063",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-064",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-064",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-065",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-065",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-066",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-066",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-067",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-067",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-068",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-068",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-069",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-069",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-070",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-070",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-071",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-071",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-072",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-072",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-073",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-073",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-074",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-074",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-075",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-075",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-076",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-076",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-077",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-077",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-078",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-078",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-079",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-079",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-080",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-080",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-081",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-081",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-082",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-082",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-083",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-083",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-084",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-084",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-085",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-085",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-086",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-086",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-087",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-087",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-088",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-088",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-089",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-089",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-090",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-090",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-091",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-091",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-092",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-092",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-093",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-093",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-094",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-094",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-095",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-095",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-096",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-096",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-097",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-097",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-098",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-098",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-099",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-099",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-100",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-100",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-101",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-101",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-102",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-102",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-103",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-103",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-104",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-104",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-105",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-105",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-106",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-106",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-107",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-107",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-108",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-108",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-109",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-109",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-110",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-110",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-111",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-111",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-112",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-112",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-113",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-113",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-114",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-114",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-115",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-115",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-116",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-116",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-117",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-117",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-118",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-118",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-119",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-119",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-120",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-120",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-121",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-121",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-122",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-122",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-123",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-123",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-124",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-124",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-125",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-125",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "verdict-126",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-126",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-127",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "verdict-127",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      }
+    ],
+    "content_sha256": "bf0629e37416fdaff215faa66dbe11f04f937e8bf851ffbef1f7966f14988a8a"
+  },
+  "stratum_results": [
+    {
+      "id": "verdict-fail",
+      "value": -24.21,
+      "arms": {
+        "english": 0.9818,
+        "ainglish": 0.7397,
+        "chance": 0.3333
+      }
+    },
+    {
+      "id": "no-verdict",
+      "value": -7.06,
+      "arms": {
+        "english": 0.6,
+        "ainglish": 0.5294,
+        "chance": 0.3333
+      }
+    }
+  ],
+  "panel_neff": 2,
+  "panel_neff_basis": "declared:reader-axis-unvalidated",
+  "attempt_id": "b7ce3677-c684-4db9-978b-5547027e6bd5"
+}

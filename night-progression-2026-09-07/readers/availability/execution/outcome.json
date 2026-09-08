@@ -1,0 +1,4996 @@
+{
+  "metric": "comprehension_accuracy_delta",
+  "value": -15.8175,
+  "resample_down": [
+    {
+      "kept_fraction": 0.75,
+      "items": 216,
+      "value": -16.1125,
+      "sign_flipped": false,
+      "outside_interval": false
+    },
+    {
+      "kept_fraction": 0.5,
+      "items": 144,
+      "value": -14.4675,
+      "sign_flipped": false,
+      "outside_interval": false
+    }
+  ],
+  "yield_report": {
+    "cells": 616,
+    "empty": 0,
+    "unparsed": 0,
+    "dead_rate": 0.0,
+    "per_cell": {
+      "falcon3-10b-qualification-v7-c8647169c2b9/ainglish": {
+        "n": 161,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "falcon3-10b-qualification-v7-c8647169c2b9/english": {
+        "n": 147,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "olmo2-13b-qualification-v7-cd836509a1a0/ainglish": {
+        "n": 143,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "olmo2-13b-qualification-v7-cd836509a1a0/english": {
+        "n": 165,
+        "empty": 0,
+        "unparsed": 0
+      }
+    }
+  },
+  "calibration": {
+    "planted_arm": "ainglish",
+    "detectable": 1.0,
+    "other": 0.5,
+    "gap": 0.5,
+    "headroom": 0.5,
+    "recovered": 1.0,
+    "min_gap": 0.5,
+    "min_recovered": null,
+    "rule": "absolute-gap-v1",
+    "passed": true
+  },
+  "value_lo": -23.6962,
+  "value_hi": -7.6388,
+  "arms": {
+    "english": 0.4868,
+    "ainglish": 0.3287,
+    "chance": 0.1111
+  },
+  "panel_models": [
+    "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+    "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m"
+  ],
+  "panel_members": 2,
+  "is_adversarial": false,
+  "panel_agreement": 0.2708,
+  "per_member": [
+    {
+      "model": "falcon3-10b-qualification-v7-c8647169c2b9",
+      "value": -25.21,
+      "precision": "q4_k_m"
+    },
+    {
+      "model": "olmo2-13b-qualification-v7-cd836509a1a0",
+      "value": -11.535,
+      "precision": "q4_k_m"
+    }
+  ],
+  "manifest": {
+    "construct": "<OFFER> is no-charge(<billing-scope>) | <RESOURCE> is available-now(<allocation-scope>)",
+    "metric": "comprehension_accuracy_delta",
+    "seed": 2026090801,
+    "comparator": {
+      "kind": "careful-english-v1",
+      "description": "288 authored careful-English targets, 72 per form/polarity. Primary positive forms and prospective ordinary-negation extensions reported separately. Three-state unasserted axis disclosed as yes/no/unknown; all eight domains. Not the bare-free advantage, edit robustness, natural usage or entire prediction. Explicitly resolved scopes, not permission or health. Frames and lexical variants are correlated."
+    },
+    "items_sha256": "1a14882fcad9a66ebf1d7255fd42cea1a482dd4a3492443dc060ad9c1b52c1c7",
+    "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/a2f4abf55522a6f853aed12cf66bf49cdab18f65/night-progression-2026-09-07/readers/availability/items.json",
+    "models": [
+      "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+      "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m"
+    ],
+    "reader_qualifications": [
+      {
+        "kind": "ainglish.reader-qualification.v1",
+        "roster_id": "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+        "reader": {
+          "provider": "ollama",
+          "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+          "precision": "q4_k_m",
+          "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+          "digest_source": "ollama:/api/tags"
+        },
+        "lineage": {
+          "key": "tii/falcon3",
+          "basis": "Separate Falcon3 and OLMo2 model families; exact cached serving artifact bound to the foreign source digest. This does not establish operator independence."
+        },
+        "screen_sha256": "23af7fb410f662c7960a01022b5928e05ab73d91b95211d3759c20d8b204965f",
+        "settings_sha256": "d8e2b851e70b0daabc0610916ca67bf69986277d433c8753b88cac67cc70f027",
+        "qualified_at": "2026-09-07T16:30:34+00:00",
+        "valid_until": "2026-09-14T16:30:34+00:00",
+        "result": {
+          "detectable_correct": 12,
+          "detectable_total": 12,
+          "other_correct": 0,
+          "other_total": 12,
+          "min_gap_bps": 1250,
+          "min_recovered_bps": 5000,
+          "passed": true
+        }
+      },
+      {
+        "kind": "ainglish.reader-qualification.v1",
+        "roster_id": "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m",
+        "reader": {
+          "provider": "ollama",
+          "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+          "precision": "q4_k_m",
+          "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+          "digest_source": "ollama:/api/tags"
+        },
+        "lineage": {
+          "key": "allenai/olmo2",
+          "basis": "Separate Falcon3 and OLMo2 model families; exact cached serving artifact bound to the foreign source digest. This does not establish operator independence."
+        },
+        "screen_sha256": "23af7fb410f662c7960a01022b5928e05ab73d91b95211d3759c20d8b204965f",
+        "settings_sha256": "f13eaea1cb80fe0dba28f673a336ace188885f808242d677ebeab8bb6fda8084",
+        "qualified_at": "2026-09-07T16:30:57+00:00",
+        "valid_until": "2026-09-14T16:30:57+00:00",
+        "result": {
+          "detectable_correct": 12,
+          "detectable_total": 12,
+          "other_correct": 0,
+          "other_total": 12,
+          "min_gap_bps": 1250,
+          "min_recovered_bps": 5000,
+          "passed": true
+        }
+      }
+    ],
+    "readers": [
+      {
+        "name": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "provider": "ollama",
+        "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "api": "openai",
+        "base_url": "http://localhost:11434/v1",
+        "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+        "digest_source": "ollama:/api/tags",
+        "instrument_preparation": {
+          "entry_point": "prepare_reader_instruments",
+          "binding": "ollama:/api/tags"
+        },
+        "answer_protocol": "opaque-choice-v1",
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": "provider-default",
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      },
+      {
+        "name": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "provider": "ollama",
+        "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "api": "openai",
+        "base_url": "http://localhost:11434/v1",
+        "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+        "digest_source": "ollama:/api/tags",
+        "instrument_preparation": {
+          "entry_point": "prepare_reader_instruments",
+          "binding": "ollama:/api/tags"
+        },
+        "answer_protocol": "opaque-choice-v1",
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": "provider-default",
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      }
+    ],
+    "instrument_preparation": {
+      "entry_point": "prepare_reader_instruments",
+      "binding": [
+        {
+          "reader": "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+          "digest_source": "ollama:/api/tags"
+        },
+        {
+          "reader": "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m",
+          "digest_source": "ollama:/api/tags"
+        }
+      ]
+    },
+    "item_counts": {
+      "real": 288,
+      "calibration": 10
+    },
+    "interval_kind": "bootstrap_items",
+    "interval_estimator": {
+      "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+      "algorithm": "sha256-counter-modulo-v1",
+      "draws": 2000,
+      "sampling_unit": "item",
+      "quantiles": [
+        "0.025",
+        "0.975"
+      ],
+      "items_index_sha256": "aa7905c892d82c1849ebc530806ccde99784c1ac8eceecfaaaa1381c131228d5"
+    },
+    "settlement_strata": [
+      {
+        "id": "no-charge-positive",
+        "weight": 1
+      },
+      {
+        "id": "no-charge-negated",
+        "weight": 1
+      },
+      {
+        "id": "available-now-positive",
+        "weight": 1
+      },
+      {
+        "id": "available-now-negated",
+        "weight": 1
+      }
+    ],
+    "settlement_item_field": "settlement_stratum",
+    "settlement_rule": "manifest-weighted arms and value; every stratum load-bearing",
+    "calibration": {
+      "planted_arm": "ainglish",
+      "min_gap": 0.5,
+      "min_recovered": null,
+      "rule": "absolute-gap-v1",
+      "ordering": "calibration-first",
+      "arm_exposure": "both-arms-per-reader-item",
+      "cells": 40
+    },
+    "difficulty": {
+      "annotated": false
+    },
+    "harness": "ainglish-panel/0.2.56",
+    "transport": {
+      "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m": {
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": "provider-default",
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      },
+      "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m": {
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": "provider-default",
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      }
+    },
+    "concurrency": {
+      "max_in_flight": 1,
+      "per_reader_max_in_flight": {
+        "falcon3-10b-qualification-v7-c8647169c2b9": 1,
+        "olmo2-13b-qualification-v7-cd836509a1a0": 1
+      },
+      "result_order": "deterministic-plan-order",
+      "calibration_barrier": true,
+      "automatic_retries": false
+    },
+    "transport_faults": {
+      "total": 0,
+      "retried": false,
+      "per_cell": {}
+    },
+    "transport_truncations": {
+      "total": 0,
+      "per_reader_cell": {},
+      "by_cell": {
+        "english": 0,
+        "ainglish": 0
+      },
+      "imbalanced_across_cells": false
+    },
+    "protocol": "panel.py counterbalanced real arms + both-arms-per-reader-item planted-effect calibration gate"
+  },
+  "interval_provenance": {
+    "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+    "metric": "comprehension_accuracy_delta",
+    "estimator": "manifest_weighted_stratum_accuracy_delta_pp",
+    "algorithm": {
+      "name": "sha256-counter-modulo-v1",
+      "draws": 2000,
+      "accepted_draws": 2000,
+      "sampling_unit": "item",
+      "lower_quantile": {
+        "numerator": 25,
+        "denominator": 1000,
+        "index_rule": "floor"
+      },
+      "upper_quantile": {
+        "numerator": 975,
+        "denominator": 1000,
+        "index_rule": "floor"
+      }
+    },
+    "seed": 2026090801,
+    "items": [
+      {
+        "id": "availability-000",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-001",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-002",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-003",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-004",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-005",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-006",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-007",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-008",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-009",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-010",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-011",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-012",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-013",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-014",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-015",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-016",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-017",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-018",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-019",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-020",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-021",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-022",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-023",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-024",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-025",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-026",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-027",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-028",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-029",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-030",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-031",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-032",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-033",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-034",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-035",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-036",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-037",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-038",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-039",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-040",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-041",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-042",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-043",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-044",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-045",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-046",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-047",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-048",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-049",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-050",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-051",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-052",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-053",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-054",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-055",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-056",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-057",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-058",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-059",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-060",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-061",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-062",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-063",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-064",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-065",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-066",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-067",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-068",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-069",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-070",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-071",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-072",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-073",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-074",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-075",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-076",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-077",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-078",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-079",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-080",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-081",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-082",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-083",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-084",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-085",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-086",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-087",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-088",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-089",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-090",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-091",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-092",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-093",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-094",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-095",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-096",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-097",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-098",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-099",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-100",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-101",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-102",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-103",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-104",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-105",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-106",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-107",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-108",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-109",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-110",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-111",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-112",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-113",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-114",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-115",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-116",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-117",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-118",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-119",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-120",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-121",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-122",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-123",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-124",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-125",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-126",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-127",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-128",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-129",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-130",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-131",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-132",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-133",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-134",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-135",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-136",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-137",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-138",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-139",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-140",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-141",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-142",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-143",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-144",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-145",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-146",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-147",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-148",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-149",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-150",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-151",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-152",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-153",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-154",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-155",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-156",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-157",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-158",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-159",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-160",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-161",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-162",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-163",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-164",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-165",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-166",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-167",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-168",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-169",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-170",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-171",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-172",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-173",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-174",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-175",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-176",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-177",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-178",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-179",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-180",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-181",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-182",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-183",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-184",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-185",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-186",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-187",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-188",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-189",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-190",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-191",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-192",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-193",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-194",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-195",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-196",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-197",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-198",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-199",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-200",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-201",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-202",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-203",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-204",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-205",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-206",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-207",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-208",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-209",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-210",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-211",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-212",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-213",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-214",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-215",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-216",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-217",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-218",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-219",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-220",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-221",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-222",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-223",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-224",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-225",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-226",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-227",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-228",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-229",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-230",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-231",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-232",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-233",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-234",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-235",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-236",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-237",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-238",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-239",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-240",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-241",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-242",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-243",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-244",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-245",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-246",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-247",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-248",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-249",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-250",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-251",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-252",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-253",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-254",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-255",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-256",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-257",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-258",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-259",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-260",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-261",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-262",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-263",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-264",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-265",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-266",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-267",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-268",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-269",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-270",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-271",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-272",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-273",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-274",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-275",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-276",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-277",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-278",
+        "stratum": "no-charge-positive"
+      },
+      {
+        "id": "availability-279",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-280",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-281",
+        "stratum": "no-charge-negated"
+      },
+      {
+        "id": "availability-282",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-283",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-284",
+        "stratum": "available-now-positive"
+      },
+      {
+        "id": "availability-285",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-286",
+        "stratum": "available-now-negated"
+      },
+      {
+        "id": "availability-287",
+        "stratum": "available-now-negated"
+      }
+    ],
+    "readers": [
+      "falcon3-10b-qualification-v7-c8647169c2b9",
+      "olmo2-13b-qualification-v7-cd836509a1a0"
+    ],
+    "cells": [
+      {
+        "item_id": "availability-000",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-000",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-001",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-001",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-002",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-002",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-003",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-003",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-004",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-004",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-005",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-005",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-006",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-006",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-007",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-007",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-008",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-008",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-009",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-009",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-010",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-010",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-011",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-011",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-012",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-012",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-013",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-013",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-014",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-014",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-015",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-015",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-016",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-016",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-017",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-017",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-018",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-018",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-019",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-019",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-020",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-020",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-021",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-021",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-022",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-022",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-023",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-023",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-024",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-024",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-025",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-025",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-026",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-026",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-027",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-027",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-028",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-028",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-029",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-029",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-030",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-030",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-031",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-031",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-032",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-032",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-033",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-033",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-034",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-034",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-035",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-035",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-036",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-036",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-037",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-037",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-038",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-038",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-039",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-039",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-040",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-040",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-041",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-041",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-042",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-042",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-043",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-043",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-044",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-044",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-045",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-045",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-046",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-046",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-047",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-047",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-048",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-048",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-049",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-049",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-050",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-050",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-051",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-051",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-052",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-052",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-053",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-053",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-054",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-054",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-055",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-055",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-056",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-056",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-057",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-057",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-058",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-058",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-059",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-059",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-060",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-060",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-061",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-061",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-062",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-062",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-063",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-063",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-064",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-064",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-065",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-065",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-066",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-066",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-067",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-067",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-068",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-068",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-069",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-069",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-070",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-070",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-071",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-071",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-072",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-072",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-073",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-073",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-074",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-074",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-075",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-075",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-076",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-076",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-077",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-077",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-078",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-078",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-079",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-079",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-080",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-080",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-081",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-081",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-082",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-082",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-083",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-083",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-084",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-084",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-085",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-085",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-086",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-086",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-087",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-087",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-088",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-088",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-089",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-089",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-090",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-090",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-091",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-091",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-092",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-092",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-093",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-093",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-094",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-094",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-095",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-095",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-096",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-096",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-097",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-097",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-098",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-098",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-099",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-099",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-100",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-100",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-101",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-101",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-102",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-102",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-103",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-103",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-104",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-104",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-105",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-105",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-106",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-106",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-107",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-107",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-108",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-108",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-109",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-109",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-110",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-110",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-111",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-111",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-112",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-112",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-113",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-113",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-114",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-114",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-115",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-115",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-116",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-116",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-117",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-117",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-118",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-118",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-119",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-119",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-120",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-120",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-121",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-121",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-122",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-122",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-123",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-123",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-124",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-124",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-125",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-125",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-126",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-126",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-127",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-127",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-128",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-128",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-129",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-129",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-130",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-130",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-131",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-131",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-132",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-132",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-133",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-133",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-134",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-134",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-135",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-135",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-136",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-136",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-137",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-137",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-138",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-138",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-139",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-139",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-140",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-140",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-141",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-141",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-142",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-142",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-143",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-143",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-144",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-144",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-145",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-145",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-146",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-146",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-147",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-147",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-148",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-148",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-149",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-149",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-150",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-150",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-151",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-151",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-152",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-152",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-153",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-153",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-154",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-154",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-155",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-155",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-156",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-156",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-157",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-157",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-158",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-158",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-159",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-159",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-160",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-160",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-161",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-161",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-162",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-162",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-163",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-163",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-164",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-164",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-165",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-165",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-166",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-166",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-167",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-167",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-168",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-168",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-169",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-169",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-170",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-170",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-171",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-171",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-172",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-172",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-173",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-173",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-174",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-174",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-175",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-175",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-176",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-176",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-177",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-177",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-178",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-178",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-179",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-179",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-180",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-180",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-181",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-181",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-182",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-182",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-183",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-183",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-184",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-184",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-185",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-185",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-186",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-186",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-187",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-187",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-188",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-188",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-189",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-189",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-190",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-190",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-191",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-191",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-192",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-192",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-193",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-193",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-194",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-194",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-195",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-195",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-196",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-196",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-197",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-197",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-198",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-198",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-199",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-199",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-200",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-200",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-201",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-201",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-202",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-202",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-203",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-203",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-204",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-204",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-205",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-205",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-206",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-206",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-207",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-207",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-208",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-208",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-209",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-209",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-210",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-210",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-211",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-211",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-212",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-212",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-213",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-213",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-214",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-214",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-215",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-215",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-216",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-216",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-217",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-217",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-218",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-218",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-219",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-219",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-220",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-220",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-221",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-221",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-222",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-222",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-223",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-223",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-224",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-224",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-225",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-225",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-226",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-226",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-227",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-227",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-228",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-228",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-229",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-229",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-230",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-230",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-231",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-231",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-232",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-232",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-233",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-233",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-234",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-234",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-235",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-235",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-236",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-236",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-237",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-237",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-238",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-238",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-239",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-239",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-240",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-240",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-241",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-241",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-242",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-242",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-243",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-243",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-244",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-244",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-245",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-245",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-246",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-246",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-247",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-247",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-248",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-248",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-249",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-249",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-250",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-250",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-251",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-251",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-252",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-252",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-253",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-253",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-254",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-254",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-255",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-255",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-256",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-256",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-257",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-257",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-258",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-258",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-259",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-259",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-260",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-260",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-261",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-261",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-262",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-262",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-263",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-263",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-264",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-264",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-265",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-265",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-266",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-266",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-267",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-267",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-268",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-268",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-269",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-269",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-270",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-270",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-271",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-271",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-272",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-272",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-273",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-273",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-274",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-274",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-275",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-275",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-276",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-276",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-277",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-277",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-278",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-278",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-279",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-279",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-280",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-280",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-281",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-281",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-282",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-282",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-283",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "availability-283",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-284",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "availability-284",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-285",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-285",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-286",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-286",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "availability-287",
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "availability-287",
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0",
+        "arm": "english",
+        "correct": false
+      }
+    ],
+    "content_sha256": "0de3db04c38d73e3479d030798e44727746f1e2c60a9a69012e1a2f779814637"
+  },
+  "stratum_results": [
+    {
+      "id": "no-charge-positive",
+      "value": -16.52,
+      "arms": {
+        "english": 0.5571,
+        "ainglish": 0.3919,
+        "chance": 0.1111
+      }
+    },
+    {
+      "id": "no-charge-negated",
+      "value": -1.41,
+      "arms": {
+        "english": 0.3968,
+        "ainglish": 0.3827,
+        "chance": 0.1111
+      }
+    },
+    {
+      "id": "available-now-positive",
+      "value": -2.22,
+      "arms": {
+        "english": 0.4684,
+        "ainglish": 0.4462,
+        "chance": 0.1111
+      }
+    },
+    {
+      "id": "available-now-negated",
+      "value": -43.12,
+      "arms": {
+        "english": 0.525,
+        "ainglish": 0.0938,
+        "chance": 0.1111
+      }
+    }
+  ],
+  "panel_neff": 2,
+  "panel_neff_basis": "declared:reader-axis-unvalidated",
+  "attempt_id": "5c0276f9-0d68-41d1-8b75-d5f2302f4ca5"
+}

@@ -1,0 +1,134 @@
+{
+  "kind": "ainglish.token-measurement-result.v1",
+  "state": "computed_not_submitted",
+  "payload": {
+    "metric": "token_delta",
+    "value": -4.0,
+    "value_lo": -4.0,
+    "value_hi": -4.0,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": -4.0
+      },
+      {
+        "model": "o200k_base",
+        "value": -4.0
+      },
+      {
+        "model": "p50k_base",
+        "value": -4.0
+      }
+    ],
+    "manifest": {
+      "metric": "token_delta",
+      "models": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "test_set": [
+        {
+          "english": "Discard samples that are expired and reagents that are expired.",
+          "ainglish": "Discard expired samples and expired reagents."
+        },
+        {
+          "english": "Archive labels without restricting their age and manifests that are outdated.",
+          "ainglish": "Archive labels and outdated manifests."
+        },
+        {
+          "english": "Escalate reports that are urgent and queries whether or not they are urgent.",
+          "ainglish": "Escalate the urgent reports and the queries."
+        },
+        {
+          "english": "Separate processed specimens from unprocessed specimens.",
+          "ainglish": "Separate processed specimens and unprocessed specimens."
+        },
+        {
+          "english": "Review applications that are pending and applications that are approved.",
+          "ainglish": "Review pending applications and approved applications."
+        },
+        {
+          "english": "Keep scans that are old and photographs that are new.",
+          "ainglish": "Keep old scans and new photographs."
+        },
+        {
+          "english": "Compare inventories that are stale and inventories that are current.",
+          "ainglish": "Compare stale inventories and current inventories."
+        },
+        {
+          "english": "List editions that are old and editions that are new.",
+          "ainglish": "List old editions and new editions."
+        }
+      ],
+      "estimand_contract": {
+        "kind": "ainglish.estimand-shadow.v1",
+        "unit_span": "pair",
+        "contrast": "token_delta",
+        "population": "cl100k_base/o200k_base/p50k_base",
+        "aggregation": {
+          "reducer": "least_favourable",
+          "rule": "maximum tokenizer mean"
+        },
+        "governance_effect": "report_only"
+      },
+      "comparison_identity": {
+        "kind": "ainglish.token-comparison-identity.v1",
+        "tokenizer_roster": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ],
+        "comparator": "token_delta",
+        "population": "cl100k_base/o200k_base/p50k_base",
+        "aggregation": "maximum tokenizer mean",
+        "unit_span": "pair",
+        "items_sha256": "3a9a316e9d87c68ddb5f46e0342ae6d002268dd1500f470371744ae21d54ce6b",
+        "item_count": 8
+      },
+      "interval_kind": "member_span",
+      "tokenizer_provenance": {
+        "kind": "ainglish.tiktoken-provenance.v1",
+        "library": "tiktoken",
+        "library_version": "0.14.0",
+        "encodings": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ]
+      },
+      "replicates_hash": "3e6af78eaf7df2ce4d8e70154baca692072e25b3185477d50a5667e35dc33455",
+      "method": "Fresh-input independent replication; eight pairs preserving the source template-class mix, full meaning comparator, exact tokenizer population and least-favourable reducer. Not a bare-English cost claim, not proof of comprehension. No prior complete pair reused.",
+      "items_sha256": "3a9a316e9d87c68ddb5f46e0342ae6d002268dd1500f470371744ae21d54ce6b"
+    },
+    "attempt_id": "48ac6200-ff0c-4b2d-a660-0e063be84314",
+    "replicates_hash": "3e6af78eaf7df2ce4d8e70154baca692072e25b3185477d50a5667e35dc33455"
+  },
+  "audit": {
+    "manifest_commitment": "b772f69db445f1a09e1c433f9425d0a4319685571540ee45f6e79120a752bf28",
+    "items_sha256": "3a9a316e9d87c68ddb5f46e0342ae6d002268dd1500f470371744ae21d54ce6b",
+    "pair_count": 8,
+    "by_tokenizer": [
+      {
+        "model": "cl100k_base",
+        "mean": -4.0
+      },
+      {
+        "model": "o200k_base",
+        "mean": -4.0
+      },
+      {
+        "model": "p50k_base",
+        "mean": -4.0
+      }
+    ],
+    "headline_rule": "maximum tokenizer mean (least favourable)",
+    "headline_model": "cl100k_base"
+  },
+  "next": "Submit result.payload unchanged with client.measure(slug, result['payload'])."
+}

@@ -1,0 +1,134 @@
+{
+  "kind": "ainglish.token-measurement-result.v1",
+  "state": "computed_not_submitted",
+  "payload": {
+    "metric": "token_delta",
+    "value": -2.875,
+    "value_lo": -4.125,
+    "value_hi": -2.875,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": -4.125
+      },
+      {
+        "model": "o200k_base",
+        "value": -4.125
+      },
+      {
+        "model": "p50k_base",
+        "value": -2.875
+      }
+    ],
+    "manifest": {
+      "metric": "token_delta",
+      "models": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "test_set": [
+        {
+          "english": "Issue at most 24 tickets in each clock hour; the counter resets at :00, so 24 at 09:59 and 24 at 10:00 are both accepted.",
+          "ainglish": "Issue at most 24 tickets per-clock(hour); 24 at 09:59 and 24 at 10:00 are both accepted."
+        },
+        {
+          "english": "Issue at most 24 tickets in any 60-minute span; 24 at 09:59 and 24 at 10:00 is a breach.",
+          "ainglish": "Issue at most 24 tickets per-any(60m); 24 at 09:59 and 24 at 10:00 is a breach."
+        },
+        {
+          "english": "Each archivist may seal at most 80 bundles in each UTC calendar day; bursts at 23:40Z and 00:15Z spend two days' quota and break nothing.",
+          "ainglish": "Each archivist may seal at most 80 bundles per-clock(day@UTC); bursts at 23:40Z and 00:15Z spend two days' quota and break nothing."
+        },
+        {
+          "english": "Start the scanner at most six times in any 60-minute span, or the seventh start is throttled.",
+          "ainglish": "Start the scanner at most six times per-any(60m), or the seventh start is throttled."
+        },
+        {
+          "english": "Send at most 16 notices per clock hour; the counter restarts at the hour boundary.",
+          "ainglish": "Send at most 16 notices per-clock(hour)."
+        },
+        {
+          "english": "Send at most 16 notices in any 60-minute window; sliding window enforcement.",
+          "ainglish": "Send at most 16 notices per-any(60m)."
+        },
+        {
+          "english": "Each station may upload at most 400 images per UTC day; midnight boundary resets the counter.",
+          "ainglish": "Each station may upload at most 400 images per-clock(day@UTC)."
+        },
+        {
+          "english": "Each station may upload at most 400 images in any 24-hour span; rolling window.",
+          "ainglish": "Each station may upload at most 400 images per-any(24h)."
+        }
+      ],
+      "estimand_contract": {
+        "kind": "ainglish.estimand-shadow.v1",
+        "unit_span": "pair",
+        "contrast": "token_delta",
+        "population": "cl100k_base/o200k_base/p50k_base",
+        "aggregation": {
+          "reducer": "least_favourable",
+          "rule": "maximum tokenizer mean"
+        },
+        "governance_effect": "report_only"
+      },
+      "comparison_identity": {
+        "kind": "ainglish.token-comparison-identity.v1",
+        "tokenizer_roster": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ],
+        "comparator": "token_delta",
+        "population": "cl100k_base/o200k_base/p50k_base",
+        "aggregation": "maximum tokenizer mean",
+        "unit_span": "pair",
+        "items_sha256": "9023378aeebeb7ad96ec6db4ee99e558cbdc9ef3f56be7ec3a2a522a2035a9fb",
+        "item_count": 8
+      },
+      "interval_kind": "member_span",
+      "tokenizer_provenance": {
+        "kind": "ainglish.tiktoken-provenance.v1",
+        "library": "tiktoken",
+        "library_version": "0.14.0",
+        "encodings": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ]
+      },
+      "replicates_hash": "3f8e16b09a30f752576a82af7c7b96433063a4cd73250f1c3bafc1af3d5dfaa9",
+      "method": "Fresh-input independent replication; eight pairs preserving the source template-class mix, full meaning comparator, exact tokenizer population and least-favourable reducer. Not a bare-English cost claim, not proof of comprehension. No prior complete pair reused.",
+      "items_sha256": "9023378aeebeb7ad96ec6db4ee99e558cbdc9ef3f56be7ec3a2a522a2035a9fb"
+    },
+    "attempt_id": "11214fda-5e4b-4196-9a14-869e02f215db",
+    "replicates_hash": "3f8e16b09a30f752576a82af7c7b96433063a4cd73250f1c3bafc1af3d5dfaa9"
+  },
+  "audit": {
+    "manifest_commitment": "0625a65cb6d7e59f02276c5bc800ad81ab6cf369e1b9e6a2f3f1b1e6df0c8660",
+    "items_sha256": "9023378aeebeb7ad96ec6db4ee99e558cbdc9ef3f56be7ec3a2a522a2035a9fb",
+    "pair_count": 8,
+    "by_tokenizer": [
+      {
+        "model": "cl100k_base",
+        "mean": -4.125
+      },
+      {
+        "model": "o200k_base",
+        "mean": -4.125
+      },
+      {
+        "model": "p50k_base",
+        "mean": -2.875
+      }
+    ],
+    "headline_rule": "maximum tokenizer mean (least favourable)",
+    "headline_model": "p50k_base"
+  },
+  "next": "Submit result.payload unchanged with client.measure(slug, result['payload'])."
+}
