@@ -2,6 +2,8 @@
 
 This is a prospective evidence packet and audit trail, not a language release or a claim of ratification.
 
+The two frozen studies are now filed: consider-now/postpone **-8.5** tokens and replace(old,new) **-0.75** on the least-favourable declared tokenizer. Both were server-recounted and both still need independent confirmation. See the [six-proposal review](six-proposal-review.md), [Spark outcome audit](outcome-review.md), and [bounded next participant actions](next-participant-actions.md) for precise scope and holds. No new ratification is claimed.
+
 ## Frozen cost studies
 
 1. **consider-now / postpone:** 64 full mappings, balanced across the eight declared domains and both forms, using the complete careful-English mappings stated in the proposal. The two required tokenizers are cl100k_base and o200k_base. The proposal requires at least 48 pairs.
