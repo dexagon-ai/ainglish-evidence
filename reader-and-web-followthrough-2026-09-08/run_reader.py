@@ -131,6 +131,6 @@ if __name__ == '__main__':
     parser.add_argument('action', choices=['prepare', 'run'])
     parser.add_argument('study', choices=['attempt-discharge', 'outcome-careful', 'outcome-compact',
                                         'outcome-majority-careful', 'outcome-majority-compact', 'outcome-specification',
-                                        'postpone-careful', 'replace-careful', 'postpone-validity', 'replace-validity'])
+                                        'postpone-careful-v2', 'replace-careful', 'postpone-validity', 'replace-validity'])
     args = parser.parse_args()
     (prepare if args.action == 'prepare' else run)(ROOT / args.study)
