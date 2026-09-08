@@ -110,7 +110,7 @@ def attempt():
                       'ainglish': common + f'Instruction: {form}: {action}.' + record,
                       'question': 'What does the record establish about discharge of this instruction’s obligations and attainment of its world outcome?',
                       'options': opts[offset:] + opts[:offset], 'answer': answer,
-                      'settlement_stratum': form + '/' + exposure + '/' + framing,
+                      'settlement_stratum': form + '-' + exposure + '-' + framing,
                       'form': form, 'exposure': exposure, 'framing': framing, 'domain': domain, 'boundary': case,
                       'oracle': {'adequate_effort': effort, 'world_success': success, 'report_sent': reported,
                                  'obligations_discharged': discharged}})
