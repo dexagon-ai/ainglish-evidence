@@ -1,0 +1,3510 @@
+[
+  {
+    "id": "qd-rule-0-clock-0",
+    "english": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: At most 2 stamps in each clock hour.",
+    "ainglish": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: 2 stamps per-clock(hour).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "stamps",
+    "variant": 0,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-0-clock-0",
+    "english": "Complete fictional stamps log on one UTC day: 2 stamps at 00:57 UTC, then 2 stamps at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 stamps in each clock hour.",
+    "ainglish": "Complete fictional stamps log on one UTC day: 2 stamps at 00:57 UTC, then 2 stamps at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 2 stamps per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "stamps",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          2
+        ],
+        [
+          63,
+          2
+        ]
+      ],
+      "limit": 2,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-0-clock-1",
+    "english": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: At most 2 stamps in each clock hour.",
+    "ainglish": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: 2 stamps per-clock(hour).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "stamps",
+    "variant": 1,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-0-clock-1",
+    "english": "Complete fictional stamps log on one UTC day: 2 stamps at 01:03 UTC, then 1 stamps at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 stamps in each clock hour.",
+    "ainglish": "Complete fictional stamps log on one UTC day: 2 stamps at 01:03 UTC, then 1 stamps at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 2 stamps per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "stamps",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          2
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 2,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-0-clock-2",
+    "english": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: At most 2 stamps in each clock hour.",
+    "ainglish": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: 2 stamps per-clock(hour).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "A fresh allowance begins at each UTC clock-hour boundary."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "stamps",
+    "variant": 2,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-0-clock-2",
+    "english": "Complete fictional stamps log on one UTC day: 2 stamps at 00:57 UTC, then 2 stamps at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 stamps in each clock hour.",
+    "ainglish": "Complete fictional stamps log on one UTC day: 2 stamps at 00:57 UTC, then 2 stamps at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 2 stamps per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "stamps",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          2
+        ],
+        [
+          123,
+          2
+        ]
+      ],
+      "limit": 2,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-0-clock-3",
+    "english": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: At most 2 stamps in each clock hour.",
+    "ainglish": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: 2 stamps per-clock(hour).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "stamps",
+    "variant": 3,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-0-clock-3",
+    "english": "Complete fictional stamps log on one UTC day: 1 stamps at 00:57 UTC, then 1 stamps at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 stamps in each clock hour.",
+    "ainglish": "Complete fictional stamps log on one UTC day: 1 stamps at 00:57 UTC, then 1 stamps at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 2 stamps per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "stamps",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          1
+        ]
+      ],
+      "limit": 2,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-0-any-0",
+    "english": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: At most 2 stamps in any 60-minute span.",
+    "ainglish": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: 2 stamps per-any(60m).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "stamps",
+    "variant": 0,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-0-any-0",
+    "english": "Complete fictional stamps log on one UTC day: 2 stamps at 00:57 UTC, then 2 stamps at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 stamps in any 60-minute span.",
+    "ainglish": "Complete fictional stamps log on one UTC day: 2 stamps at 00:57 UTC, then 2 stamps at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 2 stamps per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "stamps",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          2
+        ],
+        [
+          63,
+          2
+        ]
+      ],
+      "limit": 2,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-0-any-1",
+    "english": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: At most 2 stamps in any 60-minute span.",
+    "ainglish": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: 2 stamps per-any(60m).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "stamps",
+    "variant": 1,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-0-any-1",
+    "english": "Complete fictional stamps log on one UTC day: 2 stamps at 01:03 UTC, then 1 stamps at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 stamps in any 60-minute span.",
+    "ainglish": "Complete fictional stamps log on one UTC day: 2 stamps at 01:03 UTC, then 1 stamps at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 2 stamps per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "stamps",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          2
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 2,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-0-any-2",
+    "english": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: At most 2 stamps in any 60-minute span.",
+    "ainglish": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: 2 stamps per-any(60m).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "stamps",
+    "variant": 2,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-0-any-2",
+    "english": "Complete fictional stamps log on one UTC day: 2 stamps at 00:57 UTC, then 2 stamps at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 stamps in any 60-minute span.",
+    "ainglish": "Complete fictional stamps log on one UTC day: 2 stamps at 00:57 UTC, then 2 stamps at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 2 stamps per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "stamps",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          2
+        ],
+        [
+          123,
+          2
+        ]
+      ],
+      "limit": 2,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-0-any-3",
+    "english": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: At most 2 stamps in any 60-minute span.",
+    "ainglish": "Fictional stamps rule, clock hours begin at minute 00 in UTC. Rule: 2 stamps per-any(60m).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "stamps",
+    "variant": 3,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-0-any-3",
+    "english": "Complete fictional stamps log on one UTC day: 1 stamps at 00:57 UTC, then 1 stamps at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 stamps in any 60-minute span.",
+    "ainglish": "Complete fictional stamps log on one UTC day: 1 stamps at 00:57 UTC, then 1 stamps at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 2 stamps per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "stamps",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          1
+        ]
+      ],
+      "limit": 2,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-1-clock-0",
+    "english": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 rentals in each clock hour.",
+    "ainglish": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: 3 rentals per-clock(hour).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "rentals",
+    "variant": 0,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-1-clock-0",
+    "english": "Complete fictional rentals log on one UTC day: 3 rentals at 00:57 UTC, then 3 rentals at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 rentals in each clock hour.",
+    "ainglish": "Complete fictional rentals log on one UTC day: 3 rentals at 00:57 UTC, then 3 rentals at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 3 rentals per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "rentals",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          3
+        ],
+        [
+          63,
+          3
+        ]
+      ],
+      "limit": 3,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-1-clock-1",
+    "english": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 rentals in each clock hour.",
+    "ainglish": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: 3 rentals per-clock(hour).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "A fresh allowance begins at each UTC clock-hour boundary."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "rentals",
+    "variant": 1,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-1-clock-1",
+    "english": "Complete fictional rentals log on one UTC day: 3 rentals at 01:03 UTC, then 1 rentals at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 rentals in each clock hour.",
+    "ainglish": "Complete fictional rentals log on one UTC day: 3 rentals at 01:03 UTC, then 1 rentals at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 3 rentals per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "not enough information",
+      "yes"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "rentals",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          3
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 3,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-1-clock-2",
+    "english": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 rentals in each clock hour.",
+    "ainglish": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: 3 rentals per-clock(hour).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "rentals",
+    "variant": 2,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-1-clock-2",
+    "english": "Complete fictional rentals log on one UTC day: 3 rentals at 00:57 UTC, then 3 rentals at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 rentals in each clock hour.",
+    "ainglish": "Complete fictional rentals log on one UTC day: 3 rentals at 00:57 UTC, then 3 rentals at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 3 rentals per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "rentals",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          3
+        ],
+        [
+          123,
+          3
+        ]
+      ],
+      "limit": 3,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-1-clock-3",
+    "english": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 rentals in each clock hour.",
+    "ainglish": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: 3 rentals per-clock(hour).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "rentals",
+    "variant": 3,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-1-clock-3",
+    "english": "Complete fictional rentals log on one UTC day: 1 rentals at 00:57 UTC, then 2 rentals at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 rentals in each clock hour.",
+    "ainglish": "Complete fictional rentals log on one UTC day: 1 rentals at 00:57 UTC, then 2 rentals at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 3 rentals per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "rentals",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          2
+        ]
+      ],
+      "limit": 3,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-1-any-0",
+    "english": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 rentals in any 60-minute span.",
+    "ainglish": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: 3 rentals per-any(60m).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "rentals",
+    "variant": 0,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-1-any-0",
+    "english": "Complete fictional rentals log on one UTC day: 3 rentals at 00:57 UTC, then 3 rentals at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 rentals in any 60-minute span.",
+    "ainglish": "Complete fictional rentals log on one UTC day: 3 rentals at 00:57 UTC, then 3 rentals at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 3 rentals per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "rentals",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          3
+        ],
+        [
+          63,
+          3
+        ]
+      ],
+      "limit": 3,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-1-any-1",
+    "english": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 rentals in any 60-minute span.",
+    "ainglish": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: 3 rentals per-any(60m).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "rentals",
+    "variant": 1,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-1-any-1",
+    "english": "Complete fictional rentals log on one UTC day: 3 rentals at 01:03 UTC, then 1 rentals at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 rentals in any 60-minute span.",
+    "ainglish": "Complete fictional rentals log on one UTC day: 3 rentals at 01:03 UTC, then 1 rentals at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 3 rentals per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "not enough information",
+      "yes"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "rentals",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          3
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 3,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-1-any-2",
+    "english": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 rentals in any 60-minute span.",
+    "ainglish": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: 3 rentals per-any(60m).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "rentals",
+    "variant": 2,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-1-any-2",
+    "english": "Complete fictional rentals log on one UTC day: 3 rentals at 00:57 UTC, then 3 rentals at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 rentals in any 60-minute span.",
+    "ainglish": "Complete fictional rentals log on one UTC day: 3 rentals at 00:57 UTC, then 3 rentals at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 3 rentals per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "rentals",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          3
+        ],
+        [
+          123,
+          3
+        ]
+      ],
+      "limit": 3,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-1-any-3",
+    "english": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 rentals in any 60-minute span.",
+    "ainglish": "Fictional rentals rule, clock hours begin at minute 00 in UTC. Rule: 3 rentals per-any(60m).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "rentals",
+    "variant": 3,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-1-any-3",
+    "english": "Complete fictional rentals log on one UTC day: 1 rentals at 00:57 UTC, then 2 rentals at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 rentals in any 60-minute span.",
+    "ainglish": "Complete fictional rentals log on one UTC day: 1 rentals at 00:57 UTC, then 2 rentals at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 3 rentals per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "rentals",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          2
+        ]
+      ],
+      "limit": 3,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-2-clock-0",
+    "english": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: At most 4 scans in each clock hour.",
+    "ainglish": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: 4 scans per-clock(hour).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "A fresh allowance begins at each UTC clock-hour boundary."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "scans",
+    "variant": 0,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-2-clock-0",
+    "english": "Complete fictional scans log on one UTC day: 4 scans at 00:57 UTC, then 4 scans at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 scans in each clock hour.",
+    "ainglish": "Complete fictional scans log on one UTC day: 4 scans at 00:57 UTC, then 4 scans at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 4 scans per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "scans",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          4
+        ],
+        [
+          63,
+          4
+        ]
+      ],
+      "limit": 4,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-2-clock-1",
+    "english": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: At most 4 scans in each clock hour.",
+    "ainglish": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: 4 scans per-clock(hour).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "scans",
+    "variant": 1,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-2-clock-1",
+    "english": "Complete fictional scans log on one UTC day: 4 scans at 01:03 UTC, then 1 scans at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 scans in each clock hour.",
+    "ainglish": "Complete fictional scans log on one UTC day: 4 scans at 01:03 UTC, then 1 scans at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 4 scans per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "scans",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          4
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 4,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-2-clock-2",
+    "english": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: At most 4 scans in each clock hour.",
+    "ainglish": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: 4 scans per-clock(hour).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "scans",
+    "variant": 2,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-2-clock-2",
+    "english": "Complete fictional scans log on one UTC day: 4 scans at 00:57 UTC, then 4 scans at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 scans in each clock hour.",
+    "ainglish": "Complete fictional scans log on one UTC day: 4 scans at 00:57 UTC, then 4 scans at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 4 scans per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "scans",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          4
+        ],
+        [
+          123,
+          4
+        ]
+      ],
+      "limit": 4,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-2-clock-3",
+    "english": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: At most 4 scans in each clock hour.",
+    "ainglish": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: 4 scans per-clock(hour).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "A fresh allowance begins at each UTC clock-hour boundary."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "scans",
+    "variant": 3,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-2-clock-3",
+    "english": "Complete fictional scans log on one UTC day: 1 scans at 00:57 UTC, then 3 scans at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 scans in each clock hour.",
+    "ainglish": "Complete fictional scans log on one UTC day: 1 scans at 00:57 UTC, then 3 scans at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 4 scans per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "scans",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          3
+        ]
+      ],
+      "limit": 4,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-2-any-0",
+    "english": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: At most 4 scans in any 60-minute span.",
+    "ainglish": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: 4 scans per-any(60m).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "scans",
+    "variant": 0,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-2-any-0",
+    "english": "Complete fictional scans log on one UTC day: 4 scans at 00:57 UTC, then 4 scans at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 scans in any 60-minute span.",
+    "ainglish": "Complete fictional scans log on one UTC day: 4 scans at 00:57 UTC, then 4 scans at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 4 scans per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "not enough information",
+      "yes"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "scans",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          4
+        ],
+        [
+          63,
+          4
+        ]
+      ],
+      "limit": 4,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-2-any-1",
+    "english": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: At most 4 scans in any 60-minute span.",
+    "ainglish": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: 4 scans per-any(60m).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "scans",
+    "variant": 1,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-2-any-1",
+    "english": "Complete fictional scans log on one UTC day: 4 scans at 01:03 UTC, then 1 scans at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 scans in any 60-minute span.",
+    "ainglish": "Complete fictional scans log on one UTC day: 4 scans at 01:03 UTC, then 1 scans at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 4 scans per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "scans",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          4
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 4,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-2-any-2",
+    "english": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: At most 4 scans in any 60-minute span.",
+    "ainglish": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: 4 scans per-any(60m).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "scans",
+    "variant": 2,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-2-any-2",
+    "english": "Complete fictional scans log on one UTC day: 4 scans at 00:57 UTC, then 4 scans at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 scans in any 60-minute span.",
+    "ainglish": "Complete fictional scans log on one UTC day: 4 scans at 00:57 UTC, then 4 scans at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 4 scans per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "scans",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          4
+        ],
+        [
+          123,
+          4
+        ]
+      ],
+      "limit": 4,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-2-any-3",
+    "english": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: At most 4 scans in any 60-minute span.",
+    "ainglish": "Fictional scans rule, clock hours begin at minute 00 in UTC. Rule: 4 scans per-any(60m).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "scans",
+    "variant": 3,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-2-any-3",
+    "english": "Complete fictional scans log on one UTC day: 1 scans at 00:57 UTC, then 3 scans at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 scans in any 60-minute span.",
+    "ainglish": "Complete fictional scans log on one UTC day: 1 scans at 00:57 UTC, then 3 scans at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 4 scans per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "scans",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          3
+        ]
+      ],
+      "limit": 4,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-3-clock-0",
+    "english": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: At most 5 exports in each clock hour.",
+    "ainglish": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: 5 exports per-clock(hour).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "exports",
+    "variant": 0,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-3-clock-0",
+    "english": "Complete fictional exports log on one UTC day: 5 exports at 00:57 UTC, then 5 exports at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 exports in each clock hour.",
+    "ainglish": "Complete fictional exports log on one UTC day: 5 exports at 00:57 UTC, then 5 exports at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 5 exports per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "exports",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          5
+        ],
+        [
+          63,
+          5
+        ]
+      ],
+      "limit": 5,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-3-clock-1",
+    "english": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: At most 5 exports in each clock hour.",
+    "ainglish": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: 5 exports per-clock(hour).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "exports",
+    "variant": 1,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-3-clock-1",
+    "english": "Complete fictional exports log on one UTC day: 5 exports at 01:03 UTC, then 1 exports at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 exports in each clock hour.",
+    "ainglish": "Complete fictional exports log on one UTC day: 5 exports at 01:03 UTC, then 1 exports at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 5 exports per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "exports",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          5
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 5,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-3-clock-2",
+    "english": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: At most 5 exports in each clock hour.",
+    "ainglish": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: 5 exports per-clock(hour).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "A fresh allowance begins at each UTC clock-hour boundary."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "exports",
+    "variant": 2,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-3-clock-2",
+    "english": "Complete fictional exports log on one UTC day: 5 exports at 00:57 UTC, then 5 exports at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 exports in each clock hour.",
+    "ainglish": "Complete fictional exports log on one UTC day: 5 exports at 00:57 UTC, then 5 exports at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 5 exports per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "exports",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          5
+        ],
+        [
+          123,
+          5
+        ]
+      ],
+      "limit": 5,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-3-clock-3",
+    "english": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: At most 5 exports in each clock hour.",
+    "ainglish": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: 5 exports per-clock(hour).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "exports",
+    "variant": 3,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-3-clock-3",
+    "english": "Complete fictional exports log on one UTC day: 1 exports at 00:57 UTC, then 4 exports at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 exports in each clock hour.",
+    "ainglish": "Complete fictional exports log on one UTC day: 1 exports at 00:57 UTC, then 4 exports at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 5 exports per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "exports",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          4
+        ]
+      ],
+      "limit": 5,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-3-any-0",
+    "english": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: At most 5 exports in any 60-minute span.",
+    "ainglish": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: 5 exports per-any(60m).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "exports",
+    "variant": 0,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-3-any-0",
+    "english": "Complete fictional exports log on one UTC day: 5 exports at 00:57 UTC, then 5 exports at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 exports in any 60-minute span.",
+    "ainglish": "Complete fictional exports log on one UTC day: 5 exports at 00:57 UTC, then 5 exports at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 5 exports per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "exports",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          5
+        ],
+        [
+          63,
+          5
+        ]
+      ],
+      "limit": 5,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-3-any-1",
+    "english": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: At most 5 exports in any 60-minute span.",
+    "ainglish": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: 5 exports per-any(60m).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "exports",
+    "variant": 1,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-3-any-1",
+    "english": "Complete fictional exports log on one UTC day: 5 exports at 01:03 UTC, then 1 exports at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 exports in any 60-minute span.",
+    "ainglish": "Complete fictional exports log on one UTC day: 5 exports at 01:03 UTC, then 1 exports at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 5 exports per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "exports",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          5
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 5,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-3-any-2",
+    "english": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: At most 5 exports in any 60-minute span.",
+    "ainglish": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: 5 exports per-any(60m).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "exports",
+    "variant": 2,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-3-any-2",
+    "english": "Complete fictional exports log on one UTC day: 5 exports at 00:57 UTC, then 5 exports at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 exports in any 60-minute span.",
+    "ainglish": "Complete fictional exports log on one UTC day: 5 exports at 00:57 UTC, then 5 exports at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 5 exports per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "exports",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          5
+        ],
+        [
+          123,
+          5
+        ]
+      ],
+      "limit": 5,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-3-any-3",
+    "english": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: At most 5 exports in any 60-minute span.",
+    "ainglish": "Fictional exports rule, clock hours begin at minute 00 in UTC. Rule: 5 exports per-any(60m).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "exports",
+    "variant": 3,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-3-any-3",
+    "english": "Complete fictional exports log on one UTC day: 1 exports at 00:57 UTC, then 4 exports at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 exports in any 60-minute span.",
+    "ainglish": "Complete fictional exports log on one UTC day: 1 exports at 00:57 UTC, then 4 exports at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 5 exports per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "exports",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          4
+        ]
+      ],
+      "limit": 5,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-4-clock-0",
+    "english": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: At most 2 drawings in each clock hour.",
+    "ainglish": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: 2 drawings per-clock(hour).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "drawings",
+    "variant": 0,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-4-clock-0",
+    "english": "Complete fictional drawings log on one UTC day: 2 drawings at 00:57 UTC, then 2 drawings at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 drawings in each clock hour.",
+    "ainglish": "Complete fictional drawings log on one UTC day: 2 drawings at 00:57 UTC, then 2 drawings at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 2 drawings per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "drawings",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          2
+        ],
+        [
+          63,
+          2
+        ]
+      ],
+      "limit": 2,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-4-clock-1",
+    "english": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: At most 2 drawings in each clock hour.",
+    "ainglish": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: 2 drawings per-clock(hour).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "A fresh allowance begins at each UTC clock-hour boundary."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "drawings",
+    "variant": 1,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-4-clock-1",
+    "english": "Complete fictional drawings log on one UTC day: 2 drawings at 01:03 UTC, then 1 drawings at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 drawings in each clock hour.",
+    "ainglish": "Complete fictional drawings log on one UTC day: 2 drawings at 01:03 UTC, then 1 drawings at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 2 drawings per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "not enough information",
+      "yes"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "drawings",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          2
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 2,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-4-clock-2",
+    "english": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: At most 2 drawings in each clock hour.",
+    "ainglish": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: 2 drawings per-clock(hour).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "drawings",
+    "variant": 2,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-4-clock-2",
+    "english": "Complete fictional drawings log on one UTC day: 2 drawings at 00:57 UTC, then 2 drawings at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 drawings in each clock hour.",
+    "ainglish": "Complete fictional drawings log on one UTC day: 2 drawings at 00:57 UTC, then 2 drawings at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 2 drawings per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "drawings",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          2
+        ],
+        [
+          123,
+          2
+        ]
+      ],
+      "limit": 2,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-4-clock-3",
+    "english": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: At most 2 drawings in each clock hour.",
+    "ainglish": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: 2 drawings per-clock(hour).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "drawings",
+    "variant": 3,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-4-clock-3",
+    "english": "Complete fictional drawings log on one UTC day: 1 drawings at 00:57 UTC, then 1 drawings at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 drawings in each clock hour.",
+    "ainglish": "Complete fictional drawings log on one UTC day: 1 drawings at 00:57 UTC, then 1 drawings at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 2 drawings per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "drawings",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          1
+        ]
+      ],
+      "limit": 2,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-4-any-0",
+    "english": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: At most 2 drawings in any 60-minute span.",
+    "ainglish": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: 2 drawings per-any(60m).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "drawings",
+    "variant": 0,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-4-any-0",
+    "english": "Complete fictional drawings log on one UTC day: 2 drawings at 00:57 UTC, then 2 drawings at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 drawings in any 60-minute span.",
+    "ainglish": "Complete fictional drawings log on one UTC day: 2 drawings at 00:57 UTC, then 2 drawings at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 2 drawings per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "drawings",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          2
+        ],
+        [
+          63,
+          2
+        ]
+      ],
+      "limit": 2,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-4-any-1",
+    "english": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: At most 2 drawings in any 60-minute span.",
+    "ainglish": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: 2 drawings per-any(60m).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "drawings",
+    "variant": 1,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-4-any-1",
+    "english": "Complete fictional drawings log on one UTC day: 2 drawings at 01:03 UTC, then 1 drawings at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 drawings in any 60-minute span.",
+    "ainglish": "Complete fictional drawings log on one UTC day: 2 drawings at 01:03 UTC, then 1 drawings at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 2 drawings per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "not enough information",
+      "yes"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "drawings",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          2
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 2,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-4-any-2",
+    "english": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: At most 2 drawings in any 60-minute span.",
+    "ainglish": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: 2 drawings per-any(60m).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "drawings",
+    "variant": 2,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-4-any-2",
+    "english": "Complete fictional drawings log on one UTC day: 2 drawings at 00:57 UTC, then 2 drawings at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 drawings in any 60-minute span.",
+    "ainglish": "Complete fictional drawings log on one UTC day: 2 drawings at 00:57 UTC, then 2 drawings at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 2 drawings per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "drawings",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          2
+        ],
+        [
+          123,
+          2
+        ]
+      ],
+      "limit": 2,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-4-any-3",
+    "english": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: At most 2 drawings in any 60-minute span.",
+    "ainglish": "Fictional drawings rule, clock hours begin at minute 00 in UTC. Rule: 2 drawings per-any(60m).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "drawings",
+    "variant": 3,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-4-any-3",
+    "english": "Complete fictional drawings log on one UTC day: 1 drawings at 00:57 UTC, then 1 drawings at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 2 drawings in any 60-minute span.",
+    "ainglish": "Complete fictional drawings log on one UTC day: 1 drawings at 00:57 UTC, then 1 drawings at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 2 drawings per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "drawings",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          1
+        ]
+      ],
+      "limit": 2,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-5-clock-0",
+    "english": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 signals in each clock hour.",
+    "ainglish": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: 3 signals per-clock(hour).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "A fresh allowance begins at each UTC clock-hour boundary."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "signals",
+    "variant": 0,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-5-clock-0",
+    "english": "Complete fictional signals log on one UTC day: 3 signals at 00:57 UTC, then 3 signals at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 signals in each clock hour.",
+    "ainglish": "Complete fictional signals log on one UTC day: 3 signals at 00:57 UTC, then 3 signals at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 3 signals per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "signals",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          3
+        ],
+        [
+          63,
+          3
+        ]
+      ],
+      "limit": 3,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-5-clock-1",
+    "english": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 signals in each clock hour.",
+    "ainglish": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: 3 signals per-clock(hour).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "signals",
+    "variant": 1,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-5-clock-1",
+    "english": "Complete fictional signals log on one UTC day: 3 signals at 01:03 UTC, then 1 signals at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 signals in each clock hour.",
+    "ainglish": "Complete fictional signals log on one UTC day: 3 signals at 01:03 UTC, then 1 signals at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 3 signals per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "signals",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          3
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 3,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-5-clock-2",
+    "english": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 signals in each clock hour.",
+    "ainglish": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: 3 signals per-clock(hour).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "signals",
+    "variant": 2,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-5-clock-2",
+    "english": "Complete fictional signals log on one UTC day: 3 signals at 00:57 UTC, then 3 signals at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 signals in each clock hour.",
+    "ainglish": "Complete fictional signals log on one UTC day: 3 signals at 00:57 UTC, then 3 signals at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 3 signals per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "signals",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          3
+        ],
+        [
+          123,
+          3
+        ]
+      ],
+      "limit": 3,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-5-clock-3",
+    "english": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 signals in each clock hour.",
+    "ainglish": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: 3 signals per-clock(hour).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "A fresh allowance begins at each UTC clock-hour boundary."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "signals",
+    "variant": 3,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-5-clock-3",
+    "english": "Complete fictional signals log on one UTC day: 1 signals at 00:57 UTC, then 2 signals at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 signals in each clock hour.",
+    "ainglish": "Complete fictional signals log on one UTC day: 1 signals at 00:57 UTC, then 2 signals at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 3 signals per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "signals",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          2
+        ]
+      ],
+      "limit": 3,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-5-any-0",
+    "english": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 signals in any 60-minute span.",
+    "ainglish": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: 3 signals per-any(60m).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "signals",
+    "variant": 0,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-5-any-0",
+    "english": "Complete fictional signals log on one UTC day: 3 signals at 00:57 UTC, then 3 signals at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 signals in any 60-minute span.",
+    "ainglish": "Complete fictional signals log on one UTC day: 3 signals at 00:57 UTC, then 3 signals at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 3 signals per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "not enough information",
+      "yes"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "signals",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          3
+        ],
+        [
+          63,
+          3
+        ]
+      ],
+      "limit": 3,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-5-any-1",
+    "english": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 signals in any 60-minute span.",
+    "ainglish": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: 3 signals per-any(60m).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "signals",
+    "variant": 1,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-5-any-1",
+    "english": "Complete fictional signals log on one UTC day: 3 signals at 01:03 UTC, then 1 signals at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 signals in any 60-minute span.",
+    "ainglish": "Complete fictional signals log on one UTC day: 3 signals at 01:03 UTC, then 1 signals at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 3 signals per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "signals",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          3
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 3,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-5-any-2",
+    "english": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 signals in any 60-minute span.",
+    "ainglish": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: 3 signals per-any(60m).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "signals",
+    "variant": 2,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-5-any-2",
+    "english": "Complete fictional signals log on one UTC day: 3 signals at 00:57 UTC, then 3 signals at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 signals in any 60-minute span.",
+    "ainglish": "Complete fictional signals log on one UTC day: 3 signals at 00:57 UTC, then 3 signals at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 3 signals per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "signals",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          3
+        ],
+        [
+          123,
+          3
+        ]
+      ],
+      "limit": 3,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-5-any-3",
+    "english": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: At most 3 signals in any 60-minute span.",
+    "ainglish": "Fictional signals rule, clock hours begin at minute 00 in UTC. Rule: 3 signals per-any(60m).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "signals",
+    "variant": 3,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-5-any-3",
+    "english": "Complete fictional signals log on one UTC day: 1 signals at 00:57 UTC, then 2 signals at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 3 signals in any 60-minute span.",
+    "ainglish": "Complete fictional signals log on one UTC day: 1 signals at 00:57 UTC, then 2 signals at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 3 signals per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "signals",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          2
+        ]
+      ],
+      "limit": 3,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-6-clock-0",
+    "english": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: At most 4 claims in each clock hour.",
+    "ainglish": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: 4 claims per-clock(hour).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "claims",
+    "variant": 0,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-6-clock-0",
+    "english": "Complete fictional claims log on one UTC day: 4 claims at 00:57 UTC, then 4 claims at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 claims in each clock hour.",
+    "ainglish": "Complete fictional claims log on one UTC day: 4 claims at 00:57 UTC, then 4 claims at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 4 claims per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "claims",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          4
+        ],
+        [
+          63,
+          4
+        ]
+      ],
+      "limit": 4,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-6-clock-1",
+    "english": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: At most 4 claims in each clock hour.",
+    "ainglish": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: 4 claims per-clock(hour).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "claims",
+    "variant": 1,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-6-clock-1",
+    "english": "Complete fictional claims log on one UTC day: 4 claims at 01:03 UTC, then 1 claims at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 claims in each clock hour.",
+    "ainglish": "Complete fictional claims log on one UTC day: 4 claims at 01:03 UTC, then 1 claims at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 4 claims per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "claims",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          4
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 4,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-6-clock-2",
+    "english": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: At most 4 claims in each clock hour.",
+    "ainglish": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: 4 claims per-clock(hour).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "A fresh allowance begins at each UTC clock-hour boundary."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "claims",
+    "variant": 2,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-6-clock-2",
+    "english": "Complete fictional claims log on one UTC day: 4 claims at 00:57 UTC, then 4 claims at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 claims in each clock hour.",
+    "ainglish": "Complete fictional claims log on one UTC day: 4 claims at 00:57 UTC, then 4 claims at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 4 claims per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "claims",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          4
+        ],
+        [
+          123,
+          4
+        ]
+      ],
+      "limit": 4,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-6-clock-3",
+    "english": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: At most 4 claims in each clock hour.",
+    "ainglish": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: 4 claims per-clock(hour).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "claims",
+    "variant": 3,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-6-clock-3",
+    "english": "Complete fictional claims log on one UTC day: 1 claims at 00:57 UTC, then 3 claims at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 claims in each clock hour.",
+    "ainglish": "Complete fictional claims log on one UTC day: 1 claims at 00:57 UTC, then 3 claims at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 4 claims per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "claims",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          3
+        ]
+      ],
+      "limit": 4,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-6-any-0",
+    "english": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: At most 4 claims in any 60-minute span.",
+    "ainglish": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: 4 claims per-any(60m).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "claims",
+    "variant": 0,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-6-any-0",
+    "english": "Complete fictional claims log on one UTC day: 4 claims at 00:57 UTC, then 4 claims at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 claims in any 60-minute span.",
+    "ainglish": "Complete fictional claims log on one UTC day: 4 claims at 00:57 UTC, then 4 claims at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 4 claims per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "claims",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          4
+        ],
+        [
+          63,
+          4
+        ]
+      ],
+      "limit": 4,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-6-any-1",
+    "english": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: At most 4 claims in any 60-minute span.",
+    "ainglish": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: 4 claims per-any(60m).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "claims",
+    "variant": 1,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-6-any-1",
+    "english": "Complete fictional claims log on one UTC day: 4 claims at 01:03 UTC, then 1 claims at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 claims in any 60-minute span.",
+    "ainglish": "Complete fictional claims log on one UTC day: 4 claims at 01:03 UTC, then 1 claims at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 4 claims per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "claims",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          4
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 4,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-6-any-2",
+    "english": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: At most 4 claims in any 60-minute span.",
+    "ainglish": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: 4 claims per-any(60m).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "claims",
+    "variant": 2,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-6-any-2",
+    "english": "Complete fictional claims log on one UTC day: 4 claims at 00:57 UTC, then 4 claims at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 claims in any 60-minute span.",
+    "ainglish": "Complete fictional claims log on one UTC day: 4 claims at 00:57 UTC, then 4 claims at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 4 claims per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "not enough information",
+      "no"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "claims",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          4
+        ],
+        [
+          123,
+          4
+        ]
+      ],
+      "limit": 4,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-6-any-3",
+    "english": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: At most 4 claims in any 60-minute span.",
+    "ainglish": "Fictional claims rule, clock hours begin at minute 00 in UTC. Rule: 4 claims per-any(60m).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "claims",
+    "variant": 3,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-6-any-3",
+    "english": "Complete fictional claims log on one UTC day: 1 claims at 00:57 UTC, then 3 claims at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 4 claims in any 60-minute span.",
+    "ainglish": "Complete fictional claims log on one UTC day: 1 claims at 00:57 UTC, then 3 claims at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 4 claims per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "claims",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          3
+        ]
+      ],
+      "limit": 4,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-7-clock-0",
+    "english": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: At most 5 samples in each clock hour.",
+    "ainglish": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: 5 samples per-clock(hour).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "samples",
+    "variant": 0,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-7-clock-0",
+    "english": "Complete fictional samples log on one UTC day: 5 samples at 00:57 UTC, then 5 samples at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 samples in each clock hour.",
+    "ainglish": "Complete fictional samples log on one UTC day: 5 samples at 00:57 UTC, then 5 samples at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 5 samples per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "samples",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          5
+        ],
+        [
+          63,
+          5
+        ]
+      ],
+      "limit": 5,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-7-clock-1",
+    "english": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: At most 5 samples in each clock hour.",
+    "ainglish": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: 5 samples per-clock(hour).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "A fresh allowance begins at each UTC clock-hour boundary."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "samples",
+    "variant": 1,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-7-clock-1",
+    "english": "Complete fictional samples log on one UTC day: 5 samples at 01:03 UTC, then 1 samples at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 samples in each clock hour.",
+    "ainglish": "Complete fictional samples log on one UTC day: 5 samples at 01:03 UTC, then 1 samples at 01:06 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 5 samples per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "not enough information",
+      "yes"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "samples",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          5
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 5,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-7-clock-2",
+    "english": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: At most 5 samples in each clock hour.",
+    "ainglish": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: 5 samples per-clock(hour).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "samples",
+    "variant": 2,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-7-clock-2",
+    "english": "Complete fictional samples log on one UTC day: 5 samples at 00:57 UTC, then 5 samples at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 samples in each clock hour.",
+    "ainglish": "Complete fictional samples log on one UTC day: 5 samples at 00:57 UTC, then 5 samples at 02:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 5 samples per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "samples",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          5
+        ],
+        [
+          123,
+          5
+        ]
+      ],
+      "limit": 5,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-7-clock-3",
+    "english": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: At most 5 samples in each clock hour.",
+    "ainglish": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: 5 samples per-clock(hour).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "A fresh allowance begins at each UTC clock-hour boundary.",
+    "settlement_stratum": "clock-rule",
+    "form": "clock",
+    "task": "rule-selection",
+    "domain": "samples",
+    "variant": 3,
+    "oracle": {
+      "policy": "clock",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-7-clock-3",
+    "english": "Complete fictional samples log on one UTC day: 1 samples at 00:57 UTC, then 4 samples at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 samples in each clock hour.",
+    "ainglish": "Complete fictional samples log on one UTC day: 1 samples at 00:57 UTC, then 4 samples at 01:03 UTC. No other events occur. The counter resets to zero at 00:00, 01:00, 02:00 UTC and each subsequent clock hour. A count greater than the allowance is a violation; equality is permitted. Rule: 5 samples per-clock(hour).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "clock-counter",
+    "form": "clock",
+    "task": "explicit-counter",
+    "domain": "samples",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          4
+        ]
+      ],
+      "limit": 5,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-7-any-0",
+    "english": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: At most 5 samples in any 60-minute span.",
+    "ainglish": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: 5 samples per-any(60m).",
+    "question": "Which enforcement rule does the sentence specify?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "samples",
+    "variant": 0,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-7-any-0",
+    "english": "Complete fictional samples log on one UTC day: 5 samples at 00:57 UTC, then 5 samples at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 samples in any 60-minute span.",
+    "ainglish": "Complete fictional samples log on one UTC day: 5 samples at 00:57 UTC, then 5 samples at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 5 samples per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "samples",
+    "variant": 0,
+    "oracle": {
+      "events": [
+        [
+          57,
+          5
+        ],
+        [
+          63,
+          5
+        ]
+      ],
+      "limit": 5,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-7-any-1",
+    "english": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: At most 5 samples in any 60-minute span.",
+    "ainglish": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: 5 samples per-any(60m).",
+    "question": "Which counter policy follows from the stated rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "samples",
+    "variant": 1,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-7-any-1",
+    "english": "Complete fictional samples log on one UTC day: 5 samples at 01:03 UTC, then 1 samples at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 samples in any 60-minute span.",
+    "ainglish": "Complete fictional samples log on one UTC day: 5 samples at 01:03 UTC, then 1 samples at 01:06 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 5 samples per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "not enough information",
+      "yes"
+    ],
+    "answer": "yes",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "samples",
+    "variant": 1,
+    "oracle": {
+      "events": [
+        [
+          63,
+          5
+        ],
+        [
+          66,
+          1
+        ]
+      ],
+      "limit": 5,
+      "violated": true
+    }
+  },
+  {
+    "id": "qd-rule-7-any-2",
+    "english": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: At most 5 samples in any 60-minute span.",
+    "ainglish": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: 5 samples per-any(60m).",
+    "question": "An implementer reads only this rule. Which constraint is specified?",
+    "options": [
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "samples",
+    "variant": 2,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-7-any-2",
+    "english": "Complete fictional samples log on one UTC day: 5 samples at 00:57 UTC, then 5 samples at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 samples in any 60-minute span.",
+    "ainglish": "Complete fictional samples log on one UTC day: 5 samples at 00:57 UTC, then 5 samples at 02:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 5 samples per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "no",
+      "yes",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "samples",
+    "variant": 2,
+    "oracle": {
+      "events": [
+        [
+          57,
+          5
+        ],
+        [
+          123,
+          5
+        ]
+      ],
+      "limit": 5,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-rule-7-any-3",
+    "english": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: At most 5 samples in any 60-minute span.",
+    "ainglish": "Fictional samples rule, clock hours begin at minute 00 in UTC. Rule: 5 samples per-any(60m).",
+    "question": "Which of these descriptions preserves the rule?",
+    "options": [
+      "A fresh allowance begins at each UTC clock-hour boundary.",
+      "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+      "Unused allowance accumulates forever and can be spent later."
+    ],
+    "answer": "Every elapsed 60-minute window must respect the allowance, even across a clock-hour boundary.",
+    "settlement_stratum": "any-rule",
+    "form": "any",
+    "task": "rule-selection",
+    "domain": "samples",
+    "variant": 3,
+    "oracle": {
+      "policy": "any",
+      "calculation_required": false
+    }
+  },
+  {
+    "id": "qd-counter-7-any-3",
+    "english": "Complete fictional samples log on one UTC day: 1 samples at 00:57 UTC, then 4 samples at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: At most 5 samples in any 60-minute span.",
+    "ainglish": "Complete fictional samples log on one UTC day: 1 samples at 00:57 UTC, then 4 samples at 01:03 UTC. No other events occur. Each event stays in the counter for 60 elapsed minutes; a clock-hour boundary does not reset it. A count greater than the allowance is a violation; equality is permitted. Rule: 5 samples per-any(60m).",
+    "question": "Did the second event exceed the allowance?",
+    "options": [
+      "yes",
+      "no",
+      "not enough information"
+    ],
+    "answer": "no",
+    "settlement_stratum": "any-counter",
+    "form": "any",
+    "task": "explicit-counter",
+    "domain": "samples",
+    "variant": 3,
+    "oracle": {
+      "events": [
+        [
+          57,
+          1
+        ],
+        [
+          63,
+          4
+        ]
+      ],
+      "limit": 5,
+      "violated": false
+    }
+  },
+  {
+    "id": "qd-control-0",
+    "calibration": true,
+    "calibration_scope": "target-independent",
+    "calibration_construct": "resolved custody",
+    "english": "Parcel QD-21 was collected by Ari or Bela; the register does not say which.",
+    "ainglish": "Parcel QD-21 was collected by Ari, not Bela.",
+    "question": "Who collected parcel QD-21?",
+    "options": [
+      "Ari",
+      "Bela",
+      "Cleo",
+      "Daru",
+      "Etta",
+      "not determined"
+    ],
+    "answer": "Ari"
+  },
+  {
+    "id": "qd-control-1",
+    "calibration": true,
+    "calibration_scope": "target-independent",
+    "calibration_construct": "resolved custody",
+    "english": "Parcel QD-22 was collected by Bela or Cleo; the register does not say which.",
+    "ainglish": "Parcel QD-22 was collected by Bela, not Cleo.",
+    "question": "Who collected parcel QD-22?",
+    "options": [
+      "Ari",
+      "Bela",
+      "Cleo",
+      "Daru",
+      "Etta",
+      "not determined"
+    ],
+    "answer": "Bela"
+  },
+  {
+    "id": "qd-control-2",
+    "calibration": true,
+    "calibration_scope": "target-independent",
+    "calibration_construct": "resolved custody",
+    "english": "Parcel QD-23 was collected by Cleo or Daru; the register does not say which.",
+    "ainglish": "Parcel QD-23 was collected by Cleo, not Daru.",
+    "question": "Who collected parcel QD-23?",
+    "options": [
+      "Ari",
+      "Bela",
+      "Cleo",
+      "Daru",
+      "Etta",
+      "not determined"
+    ],
+    "answer": "Cleo"
+  },
+  {
+    "id": "qd-control-3",
+    "calibration": true,
+    "calibration_scope": "target-independent",
+    "calibration_construct": "resolved custody",
+    "english": "Parcel QD-24 was collected by Daru or Etta; the register does not say which.",
+    "ainglish": "Parcel QD-24 was collected by Daru, not Etta.",
+    "question": "Who collected parcel QD-24?",
+    "options": [
+      "Ari",
+      "Bela",
+      "Cleo",
+      "Daru",
+      "Etta",
+      "not determined"
+    ],
+    "answer": "Daru"
+  },
+  {
+    "id": "qd-control-4",
+    "calibration": true,
+    "calibration_scope": "target-independent",
+    "calibration_construct": "resolved custody",
+    "english": "Parcel QD-25 was collected by Etta or Ari; the register does not say which.",
+    "ainglish": "Parcel QD-25 was collected by Etta, not Ari.",
+    "question": "Who collected parcel QD-25?",
+    "options": [
+      "Ari",
+      "Bela",
+      "Cleo",
+      "Daru",
+      "Etta",
+      "not determined"
+    ],
+    "answer": "Etta"
+  },
+  {
+    "id": "qd-control-5",
+    "calibration": true,
+    "calibration_scope": "target-independent",
+    "calibration_construct": "resolved custody",
+    "english": "Parcel QD-26 was collected by Ari or Bela; the register does not say which.",
+    "ainglish": "Parcel QD-26 was collected by Ari, not Bela.",
+    "question": "Who collected parcel QD-26?",
+    "options": [
+      "Bela",
+      "Cleo",
+      "Daru",
+      "Etta",
+      "not determined",
+      "Ari"
+    ],
+    "answer": "Ari"
+  },
+  {
+    "id": "qd-control-6",
+    "calibration": true,
+    "calibration_scope": "target-independent",
+    "calibration_construct": "resolved custody",
+    "english": "Parcel QD-27 was collected by Bela or Cleo; the register does not say which.",
+    "ainglish": "Parcel QD-27 was collected by Bela, not Cleo.",
+    "question": "Who collected parcel QD-27?",
+    "options": [
+      "Bela",
+      "Ari",
+      "Cleo",
+      "Daru",
+      "Etta",
+      "not determined"
+    ],
+    "answer": "Bela"
+  },
+  {
+    "id": "qd-control-7",
+    "calibration": true,
+    "calibration_scope": "target-independent",
+    "calibration_construct": "resolved custody",
+    "english": "Parcel QD-28 was collected by Cleo or Daru; the register does not say which.",
+    "ainglish": "Parcel QD-28 was collected by Cleo, not Daru.",
+    "question": "Who collected parcel QD-28?",
+    "options": [
+      "Ari",
+      "Cleo",
+      "Bela",
+      "Daru",
+      "Etta",
+      "not determined"
+    ],
+    "answer": "Cleo"
+  },
+  {
+    "id": "qd-control-8",
+    "calibration": true,
+    "calibration_scope": "target-independent",
+    "calibration_construct": "resolved custody",
+    "english": "Parcel QD-29 was collected by Daru or Etta; the register does not say which.",
+    "ainglish": "Parcel QD-29 was collected by Daru, not Etta.",
+    "question": "Who collected parcel QD-29?",
+    "options": [
+      "Ari",
+      "Bela",
+      "Daru",
+      "Cleo",
+      "Etta",
+      "not determined"
+    ],
+    "answer": "Daru"
+  },
+  {
+    "id": "qd-control-9",
+    "calibration": true,
+    "calibration_scope": "target-independent",
+    "calibration_construct": "resolved custody",
+    "english": "Parcel QD-30 was collected by Etta or Ari; the register does not say which.",
+    "ainglish": "Parcel QD-30 was collected by Etta, not Ari.",
+    "question": "Who collected parcel QD-30?",
+    "options": [
+      "Ari",
+      "Bela",
+      "Cleo",
+      "Etta",
+      "Daru",
+      "not determined"
+    ],
+    "answer": "Etta"
+  }
+]
