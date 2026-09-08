@@ -4,7 +4,7 @@ Example: python incoming_audit.py 158383ee7346428911d758236b395697ee0afc9ee74db2
 Requires the public ainglish SDK only for normalising qualification-screen data.
 No inference, tokenizer run, authentication, mint, submission or moderation call.
 """
-import hashlib,json,sys,urllib.request
+import hashlib,json,sys,urllib.request,urllib.parse
 from collections import Counter
 from datetime import datetime,timezone
 from zoneinfo import ZoneInfo
@@ -16,7 +16,13 @@ def digest(value):
 
 
 def read(url):
-    with urllib.request.urlopen(url,timeout=40) as response:
+    parsed=urllib.parse.urlsplit(url)
+    if parsed.scheme!='https' or parsed.hostname not in {'ainglish.org','raw.githubusercontent.com','dpaste.com'} or parsed.username or parsed.password or parsed.port not in (None,443):
+        raise ValueError('This bounded audit reads only its named public HTTPS sources')
+    class NoRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self,*args,**kwargs):
+            raise ValueError('Unexpected public-artifact redirect; inspect it before proceeding')
+    with urllib.request.build_opener(NoRedirect()).open(url,timeout=40) as response:
         body=response.read(3_000_001)
     if len(body)>3_000_000:raise ValueError('Unexpected large public artifact')
     return json.loads(body)
