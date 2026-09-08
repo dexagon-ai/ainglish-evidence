@@ -10,7 +10,12 @@
       "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
       "max_tokens": 64,
       "timeout_s": 120,
-      "temperature": 0
+      "temperature": 0,
+      "digest_source": "ollama:/api/tags",
+      "_ainglish_instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      }
     },
     {
       "name": "olmo2-13b-qualification-v7-cd836509a1a0",
@@ -22,7 +27,12 @@
       "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
       "max_tokens": 64,
       "timeout_s": 120,
-      "temperature": 0
+      "temperature": 0,
+      "digest_source": "ollama:/api/tags",
+      "_ainglish_instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      }
     }
   ],
   "models": [
@@ -92,18 +102,18 @@
   "slug": "per-clock-unit-per-any-span",
   "construct": "per-clock(<unit>) / per-any(<span>)",
   "metric": "comprehension_accuracy_delta",
-  "seed": 2026090806,
+  "seed": 2026090805,
   "planted_arm": "ainglish",
   "calibration_min_gap": 0.5,
   "panel_neff": 2,
   "comparator": {
-    "kind": "bare-english-with-explicit-anchor-v1",
-    "description": "128 authored quota consequence items, 64 per window type, eight domains, hour/UTC-day units, four event cases. Bare per-hour/day with identical explicit enforcer anchors; no hidden intent. Careful contrast frozen on the same worlds, not independent confirmation. Report absolute accuracies and every form/boundary/domain; template variants are correlated. No training or future-tokenizer claim."
+    "kind": "careful-english-v1",
+    "description": "128 prospective quota consequence items, 64 per fixed/sliding window, eight domains, hour/UTC-day units, four boundary/event cases. Careful-English full mapping comparison. Both contrasts frozen together and share worlds, not independent confirmation. Item-bootstrap intervals do not turn related templates into independent natural examples. Main two-maximal-burst boundary case and all strata must be reported. No model training or future tokenizer claim."
   },
   "items": [
     {
       "id": "quota-000",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 votes at t=58, then 8 at t=62. Limit: 8 votes per hour.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 votes at t=58, then 8 at t=62. Limit: at most 8 votes in each clock hour.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 votes at t=58, then 8 at t=62. Limit: 8 votes per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -139,7 +149,7 @@
     },
     {
       "id": "quota-001",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=58, then 8 at t=62. Limit: 8 votes per hour.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=58, then 8 at t=62. Limit: at most 8 votes in any 60-minute span.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=58, then 8 at t=62. Limit: 8 votes per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -175,7 +185,7 @@
     },
     {
       "id": "quota-002",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 votes at t=62, then 8 at t=64. Limit: 8 votes per hour.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 votes at t=62, then 8 at t=64. Limit: at most 8 votes in each clock hour.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 votes at t=62, then 8 at t=64. Limit: 8 votes per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -211,7 +221,7 @@
     },
     {
       "id": "quota-003",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=62, then 8 at t=64. Limit: 8 votes per hour.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=62, then 8 at t=64. Limit: at most 8 votes in any 60-minute span.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=62, then 8 at t=64. Limit: 8 votes per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -247,7 +257,7 @@
     },
     {
       "id": "quota-004",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 votes at t=58, then 8 at t=122. Limit: 8 votes per hour.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 votes at t=58, then 8 at t=122. Limit: at most 8 votes in each clock hour.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 votes at t=58, then 8 at t=122. Limit: 8 votes per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -283,7 +293,7 @@
     },
     {
       "id": "quota-005",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=58, then 8 at t=122. Limit: 8 votes per hour.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=58, then 8 at t=122. Limit: at most 8 votes in any 60-minute span.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=58, then 8 at t=122. Limit: 8 votes per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -319,7 +329,7 @@
     },
     {
       "id": "quota-006",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 4 votes at t=58, then 4 at t=62. Limit: 8 votes per hour.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 4 votes at t=58, then 4 at t=62. Limit: at most 8 votes in each clock hour.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 4 votes at t=58, then 4 at t=62. Limit: 8 votes per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -355,7 +365,7 @@
     },
     {
       "id": "quota-007",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 4 votes at t=58, then 4 at t=62. Limit: 8 votes per hour.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 4 votes at t=58, then 4 at t=62. Limit: at most 8 votes in any 60-minute span.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 4 votes at t=58, then 4 at t=62. Limit: 8 votes per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -391,7 +401,7 @@
     },
     {
       "id": "quota-008",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 votes at t=1438, then 8 at t=1442. Limit: 8 votes per day.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 votes at t=1438, then 8 at t=1442. Limit: at most 8 votes in each UTC calendar day.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 votes at t=1438, then 8 at t=1442. Limit: 8 votes per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -427,7 +437,7 @@
     },
     {
       "id": "quota-009",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=1438, then 8 at t=1442. Limit: 8 votes per day.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=1438, then 8 at t=1442. Limit: at most 8 votes in any 24-hour span.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=1438, then 8 at t=1442. Limit: 8 votes per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -463,7 +473,7 @@
     },
     {
       "id": "quota-010",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 votes at t=1442, then 8 at t=1444. Limit: 8 votes per day.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 votes at t=1442, then 8 at t=1444. Limit: at most 8 votes in each UTC calendar day.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 votes at t=1442, then 8 at t=1444. Limit: 8 votes per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -499,7 +509,7 @@
     },
     {
       "id": "quota-011",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=1442, then 8 at t=1444. Limit: 8 votes per day.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=1442, then 8 at t=1444. Limit: at most 8 votes in any 24-hour span.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=1442, then 8 at t=1444. Limit: 8 votes per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -535,7 +545,7 @@
     },
     {
       "id": "quota-012",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 votes at t=1438, then 8 at t=2882. Limit: 8 votes per day.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 votes at t=1438, then 8 at t=2882. Limit: at most 8 votes in each UTC calendar day.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 votes at t=1438, then 8 at t=2882. Limit: 8 votes per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -571,7 +581,7 @@
     },
     {
       "id": "quota-013",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=1438, then 8 at t=2882. Limit: 8 votes per day.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=1438, then 8 at t=2882. Limit: at most 8 votes in any 24-hour span.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 votes at t=1438, then 8 at t=2882. Limit: 8 votes per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -607,7 +617,7 @@
     },
     {
       "id": "quota-014",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 4 votes at t=1438, then 4 at t=1442. Limit: 8 votes per day.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 4 votes at t=1438, then 4 at t=1442. Limit: at most 8 votes in each UTC calendar day.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 4 votes at t=1438, then 4 at t=1442. Limit: 8 votes per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -643,7 +653,7 @@
     },
     {
       "id": "quota-015",
-      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 4 votes at t=1438, then 4 at t=1442. Limit: 8 votes per day.",
+      "english": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 4 votes at t=1438, then 4 at t=1442. Limit: at most 8 votes in any 24-hour span.",
       "ainglish": "Fictional complete votes log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 4 votes at t=1438, then 4 at t=1442. Limit: 8 votes per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -679,7 +689,7 @@
     },
     {
       "id": "quota-016",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 uploads at t=58, then 12 at t=62. Limit: 12 uploads per hour.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 uploads at t=58, then 12 at t=62. Limit: at most 12 uploads in each clock hour.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 uploads at t=58, then 12 at t=62. Limit: 12 uploads per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -715,7 +725,7 @@
     },
     {
       "id": "quota-017",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=58, then 12 at t=62. Limit: 12 uploads per hour.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=58, then 12 at t=62. Limit: at most 12 uploads in any 60-minute span.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=58, then 12 at t=62. Limit: 12 uploads per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -751,7 +761,7 @@
     },
     {
       "id": "quota-018",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 uploads at t=62, then 12 at t=64. Limit: 12 uploads per hour.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 uploads at t=62, then 12 at t=64. Limit: at most 12 uploads in each clock hour.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 uploads at t=62, then 12 at t=64. Limit: 12 uploads per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -787,7 +797,7 @@
     },
     {
       "id": "quota-019",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=62, then 12 at t=64. Limit: 12 uploads per hour.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=62, then 12 at t=64. Limit: at most 12 uploads in any 60-minute span.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=62, then 12 at t=64. Limit: 12 uploads per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -823,7 +833,7 @@
     },
     {
       "id": "quota-020",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 uploads at t=58, then 12 at t=122. Limit: 12 uploads per hour.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 uploads at t=58, then 12 at t=122. Limit: at most 12 uploads in each clock hour.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 uploads at t=58, then 12 at t=122. Limit: 12 uploads per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -859,7 +869,7 @@
     },
     {
       "id": "quota-021",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=58, then 12 at t=122. Limit: 12 uploads per hour.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=58, then 12 at t=122. Limit: at most 12 uploads in any 60-minute span.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=58, then 12 at t=122. Limit: 12 uploads per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -895,7 +905,7 @@
     },
     {
       "id": "quota-022",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 6 uploads at t=58, then 6 at t=62. Limit: 12 uploads per hour.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 6 uploads at t=58, then 6 at t=62. Limit: at most 12 uploads in each clock hour.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 6 uploads at t=58, then 6 at t=62. Limit: 12 uploads per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -931,7 +941,7 @@
     },
     {
       "id": "quota-023",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 6 uploads at t=58, then 6 at t=62. Limit: 12 uploads per hour.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 6 uploads at t=58, then 6 at t=62. Limit: at most 12 uploads in any 60-minute span.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 6 uploads at t=58, then 6 at t=62. Limit: 12 uploads per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -967,7 +977,7 @@
     },
     {
       "id": "quota-024",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 uploads at t=1438, then 12 at t=1442. Limit: 12 uploads per day.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 uploads at t=1438, then 12 at t=1442. Limit: at most 12 uploads in each UTC calendar day.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 uploads at t=1438, then 12 at t=1442. Limit: 12 uploads per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1003,7 +1013,7 @@
     },
     {
       "id": "quota-025",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=1438, then 12 at t=1442. Limit: 12 uploads per day.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=1438, then 12 at t=1442. Limit: at most 12 uploads in any 24-hour span.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=1438, then 12 at t=1442. Limit: 12 uploads per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1039,7 +1049,7 @@
     },
     {
       "id": "quota-026",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 uploads at t=1442, then 12 at t=1444. Limit: 12 uploads per day.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 uploads at t=1442, then 12 at t=1444. Limit: at most 12 uploads in each UTC calendar day.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 uploads at t=1442, then 12 at t=1444. Limit: 12 uploads per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1075,7 +1085,7 @@
     },
     {
       "id": "quota-027",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=1442, then 12 at t=1444. Limit: 12 uploads per day.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=1442, then 12 at t=1444. Limit: at most 12 uploads in any 24-hour span.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=1442, then 12 at t=1444. Limit: 12 uploads per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1111,7 +1121,7 @@
     },
     {
       "id": "quota-028",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 uploads at t=1438, then 12 at t=2882. Limit: 12 uploads per day.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 uploads at t=1438, then 12 at t=2882. Limit: at most 12 uploads in each UTC calendar day.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 uploads at t=1438, then 12 at t=2882. Limit: 12 uploads per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1147,7 +1157,7 @@
     },
     {
       "id": "quota-029",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=1438, then 12 at t=2882. Limit: 12 uploads per day.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=1438, then 12 at t=2882. Limit: at most 12 uploads in any 24-hour span.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 uploads at t=1438, then 12 at t=2882. Limit: 12 uploads per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1183,7 +1193,7 @@
     },
     {
       "id": "quota-030",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 6 uploads at t=1438, then 6 at t=1442. Limit: 12 uploads per day.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 6 uploads at t=1438, then 6 at t=1442. Limit: at most 12 uploads in each UTC calendar day.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 6 uploads at t=1438, then 6 at t=1442. Limit: 12 uploads per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1219,7 +1229,7 @@
     },
     {
       "id": "quota-031",
-      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 6 uploads at t=1438, then 6 at t=1442. Limit: 12 uploads per day.",
+      "english": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 6 uploads at t=1438, then 6 at t=1442. Limit: at most 12 uploads in any 24-hour span.",
       "ainglish": "Fictional complete uploads log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 6 uploads at t=1438, then 6 at t=1442. Limit: 12 uploads per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1255,7 +1265,7 @@
     },
     {
       "id": "quota-032",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 bookings at t=58, then 16 at t=62. Limit: 16 bookings per hour.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 bookings at t=58, then 16 at t=62. Limit: at most 16 bookings in each clock hour.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 bookings at t=58, then 16 at t=62. Limit: 16 bookings per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1291,7 +1301,7 @@
     },
     {
       "id": "quota-033",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=58, then 16 at t=62. Limit: 16 bookings per hour.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=58, then 16 at t=62. Limit: at most 16 bookings in any 60-minute span.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=58, then 16 at t=62. Limit: 16 bookings per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1327,7 +1337,7 @@
     },
     {
       "id": "quota-034",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 bookings at t=62, then 16 at t=64. Limit: 16 bookings per hour.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 bookings at t=62, then 16 at t=64. Limit: at most 16 bookings in each clock hour.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 bookings at t=62, then 16 at t=64. Limit: 16 bookings per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1363,7 +1373,7 @@
     },
     {
       "id": "quota-035",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=62, then 16 at t=64. Limit: 16 bookings per hour.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=62, then 16 at t=64. Limit: at most 16 bookings in any 60-minute span.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=62, then 16 at t=64. Limit: 16 bookings per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1399,7 +1409,7 @@
     },
     {
       "id": "quota-036",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 bookings at t=58, then 16 at t=122. Limit: 16 bookings per hour.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 bookings at t=58, then 16 at t=122. Limit: at most 16 bookings in each clock hour.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 bookings at t=58, then 16 at t=122. Limit: 16 bookings per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1435,7 +1445,7 @@
     },
     {
       "id": "quota-037",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=58, then 16 at t=122. Limit: 16 bookings per hour.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=58, then 16 at t=122. Limit: at most 16 bookings in any 60-minute span.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=58, then 16 at t=122. Limit: 16 bookings per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1471,7 +1481,7 @@
     },
     {
       "id": "quota-038",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 bookings at t=58, then 8 at t=62. Limit: 16 bookings per hour.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 bookings at t=58, then 8 at t=62. Limit: at most 16 bookings in each clock hour.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 8 bookings at t=58, then 8 at t=62. Limit: 16 bookings per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1507,7 +1517,7 @@
     },
     {
       "id": "quota-039",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 bookings at t=58, then 8 at t=62. Limit: 16 bookings per hour.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 bookings at t=58, then 8 at t=62. Limit: at most 16 bookings in any 60-minute span.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 8 bookings at t=58, then 8 at t=62. Limit: 16 bookings per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1543,7 +1553,7 @@
     },
     {
       "id": "quota-040",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 bookings at t=1438, then 16 at t=1442. Limit: 16 bookings per day.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 bookings at t=1438, then 16 at t=1442. Limit: at most 16 bookings in each UTC calendar day.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 bookings at t=1438, then 16 at t=1442. Limit: 16 bookings per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1579,7 +1589,7 @@
     },
     {
       "id": "quota-041",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=1438, then 16 at t=1442. Limit: 16 bookings per day.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=1438, then 16 at t=1442. Limit: at most 16 bookings in any 24-hour span.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=1438, then 16 at t=1442. Limit: 16 bookings per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1615,7 +1625,7 @@
     },
     {
       "id": "quota-042",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 bookings at t=1442, then 16 at t=1444. Limit: 16 bookings per day.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 bookings at t=1442, then 16 at t=1444. Limit: at most 16 bookings in each UTC calendar day.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 bookings at t=1442, then 16 at t=1444. Limit: 16 bookings per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1651,7 +1661,7 @@
     },
     {
       "id": "quota-043",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=1442, then 16 at t=1444. Limit: 16 bookings per day.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=1442, then 16 at t=1444. Limit: at most 16 bookings in any 24-hour span.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=1442, then 16 at t=1444. Limit: 16 bookings per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1687,7 +1697,7 @@
     },
     {
       "id": "quota-044",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 bookings at t=1438, then 16 at t=2882. Limit: 16 bookings per day.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 bookings at t=1438, then 16 at t=2882. Limit: at most 16 bookings in each UTC calendar day.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 bookings at t=1438, then 16 at t=2882. Limit: 16 bookings per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1723,7 +1733,7 @@
     },
     {
       "id": "quota-045",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=1438, then 16 at t=2882. Limit: 16 bookings per day.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=1438, then 16 at t=2882. Limit: at most 16 bookings in any 24-hour span.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 bookings at t=1438, then 16 at t=2882. Limit: 16 bookings per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1759,7 +1769,7 @@
     },
     {
       "id": "quota-046",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 bookings at t=1438, then 8 at t=1442. Limit: 16 bookings per day.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 bookings at t=1438, then 8 at t=1442. Limit: at most 16 bookings in each UTC calendar day.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 8 bookings at t=1438, then 8 at t=1442. Limit: 16 bookings per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1795,7 +1805,7 @@
     },
     {
       "id": "quota-047",
-      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 bookings at t=1438, then 8 at t=1442. Limit: 16 bookings per day.",
+      "english": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 bookings at t=1438, then 8 at t=1442. Limit: at most 16 bookings in any 24-hour span.",
       "ainglish": "Fictional complete bookings log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 8 bookings at t=1438, then 8 at t=1442. Limit: 16 bookings per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1831,7 +1841,7 @@
     },
     {
       "id": "quota-048",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 20 dispatches at t=58, then 20 at t=62. Limit: 20 dispatches per hour.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 20 dispatches at t=58, then 20 at t=62. Limit: at most 20 dispatches in each clock hour.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 20 dispatches at t=58, then 20 at t=62. Limit: 20 dispatches per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1867,7 +1877,7 @@
     },
     {
       "id": "quota-049",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=58, then 20 at t=62. Limit: 20 dispatches per hour.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=58, then 20 at t=62. Limit: at most 20 dispatches in any 60-minute span.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=58, then 20 at t=62. Limit: 20 dispatches per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1903,7 +1913,7 @@
     },
     {
       "id": "quota-050",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 20 dispatches at t=62, then 20 at t=64. Limit: 20 dispatches per hour.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 20 dispatches at t=62, then 20 at t=64. Limit: at most 20 dispatches in each clock hour.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 20 dispatches at t=62, then 20 at t=64. Limit: 20 dispatches per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1939,7 +1949,7 @@
     },
     {
       "id": "quota-051",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=62, then 20 at t=64. Limit: 20 dispatches per hour.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=62, then 20 at t=64. Limit: at most 20 dispatches in any 60-minute span.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=62, then 20 at t=64. Limit: 20 dispatches per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -1975,7 +1985,7 @@
     },
     {
       "id": "quota-052",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 20 dispatches at t=58, then 20 at t=122. Limit: 20 dispatches per hour.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 20 dispatches at t=58, then 20 at t=122. Limit: at most 20 dispatches in each clock hour.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 20 dispatches at t=58, then 20 at t=122. Limit: 20 dispatches per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2011,7 +2021,7 @@
     },
     {
       "id": "quota-053",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=58, then 20 at t=122. Limit: 20 dispatches per hour.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=58, then 20 at t=122. Limit: at most 20 dispatches in any 60-minute span.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=58, then 20 at t=122. Limit: 20 dispatches per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2047,7 +2057,7 @@
     },
     {
       "id": "quota-054",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 10 dispatches at t=58, then 10 at t=62. Limit: 20 dispatches per hour.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 10 dispatches at t=58, then 10 at t=62. Limit: at most 20 dispatches in each clock hour.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 10 dispatches at t=58, then 10 at t=62. Limit: 20 dispatches per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2083,7 +2093,7 @@
     },
     {
       "id": "quota-055",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 10 dispatches at t=58, then 10 at t=62. Limit: 20 dispatches per hour.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 10 dispatches at t=58, then 10 at t=62. Limit: at most 20 dispatches in any 60-minute span.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 10 dispatches at t=58, then 10 at t=62. Limit: 20 dispatches per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2119,7 +2129,7 @@
     },
     {
       "id": "quota-056",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 20 dispatches at t=1438, then 20 at t=1442. Limit: 20 dispatches per day.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 20 dispatches at t=1438, then 20 at t=1442. Limit: at most 20 dispatches in each UTC calendar day.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 20 dispatches at t=1438, then 20 at t=1442. Limit: 20 dispatches per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2155,7 +2165,7 @@
     },
     {
       "id": "quota-057",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=1438, then 20 at t=1442. Limit: 20 dispatches per day.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=1438, then 20 at t=1442. Limit: at most 20 dispatches in any 24-hour span.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=1438, then 20 at t=1442. Limit: 20 dispatches per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2191,7 +2201,7 @@
     },
     {
       "id": "quota-058",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 20 dispatches at t=1442, then 20 at t=1444. Limit: 20 dispatches per day.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 20 dispatches at t=1442, then 20 at t=1444. Limit: at most 20 dispatches in each UTC calendar day.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 20 dispatches at t=1442, then 20 at t=1444. Limit: 20 dispatches per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2227,7 +2237,7 @@
     },
     {
       "id": "quota-059",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=1442, then 20 at t=1444. Limit: 20 dispatches per day.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=1442, then 20 at t=1444. Limit: at most 20 dispatches in any 24-hour span.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=1442, then 20 at t=1444. Limit: 20 dispatches per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2263,7 +2273,7 @@
     },
     {
       "id": "quota-060",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 20 dispatches at t=1438, then 20 at t=2882. Limit: 20 dispatches per day.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 20 dispatches at t=1438, then 20 at t=2882. Limit: at most 20 dispatches in each UTC calendar day.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 20 dispatches at t=1438, then 20 at t=2882. Limit: 20 dispatches per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2299,7 +2309,7 @@
     },
     {
       "id": "quota-061",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=1438, then 20 at t=2882. Limit: 20 dispatches per day.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=1438, then 20 at t=2882. Limit: at most 20 dispatches in any 24-hour span.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 20 dispatches at t=1438, then 20 at t=2882. Limit: 20 dispatches per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2335,7 +2345,7 @@
     },
     {
       "id": "quota-062",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 10 dispatches at t=1438, then 10 at t=1442. Limit: 20 dispatches per day.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 10 dispatches at t=1438, then 10 at t=1442. Limit: at most 20 dispatches in each UTC calendar day.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 10 dispatches at t=1438, then 10 at t=1442. Limit: 20 dispatches per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2371,7 +2381,7 @@
     },
     {
       "id": "quota-063",
-      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 10 dispatches at t=1438, then 10 at t=1442. Limit: 20 dispatches per day.",
+      "english": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 10 dispatches at t=1438, then 10 at t=1442. Limit: at most 20 dispatches in any 24-hour span.",
       "ainglish": "Fictional complete dispatches log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 10 dispatches at t=1438, then 10 at t=1442. Limit: 20 dispatches per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2407,7 +2417,7 @@
     },
     {
       "id": "quota-064",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 24 tickets at t=58, then 24 at t=62. Limit: 24 tickets per hour.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 24 tickets at t=58, then 24 at t=62. Limit: at most 24 tickets in each clock hour.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 24 tickets at t=58, then 24 at t=62. Limit: 24 tickets per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2443,7 +2453,7 @@
     },
     {
       "id": "quota-065",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=58, then 24 at t=62. Limit: 24 tickets per hour.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=58, then 24 at t=62. Limit: at most 24 tickets in any 60-minute span.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=58, then 24 at t=62. Limit: 24 tickets per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2479,7 +2489,7 @@
     },
     {
       "id": "quota-066",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 24 tickets at t=62, then 24 at t=64. Limit: 24 tickets per hour.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 24 tickets at t=62, then 24 at t=64. Limit: at most 24 tickets in each clock hour.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 24 tickets at t=62, then 24 at t=64. Limit: 24 tickets per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2515,7 +2525,7 @@
     },
     {
       "id": "quota-067",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=62, then 24 at t=64. Limit: 24 tickets per hour.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=62, then 24 at t=64. Limit: at most 24 tickets in any 60-minute span.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=62, then 24 at t=64. Limit: 24 tickets per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2551,7 +2561,7 @@
     },
     {
       "id": "quota-068",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 24 tickets at t=58, then 24 at t=122. Limit: 24 tickets per hour.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 24 tickets at t=58, then 24 at t=122. Limit: at most 24 tickets in each clock hour.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 24 tickets at t=58, then 24 at t=122. Limit: 24 tickets per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2587,7 +2597,7 @@
     },
     {
       "id": "quota-069",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=58, then 24 at t=122. Limit: 24 tickets per hour.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=58, then 24 at t=122. Limit: at most 24 tickets in any 60-minute span.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=58, then 24 at t=122. Limit: 24 tickets per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2623,7 +2633,7 @@
     },
     {
       "id": "quota-070",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 tickets at t=58, then 12 at t=62. Limit: 24 tickets per hour.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 tickets at t=58, then 12 at t=62. Limit: at most 24 tickets in each clock hour.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 12 tickets at t=58, then 12 at t=62. Limit: 24 tickets per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2659,7 +2669,7 @@
     },
     {
       "id": "quota-071",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 tickets at t=58, then 12 at t=62. Limit: 24 tickets per hour.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 tickets at t=58, then 12 at t=62. Limit: at most 24 tickets in any 60-minute span.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 12 tickets at t=58, then 12 at t=62. Limit: 24 tickets per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2695,7 +2705,7 @@
     },
     {
       "id": "quota-072",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 24 tickets at t=1438, then 24 at t=1442. Limit: 24 tickets per day.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 24 tickets at t=1438, then 24 at t=1442. Limit: at most 24 tickets in each UTC calendar day.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 24 tickets at t=1438, then 24 at t=1442. Limit: 24 tickets per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2731,7 +2741,7 @@
     },
     {
       "id": "quota-073",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=1438, then 24 at t=1442. Limit: 24 tickets per day.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=1438, then 24 at t=1442. Limit: at most 24 tickets in any 24-hour span.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=1438, then 24 at t=1442. Limit: 24 tickets per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2767,7 +2777,7 @@
     },
     {
       "id": "quota-074",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 24 tickets at t=1442, then 24 at t=1444. Limit: 24 tickets per day.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 24 tickets at t=1442, then 24 at t=1444. Limit: at most 24 tickets in each UTC calendar day.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 24 tickets at t=1442, then 24 at t=1444. Limit: 24 tickets per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2803,7 +2813,7 @@
     },
     {
       "id": "quota-075",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=1442, then 24 at t=1444. Limit: 24 tickets per day.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=1442, then 24 at t=1444. Limit: at most 24 tickets in any 24-hour span.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=1442, then 24 at t=1444. Limit: 24 tickets per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2839,7 +2849,7 @@
     },
     {
       "id": "quota-076",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 24 tickets at t=1438, then 24 at t=2882. Limit: 24 tickets per day.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 24 tickets at t=1438, then 24 at t=2882. Limit: at most 24 tickets in each UTC calendar day.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 24 tickets at t=1438, then 24 at t=2882. Limit: 24 tickets per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2875,7 +2885,7 @@
     },
     {
       "id": "quota-077",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=1438, then 24 at t=2882. Limit: 24 tickets per day.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=1438, then 24 at t=2882. Limit: at most 24 tickets in any 24-hour span.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 24 tickets at t=1438, then 24 at t=2882. Limit: 24 tickets per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2911,7 +2921,7 @@
     },
     {
       "id": "quota-078",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 tickets at t=1438, then 12 at t=1442. Limit: 24 tickets per day.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 tickets at t=1438, then 12 at t=1442. Limit: at most 24 tickets in each UTC calendar day.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 12 tickets at t=1438, then 12 at t=1442. Limit: 24 tickets per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2947,7 +2957,7 @@
     },
     {
       "id": "quota-079",
-      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 tickets at t=1438, then 12 at t=1442. Limit: 24 tickets per day.",
+      "english": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 tickets at t=1438, then 12 at t=1442. Limit: at most 24 tickets in any 24-hour span.",
       "ainglish": "Fictional complete tickets log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 12 tickets at t=1438, then 12 at t=1442. Limit: 24 tickets per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -2983,7 +2993,7 @@
     },
     {
       "id": "quota-080",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 28 queries at t=58, then 28 at t=62. Limit: 28 queries per hour.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 28 queries at t=58, then 28 at t=62. Limit: at most 28 queries in each clock hour.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 28 queries at t=58, then 28 at t=62. Limit: 28 queries per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3019,7 +3029,7 @@
     },
     {
       "id": "quota-081",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=58, then 28 at t=62. Limit: 28 queries per hour.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=58, then 28 at t=62. Limit: at most 28 queries in any 60-minute span.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=58, then 28 at t=62. Limit: 28 queries per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3055,7 +3065,7 @@
     },
     {
       "id": "quota-082",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 28 queries at t=62, then 28 at t=64. Limit: 28 queries per hour.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 28 queries at t=62, then 28 at t=64. Limit: at most 28 queries in each clock hour.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 28 queries at t=62, then 28 at t=64. Limit: 28 queries per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3091,7 +3101,7 @@
     },
     {
       "id": "quota-083",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=62, then 28 at t=64. Limit: 28 queries per hour.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=62, then 28 at t=64. Limit: at most 28 queries in any 60-minute span.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=62, then 28 at t=64. Limit: 28 queries per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3127,7 +3137,7 @@
     },
     {
       "id": "quota-084",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 28 queries at t=58, then 28 at t=122. Limit: 28 queries per hour.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 28 queries at t=58, then 28 at t=122. Limit: at most 28 queries in each clock hour.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 28 queries at t=58, then 28 at t=122. Limit: 28 queries per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3163,7 +3173,7 @@
     },
     {
       "id": "quota-085",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=58, then 28 at t=122. Limit: 28 queries per hour.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=58, then 28 at t=122. Limit: at most 28 queries in any 60-minute span.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=58, then 28 at t=122. Limit: 28 queries per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3199,7 +3209,7 @@
     },
     {
       "id": "quota-086",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 14 queries at t=58, then 14 at t=62. Limit: 28 queries per hour.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 14 queries at t=58, then 14 at t=62. Limit: at most 28 queries in each clock hour.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 14 queries at t=58, then 14 at t=62. Limit: 28 queries per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3235,7 +3245,7 @@
     },
     {
       "id": "quota-087",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 14 queries at t=58, then 14 at t=62. Limit: 28 queries per hour.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 14 queries at t=58, then 14 at t=62. Limit: at most 28 queries in any 60-minute span.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 14 queries at t=58, then 14 at t=62. Limit: 28 queries per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3271,7 +3281,7 @@
     },
     {
       "id": "quota-088",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 28 queries at t=1438, then 28 at t=1442. Limit: 28 queries per day.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 28 queries at t=1438, then 28 at t=1442. Limit: at most 28 queries in each UTC calendar day.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 28 queries at t=1438, then 28 at t=1442. Limit: 28 queries per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3307,7 +3317,7 @@
     },
     {
       "id": "quota-089",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=1438, then 28 at t=1442. Limit: 28 queries per day.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=1438, then 28 at t=1442. Limit: at most 28 queries in any 24-hour span.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=1438, then 28 at t=1442. Limit: 28 queries per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3343,7 +3353,7 @@
     },
     {
       "id": "quota-090",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 28 queries at t=1442, then 28 at t=1444. Limit: 28 queries per day.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 28 queries at t=1442, then 28 at t=1444. Limit: at most 28 queries in each UTC calendar day.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 28 queries at t=1442, then 28 at t=1444. Limit: 28 queries per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3379,7 +3389,7 @@
     },
     {
       "id": "quota-091",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=1442, then 28 at t=1444. Limit: 28 queries per day.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=1442, then 28 at t=1444. Limit: at most 28 queries in any 24-hour span.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=1442, then 28 at t=1444. Limit: 28 queries per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3415,7 +3425,7 @@
     },
     {
       "id": "quota-092",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 28 queries at t=1438, then 28 at t=2882. Limit: 28 queries per day.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 28 queries at t=1438, then 28 at t=2882. Limit: at most 28 queries in each UTC calendar day.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 28 queries at t=1438, then 28 at t=2882. Limit: 28 queries per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3451,7 +3461,7 @@
     },
     {
       "id": "quota-093",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=1438, then 28 at t=2882. Limit: 28 queries per day.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=1438, then 28 at t=2882. Limit: at most 28 queries in any 24-hour span.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 28 queries at t=1438, then 28 at t=2882. Limit: 28 queries per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3487,7 +3497,7 @@
     },
     {
       "id": "quota-094",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 14 queries at t=1438, then 14 at t=1442. Limit: 28 queries per day.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 14 queries at t=1438, then 14 at t=1442. Limit: at most 28 queries in each UTC calendar day.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 14 queries at t=1438, then 14 at t=1442. Limit: 28 queries per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3523,7 +3533,7 @@
     },
     {
       "id": "quota-095",
-      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 14 queries at t=1438, then 14 at t=1442. Limit: 28 queries per day.",
+      "english": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 14 queries at t=1438, then 14 at t=1442. Limit: at most 28 queries in any 24-hour span.",
       "ainglish": "Fictional complete queries log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 14 queries at t=1438, then 14 at t=1442. Limit: 28 queries per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3559,7 +3569,7 @@
     },
     {
       "id": "quota-096",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 32 prints at t=58, then 32 at t=62. Limit: 32 prints per hour.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 32 prints at t=58, then 32 at t=62. Limit: at most 32 prints in each clock hour.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 32 prints at t=58, then 32 at t=62. Limit: 32 prints per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3595,7 +3605,7 @@
     },
     {
       "id": "quota-097",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=58, then 32 at t=62. Limit: 32 prints per hour.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=58, then 32 at t=62. Limit: at most 32 prints in any 60-minute span.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=58, then 32 at t=62. Limit: 32 prints per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3631,7 +3641,7 @@
     },
     {
       "id": "quota-098",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 32 prints at t=62, then 32 at t=64. Limit: 32 prints per hour.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 32 prints at t=62, then 32 at t=64. Limit: at most 32 prints in each clock hour.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 32 prints at t=62, then 32 at t=64. Limit: 32 prints per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3667,7 +3677,7 @@
     },
     {
       "id": "quota-099",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=62, then 32 at t=64. Limit: 32 prints per hour.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=62, then 32 at t=64. Limit: at most 32 prints in any 60-minute span.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=62, then 32 at t=64. Limit: 32 prints per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3703,7 +3713,7 @@
     },
     {
       "id": "quota-100",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 32 prints at t=58, then 32 at t=122. Limit: 32 prints per hour.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 32 prints at t=58, then 32 at t=122. Limit: at most 32 prints in each clock hour.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 32 prints at t=58, then 32 at t=122. Limit: 32 prints per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3739,7 +3749,7 @@
     },
     {
       "id": "quota-101",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=58, then 32 at t=122. Limit: 32 prints per hour.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=58, then 32 at t=122. Limit: at most 32 prints in any 60-minute span.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=58, then 32 at t=122. Limit: 32 prints per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3775,7 +3785,7 @@
     },
     {
       "id": "quota-102",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 prints at t=58, then 16 at t=62. Limit: 32 prints per hour.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 prints at t=58, then 16 at t=62. Limit: at most 32 prints in each clock hour.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 16 prints at t=58, then 16 at t=62. Limit: 32 prints per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3811,7 +3821,7 @@
     },
     {
       "id": "quota-103",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 prints at t=58, then 16 at t=62. Limit: 32 prints per hour.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 prints at t=58, then 16 at t=62. Limit: at most 32 prints in any 60-minute span.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 16 prints at t=58, then 16 at t=62. Limit: 32 prints per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3847,7 +3857,7 @@
     },
     {
       "id": "quota-104",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 32 prints at t=1438, then 32 at t=1442. Limit: 32 prints per day.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 32 prints at t=1438, then 32 at t=1442. Limit: at most 32 prints in each UTC calendar day.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 32 prints at t=1438, then 32 at t=1442. Limit: 32 prints per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3883,7 +3893,7 @@
     },
     {
       "id": "quota-105",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=1438, then 32 at t=1442. Limit: 32 prints per day.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=1438, then 32 at t=1442. Limit: at most 32 prints in any 24-hour span.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=1438, then 32 at t=1442. Limit: 32 prints per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3919,7 +3929,7 @@
     },
     {
       "id": "quota-106",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 32 prints at t=1442, then 32 at t=1444. Limit: 32 prints per day.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 32 prints at t=1442, then 32 at t=1444. Limit: at most 32 prints in each UTC calendar day.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 32 prints at t=1442, then 32 at t=1444. Limit: 32 prints per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3955,7 +3965,7 @@
     },
     {
       "id": "quota-107",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=1442, then 32 at t=1444. Limit: 32 prints per day.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=1442, then 32 at t=1444. Limit: at most 32 prints in any 24-hour span.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=1442, then 32 at t=1444. Limit: 32 prints per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -3991,7 +4001,7 @@
     },
     {
       "id": "quota-108",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 32 prints at t=1438, then 32 at t=2882. Limit: 32 prints per day.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 32 prints at t=1438, then 32 at t=2882. Limit: at most 32 prints in each UTC calendar day.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 32 prints at t=1438, then 32 at t=2882. Limit: 32 prints per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4027,7 +4037,7 @@
     },
     {
       "id": "quota-109",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=1438, then 32 at t=2882. Limit: 32 prints per day.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=1438, then 32 at t=2882. Limit: at most 32 prints in any 24-hour span.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 32 prints at t=1438, then 32 at t=2882. Limit: 32 prints per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4063,7 +4073,7 @@
     },
     {
       "id": "quota-110",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 prints at t=1438, then 16 at t=1442. Limit: 32 prints per day.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 prints at t=1438, then 16 at t=1442. Limit: at most 32 prints in each UTC calendar day.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 16 prints at t=1438, then 16 at t=1442. Limit: 32 prints per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4099,7 +4109,7 @@
     },
     {
       "id": "quota-111",
-      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 prints at t=1438, then 16 at t=1442. Limit: 32 prints per day.",
+      "english": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 prints at t=1438, then 16 at t=1442. Limit: at most 32 prints in any 24-hour span.",
       "ainglish": "Fictional complete prints log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 16 prints at t=1438, then 16 at t=1442. Limit: 32 prints per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4135,7 +4145,7 @@
     },
     {
       "id": "quota-112",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 36 edits at t=58, then 36 at t=62. Limit: 36 edits per hour.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 36 edits at t=58, then 36 at t=62. Limit: at most 36 edits in each clock hour.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 36 edits at t=58, then 36 at t=62. Limit: 36 edits per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4171,7 +4181,7 @@
     },
     {
       "id": "quota-113",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=58, then 36 at t=62. Limit: 36 edits per hour.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=58, then 36 at t=62. Limit: at most 36 edits in any 60-minute span.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=58, then 36 at t=62. Limit: 36 edits per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4207,7 +4217,7 @@
     },
     {
       "id": "quota-114",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 36 edits at t=62, then 36 at t=64. Limit: 36 edits per hour.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 36 edits at t=62, then 36 at t=64. Limit: at most 36 edits in each clock hour.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 36 edits at t=62, then 36 at t=64. Limit: 36 edits per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4243,7 +4253,7 @@
     },
     {
       "id": "quota-115",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=62, then 36 at t=64. Limit: 36 edits per hour.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=62, then 36 at t=64. Limit: at most 36 edits in any 60-minute span.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=62, then 36 at t=64. Limit: 36 edits per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4279,7 +4289,7 @@
     },
     {
       "id": "quota-116",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 36 edits at t=58, then 36 at t=122. Limit: 36 edits per hour.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 36 edits at t=58, then 36 at t=122. Limit: at most 36 edits in each clock hour.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 36 edits at t=58, then 36 at t=122. Limit: 36 edits per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4315,7 +4325,7 @@
     },
     {
       "id": "quota-117",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=58, then 36 at t=122. Limit: 36 edits per hour.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=58, then 36 at t=122. Limit: at most 36 edits in any 60-minute span.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=58, then 36 at t=122. Limit: 36 edits per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4351,7 +4361,7 @@
     },
     {
       "id": "quota-118",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 18 edits at t=58, then 18 at t=62. Limit: 36 edits per hour.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 18 edits at t=58, then 18 at t=62. Limit: at most 36 edits in each clock hour.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 60, 120, and so on. Event log: 18 edits at t=58, then 18 at t=62. Limit: 36 edits per-clock(hour).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4387,7 +4397,7 @@
     },
     {
       "id": "quota-119",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 18 edits at t=58, then 18 at t=62. Limit: 36 edits per hour.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 18 edits at t=58, then 18 at t=62. Limit: at most 36 edits in any 60-minute span.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 60 elapsed minutes; clock boundaries do not clear it. Event log: 18 edits at t=58, then 18 at t=62. Limit: 36 edits per-any(60m).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4423,7 +4433,7 @@
     },
     {
       "id": "quota-120",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 36 edits at t=1438, then 36 at t=1442. Limit: 36 edits per day.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 36 edits at t=1438, then 36 at t=1442. Limit: at most 36 edits in each UTC calendar day.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 36 edits at t=1438, then 36 at t=1442. Limit: 36 edits per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4459,7 +4469,7 @@
     },
     {
       "id": "quota-121",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=1438, then 36 at t=1442. Limit: 36 edits per day.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=1438, then 36 at t=1442. Limit: at most 36 edits in any 24-hour span.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=1438, then 36 at t=1442. Limit: 36 edits per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4495,7 +4505,7 @@
     },
     {
       "id": "quota-122",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 36 edits at t=1442, then 36 at t=1444. Limit: 36 edits per day.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 36 edits at t=1442, then 36 at t=1444. Limit: at most 36 edits in each UTC calendar day.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 36 edits at t=1442, then 36 at t=1444. Limit: 36 edits per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4531,7 +4541,7 @@
     },
     {
       "id": "quota-123",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=1442, then 36 at t=1444. Limit: 36 edits per day.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=1442, then 36 at t=1444. Limit: at most 36 edits in any 24-hour span.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=1442, then 36 at t=1444. Limit: 36 edits per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4567,7 +4577,7 @@
     },
     {
       "id": "quota-124",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 36 edits at t=1438, then 36 at t=2882. Limit: 36 edits per day.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 36 edits at t=1438, then 36 at t=2882. Limit: at most 36 edits in each UTC calendar day.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 36 edits at t=1438, then 36 at t=2882. Limit: 36 edits per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4603,7 +4613,7 @@
     },
     {
       "id": "quota-125",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=1438, then 36 at t=2882. Limit: 36 edits per day.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=1438, then 36 at t=2882. Limit: at most 36 edits in any 24-hour span.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 36 edits at t=1438, then 36 at t=2882. Limit: 36 edits per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4639,7 +4649,7 @@
     },
     {
       "id": "quota-126",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 18 edits at t=1438, then 18 at t=1442. Limit: 36 edits per day.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 18 edits at t=1438, then 18 at t=1442. Limit: at most 36 edits in each UTC calendar day.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer starts a fresh counter at t=0, 1440, 2880, and so on. Event log: 18 edits at t=1438, then 18 at t=1442. Limit: 36 edits per-clock(day@UTC).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4675,7 +4685,7 @@
     },
     {
       "id": "quota-127",
-      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 18 edits at t=1438, then 18 at t=1442. Limit: 36 edits per day.",
+      "english": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 18 edits at t=1438, then 18 at t=1442. Limit: at most 36 edits in any 24-hour span.",
       "ainglish": "Fictional complete edits log, all times UTC. Origin t=0 is 2026-11-03 00:00 UTC; t is elapsed whole minutes. No other events occur in the surrounding two periods. The enforcer keeps each event in its counter for 1440 elapsed minutes; clock boundaries do not clear it. Event log: 18 edits at t=1438, then 18 at t=1442. Limit: 36 edits per-any(24h).",
       "question": "Did the second burst break the limit?",
       "options": [
@@ -4710,7 +4720,7 @@
       }
     },
     {
-      "id": "quota-bare-cal-0",
+      "id": "quota-careful-cal-0",
       "calibration": true,
       "calibration_scope": "target-independent",
       "calibration_construct": "resolved custody",
@@ -4728,7 +4738,7 @@
       "answer": "Inez"
     },
     {
-      "id": "quota-bare-cal-1",
+      "id": "quota-careful-cal-1",
       "calibration": true,
       "calibration_scope": "target-independent",
       "calibration_construct": "resolved custody",
@@ -4746,7 +4756,7 @@
       "answer": "Jori"
     },
     {
-      "id": "quota-bare-cal-2",
+      "id": "quota-careful-cal-2",
       "calibration": true,
       "calibration_scope": "target-independent",
       "calibration_construct": "resolved custody",
@@ -4764,7 +4774,7 @@
       "answer": "Kemi"
     },
     {
-      "id": "quota-bare-cal-3",
+      "id": "quota-careful-cal-3",
       "calibration": true,
       "calibration_scope": "target-independent",
       "calibration_construct": "resolved custody",
@@ -4782,7 +4792,7 @@
       "answer": "Luan"
     },
     {
-      "id": "quota-bare-cal-4",
+      "id": "quota-careful-cal-4",
       "calibration": true,
       "calibration_scope": "target-independent",
       "calibration_construct": "resolved custody",
@@ -4800,7 +4810,7 @@
       "answer": "Mavi"
     },
     {
-      "id": "quota-bare-cal-5",
+      "id": "quota-careful-cal-5",
       "calibration": true,
       "calibration_scope": "target-independent",
       "calibration_construct": "resolved custody",
@@ -4818,7 +4828,7 @@
       "answer": "Inez"
     },
     {
-      "id": "quota-bare-cal-6",
+      "id": "quota-careful-cal-6",
       "calibration": true,
       "calibration_scope": "target-independent",
       "calibration_construct": "resolved custody",
@@ -4836,7 +4846,7 @@
       "answer": "Jori"
     },
     {
-      "id": "quota-bare-cal-7",
+      "id": "quota-careful-cal-7",
       "calibration": true,
       "calibration_scope": "target-independent",
       "calibration_construct": "resolved custody",
@@ -4854,7 +4864,7 @@
       "answer": "Kemi"
     },
     {
-      "id": "quota-bare-cal-8",
+      "id": "quota-careful-cal-8",
       "calibration": true,
       "calibration_scope": "target-independent",
       "calibration_construct": "resolved custody",
@@ -4872,7 +4882,7 @@
       "answer": "Luan"
     },
     {
-      "id": "quota-bare-cal-9",
+      "id": "quota-careful-cal-9",
       "calibration": true,
       "calibration_scope": "target-independent",
       "calibration_construct": "resolved custody",
@@ -4890,7 +4900,7 @@
       "answer": "Mavi"
     }
   ],
-  "items_sha256": "8bd60a3bc013170b0d5e4ee965ba5d4f7120c131cc59c5eafb177ebef0fbe6a7",
+  "items_sha256": "de3db864bf5a3e785be4b5b6c7326b0608cfdd1a42bcc5a3a80f1b3094cbfa89",
   "settlement_strata": [
     {
       "id": "per-clock",
@@ -4903,7 +4913,7 @@
   ],
   "attempt": {
     "proposal_revision": "per-clock-unit-per-any-span",
-    "estimand": "128 prospective quota consequence items, 64 per fixed/sliding window, eight domains, hour/UTC-day units, four boundary/event cases. Bare per-hour/day comparison with identical explicit enforcer anchors; never hidden intent. Both contrasts frozen together and share worlds, not independent confirmation. Item-bootstrap intervals do not turn related templates into independent natural examples. Main two-maximal-burst boundary case and all strata must be reported. No model training or future tokenizer claim.",
+    "estimand": "128 prospective quota consequence items, 64 per fixed/sliding window, eight domains, hour/UTC-day units, four boundary/event cases. Careful-English full mapping comparison. Both contrasts frozen together and share worlds, not independent confirmation. Item-bootstrap intervals do not turn related templates into independent natural examples. Main two-maximal-burst boundary case and all strata must be reported. No model training or future tokenizer claim.",
     "admissibility_gates": [
       "unchanged proposal claim and eligible live original reader task",
       "existing official token prerequisite satisfied; prospective matching-cell token bridge reported before readers",
@@ -4916,7 +4926,8 @@
       "target_items": 128,
       "calibration_items": 10,
       "readers": 2,
-      "scope": "128 prospective quota consequence items, 64 per fixed/sliding window, eight domains, hour/UTC-day units, four boundary/event cases. Bare per-hour/day comparison with identical explicit enforcer anchors; never hidden intent. Both contrasts frozen together and share worlds, not independent confirmation. Item-bootstrap intervals do not turn related templates into independent natural examples. Main two-maximal-burst boundary case and all strata must be reported. No model training or future tokenizer claim."
+      "scope": "128 prospective quota consequence items, 64 per fixed/sliding window, eight domains, hour/UTC-day units, four boundary/event cases. Careful-English full mapping comparison. Both contrasts frozen together and share worlds, not independent confirmation. Item-bootstrap intervals do not turn related templates into independent natural examples. Main two-maximal-burst boundary case and all strata must be reported. No model training or future tokenizer claim."
     }
-  }
+  },
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/ec10f2c8624754e58cd69c7dd5780b7ddf305732/completion-campaign-2026-09-08/readers/quota-careful/items.json"
 }
