@@ -1,0 +1,3524 @@
+ATTEMPT MINTED BEFORE READER SPEND: 9b5b39b7-d5e4-41fc-8d94-82c07cd41e65 (manifest 5f2eb1f51aaa715ba51a35182a2bb94284e88e759c34cefd3b518200ab667fff)
+calibration: planted arm 1.00 vs other 0.00 — recovered 1.00 of 1.00 headroom; panel can detect. ctl(planted-items) passes. 384 real cells to go.
+cell yield: 432 cells, dead_rate 0.0 — per (model, arm) in the manifest spec.
+transport faults: 0 cell(s) lost to the wire, not retried (a retried cell is a second draw and the receipt would have to say so).
+RESAMPLE-DOWN WARNING: thinning moves this value outside what the run claimed ([{'kept_fraction': 0.75, 'items': 144, 'value': -0.3112, 'sign_flipped': True, 'outside_interval': False}]) — it is reading the item SELECTION, not the construct. Report unresolved.
+{
+ "metric": "comprehension_accuracy_delta",
+ "value": 4.865,
+ "resample_down": [
+  {
+   "kept_fraction": 0.75,
+   "items": 144,
+   "value": -0.3112,
+   "sign_flipped": true,
+   "outside_interval": false
+  },
+  {
+   "kept_fraction": 0.5,
+   "items": 96,
+   "value": 10.345,
+   "sign_flipped": false,
+   "outside_interval": false
+  }
+ ],
+ "yield_report": {
+  "cells": 432,
+  "empty": 0,
+  "unparsed": 0,
+  "dead_rate": 0.0,
+  "per_cell": {
+   "gemma3-12b-opaque-choice-q4_k_m/ainglish": {
+    "n": 105,
+    "empty": 0,
+    "unparsed": 0
+   },
+   "gemma3-12b-opaque-choice-q4_k_m/english": {
+    "n": 111,
+    "empty": 0,
+    "unparsed": 0
+   },
+   "mistral-small3.2-24b-opaque-choice-q4_k_m/ainglish": {
+    "n": 125,
+    "empty": 0,
+    "unparsed": 0
+   },
+   "mistral-small3.2-24b-opaque-choice-q4_k_m/english": {
+    "n": 91,
+    "empty": 0,
+    "unparsed": 0
+   }
+  }
+ },
+ "calibration": {
+  "planted_arm": "ainglish",
+  "detectable": 1.0,
+  "other": 0.0,
+  "gap": 1.0,
+  "headroom": 1.0,
+  "recovered": 1.0,
+  "min_gap": 0.5,
+  "min_recovered": 1.0,
+  "rule": "headroom-relative-v1",
+  "passed": true
+ },
+ "value_lo": -4.1603,
+ "value_hi": 13.3409,
+ "arms": {
+  "english": 0.632,
+  "ainglish": 0.6806,
+  "chance": 0.25
+ },
+ "panel_models": [
+  "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+  "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+ ],
+ "panel_members": 2,
+ "is_adversarial": false,
+ "panel_agreement": 0.8085,
+ "per_member": [
+  {
+   "model": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+   "value": 13.8288,
+   "precision": "q4_k_m"
+  },
+  {
+   "model": "gemma3-12b-opaque-choice-q4_k_m",
+   "value": -1.7075,
+   "precision": "q4_k_m"
+  }
+ ],
+ "manifest": {
+  "construct": "attempt: <X> / ensure: <X>",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026090881,
+  "comparator": {
+   "kind": "careful-english-shared-definition-v1",
+   "description": "Faithful English versus tagged instruction with identical common definitions, effort, outcome, reporting and authority facts; definitions crossed prospectively, never taught only to one arm."
+  },
+  "study_purpose": "diagnostic",
+  "study_scope": "Prospective diagnostic: 192 authored cases crossing attempt/ensure, shared mapping versus explicit discharge explanation, neutral versus outcome-salient framing, four domains and six effort/outcome/report cases. Two fixed cached qualified reader families, 384 target calls. Both arms receive identical definitions and records. Tests obligation discharge separately from world-outcome truth; not a cold-reading replication, original-result correction, execution success study or human validation. Prior 0/12 Ainglish and 0/20 English failure-completion findings remain unchanged.",
+  "items_sha256": "afdde434bee0ecdefc665f3a9e45e4fb80a9c09ff66c89bef6fc6fbe1a88157e",
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/f5f3f9e4c6b2d7e4c31961994e16f895bbc9eb47/reader-and-web-followthrough-2026-09-08/attempt-discharge/items.json",
+  "models": [
+   "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+   "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+  ],
+  "reader_qualifications": [
+   {
+    "kind": "ainglish.reader-qualification.v1",
+    "roster_id": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+    "reader": {
+     "provider": "ollama",
+     "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+     "precision": "q4_k_m",
+     "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+     "digest_source": "ollama:/api/tags"
+    },
+    "lineage": {
+     "key": "mistral-small-3.2-24b-instruct-2506",
+     "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Mistral Small 3.2 24B Instruct 2506 Q4_K_M."
+    },
+    "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+    "settings_sha256": "ad9f950f54a72256d91662eb46c2f2a9c3194c183c056c7888affcb20754c1e2",
+    "qualified_at": "2026-09-08T21:05:50+00:00",
+    "valid_until": "2026-09-15T21:05:50+00:00",
+    "result": {
+     "detectable_correct": 24,
+     "detectable_total": 24,
+     "other_correct": 0,
+     "other_total": 24,
+     "min_gap_bps": 5000,
+     "min_recovered_bps": 9500,
+     "passed": true
+    }
+   },
+   {
+    "kind": "ainglish.reader-qualification.v1",
+    "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+    "reader": {
+     "provider": "ollama",
+     "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+     "precision": "q4_k_m",
+     "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+     "digest_source": "ollama:/api/tags"
+    },
+    "lineage": {
+     "key": "gemma-3-12b-it",
+     "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Gemma 3 12B IT Q4_K_M."
+    },
+    "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+    "settings_sha256": "c549f532ee6122e6c2fa13cdd101a5f24f0a3e9f9864950eca10949eaf5495c2",
+    "qualified_at": "2026-09-08T21:06:40+00:00",
+    "valid_until": "2026-09-15T21:06:40+00:00",
+    "result": {
+     "detectable_correct": 24,
+     "detectable_total": 24,
+     "other_correct": 0,
+     "other_total": 24,
+     "min_gap_bps": 5000,
+     "min_recovered_bps": 9500,
+     "passed": true
+    }
+   }
+  ],
+  "readers": [
+   {
+    "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "provider": "ollama",
+    "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+    "precision": "q4_k_m",
+    "api": "openai",
+    "base_url": "http://127.0.0.1:11435/v1",
+    "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+    "digest_source": "ollama:/api/tags",
+    "instrument_preparation": {
+     "entry_point": "prepare_reader_instruments",
+     "binding": "ollama:/api/tags"
+    },
+    "answer_protocol": "opaque-choice-v1",
+    "max_tokens": 64,
+    "timeout_s": 120,
+    "temperature": 0,
+    "seed": 2026090581,
+    "top_p": "provider-default",
+    "top_k": "provider-default",
+    "num_ctx": "provider-default",
+    "reasoning_effort": "provider-default"
+   },
+   {
+    "name": "gemma3-12b-opaque-choice-q4_k_m",
+    "provider": "ollama",
+    "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+    "precision": "q4_k_m",
+    "api": "openai",
+    "base_url": "http://127.0.0.1:11435/v1",
+    "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+    "digest_source": "ollama:/api/tags",
+    "instrument_preparation": {
+     "entry_point": "prepare_reader_instruments",
+     "binding": "ollama:/api/tags"
+    },
+    "answer_protocol": "opaque-choice-v1",
+    "max_tokens": 64,
+    "timeout_s": 120,
+    "temperature": 0,
+    "seed": 2026090581,
+    "top_p": "provider-default",
+    "top_k": "provider-default",
+    "num_ctx": "provider-default",
+    "reasoning_effort": "provider-default"
+   }
+  ],
+  "instrument_preparation": {
+   "entry_point": "prepare_reader_instruments",
+   "binding": [
+    {
+     "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+     "digest_source": "ollama:/api/tags"
+    },
+    {
+     "reader": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+     "digest_source": "ollama:/api/tags"
+    }
+   ]
+  },
+  "item_counts": {
+   "real": 192,
+   "calibration": 12
+  },
+  "interval_kind": "bootstrap_items",
+  "interval_estimator": {
+   "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+   "algorithm": "sha256-counter-modulo-v1",
+   "draws": 2000,
+   "sampling_unit": "item",
+   "quantiles": [
+    "0.025",
+    "0.975"
+   ],
+   "items_index_sha256": "5723cb890f38ee70b5a5ec01439bafeaab74b777351bbdcd880a85dd96f33f09"
+  },
+  "settlement_strata": [
+   {
+    "id": "attempt-mapping-neutral",
+    "weight": 1
+   },
+   {
+    "id": "attempt-mapping-outcome-salient",
+    "weight": 1
+   },
+   {
+    "id": "attempt-discharge-explicit-neutral",
+    "weight": 1
+   },
+   {
+    "id": "attempt-discharge-explicit-outcome-salient",
+    "weight": 1
+   },
+   {
+    "id": "ensure-mapping-neutral",
+    "weight": 1
+   },
+   {
+    "id": "ensure-mapping-outcome-salient",
+    "weight": 1
+   },
+   {
+    "id": "ensure-discharge-explicit-neutral",
+    "weight": 1
+   },
+   {
+    "id": "ensure-discharge-explicit-outcome-salient",
+    "weight": 1
+   }
+  ],
+  "settlement_item_field": "settlement_stratum",
+  "settlement_rule": "manifest-weighted arms and value; every stratum load-bearing",
+  "calibration": {
+   "planted_arm": "ainglish",
+   "min_gap": 0.5,
+   "min_recovered": 1.0,
+   "rule": "headroom-relative-v1",
+   "ordering": "calibration-first",
+   "arm_exposure": "both-arms-per-reader-item",
+   "cells": 48
+  },
+  "difficulty": {
+   "annotated": false
+  },
+  "harness": "ainglish-panel/0.2.57",
+  "transport": {
+   "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m": {
+    "max_tokens": 64,
+    "timeout_s": 120,
+    "temperature": 0,
+    "seed": 2026090581,
+    "top_p": "provider-default",
+    "top_k": "provider-default",
+    "num_ctx": "provider-default",
+    "reasoning_effort": "provider-default"
+   },
+   "gemma3-12b-opaque-choice-q4_k_m@q4_k_m": {
+    "max_tokens": 64,
+    "timeout_s": 120,
+    "temperature": 0,
+    "seed": 2026090581,
+    "top_p": "provider-default",
+    "top_k": "provider-default",
+    "num_ctx": "provider-default",
+    "reasoning_effort": "provider-default"
+   }
+  },
+  "concurrency": {
+   "max_in_flight": 1,
+   "per_reader_max_in_flight": {
+    "mistral-small3.2-24b-opaque-choice-q4_k_m": 1,
+    "gemma3-12b-opaque-choice-q4_k_m": 1
+   },
+   "result_order": "deterministic-plan-order",
+   "calibration_barrier": true,
+   "automatic_retries": false
+  },
+  "transport_faults": {
+   "total": 0,
+   "retried": false,
+   "per_cell": {}
+  },
+  "transport_truncations": {
+   "total": 0,
+   "per_reader_cell": {},
+   "by_cell": {
+    "english": 0,
+    "ainglish": 0
+   },
+   "imbalanced_across_cells": false
+  },
+  "protocol": "panel.py counterbalanced real arms + both-arms-per-reader-item planted-effect calibration gate"
+ },
+ "interval_provenance": {
+  "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+  "metric": "comprehension_accuracy_delta",
+  "estimator": "manifest_weighted_stratum_accuracy_delta_pp",
+  "algorithm": {
+   "name": "sha256-counter-modulo-v1",
+   "draws": 2000,
+   "accepted_draws": 2000,
+   "sampling_unit": "item",
+   "lower_quantile": {
+    "numerator": 25,
+    "denominator": 1000,
+    "index_rule": "floor"
+   },
+   "upper_quantile": {
+    "numerator": 975,
+    "denominator": 1000,
+    "index_rule": "floor"
+   }
+  },
+  "seed": 2026090881,
+  "items": [
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-archive-failure-reported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-archive-failure-unreported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-archive-no-effort-failure",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-archive-no-effort-success",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-archive-success-reported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-archive-success-unreported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-copy-failure-reported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-copy-failure-unreported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-copy-no-effort-failure",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-copy-no-effort-success",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-copy-success-reported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-copy-success-unreported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-deliver-failure-reported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-deliver-failure-unreported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-deliver-no-effort-failure",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-deliver-no-effort-success",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-deliver-success-reported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-deliver-success-unreported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-reserve-failure-reported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-reserve-failure-unreported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-reserve-no-effort-failure",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-reserve-no-effort-success",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-reserve-success-reported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-neutral-reserve-success-unreported",
+    "stratum": "attempt-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-archive-failure-reported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-archive-failure-unreported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-archive-no-effort-failure",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-archive-no-effort-success",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-archive-success-reported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-archive-success-unreported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-copy-failure-reported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-copy-failure-unreported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-copy-no-effort-failure",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-copy-no-effort-success",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-copy-success-reported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-copy-success-unreported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-deliver-failure-reported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-deliver-failure-unreported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-deliver-no-effort-failure",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-deliver-no-effort-success",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-deliver-success-reported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-deliver-success-unreported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-reserve-failure-reported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-reserve-failure-unreported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-reserve-no-effort-failure",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-reserve-no-effort-success",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-reserve-success-reported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-discharge-explicit-outcome-salient-reserve-success-unreported",
+    "stratum": "attempt-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-archive-failure-reported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-archive-failure-unreported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-archive-no-effort-failure",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-archive-no-effort-success",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-archive-success-reported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-archive-success-unreported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-copy-failure-reported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-copy-failure-unreported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-copy-no-effort-failure",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-copy-no-effort-success",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-copy-success-reported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-copy-success-unreported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-deliver-failure-reported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-deliver-failure-unreported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-deliver-no-effort-failure",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-deliver-no-effort-success",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-deliver-success-reported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-deliver-success-unreported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-reserve-failure-reported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-reserve-failure-unreported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-reserve-no-effort-failure",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-reserve-no-effort-success",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-reserve-success-reported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-neutral-reserve-success-unreported",
+    "stratum": "attempt-mapping-neutral"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-archive-failure-reported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-archive-failure-unreported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-archive-no-effort-failure",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-archive-no-effort-success",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-archive-success-reported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-archive-success-unreported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-copy-failure-reported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-copy-failure-unreported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-copy-no-effort-failure",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-copy-no-effort-success",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-copy-success-reported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-copy-success-unreported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-deliver-failure-reported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-deliver-failure-unreported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-deliver-no-effort-failure",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-deliver-no-effort-success",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-deliver-success-reported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-deliver-success-unreported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-reserve-failure-reported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-reserve-failure-unreported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-reserve-no-effort-failure",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-reserve-no-effort-success",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-reserve-success-reported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-attempt-mapping-outcome-salient-reserve-success-unreported",
+    "stratum": "attempt-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-archive-failure-reported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-archive-failure-unreported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-archive-no-effort-failure",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-archive-no-effort-success",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-archive-success-reported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-archive-success-unreported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-copy-failure-reported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-copy-failure-unreported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-copy-no-effort-failure",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-copy-no-effort-success",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-copy-success-reported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-copy-success-unreported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-deliver-failure-reported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-deliver-failure-unreported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-deliver-no-effort-failure",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-deliver-no-effort-success",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-deliver-success-reported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-deliver-success-unreported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-reserve-failure-reported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-reserve-failure-unreported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-reserve-no-effort-failure",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-reserve-no-effort-success",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-reserve-success-reported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-neutral-reserve-success-unreported",
+    "stratum": "ensure-discharge-explicit-neutral"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-archive-failure-reported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-archive-failure-unreported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-archive-no-effort-failure",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-archive-no-effort-success",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-archive-success-reported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-archive-success-unreported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-copy-failure-reported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-copy-failure-unreported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-copy-no-effort-failure",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-copy-no-effort-success",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-copy-success-reported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-copy-success-unreported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-deliver-failure-reported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-deliver-failure-unreported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-deliver-no-effort-failure",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-deliver-no-effort-success",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-deliver-success-reported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-deliver-success-unreported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-reserve-failure-reported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-reserve-failure-unreported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-reserve-no-effort-failure",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-reserve-no-effort-success",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-reserve-success-reported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-discharge-explicit-outcome-salient-reserve-success-unreported",
+    "stratum": "ensure-discharge-explicit-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-archive-failure-reported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-archive-failure-unreported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-archive-no-effort-failure",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-archive-no-effort-success",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-archive-success-reported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-archive-success-unreported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-copy-failure-reported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-copy-failure-unreported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-copy-no-effort-failure",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-copy-no-effort-success",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-copy-success-reported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-copy-success-unreported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-deliver-failure-reported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-deliver-failure-unreported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-deliver-no-effort-failure",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-deliver-no-effort-success",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-deliver-success-reported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-deliver-success-unreported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-reserve-failure-reported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-reserve-failure-unreported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-reserve-no-effort-failure",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-reserve-no-effort-success",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-reserve-success-reported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-neutral-reserve-success-unreported",
+    "stratum": "ensure-mapping-neutral"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-archive-failure-reported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-archive-failure-unreported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-archive-no-effort-failure",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-archive-no-effort-success",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-archive-success-reported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-archive-success-unreported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-copy-failure-reported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-copy-failure-unreported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-copy-no-effort-failure",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-copy-no-effort-success",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-copy-success-reported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-copy-success-unreported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-deliver-failure-reported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-deliver-failure-unreported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-deliver-no-effort-failure",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-deliver-no-effort-success",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-deliver-success-reported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-deliver-success-unreported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-reserve-failure-reported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-reserve-failure-unreported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-reserve-no-effort-failure",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-reserve-no-effort-success",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-reserve-success-reported",
+    "stratum": "ensure-mapping-outcome-salient"
+   },
+   {
+    "id": "nd-ensure-mapping-outcome-salient-reserve-success-unreported",
+    "stratum": "ensure-mapping-outcome-salient"
+   }
+  ],
+  "readers": [
+   "gemma3-12b-opaque-choice-q4_k_m",
+   "mistral-small3.2-24b-opaque-choice-q4_k_m"
+  ],
+  "cells": [
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-archive-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-copy-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-deliver-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-neutral-reserve-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-archive-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-copy-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-deliver-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-discharge-explicit-outcome-salient-reserve-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-archive-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-copy-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-deliver-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-neutral-reserve-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-archive-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-copy-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-deliver-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-attempt-mapping-outcome-salient-reserve-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-archive-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-copy-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-deliver-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-neutral-reserve-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-archive-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-copy-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-deliver-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-discharge-explicit-outcome-salient-reserve-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-archive-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-copy-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-deliver-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-neutral-reserve-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-archive-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-copy-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-deliver-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-failure-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-failure-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-failure-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-failure-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-no-effort-failure",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-no-effort-failure",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-no-effort-success",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-no-effort-success",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-success-reported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-success-reported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-success-unreported",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "nd-ensure-mapping-outcome-salient-reserve-success-unreported",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   }
+  ],
+  "content_sha256": "ff5f2c2da23a3f5d04c3ed041cea0e1ea7ecf1d7ec94c628733b0d2cb7f85219"
+ },
+ "stratum_results": [
+  {
+   "id": "attempt-mapping-neutral",
+   "value": 4.18,
+   "arms": {
+    "english": 0.5789,
+    "ainglish": 0.6207,
+    "chance": 0.25
+   }
+  },
+  {
+   "id": "attempt-mapping-outcome-salient",
+   "value": 30.3,
+   "arms": {
+    "english": 0.4211,
+    "ainglish": 0.7241,
+    "chance": 0.25
+   }
+  },
+  {
+   "id": "attempt-discharge-explicit-neutral",
+   "value": 37.57,
+   "arms": {
+    "english": 0.4762,
+    "ainglish": 0.8519,
+    "chance": 0.25
+   }
+  },
+  {
+   "id": "attempt-discharge-explicit-outcome-salient",
+   "value": -37.14,
+   "arms": {
+    "english": 0.8,
+    "ainglish": 0.4286,
+    "chance": 0.25
+   }
+  },
+  {
+   "id": "ensure-mapping-neutral",
+   "value": 1.57,
+   "arms": {
+    "english": 0.68,
+    "ainglish": 0.6957,
+    "chance": 0.25
+   }
+  },
+  {
+   "id": "ensure-mapping-outcome-salient",
+   "value": 3.5,
+   "arms": {
+    "english": 0.6923,
+    "ainglish": 0.7273,
+    "chance": 0.25
+   }
+  },
+  {
+   "id": "ensure-discharge-explicit-neutral",
+   "value": -12.17,
+   "arms": {
+    "english": 0.7407,
+    "ainglish": 0.619,
+    "chance": 0.25
+   }
+  },
+  {
+   "id": "ensure-discharge-explicit-outcome-salient",
+   "value": 11.11,
+   "arms": {
+    "english": 0.6667,
+    "ainglish": 0.7778,
+    "chance": 0.25
+   }
+  }
+ ],
+ "panel_neff": 2,
+ "panel_neff_basis": "declared:reader-axis-unvalidated"
+}
+
+Submit: POST /api/v1/proposals/attempt-ensure-say-whether-the-instruction-tolerates-failure/measurements with a Colony Bearer (see /developers). Confirmation needs a DISJOINT party to agree on the same metric using a DIFFERENT manifest; this exact manifest is only a build check.
+CALIBRATION CELL RESULTS: /home/dexagon/codex/worktrees/evidence-followthrough-20260908/reader-and-web-followthrough-2026-09-08/attempt-discharge/execution/attempt-discharge.attempt-9b5b39b7-d5e4-41fc-8d94-82c07cd41e65.calibration.cells.json (48 calibration cell(s), sha256 f02a9bb878146c0e3a9bcf61bc288c03ff4ce734e2fc4fc2ad32db7a1c72aedc)
+REAL CELL RESULTS: /home/dexagon/codex/worktrees/evidence-followthrough-20260908/reader-and-web-followthrough-2026-09-08/attempt-discharge/execution/attempt-discharge.attempt-9b5b39b7-d5e4-41fc-8d94-82c07cd41e65.cells.json (384 real cell(s), sha256 aea43ec0c18d1ba66398d53f1918381efdb9f6e378dbc2acfe9c9ba92547f562)
+MEASUREMENT REQUEST: /home/dexagon/codex/worktrees/evidence-followthrough-20260908/reader-and-web-followthrough-2026-09-08/attempt-discharge/execution/attempt-discharge.attempt-9b5b39b7-d5e4-41fc-8d94-82c07cd41e65.measurement.json (sha256 76753a263900ddca7a003df18d32b57eda38185e41022fe0a2691fb5c81c5e14)
+SUBMITTED: {"measurement": {"report_target": {"type": "measurement", "id": "9b5b39b7-d5e4-41fc-8d94-82c07cd41e65"}, "metric": "comprehension_accuracy_delta", "formula_version": 2, "value": 4.865, "value_lo": -4.1603, "value_hi": 13.3409, "value_uncensored": null, "floor_cells": null, "panel_models": ["mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m", "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"], "panel_members

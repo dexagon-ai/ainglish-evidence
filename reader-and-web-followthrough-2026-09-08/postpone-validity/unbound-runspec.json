@@ -1,0 +1,1056 @@
+{
+  "public_id": "a-ge8tz4ejhpknbghe",
+  "slug": "consider-now-matter-postpone-matter-never-use-procedural",
+  "construct": "consider-now(<matter>) / postpone(<matter>) — never use procedural ‘table’ when the audience or governing dialect is mixed or unstated",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026090897,
+  "panel": [
+    {
+      "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11435/v1",
+      "api": "openai",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090581,
+      "digest_source": "ollama:/api/tags",
+      "_ainglish_instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      }
+    },
+    {
+      "name": "gemma3-12b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11435/v1",
+      "api": "openai",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090581,
+      "digest_source": "ollama:/api/tags",
+      "_ainglish_instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      }
+    }
+  ],
+  "models": [
+    "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+    "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+  ],
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "mistral-small-3.2-24b-instruct-2506",
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Mistral Small 3.2 24B Instruct 2506 Q4_K_M."
+      },
+      "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+      "settings_sha256": "ad9f950f54a72256d91662eb46c2f2a9c3194c183c056c7888affcb20754c1e2",
+      "qualified_at": "2026-09-08T21:05:50+00:00",
+      "valid_until": "2026-09-15T21:05:50+00:00",
+      "result": {
+        "detectable_correct": 24,
+        "detectable_total": 24,
+        "other_correct": 0,
+        "other_total": 24,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 9500,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "gemma-3-12b-it",
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Gemma 3 12B IT Q4_K_M."
+      },
+      "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+      "settings_sha256": "c549f532ee6122e6c2fa13cdd101a5f24f0a3e9f9864950eca10949eaf5495c2",
+      "qualified_at": "2026-09-08T21:06:40+00:00",
+      "valid_until": "2026-09-15T21:06:40+00:00",
+      "result": {
+        "detectable_correct": 24,
+        "detectable_total": 24,
+        "other_correct": 0,
+        "other_total": 24,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 9500,
+        "passed": true
+      }
+    }
+  ],
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "calibration_min_recovered": 1,
+  "panel_neff": 2,
+  "study_purpose": "diagnostic",
+  "study_scope": "postpone: 24 prescribed invalid/carve-out fixtures plus 24 valid applicability controls; identical candidate text and scope in both arms. This is absolute rule-following diagnostic coverage, not a causal language-benefit contrast, not an independent replication and not the main scalar. Two fixed cached readers; repeated defect templates are not independent natural-use samples.",
+  "comparator": {
+    "kind": "identical-scope-and-candidate-control-v1",
+    "description": "Both arms identical by design; inspect absolute false acceptance and false rejection separately, not arm delta as a benefit."
+  },
+  "items": [
+    {
+      "id": "postpone-ct-carve-furniture-0",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-furniture-1",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-furniture-2",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-furniture-3",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-furniture-4",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-furniture-5",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Move the table to the wall.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-data-0",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-data-1",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-data-2",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-data-3",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-data-4",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-data-5",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Read the data table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-database-0",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-database-1",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-database-2",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-database-3",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-database-4",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-database-5",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Create the database table.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-fixed-rules-0",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-fixed-rules-1",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-fixed-rules-2",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-fixed-rules-3",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-fixed-rules-4",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-ct-carve-fixed-rules-5",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: Inside named ruleset R, table means keep pending; translate the outward summary explicitly.",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "Yes: apply the relation as written.",
+        "No: do not apply it; preserve the stated scope or ask for clarification."
+      ],
+      "answer": "No: do not apply it; preserve the stated scope or ask for clarification.",
+      "settlement_stratum": "postpone-invalid",
+      "diagnostic_class": "carve-out",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-0",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-0).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-0).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-1",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-1).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-1).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-2",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-2).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-2).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-3",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-3).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-3).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-4",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-4).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-4).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-5",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-5).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-5).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-6",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-6).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-6).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-7",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-7).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-7).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-8",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-8).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-8).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-9",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-9).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-9).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-10",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-10).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-10).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-11",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-11).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-11).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-12",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-12).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-12).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-13",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-13).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-13).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-14",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-14).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-14).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-15",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-15).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-15).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-16",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-16).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-16).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-17",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-17).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-17).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-18",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-18).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-18).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-19",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-19).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-19).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-20",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-20).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-20).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-21",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-21).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-21).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-22",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-22).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-22).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-valid-control-23",
+      "english": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-23).",
+      "ainglish": "This question is about applying the consider-now/postpone procedural fork. Only unpinned procedural uses are in scope; furniture, data/database tables and an already pinned ruleset are not. Candidate text: In an unpinned meeting, consider-now(matter K-23).",
+      "question": "Does this candidate satisfy the stated applicability or validity requirement?",
+      "options": [
+        "No: do not apply it; preserve the stated scope or ask for clarification.",
+        "Yes: apply the relation as written."
+      ],
+      "answer": "Yes: apply the relation as written.",
+      "settlement_stratum": "postpone-valid",
+      "diagnostic_class": "sufficient-control",
+      "diagnostic_only": true
+    },
+    {
+      "id": "postpone-validity-control-0",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-910: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-910: the collector is Ari.",
+      "question": "Who collected the parcel on receipt Z-910?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Ari"
+    },
+    {
+      "id": "postpone-validity-control-1",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-911: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-911: the collector is Bela.",
+      "question": "Who collected the parcel on receipt Z-911?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Bela"
+    },
+    {
+      "id": "postpone-validity-control-2",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-912: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-912: the collector is Cleo.",
+      "question": "Who collected the parcel on receipt Z-912?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Cleo"
+    },
+    {
+      "id": "postpone-validity-control-3",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-913: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-913: the collector is Daru.",
+      "question": "Who collected the parcel on receipt Z-913?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Daru"
+    },
+    {
+      "id": "postpone-validity-control-4",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-914: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-914: the collector is Etta.",
+      "question": "Who collected the parcel on receipt Z-914?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Etta"
+    },
+    {
+      "id": "postpone-validity-control-5",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-915: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-915: the collector is Fenn.",
+      "question": "Who collected the parcel on receipt Z-915?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Fenn"
+    },
+    {
+      "id": "postpone-validity-control-6",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-916: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-916: the collector is Ari.",
+      "question": "Who collected the parcel on receipt Z-916?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Ari"
+    },
+    {
+      "id": "postpone-validity-control-7",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-917: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-917: the collector is Bela.",
+      "question": "Who collected the parcel on receipt Z-917?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Bela"
+    },
+    {
+      "id": "postpone-validity-control-8",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-918: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-918: the collector is Cleo.",
+      "question": "Who collected the parcel on receipt Z-918?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Cleo"
+    },
+    {
+      "id": "postpone-validity-control-9",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-919: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-919: the collector is Daru.",
+      "question": "Who collected the parcel on receipt Z-919?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Daru"
+    },
+    {
+      "id": "postpone-validity-control-10",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-920: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-920: the collector is Etta.",
+      "question": "Who collected the parcel on receipt Z-920?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Etta"
+    },
+    {
+      "id": "postpone-validity-control-11",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-921: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-921: the collector is Fenn.",
+      "question": "Who collected the parcel on receipt Z-921?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Fenn"
+    }
+  ],
+  "items_sha256": "fedb449656649d9893241b857e6a7af4ba45cc2d945d66f33cfa4ee48c3f380b",
+  "settlement_strata": [
+    {
+      "id": "postpone-invalid",
+      "weight": 1
+    },
+    {
+      "id": "postpone-valid",
+      "weight": 1
+    }
+  ],
+  "attempt": {
+    "proposal_revision": "consider-now-matter-postpone-matter-never-use-procedural",
+    "estimand": "postpone: 24 prescribed invalid/carve-out fixtures plus 24 valid applicability controls; identical candidate text and scope in both arms. This is absolute rule-following diagnostic coverage, not a causal language-benefit contrast, not an independent replication and not the main scalar. Two fixed cached readers; repeated defect templates are not independent natural-use samples.",
+    "admissibility_gates": [
+      "Active unchanged proposal and current exact-target measurement eligibility; no superseding claim",
+      "All target items, exact golds, common definitions, comparator and analysis frozen publicly before mint and inference",
+      "Two exact cached model artifacts and unexpired endpoint/settings qualifications; no downloads or substitutions",
+      "Our isolated service is restricted to GPU 0; no eviction of unrelated workloads; physical host disk remains above 15 GiB",
+      "Mint before experiment calls; pass the official calibration gate before targets; no target retries or result-dependent stopping",
+      "Retain null, adverse, transport and floor results with exact per-cell journals; no claim of independent confirmation",
+      "Complete the named cost and exact semantic-review gates before this dependent programme",
+      "Report invalid acceptance and valid rejection by defect and reader separately; a reject-all model is not successful",
+      "Do not combine this identical-arm scope diagnostic with the primary careful-English comprehension score"
+    ],
+    "planned_sample": {
+      "target_items": 48,
+      "calibration_items": 12,
+      "readers": 2,
+      "target_calls": 96,
+      "calibration_calls": 48,
+      "strata": {
+        "postpone-invalid": 24,
+        "postpone-valid": 24
+      }
+    }
+  }
+}

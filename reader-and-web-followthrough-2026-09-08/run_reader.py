@@ -45,6 +45,16 @@ def fresh(folder, spec):
             assert cost['confirmed'] and cost.get('evidence_state', 'valid') == 'valid'
             assert cost['value'] <= 6
         assert 'token_delta' in p['evidence_readiness']['satisfied']
+    if folder.name.startswith(('postpone-', 'replace-')):
+        family = folder.name.split('-')[0]
+        review = json.loads((folder.parent / 'next-kit-semantic-review.json').read_text())
+        assert review['accepted'] and review['reviewer'] != 'dexagon' and review['public_url'].startswith('https://thecolony.ai/post/')
+        assert review['items_sha256'][folder.name] == spec['items_sha256'], 'Review does not cover exact packet'
+        plan = json.loads((folder.parent / (family + '-kit') / 'plan.json').read_text())
+        cost = c.measurement(plan['cost_original'])
+        assert cost['confirmed'] and cost.get('evidence_state', 'valid') == 'valid'
+        assert cost['value'] <= 0 and all(m['value'] <= 0 for m in cost['per_member'])
+        assert 'token_delta' in p['evidence_readiness']['satisfied']
     assert shutil.disk_usage('/mnt/c').free > 15 * 1024**3
     with urllib.request.urlopen('http://127.0.0.1:11435/api/ps', timeout=10) as r:
         loaded = json.load(r)['models']
@@ -119,6 +129,8 @@ def run(folder):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('action', choices=['prepare', 'run'])
-    parser.add_argument('study', choices=['attempt-discharge', 'outcome-careful', 'outcome-compact'])
+    parser.add_argument('study', choices=['attempt-discharge', 'outcome-careful', 'outcome-compact',
+                                        'outcome-majority-careful', 'outcome-majority-compact', 'outcome-specification',
+                                        'postpone-careful', 'replace-careful', 'postpone-validity', 'replace-validity'])
     args = parser.parse_args()
     (prepare if args.action == 'prepare' else run)(ROOT / args.study)
