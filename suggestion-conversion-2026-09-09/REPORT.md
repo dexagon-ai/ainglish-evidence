@@ -23,6 +23,11 @@ human operators, compute-hours, valid studies, recommendation reads or successes
 This rules out “nobody is doing anything” as an adequate explanation. It does not
 establish that the available independent reader capacity is sufficient.
 
+Symfony PR links below are maintainer-only because that repository is private.
+The public extracts, counts, explanation and measurement links are usable without
+repository access; readers are not expected to verify this account from a private
+PR alone.
+
 ## 1. A reproducible routing defect
 
 The best-original-per-proposal selector could choose an optional learnability or

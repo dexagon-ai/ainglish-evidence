@@ -1,0 +1,4204 @@
+{
+  "metric": "comprehension_accuracy_delta",
+  "value": -2.495,
+  "resample_down": [
+    {
+      "kept_fraction": 0.75,
+      "items": 180,
+      "value": -6.445,
+      "sign_flipped": false,
+      "outside_interval": false
+    },
+    {
+      "kept_fraction": 0.5,
+      "items": 120,
+      "value": -3.925,
+      "sign_flipped": false,
+      "outside_interval": false
+    }
+  ],
+  "yield_report": {
+    "cells": 528,
+    "empty": 0,
+    "unparsed": 0,
+    "dead_rate": 0.0,
+    "per_cell": {
+      "gemma3-12b-opaque-choice-q4_k_m/ainglish": {
+        "n": 140,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "gemma3-12b-opaque-choice-q4_k_m/english": {
+        "n": 124,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "mistral-small3.2-24b-opaque-choice-q4_k_m/ainglish": {
+        "n": 127,
+        "empty": 0,
+        "unparsed": 0
+      },
+      "mistral-small3.2-24b-opaque-choice-q4_k_m/english": {
+        "n": 137,
+        "empty": 0,
+        "unparsed": 0
+      }
+    }
+  },
+  "calibration": {
+    "planted_arm": "ainglish",
+    "detectable": 1.0,
+    "other": 0.0,
+    "gap": 1.0,
+    "headroom": 1.0,
+    "recovered": 1.0,
+    "min_gap": 0.5,
+    "min_recovered": 1.0,
+    "rule": "headroom-relative-v1",
+    "passed": true
+  },
+  "value_lo": -7.6292,
+  "value_hi": 2.6829,
+  "arms": {
+    "english": 0.1167,
+    "ainglish": 0.0918,
+    "chance": 0.0625
+  },
+  "panel_models": [
+    "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+    "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+  ],
+  "panel_members": 2,
+  "is_adversarial": false,
+  "panel_agreement": 0.8053,
+  "per_member": [
+    {
+      "model": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "value": -4.7,
+      "precision": "q4_k_m"
+    },
+    {
+      "model": "gemma3-12b-opaque-choice-q4_k_m",
+      "value": 0.61,
+      "precision": "q4_k_m"
+    }
+  ],
+  "manifest": {
+    "construct": "<value> is mean-outcome(<distribution-ref>) | <value> is likeliest-outcome(<distribution-ref>)",
+    "metric": "comprehension_accuracy_delta",
+    "seed": 2026090882,
+    "comparator": {
+      "kind": "outcome-careful-shared-definition-v1",
+      "description": "Exactly shared common definitions, distribution, units, version, conditioning and tie rules; only the statistic expression differs."
+    },
+    "study_purpose": "claim_test",
+    "study_scope": "Outcome-statistic claim component: 240 authored paired cases, 120 per predicate, six domains, five boundaries, exact rational golds, shared one-time definition exposure in each stateless cell. Two cached qualified reader families, 480 target calls. Careful-English primary comparator. Worlds are shared across the two contrasts, not independent replications. Report every predicate, boundary, domain and reader, item-bootstrap uncertainty and critical false-guarantee responses. Majority-probability and unsupported-model probes are separate diagnostics; the whole claim is not complete without them.",
+    "items_sha256": "478551f7d70f7725277b2bdc2888d1484698ffda55bfaec50da91cf51d9dc728",
+    "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/4b3f07564f0db798aceccf54534f1b210509070b/reader-and-web-followthrough-2026-09-08/outcome-careful/items.json",
+    "models": [
+      "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+      "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+    ],
+    "reader_qualifications": [
+      {
+        "kind": "ainglish.reader-qualification.v1",
+        "roster_id": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+        "reader": {
+          "provider": "ollama",
+          "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+          "precision": "q4_k_m",
+          "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+          "digest_source": "ollama:/api/tags"
+        },
+        "lineage": {
+          "key": "mistral-small-3.2-24b-instruct-2506",
+          "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Mistral Small 3.2 24B Instruct 2506 Q4_K_M."
+        },
+        "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+        "settings_sha256": "ad9f950f54a72256d91662eb46c2f2a9c3194c183c056c7888affcb20754c1e2",
+        "qualified_at": "2026-09-08T21:05:50+00:00",
+        "valid_until": "2026-09-15T21:05:50+00:00",
+        "result": {
+          "detectable_correct": 24,
+          "detectable_total": 24,
+          "other_correct": 0,
+          "other_total": 24,
+          "min_gap_bps": 5000,
+          "min_recovered_bps": 9500,
+          "passed": true
+        }
+      },
+      {
+        "kind": "ainglish.reader-qualification.v1",
+        "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+        "reader": {
+          "provider": "ollama",
+          "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+          "precision": "q4_k_m",
+          "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+          "digest_source": "ollama:/api/tags"
+        },
+        "lineage": {
+          "key": "gemma-3-12b-it",
+          "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Gemma 3 12B IT Q4_K_M."
+        },
+        "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+        "settings_sha256": "c549f532ee6122e6c2fa13cdd101a5f24f0a3e9f9864950eca10949eaf5495c2",
+        "qualified_at": "2026-09-08T21:06:40+00:00",
+        "valid_until": "2026-09-15T21:06:40+00:00",
+        "result": {
+          "detectable_correct": 24,
+          "detectable_total": 24,
+          "other_correct": 0,
+          "other_total": 24,
+          "min_gap_bps": 5000,
+          "min_recovered_bps": 9500,
+          "passed": true
+        }
+      }
+    ],
+    "readers": [
+      {
+        "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "provider": "ollama",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "api": "openai",
+        "base_url": "http://127.0.0.1:11435/v1",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+        "digest_source": "ollama:/api/tags",
+        "instrument_preparation": {
+          "entry_point": "prepare_reader_instruments",
+          "binding": "ollama:/api/tags"
+        },
+        "answer_protocol": "opaque-choice-v1",
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": 2026090581,
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      },
+      {
+        "name": "gemma3-12b-opaque-choice-q4_k_m",
+        "provider": "ollama",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "api": "openai",
+        "base_url": "http://127.0.0.1:11435/v1",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+        "digest_source": "ollama:/api/tags",
+        "instrument_preparation": {
+          "entry_point": "prepare_reader_instruments",
+          "binding": "ollama:/api/tags"
+        },
+        "answer_protocol": "opaque-choice-v1",
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": 2026090581,
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      }
+    ],
+    "instrument_preparation": {
+      "entry_point": "prepare_reader_instruments",
+      "binding": [
+        {
+          "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+          "digest_source": "ollama:/api/tags"
+        },
+        {
+          "reader": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+          "digest_source": "ollama:/api/tags"
+        }
+      ]
+    },
+    "item_counts": {
+      "real": 240,
+      "calibration": 12
+    },
+    "interval_kind": "bootstrap_items",
+    "interval_estimator": {
+      "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+      "algorithm": "sha256-counter-modulo-v1",
+      "draws": 2000,
+      "sampling_unit": "item",
+      "quantiles": [
+        "0.025",
+        "0.975"
+      ],
+      "items_index_sha256": "60f1c34e3fd5aecc560a4a6acf272f0e0fd83f06fbba0f24a338496dc4b2d8c7"
+    },
+    "settlement_strata": [
+      {
+        "id": "mean-outcome",
+        "weight": 1
+      },
+      {
+        "id": "likeliest-outcome",
+        "weight": 1
+      }
+    ],
+    "settlement_item_field": "settlement_stratum",
+    "settlement_rule": "manifest-weighted arms and value; every stratum load-bearing",
+    "calibration": {
+      "planted_arm": "ainglish",
+      "min_gap": 0.5,
+      "min_recovered": 1.0,
+      "rule": "headroom-relative-v1",
+      "ordering": "calibration-first",
+      "arm_exposure": "both-arms-per-reader-item",
+      "cells": 48
+    },
+    "difficulty": {
+      "annotated": false
+    },
+    "harness": "ainglish-panel/0.2.58",
+    "transport": {
+      "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m": {
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": 2026090581,
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      },
+      "gemma3-12b-opaque-choice-q4_k_m@q4_k_m": {
+        "max_tokens": 64,
+        "timeout_s": 120,
+        "temperature": 0,
+        "seed": 2026090581,
+        "top_p": "provider-default",
+        "top_k": "provider-default",
+        "num_ctx": "provider-default",
+        "reasoning_effort": "provider-default"
+      }
+    },
+    "concurrency": {
+      "max_in_flight": 1,
+      "per_reader_max_in_flight": {
+        "mistral-small3.2-24b-opaque-choice-q4_k_m": 1,
+        "gemma3-12b-opaque-choice-q4_k_m": 1
+      },
+      "result_order": "deterministic-plan-order",
+      "calibration_barrier": true,
+      "automatic_retries": false
+    },
+    "transport_faults": {
+      "total": 0,
+      "retried": false,
+      "per_cell": {}
+    },
+    "transport_truncations": {
+      "total": 0,
+      "per_reader_cell": {},
+      "by_cell": {
+        "english": 0,
+        "ainglish": 0
+      },
+      "imbalanced_across_cells": false
+    },
+    "protocol": "panel.py counterbalanced real arms + both-arms-per-reader-item planted-effect calibration gate"
+  },
+  "interval_provenance": {
+    "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+    "metric": "comprehension_accuracy_delta",
+    "estimator": "manifest_weighted_stratum_accuracy_delta_pp",
+    "algorithm": {
+      "name": "sha256-counter-modulo-v1",
+      "draws": 2000,
+      "accepted_draws": 2000,
+      "sampling_unit": "item",
+      "lower_quantile": {
+        "numerator": 25,
+        "denominator": 1000,
+        "index_rule": "floor"
+      },
+      "upper_quantile": {
+        "numerator": 975,
+        "denominator": 1000,
+        "index_rule": "floor"
+      }
+    },
+    "seed": 2026090882,
+    "items": [
+      {
+        "id": "outcome-careful-outcome-full-000",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-001",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-002",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-003",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-004",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-005",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-006",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-007",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-008",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-009",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-010",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-011",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-012",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-013",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-014",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-015",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-016",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-017",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-018",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-019",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-020",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-021",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-022",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-023",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-024",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-025",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-026",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-027",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-028",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-029",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-030",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-031",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-032",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-033",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-034",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-035",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-036",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-037",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-038",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-039",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-040",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-041",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-042",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-043",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-044",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-045",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-046",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-047",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-048",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-049",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-050",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-051",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-052",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-053",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-054",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-055",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-056",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-057",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-058",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-059",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-060",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-061",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-062",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-063",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-064",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-065",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-066",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-067",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-068",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-069",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-070",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-071",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-072",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-073",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-074",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-075",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-076",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-077",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-078",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-079",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-080",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-081",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-082",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-083",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-084",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-085",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-086",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-087",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-088",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-089",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-090",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-091",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-092",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-093",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-094",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-095",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-096",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-097",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-098",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-099",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-100",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-101",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-102",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-103",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-104",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-105",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-106",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-107",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-108",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-109",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-110",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-111",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-112",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-113",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-114",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-115",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-116",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-117",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-118",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-119",
+        "stratum": "mean-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-120",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-121",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-122",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-123",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-124",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-125",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-126",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-127",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-128",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-129",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-130",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-131",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-132",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-133",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-134",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-135",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-136",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-137",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-138",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-139",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-140",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-141",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-142",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-143",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-144",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-145",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-146",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-147",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-148",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-149",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-150",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-151",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-152",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-153",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-154",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-155",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-156",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-157",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-158",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-159",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-160",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-161",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-162",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-163",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-164",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-165",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-166",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-167",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-168",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-169",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-170",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-171",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-172",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-173",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-174",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-175",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-176",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-177",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-178",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-179",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-180",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-181",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-182",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-183",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-184",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-185",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-186",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-187",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-188",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-189",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-190",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-191",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-192",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-193",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-194",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-195",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-196",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-197",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-198",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-199",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-200",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-201",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-202",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-203",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-204",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-205",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-206",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-207",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-208",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-209",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-210",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-211",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-212",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-213",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-214",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-215",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-216",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-217",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-218",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-219",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-220",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-221",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-222",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-223",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-224",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-225",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-226",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-227",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-228",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-229",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-230",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-231",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-232",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-233",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-234",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-235",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-236",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-237",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-238",
+        "stratum": "likeliest-outcome"
+      },
+      {
+        "id": "outcome-careful-outcome-full-239",
+        "stratum": "likeliest-outcome"
+      }
+    ],
+    "readers": [
+      "gemma3-12b-opaque-choice-q4_k_m",
+      "mistral-small3.2-24b-opaque-choice-q4_k_m"
+    ],
+    "cells": [
+      {
+        "item_id": "outcome-careful-outcome-full-000",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-000",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-001",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-001",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-002",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-002",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-003",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-003",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-004",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-004",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-005",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-005",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-006",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-006",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-007",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-007",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-008",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-008",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-009",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-009",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-010",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-010",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-011",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-011",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-012",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-012",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-013",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-013",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-014",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-014",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-015",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-015",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-016",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-016",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-017",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-017",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-018",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-018",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-019",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-019",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-020",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-020",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-021",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-021",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-022",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-022",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-023",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-023",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-024",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-024",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-025",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-025",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-026",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-026",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-027",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-027",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-028",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-028",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-029",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-029",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-030",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-030",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-031",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-031",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-032",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-032",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-033",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-033",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-034",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-034",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-035",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-035",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-036",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-036",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-037",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-037",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-038",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-038",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-039",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-039",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-040",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-040",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-041",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-041",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-042",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-042",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-043",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-043",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-044",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-044",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-045",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-045",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-046",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-046",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-047",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-047",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-048",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-048",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-049",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-049",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-050",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-050",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-051",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-051",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-052",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-052",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-053",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-053",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-054",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-054",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-055",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-055",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-056",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-056",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-057",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-057",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-058",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-058",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-059",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-059",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-060",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-060",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-061",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-061",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-062",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-062",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-063",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-063",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-064",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-064",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-065",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-065",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-066",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-066",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-067",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-067",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-068",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-068",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-069",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-069",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-070",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-070",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-071",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-071",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-072",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-072",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-073",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-073",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-074",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-074",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-075",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-075",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-076",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-076",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-077",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-077",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-078",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-078",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-079",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-079",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-080",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-080",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-081",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-081",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-082",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-082",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-083",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-083",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-084",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-084",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-085",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-085",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-086",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-086",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-087",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-087",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-088",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-088",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-089",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-089",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-090",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-090",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-091",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-091",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-092",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-092",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-093",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-093",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-094",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-094",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-095",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-095",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-096",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-096",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-097",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-097",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-098",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-098",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-099",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-099",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-100",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-100",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-101",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-101",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-102",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-102",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-103",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-103",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-104",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-104",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-105",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-105",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-106",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-106",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-107",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-107",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-108",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-108",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-109",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-109",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-110",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-110",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-111",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-111",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-112",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-112",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-113",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-113",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-114",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-114",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-115",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-115",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-116",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-116",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-117",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-117",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-118",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-118",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-119",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-119",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-120",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-120",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-121",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-121",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-122",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-122",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-123",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-123",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-124",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-124",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-125",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-125",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-126",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-126",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-127",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-127",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-128",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-128",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-129",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-129",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-130",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-130",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-131",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-131",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-132",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-132",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-133",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-133",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-134",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-134",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-135",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-135",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-136",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-136",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-137",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-137",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-138",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-138",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-139",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-139",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-140",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-140",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-141",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-141",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-142",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-142",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-143",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-143",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-144",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-144",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-145",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-145",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-146",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-146",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-147",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-147",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-148",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-148",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-149",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-149",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-150",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-150",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-151",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-151",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-152",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-152",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-153",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-153",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-154",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-154",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-155",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-155",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-156",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-156",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-157",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-157",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-158",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-158",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-159",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-159",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-160",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-160",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-161",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-161",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-162",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-162",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-163",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-163",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-164",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-164",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-165",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-165",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-166",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-166",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-167",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-167",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-168",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-168",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-169",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-169",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-170",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-170",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-171",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-171",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-172",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-172",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-173",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-173",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-174",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-174",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-175",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-175",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-176",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-176",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-177",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-177",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-178",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-178",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-179",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-179",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-180",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-180",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-181",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-181",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-182",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-182",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-183",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-183",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-184",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-184",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-185",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-185",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-186",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-186",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-187",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-187",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-188",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-188",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-189",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-189",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-190",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-190",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-191",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-191",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-192",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-192",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-193",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-193",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-194",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-194",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-195",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-195",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-196",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-196",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-197",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-197",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-198",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-198",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-199",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-199",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-200",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-200",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-201",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-201",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-202",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-202",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-203",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-203",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-204",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-204",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-205",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-205",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-206",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-206",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-207",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-207",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-208",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-208",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-209",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-209",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-210",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-210",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-211",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-211",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-212",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-212",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-213",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-213",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-214",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-214",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-215",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-215",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-216",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-216",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-217",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-217",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-218",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-218",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-219",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-219",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-220",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-220",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-221",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-221",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-222",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-222",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-223",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-223",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-224",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-224",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-225",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-225",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-226",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-226",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-227",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-227",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-228",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-228",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-229",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-229",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-230",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-230",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": true
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-231",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-231",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-232",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-232",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-233",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-233",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-234",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-234",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-235",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-235",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-236",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-236",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-237",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-237",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-238",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-238",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-239",
+        "reader": "gemma3-12b-opaque-choice-q4_k_m",
+        "arm": "ainglish",
+        "correct": false
+      },
+      {
+        "item_id": "outcome-careful-outcome-full-239",
+        "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+        "arm": "english",
+        "correct": false
+      }
+    ],
+    "content_sha256": "d6b093daa278b5d961d568477556ce891a209fecb5e34e7781a2b382e03af12a"
+  },
+  "stratum_results": [
+    {
+      "id": "mean-outcome",
+      "value": -2.16,
+      "arms": {
+        "english": 0.0696,
+        "ainglish": 0.048,
+        "chance": 0.0625
+      }
+    },
+    {
+      "id": "likeliest-outcome",
+      "value": -2.83,
+      "arms": {
+        "english": 0.1639,
+        "ainglish": 0.1356,
+        "chance": 0.0625
+      }
+    }
+  ],
+  "panel_neff": 2,
+  "panel_neff_basis": "declared:reader-axis-unvalidated",
+  "attempt_id": "e9fad447-16fa-4e0e-8698-a9ac6df32579"
+}

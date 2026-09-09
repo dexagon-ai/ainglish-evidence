@@ -1,0 +1,886 @@
+ATTEMPT MINTED BEFORE READER SPEND: 7bec78b1-ff0b-4935-be49-8d2fe2c261bf (manifest 031ef2276aca94b619fb876bfbfd77a75e394bf245c7cd501761d343304d66c7)
+calibration: planted arm 1.00 vs other 0.00 — recovered 1.00 of 1.00 headroom; panel can detect. ctl(planted-items) passes. 64 real cells to go.
+cell yield: 112 cells, dead_rate 0.0 — per (model, arm) in the manifest spec.
+transport faults: 0 cell(s) lost to the wire, not retried (a retried cell is a second draw and the receipt would have to say so).
+RESAMPLE-DOWN WARNING: thinning moves this value outside what the run claimed ([{'kept_fraction': 0.5, 'items': 16, 'value': 7.93, 'sign_flipped': True, 'outside_interval': False}]) — it is reading the item SELECTION, not the construct. Report unresolved.
+{
+ "metric": "comprehension_accuracy_delta",
+ "value": -4.535,
+ "resample_down": [
+  {
+   "kept_fraction": 0.75,
+   "items": 24,
+   "value": -13.805,
+   "sign_flipped": false,
+   "outside_interval": false
+  },
+  {
+   "kept_fraction": 0.5,
+   "items": 16,
+   "value": 7.93,
+   "sign_flipped": true,
+   "outside_interval": false
+  }
+ ],
+ "yield_report": {
+  "cells": 112,
+  "empty": 0,
+  "unparsed": 0,
+  "dead_rate": 0.0,
+  "per_cell": {
+   "gemma3-12b-opaque-choice-q4_k_m/ainglish": {
+    "n": 29,
+    "empty": 0,
+    "unparsed": 0
+   },
+   "gemma3-12b-opaque-choice-q4_k_m/english": {
+    "n": 27,
+    "empty": 0,
+    "unparsed": 0
+   },
+   "mistral-small3.2-24b-opaque-choice-q4_k_m/ainglish": {
+    "n": 26,
+    "empty": 0,
+    "unparsed": 0
+   },
+   "mistral-small3.2-24b-opaque-choice-q4_k_m/english": {
+    "n": 30,
+    "empty": 0,
+    "unparsed": 0
+   }
+  }
+ },
+ "calibration": {
+  "planted_arm": "ainglish",
+  "detectable": 1.0,
+  "other": 0.0,
+  "gap": 1.0,
+  "headroom": 1.0,
+  "recovered": 1.0,
+  "min_gap": 0.5,
+  "min_recovered": 1.0,
+  "rule": "headroom-relative-v1",
+  "passed": true
+ },
+ "value_lo": -23.6275,
+ "value_hi": 14.8313,
+ "arms": {
+  "english": 0.785,
+  "ainglish": 0.7396,
+  "chance": 0.5
+ },
+ "panel_models": [
+  "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+  "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+ ],
+ "panel_members": 2,
+ "is_adversarial": false,
+ "panel_agreement": 0.7333,
+ "per_member": [
+  {
+   "model": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+   "value": 10.0,
+   "precision": "q4_k_m"
+  },
+  {
+   "model": "gemma3-12b-opaque-choice-q4_k_m",
+   "value": -13.015,
+   "precision": "q4_k_m"
+  }
+ ],
+ "manifest": {
+  "construct": "<value> is mean-outcome(<distribution-ref>) | <value> is likeliest-outcome(<distribution-ref>)",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026090886,
+  "comparator": {
+   "kind": "careful-english-shared-scope-v1",
+   "description": "Equal visible scope rules and complete model descriptions; evaluability question rather than truth of the claimed statistic."
+  },
+  "study_purpose": "diagnostic",
+  "study_scope": "32-item diagnostic of this registered version\u2019s specification boundary. Eight classes per predicate, including a sufficient-model control; identical finite-discrete scope supplied to both arms. Not a test of general mathematical validity, not the primary comprehension scalar, and not an independent replication. Two fixed cached readers.",
+  "items_sha256": "f08ff1c2aff4bc7ee36609f96312401c94046cf027531b72d8524bd3897ce396",
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/4b3f07564f0db798aceccf54534f1b210509070b/reader-and-web-followthrough-2026-09-08/outcome-specification/items.json",
+  "models": [
+   "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+   "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+  ],
+  "reader_qualifications": [
+   {
+    "kind": "ainglish.reader-qualification.v1",
+    "roster_id": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+    "reader": {
+     "provider": "ollama",
+     "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+     "precision": "q4_k_m",
+     "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+     "digest_source": "ollama:/api/tags"
+    },
+    "lineage": {
+     "key": "mistral-small-3.2-24b-instruct-2506",
+     "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Mistral Small 3.2 24B Instruct 2506 Q4_K_M."
+    },
+    "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+    "settings_sha256": "ad9f950f54a72256d91662eb46c2f2a9c3194c183c056c7888affcb20754c1e2",
+    "qualified_at": "2026-09-08T21:05:50+00:00",
+    "valid_until": "2026-09-15T21:05:50+00:00",
+    "result": {
+     "detectable_correct": 24,
+     "detectable_total": 24,
+     "other_correct": 0,
+     "other_total": 24,
+     "min_gap_bps": 5000,
+     "min_recovered_bps": 9500,
+     "passed": true
+    }
+   },
+   {
+    "kind": "ainglish.reader-qualification.v1",
+    "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+    "reader": {
+     "provider": "ollama",
+     "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+     "precision": "q4_k_m",
+     "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+     "digest_source": "ollama:/api/tags"
+    },
+    "lineage": {
+     "key": "gemma-3-12b-it",
+     "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Gemma 3 12B IT Q4_K_M."
+    },
+    "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+    "settings_sha256": "c549f532ee6122e6c2fa13cdd101a5f24f0a3e9f9864950eca10949eaf5495c2",
+    "qualified_at": "2026-09-08T21:06:40+00:00",
+    "valid_until": "2026-09-15T21:06:40+00:00",
+    "result": {
+     "detectable_correct": 24,
+     "detectable_total": 24,
+     "other_correct": 0,
+     "other_total": 24,
+     "min_gap_bps": 5000,
+     "min_recovered_bps": 9500,
+     "passed": true
+    }
+   }
+  ],
+  "readers": [
+   {
+    "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "provider": "ollama",
+    "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+    "precision": "q4_k_m",
+    "api": "openai",
+    "base_url": "http://127.0.0.1:11435/v1",
+    "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+    "digest_source": "ollama:/api/tags",
+    "instrument_preparation": {
+     "entry_point": "prepare_reader_instruments",
+     "binding": "ollama:/api/tags"
+    },
+    "answer_protocol": "opaque-choice-v1",
+    "max_tokens": 64,
+    "timeout_s": 120,
+    "temperature": 0,
+    "seed": 2026090581,
+    "top_p": "provider-default",
+    "top_k": "provider-default",
+    "num_ctx": "provider-default",
+    "reasoning_effort": "provider-default"
+   },
+   {
+    "name": "gemma3-12b-opaque-choice-q4_k_m",
+    "provider": "ollama",
+    "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+    "precision": "q4_k_m",
+    "api": "openai",
+    "base_url": "http://127.0.0.1:11435/v1",
+    "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+    "digest_source": "ollama:/api/tags",
+    "instrument_preparation": {
+     "entry_point": "prepare_reader_instruments",
+     "binding": "ollama:/api/tags"
+    },
+    "answer_protocol": "opaque-choice-v1",
+    "max_tokens": 64,
+    "timeout_s": 120,
+    "temperature": 0,
+    "seed": 2026090581,
+    "top_p": "provider-default",
+    "top_k": "provider-default",
+    "num_ctx": "provider-default",
+    "reasoning_effort": "provider-default"
+   }
+  ],
+  "instrument_preparation": {
+   "entry_point": "prepare_reader_instruments",
+   "binding": [
+    {
+     "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+     "digest_source": "ollama:/api/tags"
+    },
+    {
+     "reader": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+     "digest_source": "ollama:/api/tags"
+    }
+   ]
+  },
+  "item_counts": {
+   "real": 32,
+   "calibration": 12
+  },
+  "interval_kind": "bootstrap_items",
+  "interval_estimator": {
+   "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+   "algorithm": "sha256-counter-modulo-v1",
+   "draws": 2000,
+   "sampling_unit": "item",
+   "quantiles": [
+    "0.025",
+    "0.975"
+   ],
+   "items_index_sha256": "cf24729635657f31308c4f7dc047e07a7cbe5ffe118a2e387327df30556f34a3"
+  },
+  "settlement_strata": [
+   {
+    "id": "mean-outcome",
+    "weight": 1
+   },
+   {
+    "id": "likeliest-outcome",
+    "weight": 1
+   }
+  ],
+  "settlement_item_field": "settlement_stratum",
+  "settlement_rule": "manifest-weighted arms and value; every stratum load-bearing",
+  "calibration": {
+   "planted_arm": "ainglish",
+   "min_gap": 0.5,
+   "min_recovered": 1.0,
+   "rule": "headroom-relative-v1",
+   "ordering": "calibration-first",
+   "arm_exposure": "both-arms-per-reader-item",
+   "cells": 48
+  },
+  "difficulty": {
+   "annotated": false
+  },
+  "harness": "ainglish-panel/0.2.58",
+  "transport": {
+   "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m": {
+    "max_tokens": 64,
+    "timeout_s": 120,
+    "temperature": 0,
+    "seed": 2026090581,
+    "top_p": "provider-default",
+    "top_k": "provider-default",
+    "num_ctx": "provider-default",
+    "reasoning_effort": "provider-default"
+   },
+   "gemma3-12b-opaque-choice-q4_k_m@q4_k_m": {
+    "max_tokens": 64,
+    "timeout_s": 120,
+    "temperature": 0,
+    "seed": 2026090581,
+    "top_p": "provider-default",
+    "top_k": "provider-default",
+    "num_ctx": "provider-default",
+    "reasoning_effort": "provider-default"
+   }
+  },
+  "concurrency": {
+   "max_in_flight": 1,
+   "per_reader_max_in_flight": {
+    "mistral-small3.2-24b-opaque-choice-q4_k_m": 1,
+    "gemma3-12b-opaque-choice-q4_k_m": 1
+   },
+   "result_order": "deterministic-plan-order",
+   "calibration_barrier": true,
+   "automatic_retries": false
+  },
+  "transport_faults": {
+   "total": 0,
+   "retried": false,
+   "per_cell": {}
+  },
+  "transport_truncations": {
+   "total": 0,
+   "per_reader_cell": {},
+   "by_cell": {
+    "english": 0,
+    "ainglish": 0
+   },
+   "imbalanced_across_cells": false
+  },
+  "protocol": "panel.py counterbalanced real arms + both-arms-per-reader-item planted-effect calibration gate"
+ },
+ "interval_provenance": {
+  "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+  "metric": "comprehension_accuracy_delta",
+  "estimator": "manifest_weighted_stratum_accuracy_delta_pp",
+  "algorithm": {
+   "name": "sha256-counter-modulo-v1",
+   "draws": 2000,
+   "accepted_draws": 2000,
+   "sampling_unit": "item",
+   "lower_quantile": {
+    "numerator": 25,
+    "denominator": 1000,
+    "index_rule": "floor"
+   },
+   "upper_quantile": {
+    "numerator": 975,
+    "denominator": 1000,
+    "index_rule": "floor"
+   }
+  },
+  "seed": 2026090886,
+  "items": [
+   {
+    "id": "followthrough-outcome-spec-00",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-01",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-02",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-03",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-04",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-05",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-06",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-07",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-08",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-09",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-10",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-11",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-12",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-13",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-14",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-15",
+    "stratum": "mean-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-16",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-17",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-18",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-19",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-20",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-21",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-22",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-23",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-24",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-25",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-26",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-27",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-28",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-29",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-30",
+    "stratum": "likeliest-outcome"
+   },
+   {
+    "id": "followthrough-outcome-spec-31",
+    "stratum": "likeliest-outcome"
+   }
+  ],
+  "readers": [
+   "gemma3-12b-opaque-choice-q4_k_m",
+   "mistral-small3.2-24b-opaque-choice-q4_k_m"
+  ],
+  "cells": [
+   {
+    "item_id": "followthrough-outcome-spec-00",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-00",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-01",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-01",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-02",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-02",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-03",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-03",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-04",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-04",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-05",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-05",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-06",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-06",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-07",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-07",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-08",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-08",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-09",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-09",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-10",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-10",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-11",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-11",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-12",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-12",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-13",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-13",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-14",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-14",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-15",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-15",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-16",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-16",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-17",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-17",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-18",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-18",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-19",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-19",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-20",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-20",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-21",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-21",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-22",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-22",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-23",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-23",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-24",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-24",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-25",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-25",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-26",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": false
+   },
+   {
+    "item_id": "followthrough-outcome-spec-26",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-27",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-27",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-28",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-28",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-29",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-29",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-30",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-30",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-31",
+    "reader": "gemma3-12b-opaque-choice-q4_k_m",
+    "arm": "ainglish",
+    "correct": true
+   },
+   {
+    "item_id": "followthrough-outcome-spec-31",
+    "reader": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+    "arm": "english",
+    "correct": true
+   }
+  ],
+  "content_sha256": "717086d0c3f84a11eb40ec6c7182a5968e17a83ba0e5a5c89a63acf98a3d0ed1"
+ },
+ "stratum_results": [
+  {
+   "id": "mean-outcome",
+   "value": -21.57,
+   "arms": {
+    "english": 0.8824,
+    "ainglish": 0.6667,
+    "chance": 0.5
+   }
+  },
+  {
+   "id": "likeliest-outcome",
+   "value": 12.5,
+   "arms": {
+    "english": 0.6875,
+    "ainglish": 0.8125,
+    "chance": 0.5
+   }
+  }
+ ],
+ "panel_neff": 2,
+ "panel_neff_basis": "declared:reader-axis-unvalidated"
+}
+
+Submit: POST /api/v1/proposals/value-is-mean-outcome-distribution-ref-value-is-likeliest/measurements with a Colony Bearer (see /developers). Confirmation needs a DISJOINT party to agree on the same metric using a DIFFERENT manifest; this exact manifest is only a build check.
+CALIBRATION CELL RESULTS: /home/dexagon/codex/worktrees/evidence-followthrough-20260908/reader-and-web-followthrough-2026-09-08/outcome-specification/execution/outcome-specification.attempt-7bec78b1-ff0b-4935-be49-8d2fe2c261bf.calibration.cells.json (48 calibration cell(s), sha256 60dd5e9568325f55c51f2a083cf00424cf6bc03fc5f5ec50bbda3c0767be8132)
+REAL CELL RESULTS: /home/dexagon/codex/worktrees/evidence-followthrough-20260908/reader-and-web-followthrough-2026-09-08/outcome-specification/execution/outcome-specification.attempt-7bec78b1-ff0b-4935-be49-8d2fe2c261bf.cells.json (64 real cell(s), sha256 f89e92b0110a4589321396cb912292b8e51472426c7020314a9b7078c6e74520)
+MEASUREMENT REQUEST: /home/dexagon/codex/worktrees/evidence-followthrough-20260908/reader-and-web-followthrough-2026-09-08/outcome-specification/execution/outcome-specification.attempt-7bec78b1-ff0b-4935-be49-8d2fe2c261bf.measurement.json (sha256 d91799ab717b2a502e20e1c048300da62a975f9d28f2a4cb55cc3bc36ecebb77)
+SUBMITTED: {"measurement": {"report_target": {"type": "measurement", "id": "7bec78b1-ff0b-4935-be49-8d2fe2c261bf"}, "metric": "comprehension_accuracy_delta", "formula_version": 2, "value": -4.535, "value_lo": -23.6275, "value_hi": 14.8313, "value_uncensored": null, "floor_cells": null, "panel_models": ["mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m", "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"], "panel_membe
