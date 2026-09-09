@@ -1,0 +1,21 @@
+{
+  "kind": "ainglish.report-only-simulation-plan.v1",
+  "seed": 202609094217,
+  "replicates_per_condition": 5000,
+  "independent_clusters": [8, 32, 128, 512],
+  "duplicate_renderings_per_cluster": [1, 8, 64],
+  "cells": 6,
+  "cell_mean_allowance": 3,
+  "familywise_alpha": 0.05,
+  "families": ["two_point_0_8", "rare_tail_0_3_12"],
+  "true_cell_means": {
+    "comfortable": [1, 1, 1, 1, 1, 1],
+    "on_boundary": [3, 3, 3, 3, 3, 3],
+    "one_failure": [2, 2, 2, 2, 2, 3.25],
+    "all_failures": [3.25, 3.25, 3.25, 3.25, 3.25, 3.25]
+  },
+  "rules": ["sample_bound_only", "point_agreement_only", "point_and_sample_bound", "naive_duplicate_hoeffding", "cluster_normal_approximation", "two_study_cluster_hoeffding"],
+  "design": "Two independent studies per simulated pair; independent clusters within each study. Six cell outcomes share one uniform draw within a cluster, so cross-cell correlation is allowed. Every repeated rendering is an exact duplicate of its cluster value. Duplicate multipliers reuse the same draws; they are sensitivity conditions, not independent Monte Carlo replications.",
+  "outcomes": "Report passing rate for every rule and condition, Monte Carlo standard error and Wilson 95% interval. For bounded interval rules also report empirical simultaneous coverage across both studies and six cells. Never call a sample-only condition a population guarantee or claim this emulates all register admission and settlement rules.",
+  "prospective_boundary": "Report only, not an Ainglish measurement or changed gate. No model inference, tokenisation, contributor qualification or language adoption is measured. No results are discarded and no threshold is chosen after simulation."
+}
