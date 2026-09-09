@@ -1,0 +1,133 @@
+{
+  "kind": "ainglish.token-measurement-plan.v1",
+  "state": "prepared_not_run",
+  "manifest": {
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "english": "I archived the obsolete build script deliberately; the release notes remain.",
+        "ainglish": "I archived the obsolete build script on-purpose; the release notes remain."
+      },
+      {
+        "english": "The formatter overwrote the config comment, which I had not foreseen — retrieving it from version control.",
+        "ainglish": "The formatter overwrote the config comment by-accident — retrieving it from version control."
+      },
+      {
+        "english": "The nightly export was paused deliberately: the storage node is under repair.",
+        "ainglish": "The nightly export was paused on-purpose: the storage node is under repair."
+      },
+      {
+        "english": "Handover: the search index was reset by mistake during the smoke test, unforeseen; expect a rebuild.",
+        "ainglish": "Handover: the search index was reset by-accident during the smoke test; expect a rebuild."
+      },
+      {
+        "english": "I rotated the staging certificate deliberately; the old certificate is retained.",
+        "ainglish": "I rotated the staging certificate on-purpose; the old certificate is retained."
+      },
+      {
+        "english": "The cleanup task removed the fixture directory by mistake, an outcome its operator did not foresee; restoring the archive.",
+        "ainglish": "The cleanup task removed the fixture directory by-accident; restoring the archive."
+      },
+      {
+        "english": "We disconnected the obsolete webhook deliberately; the replacement is active.",
+        "ainglish": "We disconnected the obsolete webhook on-purpose; the replacement is active."
+      },
+      {
+        "english": "The scheduler restarted the worker by mistake, an outcome its operator did not foresee; the queued task was retried.",
+        "ainglish": "The scheduler restarted the worker by-accident; the queued task was retried."
+      }
+    ],
+    "replicates_hash": "256a92882cc54e2347488c832bbcbd6171f8027482f4e1913217bebbe470ff24",
+    "estimand_contract": {
+      "kind": "ainglish.estimand-shadow.v1",
+      "unit_span": "pair",
+      "contrast": "token_delta",
+      "population": "cl100k_base/o200k_base/p50k_base",
+      "aggregation": {
+        "reducer": "least_favourable",
+        "rule": "maximum tokenizer mean"
+      },
+      "governance_effect": "report_only"
+    },
+    "items_sha256": "5d38e82876c9e84ce9a85d6ccee251dc9209a077d4e29c750694090aea06851b",
+    "comparison_identity": {
+      "kind": "ainglish.token-comparison-identity.v2",
+      "item_count": 8,
+      "tokenizer_roster": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "comparator": "token_delta",
+      "population": "cl100k_base/o200k_base/p50k_base",
+      "aggregation": "maximum tokenizer mean",
+      "unit_span": "pair"
+    },
+    "interval_kind": "member_span",
+    "tokenizer_provenance": {
+      "kind": "ainglish.tiktoken-provenance.v1",
+      "library": "tiktoken",
+      "library_version": "0.14.0",
+      "encodings": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ]
+    }
+  },
+  "manifest_commitment": "4d82f2fda105bde0ecdb1bb985baabb729b47b403bf016ced3e91e97cac23e3c",
+  "intent": {
+    "role": "replication",
+    "replicates_hash": "256a92882cc54e2347488c832bbcbd6171f8027482f4e1913217bebbe470ff24",
+    "meaning": "Replication of the named original; live server gates still decide whether it is an eligible settlement voice."
+  },
+  "comparison_identity_status": {
+    "state": "mismatched",
+    "target_kind": "ainglish.token-comparison-identity.v1",
+    "prepared_kind": "ainglish.token-comparison-identity.v2",
+    "note": "Exact shared declaration only, not proof of comparator fairness or settlement eligibility. Historical v1 identities remain different; consult live eligibility before mint. Never copy a stale sample digest to manufacture a match."
+  },
+  "estimand_contract_policy": {
+    "attached": true,
+    "reason": "the replication target declares the same estimand_contract"
+  },
+  "design_declaration": {
+    "kind": "ainglish.estimand-shadow.v1",
+    "unit_span": "pair",
+    "contrast": "token_delta",
+    "population": "cl100k_base/o200k_base/p50k_base",
+    "aggregation": {
+      "reducer": "least_favourable",
+      "rule": "maximum tokenizer mean"
+    },
+    "governance_effect": "report_only"
+  },
+  "replication_target": {
+    "manifest_hash": "256a92882cc54e2347488c832bbcbd6171f8027482f4e1913217bebbe470ff24",
+    "estimand_contract_declared": true
+  },
+  "items_sha256": "5d38e82876c9e84ce9a85d6ccee251dc9209a077d4e29c750694090aea06851b",
+  "pair_count": 8,
+  "sample_size_rule": {
+    "kind": "power-of-two-v1",
+    "item_count": 8,
+    "passed": true
+  },
+  "mint": {
+    "estimand": "token_delta over pair: token_delta; population: cl100k_base/o200k_base/p50k_base; aggregation: maximum tokenizer mean",
+    "admissibility_gates": [
+      "every declared tiktoken encoding loads",
+      "every frozen English and Ainglish string is countable"
+    ],
+    "planned_sample": {
+      "items": 8,
+      "tokenizers": 3
+    }
+  },
+  "next": "Mint plan.manifest with client.mint_attempt(...) before running this plan."
+}
