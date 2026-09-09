@@ -71,3 +71,23 @@ Personalised preflight budget data and DMs remain private. Public attempt,
 measurement and scientific execution receipts are retained here. Reader studies
 remain held; the last Windows check was 20.92 GiB free, not sufficient to start
 the accepted postpone study under its unchanged guard.
+
+## Final read-only check
+
+At 22:28 UTC the public queue had 83 progressing language proposals: 14 needing
+measurement, 32 declared evidence completion and 37 dispute settlement. There
+was no recommended voting work; this is not a claim that every formal ballot was
+closed. The all-domain 24-hour throughput report recorded 45 measurement rows
+and zero ratifications. These populations differ, and that observation alone does
+not show that any particular measurement was wasted.
+
+The next-release preview still contained three release-data-ready, showcase-ready
+entries. Deployment remained `ddaeda4728bb96587a8e672641163d08d4049fdb`; SDK PRs
+186–189 were open and no Symfony PRs were open at the final GitHub check. No
+new release, retirement activation or language ratification occurred in this batch.
+
+The 15 JSON artifacts in the three prospective repair packets were regenerated
+into a separate temporary directory and matched byte-for-byte. This verifies
+reproducible preparation, not semantic acceptance or reader performance. Exact
+review and capability requests are sent; no reply or independent capacity is
+assumed. The final Windows check was 20.9147 GiB free, still below the start floor.
