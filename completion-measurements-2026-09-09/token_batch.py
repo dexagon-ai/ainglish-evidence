@@ -12,6 +12,7 @@ PRIVATE = Path('/home/dexagon/codex/ainglish-completion-measurements-20260909-Fs
 TARGETS = {
  'rent': ('a-3zjcv2sz5g53nxxd', 'c7470fac03fa2ca7c81b74213a888dab6c99f3d38357278ca6ee5948a490b09b'),
  'choose': ('a-ppyzdf5qk6z67aty', '43cd8d393fa74c455b0f64d9a63a3e04b1b04542935b996d419a876a56f76b02'),
+ 'resume': ('a-jvjxmmf83rmvw9vx', '49f9c170ad9cd5109551f44c32c83961248ca15f2bd2cee3ab73ca47374b7754'),
 }
 FIELDS = ('public_id', 'form', 'english_mapping', 'predicted_measurement', 'evidence_contract')
 def save(path, value):
@@ -29,6 +30,16 @@ def fresh(name):
  assert manifest_commitment(m['manifest'])==target
  return c,p,s,m
 def new_rows(name):
+ if name=='resume':
+  rows=[]
+  for domain,action,checkpoint in [('reading','Read field guide F9','Q'),
+    ('checklist','Complete the equipment checklist','H'),('transfer','Copy the simulation archive','W'),
+    ('survey','Finish the safety questionnaire','M')]:
+   for pole in ('resume','redo'):
+    rows.append({'id':f'resume-fresh-{domain}-{pole}','stratum':domain+'-'+pole,
+     'english':action+(f', continuing from checkpoint {checkpoint}.' if pole=='resume' else ' again from the beginning.'),
+     'ainglish':action+(f', resume-from({checkpoint}).' if pole=='resume' else ', redo-from-start.')})
+  return rows
  if name=='rent':
   contexts=[('equipment','Nela','oscilloscope','laboratory','inspectors'),
             ('vehicles','Ivo','minibus','transport firm','tour guides'),
@@ -79,10 +90,13 @@ def prepare(name):
   test_set_note='Wholly fresh complete pairs preserving the eight-cell source frame and aggregate-only estimator. This does not establish the full reader claim or untested cost strata.',
   proposal_scope_sha256=hashlib.sha256(json.dumps({k:p[k] for k in FIELDS},ensure_ascii=False,sort_keys=True,separators=(',',':'),allow_nan=False).encode()).hexdigest(),
   proposal_scope_hash_rule='SHA-256 of UTF-8 Python JSON, sorted keys, compact separators, non-ASCII preserved; separate from the scientific manifest commitment.')
- declaration=m['manifest'].get('estimand_contract') or estimand.declaration(
+ declaration=m['manifest'].get('estimand_contract') or (estimand.declaration(
+  unit_span='one complete utterance pair',contrast='resume-from/redo-from-start minus the exact canonical concise-English policy template with ACTION unchanged',
+  population='8 fresh complete messages, the four source domains crossed with both progress policies; checkpoint semantics assumed as in source',
+  reducer='least_favourable',aggregation_rule='Unrounded mean over the 8 messages per tokenizer, then maximum tokenizer mean') if name=='resume' else estimand.declaration(
   unit_span='one complete utterance pair',contrast='rent-borrow/rent-lend minus concise rent from/rent out; fee context held identical',
   population='8 fresh complete messages, four source domains crossed with both roles; all counterparties named',
-  reducer='least_favourable',aggregation_rule='Unrounded mean over the 8 messages per tokenizer, then maximum tokenizer mean')
+  reducer='least_favourable',aggregation_rule='Unrounded mean over the 8 messages per tokenizer, then maximum tokenizer mean'))
  mf=estimand.attach(mf,declaration)
  plan=token_measurement.prepare({'manifest':mf,'replication_target_manifest':m['manifest']},
   token_limits=c.protocols()['measurement_submission']['manifest']['token_delta_limits'],expected_replicates_hash=TARGETS[name][1])
