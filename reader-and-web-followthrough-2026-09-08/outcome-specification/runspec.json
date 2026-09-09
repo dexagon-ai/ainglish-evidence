@@ -1,0 +1,960 @@
+{
+  "public_id": "a-b4mw22e4g8tv0hqv",
+  "slug": "value-is-mean-outcome-distribution-ref-value-is-likeliest",
+  "construct": "<value> is mean-outcome(<distribution-ref>) | <value> is likeliest-outcome(<distribution-ref>)",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026090886,
+  "panel": [
+    {
+      "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11435/v1",
+      "api": "openai",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090581,
+      "digest_source": "ollama:/api/tags",
+      "_ainglish_instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      }
+    },
+    {
+      "name": "gemma3-12b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11435/v1",
+      "api": "openai",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "q4_k_m",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": 2026090581,
+      "digest_source": "ollama:/api/tags",
+      "_ainglish_instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      }
+    }
+  ],
+  "models": [
+    "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+    "gemma3-12b-opaque-choice-q4_k_m@q4_k_m"
+  ],
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "mistral-small-3.2-24b-instruct-2506",
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Mistral Small 3.2 24B Instruct 2506 Q4_K_M."
+      },
+      "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+      "settings_sha256": "ad9f950f54a72256d91662eb46c2f2a9c3194c183c056c7888affcb20754c1e2",
+      "qualified_at": "2026-09-08T21:05:50+00:00",
+      "valid_until": "2026-09-15T21:05:50+00:00",
+      "result": {
+        "detectable_correct": 24,
+        "detectable_total": 24,
+        "other_correct": 0,
+        "other_total": 24,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 9500,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "gemma-3-12b-it",
+        "basis": "Local Ollama artifact pinned by sha256 model digest; stateless opaque-choice wrapper over Gemma 3 12B IT Q4_K_M."
+      },
+      "screen_sha256": "08393d9c34240719f5f68f8f91fb5bf54c8d19d5627cd3f3c1ba2dd841a193fb",
+      "settings_sha256": "c549f532ee6122e6c2fa13cdd101a5f24f0a3e9f9864950eca10949eaf5495c2",
+      "qualified_at": "2026-09-08T21:06:40+00:00",
+      "valid_until": "2026-09-15T21:06:40+00:00",
+      "result": {
+        "detectable_correct": 24,
+        "detectable_total": 24,
+        "other_correct": 0,
+        "other_total": 24,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 9500,
+        "passed": true
+      }
+    }
+  ],
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "calibration_min_recovered": 1,
+  "panel_neff": 2,
+  "study_purpose": "diagnostic",
+  "study_scope": "32-item diagnostic of this registered version’s specification boundary. Eight classes per predicate, including a sufficient-model control; identical finite-discrete scope supplied to both arms. Not a test of general mathematical validity, not the primary comprehension scalar, and not an independent replication. Two fixed cached readers.",
+  "comparator": {
+    "kind": "careful-english-shared-scope-v1",
+    "description": "Equal visible scope rules and complete model descriptions; evaluability question rather than truth of the claimed statistic."
+  },
+  "items": [
+    {
+      "id": "followthrough-outcome-spec-00",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D lists mass 1/4 at zero and 1/4 at four; the remaining probability and outcomes are unspecified. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D lists mass 1/4 at zero and 1/4 at four; the remaining probability and outcomes are unspecified. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "partial",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-01",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D lists mass 1/4 at zero and 1/4 at four; the remaining probability and outcomes are unspecified. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D lists mass 1/4 at zero and 1/4 at four; the remaining probability and outcomes are unspecified. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "partial",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-02",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D displays probabilities rounded to one decimal place; their exact interpretation is unspecified. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D displays probabilities rounded to one decimal place; their exact interpretation is unspecified. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "rounded",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-03",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D displays probabilities rounded to one decimal place; their exact interpretation is unspecified. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D displays probabilities rounded to one decimal place; their exact interpretation is unspecified. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "rounded",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-04",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D may refer to model v1 or v2, whose masses differ; no version was chosen. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D may refer to model v1 or v2, whose masses differ; no version was chosen. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "ambiguous-reference",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-05",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D may refer to model v1 or v2, whose masses differ; no version was chosen. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D may refer to model v1 or v2, whose masses differ; no version was chosen. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "ambiguous-reference",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-06",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D is a continuous uniform distribution on [0,4], not a finite discrete mass distribution. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D is a continuous uniform distribution on [0,4], not a finite discrete mass distribution. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "continuous",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-07",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D is a continuous uniform distribution on [0,4], not a finite discrete mass distribution. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D is a continuous uniform distribution on [0,4], not a finite discrete mass distribution. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "continuous",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-08",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D changes with the conditioning event, but which event applies has not been supplied. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D changes with the conditioning event, but which event applies has not been supplied. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "unknown-conditioning",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-09",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D changes with the conditioning event, but which event applies has not been supplied. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D changes with the conditioning event, but which event applies has not been supplied. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "unknown-conditioning",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-10",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D places mass 1/2 on blue and 1/2 on red, with no numeric quantity or numeric encoding. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D places mass 1/2 on blue and 1/2 on red, with no numeric quantity or numeric encoding. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "unordered-values",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-11",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D places mass 1/2 on blue and 1/2 on red, with no numeric quantity or numeric encoding. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D places mass 1/2 on blue and 1/2 on red, with no numeric quantity or numeric encoding. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "unordered-values",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-12",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D uniquely identifies finite discrete model v2 for one stated event: mass 1/2 at zero units and 1/2 at four units. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D uniquely identifies finite discrete model v2 for one stated event: mass 1/2 at zero units and 1/2 at four units. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Enough specification to check the claim, even if it is false.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "exact-two-point",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": true
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-13",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D uniquely identifies finite discrete model v2 for one stated event: mass 1/2 at zero units and 1/2 at four units. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D uniquely identifies finite discrete model v2 for one stated event: mass 1/2 at zero units and 1/2 at four units. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Enough specification to check the claim, even if it is false.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "exact-two-point",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": true
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-14",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D uniquely identifies finite discrete model v2: two disjoint paths each yield two units with mass 1/4; a third yields six units with mass 1/2. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D uniquely identifies finite discrete model v2: two disjoint paths each yield two units with mass 1/4; a third yields six units with mass 1/2. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Enough specification to check the claim, even if it is false.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "exact-aggregated",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": true
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-15",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D uniquely identifies finite discrete model v2: two disjoint paths each yield two units with mass 1/4; a third yields six units with mass 1/2. Statement: Under D, the probability-weighted mean is two units.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D uniquely identifies finite discrete model v2: two disjoint paths each yield two units with mass 1/4; a third yields six units with mass 1/2. Statement: 2 units is mean-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Enough specification to check the claim, even if it is false.",
+      "settlement_stratum": "mean-outcome",
+      "diagnostic_class": "exact-aggregated",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": true
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-16",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D lists mass 1/4 at zero and 1/4 at four; the remaining probability and outcomes are unspecified. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D lists mass 1/4 at zero and 1/4 at four; the remaining probability and outcomes are unspecified. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "partial",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-17",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D lists mass 1/4 at zero and 1/4 at four; the remaining probability and outcomes are unspecified. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D lists mass 1/4 at zero and 1/4 at four; the remaining probability and outcomes are unspecified. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "partial",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-18",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D displays probabilities rounded to one decimal place; their exact interpretation is unspecified. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D displays probabilities rounded to one decimal place; their exact interpretation is unspecified. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "rounded",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-19",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D displays probabilities rounded to one decimal place; their exact interpretation is unspecified. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D displays probabilities rounded to one decimal place; their exact interpretation is unspecified. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "rounded",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-20",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D may refer to model v1 or v2, whose masses differ; no version was chosen. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D may refer to model v1 or v2, whose masses differ; no version was chosen. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "ambiguous-reference",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-21",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D may refer to model v1 or v2, whose masses differ; no version was chosen. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D may refer to model v1 or v2, whose masses differ; no version was chosen. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "ambiguous-reference",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-22",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D is a continuous uniform distribution on [0,4], not a finite discrete mass distribution. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D is a continuous uniform distribution on [0,4], not a finite discrete mass distribution. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "continuous",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-23",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D is a continuous uniform distribution on [0,4], not a finite discrete mass distribution. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D is a continuous uniform distribution on [0,4], not a finite discrete mass distribution. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "continuous",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-24",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D changes with the conditioning event, but which event applies has not been supplied. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D changes with the conditioning event, but which event applies has not been supplied. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "unknown-conditioning",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-25",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D changes with the conditioning event, but which event applies has not been supplied. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D changes with the conditioning event, but which event applies has not been supplied. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "unknown-conditioning",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-26",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D places mass 1/2 on blue and 1/2 on red, with no numeric quantity or numeric encoding. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D places mass 1/2 on blue and 1/2 on red, with no numeric quantity or numeric encoding. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "unordered-values",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-27",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D places mass 1/2 on blue and 1/2 on red, with no numeric quantity or numeric encoding. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D places mass 1/2 on blue and 1/2 on red, with no numeric quantity or numeric encoding. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Clarify or reject the specification before evaluating this registered claim.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "unordered-values",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": false
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-28",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D uniquely identifies finite discrete model v2 for one stated event: mass 1/2 at zero units and 1/2 at four units. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D uniquely identifies finite discrete model v2 for one stated event: mass 1/2 at zero units and 1/2 at four units. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Enough specification to check the claim, even if it is false.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "exact-two-point",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": true
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-29",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D uniquely identifies finite discrete model v2 for one stated event: mass 1/2 at zero units and 1/2 at four units. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D uniquely identifies finite discrete model v2 for one stated event: mass 1/2 at zero units and 1/2 at four units. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Enough specification to check the claim, even if it is false.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "exact-two-point",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": true
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-30",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D uniquely identifies finite discrete model v2: two disjoint paths each yield two units with mass 1/4; a third yields six units with mass 1/2. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 1. D uniquely identifies finite discrete model v2: two disjoint paths each yield two units with mass 1/4; a third yields six units with mass 1/2. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Enough specification to check the claim, even if it is false.",
+        "Clarify or reject the specification before evaluating this registered claim."
+      ],
+      "answer": "Enough specification to check the claim, even if it is false.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "exact-aggregated",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": true
+      }
+    },
+    {
+      "id": "followthrough-outcome-spec-31",
+      "english": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D uniquely identifies finite discrete model v2: two disjoint paths each yield two units with mass 1/4; a third yields six units with mass 1/2. Statement: Under D, two units has the highest outcome probability, ties allowed.",
+      "ainglish": "Shared scope rule for this registered version: D must uniquely identify a fixed, nonempty, finite discrete probability distribution over numeric values in one declared quantity and unit; positive exact masses sum to one. Relevant model version and conditioning must be fixed. Partial, rounded-without-an-exact-interpretation, continuous, infinite-support, unordered-category and ambiguous specifications are outside this version. A specification can be sufficient even when the asserted statistic value is false. Fictional specification check 2. D uniquely identifies finite discrete model v2: two disjoint paths each yield two units with mass 1/4; a third yields six units with mass 1/2. Statement: 2 units is likeliest-outcome(D).",
+      "question": "Does the supplied specification uniquely provide the finite numeric probability model required to check this exact registered claim? This asks evaluability, not whether the asserted value is true.",
+      "options": [
+        "Clarify or reject the specification before evaluating this registered claim.",
+        "Enough specification to check the claim, even if it is false."
+      ],
+      "answer": "Enough specification to check the claim, even if it is false.",
+      "settlement_stratum": "likeliest-outcome",
+      "diagnostic_class": "exact-aggregated",
+      "diagnostic_only": true,
+      "calibration": false,
+      "oracle": {
+        "specification_sufficient": true
+      }
+    },
+    {
+      "id": "outcome-specification-control-0",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-910: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-910: the collector is Ari.",
+      "question": "Who collected the parcel on receipt Z-910?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Ari"
+    },
+    {
+      "id": "outcome-specification-control-1",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-911: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-911: the collector is Bela.",
+      "question": "Who collected the parcel on receipt Z-911?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Bela"
+    },
+    {
+      "id": "outcome-specification-control-2",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-912: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-912: the collector is Cleo.",
+      "question": "Who collected the parcel on receipt Z-912?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Cleo"
+    },
+    {
+      "id": "outcome-specification-control-3",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-913: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-913: the collector is Daru.",
+      "question": "Who collected the parcel on receipt Z-913?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Daru"
+    },
+    {
+      "id": "outcome-specification-control-4",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-914: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-914: the collector is Etta.",
+      "question": "Who collected the parcel on receipt Z-914?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Etta"
+    },
+    {
+      "id": "outcome-specification-control-5",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-915: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-915: the collector is Fenn.",
+      "question": "Who collected the parcel on receipt Z-915?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Fenn"
+    },
+    {
+      "id": "outcome-specification-control-6",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-916: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-916: the collector is Ari.",
+      "question": "Who collected the parcel on receipt Z-916?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Ari"
+    },
+    {
+      "id": "outcome-specification-control-7",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-917: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-917: the collector is Bela.",
+      "question": "Who collected the parcel on receipt Z-917?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Bela"
+    },
+    {
+      "id": "outcome-specification-control-8",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-918: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-918: the collector is Cleo.",
+      "question": "Who collected the parcel on receipt Z-918?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Cleo"
+    },
+    {
+      "id": "outcome-specification-control-9",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-919: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-919: the collector is Daru.",
+      "question": "Who collected the parcel on receipt Z-919?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Daru"
+    },
+    {
+      "id": "outcome-specification-control-10",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-920: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-920: the collector is Etta.",
+      "question": "Who collected the parcel on receipt Z-920?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Etta"
+    },
+    {
+      "id": "outcome-specification-control-11",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "resolved custody",
+      "english": "Neutral receipt Z-921: the collector is not recorded.",
+      "ainglish": "Neutral receipt Z-921: the collector is Fenn.",
+      "question": "Who collected the parcel on receipt Z-921?",
+      "options": [
+        "Ari",
+        "Bela",
+        "Cleo",
+        "Daru",
+        "Etta",
+        "Fenn",
+        "not determined"
+      ],
+      "answer": "Fenn"
+    }
+  ],
+  "items_sha256": "f08ff1c2aff4bc7ee36609f96312401c94046cf027531b72d8524bd3897ce396",
+  "settlement_strata": [
+    {
+      "id": "mean-outcome",
+      "weight": 1
+    },
+    {
+      "id": "likeliest-outcome",
+      "weight": 1
+    }
+  ],
+  "attempt": {
+    "proposal_revision": "value-is-mean-outcome-distribution-ref-value-is-likeliest",
+    "estimand": "32-item diagnostic of this registered version’s specification boundary. Eight classes per predicate, including a sufficient-model control; identical finite-discrete scope supplied to both arms. Not a test of general mathematical validity, not the primary comprehension scalar, and not an independent replication. Two fixed cached readers.",
+    "admissibility_gates": [
+      "Active unchanged proposal and current exact-target measurement eligibility; no superseding claim",
+      "All target items, exact golds, common definitions, comparator and analysis frozen publicly before mint and inference",
+      "Two exact cached model artifacts and unexpired endpoint/settings qualifications; no downloads or substitutions",
+      "Our isolated service is restricted to GPU 0; no eviction of unrelated workloads; physical host disk remains above 15 GiB",
+      "Mint before experiment calls; pass the official calibration gate before targets; no target retries or result-dependent stopping",
+      "Retain null, adverse, transport and floor results with exact per-cell journals; no claim of independent confirmation",
+      "Independent review must cover exact scope wording and all diagnostic golds before execution",
+      "Report sufficient-control accuracy separately from rejection of insufficient descriptions; preserve every class; do not pool into the primary scalar"
+    ],
+    "planned_sample": {
+      "target_items": 32,
+      "calibration_items": 12,
+      "readers": 2,
+      "target_calls": 64,
+      "calibration_calls": 48,
+      "strata": {
+        "mean-outcome": 16,
+        "likeliest-outcome": 16
+      }
+    }
+  },
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/4b3f07564f0db798aceccf54534f1b210509070b/reader-and-web-followthrough-2026-09-08/outcome-specification/items.json"
+}
