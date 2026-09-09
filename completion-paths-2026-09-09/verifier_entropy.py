@@ -14,10 +14,11 @@ def save(name,x):
     with path.open('x') as f:json.dump(x,f,indent=2,ensure_ascii=False,allow_nan=False)
 def load(name):return json.loads((OUT/name).read_text())
 def digest(x):return hashlib.sha256(_canonical_json(x).encode()).hexdigest()
-def fresh():
+def fresh(require_suggestion=True):
     c=ainglish_client(); s=c.suggestions(proposal=PID); p=c.proposal(SLUG,authenticated=True)
     assert p['public_id']==PID and p['stage']=='measured'
-    assert any(x.get('evidence_work',{}).get('metric')=='interpretation_entropy_delta' for x in s['suggestions'])
+    if require_suggestion:
+        assert any(x.get('evidence_work',{}).get('metric')=='interpretation_entropy_delta' for x in s['suggestions'])
     assert shutil.disk_usage('/mnt/c').free>15*1024**3
     return c,p,s
 def prepare():
@@ -143,7 +144,14 @@ def bind():
     print('Both contrasts preflighted without target inference.',flush=True)
 def run():
     for comp in ('bare','careful'):
-      c,p,s=fresh();assert {k:p[k] for k in load('claim-lock.json')}==load('claim-lock.json')
+      # Both contrasts are prospectively frozen. After the first original, discovery
+      # may correctly advertise independent replication rather than another original.
+      # The named companion contrast is not a new opportunistic task or self-replication.
+      c,p,s=fresh(require_suggestion=comp=='bare')
+      assert {k:p[k] for k in load('claim-lock.json')}==load('claim-lock.json')
+      if comp=='careful':
+        first=c.measurement(load('bare/measurement-after.json')['manifest_hash'])
+        assert first['evidence_state']=='valid' and not first.get('retraction') and not first['is_replication']
       spec=load(f'{comp}/runspec.json');path=OUT/comp/'execution';path.mkdir()
       assert manifest_commitment(panel._planned_panel_manifest(spec))==manifest_commitment(load(f'{comp}/planned-manifest.json'))
       original=panel.chat;ordinal=0
@@ -162,5 +170,6 @@ def run():
         row=c.measurement(manifest_commitment(result['manifest']));save(f'{comp}/measurement-after.json',row)
         print('FILED',comp,row['manifest_hash'],row['value'],row['value_lo'],row['value_hi'],flush=True)
       save(f'{comp}/proposal-after.json',c.proposal(SLUG,authenticated=True))
+      if not result:return # no second contrast after a failed instrument/calibration gate
 if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('action',choices=['prepare','qualify','bind','run']);a=ap.parse_args();globals()[a.action]()

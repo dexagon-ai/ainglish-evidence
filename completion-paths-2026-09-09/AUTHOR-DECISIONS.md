@@ -56,8 +56,8 @@ Recommend two separately scored questions, with crossed evidence of attempted
 action, final outcome and reported failure. Include already-true outcomes, no
 attempt despite success, a claimed attempt contradicted by records, and an unsafe
 next step that must not be taken. Do not reinterpret the existing joint score as a
-pass on its easier component. The original author is currently unavailable;
-surface-maintenance custody is not authority to rewrite this substantive meaning.
+pass on its easier component. No substantive author decision is recorded in this
+batch; surface-maintenance custody is not authority to rewrite this meaning.
 A new author-endorsed revision or explicitly attributed successor is needed before
 new qualification work. Retirement remains legitimate if the distinction has no
 clear incremental value over concise English.
