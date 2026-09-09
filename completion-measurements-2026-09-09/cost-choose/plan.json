@@ -1,0 +1,159 @@
+{
+  "kind": "ainglish.token-measurement-plan.v1",
+  "state": "prepared_not_run",
+  "manifest": {
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "test_set": [
+      {
+        "id": "choose-1",
+        "english": "Choose exactly one responsive cache; any eligible member is acceptable and no probability distribution is required.",
+        "ainglish": "choose-any(responsive-caches)."
+      },
+      {
+        "id": "choose-2",
+        "english": "Draw exactly one eligible examiner using a random procedure that gives every distinct eligible examiner equal probability.",
+        "ainglish": "draw-uniform(eligible-examiners)."
+      },
+      {
+        "id": "choose-3",
+        "english": "Please make one equal-probability draw from the frozen 2026-09-06 inspection-ticket set.",
+        "ainglish": "Please draw-uniform(inspection-tickets@2026-09-06)."
+      },
+      {
+        "id": "choose-4",
+        "english": "Select exactly one reachable mirror; any mirror is acceptable and no probability distribution is required.",
+        "ainglish": "choose-any(reachable-mirrors)."
+      },
+      {
+        "id": "choose-5",
+        "english": "Draw exactly one reserve facilitator using a random procedure that gives every facilitator equal probability.",
+        "ainglish": "draw-uniform(reserve-facilitators)."
+      },
+      {
+        "id": "choose-6",
+        "english": "Pick exactly one inspection batch; any batch is acceptable without equal odds requirement.",
+        "ainglish": "choose-any(inspection-batches)."
+      },
+      {
+        "id": "choose-7",
+        "english": "Please make one equal-probability draw from the available assessors for 2026-09-11.",
+        "ainglish": "draw-uniform(assessors@2026-09-11)."
+      },
+      {
+        "id": "choose-8",
+        "english": "Choose exactly one standby gateway; any gateway is acceptable.",
+        "ainglish": "choose-any(standby-gateways)."
+      }
+    ],
+    "replicates_hash": "43cd8d393fa74c455b0f64d9a63a3e04b1b04542935b996d419a876a56f76b02",
+    "test_set_note": "Wholly fresh complete pairs preserving the eight-cell source frame and aggregate-only estimator. This does not establish the full reader claim or untested cost strata.",
+    "proposal_scope_sha256": "af39eecf9c291ca93bd89dfd4ccfb9e9e889deb464c0b45a8c224553fe3ed22e",
+    "estimand_contract": {
+      "kind": "ainglish.estimand-shadow.v1",
+      "unit_span": "pair",
+      "contrast": "token_delta",
+      "population": "cl100k_base/o200k_base/p50k_base",
+      "aggregation": {
+        "reducer": "least_favourable",
+        "rule": "maximum tokenizer mean"
+      },
+      "governance_effect": "report_only"
+    },
+    "items_sha256": "b678e1fda594a1792b6723a1b6b02c87aeb69a07fc705104efdce7f571ac161d",
+    "comparison_identity": {
+      "kind": "ainglish.token-comparison-identity.v2",
+      "item_count": 8,
+      "tokenizer_roster": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "comparator": "token_delta",
+      "population": "cl100k_base/o200k_base/p50k_base",
+      "aggregation": "maximum tokenizer mean",
+      "unit_span": "pair"
+    },
+    "interval_kind": "member_span",
+    "tokenizer_provenance": {
+      "kind": "ainglish.tiktoken-provenance.v1",
+      "library": "tiktoken",
+      "library_version": "0.14.0",
+      "encodings": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ]
+    }
+  },
+  "manifest_commitment": "37f7d957495acc823a12fa5e17a9e4bc4a7877375ddcb1756fefffaef55aac54",
+  "intent": {
+    "role": "replication",
+    "replicates_hash": "43cd8d393fa74c455b0f64d9a63a3e04b1b04542935b996d419a876a56f76b02",
+    "meaning": "Replication of the named original; live server gates still decide whether it is an eligible settlement voice."
+  },
+  "comparison_identity_status": {
+    "state": "mismatched",
+    "target_kind": "ainglish.token-comparison-identity.v1",
+    "prepared_kind": "ainglish.token-comparison-identity.v2",
+    "note": "Exact shared declaration only, not proof of comparator fairness or settlement eligibility. Historical v1 identities remain different; consult live eligibility before mint. Never copy a stale sample digest to manufacture a match."
+  },
+  "estimand_contract_policy": {
+    "attached": true,
+    "reason": "the replication target declares the same estimand_contract"
+  },
+  "design_declaration": {
+    "kind": "ainglish.estimand-shadow.v1",
+    "unit_span": "pair",
+    "contrast": "token_delta",
+    "population": "cl100k_base/o200k_base/p50k_base",
+    "aggregation": {
+      "reducer": "least_favourable",
+      "rule": "maximum tokenizer mean"
+    },
+    "governance_effect": "report_only"
+  },
+  "replication_target": {
+    "manifest_hash": "43cd8d393fa74c455b0f64d9a63a3e04b1b04542935b996d419a876a56f76b02",
+    "estimand_contract_declared": true
+  },
+  "items_sha256": "b678e1fda594a1792b6723a1b6b02c87aeb69a07fc705104efdce7f571ac161d",
+  "pair_count": 8,
+  "transport_limits": {
+    "kind": "ainglish.inline-token-limits.v1",
+    "max_canonical_bytes": 131072,
+    "max_pairs": 512,
+    "max_text_bytes_per_arm": 4096,
+    "max_regex_piece_bytes": 512,
+    "max_regex_piece_squared_byte_sum": 8000000,
+    "encodings": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "rule": "Complete inline pairs only; no URL fetching or approximate splitting. Aggregate piece work sums squared UTF-8 piece lengths over both arms and every declared tokenizer, before vocabulary loading. The same canonical-byte cap applies at mint and filing."
+  },
+  "sample_size_rule": {
+    "kind": "power-of-two-v1",
+    "item_count": 8,
+    "passed": true
+  },
+  "mint": {
+    "estimand": "token_delta over pair: token_delta; population: cl100k_base/o200k_base/p50k_base; aggregation: maximum tokenizer mean",
+    "admissibility_gates": [
+      "every declared tiktoken encoding loads",
+      "every frozen English and Ainglish string is countable",
+      "Exact target still eligible, current meaning/prediction unchanged, no prior complete-pair overlap.",
+      "All named tokenizer vocabularies must already be cached; abort rather than downloading."
+    ],
+    "planned_sample": {
+      "items": 8,
+      "tokenizers": 3
+    }
+  },
+  "next": "Mint plan.manifest with client.mint_attempt(...) before running this plan."
+}
