@@ -1,6 +1,8 @@
 # Completion measurements, 9 September 2026
 
-Status checked on 9 September 2026, 20:40 UTC. Six measurements were filed: three
+Progression checked on 9 September 2026 at 20:38 UTC, with the subsequent public
+postpone review/confirmation reconciled and host resources checked at 20:53 UTC.
+Six measurements were filed: three
 independent cost replications, one independent reader replication, and two reader
 originals. A fourth reader attempt stopped during calibration. All first outcomes,
 including the refusal, are retained. **No proposal was newly ratified by this batch.**
@@ -37,7 +39,7 @@ now has one eligible agreement and zero disagreements. An immediately fetched
 | 3. Rent learning | Full 64-row packet frozen; attempt stopped after 32 calibration calls and zero target calls. | The reader refused unsupported guesses in the calibration. Independently review a genuinely answerable new calibration plan before any new attempt. No retry-until-pass. |
 | 4. Resume readers | 80-item comprehension panel filed; separate 64-item core-learning packet prepared but not run. | Audit the disclosed response-code imbalance; independent evidence must settle comprehension. Learning, including its separate boundary block, remains conditional. |
 | 5. Sanction | Exact two-tokenizer, 32-pair cost source handed off for independent replication. | Another eligible measurer must settle source `b68f560f…`; unrelated three-tokenizer samples do not satisfy it. Full reader work stays held. |
-| 6. Replacement / postpone | Replacement semantic review received with duplicate-row caveat. Postpone's full 64-pair cost is confirmed and Saturnia accepted the exact 192-row careful-English packet. | Replacement cost disagreement remains. Postpone's accepted component is entering fresh runtime/qualification preflight; the unrelated old cost-source defect is not its blocker. Its separate validity and bare-table components are not yet accepted. |
+| 6. Replacement / postpone | Replacement semantic review received with duplicate-row caveat. Postpone's full 64-pair cost is confirmed, Saturnia accepted the exact 192-row careful-English packet, and its official manifest/qualifications passed preflight. | Replacement cost disagreement remains. [Postpone stopped before mint on host free space](postpone-careful/STATUS.md); its separate validity and bare-table components are not yet accepted. The unrelated old cost-source defect is not this component's blocker. |
 | 7. Moved-earlier / moved-later | [Actual-use intake](MOVED-FIDELITY-INTAKE.md) and deterministic audit prepared; eight matching public posts and 98 comments inspected. | No eligible operative claim with verified before/after records in that bounded sample. Do not invent a claim or measure an example quiz instead. |
 | 8. Verifier recovery | New attempt and complete first contrast filed; the old resource abort remains visible. | Independent replication. The prepared careful-English companion is held because the personalised route now requires another participant. |
 | 9. Outcome design | 64 one-consequence review rows, exact-rational witnesses and [structural baselines](outcome-consequence-review/BASELINE-CAUTION.md). | Question wording alone gets 75%; constant cells are not discriminatory. Author scope/design decision remains pending; no target inference. |
@@ -58,5 +60,8 @@ passed 100 tests and PR 187 passed 94 tests; both passed all module selftests,
 
 No new models were downloaded or removed. The unsafe construction model was
 unloaded and not retried; [the resource incident and safeguards](RESOURCE-STOP.md)
-remain explicit. Windows recovered to about 23 GiB free. Linux's nominal free
-capacity must not be used as the Windows host's available disk budget.
+remain explicit. Windows initially recovered to about 23 GiB free; by the later
+postpone pre-mint check it was **21.83 GiB**, below the frozen 22 GiB starting
+threshold. That attempt was not minted and made no reader calls. No study model
+remained resident. Linux's nominal free capacity must not be used as the Windows
+host's available disk budget.
