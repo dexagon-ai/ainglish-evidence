@@ -1,0 +1,140 @@
+{
+  "kind": "ainglish.token-measurement-result.v1",
+  "state": "computed_not_submitted",
+  "payload": {
+    "metric": "token_delta",
+    "value": 2.0,
+    "value_lo": -0.5,
+    "value_hi": 2.0,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": -0.5
+      },
+      {
+        "model": "o200k_base",
+        "value": -0.5
+      },
+      {
+        "model": "p50k_base",
+        "value": 2.0
+      }
+    ],
+    "manifest": {
+      "metric": "token_delta",
+      "models": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "test_set": [
+        {
+          "id": "resume-fresh-reading-resume",
+          "stratum": "reading-resume",
+          "english": "Read field guide F9, continuing from checkpoint Q.",
+          "ainglish": "Read field guide F9, resume-from(Q)."
+        },
+        {
+          "id": "resume-fresh-reading-redo",
+          "stratum": "reading-redo",
+          "english": "Read field guide F9 again from the beginning.",
+          "ainglish": "Read field guide F9, redo-from-start."
+        },
+        {
+          "id": "resume-fresh-checklist-resume",
+          "stratum": "checklist-resume",
+          "english": "Complete the equipment checklist, continuing from checkpoint H.",
+          "ainglish": "Complete the equipment checklist, resume-from(H)."
+        },
+        {
+          "id": "resume-fresh-checklist-redo",
+          "stratum": "checklist-redo",
+          "english": "Complete the equipment checklist again from the beginning.",
+          "ainglish": "Complete the equipment checklist, redo-from-start."
+        },
+        {
+          "id": "resume-fresh-transfer-resume",
+          "stratum": "transfer-resume",
+          "english": "Copy the simulation archive, continuing from checkpoint W.",
+          "ainglish": "Copy the simulation archive, resume-from(W)."
+        },
+        {
+          "id": "resume-fresh-transfer-redo",
+          "stratum": "transfer-redo",
+          "english": "Copy the simulation archive again from the beginning.",
+          "ainglish": "Copy the simulation archive, redo-from-start."
+        },
+        {
+          "id": "resume-fresh-survey-resume",
+          "stratum": "survey-resume",
+          "english": "Finish the safety questionnaire, continuing from checkpoint M.",
+          "ainglish": "Finish the safety questionnaire, resume-from(M)."
+        },
+        {
+          "id": "resume-fresh-survey-redo",
+          "stratum": "survey-redo",
+          "english": "Finish the safety questionnaire again from the beginning.",
+          "ainglish": "Finish the safety questionnaire, redo-from-start."
+        }
+      ],
+      "replicates_hash": "49f9c170ad9cd5109551f44c32c83961248ca15f2bd2cee3ab73ca47374b7754",
+      "test_set_note": "Wholly fresh complete pairs preserving the eight-cell source frame and aggregate-only estimator. This does not establish the full reader claim or untested cost strata.",
+      "proposal_scope_sha256": "21629536ee6d89546a7a915386742e801afcf9fbdefc29f55bacd82409d21753",
+      "proposal_scope_hash_rule": "SHA-256 of UTF-8 Python JSON, sorted keys, compact separators, non-ASCII preserved; separate from the scientific manifest commitment.",
+      "items_sha256": "dfa09fe69661239900d905dc15fe6fa24dbfd8e81f75f248a261b866071a2c9b",
+      "comparison_identity": {
+        "kind": "ainglish.token-comparison-identity.v2",
+        "item_count": 8,
+        "tokenizer_roster": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ],
+        "comparator": "resume-from/redo-from-start minus the exact canonical concise-English policy template with ACTION unchanged",
+        "population": "8 fresh complete messages, the four source domains crossed with both progress policies; checkpoint semantics assumed as in source",
+        "aggregation": "Unrounded mean over the 8 messages per tokenizer, then maximum tokenizer mean",
+        "unit_span": "one complete utterance pair"
+      },
+      "interval_kind": "member_span",
+      "tokenizer_provenance": {
+        "kind": "ainglish.tiktoken-provenance.v1",
+        "library": "tiktoken",
+        "library_version": "0.14.0",
+        "encodings": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ]
+      }
+    },
+    "attempt_id": "a21abf06-332a-4a25-905e-6aa53bb05630",
+    "replicates_hash": "49f9c170ad9cd5109551f44c32c83961248ca15f2bd2cee3ab73ca47374b7754"
+  },
+  "audit": {
+    "manifest_commitment": "b2f4a7b8a8ecd8ad64bf24709e8a517e252f1520a83924fd9e23ef5caecc34cc",
+    "items_sha256": "dfa09fe69661239900d905dc15fe6fa24dbfd8e81f75f248a261b866071a2c9b",
+    "pair_count": 8,
+    "by_tokenizer": [
+      {
+        "model": "cl100k_base",
+        "mean": -0.5
+      },
+      {
+        "model": "o200k_base",
+        "mean": -0.5
+      },
+      {
+        "model": "p50k_base",
+        "mean": 2.0
+      }
+    ],
+    "headline_rule": "maximum tokenizer mean (least favourable)",
+    "headline_model": "p50k_base"
+  },
+  "next": "Submit result.payload unchanged with client.measure(slug, result['payload'])."
+}
