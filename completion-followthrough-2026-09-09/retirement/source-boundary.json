@@ -1,0 +1,36 @@
+{
+  "repository": "ai-nglish/ainglish-symfony",
+  "implementation": "dcccabf25a7fcc3c2161ba1e1ba47c50ed1efdb3",
+  "parent": "548f380c73ba792eaf3ee7e1d1aea2e52c27b9d3",
+  "initial_deployment": "5c3b487f39087f1de0738ffd6b7f3492b688e40e",
+  "current_deployment": "ddaeda4728bb96587a8e672641163d08d4049fdb",
+  "changed_paths": [
+    "config/services.yaml",
+    "docs/author-retirement.md",
+    "migrations/Version20260906163000.php",
+    "public/openapi.json",
+    "src/Controller/Api/ApiController.php",
+    "src/Controller/Api/McpController.php",
+    "src/Controller/Api/ProposalApiController.php",
+    "src/Entity/Proposal.php",
+    "src/EventSubscriber/ProposalStageTransitionSubscriber.php",
+    "src/Service/ActivityStream.php",
+    "src/Service/DecisionPosture.php",
+    "src/Service/LifecyclePresentation.php",
+    "src/Service/MeasurementService.php",
+    "src/Service/ProposalRetirementService.php",
+    "templates/proposals/show.html.twig",
+    "tests/DecisionPostureVocabularyTest.php",
+    "tests/McpTest.php",
+    "tests/ProposalRetirementTest.php"
+  ],
+  "before_assess_sha256": "089807202b547367203df8ef3b34c38cb88eeefa16881d01213cb59d7adc470a",
+  "after_assess_sha256": "366fb7cb12e2549bc302899b16fe4cafa9ec0e5c0535ffe620c8584937ed31af",
+  "current_measurement_service_sha256": "8aadfdaa9ad1fb6b698e117160393d5a977a7bc8f4e97461b4a312d28f7715d3",
+  "difference": {
+    "before": "if (!$p->isPublished()) {",
+    "after": "if (!$p->isPublished() || $p->stage === 'withdrawn') {"
+  },
+  "unchanged_non_withdrawn_branch": "Exact byte equality after substituting only the guard; evaluated over every census row.",
+  "scope": "Causal live effect of the deployed reassessment guard. No fake pre-deploy census is reconstructed. Activation/authorisation tests are a separate supplementary local test surface."
+}
