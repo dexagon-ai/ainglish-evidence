@@ -1,0 +1,227 @@
+{
+  "construct": "<BOUNDED ACTION-SET>, all-or-nothing | <BOUNDED ACTION-SET>, keep-successes",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 20260909151,
+  "comparator": {
+    "kind": "balanced-bare-and-complete-careful-english-v1",
+    "description": "Within each action-set/outcome cell, one English comparator leaves terminal retention unstated and one states the complete registered mapping."
+  },
+  "items_sha256": "ba9e9d68ce00dfea3ef4647bb10ea911625adc09b81cc9812c8ccdd9fc28058c",
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/823d45f/completion-paths-2026-09-09/retention-replication/items.json",
+  "models": [
+    "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+    "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m"
+  ],
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "falcon3",
+        "basis": "Distinct published base-model family; exact cached source weight digest preserved. Not a claim of disjoint training data."
+      },
+      "screen_sha256": "b76b174bdd5b87eaa9e2f68325d27a825fc9b96c9eb693ec0bbcbc4fe75c725d",
+      "settings_sha256": "d8e2b851e70b0daabc0610916ca67bf69986277d433c8753b88cac67cc70f027",
+      "qualified_at": "2026-09-09T14:01:24+00:00",
+      "valid_until": "2026-09-16T14:01:24+00:00",
+      "result": {
+        "detectable_correct": 8,
+        "detectable_total": 8,
+        "other_correct": 1,
+        "other_total": 8,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 10000,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "olmo2",
+        "basis": "Distinct published base-model family; exact cached source weight digest preserved. Not a claim of disjoint training data."
+      },
+      "screen_sha256": "b76b174bdd5b87eaa9e2f68325d27a825fc9b96c9eb693ec0bbcbc4fe75c725d",
+      "settings_sha256": "f13eaea1cb80fe0dba28f673a336ace188885f808242d677ebeab8bb6fda8084",
+      "qualified_at": "2026-09-09T14:01:51+00:00",
+      "valid_until": "2026-09-16T14:01:51+00:00",
+      "result": {
+        "detectable_correct": 8,
+        "detectable_total": 8,
+        "other_correct": 1,
+        "other_total": 8,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 10000,
+        "passed": true
+      }
+    }
+  ],
+  "readers": [
+    {
+      "name": "falcon3-10b-qualification-v7-c8647169c2b9",
+      "provider": "ollama",
+      "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://localhost:11434/v1",
+      "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+      "digest_source": "ollama:/api/tags",
+      "instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      },
+      "answer_protocol": "opaque-choice-v1",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": "provider-default",
+      "top_p": "provider-default",
+      "top_k": "provider-default",
+      "num_ctx": "provider-default",
+      "reasoning_effort": "provider-default"
+    },
+    {
+      "name": "olmo2-13b-qualification-v7-cd836509a1a0",
+      "provider": "ollama",
+      "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://localhost:11434/v1",
+      "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+      "digest_source": "ollama:/api/tags",
+      "instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      },
+      "answer_protocol": "opaque-choice-v1",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": "provider-default",
+      "top_p": "provider-default",
+      "top_k": "provider-default",
+      "num_ctx": "provider-default",
+      "reasoning_effort": "provider-default"
+    }
+  ],
+  "instrument_preparation": {
+    "entry_point": "prepare_reader_instruments",
+    "binding": [
+      {
+        "reader": "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+        "digest_source": "ollama:/api/tags"
+      },
+      {
+        "reader": "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m",
+        "digest_source": "ollama:/api/tags"
+      }
+    ]
+  },
+  "item_counts": {
+    "real": 12,
+    "calibration": 6
+  },
+  "interval_kind": "bootstrap_items",
+  "interval_estimator": {
+    "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+    "algorithm": "sha256-counter-modulo-v1",
+    "draws": 2000,
+    "sampling_unit": "item",
+    "quantiles": [
+      "0.025",
+      "0.975"
+    ],
+    "items_index_sha256": "c612639a1f8a87e4cca28942b73a6b9d7af2730e2c32845801171fdeb33cd215"
+  },
+  "accuracy_resolution": {
+    "unit": "percentage_points",
+    "scored_cells": {
+      "english": 12,
+      "ainglish": 12
+    },
+    "one_cell_pp": {
+      "english": "8.3333",
+      "ainglish": "8.3333"
+    },
+    "delta_grid": {
+      "numerator_pp": 100,
+      "denominator_lcm": 12,
+      "step_pp": "8.3333"
+    }
+  },
+  "calibration": {
+    "planted_arm": "ainglish",
+    "min_gap": 0.5,
+    "min_recovered": null,
+    "rule": "absolute-gap-v1",
+    "ordering": "calibration-first",
+    "arm_exposure": "both-arms-per-reader-item",
+    "cells": 24
+  },
+  "difficulty": {
+    "annotated": false
+  },
+  "harness": "ainglish-panel/0.2.58",
+  "transport": {
+    "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m": {
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": "provider-default",
+      "top_p": "provider-default",
+      "top_k": "provider-default",
+      "num_ctx": "provider-default",
+      "reasoning_effort": "provider-default"
+    },
+    "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m": {
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "seed": "provider-default",
+      "top_p": "provider-default",
+      "top_k": "provider-default",
+      "num_ctx": "provider-default",
+      "reasoning_effort": "provider-default"
+    }
+  },
+  "concurrency": {
+    "max_in_flight": 1,
+    "per_reader_max_in_flight": {
+      "falcon3-10b-qualification-v7-c8647169c2b9": 1,
+      "olmo2-13b-qualification-v7-cd836509a1a0": 1
+    },
+    "result_order": "deterministic-plan-order",
+    "calibration_barrier": true,
+    "automatic_retries": false
+  },
+  "transport_faults": {
+    "total": 0,
+    "retried": false,
+    "per_cell": {}
+  },
+  "transport_truncations": {
+    "total": 0,
+    "per_reader_cell": {},
+    "by_cell": {
+      "english": 0,
+      "ainglish": 0
+    },
+    "imbalanced_across_cells": false
+  },
+  "protocol": "panel.py counterbalanced real arms + both-arms-per-reader-item planted-effect calibration gate",
+  "replicates_hash": "921717f2a794f292b6f21f987f532f749a05ab0ca7a5627b29d7f57b39da3436"
+}

@@ -1,0 +1,140 @@
+{
+  "kind": "ainglish.token-measurement-result.v1",
+  "state": "computed_not_submitted",
+  "payload": {
+    "metric": "token_delta",
+    "value": 2.5,
+    "value_lo": 1.5,
+    "value_hi": 2.5,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": 1.5
+      },
+      {
+        "model": "o200k_base",
+        "value": 1.5
+      },
+      {
+        "model": "p50k_base",
+        "value": 2.5
+      }
+    ],
+    "manifest": {
+      "metric": "token_delta",
+      "models": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "test_set": [
+        {
+          "id": "rent-equipment-borrow",
+          "stratum": "equipment-borrow",
+          "english": "Nela will rent the oscilloscope from the laboratory for a fee.",
+          "ainglish": "Nela will rent-borrow the oscilloscope from the laboratory for a fee."
+        },
+        {
+          "id": "rent-equipment-lend",
+          "stratum": "equipment-lend",
+          "english": "Nela will rent out the oscilloscope to the inspectors for a fee.",
+          "ainglish": "Nela will rent-lend the oscilloscope to the inspectors for a fee."
+        },
+        {
+          "id": "rent-vehicles-borrow",
+          "stratum": "vehicles-borrow",
+          "english": "Ivo will rent the minibus from the transport firm for a fee.",
+          "ainglish": "Ivo will rent-borrow the minibus from the transport firm for a fee."
+        },
+        {
+          "id": "rent-vehicles-lend",
+          "stratum": "vehicles-lend",
+          "english": "Ivo will rent out the minibus to the tour guides for a fee.",
+          "ainglish": "Ivo will rent-lend the minibus to the tour guides for a fee."
+        },
+        {
+          "id": "rent-rooms-borrow",
+          "stratum": "rooms-borrow",
+          "english": "Sora will rent the studio from the arts centre for a fee.",
+          "ainglish": "Sora will rent-borrow the studio from the arts centre for a fee."
+        },
+        {
+          "id": "rent-rooms-lend",
+          "stratum": "rooms-lend",
+          "english": "Sora will rent out the studio to the musicians for a fee.",
+          "ainglish": "Sora will rent-lend the studio to the musicians for a fee."
+        },
+        {
+          "id": "rent-supplies-borrow",
+          "stratum": "supplies-borrow",
+          "english": "Tavi will rent the benches from the event depot for a fee.",
+          "ainglish": "Tavi will rent-borrow the benches from the event depot for a fee."
+        },
+        {
+          "id": "rent-supplies-lend",
+          "stratum": "supplies-lend",
+          "english": "Tavi will rent out the benches to the stallholders for a fee.",
+          "ainglish": "Tavi will rent-lend the benches to the stallholders for a fee."
+        }
+      ],
+      "replicates_hash": "c7470fac03fa2ca7c81b74213a888dab6c99f3d38357278ca6ee5948a490b09b",
+      "test_set_note": "Wholly fresh complete pairs preserving the eight-cell source frame and aggregate-only estimator. This does not establish the full reader claim or untested cost strata.",
+      "proposal_scope_sha256": "eccd92a4eec9679b5fbc4a33063d216aa38e813a7f3e909d6fe24a23861caf31",
+      "proposal_scope_hash_rule": "SHA-256 of UTF-8 Python JSON, sorted keys, compact separators, non-ASCII preserved; separate from the scientific manifest commitment.",
+      "items_sha256": "7d8106b83b8d67a2f98a42c205a89f28d37f76dafe9c57fb6b338015cc24bf8b",
+      "comparison_identity": {
+        "kind": "ainglish.token-comparison-identity.v2",
+        "item_count": 8,
+        "tokenizer_roster": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ],
+        "comparator": "rent-borrow/rent-lend minus concise rent from/rent out; fee context held identical",
+        "population": "8 fresh complete messages, four source domains crossed with both roles; all counterparties named",
+        "aggregation": "Unrounded mean over the 8 messages per tokenizer, then maximum tokenizer mean",
+        "unit_span": "one complete utterance pair"
+      },
+      "interval_kind": "member_span",
+      "tokenizer_provenance": {
+        "kind": "ainglish.tiktoken-provenance.v1",
+        "library": "tiktoken",
+        "library_version": "0.14.0",
+        "encodings": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ]
+      }
+    },
+    "attempt_id": "16f43e63-d3a2-4667-8e4b-a8019461892e",
+    "replicates_hash": "c7470fac03fa2ca7c81b74213a888dab6c99f3d38357278ca6ee5948a490b09b"
+  },
+  "audit": {
+    "manifest_commitment": "f0d86c6902929123f65d9d73776bd2ea1186bff4769941c6b3a166b8bc482075",
+    "items_sha256": "7d8106b83b8d67a2f98a42c205a89f28d37f76dafe9c57fb6b338015cc24bf8b",
+    "pair_count": 8,
+    "by_tokenizer": [
+      {
+        "model": "cl100k_base",
+        "mean": 1.5
+      },
+      {
+        "model": "o200k_base",
+        "mean": 1.5
+      },
+      {
+        "model": "p50k_base",
+        "mean": 2.5
+      }
+    ],
+    "headline_rule": "maximum tokenizer mean (least favourable)",
+    "headline_model": "p50k_base"
+  },
+  "next": "Submit result.payload unchanged with client.measure(slug, result['payload'])."
+}
