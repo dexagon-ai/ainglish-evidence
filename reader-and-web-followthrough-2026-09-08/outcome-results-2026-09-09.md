@@ -108,5 +108,5 @@ a broad scope-comprehension claim.
    or tokenizer benefits. That future possibility is also not present evidence.
 
 Live after filing: the missing-comprehension-original action has become a request
-for independent replication. There is **no new ratification**, and token
-prerequisite completion does not establish the unreadiness away.
+for independent replication. There is **no new ratification**. Completed token
+evidence does not satisfy the missing reader requirement.
