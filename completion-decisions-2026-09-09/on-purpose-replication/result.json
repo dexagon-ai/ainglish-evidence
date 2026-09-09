@@ -1,0 +1,132 @@
+{
+  "kind": "ainglish.token-measurement-result.v1",
+  "state": "computed_not_submitted",
+  "payload": {
+    "metric": "token_delta",
+    "value": -0.875,
+    "value_lo": -1.5,
+    "value_hi": -0.875,
+    "panel_models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "per_member": [
+      {
+        "model": "cl100k_base",
+        "value": -1.5
+      },
+      {
+        "model": "o200k_base",
+        "value": -1.375
+      },
+      {
+        "model": "p50k_base",
+        "value": -0.875
+      }
+    ],
+    "manifest": {
+      "metric": "token_delta",
+      "models": [
+        "cl100k_base",
+        "o200k_base",
+        "p50k_base"
+      ],
+      "test_set": [
+        {
+          "english": "I archived the obsolete build script deliberately; the release notes remain.",
+          "ainglish": "I archived the obsolete build script on-purpose; the release notes remain."
+        },
+        {
+          "english": "The formatter overwrote the config comment, which I had not foreseen — retrieving it from version control.",
+          "ainglish": "The formatter overwrote the config comment by-accident — retrieving it from version control."
+        },
+        {
+          "english": "The nightly export was paused deliberately: the storage node is under repair.",
+          "ainglish": "The nightly export was paused on-purpose: the storage node is under repair."
+        },
+        {
+          "english": "Handover: the search index was reset by mistake during the smoke test, unforeseen; expect a rebuild.",
+          "ainglish": "Handover: the search index was reset by-accident during the smoke test; expect a rebuild."
+        },
+        {
+          "english": "I rotated the staging certificate deliberately; the old certificate is retained.",
+          "ainglish": "I rotated the staging certificate on-purpose; the old certificate is retained."
+        },
+        {
+          "english": "The cleanup task removed the fixture directory by mistake, an outcome its operator did not foresee; restoring the archive.",
+          "ainglish": "The cleanup task removed the fixture directory by-accident; restoring the archive."
+        },
+        {
+          "english": "We disconnected the obsolete webhook deliberately; the replacement is active.",
+          "ainglish": "We disconnected the obsolete webhook on-purpose; the replacement is active."
+        },
+        {
+          "english": "The scheduler restarted the worker by mistake, an outcome its operator did not foresee; the queued task was retried.",
+          "ainglish": "The scheduler restarted the worker by-accident; the queued task was retried."
+        }
+      ],
+      "replicates_hash": "256a92882cc54e2347488c832bbcbd6171f8027482f4e1913217bebbe470ff24",
+      "estimand_contract": {
+        "kind": "ainglish.estimand-shadow.v1",
+        "unit_span": "pair",
+        "contrast": "token_delta",
+        "population": "cl100k_base/o200k_base/p50k_base",
+        "aggregation": {
+          "reducer": "least_favourable",
+          "rule": "maximum tokenizer mean"
+        },
+        "governance_effect": "report_only"
+      },
+      "items_sha256": "5d38e82876c9e84ce9a85d6ccee251dc9209a077d4e29c750694090aea06851b",
+      "comparison_identity": {
+        "kind": "ainglish.token-comparison-identity.v2",
+        "item_count": 8,
+        "tokenizer_roster": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ],
+        "comparator": "token_delta",
+        "population": "cl100k_base/o200k_base/p50k_base",
+        "aggregation": "maximum tokenizer mean",
+        "unit_span": "pair"
+      },
+      "interval_kind": "member_span",
+      "tokenizer_provenance": {
+        "kind": "ainglish.tiktoken-provenance.v1",
+        "library": "tiktoken",
+        "library_version": "0.14.0",
+        "encodings": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ]
+      }
+    },
+    "attempt_id": "9cb74303-51d1-48df-a515-e94eb64b6526",
+    "replicates_hash": "256a92882cc54e2347488c832bbcbd6171f8027482f4e1913217bebbe470ff24"
+  },
+  "audit": {
+    "manifest_commitment": "4d82f2fda105bde0ecdb1bb985baabb729b47b403bf016ced3e91e97cac23e3c",
+    "items_sha256": "5d38e82876c9e84ce9a85d6ccee251dc9209a077d4e29c750694090aea06851b",
+    "pair_count": 8,
+    "by_tokenizer": [
+      {
+        "model": "cl100k_base",
+        "mean": -1.5
+      },
+      {
+        "model": "o200k_base",
+        "mean": -1.375
+      },
+      {
+        "model": "p50k_base",
+        "mean": -0.875
+      }
+    ],
+    "headline_rule": "maximum tokenizer mean (least favourable)",
+    "headline_model": "p50k_base"
+  },
+  "next": "Submit result.payload unchanged with client.measure(slug, result['payload'])."
+}
