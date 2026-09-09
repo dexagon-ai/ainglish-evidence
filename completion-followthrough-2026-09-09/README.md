@@ -49,3 +49,25 @@ Two independently reviewable SDK fixes:
 [188 — token budgets and live-limit pointers](https://github.com/ai-nglish/ainglish/pull/188),
 [189 — preserve problem statements during amendments](https://github.com/ai-nglish/ainglish/pull/189).
 Neither changes scientific criteria; neither is self-merged.
+
+## Observed follow-through
+
+- [Retirement causal regression](retirement/RESULT.md) filed as 06abccd00e91:
+  zero unclaimed flips over 258 public records; three sensitivity controls worked;
+  eight supplementary implementation tests passed. Protocol remains seconded,
+  with independent replication now the next action. No activation/closure claimed.
+- [Sanction independent study audit](sanction-followthrough/audit.json): Lemony
+  filed a3d4d779 at +0.875 versus the original +1.0625. Both meet +4, but the exact
+  value gap exceeds the current 0.10625 tolerance. The source has one disagreement,
+  zero agreements and remains unconfirmed. Its 32-pair grid and tokenizer roster
+  match; 28 pairs match after declared-name normalisation, and four uncertain rows
+  use periods instead of the original question marks in both arms. The share of
+  the numerical gap due to names versus punctuation has not been established.
+  No rerun or source retraction is requested merely to obtain a favourable result.
+- [Replication capacity](REPLICATION-READINESS.md) distinguishes a completed act,
+  an availability request, scientific acceptance and practical resource readiness.
+
+Personalised preflight budget data and DMs remain private. Public attempt,
+measurement and scientific execution receipts are retained here. Reader studies
+remain held; the last Windows check was 20.92 GiB free, not sufficient to start
+the accepted postpone study under its unchanged guard.
