@@ -48,6 +48,17 @@ def run(name):
  assert not (out/'execution').exists(),'Prior execution exists: inspect/reconcile, never rerun'
  assert shutil.disk_usage('/mnt/c').free>=START,'Insufficient initial Windows headroom'
  assert not local('/api/ps')['models'],'Another model is loaded; shared workload is not ours to evict'
+ # Exact cached weights can still have an unsafe server-default context size.
+ # Inventory matching is not resource qualification. Never repeat a known-bad
+ # plain-model load merely because Windows later reclaimed its temporary space.
+ probes=[load(p) for p in ROOT.glob('resource-*.json')]
+ for ep in spec['panel']:
+  matching=[p for p in probes if p.get('model')==ep['model']
+    and p.get('digest','').removeprefix('sha256:')==ep['model_digest'].removeprefix('sha256:')]
+  assert matching,'No prompt-free resource probe for this exact cached model'
+  latest=max(matching,key=lambda p:p['started_at'])
+  assert latest.get('safe_for_single_model_probe') and latest['minimum_host_free_bytes']>=FLOOR, \
+   'Exact source model failed its resource probe; use a capable host, not changed settings or a repeated unsafe load'
  commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip()
  url=f'https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/{commit}/{ROOT.name}/{name}/runspec.json'
  with urllib.request.urlopen(url,timeout=30) as f:assert json.load(f)==spec,'Published freeze differs'

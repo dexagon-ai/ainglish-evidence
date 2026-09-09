@@ -1,0 +1,1518 @@
+{
+  "public_id": "a-jvjxmmf83rmvw9vx",
+  "slug": "action-resume-from-checkpoint-action-redo-from-start-retain",
+  "form": "<ACTION>, resume-from(<checkpoint>) | <ACTION>, redo-from-start — retain saved completion credit, or begin a fresh pass",
+  "construct": "<ACTION>, resume-from(<checkpoint>) | <ACTION>, redo-from-start — retain saved completion credit, or begin a fresh pass",
+  "metric": "learnability",
+  "seed": 202609094523,
+  "panel": [
+    {
+      "name": "falcon3-10b-qualification-v7-c8647169c2b9",
+      "provider": "ollama",
+      "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://localhost:11434/v1",
+      "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+      "digest_source": "ollama:/api/tags",
+      "instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      },
+      "answer_protocol": "opaque-choice-v1",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "_ainglish_instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      }
+    },
+    {
+      "name": "olmo2-13b-qualification-v7-cd836509a1a0",
+      "provider": "ollama",
+      "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://localhost:11434/v1",
+      "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+      "digest_source": "ollama:/api/tags",
+      "instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      },
+      "answer_protocol": "opaque-choice-v1",
+      "max_tokens": 64,
+      "timeout_s": 120,
+      "temperature": 0,
+      "_ainglish_instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      }
+    }
+  ],
+  "panel_neff": 2,
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "falcon3-10b-qualification-v7-c8647169c2b9@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-falcon3-10b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:53c57c624bebfbc119e4dbdae94227d671cc8b000d8cc6aae238c01d7fcc3ad1",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "falcon3",
+        "basis": "Distinct published base-model family; exact cached source weight digest preserved. Not a claim of disjoint training data."
+      },
+      "screen_sha256": "b76b174bdd5b87eaa9e2f68325d27a825fc9b96c9eb693ec0bbcbc4fe75c725d",
+      "settings_sha256": "d8e2b851e70b0daabc0610916ca67bf69986277d433c8753b88cac67cc70f027",
+      "qualified_at": "2026-09-09T14:01:24+00:00",
+      "valid_until": "2026-09-16T14:01:24+00:00",
+      "result": {
+        "detectable_correct": 8,
+        "detectable_total": 8,
+        "other_correct": 1,
+        "other_total": 8,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 10000,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "olmo2-13b-qualification-v7-cd836509a1a0@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-olmo2-13b-qualification-v7:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:71d70c4abc447d98508f4e1698bfd899b54d326666b620b8a0a281b2b2d63f85",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "olmo2",
+        "basis": "Distinct published base-model family; exact cached source weight digest preserved. Not a claim of disjoint training data."
+      },
+      "screen_sha256": "b76b174bdd5b87eaa9e2f68325d27a825fc9b96c9eb693ec0bbcbc4fe75c725d",
+      "settings_sha256": "f13eaea1cb80fe0dba28f673a336ace188885f808242d677ebeab8bb6fda8084",
+      "qualified_at": "2026-09-09T14:01:51+00:00",
+      "valid_until": "2026-09-16T14:01:51+00:00",
+      "result": {
+        "detectable_correct": 8,
+        "detectable_total": 8,
+        "other_correct": 1,
+        "other_total": 8,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 10000,
+        "passed": true
+      }
+    }
+  ],
+  "planted_arm": "ainglish",
+  "calibration_min_gap": 0.5,
+  "items": [
+    {
+      "id": "RL-0-resume-0",
+      "english": "Task RL-0-resume-0, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Ari previously completed: coral, ivory. Saved record CP-2cb250 belongs to this exact task/version and records those completed sections; its next unfinished unit is teal. An indicator switches on if and only if coral is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-0, resume-from(CP-2cb250).",
+      "ainglish": "Task RL-0-resume-0, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Ari previously completed: coral, ivory. Saved record CP-2cb250 belongs to this exact task/version and records those completed sections; its next unfinished unit is teal. An indicator switches on if and only if coral is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-0, resume-from(CP-2cb250).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "reading",
+        "progress": 2,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-0-resume-1",
+      "english": "Task RL-0-resume-1, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Bela previously completed: coral, ivory. Saved record CP-828bd6 belongs to this exact task/version and records those completed sections; its next unfinished unit is teal. An indicator switches on if and only if coral is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-1, resume-from(CP-828bd6).",
+      "ainglish": "Task RL-0-resume-1, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Bela previously completed: coral, ivory. Saved record CP-828bd6 belongs to this exact task/version and records those completed sections; its next unfinished unit is teal. An indicator switches on if and only if coral is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-1, resume-from(CP-828bd6).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "reading",
+        "progress": 2,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-0-resume-2",
+      "english": "Task RL-0-resume-2, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Cato previously completed: coral. Saved record CP-66722f belongs to this exact task/version and records those completed sections; its next unfinished unit is ivory. An indicator switches on if and only if teal is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-2, resume-from(CP-66722f).",
+      "ainglish": "Task RL-0-resume-2, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Cato previously completed: coral. Saved record CP-66722f belongs to this exact task/version and records those completed sections; its next unfinished unit is ivory. An indicator switches on if and only if teal is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-2, resume-from(CP-66722f).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "reading",
+        "progress": 1,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-0-resume-3",
+      "english": "Task RL-0-resume-3, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Dina previously completed: coral. Saved record CP-969723 belongs to this exact task/version and records those completed sections; its next unfinished unit is ivory. An indicator switches on if and only if teal is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-3, resume-from(CP-969723).",
+      "ainglish": "Task RL-0-resume-3, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Dina previously completed: coral. Saved record CP-969723 belongs to this exact task/version and records those completed sections; its next unfinished unit is ivory. An indicator switches on if and only if teal is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-3, resume-from(CP-969723).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "reading",
+        "progress": 1,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-0-resume-4",
+      "english": "Task RL-0-resume-4, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Ari previously completed: none. Saved record CP-9e9100 belongs to this exact task/version and records those completed sections; its next unfinished unit is coral. An indicator switches on if and only if coral is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-4, resume-from(CP-9e9100).",
+      "ainglish": "Task RL-0-resume-4, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Ari previously completed: none. Saved record CP-9e9100 belongs to this exact task/version and records those completed sections; its next unfinished unit is coral. An indicator switches on if and only if coral is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-4, resume-from(CP-9e9100).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "reading",
+        "progress": 0,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-0-resume-5",
+      "english": "Task RL-0-resume-5, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Bela previously completed: none. Saved record CP-b4b73e belongs to this exact task/version and records those completed sections; its next unfinished unit is coral. An indicator switches on if and only if coral is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-5, resume-from(CP-b4b73e).",
+      "ainglish": "Task RL-0-resume-5, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Bela previously completed: none. Saved record CP-b4b73e belongs to this exact task/version and records those completed sections; its next unfinished unit is coral. An indicator switches on if and only if coral is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-5, resume-from(CP-b4b73e).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "reading",
+        "progress": 0,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-0-resume-6",
+      "english": "Task RL-0-resume-6, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Cato previously completed: coral, ivory, teal. Saved record CP-6b7fbf belongs to this exact task/version and records those completed sections; its next unfinished unit is amber. An indicator switches on if and only if ivory is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-6, resume-from(CP-6b7fbf).",
+      "ainglish": "Task RL-0-resume-6, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Cato previously completed: coral, ivory, teal. Saved record CP-6b7fbf belongs to this exact task/version and records those completed sections; its next unfinished unit is amber. An indicator switches on if and only if ivory is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-6, resume-from(CP-6b7fbf).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "reading",
+        "progress": 3,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-0-resume-7",
+      "english": "Task RL-0-resume-7, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Dina previously completed: coral, ivory, teal. Saved record CP-2ff838 belongs to this exact task/version and records those completed sections; its next unfinished unit is amber. An indicator switches on if and only if ivory is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-7, resume-from(CP-2ff838).",
+      "ainglish": "Task RL-0-resume-7, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Dina previously completed: coral, ivory, teal. Saved record CP-2ff838 belongs to this exact task/version and records those completed sections; its next unfinished unit is amber. An indicator switches on if and only if ivory is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-resume-7, resume-from(CP-2ff838).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "reading",
+        "progress": 3,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-0-redo-0",
+      "english": "Task RL-0-redo-0, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Ari previously completed: coral, ivory. Saved record CP-1715fc belongs to this exact task/version and records those completed sections; its next unfinished unit is teal. An indicator switches on if and only if coral is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-0, redo-from-start.",
+      "ainglish": "Task RL-0-redo-0, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Ari previously completed: coral, ivory. Saved record CP-1715fc belongs to this exact task/version and records those completed sections; its next unfinished unit is teal. An indicator switches on if and only if coral is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-0, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "reading",
+        "progress": 2,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-0-redo-1",
+      "english": "Task RL-0-redo-1, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Bela previously completed: coral, ivory. Saved record CP-daea52 belongs to this exact task/version and records those completed sections; its next unfinished unit is teal. An indicator switches on if and only if coral is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-1, redo-from-start.",
+      "ainglish": "Task RL-0-redo-1, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Bela previously completed: coral, ivory. Saved record CP-daea52 belongs to this exact task/version and records those completed sections; its next unfinished unit is teal. An indicator switches on if and only if coral is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-1, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "reading",
+        "progress": 2,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-0-redo-2",
+      "english": "Task RL-0-redo-2, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Cato previously completed: coral. Saved record CP-cc2c15 belongs to this exact task/version and records those completed sections; its next unfinished unit is ivory. An indicator switches on if and only if teal is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-2, redo-from-start.",
+      "ainglish": "Task RL-0-redo-2, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Cato previously completed: coral. Saved record CP-cc2c15 belongs to this exact task/version and records those completed sections; its next unfinished unit is ivory. An indicator switches on if and only if teal is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-2, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "reading",
+        "progress": 1,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-0-redo-3",
+      "english": "Task RL-0-redo-3, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Dina previously completed: coral. Saved record CP-45aae3 belongs to this exact task/version and records those completed sections; its next unfinished unit is ivory. An indicator switches on if and only if teal is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-3, redo-from-start.",
+      "ainglish": "Task RL-0-redo-3, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Dina previously completed: coral. Saved record CP-45aae3 belongs to this exact task/version and records those completed sections; its next unfinished unit is ivory. An indicator switches on if and only if teal is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-3, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "reading",
+        "progress": 1,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-0-redo-4",
+      "english": "Task RL-0-redo-4, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Ari previously completed: none. Saved record CP-4ddd3e belongs to this exact task/version and records those completed sections; its next unfinished unit is coral. An indicator switches on if and only if coral is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-4, redo-from-start.",
+      "ainglish": "Task RL-0-redo-4, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Ari previously completed: none. Saved record CP-4ddd3e belongs to this exact task/version and records those completed sections; its next unfinished unit is coral. An indicator switches on if and only if coral is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-4, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "reading",
+        "progress": 0,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-0-redo-5",
+      "english": "Task RL-0-redo-5, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Bela previously completed: none. Saved record CP-c5640c belongs to this exact task/version and records those completed sections; its next unfinished unit is coral. An indicator switches on if and only if coral is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-5, redo-from-start.",
+      "ainglish": "Task RL-0-redo-5, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Bela previously completed: none. Saved record CP-c5640c belongs to this exact task/version and records those completed sections; its next unfinished unit is coral. An indicator switches on if and only if coral is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-5, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "reading",
+        "progress": 0,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-0-redo-6",
+      "english": "Task RL-0-redo-6, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Cato previously completed: coral, ivory, teal. Saved record CP-7bcfbb belongs to this exact task/version and records those completed sections; its next unfinished unit is amber. An indicator switches on if and only if ivory is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-6, redo-from-start.",
+      "ainglish": "Task RL-0-redo-6, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Cato previously completed: coral, ivory, teal. Saved record CP-7bcfbb belongs to this exact task/version and records those completed sections; its next unfinished unit is amber. An indicator switches on if and only if ivory is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-6, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "reading",
+        "progress": 3,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-0-redo-7",
+      "english": "Task RL-0-redo-7, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Dina previously completed: coral, ivory, teal. Saved record CP-5baccb belongs to this exact task/version and records those completed sections; its next unfinished unit is amber. An indicator switches on if and only if ivory is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-7, redo-from-start.",
+      "ainglish": "Task RL-0-redo-7, version 1, consists of the four sections coral, ivory, teal, amber, in that order. Dina previously completed: coral, ivory, teal. Saved record CP-5baccb belongs to this exact task/version and records those completed sections; its next unfinished unit is amber. An indicator switches on if and only if ivory is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Read guide RL-0-redo-7, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "reading",
+        "progress": 3,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-1-resume-0",
+      "english": "Task RL-1-resume-0, version 1, consists of the four items cedar, maple, pine, birch, in that order. Ari previously completed: cedar, maple. Saved record CP-d1e5e9 belongs to this exact task/version and records those completed items; its next unfinished unit is pine. An indicator switches on if and only if cedar is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-0, resume-from(CP-d1e5e9).",
+      "ainglish": "Task RL-1-resume-0, version 1, consists of the four items cedar, maple, pine, birch, in that order. Ari previously completed: cedar, maple. Saved record CP-d1e5e9 belongs to this exact task/version and records those completed items; its next unfinished unit is pine. An indicator switches on if and only if cedar is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-0, resume-from(CP-d1e5e9).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "review",
+        "progress": 2,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-1-resume-1",
+      "english": "Task RL-1-resume-1, version 1, consists of the four items cedar, maple, pine, birch, in that order. Bela previously completed: cedar, maple. Saved record CP-5db4d8 belongs to this exact task/version and records those completed items; its next unfinished unit is pine. An indicator switches on if and only if cedar is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-1, resume-from(CP-5db4d8).",
+      "ainglish": "Task RL-1-resume-1, version 1, consists of the four items cedar, maple, pine, birch, in that order. Bela previously completed: cedar, maple. Saved record CP-5db4d8 belongs to this exact task/version and records those completed items; its next unfinished unit is pine. An indicator switches on if and only if cedar is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-1, resume-from(CP-5db4d8).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "review",
+        "progress": 2,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-1-resume-2",
+      "english": "Task RL-1-resume-2, version 1, consists of the four items cedar, maple, pine, birch, in that order. Cato previously completed: cedar. Saved record CP-91f561 belongs to this exact task/version and records those completed items; its next unfinished unit is maple. An indicator switches on if and only if pine is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-2, resume-from(CP-91f561).",
+      "ainglish": "Task RL-1-resume-2, version 1, consists of the four items cedar, maple, pine, birch, in that order. Cato previously completed: cedar. Saved record CP-91f561 belongs to this exact task/version and records those completed items; its next unfinished unit is maple. An indicator switches on if and only if pine is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-2, resume-from(CP-91f561).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "review",
+        "progress": 1,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-1-resume-3",
+      "english": "Task RL-1-resume-3, version 1, consists of the four items cedar, maple, pine, birch, in that order. Dina previously completed: cedar. Saved record CP-3ef367 belongs to this exact task/version and records those completed items; its next unfinished unit is maple. An indicator switches on if and only if pine is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-3, resume-from(CP-3ef367).",
+      "ainglish": "Task RL-1-resume-3, version 1, consists of the four items cedar, maple, pine, birch, in that order. Dina previously completed: cedar. Saved record CP-3ef367 belongs to this exact task/version and records those completed items; its next unfinished unit is maple. An indicator switches on if and only if pine is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-3, resume-from(CP-3ef367).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "review",
+        "progress": 1,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-1-resume-4",
+      "english": "Task RL-1-resume-4, version 1, consists of the four items cedar, maple, pine, birch, in that order. Ari previously completed: none. Saved record CP-791d8a belongs to this exact task/version and records those completed items; its next unfinished unit is cedar. An indicator switches on if and only if cedar is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-4, resume-from(CP-791d8a).",
+      "ainglish": "Task RL-1-resume-4, version 1, consists of the four items cedar, maple, pine, birch, in that order. Ari previously completed: none. Saved record CP-791d8a belongs to this exact task/version and records those completed items; its next unfinished unit is cedar. An indicator switches on if and only if cedar is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-4, resume-from(CP-791d8a).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "review",
+        "progress": 0,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-1-resume-5",
+      "english": "Task RL-1-resume-5, version 1, consists of the four items cedar, maple, pine, birch, in that order. Bela previously completed: none. Saved record CP-a15f81 belongs to this exact task/version and records those completed items; its next unfinished unit is cedar. An indicator switches on if and only if cedar is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-5, resume-from(CP-a15f81).",
+      "ainglish": "Task RL-1-resume-5, version 1, consists of the four items cedar, maple, pine, birch, in that order. Bela previously completed: none. Saved record CP-a15f81 belongs to this exact task/version and records those completed items; its next unfinished unit is cedar. An indicator switches on if and only if cedar is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-5, resume-from(CP-a15f81).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "review",
+        "progress": 0,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-1-resume-6",
+      "english": "Task RL-1-resume-6, version 1, consists of the four items cedar, maple, pine, birch, in that order. Cato previously completed: cedar, maple, pine. Saved record CP-f2bf45 belongs to this exact task/version and records those completed items; its next unfinished unit is birch. An indicator switches on if and only if maple is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-6, resume-from(CP-f2bf45).",
+      "ainglish": "Task RL-1-resume-6, version 1, consists of the four items cedar, maple, pine, birch, in that order. Cato previously completed: cedar, maple, pine. Saved record CP-f2bf45 belongs to this exact task/version and records those completed items; its next unfinished unit is birch. An indicator switches on if and only if maple is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-6, resume-from(CP-f2bf45).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "review",
+        "progress": 3,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-1-resume-7",
+      "english": "Task RL-1-resume-7, version 1, consists of the four items cedar, maple, pine, birch, in that order. Dina previously completed: cedar, maple, pine. Saved record CP-7faf2e belongs to this exact task/version and records those completed items; its next unfinished unit is birch. An indicator switches on if and only if maple is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-7, resume-from(CP-7faf2e).",
+      "ainglish": "Task RL-1-resume-7, version 1, consists of the four items cedar, maple, pine, birch, in that order. Dina previously completed: cedar, maple, pine. Saved record CP-7faf2e belongs to this exact task/version and records those completed items; its next unfinished unit is birch. An indicator switches on if and only if maple is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-resume-7, resume-from(CP-7faf2e).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "review",
+        "progress": 3,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-1-redo-0",
+      "english": "Task RL-1-redo-0, version 1, consists of the four items cedar, maple, pine, birch, in that order. Ari previously completed: cedar, maple. Saved record CP-cbe3df belongs to this exact task/version and records those completed items; its next unfinished unit is pine. An indicator switches on if and only if cedar is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-0, redo-from-start.",
+      "ainglish": "Task RL-1-redo-0, version 1, consists of the four items cedar, maple, pine, birch, in that order. Ari previously completed: cedar, maple. Saved record CP-cbe3df belongs to this exact task/version and records those completed items; its next unfinished unit is pine. An indicator switches on if and only if cedar is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-0, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "review",
+        "progress": 2,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-1-redo-1",
+      "english": "Task RL-1-redo-1, version 1, consists of the four items cedar, maple, pine, birch, in that order. Bela previously completed: cedar, maple. Saved record CP-26f717 belongs to this exact task/version and records those completed items; its next unfinished unit is pine. An indicator switches on if and only if cedar is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-1, redo-from-start.",
+      "ainglish": "Task RL-1-redo-1, version 1, consists of the four items cedar, maple, pine, birch, in that order. Bela previously completed: cedar, maple. Saved record CP-26f717 belongs to this exact task/version and records those completed items; its next unfinished unit is pine. An indicator switches on if and only if cedar is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-1, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "review",
+        "progress": 2,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-1-redo-2",
+      "english": "Task RL-1-redo-2, version 1, consists of the four items cedar, maple, pine, birch, in that order. Cato previously completed: cedar. Saved record CP-453a63 belongs to this exact task/version and records those completed items; its next unfinished unit is maple. An indicator switches on if and only if pine is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-2, redo-from-start.",
+      "ainglish": "Task RL-1-redo-2, version 1, consists of the four items cedar, maple, pine, birch, in that order. Cato previously completed: cedar. Saved record CP-453a63 belongs to this exact task/version and records those completed items; its next unfinished unit is maple. An indicator switches on if and only if pine is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-2, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "review",
+        "progress": 1,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-1-redo-3",
+      "english": "Task RL-1-redo-3, version 1, consists of the four items cedar, maple, pine, birch, in that order. Dina previously completed: cedar. Saved record CP-efefef belongs to this exact task/version and records those completed items; its next unfinished unit is maple. An indicator switches on if and only if pine is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-3, redo-from-start.",
+      "ainglish": "Task RL-1-redo-3, version 1, consists of the four items cedar, maple, pine, birch, in that order. Dina previously completed: cedar. Saved record CP-efefef belongs to this exact task/version and records those completed items; its next unfinished unit is maple. An indicator switches on if and only if pine is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-3, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "review",
+        "progress": 1,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-1-redo-4",
+      "english": "Task RL-1-redo-4, version 1, consists of the four items cedar, maple, pine, birch, in that order. Ari previously completed: none. Saved record CP-078684 belongs to this exact task/version and records those completed items; its next unfinished unit is cedar. An indicator switches on if and only if cedar is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-4, redo-from-start.",
+      "ainglish": "Task RL-1-redo-4, version 1, consists of the four items cedar, maple, pine, birch, in that order. Ari previously completed: none. Saved record CP-078684 belongs to this exact task/version and records those completed items; its next unfinished unit is cedar. An indicator switches on if and only if cedar is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-4, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "review",
+        "progress": 0,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-1-redo-5",
+      "english": "Task RL-1-redo-5, version 1, consists of the four items cedar, maple, pine, birch, in that order. Bela previously completed: none. Saved record CP-c447d8 belongs to this exact task/version and records those completed items; its next unfinished unit is cedar. An indicator switches on if and only if cedar is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-5, redo-from-start.",
+      "ainglish": "Task RL-1-redo-5, version 1, consists of the four items cedar, maple, pine, birch, in that order. Bela previously completed: none. Saved record CP-c447d8 belongs to this exact task/version and records those completed items; its next unfinished unit is cedar. An indicator switches on if and only if cedar is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-5, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "review",
+        "progress": 0,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-1-redo-6",
+      "english": "Task RL-1-redo-6, version 1, consists of the four items cedar, maple, pine, birch, in that order. Cato previously completed: cedar, maple, pine. Saved record CP-131710 belongs to this exact task/version and records those completed items; its next unfinished unit is birch. An indicator switches on if and only if maple is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-6, redo-from-start.",
+      "ainglish": "Task RL-1-redo-6, version 1, consists of the four items cedar, maple, pine, birch, in that order. Cato previously completed: cedar, maple, pine. Saved record CP-131710 belongs to this exact task/version and records those completed items; its next unfinished unit is birch. An indicator switches on if and only if maple is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-6, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "review",
+        "progress": 3,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-1-redo-7",
+      "english": "Task RL-1-redo-7, version 1, consists of the four items cedar, maple, pine, birch, in that order. Dina previously completed: cedar, maple, pine. Saved record CP-2bb0fc belongs to this exact task/version and records those completed items; its next unfinished unit is birch. An indicator switches on if and only if maple is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-7, redo-from-start.",
+      "ainglish": "Task RL-1-redo-7, version 1, consists of the four items cedar, maple, pine, birch, in that order. Dina previously completed: cedar, maple, pine. Saved record CP-2bb0fc belongs to this exact task/version and records those completed items; its next unfinished unit is birch. An indicator switches on if and only if maple is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Complete checklist RL-1-redo-7, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "review",
+        "progress": 3,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-2-resume-0",
+      "english": "Task RL-2-resume-0, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Ari previously completed: island, lagoon. Saved record CP-c83ef9 belongs to this exact task/version and records those completed clips; its next unfinished unit is marina. An indicator switches on if and only if island is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-0, resume-from(CP-c83ef9).",
+      "ainglish": "Task RL-2-resume-0, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Ari previously completed: island, lagoon. Saved record CP-c83ef9 belongs to this exact task/version and records those completed clips; its next unfinished unit is marina. An indicator switches on if and only if island is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-0, resume-from(CP-c83ef9).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "media",
+        "progress": 2,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-2-resume-1",
+      "english": "Task RL-2-resume-1, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Bela previously completed: island, lagoon. Saved record CP-32bfe3 belongs to this exact task/version and records those completed clips; its next unfinished unit is marina. An indicator switches on if and only if island is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-1, resume-from(CP-32bfe3).",
+      "ainglish": "Task RL-2-resume-1, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Bela previously completed: island, lagoon. Saved record CP-32bfe3 belongs to this exact task/version and records those completed clips; its next unfinished unit is marina. An indicator switches on if and only if island is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-1, resume-from(CP-32bfe3).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "media",
+        "progress": 2,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-2-resume-2",
+      "english": "Task RL-2-resume-2, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Cato previously completed: island. Saved record CP-6499f5 belongs to this exact task/version and records those completed clips; its next unfinished unit is lagoon. An indicator switches on if and only if marina is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-2, resume-from(CP-6499f5).",
+      "ainglish": "Task RL-2-resume-2, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Cato previously completed: island. Saved record CP-6499f5 belongs to this exact task/version and records those completed clips; its next unfinished unit is lagoon. An indicator switches on if and only if marina is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-2, resume-from(CP-6499f5).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "media",
+        "progress": 1,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-2-resume-3",
+      "english": "Task RL-2-resume-3, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Dina previously completed: island. Saved record CP-85c9db belongs to this exact task/version and records those completed clips; its next unfinished unit is lagoon. An indicator switches on if and only if marina is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-3, resume-from(CP-85c9db).",
+      "ainglish": "Task RL-2-resume-3, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Dina previously completed: island. Saved record CP-85c9db belongs to this exact task/version and records those completed clips; its next unfinished unit is lagoon. An indicator switches on if and only if marina is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-3, resume-from(CP-85c9db).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "media",
+        "progress": 1,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-2-resume-4",
+      "english": "Task RL-2-resume-4, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Ari previously completed: none. Saved record CP-2be9dd belongs to this exact task/version and records those completed clips; its next unfinished unit is island. An indicator switches on if and only if island is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-4, resume-from(CP-2be9dd).",
+      "ainglish": "Task RL-2-resume-4, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Ari previously completed: none. Saved record CP-2be9dd belongs to this exact task/version and records those completed clips; its next unfinished unit is island. An indicator switches on if and only if island is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-4, resume-from(CP-2be9dd).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "media",
+        "progress": 0,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-2-resume-5",
+      "english": "Task RL-2-resume-5, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Bela previously completed: none. Saved record CP-54fa9d belongs to this exact task/version and records those completed clips; its next unfinished unit is island. An indicator switches on if and only if island is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-5, resume-from(CP-54fa9d).",
+      "ainglish": "Task RL-2-resume-5, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Bela previously completed: none. Saved record CP-54fa9d belongs to this exact task/version and records those completed clips; its next unfinished unit is island. An indicator switches on if and only if island is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-5, resume-from(CP-54fa9d).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "media",
+        "progress": 0,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-2-resume-6",
+      "english": "Task RL-2-resume-6, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Cato previously completed: island, lagoon, marina. Saved record CP-8a4b49 belongs to this exact task/version and records those completed clips; its next unfinished unit is harbour. An indicator switches on if and only if lagoon is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-6, resume-from(CP-8a4b49).",
+      "ainglish": "Task RL-2-resume-6, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Cato previously completed: island, lagoon, marina. Saved record CP-8a4b49 belongs to this exact task/version and records those completed clips; its next unfinished unit is harbour. An indicator switches on if and only if lagoon is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-6, resume-from(CP-8a4b49).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "media",
+        "progress": 3,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-2-resume-7",
+      "english": "Task RL-2-resume-7, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Dina previously completed: island, lagoon, marina. Saved record CP-01e158 belongs to this exact task/version and records those completed clips; its next unfinished unit is harbour. An indicator switches on if and only if lagoon is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-7, resume-from(CP-01e158).",
+      "ainglish": "Task RL-2-resume-7, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Dina previously completed: island, lagoon, marina. Saved record CP-01e158 belongs to this exact task/version and records those completed clips; its next unfinished unit is harbour. An indicator switches on if and only if lagoon is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-resume-7, resume-from(CP-01e158).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "media",
+        "progress": 3,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-2-redo-0",
+      "english": "Task RL-2-redo-0, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Ari previously completed: island, lagoon. Saved record CP-b7bff9 belongs to this exact task/version and records those completed clips; its next unfinished unit is marina. An indicator switches on if and only if island is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-0, redo-from-start.",
+      "ainglish": "Task RL-2-redo-0, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Ari previously completed: island, lagoon. Saved record CP-b7bff9 belongs to this exact task/version and records those completed clips; its next unfinished unit is marina. An indicator switches on if and only if island is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-0, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "media",
+        "progress": 2,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-2-redo-1",
+      "english": "Task RL-2-redo-1, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Bela previously completed: island, lagoon. Saved record CP-0d3c98 belongs to this exact task/version and records those completed clips; its next unfinished unit is marina. An indicator switches on if and only if island is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-1, redo-from-start.",
+      "ainglish": "Task RL-2-redo-1, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Bela previously completed: island, lagoon. Saved record CP-0d3c98 belongs to this exact task/version and records those completed clips; its next unfinished unit is marina. An indicator switches on if and only if island is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-1, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "media",
+        "progress": 2,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-2-redo-2",
+      "english": "Task RL-2-redo-2, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Cato previously completed: island. Saved record CP-28eac1 belongs to this exact task/version and records those completed clips; its next unfinished unit is lagoon. An indicator switches on if and only if marina is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-2, redo-from-start.",
+      "ainglish": "Task RL-2-redo-2, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Cato previously completed: island. Saved record CP-28eac1 belongs to this exact task/version and records those completed clips; its next unfinished unit is lagoon. An indicator switches on if and only if marina is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-2, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "media",
+        "progress": 1,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-2-redo-3",
+      "english": "Task RL-2-redo-3, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Dina previously completed: island. Saved record CP-c51b09 belongs to this exact task/version and records those completed clips; its next unfinished unit is lagoon. An indicator switches on if and only if marina is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-3, redo-from-start.",
+      "ainglish": "Task RL-2-redo-3, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Dina previously completed: island. Saved record CP-c51b09 belongs to this exact task/version and records those completed clips; its next unfinished unit is lagoon. An indicator switches on if and only if marina is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-3, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "media",
+        "progress": 1,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-2-redo-4",
+      "english": "Task RL-2-redo-4, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Ari previously completed: none. Saved record CP-e83b89 belongs to this exact task/version and records those completed clips; its next unfinished unit is island. An indicator switches on if and only if island is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-4, redo-from-start.",
+      "ainglish": "Task RL-2-redo-4, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Ari previously completed: none. Saved record CP-e83b89 belongs to this exact task/version and records those completed clips; its next unfinished unit is island. An indicator switches on if and only if island is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-4, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "media",
+        "progress": 0,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-2-redo-5",
+      "english": "Task RL-2-redo-5, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Bela previously completed: none. Saved record CP-a7597d belongs to this exact task/version and records those completed clips; its next unfinished unit is island. An indicator switches on if and only if island is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-5, redo-from-start.",
+      "ainglish": "Task RL-2-redo-5, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Bela previously completed: none. Saved record CP-a7597d belongs to this exact task/version and records those completed clips; its next unfinished unit is island. An indicator switches on if and only if island is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-5, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "media",
+        "progress": 0,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-2-redo-6",
+      "english": "Task RL-2-redo-6, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Cato previously completed: island, lagoon, marina. Saved record CP-8cab06 belongs to this exact task/version and records those completed clips; its next unfinished unit is harbour. An indicator switches on if and only if lagoon is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-6, redo-from-start.",
+      "ainglish": "Task RL-2-redo-6, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Cato previously completed: island, lagoon, marina. Saved record CP-8cab06 belongs to this exact task/version and records those completed clips; its next unfinished unit is harbour. An indicator switches on if and only if lagoon is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-6, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "media",
+        "progress": 3,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-2-redo-7",
+      "english": "Task RL-2-redo-7, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Dina previously completed: island, lagoon, marina. Saved record CP-91717f belongs to this exact task/version and records those completed clips; its next unfinished unit is harbour. An indicator switches on if and only if lagoon is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-7, redo-from-start.",
+      "ainglish": "Task RL-2-redo-7, version 1, consists of the four clips island, lagoon, marina, harbour, in that order. Dina previously completed: island, lagoon, marina. Saved record CP-91717f belongs to this exact task/version and records those completed clips; its next unfinished unit is harbour. An indicator switches on if and only if lagoon is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Play tutorial RL-2-redo-7, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "media",
+        "progress": 3,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-3-resume-0",
+      "english": "Task RL-3-resume-0, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Ari previously completed: copper, silver. Saved record CP-07e19f belongs to this exact task/version and records those completed steps; its next unfinished unit is zinc. An indicator switches on if and only if copper is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-0, resume-from(CP-07e19f).",
+      "ainglish": "Task RL-3-resume-0, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Ari previously completed: copper, silver. Saved record CP-07e19f belongs to this exact task/version and records those completed steps; its next unfinished unit is zinc. An indicator switches on if and only if copper is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-0, resume-from(CP-07e19f).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "simulated-workflow",
+        "progress": 2,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-3-resume-1",
+      "english": "Task RL-3-resume-1, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Bela previously completed: copper, silver. Saved record CP-0fd615 belongs to this exact task/version and records those completed steps; its next unfinished unit is zinc. An indicator switches on if and only if copper is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-1, resume-from(CP-0fd615).",
+      "ainglish": "Task RL-3-resume-1, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Bela previously completed: copper, silver. Saved record CP-0fd615 belongs to this exact task/version and records those completed steps; its next unfinished unit is zinc. An indicator switches on if and only if copper is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-1, resume-from(CP-0fd615).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "simulated-workflow",
+        "progress": 2,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-3-resume-2",
+      "english": "Task RL-3-resume-2, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Cato previously completed: copper. Saved record CP-03513b belongs to this exact task/version and records those completed steps; its next unfinished unit is silver. An indicator switches on if and only if zinc is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-2, resume-from(CP-03513b).",
+      "ainglish": "Task RL-3-resume-2, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Cato previously completed: copper. Saved record CP-03513b belongs to this exact task/version and records those completed steps; its next unfinished unit is silver. An indicator switches on if and only if zinc is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-2, resume-from(CP-03513b).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "simulated-workflow",
+        "progress": 1,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-3-resume-3",
+      "english": "Task RL-3-resume-3, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Dina previously completed: copper. Saved record CP-f2f6c1 belongs to this exact task/version and records those completed steps; its next unfinished unit is silver. An indicator switches on if and only if zinc is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-3, resume-from(CP-f2f6c1).",
+      "ainglish": "Task RL-3-resume-3, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Dina previously completed: copper. Saved record CP-f2f6c1 belongs to this exact task/version and records those completed steps; its next unfinished unit is silver. An indicator switches on if and only if zinc is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-3, resume-from(CP-f2f6c1).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "simulated-workflow",
+        "progress": 1,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-3-resume-4",
+      "english": "Task RL-3-resume-4, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Ari previously completed: none. Saved record CP-cd0fa5 belongs to this exact task/version and records those completed steps; its next unfinished unit is copper. An indicator switches on if and only if copper is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-4, resume-from(CP-cd0fa5).",
+      "ainglish": "Task RL-3-resume-4, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Ari previously completed: none. Saved record CP-cd0fa5 belongs to this exact task/version and records those completed steps; its next unfinished unit is copper. An indicator switches on if and only if copper is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-4, resume-from(CP-cd0fa5).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "simulated-workflow",
+        "progress": 0,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-3-resume-5",
+      "english": "Task RL-3-resume-5, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Bela previously completed: none. Saved record CP-2f35af belongs to this exact task/version and records those completed steps; its next unfinished unit is copper. An indicator switches on if and only if copper is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-5, resume-from(CP-2f35af).",
+      "ainglish": "Task RL-3-resume-5, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Bela previously completed: none. Saved record CP-2f35af belongs to this exact task/version and records those completed steps; its next unfinished unit is copper. An indicator switches on if and only if copper is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-5, resume-from(CP-2f35af).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "simulated-workflow",
+        "progress": 0,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-3-resume-6",
+      "english": "Task RL-3-resume-6, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Cato previously completed: copper, silver, zinc. Saved record CP-2ff0f7 belongs to this exact task/version and records those completed steps; its next unfinished unit is bronze. An indicator switches on if and only if silver is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-6, resume-from(CP-2ff0f7).",
+      "ainglish": "Task RL-3-resume-6, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Cato previously completed: copper, silver, zinc. Saved record CP-2ff0f7 belongs to this exact task/version and records those completed steps; its next unfinished unit is bronze. An indicator switches on if and only if silver is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-6, resume-from(CP-2ff0f7).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "simulated-workflow",
+        "progress": 3,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-3-resume-7",
+      "english": "Task RL-3-resume-7, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Dina previously completed: copper, silver, zinc. Saved record CP-1a58f8 belongs to this exact task/version and records those completed steps; its next unfinished unit is bronze. An indicator switches on if and only if silver is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-7, resume-from(CP-1a58f8).",
+      "ainglish": "Task RL-3-resume-7, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Dina previously completed: copper, silver, zinc. Saved record CP-1a58f8 belongs to this exact task/version and records those completed steps; its next unfinished unit is bronze. An indicator switches on if and only if silver is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-resume-7, resume-from(CP-1a58f8).",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "resume-core",
+      "strata": {
+        "form": "resume",
+        "domain": "simulated-workflow",
+        "progress": 3,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-3-redo-0",
+      "english": "Task RL-3-redo-0, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Ari previously completed: copper, silver. Saved record CP-0c4fbd belongs to this exact task/version and records those completed steps; its next unfinished unit is zinc. An indicator switches on if and only if copper is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-0, redo-from-start.",
+      "ainglish": "Task RL-3-redo-0, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Ari previously completed: copper, silver. Saved record CP-0c4fbd belongs to this exact task/version and records those completed steps; its next unfinished unit is zinc. An indicator switches on if and only if copper is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-0, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "simulated-workflow",
+        "progress": 2,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-3-redo-1",
+      "english": "Task RL-3-redo-1, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Bela previously completed: copper, silver. Saved record CP-36a68f belongs to this exact task/version and records those completed steps; its next unfinished unit is zinc. An indicator switches on if and only if copper is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-1, redo-from-start.",
+      "ainglish": "Task RL-3-redo-1, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Bela previously completed: copper, silver. Saved record CP-36a68f belongs to this exact task/version and records those completed steps; its next unfinished unit is zinc. An indicator switches on if and only if copper is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-1, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "simulated-workflow",
+        "progress": 2,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-3-redo-2",
+      "english": "Task RL-3-redo-2, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Cato previously completed: copper. Saved record CP-72c747 belongs to this exact task/version and records those completed steps; its next unfinished unit is silver. An indicator switches on if and only if zinc is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-2, redo-from-start.",
+      "ainglish": "Task RL-3-redo-2, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Cato previously completed: copper. Saved record CP-72c747 belongs to this exact task/version and records those completed steps; its next unfinished unit is silver. An indicator switches on if and only if zinc is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-2, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "simulated-workflow",
+        "progress": 1,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-3-redo-3",
+      "english": "Task RL-3-redo-3, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Dina previously completed: copper. Saved record CP-c35dfb belongs to this exact task/version and records those completed steps; its next unfinished unit is silver. An indicator switches on if and only if zinc is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-3, redo-from-start.",
+      "ainglish": "Task RL-3-redo-3, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Dina previously completed: copper. Saved record CP-c35dfb belongs to this exact task/version and records those completed steps; its next unfinished unit is silver. An indicator switches on if and only if zinc is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-3, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "simulated-workflow",
+        "progress": 1,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-3-redo-4",
+      "english": "Task RL-3-redo-4, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Ari previously completed: none. Saved record CP-ebeee7 belongs to this exact task/version and records those completed steps; its next unfinished unit is copper. An indicator switches on if and only if copper is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-4, redo-from-start.",
+      "ainglish": "Task RL-3-redo-4, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Ari previously completed: none. Saved record CP-ebeee7 belongs to this exact task/version and records those completed steps; its next unfinished unit is copper. An indicator switches on if and only if copper is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-4, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "simulated-workflow",
+        "progress": 0,
+        "earlier_worker": "Ari",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-3-redo-5",
+      "english": "Task RL-3-redo-5, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Bela previously completed: none. Saved record CP-e9c06d belongs to this exact task/version and records those completed steps; its next unfinished unit is copper. An indicator switches on if and only if copper is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-5, redo-from-start.",
+      "ainglish": "Task RL-3-redo-5, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Bela previously completed: none. Saved record CP-e9c06d belongs to this exact task/version and records those completed steps; its next unfinished unit is copper. An indicator switches on if and only if copper is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-5, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "simulated-workflow",
+        "progress": 0,
+        "earlier_worker": "Bela",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "RL-3-redo-6",
+      "english": "Task RL-3-redo-6, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Cato previously completed: copper, silver, zinc. Saved record CP-eeba63 belongs to this exact task/version and records those completed steps; its next unfinished unit is bronze. An indicator switches on if and only if silver is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-6, redo-from-start.",
+      "ainglish": "Task RL-3-redo-6, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Cato previously completed: copper, silver, zinc. Saved record CP-eeba63 belongs to this exact task/version and records those completed steps; its next unfinished unit is bronze. An indicator switches on if and only if silver is performed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-6, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "simulated-workflow",
+        "progress": 3,
+        "earlier_worker": "Cato",
+        "indicator_rule": "performed"
+      }
+    },
+    {
+      "id": "RL-3-redo-7",
+      "english": "Task RL-3-redo-7, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Dina previously completed: copper, silver, zinc. Saved record CP-68971b belongs to this exact task/version and records those completed steps; its next unfinished unit is bronze. An indicator switches on if and only if silver is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-7, redo-from-start.",
+      "ainglish": "Task RL-3-redo-7, version 1, consists of the four steps copper, silver, zinc, bronze, in that order. Dina previously completed: copper, silver, zinc. Saved record CP-68971b belongs to this exact task/version and records those completed steps; its next unfinished unit is bronze. An indicator switches on if and only if silver is left unperformed during the forthcoming pass. The task is authorised and purely simulated; no external effects or retry restriction apply. Execute simulated workflow RL-3-redo-7, redo-from-start.",
+      "question": "Should the indicator switch on for the forthcoming pass?",
+      "options": [
+        "No",
+        "Yes"
+      ],
+      "answer": "No",
+      "settlement_stratum": "redo-core",
+      "strata": {
+        "form": "redo",
+        "domain": "simulated-workflow",
+        "progress": 3,
+        "earlier_worker": "Dina",
+        "indicator_rule": "unperformed"
+      }
+    },
+    {
+      "id": "verifier-cal-0",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "receipt holder",
+      "english": "Receipt CP-990 omits its holder.",
+      "ainglish": "Receipt CP-990 names Wren as its holder.",
+      "question": "Who holds receipt CP-990?",
+      "options": [
+        "Wren",
+        "Xara",
+        "Yori",
+        "Zela",
+        "Anik",
+        "Brin",
+        "Caro",
+        "Deni"
+      ],
+      "answer": "Wren"
+    },
+    {
+      "id": "verifier-cal-1",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "receipt holder",
+      "english": "Receipt CP-991 omits its holder.",
+      "ainglish": "Receipt CP-991 names Xara as its holder.",
+      "question": "Who holds receipt CP-991?",
+      "options": [
+        "Wren",
+        "Xara",
+        "Yori",
+        "Zela",
+        "Anik",
+        "Brin",
+        "Caro",
+        "Deni"
+      ],
+      "answer": "Xara"
+    },
+    {
+      "id": "verifier-cal-2",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "receipt holder",
+      "english": "Receipt CP-992 omits its holder.",
+      "ainglish": "Receipt CP-992 names Yori as its holder.",
+      "question": "Who holds receipt CP-992?",
+      "options": [
+        "Wren",
+        "Xara",
+        "Yori",
+        "Zela",
+        "Anik",
+        "Brin",
+        "Caro",
+        "Deni"
+      ],
+      "answer": "Yori"
+    },
+    {
+      "id": "verifier-cal-3",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "receipt holder",
+      "english": "Receipt CP-993 omits its holder.",
+      "ainglish": "Receipt CP-993 names Zela as its holder.",
+      "question": "Who holds receipt CP-993?",
+      "options": [
+        "Wren",
+        "Xara",
+        "Yori",
+        "Zela",
+        "Anik",
+        "Brin",
+        "Caro",
+        "Deni"
+      ],
+      "answer": "Zela"
+    },
+    {
+      "id": "verifier-cal-4",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "receipt holder",
+      "english": "Receipt CP-994 omits its holder.",
+      "ainglish": "Receipt CP-994 names Anik as its holder.",
+      "question": "Who holds receipt CP-994?",
+      "options": [
+        "Wren",
+        "Xara",
+        "Yori",
+        "Zela",
+        "Anik",
+        "Brin",
+        "Caro",
+        "Deni"
+      ],
+      "answer": "Anik"
+    },
+    {
+      "id": "verifier-cal-5",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "receipt holder",
+      "english": "Receipt CP-995 omits its holder.",
+      "ainglish": "Receipt CP-995 names Brin as its holder.",
+      "question": "Who holds receipt CP-995?",
+      "options": [
+        "Wren",
+        "Xara",
+        "Yori",
+        "Zela",
+        "Anik",
+        "Brin",
+        "Caro",
+        "Deni"
+      ],
+      "answer": "Brin"
+    },
+    {
+      "id": "verifier-cal-6",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "receipt holder",
+      "english": "Receipt CP-996 omits its holder.",
+      "ainglish": "Receipt CP-996 names Caro as its holder.",
+      "question": "Who holds receipt CP-996?",
+      "options": [
+        "Wren",
+        "Xara",
+        "Yori",
+        "Zela",
+        "Anik",
+        "Brin",
+        "Caro",
+        "Deni"
+      ],
+      "answer": "Caro"
+    },
+    {
+      "id": "verifier-cal-7",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "receipt holder",
+      "english": "Receipt CP-997 omits its holder.",
+      "ainglish": "Receipt CP-997 names Deni as its holder.",
+      "question": "Who holds receipt CP-997?",
+      "options": [
+        "Wren",
+        "Xara",
+        "Yori",
+        "Zela",
+        "Anik",
+        "Brin",
+        "Caro",
+        "Deni"
+      ],
+      "answer": "Deni"
+    }
+  ],
+  "items_sha256": "b807e74c39d004a0c3d8d9fe6232f0b1d89b529d3c39d679339cdec3ce2b7f11",
+  "attempt": {
+    "estimand": "Entry-only application accuracy on 64 separate balanced progress-consequence messages; each form/domain separately reported. Boundary learning requires a separate planned block, not an inferred pass.",
+    "admissibility_gates": [
+      "Fresh live meaning, prediction and exact metric work unchanged; cost-source confirmation does not establish learning or comprehension.",
+      "Only the explicitly capped 4096-context cached source configurations; qualify and calibrate before targets. No downloads, reader substitution or retries.",
+      "Preregister before every target call; retain null/adverse outcomes and each named pole.",
+      "Windows host starts above 22 GiB free and stops below 15 GiB; one explicitly owned study model resident."
+    ],
+    "planned_sample": {
+      "real_items": 64,
+      "calibration_items": 8,
+      "readers": 2,
+      "target_calls": 256,
+      "calibration_calls": 32
+    }
+  },
+  "entry": {
+    "text": "Registered form: <ACTION>, resume-from(<checkpoint>) | <ACTION>, redo-from-start — retain saved completion credit, or begin a fresh pass\n\nTwo trailing qualifiers make the progress policy explicit when an interrupted task is taken up again:\n\n<ACTION>, resume-from(<C>)\n<ACTION>, redo-from-start\n\nACTION identifies one bounded task with a recoverable task definition and starting point. C identifies one saved progress record for that same task and version. C must say which work is already completed and where unfinished work begins; it may be a simple bookmark or a named checkpoint. A bare page number without a convention for whether that page is finished is not a sufficient checkpoint.\n\nresume-from(C) means: take the completed work recorded in C as already satisfying those parts of ACTION, and continue the unfinished work from the continuation point recorded there. Do not redo credited parts merely because the task was interrupted. For example, if bookmark B says pages 1-16 of report R3 have been read and page 17 is next, 'Read report R3, resume-from(B)' asks for page 17 onward, with pages 1-16 still counted as read. C may record zero progress; then continuation happens to begin at the task's start. That boundary case does not change the policy.\n\nredo-from-start means: begin ACTION at its defined starting point and perform its required work anew; prior completion does not discharge any of this pass's required work. For the same report, 'Read report R3, redo-from-start' includes reading pages 1-16 again. This does not require forgetting useful knowledge, changing the source material, inventing a new task definition, or suppressing ordinary implementation caches that do not substitute for a required task step. Task granularity controls what must be redone: rereading a report is not restarting the computer that displays it.\n\nCanonical concise English comparator templates, with ACTION and C substituted unchanged:\n<ACTION>, resume-from(<C>) <=> <ACTION>, continuing from checkpoint <C>.\n<ACTION>, redo-from-start <=> <ACTION> again from the beginning.\nIn these templates 'checkpoint' has the completed-work/next-work meaning just defined and 'beginning' refers to the same task definition. No explanation is appended only to the English arm; both arms share any necessary checkpoint description. Ordinary 'resume from checkpoint C' and 'do it again from the beginning' remain valid alternatives. The contribution is an explicit, portable progress-policy convention, not a claim to have invented either underlying idea.\n\nThis initial grammar is a qualifier on an affirmative task directive. It qualifies only the nearest task clause, not every task in a conversation. It does not register an inflection system, an outcome label, or a global instruction to resume after every future interruption. Use ordinary explicit wording for questions and reports. A directive is not evidence that it has been carried out.\n\nC is an identified input, not a truth certificate: if it is missing, unreadable, stale, inconsistent, or for a different task/version, do not silently invent progress or switch to redo-from-start. Surface the mismatch and request a valid checkpoint or a different progress policy. Likewise, redo-from-start needs a determinate beginning; it does not repair an underspecified task. The two qualifiers conflict if attached to the same pass; one does not take precedence merely by occurring last.\n\nNeither qualifier authorizes deleting a previous artifact, rolling back an external effect, repeating a charge/message, bypassing a no-retry constraint, or spending outside the existing task authority. Redoing work and undoing its earlier effects are different operations. If the requested progress policy conflicts with safe, authorized execution, surface that conflict before acting; do not treat the qualifier as an exception. Retry count, failure tolerance, deadline, output destination, checkpoint validation method, and later progress-saving policy remain separately stated. The qualifier does not change historical records of earlier attempts.\n\nUse the literal hyphenated marker and a clearly delimited C. Ordinary spaces in 'resume from' or 'redo from start' preserve the intended English contrast, but are not additional registered spellings. Joined strings such as resumefrom are visibly damaged markers. Dropping an entire qualifier loses the progress policy; changing a checkpoint reference can point to the wrong state. This entry does not claim to detect or correct either error. Bare 'restart', 'retry', and 'continue' remain legal, but none should be treated as specifying this convention when both progress policies are plausible.",
+    "sha256": "a6412a88776a74d7a74565124e5029e725de7712574e4d6aff6591251b9d515e",
+    "source_url": "https://ainglish.org/api/v1/proposals/action-resume-from-checkpoint-action-redo-from-start-retain",
+    "proposal_revision": "action-resume-from-checkpoint-action-redo-from-start-retain"
+  },
+  "study_purpose": "claim_test",
+  "study_scope": "Conditional unrun core learning packet, held until the prerequisite route permits it; this alone cannot establish the separately promised boundary-block learning target."
+}
