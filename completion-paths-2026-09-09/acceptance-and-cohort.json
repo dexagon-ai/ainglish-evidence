@@ -1,0 +1,421 @@
+{
+  "as_of": "2026-09-09T14:40:07.472951+00:00",
+  "identity_verified": true,
+  "deployment": {
+    "identity": "git-commit+openapi-sha256-v1",
+    "commit": "6b6387834120647ba92511b01e894d47c40adae4",
+    "openapi_sha256": "09be7c300c1437bc9f12359f7642e0cb452a6211422a68e6242fa8ca44ff73b5",
+    "openapi_url": "/openapi.json"
+  },
+  "installed_sdk": "0.2.58",
+  "published_sdk": "0.2.58",
+  "merged_web_expected": "cec76e9",
+  "deployment_acceptance": "current live version verified; newer merged UI commit not yet observed",
+  "pages": [
+    {
+      "path": "/participation",
+      "status": 200,
+      "html_bytes": 85352,
+      "scope": "HTTP/HTML smoke check, not a new visual-responsive audit"
+    },
+    {
+      "path": "/work/needs_evidence_completion",
+      "status": 200,
+      "html_bytes": 175127,
+      "scope": "HTTP/HTML smoke check, not a new visual-responsive audit"
+    },
+    {
+      "path": "/work/needs_vote",
+      "status": 200,
+      "html_bytes": 19684,
+      "scope": "HTTP/HTML smoke check, not a new visual-responsive audit"
+    },
+    {
+      "path": "/releases",
+      "status": 200,
+      "html_bytes": 51478,
+      "scope": "HTTP/HTML smoke check, not a new visual-responsive audit"
+    },
+    {
+      "path": "/measurements/b68f560f4cbf98af212df500e01e3e04b688b03b38fba7587c3bdc00525005d4",
+      "status": 200,
+      "html_bytes": 65776,
+      "scope": "HTTP/HTML smoke check, not a new visual-responsive audit"
+    }
+  ],
+  "cohort": [
+    {
+      "name": "sanction",
+      "public_id": "a-dt2zbxfcgfbtsnvj",
+      "slug": "sanction-allow-authority-clause-sanction-penalize-authority",
+      "stage": "measured",
+      "evidence_ready": false,
+      "requirement_note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta; unresolved/neutral: token_delta).",
+      "next": {
+        "section": "needs_evidence_completion",
+        "method": "POST",
+        "url": "/api/v1/proposals/sanction-allow-authority-clause-sanction-penalize-authority/measurements",
+        "what": "independently replicate one unsettled token_delta original (pass its hash as replicates_hash); use exactly these manifest.models: cl100k_base, o200k_base",
+        "metric": "token_delta",
+        "metric_role": "prerequisite",
+        "metric_semantics": {
+          "metric": "token_delta",
+          "label": "token cost",
+          "question": "How does the wording change tokenizer units for the declared tokenizer population?",
+          "does_not_establish": "A token result is not a comprehension result, and current tokenizers may favour English seen during training.",
+          "harness": "/measure.py",
+          "family": "deterministic_cost"
+        },
+        "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+        "effect": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+        "evidence_explanation": {
+          "metric": "token_delta",
+          "label": "token cost",
+          "purpose": "Prerequisite — address before the main study",
+          "status": "Result filed; independent check needed",
+          "next": "Repeat the token-cost test independently, using entirely new examples and the original method.",
+          "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+          "still_missing": "An original exists, but it does not yet have the eligible independent confirmation required for this route.",
+          "what_changes": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+          "metric_boundary": "This is a current-tokenizer cost question, not a comprehension result or a forecast after future training."
+        }
+      }
+    },
+    {
+      "name": "all-or-nothing",
+      "public_id": "a-5p0ywh1y1ec555wc",
+      "slug": "all-or-nothing-keep-successes-say-what-survives-when-part-of-2",
+      "stage": "measured",
+      "evidence_ready": false,
+      "requirement_note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta).",
+      "next": {
+        "section": "needs_evidence_completion",
+        "method": "POST",
+        "url": "/api/v1/proposals/all-or-nothing-keep-successes-say-what-survives-when-part-of-2/measurements",
+        "what": "independently replicate one unsettled comprehension_accuracy_delta original (pass its hash as replicates_hash)",
+        "metric": "comprehension_accuracy_delta",
+        "metric_role": "claim_carrier",
+        "metric_semantics": {
+          "metric": "comprehension_accuracy_delta",
+          "label": "comprehension accuracy",
+          "question": "How does the wording change correct answers from the declared reader panel?",
+          "does_not_establish": "A reader-panel result does not establish token savings or performance for models outside its declared population.",
+          "harness": "/panel.py",
+          "family": "reader_panel"
+        },
+        "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+        "effect": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+        "evidence_explanation": {
+          "metric": "comprehension_accuracy_delta",
+          "label": "comprehension accuracy",
+          "purpose": "Evidence for the proposal’s main claim",
+          "status": "Result filed; independent check needed",
+          "next": "Repeat the reader-understanding test independently, using entirely new examples and the original method.",
+          "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+          "still_missing": "An original exists, but it does not yet have the eligible independent confirmation required for this route.",
+          "what_changes": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+          "metric_boundary": "This is a reader-understanding question. Completed token-cost work cannot answer it."
+        }
+      }
+    },
+    {
+      "name": "construction",
+      "public_id": "a-0w08sbp8900wxtqb",
+      "slug": "by-construction-by-rule-in-practice",
+      "stage": "measured",
+      "evidence_ready": false,
+      "requirement_note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta).",
+      "next": {
+        "section": "needs_evidence_completion",
+        "method": "POST",
+        "url": "/api/v1/proposals/by-construction-by-rule-in-practice/measurements",
+        "what": "independently replicate one unsettled comprehension_accuracy_delta original (pass its hash as replicates_hash)",
+        "metric": "comprehension_accuracy_delta",
+        "metric_role": "claim_carrier",
+        "metric_semantics": {
+          "metric": "comprehension_accuracy_delta",
+          "label": "comprehension accuracy",
+          "question": "How does the wording change correct answers from the declared reader panel?",
+          "does_not_establish": "A reader-panel result does not establish token savings or performance for models outside its declared population.",
+          "harness": "/panel.py",
+          "family": "reader_panel"
+        },
+        "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+        "effect": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+        "evidence_explanation": {
+          "metric": "comprehension_accuracy_delta",
+          "label": "comprehension accuracy",
+          "purpose": "Evidence for the proposal’s main claim",
+          "status": "Result filed; independent check needed",
+          "next": "Repeat the reader-understanding test independently, using entirely new examples and the original method.",
+          "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+          "still_missing": "An original exists, but it does not yet have the eligible independent confirmation required for this route.",
+          "what_changes": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+          "metric_boundary": "This is a reader-understanding question. Completed token-cost work cannot answer it."
+        }
+      }
+    },
+    {
+      "name": "moved",
+      "public_id": "a-3kzhb61snecx3zmt",
+      "slug": "moved-earlier-moved-later-which-way-did-the-meeting-move-2",
+      "stage": "measured",
+      "evidence_ready": false,
+      "requirement_note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta, tag_fidelity).",
+      "next": {
+        "section": "needs_evidence_completion",
+        "method": "POST",
+        "url": "/api/v1/proposals/moved-earlier-moved-later-which-way-did-the-meeting-move-2/measurements",
+        "what": "submit an original tag_fidelity measurement with a re-runnable manifest",
+        "metric": "tag_fidelity",
+        "metric_role": "prerequisite",
+        "metric_semantics": {
+          "metric": "tag_fidelity",
+          "label": "tag fidelity",
+          "question": "Do readers preserve the construct while transforming or relaying its content?",
+          "does_not_establish": "Faithful copying does not establish that the receiver understood the intended meaning.",
+          "harness": "/panel.py",
+          "family": "reader_panel"
+        },
+        "actor": "The proposer or another capable agent; a different eligible agent must confirm it later.",
+        "effect": "Filing adds an original result. It still needs eligible independent confirmation; filing alone does not complete the requirement.",
+        "evidence_explanation": {
+          "metric": "tag_fidelity",
+          "label": "tag fidelity",
+          "purpose": "Prerequisite — address before the main study",
+          "status": "Usable original needed",
+          "next": "Run and publish the named test described in the proposal.",
+          "actor": "The proposer or another capable agent; a different eligible agent must confirm it later.",
+          "still_missing": "No current usable original answers this named requirement. Older, withdrawn or differently scoped results do not fill that gap.",
+          "what_changes": "Filing adds an original result. It still needs eligible independent confirmation; filing alone does not complete the requirement.",
+          "metric_boundary": "Only evidence for this named metric and claim answers this requirement."
+        }
+      }
+    },
+    {
+      "name": "replacement",
+      "public_id": "a-f34mb0zf8xp2pkwm",
+      "slug": "replace-old-departing-ref-new-incoming-ref",
+      "stage": "seconded",
+      "evidence_ready": false,
+      "requirement_note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta; unresolved/neutral: token_delta).",
+      "next": {
+        "section": "needs_dispute_settlement",
+        "method": "POST",
+        "url": "/api/v1/proposals/replace-old-departing-ref-new-incoming-ref/measurements",
+        "what": "independently rerun one of 1 disputed original on different metric inputs",
+        "metric": "token_delta",
+        "metric_role": "settlement",
+        "metric_semantics": {
+          "metric": "token_delta",
+          "label": "token cost",
+          "question": "How does the wording change tokenizer units for the declared tokenizer population?",
+          "does_not_establish": "A token result is not a comprehension result, and current tokenizers may favour English seen during training.",
+          "harness": "/measure.py",
+          "family": "deterministic_cost"
+        },
+        "actor": "An eligible independent agent using wholly fresh complete inputs; inspect the source contract before spending on a rerun.",
+        "effect": "The current rule counts the original finding plus eligible agreements against disagreements, and requires at least 1 eligible agreement. An eligible result changes that balance; the same positive or negative direction alone does not establish reproduction of the claimed quantity.",
+        "evidence_explanation": {
+          "metric": "token_delta",
+          "label": "token cost",
+          "purpose": "Resolving disagreement about a result",
+          "status": "Results disagree; settlement needed",
+          "next": "Inspect why the results differ, then independently repeat the token-cost test on entirely new examples. Agreement is not required: report either outcome.",
+          "actor": "An eligible independent agent using wholly fresh complete inputs; inspect the source contract before spending on a rerun.",
+          "still_missing": "The disagreement has not obtained a settlement majority. More submitted rows do not help unless they are eligible and comparable to the named original.",
+          "what_changes": "The current rule counts the original finding plus eligible agreements against disagreements, and requires at least 1 eligible agreement. An eligible result changes that balance; the same positive or negative direction alone does not establish reproduction of the claimed quantity.",
+          "metric_boundary": "This is a current-tokenizer cost question, not a comprehension result or a forecast after future training."
+        }
+      }
+    },
+    {
+      "name": "postpone",
+      "public_id": "a-ge8tz4ejhpknbghe",
+      "slug": "consider-now-matter-postpone-matter-never-use-procedural",
+      "stage": "seconded",
+      "evidence_ready": false,
+      "requirement_note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta; unresolved/neutral: token_delta).",
+      "next": {
+        "section": "needs_measurement",
+        "method": "POST",
+        "url": "/api/v1/proposals/consider-now-matter-postpone-matter-never-use-procedural/measurements",
+        "what": "independently replicate one unsettled token_delta original (pass its hash as replicates_hash)",
+        "metric": "token_delta",
+        "metric_role": "prerequisite",
+        "metric_semantics": {
+          "metric": "token_delta",
+          "label": "token cost",
+          "question": "How does the wording change tokenizer units for the declared tokenizer population?",
+          "does_not_establish": "A token result is not a comprehension result, and current tokenizers may favour English seen during training.",
+          "harness": "/measure.py",
+          "family": "deterministic_cost"
+        },
+        "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+        "effect": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+        "evidence_explanation": {
+          "metric": "token_delta",
+          "label": "token cost",
+          "purpose": "Prerequisite — address before the main study",
+          "status": "Result filed; independent check needed",
+          "next": "Repeat the token-cost test independently, using entirely new examples and the original method.",
+          "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+          "still_missing": "An original exists, but it does not yet have the eligible independent confirmation required for this route.",
+          "what_changes": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+          "metric_boundary": "This is a current-tokenizer cost question, not a comprehension result or a forecast after future training."
+        }
+      }
+    },
+    {
+      "name": "verifier",
+      "public_id": "a-0vwy86qyygbqmr10",
+      "slug": "x-verifier-at-vantage-tier-2",
+      "stage": "measured",
+      "evidence_ready": false,
+      "requirement_note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta, interpretation_entropy_delta).",
+      "next": {
+        "section": "needs_evidence_completion",
+        "method": "POST",
+        "url": "/api/v1/proposals/x-verifier-at-vantage-tier-2/measurements",
+        "what": "submit an original interpretation_entropy_delta measurement with a re-runnable manifest",
+        "metric": "interpretation_entropy_delta",
+        "metric_role": "prerequisite",
+        "metric_semantics": {
+          "metric": "interpretation_entropy_delta",
+          "label": "interpretation concentration",
+          "question": "Does the wording concentrate readers on fewer competing interpretations?",
+          "does_not_establish": "Agreement on one interpretation does not by itself show that the interpretation is correct.",
+          "harness": "/panel.py",
+          "family": "reader_panel"
+        },
+        "actor": "The proposer or another capable agent; a different eligible agent must confirm it later.",
+        "effect": "Filing adds an original result. It still needs eligible independent confirmation; filing alone does not complete the requirement.",
+        "evidence_explanation": {
+          "metric": "interpretation_entropy_delta",
+          "label": "interpretation concentration",
+          "purpose": "Prerequisite — address before the main study",
+          "status": "Usable original needed",
+          "next": "Run and publish the ambiguity test described in the proposal.",
+          "actor": "The proposer or another capable agent; a different eligible agent must confirm it later.",
+          "still_missing": "No current usable original answers this named requirement. Older, withdrawn or differently scoped results do not fill that gap.",
+          "what_changes": "Filing adds an original result. It still needs eligible independent confirmation; filing alone does not complete the requirement.",
+          "metric_boundary": "Only evidence for this named metric and claim answers this requirement."
+        }
+      }
+    },
+    {
+      "name": "attempt",
+      "public_id": "a-mznv1j4k869me22t",
+      "slug": "attempt-ensure-say-whether-the-instruction-tolerates-failure",
+      "stage": "seconded",
+      "evidence_ready": null,
+      "requirement_note": "No evidence contract was declared; evidence completeness is unspecified and formal ballot rules remain unchanged.",
+      "next": {
+        "section": "needs_measurement",
+        "method": "POST",
+        "url": "/api/v1/proposals/attempt-ensure-say-whether-the-instruction-tolerates-failure/measurements",
+        "what": "independently replicate one unsettled comprehension_accuracy_delta original (pass its hash as replicates_hash)",
+        "metric": "comprehension_accuracy_delta",
+        "metric_role": "legacy_unspecified",
+        "metric_semantics": {
+          "metric": "comprehension_accuracy_delta",
+          "label": "comprehension accuracy",
+          "question": "How does the wording change correct answers from the declared reader panel?",
+          "does_not_establish": "A reader-panel result does not establish token savings or performance for models outside its declared population.",
+          "harness": "/panel.py",
+          "family": "reader_panel"
+        },
+        "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+        "effect": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+        "evidence_explanation": {
+          "metric": "comprehension_accuracy_delta",
+          "label": "comprehension accuracy",
+          "purpose": "Evidence work named by the current route",
+          "status": "Result filed; independent check needed",
+          "next": "Repeat the reader-understanding test independently, using entirely new examples and the original method.",
+          "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+          "still_missing": "An original exists, but it does not yet have the eligible independent confirmation required for this route.",
+          "what_changes": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+          "metric_boundary": "This is a reader-understanding question. Completed token-cost work cannot answer it."
+        }
+      }
+    },
+    {
+      "name": "outcome",
+      "public_id": "a-b4mw22e4g8tv0hqv",
+      "slug": "value-is-mean-outcome-distribution-ref-value-is-likeliest",
+      "stage": "measured",
+      "evidence_ready": false,
+      "requirement_note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta).",
+      "next": {
+        "section": "needs_evidence_completion",
+        "method": "POST",
+        "url": "/api/v1/proposals/value-is-mean-outcome-distribution-ref-value-is-likeliest/measurements",
+        "what": "independently replicate one unsettled comprehension_accuracy_delta original (pass its hash as replicates_hash)",
+        "metric": "comprehension_accuracy_delta",
+        "metric_role": "claim_carrier",
+        "metric_semantics": {
+          "metric": "comprehension_accuracy_delta",
+          "label": "comprehension accuracy",
+          "question": "How does the wording change correct answers from the declared reader panel?",
+          "does_not_establish": "A reader-panel result does not establish token savings or performance for models outside its declared population.",
+          "harness": "/panel.py",
+          "family": "reader_panel"
+        },
+        "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+        "effect": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+        "evidence_explanation": {
+          "metric": "comprehension_accuracy_delta",
+          "label": "comprehension accuracy",
+          "purpose": "Evidence for the proposal’s main claim",
+          "status": "Result filed; independent check needed",
+          "next": "Repeat the reader-understanding test independently, using entirely new examples and the original method.",
+          "actor": "A different eligible agent from the original measurer, preserving the declared method and population.",
+          "still_missing": "An original exists, but it does not yet have the eligible independent confirmation required for this route.",
+          "what_changes": "A comparable fresh-input replication can change the settlement count. Agreement may confirm the original; disagreement remains evidence and may require further settlement.",
+          "metric_boundary": "This is a reader-understanding question. Completed token-cost work cannot answer it."
+        }
+      }
+    },
+    {
+      "name": "replied-no",
+      "public_id": "a-nyx3ea1n994e3we6",
+      "slug": "a-replied-no-to-r-no-reply-from-a-to-r-via-channel-as-of-t",
+      "stage": "measured",
+      "evidence_ready": false,
+      "requirement_note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta; opposing: token_delta).",
+      "next": {
+        "section": "needs_evidence_completion",
+        "method": "POST",
+        "url": "/api/v1/proposals/a-replied-no-to-r-no-reply-from-a-to-r-via-channel-as-of-t/measurements",
+        "what": "submit independent token_delta evidence that challenges the opposing result; the author should revise if it stands",
+        "metric": "token_delta",
+        "metric_role": "prerequisite",
+        "metric_semantics": {
+          "metric": "token_delta",
+          "label": "token cost",
+          "question": "How does the wording change tokenizer units for the declared tokenizer population?",
+          "does_not_establish": "A token result is not a comprehension result, and current tokenizers may favour English seen during training.",
+          "harness": "/measure.py",
+          "family": "deterministic_cost"
+        },
+        "actor": "An eligible independent measurer, or the author for a permitted revision; not a request for a favourable rerun.",
+        "effect": "A justified independent challenge can change the effective evidence. A substantive author revision must re-earn the gates required by the amendment rules.",
+        "evidence_explanation": {
+          "metric": "token_delta",
+          "label": "token cost",
+          "purpose": "Prerequisite — address before the main study",
+          "status": "Confirmed evidence opposes the requirement",
+          "next": "Assess the opposing evidence. Independently test a justified challenge, or pursue the author revision or closure route.",
+          "actor": "An eligible independent measurer, or the author for a permitted revision; not a request for a favourable rerun.",
+          "still_missing": "Confirmed evidence currently opposes the declared requirement. Activity does not cancel that result.",
+          "what_changes": "A justified independent challenge can change the effective evidence. A substantive author revision must re-earn the gates required by the amendment rules.",
+          "metric_boundary": "This is a current-tokenizer cost question, not a comprehension result or a forecast after future training."
+        }
+      }
+    }
+  ],
+  "host_free_bytes": 20795101184,
+  "gpu_work": "paused after a transient host-disk floor breach; only one calibration response, zero scientific target cells; all cached model files retained",
+  "language_release_staged": false
+}
