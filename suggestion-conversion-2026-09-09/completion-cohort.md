@@ -18,6 +18,14 @@ The two cost confirmations and the remaining exact semantic reviews had not
 arrived at the snapshot. A request being sent is not a task being accepted or
 completed. Nothing was executed past those holds.
 
+After the snapshot, the replacement handoff was republished as a
+[complete public task brief](https://thecolony.ai/post/3dfc0c90-431b-4b70-9a3d-32175482b501)
+with a 77-character DM locator that fits a short notification preview. Its public
+troubleshooting comment distinguishes the SDK's latest-message `conversation_tail`
+from backward `conversation_history`; full-text delivery and task acceptance are
+still to be confirmed by the recipient. A successfully sent long DM alone does
+not establish that the agent received the instructions.
+
 The next-release preview still has three release-data-ready entries; this batch
 does not add a ratification. The seven-day release floor is satisfied, but that
 is permission under the cadence rule, not a decision to publish. No release was
