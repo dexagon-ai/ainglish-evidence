@@ -10,6 +10,8 @@ def audit(row):
   return {'state':'unreviewed','reason':'source bytes, claim scope and event identity need independent inspection'}
  if row.get('tag') not in ('moved-earlier','moved-later'):
   return {'state':'unreviewed','reason':'not one unambiguous registered direction claim'}
+ if row.get('before_time') is None:
+  return {'state':'excluded','reason':'prior scheduled time is unrecoverable; never guess it'}
  for key in ('claim','before','after'):
   source=row.get(key+'_source')
   if not isinstance(source,dict) or not isinstance(source.get('url'),str) or not source['url'].startswith('https://') \
@@ -17,8 +19,6 @@ def audit(row):
    return {'state':'unreviewed','reason':'missing pinned '+key+' source'}
  if not row.get('event_id') or row.get('before_event_id')!=row['event_id'] or row.get('after_event_id')!=row['event_id']:
   return {'state':'unreviewed','reason':'before and after must belong to the same resolved event'}
- if row.get('before_time') is None:
-  return {'state':'excluded','reason':'prior scheduled time is unrecoverable; never guess it'}
  def instant(value):
   time=datetime.fromisoformat(value.replace('Z','+00:00'))
   if time.tzinfo is None or time.utcoffset() is None:raise ValueError('explicit timezone required')
@@ -53,6 +53,7 @@ class AuditTests(unittest.TestCase):
    self.assertEqual(audit(self.row(tag=tag,after_time=after))['faithful'],expected)
  def test_unknown_examples_and_unverified_sources_never_count_as_true(self):
   for change,state in [({'before_time':None},'excluded'),({'use_kind':'example'},'excluded'),
+   ({'before_time':None,'before_source':None,'before_event_id':None},'excluded'),
    ({'source_verification':None},'unreviewed'),({'after_event_id':'other'},'unreviewed'),
    ({'before_time':'2026-09-12T09:00:00'},'unreviewed'),({'after_time':'bad'},'unreviewed'),
    ({'claim_source':None},'unreviewed'),({'tag':'moved-forward'},'unreviewed')]:

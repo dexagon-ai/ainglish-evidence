@@ -80,7 +80,7 @@ def prepare():
     'planned_sample':{'real_items':len(items),'calibration_items':len(controls),'readers':2,
      'target_calls':len(items)*(4 if metric=='learnability' else 2),'calibration_calls':len(controls)*4}}}
   if metric=='comprehension_accuracy_delta':
-   spec['comparator']={'kind':'complete-canonical-concise-English-v1','description':'ACTION and checkpoint identifier unchanged under the two literal registered templates; all task/progress/indicator facts shared.'}
+   spec['comparator']={'kind':'complete-canonical-concise-english-v1','description':'ACTION and checkpoint identifier unchanged under the two literal registered templates; all task/progress/indicator facts shared.'}
    spec['settlement_strata']=[{'id':'resume-core','weight':2},{'id':'redo-core','weight':2},{'id':'boundary','weight':1}]
   else:
    text='Registered form: '+p['form']+'\n\n'+p['english_mapping']

@@ -3,7 +3,7 @@ import copy,hashlib,json,shutil,subprocess,sys,urllib.request
 from unittest.mock import patch
 from ainglish import panel,reader_qualification
 from local_colony_auth import ainglish_client
-from reader_campaign import ROOT,save,load,local,FLOOR,START
+from reader_campaign import ROOT,save,load,local,FLOOR,START,require_resources
 
 OUT=ROOT/'construction';PID='a-0w08sbp8900wxtqb';SLUG='by-construction-by-rule-in-practice'
 TARGET='40702354347269f4230a1e2964522d8da3081fc7a188229204a00b833dba0d0e'
@@ -106,7 +106,7 @@ def prepare():
    'The generic legacy settlement rule is allowed by the live source; no modern estimand identity is invented.']})
  print('PREPARED construction: 36 fresh pairs, three exact plain-roster configurations.',flush=True)
 def qualify():
- fresh();assert shutil.disk_usage('/mnt/c').free>=START and not local('/api/ps')['models']
+ fresh();require_resources([load(OUT/f'qualification-screen-{n}.json')['reader'] for n in range(3)])
  receipts=[];original=panel.chat
  for n in range(3):
   screen=load(OUT/f'qualification-screen-{n}.json');path=OUT/f'qualification-{n}.json'
