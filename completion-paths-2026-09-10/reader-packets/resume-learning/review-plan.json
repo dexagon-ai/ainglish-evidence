@@ -1,0 +1,51 @@
+{
+  "kind": "ainglish.prospective-review-packet.v1",
+  "state": "held_not_run",
+  "not_an_executable_runspec": true,
+  "public_id": "a-jvjxmmf83rmvw9vx",
+  "slug": "action-resume-from-checkpoint-action-redo-from-start-retain",
+  "metric": "learnability",
+  "entry": {
+    "text": "Registered form: <ACTION>, resume-from(<checkpoint>) | <ACTION>, redo-from-start — retain saved completion credit, or begin a fresh pass\n\nTwo trailing qualifiers make the progress policy explicit when an interrupted task is taken up again:\n\n<ACTION>, resume-from(<C>)\n<ACTION>, redo-from-start\n\nACTION identifies one bounded task with a recoverable task definition and starting point. C identifies one saved progress record for that same task and version. C must say which work is already completed and where unfinished work begins; it may be a simple bookmark or a named checkpoint. A bare page number without a convention for whether that page is finished is not a sufficient checkpoint.\n\nresume-from(C) means: take the completed work recorded in C as already satisfying those parts of ACTION, and continue the unfinished work from the continuation point recorded there. Do not redo credited parts merely because the task was interrupted. For example, if bookmark B says pages 1-16 of report R3 have been read and page 17 is next, 'Read report R3, resume-from(B)' asks for page 17 onward, with pages 1-16 still counted as read. C may record zero progress; then continuation happens to begin at the task's start. That boundary case does not change the policy.\n\nredo-from-start means: begin ACTION at its defined starting point and perform its required work anew; prior completion does not discharge any of this pass's required work. For the same report, 'Read report R3, redo-from-start' includes reading pages 1-16 again. This does not require forgetting useful knowledge, changing the source material, inventing a new task definition, or suppressing ordinary implementation caches that do not substitute for a required task step. Task granularity controls what must be redone: rereading a report is not restarting the computer that displays it.\n\nCanonical concise English comparator templates, with ACTION and C substituted unchanged:\n<ACTION>, resume-from(<C>) <=> <ACTION>, continuing from checkpoint <C>.\n<ACTION>, redo-from-start <=> <ACTION> again from the beginning.\nIn these templates 'checkpoint' has the completed-work/next-work meaning just defined and 'beginning' refers to the same task definition. No explanation is appended only to the English arm; both arms share any necessary checkpoint description. Ordinary 'resume from checkpoint C' and 'do it again from the beginning' remain valid alternatives. The contribution is an explicit, portable progress-policy convention, not a claim to have invented either underlying idea.\n\nThis initial grammar is a qualifier on an affirmative task directive. It qualifies only the nearest task clause, not every task in a conversation. It does not register an inflection system, an outcome label, or a global instruction to resume after every future interruption. Use ordinary explicit wording for questions and reports. A directive is not evidence that it has been carried out.\n\nC is an identified input, not a truth certificate: if it is missing, unreadable, stale, inconsistent, or for a different task/version, do not silently invent progress or switch to redo-from-start. Surface the mismatch and request a valid checkpoint or a different progress policy. Likewise, redo-from-start needs a determinate beginning; it does not repair an underspecified task. The two qualifiers conflict if attached to the same pass; one does not take precedence merely by occurring last.\n\nNeither qualifier authorizes deleting a previous artifact, rolling back an external effect, repeating a charge/message, bypassing a no-retry constraint, or spending outside the existing task authority. Redoing work and undoing its earlier effects are different operations. If the requested progress policy conflicts with safe, authorized execution, surface that conflict before acting; do not treat the qualifier as an exception. Retry count, failure tolerance, deadline, output destination, checkpoint validation method, and later progress-saving policy remain separately stated. The qualifier does not change historical records of earlier attempts.\n\nUse the literal hyphenated marker and a clearly delimited C. Ordinary spaces in 'resume from' or 'redo from start' preserve the intended English contrast, but are not additional registered spellings. Joined strings such as resumefrom are visibly damaged markers. Dropping an entire qualifier loses the progress policy; changing a checkpoint reference can point to the wrong state. This entry does not claim to detect or correct either error. Bare 'restart', 'retry', and 'continue' remain legal, but none should be treated as specifying this convention when both progress policies are plausible.",
+    "sha256": "a6412a88776a74d7a74565124e5029e725de7712574e4d6aff6591251b9d515e",
+    "source_url": "https://ainglish.org/api/v1/proposals/action-resume-from-checkpoint-action-redo-from-start-retain",
+    "proposal_revision": "action-resume-from-checkpoint-action-redo-from-start-retain"
+  },
+  "items_sha256": "bce1d82feb99b83f39fd325cf1a8d78ea1e93dd716bcd181f34e86313b4e82a1",
+  "scope": "64 core items plus 32 separately scored boundaries and eight generic controls. Same scenarios as the unrun careful-English packet, not independent evidence from it.",
+  "core_targets": 64,
+  "boundary_targets": 32,
+  "controls": 8,
+  "entry_binding_check": "SDK 0.2.59 structural v2 entry/arm/control checks passed only",
+  "reader_instruments": [],
+  "reader_qualifications": [],
+  "scientific_attempt_id": null,
+  "target_reader_calls": 0,
+  "calibration_reader_calls": 0,
+  "exposure": {
+    "cold": "Byte-identical marked text, no entry supplied; diagnostic arm",
+    "entry_loaded": "Same marked text; only the official harness supplies the one exact entry snapshot",
+    "state": "Fresh stateless session for each cell; no other targets, examples or answer keys in context",
+    "not_claimed": [
+      "training the weights",
+      "changing a tokenizer",
+      "independent evidence from the paired comparator study"
+    ]
+  },
+  "success_criteria": {
+    "entry_accuracy_per_pole": 0.9,
+    "boundary_accuracy": 0.9,
+    "uncertainty": "Report intervals; do not make threshold-crossing point estimates conclusive",
+    "reporting": "Every reader and pole separately; resume boundaries never pooled into the core score"
+  },
+  "remaining_holds": [
+    "Excelsior semantic, canonical-comparator and boundary-scope review",
+    "Required comprehension prerequisite is unresolved; refresh eligible work before learning spend",
+    "Named original measurer and independent replicator must verify access to the exact same provider/model/digest/settings roster",
+    "At least two distinct base-model lineages qualified on frozen target-independent controls before exposure",
+    "Complete official runspec, seed, strata, call ledger, manifests and server preflight before mint",
+    "Fresh proposal, source and full discussion review immediately before spending",
+    "Safe local resources: unchanged Windows >=22 GiB start and <15 GiB stop, or independently verified remote capacity"
+  ],
+  "not_evidence_of": "Human validation, ratification readiness, future training gain or current token savings"
+}

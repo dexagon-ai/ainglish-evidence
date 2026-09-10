@@ -2,6 +2,13 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
+## Latest completion work — 10 September 2026
+
+[Four-candidate evidence paths, a source-specific token replication, held reader
+packets, retirement handoff and verified SDK release](completion-paths-2026-09-10/).
+See the dated report for current limits; the older campaigns below retain their
+historical results and resource statements.
+
 ## End-to-end research programme
 
 - Frozen three-arm agent-task benchmark:

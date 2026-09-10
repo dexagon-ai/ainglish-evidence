@@ -1,0 +1,57 @@
+{
+  "manifest": {
+    "metric": "token_delta",
+    "models": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "estimand_contract": {
+      "kind": "ainglish.estimand-shadow.v1",
+      "unit_span": "pair",
+      "contrast": "token_delta",
+      "population": "cl100k_base/o200k_base/p50k_base",
+      "aggregation": {
+        "reducer": "least_favourable",
+        "rule": "maximum tokenizer mean"
+      },
+      "governance_effect": "report_only"
+    },
+    "replicates_hash": "903b67a697f5e000b7c57ab64f491e33a7b05aacc67fd5d05a0a99d7c1a6a670",
+    "test_set": [
+      {
+        "english": "At 21:00 UTC, no query admissible under account-surface receipt r12 for its named principal class, region, and consistency bound returned Customer 318's profile; other surfaces and copies remain unasserted.",
+        "ainglish": "customer-318 profile, removed-from(account-surface-receipt@r12) as_of(2026-09-10T21:00Z)."
+      },
+      {
+        "english": "At 21:00 UTC, no recoverable representation of Customer 318's profile remained in any locus enumerated by immutable inventory receipt v12 under its declared recovery model; unlisted or later copies remain unasserted.",
+        "ainglish": "customer-318 profile, erased-from(storage-inventory-receipt@v12) as_of(2026-09-10T21:00Z)."
+      },
+      {
+        "english": "At the stated epoch, no customer-class query admitted by helpdesk receipt r14 returned Ticket 624's attachment; support-staff visibility is outside that receipt.",
+        "ainglish": "ticket-624 attachment, removed-from(helpdesk-customer-query-receipt@r14) as_of(2026-09-10T21:00Z)."
+      },
+      {
+        "english": "At the stated epoch, no trace of Ticket 624's attachment remained in any locus enumerated by the backup inventory receipt v16 under its declared recovery model.",
+        "ainglish": "ticket-624 attachment, erased-from(backup-inventory-receipt@v16) as_of(2026-09-10T21:00Z)."
+      },
+      {
+        "english": "At 14:00 UTC, no API call admissible under public-surface receipt r18 for its named principal class and region returned User 205's settings; cached copies remain unasserted.",
+        "ainglish": "user-205 settings, removed-from(public-surface-receipt@r18) as_of(2026-09-10T14:00Z)."
+      },
+      {
+        "english": "At 14:00 UTC, no recoverable representation of User 205's settings remained in any locus enumerated by the archival inventory receipt v21 under its declared recovery model.",
+        "ainglish": "user-205 settings, erased-from(archival-inventory-receipt@v21) as_of(2026-09-10T14:00Z)."
+      },
+      {
+        "english": "At the freeze epoch, no log query admitted by audit receipt r23 for its named principal class returned Order 463's payload; other log views remain unasserted.",
+        "ainglish": "order-463 payload, removed-from(audit-log-receipt@r23) as_of(2026-09-10T00:00Z)."
+      },
+      {
+        "english": "At the freeze epoch, no recoverable representation of Order 463's payload remained in any locus enumerated by the cold-storage inventory receipt v25 under its declared recovery model.",
+        "ainglish": "order-463 payload, erased-from(cold-storage-inventory-receipt@v25) as_of(2026-09-10T00:00Z)."
+      }
+    ],
+    "test_set_note": "One exact-source-renderer replication: eight fresh complete pairs in the original four paired context classes, four surface absences and four inventory erasures. Only the declared object identifiers, immutable receipt identifiers and dates are instantiated afresh; all wording, punctuation, context-resolved English epochs and full as_of rendering are preserved. The replacement table was fixed before token encoding; no selection by count. Fictional text reports, not verification of actual deletion. This tests lexical-instance sensitivity within this small renderer, not eight new semantic designs, the full 160-scenario claim, comprehension or a future tokenizer. The abandoned free-prose preparation was never minted or counted. Preserve every outcome; no rerun to seek agreement. Aggregate-only source: no new settlement strata."
+  }
+}
