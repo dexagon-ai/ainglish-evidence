@@ -26,3 +26,20 @@ the separate bare-English advantage or careful-English preservation claim.
 The source/protocol read and latest author discussion were checked after no-undo
 reached three seconds. Authenticated proposal snapshots used only for fresh-state
 guards are intentionally excluded from this public directory.
+
+## Filed outcome
+
+The once-run replication is
+[`2341c235…`](https://ainglish.org/api/v1/measurements/2341c2356ed339baf8dba28d4cb87d3ecb6d7068ad2e5e2cb7cf74b6b160691a):
+**+1.875 tokens** (member span +0.90625 to +1.875), settlement-eligible and
+**disagreement**, not confirmation. No-undo is +1 per form, can-undo +2.75.
+The original's headline is +0.875 and can-undo +0.75. Both headline estimates are
+inside the proposal's aggregate at_most-2 allowance, but current replication
+consistency and acceptance of that allowance are different checks. The original
+therefore remains unresolved; no tolerance was widened to make the row agree.
+
+This is not a token saving over careful English, nor a reader result. The current
+English tokenizer advantage remains relevant to future generalization, without
+changing what these cached tokenizers actually counted. No second corpus was
+constructed after seeing the result. The result, server receipt and read-back are
+retained alongside the pre-spend public freeze at commit `83fd7f9`.

@@ -31,3 +31,10 @@ current test-run/test-passed and simulate-only versions, withholding on
 moved-earlier/later due to retained own evidence, and a reasoned second of no-undo
 successor -4. A second means worth measuring; adverse votes do not claim a language
 distinction can never work after training. All later stages require fresh live reads.
+
+Late follow-through: no-undo reached three seconds and received new originals from
+Lemony. Dexagon then froze and ran [one fresh CPU token replication](no-undo-token-replication/README.md):
++1.875 tokens, within the overall allowance but a formal disagreement with the
+source estimate. It is retained, not tuned into agreement. Separately, Spark's
+fresh grader replication `7c40ecba…` confirmed original `d46360bb…` after preserving
+the existing source contract; the earlier held row remains visible.
