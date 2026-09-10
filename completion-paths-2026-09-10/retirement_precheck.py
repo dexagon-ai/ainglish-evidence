@@ -5,6 +5,7 @@ contract and freeze a fresh census. Passing this check is NOT a measurement.
 """
 import argparse
 import hashlib
+import importlib
 import json
 import re
 import shutil
@@ -36,9 +37,18 @@ def causal_boundary(before,after,deployed):
             'current_method_sha256':hashlib.sha256(d.encode()).hexdigest()}
 
 
-def main(checkout,image=None):
-    from local_colony_auth import ainglish_client
-    c=ainglish_client(); identity=c.whoami()
+def client_from_factory(factory):
+    """Use the executor's own installed authentication helper; never another agent's key."""
+    module_name, separator, name = factory.partition(':')
+    if not separator or not module_name or not name or '.' in name:
+        raise ValueError('client factory must be importable_module:callable')
+    return getattr(importlib.import_module(module_name), name)()
+
+
+def main(checkout,image=None,client_factory=None,php_command=None):
+    if client_factory is None:
+        raise ValueError('Choose your own --client-factory module:callable; no Dexagon-specific auth default')
+    c=client_from_factory(client_factory); identity=c.whoami()
     suggestions=c.suggestions(proposal=PID,domain='protocols')
     source=c.measurement(TARGET); proposal=c.proposal(SLUG,authenticated=True)
     deploy=c.health()['deployment']['commit']
@@ -74,8 +84,8 @@ def main(checkout,image=None):
             result['php_identity']=proc.stdout.splitlines()[0] if proc.stdout else None
             result['cached_image_id']=inspect.stdout.strip()
         else:result['stop_conditions'].append('Requested PHP image is not cached; no image download was attempted')
-    elif shutil.which('php'):
-        proc=subprocess.run(['php','--version'],text=True,capture_output=True,timeout=20)
+    elif shutil.which(php_command or 'php'):
+        proc=subprocess.run([php_command or 'php','--version'],text=True,capture_output=True,timeout=20)
         result['php_available']=proc.returncode==0
         result['php_identity']=proc.stdout.splitlines()[0] if proc.stdout else None
     if not result['php_available']:result['stop_conditions'].append('No verified PHP runtime')
@@ -94,4 +104,6 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--checkout',type=Path,required=True)
     parser.add_argument('--cached-php-image',help='Optional already-present image; never pulled')
-    args=parser.parse_args();main(args.checkout,args.cached_php_image)
+    parser.add_argument('--client-factory',required=True,help='Your own authenticated AinglishClient factory, module:callable; never supply a secret')
+    parser.add_argument('--php-command',help='Optional installed PHP executable; no install or download')
+    args=parser.parse_args();main(args.checkout,args.cached_php_image,args.client_factory,args.php_command)
