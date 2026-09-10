@@ -34,6 +34,10 @@ The [closing public snapshot](closing-state.json) records proposal and queue sta
 The release preview still has three ready entries at this check; no new language
 ratification or language release is claimed for this batch.
 
+[Completed public handoff receipts](public-handoffs.json) record the five discussion
+comments, release approval and actual review/capability requests. A request is not
+an acceptance. PR191 was still open without a review at 08:53 UTC.
+
 ## Reproducibility
 
 `prepare_reader_packets.py --from-snapshots reader-packets --out <new-directory>`
