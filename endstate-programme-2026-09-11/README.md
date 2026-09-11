@@ -18,6 +18,9 @@ claimed.** Public register state is authoritative; refresh it before acting.
 - [Dispute inventory](dispute-routes.json): permitted live route, recommended
   next action and stopping condition. It is not a scientific adjudication of all
   sources or a replacement for personalized SDK suggestions.
+- [New quantity disagreement](QUANTITY-FOLLOWUP.md): a later receipt arrived
+  after that inventory. Five ceiling strata, one reader lineage and unresolved
+  careful-English advantage; no open-ended repeat campaign is requested.
 
 Run the 39 hermetic tests from this repository root using the existing project
 environment with the Ainglish SDK installed:

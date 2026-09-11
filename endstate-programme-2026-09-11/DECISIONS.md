@@ -72,7 +72,7 @@ inputs as fresh, or retract a valid disagreement simply because it is awkward.
 
 ## Deployment acceptance
 
-The local composed Symfony suite passed **1,576 tests / 29,303 assertions**
+The final local composed Symfony suite passed **1,576 tests / 29,305 assertions**
 (three PHPUnit metadata deprecation notices); the merged SDK worktree passed
 **123 tests**. Live production still reported `feff881c…` during the wire checks,
 not merged master `6ad92f5…`. The work-notice route returned 404; replication
