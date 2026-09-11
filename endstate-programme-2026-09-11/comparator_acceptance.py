@@ -15,7 +15,10 @@ BASE=prior.BASE | {'margin':2,'interval':[-1,2], 'required_form_lowers':[-1,-1],
     'learnability_promised':False,'same_cell_cold_baseline':True,'learning_confirmed':False,
     'bootstrap_seed_frozen':True,'bootstrap_resamples_frozen':True,
     'reader_item_clustering':True,'one_sided_strata':True,
-    'token_cost_is_descriptive':True,'future_training_gain_measured':False}
+    'token_cost_is_descriptive':True,'future_training_gain_measured':False,
+    'unique_semantic_gold':True,'complete_careful_comparator':True,
+    'margin_justified_before_exposure':True,'absolute_accuracy_lower_bound':.94,
+    'acceptance_route':'preservation_plus_benefit','benefit_scope_matches':True}
 
 CASES=[
     ('S',{},None),
@@ -32,6 +35,14 @@ CASES=[
     ('AD',{'token_cost_is_descriptive':False},'cost_must_not_stand_in_for_comprehension'),
     ('AE',{'future_training_gain_measured':True},'cold_or_entry_exposure_is_not_training'),
     ('AF',{'interval':[0,0],'accuracy':1,'uncertainty_valid':False},'uncertainty_unresolved'),
+    ('AG',{'unique_semantic_gold':False},'invalid_answer_instrument'),
+    ('AH',{'complete_careful_comparator':False},'incomplete_careful_comparator'),
+    ('AI',{'cost_promised':False,'bare_promised':False},'no_separate_benefit_claimed'),
+    ('AJ',{'margin_justified_before_exposure':False},'margin_not_prospectively_justified'),
+    ('AK',{'accuracy':1,'absolute_accuracy_lower_bound':.85},'absolute_floor_not_established'),
+    ('AL',{'benefit_scope_matches':False},'benefit_does_not_cover_declared_scope'),
+    ('AM',{'unique_semantic_gold':None},'invalid_answer_instrument'),
+    ('AN',{'absolute_accuracy_lower_bound':None},'absolute_floor_not_established'),
 ]
 
 
@@ -48,7 +59,15 @@ def interpret(c):
         (not c['reader_item_clustering'],'wrong_resampling_unit'),
         (not c['one_sided_strata'],'required_one_sided_strata_missing'),
         (not c['token_cost_is_descriptive'],'cost_must_not_stand_in_for_comprehension'),
-        (c['future_training_gain_measured'],'cold_or_entry_exposure_is_not_training')]
+        (c['future_training_gain_measured'],'cold_or_entry_exposure_is_not_training'),
+        (c['unique_semantic_gold'] is not True,'invalid_answer_instrument'),
+        (c['complete_careful_comparator'] is not True,'incomplete_careful_comparator'),
+        (c['acceptance_route']=='preservation_plus_benefit' and not (c['cost_promised'] or c['bare_promised']),
+            'no_separate_benefit_claimed'),
+        (c['margin_justified_before_exposure'] is not True,'margin_not_prospectively_justified'),
+        (c['absolute_accuracy_lower_bound'] is None or c['absolute_accuracy_lower_bound']<c['accuracy_floor'],
+            'absolute_floor_not_established'),
+        (c['benefit_scope_matches'] is not True,'benefit_does_not_cover_declared_scope')]
     flags.extend(flag for bad,flag in checks if bad)
     return flags or ['candidate_preservation_and_promises_complete']
 
@@ -66,6 +85,6 @@ def check():
 
 
 if __name__=='__main__':
-    print(json.dumps({'kind':'prospective-comparator-review-fixtures.v2','measurement':False,
+    print(json.dumps({'kind':'prospective-comparator-review-fixtures.v3','measurement':False,
         'live_rule_changed':False,'two_pp_margin':'Reticuli preview commitment fixture, not a new global default',
         'cases':check()},indent=2))

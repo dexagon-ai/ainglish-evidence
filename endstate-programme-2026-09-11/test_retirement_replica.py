@@ -54,7 +54,7 @@ class RetirementReplicaTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'autoload provenance'):
                 r.runtime_source_check(Path('/invented-fixture'),'not-executed')
 
-    def simulate(self, fail=False, refuse=False, flip=0):
+    def simulate(self, fail=False, refuse=False, flip=0, preparation=None, tamper=False):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);checkout=root/'web';out=root/'freeze';checkout.mkdir()
             (checkout/'composer.lock').write_text('{}')
@@ -71,9 +71,11 @@ class RetirementReplicaTests(unittest.TestCase):
                     'composer_lock_sha256': r.sha(checkout/'composer.lock'),
                     'supplementary_test_sha256': {'suite.php': r.sha(checkout/'suite.php')}}}
             r.save(out/'manifest.json', manifest)
+            if tamper:
+                (checkout/'suite.php').write_text('changed synthetic test fixture')
             calls=[];client=Mock()
             client.health.return_value={'deployment': {'commit': 'synthetic'}}
-            client.preflight_attempt.side_effect=lambda *a,**k: calls.append('preflight') or {'accepted': not refuse, 'kind': 'ainglish.attempt-preflight.v1'}
+            client.preflight_attempt.side_effect=lambda *a,**k: calls.append('preflight') or {'accepted': not refuse, 'kind': 'ainglish.attempt-preflight.v1', 'replication_preparation': preparation}
             client.mint_attempt.side_effect=lambda *a,**k: calls.append('mint') or {'attempt': {'attempt_id': 'synthetic'}}
             client.measure.side_effect=lambda *a,**k: calls.append(('measure',a[1])) or {'fixture': True}
             client.attempt.return_value={'attempt': {'state': 'open'}}
@@ -91,7 +93,7 @@ class RetirementReplicaTests(unittest.TestCase):
                 kwargs=dict(client=client,checkout=checkout,out=out,php='never-executed',
                     freeze_url='https://example.invalid/immutable/fixture',
                     database_url='mysql://x:y@db/ainglish_retirement_replica_abcdefgh', accept_database=True)
-                if fail or refuse:
+                if fail or refuse or preparation is not None or tamper or type(flip) is not int or not 0 <= flip <= 1:
                     with self.assertRaises((RuntimeError,ValueError)):r.run(**kwargs)
                 else:r.run(**kwargs)
             return calls,client
@@ -111,6 +113,59 @@ class RetirementReplicaTests(unittest.TestCase):
     def test_preflight_refusal_never_mints_or_runs(self):
         calls,client=self.simulate(refuse=True)
         self.assertEqual(['preflight'],calls);client.mint_attempt.assert_not_called()
+
+    def test_instrument_changed_after_freeze_never_mints(self):
+        calls,client=self.simulate(tamper=True)
+        self.assertEqual([],calls);client.mint_attempt.assert_not_called()
+
+    def test_preparation_obstruction_is_not_overridden_by_accepted_preflight(self):
+        for preparation in [{'status':'known_obstruction','known_obstructions':['invented']},
+                            {'status':'no_known_obstruction','known_obstructions':['invented']},
+                            {'status':'unknown','known_obstructions':[]}]:
+            with self.subTest(preparation=preparation):
+                calls,client=self.simulate(preparation=preparation)
+                self.assertEqual(['preflight'],calls)
+                client.mint_attempt.assert_not_called()
+
+    def test_invalid_count_is_retained_and_aborted_not_filed(self):
+        for flip in [True, -1, 2, .5, None]:
+            with self.subTest(flip=flip):
+                calls,client=self.simulate(flip=flip)
+                client.measure.assert_not_called()
+                client.abort_attempt.assert_called_once()
+
+    def test_source_state_and_unique_offer_are_required(self):
+        def client():
+            c=Mock()
+            c.whoami.return_value={'sub':'independent'}
+            c.measurement.return_value={'submitter':{'sub':'author'},'evidence_state':'valid'}
+            c.proposal.return_value={'public_id':r.PID,'stage':'seconded'}
+            c.suggestions.return_value={'suggestions':[{'replicates_hash':r.TARGET,'executable_now':True}]}
+            return c
+        for change in [{'is_replication':True},{'evidence_state':'invalid'},
+                       {'retraction':{'retracted':True}}]:
+            c=client();c.measurement.return_value.update(change)
+            with self.subTest(change=change),self.assertRaises(ValueError):r.eligibility(c)
+            c.mint_attempt.assert_not_called()
+        c=client();c.suggestions.return_value['suggestions']*=2
+        with self.assertRaises(ValueError):r.eligibility(c)
+        c=client();c.proposal.return_value['stage']='withdrawn'
+        with self.assertRaises(ValueError):r.eligibility(c)
+        c=client();c.proposal.return_value['public_id']='invented-other'
+        with self.assertRaises(ValueError):r.eligibility(c)
+
+    def test_changed_census_detail_refuses(self):
+        c={'records':[{'public_id':'invented','stage':'withdrawn'}],
+           'withdrawn_details':{'invented':{'public_id':'invented','stage':'seconded','full_measurement_envelopes':True}}}
+        with self.assertRaises(ValueError):r.validate_census(c)
+
+    def test_source_only_guard_rejects_extra_causal_change(self):
+        before='    public function assess(Proposal $p): void\n    {\n        '+r.OLD+'\n            return;\n        }\n    }\n\n    /** end */'
+        after=before.replace(r.OLD,r.NEW)
+        current=after.replace('return;','return; /* extra causal change */')
+        with patch.object(r,'git',side_effect=[before,after,current]):
+            with self.assertRaisesRegex(ValueError,'drifted'):
+                r.source_boundary(Path('/invented-not-executed'),'invented')
 
 
 if __name__=='__main__':unittest.main()

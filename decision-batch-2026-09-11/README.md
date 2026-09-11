@@ -3,6 +3,15 @@
 No new inference. This is a public, reproducible author audit and a set of decision
 handoffs, not independent confirmation or a release candidate.
 
+- [Eight-case decision campaign and actual public receipts](DECISIONS.md)
+- [Prospective acceptance review and 40 executable failure cases](PROSPECTIVE-ACCEPTANCE.md)
+- [Three bounded remote-reader work packages and a self-contained preparation prompt](REMOTE-WORK.md)
+
+Update at 20:06 UTC: the defective primary original described below **was retracted**.
+Authenticated readback confirms it and its dependent settlement voices no longer
+count. Separate adverse cold/reference studies remain. See DECISIONS.md for the
+author's measurement pause and disposition; no stage closure was manufactured.
+
 ## A concrete correction, not another inconclusive rerun
 
 The quantity primary original

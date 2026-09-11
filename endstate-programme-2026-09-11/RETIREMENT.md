@@ -71,7 +71,7 @@ dependency-generated secrets before publishing them; the runner scrubs the known
 connection URL but cannot promise third-party logs never print other secrets.
 
 The independent executor must inspect the resulting settlement. Confirmation is
-not a vote, and a vote is not automatic activation. The nine hermetic runner
+not a vote, and a vote is not automatic activation. The fifteen hermetic runner
 tests use invented data and never authenticate, mint or execute PHP.
 
 ## Author decision already made

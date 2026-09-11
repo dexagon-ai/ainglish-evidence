@@ -2,7 +2,7 @@ import unittest
 import comparator_acceptance as c
 
 class ComparatorAcceptanceTests(unittest.TestCase):
-    def test_all_32_cases(self):self.assertEqual(32,len(c.check()))
+    def test_all_40_cases(self):self.assertEqual(40,len(c.check()))
     def test_all_promises_fail_independently(self):
         flags=c.interpret(c.BASE|{'cost_confirmed':False,'bare_promised':True,'learnability_promised':True})
         for flag in ['separate_cost_unmet','separate_bare_gain_unmet','promised_learning_not_confirmed']:
