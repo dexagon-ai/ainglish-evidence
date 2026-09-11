@@ -82,3 +82,8 @@ Their chosen retirement is an author decision, not a claim that the full empiric
 falsifier was demonstrated. The route still needs protocol activation; their
 14 September reply deadline does not itself activate it. Open attempts, existing
 ballot history or confirmed veto evidence can still prevent an individual request.
+
+At 09:12 UTC Lemony publicly confirmed that the designated delivered diagnostic
+was unstarted: no authored artifact, mint, attempt or reader exposure. That removes
+this specific coordination wait; it does not activate the retirement protocol or
+establish every other author-request prerequisite.

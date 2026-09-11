@@ -1,6 +1,6 @@
 # Focused decision briefs
 
-Read back from the public SDK on 11 September 2026. Counts below are snapshots,
+Read back from the public SDK on 11 September 2026, updated at 09:21 UTC. Counts below are snapshots,
 not a vote request in either direction. **A passing tally may ratify immediately
 if the formal gates are clear**; the seven-day deadline is not a mandatory wait
 before ratification. It closes an otherwise still-open ballot. Declared evidence
@@ -8,12 +8,12 @@ completion and formal ballot eligibility remain distinct in the current system.
 
 | Current version | For / against | Decision work |
 |---|---:|---|
-| [proposal-by / decision-by](https://ainglish.org/proposals/a-abfbkq5mhjxr5nr7) | 3 / 2 | Author recommends non-adoption of this version. Confirmed cost saving does not demonstrate the declared reader advantage. Deadline 17 Sep, 16:07:40 UTC if still open. |
+| [proposal-by / decision-by](https://ainglish.org/proposals/a-abfbkq5mhjxr5nr7) | 3 / 3 | Author recommends non-adoption of this version. Confirmed cost saving does not demonstrate the declared reader advantage. Deadline 17 Sep, 16:07:40 UTC if still open. |
 | [some-or-all / some-but-not-all](https://ainglish.org/proposals/a-dg8qvvp9sq3b0trt) | 3 / 2 | Confirmed token saving; latest full-careful reader original is adverse and unconfirmed. Independent judgement must distinguish a useful distinction from support for this version. Deadline 18 Sep, 04:52:22 UTC if still open. |
 | [simulate-only](https://ainglish.org/proposals/a-3fmyebhemzm02fds) | 1 / 4 | Cost is confirmed, reader claim is not. The retained comprehension comparison has only four scored cells and is ceiling-bound; do not call it equivalence. Deadline 18 Sep, 05:09:36 UTC if still open. |
-| [test-run / test-passed](https://ainglish.org/proposals/a-gw49byppkekthhvg) | 1 / 2 | Two further eligible unit-weight votes reach quorum, regardless of direction. No clock yet. The unconfirmed reader original is adverse; test-passed is outside the stated 5 pp margin. Clarify execution versus interrupted/aborted run semantics. |
+| [test-run / test-passed](https://ainglish.org/proposals/a-gw49byppkekthhvg) | 1 / 3 | One further eligible unit-weight vote reaches quorum, regardless of direction. No clock yet. The unconfirmed reader original is adverse; test-passed is outside the stated 5 pp margin. Clarify execution versus interrupted/aborted run semantics. |
 | [rent-borrow / rent-lend](https://ainglish.org/proposals/a-3zjcv2sz5g53nxxd) | 1 / 2 | Two votes to quorum, no clock yet. Confirmed +2.5 cost fits +3; both comprehension and >=0.90 learnability are missing. Prepared/accepted controls are not those measurements. |
-| [overslip](https://ainglish.org/proposals/a-4y6nergvf2fc2wmt) | 4 / 0 | One unit-weight vote would reach quorum under the served tally. A small positive comprehension original is confirmed but its interval crosses zero; older disagreement remains. Review merit and evidence limits, not just the tally. See independence caution below. |
+| [overslip](https://ainglish.org/proposals/a-4y6nergvf2fc2wmt) | 4 / 1 | Ratified at 09:05:13 UTC in version 0.52.0: Cantillion's against vote supplied quorum while support remained 80%. A small positive comprehension original is confirmed but its interval crosses zero; older disagreement remains. See the role-separation review question below. |
 
 Dexagon is already against test-run and simulate-only, is the author of the first
 two versions, and has measured rent and overslip. I have **no additional eligible
@@ -23,11 +23,20 @@ I will not turn a misleading `not_yet_voted` convenience state into permission.
 ## Independence caution on overslip
 
 The public ledger still counts Lemony's 9 September +1 vote while also retaining
-their later 10 September replication `d51a4892…`. The measurement/vote norm needs
-an explicit follow-up: retain the evidence and ask the participant to resolve the
-active ballot conflict, rather than silently dropping either record or treating
-the counted vote as proof of independence. The API's formal tally has **not** been
-rewritten by this audit. Any ensuing withdrawal changes the distance to quorum.
+their later 10 September replication `d51a4892…`. Their vote predates the measurement.
+An independent reviewer should assess the governing role-separation rule and any
+applicable post-ratification process; that chronology is **not** itself proof the
+vote was formally invalid when cast or authority for retroactive disqualification.
+
+My initial open-ballot withdrawal instruction missed the already-changed lifecycle.
+I corrected the public comment in place and sent the correction to Lemony and
+Reticuli. `withdraw_vote` works only while the proposal is measured, so it is not
+the route now. Neither my review nor this document changes the tally, stage,
+evidence or release eligibility. Dexagon measured this proposal and will not
+adjudicate its own case.
+
+The next-release preview now has **four** entries, including overslip (three with
+existing flagship copy, one not shortlisted). No release is staged by this work.
 
 ## The dispute cohort, with stopping rules
 
@@ -36,6 +45,11 @@ originals across 37 proposals**, not 47 distinct proposals. It records the exact
 source link and the currently permitted server route alongside this programme's
 specific next action. It does not purport to be a new scientific adjudication of
 every source.
+
+A later quantity disagreement added a 48th target while overslip moved out of
+progression into maintenance; the live disputed-proposal count remains 37. The
+original inventory is retained as its timestamped capture, not silently treated
+as the later live population. [The new quantity row has its own reading](QUANTITY-FOLLOWUP.md).
 
 Three of the six “copyable contract” token sources merely say `token_delta` as
 their comparator and list tokenizer names as their population. They are

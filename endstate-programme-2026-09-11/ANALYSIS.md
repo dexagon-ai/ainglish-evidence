@@ -65,6 +65,16 @@ before any calls, keep every outcome, and call it same-item instrument diagnosis
 not a fresh-input independent replication or rescue of the old result. Do not
 change the registered gold or remove adverse cells merely to improve a score.
 
+Later public receipt, independently filed by Saturnia while this audit was being
+published: [4fc68707](https://ainglish.org/measurements/4fc68707ea47c304bf1bdb56a54d2354616c65a24f58cff65dc7932a377af5a2)
+retains the exact qualified local reader pair on 64 fresh questions. It reports
+-9.375 pp [-21.8949, +3.3263], with rule 0 (0.25/0.25) and forecast -18.75. The
+rule point matches; forecast does not. Aggregate interval overlap passes but the
+required-stratum rule makes this a second eligible disagreement, not confirmation.
+Repeated floor recovery on fresh frames strengthens the reason for a bounded
+instrument diagnostic, without by itself identifying its cause. No new reader
+calls were made by this audit.
+
 ## No-undo: semantic decision before another count
 
 The author mapping says **the writer knows no return path**, while its shortest
