@@ -49,6 +49,11 @@ class RetirementReplicaTests(unittest.TestCase):
             path=Path(directory)/'receipt.json';r.save(path, {'a': 1})
             with self.assertRaises(FileExistsError):r.save(path, {'a': 2})
 
+    def test_wrong_autoload_checkout_refuses(self):
+        with patch.object(r.subprocess,'run',return_value=SimpleNamespace(returncode=1)):
+            with self.assertRaisesRegex(ValueError,'autoload provenance'):
+                r.runtime_source_check(Path('/invented-fixture'),'not-executed')
+
     def simulate(self, fail=False, refuse=False, flip=0):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);checkout=root/'web';out=root/'freeze';checkout.mkdir()
@@ -81,6 +86,7 @@ class RetirementReplicaTests(unittest.TestCase):
                     stdout=json.dumps({'value': flip,'domain_count': 1}))
             with patch.object(r,'eligibility',return_value=({'manifest': manifest}, {})), \
                  patch.object(r,'source_boundary',return_value={'fixture': 'not a real boundary'}), \
+                 patch.object(r,'runtime_source_check'), \
                  patch.object(r.subprocess,'run',side_effect=command):
                 kwargs=dict(client=client,checkout=checkout,out=out,php='never-executed',
                     freeze_url='https://example.invalid/immutable/fixture',

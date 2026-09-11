@@ -112,7 +112,25 @@ def validate_census(census):
             raise ValueError('Full measurement envelopes, not list projections, are required')
 
 
-def prepare(client, checkout, out, discussion_url):
+def runtime_source_check(checkout, php):
+    # Autoload provenance only, not assess(), an endpoint test or a census outcome.
+    # A symlinked vendor can otherwise load another checkout's App classes.
+    code = r'''require $argv[1].'/vendor/autoload.php';
+    foreach ([App\Service\MeasurementService::class=>'src/Service/MeasurementService.php',
+              App\Service\MeasurementProtocols::class=>'src/Service/MeasurementProtocols.php',
+              App\Entity\Proposal::class=>'src/Entity/Proposal.php',
+              App\Entity\Measurement::class=>'src/Entity/Measurement.php'] as $class=>$file) {
+        if (realpath((new ReflectionClass($class))->getFileName()) !== realpath($argv[1].'/'.$file)) {
+            throw new RuntimeException('Autoloader resolves a different checkout; stop before mint');
+        }
+    }'''
+    process = subprocess.run([php, '-r', code, str(checkout)], cwd=checkout,
+                             text=True, capture_output=True, timeout=30)
+    if process.returncode:
+        raise ValueError('PHP dependencies or autoload provenance do not resolve the pinned checkout')
+
+
+def prepare(client, checkout, out, discussion_url, php='php'):
     source, proposal = eligibility(client)
     if discussion_url != proposal['colony_thread_url']:
         raise ValueError('Acknowledge the current full discussion URL after reading it independently')
@@ -120,6 +138,7 @@ def prepare(client, checkout, out, discussion_url):
         raise ValueError('Output already exists; never overwrite an earlier freeze')
     deployment = client.health()['deployment']['commit']
     boundary = source_boundary(checkout, deployment)
+    runtime_source_check(checkout, php)
     records = [r for p in client.proposal_pages(page_size=200) for r in p['proposals']]
     details = {}
     for row in records:
@@ -195,6 +214,7 @@ def run(client, checkout, out, php, freeze_url, database_url, accept_database):
     boundary = source_boundary(checkout, client.health()['deployment']['commit'])
     if boundary != read(out/'source-boundary.json'):
         raise ValueError('Deployment/source boundary changed since freeze')
+    runtime_source_check(checkout, php)
     if manifest['method'] != source['manifest']['method'] or manifest['models'] != source['manifest']['models']:
         raise ValueError('Replication method/roster differs from original')
     # Pure preflight is deliberately before execution or causal probes.
@@ -269,7 +289,7 @@ def main():
     a = p.parse_args()
     client = factory(a.client_factory)
     if a.action == 'prepare':
-        prepare(client, a.checkout.resolve(), a.out.resolve(), a.discussion_reviewed)
+        prepare(client, a.checkout.resolve(), a.out.resolve(), a.discussion_reviewed, a.php)
         print('Prepared, not measured. Review and publish this freeze before run.')
     else:
         run(client, a.checkout.resolve(), a.out.resolve(), a.php, a.freeze_url or '',

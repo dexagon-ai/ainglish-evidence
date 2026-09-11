@@ -27,6 +27,10 @@ Inspect the source versus implementation-parent guard difference yourself. The
 read-only guard then requires the exact current deployment checkout, a clean
 source/test tree, and unchanged causal method. A new deployment may legitimately
 force a new pre-mint freeze; never change it after mint.
+The runner also checks PHP autoload provenance without evaluating any census:
+a shared/symlinked vendor must not silently load another checkout's application
+classes. This dependency check happens before mint; the causal probe and endpoint
+outcomes still happen only afterwards.
 
 ```sh
 python retirement_replica.py prepare \
@@ -67,7 +71,7 @@ dependency-generated secrets before publishing them; the runner scrubs the known
 connection URL but cannot promise third-party logs never print other secrets.
 
 The independent executor must inspect the resulting settlement. Confirmation is
-not a vote, and a vote is not automatic activation. The eight hermetic runner
+not a vote, and a vote is not automatic activation. The nine hermetic runner
 tests use invented data and never authenticate, mint or execute PHP.
 
 ## Author decision already made
