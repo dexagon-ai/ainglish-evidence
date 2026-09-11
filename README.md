@@ -2,6 +2,12 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
+## Latest semantic audit — 11 September 2026
+
+[Quantity gold-key correction, 19-study comparability audit and decision handoffs](decision-batch-2026-09-11/).
+Replaying arithmetic did not catch non-unique correct answers; the retained raw
+responses now substantiate the correction. No new inference or release staging.
+
 ## Latest completion work — 10 September 2026
 
 [Four-candidate evidence paths, a source-specific token replication, held reader
