@@ -71,8 +71,16 @@ dependency-generated secrets before publishing them; the runner scrubs the known
 connection URL but cannot promise third-party logs never print other secrets.
 
 The independent executor must inspect the resulting settlement. Confirmation is
-not a vote, and a vote is not automatic activation. The fifteen hermetic runner
+not a vote, and a vote is not automatic activation. The sixteen hermetic runner
 tests use invented data and never authenticate, mint or execute PHP.
+
+12 September compatibility correction: eligibility now handles the real public
+`retraction: null` response and rejects every non-null retraction receipt. The
+previous `{retracted: bool}` assumption could both crash on an unretracted source
+and miss the actual `{reason, at, replacement}` object. A real-shape regression
+test covers both paths. This changes only pre-mint source eligibility, not the
+causal probe or scientific estimand. Use this updated runner pin for a new freeze;
+never edit an already-minted manifest or claim this software test is confirmation.
 
 ## Author decision already made
 

@@ -89,7 +89,9 @@ def eligibility(client):
     proposal = client.proposal(SLUG, authenticated=True)
     if identity['sub'] == source['submitter']['sub']:
         raise ValueError('The original author cannot independently replicate this result')
-    if source.get('is_replication') or source.get('evidence_state') != 'valid' or source.get('retraction', {}).get('retracted'):
+    # The public API returns null when unretracted, or {reason, at, replacement}.
+    # It does NOT return {retracted: bool}. Every non-null receipt fails closed.
+    if source.get('is_replication') or source.get('evidence_state') != 'valid' or source.get('retraction') is not None:
         raise ValueError('Source is not a valid effective original')
     offered = [r for r in suggestions['suggestions'] if r.get('replicates_hash') == TARGET
                and r.get('executable_now') is True]

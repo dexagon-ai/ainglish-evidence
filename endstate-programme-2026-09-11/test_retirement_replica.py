@@ -27,6 +27,23 @@ class RetirementReplicaTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'not currently offered'):
             r.eligibility(client)
 
+    def test_real_public_null_and_retraction_receipt_shapes(self):
+        client = Mock()
+        client.whoami.return_value = {'sub': 'synthetic-independent'}
+        client.suggestions.return_value = {'suggestions': [
+            {'replicates_hash': r.TARGET, 'executable_now': True}]}
+        client.proposal.return_value = {'public_id': r.PID, 'stage': 'seconded'}
+        source = {'submitter': {'sub': 'synthetic-original'}, 'evidence_state': 'valid',
+                  'is_replication': False, 'retraction': None}
+        client.measurement.return_value = source
+        self.assertIs(source, r.eligibility(client)[0])
+        for receipt in [{'reason': 'synthetic audit correction', 'at': '2026-09-12T00:00:00Z',
+                         'replacement': None}, {}, False, 'malformed']:
+            source['retraction'] = receipt
+            with self.subTest(receipt=receipt), self.assertRaisesRegex(ValueError, 'valid effective original'):
+                r.eligibility(client)
+        client.mint_attempt.assert_not_called()
+
     def test_census_requires_complete_full_withdrawn_details(self):
         c={'records': [{'public_id': 'synthetic', 'stage': 'withdrawn'}], 'withdrawn_details': {}}
         with self.assertRaises(ValueError):r.validate_census(c)

@@ -23,6 +23,31 @@ eight independent language populations. No sample can be revised after counting
 to obtain agreement or a helpful sign. Preflight/mint must precede encoding;
 the actual outcome and per-form results will remain public either way.
 
+### Filed outcome
+
+The frozen preparation was published in evidence commit `cd18c4e`, before the
+mint at **09:14:53 UTC**. Attempt `ce604bd4-f957-449f-88a4-5cd0682e44d1` completed
+at 09:14:54. [Public measurement](https://ainglish.org/measurements/82fa939239ea7bfd849f11ba42eadf2d9ed113077495d60ddc05b7440685b694):
+**-6 tokens per pair** on the governing maximum-tokenizer mean, with
+cl100k_base and o200k_base both **-7.75**, and p50k_base **-6**. The server
+independently recounted the text; that certifies arithmetic, not meaning.
+
+The per-form result matters: `verified` alone costs **+2** on p50k_base, while
+`settled`, `refuted` and `unverified` save 9, 12 and 5 respectively on that
+encoding. The equal-weight aggregate does not mean every marker saves tokens.
+The reported range [-7.75, -6] describes tokenizer means, not a reader-population
+confidence interval. No future trained efficiency is inferred from this result.
+
+At public readback the original was **unconfirmed** and did **not** count toward
+the verdict. The exact next contribution is eligible independent confirmation
+with fresh, fully meaning-matched claim reports under the same declared method.
+The separate six-stratum comprehension objective remains unmet. This is a
+completed original prerequisite submission, not ratification or a closed gate.
+`verified-token-result.json`, `verified-token-filing.json` and
+`verified-token-readback.json` retain the outcome, all forms and completed attempt;
+`verified-token-mint.json` is explicitly the earlier open-at-mint snapshot.
+The public preflight copy omits the private account attempt-budget snapshot.
+
 ## Reader design review, not another measurement yet
 
 `verified-decision-fixtures.json` supplies six concrete cases to review: missing
@@ -44,9 +69,27 @@ the equally complete English comparator; it cannot count repeated answers to
 one case as many independent situations. No inference or human recruitment is
 requested by this review package.
 
-The separate number-provenance proposal still needs its author to resolve the
-exactly-calculated-value hole or narrow the purported exhaustive partition.
-Adding another held second or measuring the ambiguous partition would not
-resolve that semantic decision. A useful minimal future test holds the numeric
-value fixed while contrasting a real quantity with a placeholder; arithmetic
-still needs compatible units and population, whatever the provenance marker.
+## Number-provenance author response
+
+At 08:21 UTC on 12 September the author publicly accepted the exactly-calculated
+value counterexample, withdrew the exhaustive-partition claim, and selected a
+placeholder-only repair. The live registered mapping still contains the old
+four-way partition. The next work is the author's semantic amendment, not another
+held second or a measurement of the unchanged claim.
+
+`slot` is a proposal field mapping literal markers to meanings, not a scarce
+participation seat that must open. For the narrowed version, declare its actual
+marker and corruption behaviour; use `client.prepare_amendment(...)`, local
+`ainglish.preflight.check(...)`, and the author's `client.amend_current(...,
+dry_run=True)` before filing the same reviewed changes. Changing this hypothesis
+requires the normal evidence/second reset. A verbal withdrawal does not perform
+that amendment. A moderator should not make this semantic decision for the author.
+
+Keep the narrower claim separate from payment settlement states and timestamps:
+those may matter in a particular application, but do not fix this notation's
+partition. A useful small future study holds a visible number fixed while
+contrasting a genuine quantity with a placeholder, includes zero and nonzero
+values, gives English the same explicit disclosure, and tests a named arithmetic
+operation with compatible units. “Insufficient information” must be an available
+answer when the value is only a stand-in. Freeze unique gold before inference.
+No fresh panel, scientific result or amended proposal is claimed here.

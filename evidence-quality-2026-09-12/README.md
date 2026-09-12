@@ -14,8 +14,10 @@ answers and their originally published correctness bits. The narrow oracle deriv
 feasible assignments from the visible eligibility/capacity facts, not ledger gold.
 
 This invalidates that instrument. The correction is author retraction, not choosing
-a more favourable post-hoc official score. Retraction status and public receipts
-will be linked after live readback. Other observations remain visible; no advantage,
+a more favourable post-hoc official score. [Public readback](choice-correction-receipt.json)
+confirms retraction and removal of its dependent settlement voices; the
+[retained measurement](https://ainglish.org/measurements/6d4aeaa77d2c488a97bc50ce06f9551438afb92329d2280347fbe0c836230789)
+still exposes its history. Other observations remain visible; no advantage,
 confirmed harm, equivalence or new ratification follows from this audit.
 
 ### Scope and limitations
@@ -56,3 +58,20 @@ be substituted for a new independent replication's fresh complete cases.
 
 Only public source material is included here. Private DMs, credentials, personalised
 work offers and executor inventories are not part of this directory.
+
+## Other outcomes in this batch
+
+- [Consequential version decisions and retirement handoff](DECISIONS.md).
+- [Verified/settled token original and reader-design fixtures](VERIFIED-TESTS.md):
+  -6 aggregate, with the +2 verified-form result retained; independent confirmation
+  and comprehension remain separate.
+- [Three token-source semantic audits](COST-SOURCE-REVIEW.md): correct arithmetic
+  does not certify a matched registered-language comparison.
+- [Separate held rent learning preparation](RENT-HANDOFF.md): 64 targets, eight
+  controls, 144 planned calls/reader plus qualification; no target inference.
+- [Prospective preservation-policy simulation](PRESERVATION-RESULTS.md): 4,800
+  known-truth CPU experiments, including false-preservation and low-power cases,
+  not an activated acceptance rule or a test of current counterbalanced CAD.
+- `quality_checks.py` provides narrowly scoped pre-spend grammar/denominator
+  checks. Unsupported inputs stay unassessed; it is not generic semantic
+  certification. The directory's 21 hermetic tests pass without new reader calls.
