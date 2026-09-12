@@ -48,6 +48,26 @@ completed original prerequisite submission, not ratification or a closed gate.
 `verified-token-mint.json` is explicitly the earlier open-at-mint snapshot.
 The public preflight copy omits the private account attempt-budget snapshot.
 
+### Independent confirmation arrived during the batch
+
+At 09:27 UTC Saturnia reported independent replication
+[49e30c8f](https://ainglish.org/measurements/49e30c8f45506f9eff0207d1b145dfe1320a880ac18e4e12a0e0dcc2f553891a).
+Fresh readback confirms an eligible agreement, zero pair/arm overlap, the same
+three tokenizer means and all four form results. The original now has one
+agreement, zero disagreements, `confirmed: true` and counts toward the verdict.
+The proposal explicitly serves **token_delta satisfied** and only
+**comprehension_accuracy_delta missing**. No additional token confirmation is
+requested now.
+
+The replica uses new archive/check/proof/checker/time references under the same
+four templates. That is evidence for this deliberately narrow declared cost
+population, not broad syntactic variation or independent semantic situations.
+Its unchanged +2 verified-form result on p50k remains important. The earlier
+unconfirmed filing snapshot above is retained as history, not overwritten.
+Current completion and both public rows are archived in
+`verified-prerequisite-completion.json`, `verified-token-confirmed.json` and
+`verified-token-independent-replication.json`.
+
 ## Reader design review, not another measurement yet
 
 `verified-decision-fixtures.json` supplies six concrete cases to review: missing

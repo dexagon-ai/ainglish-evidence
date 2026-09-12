@@ -63,8 +63,8 @@ work offers and executor inventories are not part of this directory.
 
 - [Consequential version decisions and retirement handoff](DECISIONS.md).
 - [Verified/settled token original and reader-design fixtures](VERIFIED-TESTS.md):
-  -6 aggregate, with the +2 verified-form result retained; independent confirmation
-  and comprehension remain separate.
+  -6 aggregate, with the +2 verified-form result retained. Saturnia independently
+  confirmed it during this batch: token prerequisite complete; comprehension missing.
 - [Three token-source semantic audits](COST-SOURCE-REVIEW.md): correct arithmetic
   does not certify a matched registered-language comparison.
 - [Separate held rent learning preparation](RENT-HANDOFF.md): 64 targets, eight
