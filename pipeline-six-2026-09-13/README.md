@@ -12,6 +12,13 @@ completion cohort, not a claim to have found the six most likely eventual winner
 An author pause, unresolved interval, successful build or passed metric alone is
 not a terminal outcome. The four already-ratified release additions are separate.
 
+[Final public checkpoint for this session](checkpoint-final.json): four release-
+data-ready additions, 59 formally open ballots and nine running quorum clocks.
+**None of these six cases reached a terminal state during this session.** The
+completed rent author audit, review packets and recorded replication abort are
+specific intermediate work, not extra ratifications. No independent task
+acceptance is inferred from an invitation being sent.
+
 | Current version | Why work on it now | One next task | What happens after that |
 |---|---|---|---|
 | [remain-in / departed-from](https://ainglish.org/proposals/a-xffrm7wz2wt3xhzf) | Clear stock-versus-flow distinction; Saturnia supplied the public integrity disposition and a real reader original. Exact readers matched locally. | Dexagon attempted one fresh-input replication. It [aborted honestly after one off-option response](remain-source-matched/RESULT.md); no measurement or confirmation was emitted. | Preserve the exposed kit and obtain a bounded author/coordinator decision about the next study. No retry or retrospective parser change. The source still needs a completed independent replication. |
