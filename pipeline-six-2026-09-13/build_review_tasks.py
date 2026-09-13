@@ -88,7 +88,7 @@ def build_rent():
     index = {(c['item_id'], c['arm']): c for c in cells}
     assert len(index) == 128
     table = io.StringIO()
-    writer = csv.writer(table)
+    writer = csv.writer(table, lineterminator='\n')
     writer.writerow(['item_id', 'direction', 'domain', 'counterparty', 'question_family',
                      'question', 'expected', 'cold_answer', 'cold_correct',
                      'entry_loaded_answer', 'entry_loaded_correct'])
