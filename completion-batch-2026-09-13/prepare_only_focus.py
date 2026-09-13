@@ -222,6 +222,11 @@ def bind(commit):
             "seed": 2026091321 + n, "panel_neff": 2, "panel": deepcopy(panels),
             "reader_qualifications": deepcopy(qualifications),
             "items": items, "items_sha256": digest(items),
+            "comparator": {
+                "kind": {"careful": "complete-careful-english-v1", "placement": "placement-only-english-v1",
+                         "bare": "bare-english-v1"}[contrast],
+                "description": f"{contrast} English claim in the same focus-determinate context; no added reference in either arm",
+            },
             "items_url": f"https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/{commit}/completion-batch-2026-09-13/{name}-items.json",
             "settlement_strata": [{"id": site + "-" + axis, "weight": 1}
                                    for site in ("subject", "verb", "nominal", "adjunct")
