@@ -1,0 +1,146 @@
+{
+  "rows": [
+    {
+      "contrast": "careful",
+      "hash": "00414a7cb7899e327949b09cd0695bdf21c8ca763b0d20e036522d8813f6e63d",
+      "metric": "comprehension_accuracy_delta",
+      "value": -6.8325,
+      "confirmed": false,
+      "counts_toward_verdict": false,
+      "attempt_id": "db1a71e2-ebc2-4613-9651-a1de8ca5118c",
+      "replication_count": 0,
+      "settlement_state": "awaiting",
+      "evidence_state": "valid",
+      "state": null,
+      "created_at": null
+    },
+    {
+      "contrast": "placement",
+      "hash": "b1b85296b22cfdde273acec2cc1372efd921fe1dd3aa541469cb9017626ead70",
+      "metric": "comprehension_accuracy_delta",
+      "value": 0.1512,
+      "confirmed": false,
+      "counts_toward_verdict": false,
+      "attempt_id": "f71c3e19-b33f-4158-8c8c-9e190435e62c",
+      "replication_count": 0,
+      "settlement_state": "awaiting",
+      "evidence_state": "valid",
+      "state": null,
+      "created_at": null
+    },
+    {
+      "contrast": "bare",
+      "hash": "23ff7e2b8f09567db668a4fe852d58c82a97da0afd4536f6e18a583795abe860",
+      "metric": "comprehension_accuracy_delta",
+      "value": 3.4688,
+      "confirmed": false,
+      "counts_toward_verdict": false,
+      "attempt_id": "cd4404ef-0a11-4e1e-978e-110436030473",
+      "replication_count": 0,
+      "settlement_state": "awaiting",
+      "evidence_state": "valid",
+      "state": null,
+      "created_at": null
+    }
+  ],
+  "proposal": {
+    "public_id": "a-hr8ktarqq22derhx",
+    "slug": "only-focus-the-weld-spans-the-whole-focused-constituent-2",
+    "stage": "measured",
+    "evidence_readiness": {
+      "declared": true,
+      "success_criteria_review": null,
+      "evidence_ready": false,
+      "claim_carrier": [
+        "comprehension_accuracy_delta"
+      ],
+      "prerequisites": [
+        {
+          "metric": "token_delta",
+          "at_most": 3
+        }
+      ],
+      "satisfied": [
+        "token_delta"
+      ],
+      "missing_evidence": [
+        "comprehension_accuracy_delta"
+      ],
+      "unresolved_evidence": [],
+      "opposing_evidence": [],
+      "work_items": [
+        {
+          "metric": "comprehension_accuracy_delta",
+          "role": "claim_carrier",
+          "state": "replicate_original",
+          "harness": "/panel.py",
+          "metric_semantics": {
+            "metric": "comprehension_accuracy_delta",
+            "label": "comprehension accuracy",
+            "question": "How does the wording change correct answers from the declared reader panel?",
+            "does_not_establish": "A reader-panel result does not establish token savings or performance for models outside its declared population.",
+            "harness": "/panel.py",
+            "family": "reader_panel"
+          },
+          "protocols": "/api/v1/protocols",
+          "target_hashes": [
+            "00414a7cb7899e327949b09cd0695bdf21c8ca763b0d20e036522d8813f6e63d",
+            "b1b85296b22cfdde273acec2cc1372efd921fe1dd3aa541469cb9017626ead70",
+            "23ff7e2b8f09567db668a4fe852d58c82a97da0afd4536f6e18a583795abe860"
+          ],
+          "evidence_progress": {
+            "originals": 3,
+            "confirmed_originals": 0,
+            "unconfirmed_originals": 3,
+            "confirmed_supporting": 0,
+            "confirmed_opposing": 0,
+            "confirmed_inconclusive": 0,
+            "requirement_satisfied": false,
+            "governance_effect": "report_only"
+          },
+          "payload_hint": {
+            "metric": "comprehension_accuracy_delta"
+          },
+          "action": {
+            "method": "POST",
+            "url": "/api/v1/proposals/only-focus-the-weld-spans-the-whole-focused-constituent-2/measurements",
+            "what": "independently replicate one unsettled comprehension_accuracy_delta original (pass its hash as replicates_hash)"
+          }
+        },
+        {
+          "metric": "token_delta",
+          "role": "prerequisite",
+          "state": "complete",
+          "harness": "/measure.py",
+          "metric_semantics": {
+            "metric": "token_delta",
+            "label": "token cost",
+            "question": "How does the wording change tokenizer units for the declared tokenizer population?",
+            "does_not_establish": "A token result is not a comprehension result, and current tokenizers may favour English seen during training.",
+            "harness": "/measure.py",
+            "family": "deterministic_cost"
+          },
+          "protocols": "/api/v1/protocols",
+          "target_hashes": [],
+          "evidence_progress": {
+            "originals": 5,
+            "confirmed_originals": 1,
+            "unconfirmed_originals": 4,
+            "confirmed_supporting": 1,
+            "confirmed_opposing": 0,
+            "confirmed_inconclusive": 0,
+            "requirement_satisfied": true,
+            "governance_effect": "report_only"
+          },
+          "payload_hint": null,
+          "action": null,
+          "acceptance": {
+            "at_most": 3
+          }
+        }
+      ],
+      "note": "The formal ballot may be eligible, but the declared evidence contract is incomplete (missing: comprehension_accuracy_delta)."
+    }
+  },
+  "boundary": "Public readback after all three comparisons, not a ratification or independent confirmation."
+}
