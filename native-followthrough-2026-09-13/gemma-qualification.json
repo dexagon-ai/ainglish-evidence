@@ -1,0 +1,120 @@
+{
+  "instrument": {
+    "answer_protocol": "opaque-choice-v1",
+    "api": "openai",
+    "base_url": "http://127.0.0.1:11434/v1",
+    "digest_source": "ollama:/api/tags",
+    "instrument_preparation": {
+      "binding": "ollama:/api/tags",
+      "entry_point": "prepare_reader_instruments"
+    },
+    "max_tokens": 512,
+    "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+    "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+    "name": "Dex-Native-gemma-20260913",
+    "num_ctx": "provider-default",
+    "precision": "Q4_K_M-ollama0333-vulkan",
+    "provider": "ollama",
+    "reasoning_effort": "provider-default",
+    "seed": 13,
+    "temperature": 0,
+    "timeout_s": 120,
+    "top_k": "provider-default",
+    "top_p": 1.0
+  },
+  "kind": "ainglish.reader-qualification-run.v1",
+  "observations": [
+    {
+      "answer": "Mira",
+      "cell": "detectable",
+      "control_id": "owner-1",
+      "correct": true,
+      "expected": "Mira"
+    },
+    {
+      "answer": "cannot tell",
+      "cell": "other",
+      "control_id": "owner-1",
+      "correct": false,
+      "expected": "Mira"
+    },
+    {
+      "answer": "Jo",
+      "cell": "detectable",
+      "control_id": "owner-2",
+      "correct": true,
+      "expected": "Jo"
+    },
+    {
+      "answer": "cannot tell",
+      "cell": "other",
+      "control_id": "owner-2",
+      "correct": false,
+      "expected": "Jo"
+    },
+    {
+      "answer": "South",
+      "cell": "detectable",
+      "control_id": "owner-3",
+      "correct": true,
+      "expected": "South"
+    },
+    {
+      "answer": "North",
+      "cell": "other",
+      "control_id": "owner-3",
+      "correct": false,
+      "expected": "South"
+    },
+    {
+      "answer": "red",
+      "cell": "detectable",
+      "control_id": "owner-4",
+      "correct": true,
+      "expected": "red"
+    },
+    {
+      "answer": "red",
+      "cell": "other",
+      "control_id": "owner-4",
+      "correct": true,
+      "expected": "red"
+    }
+  ],
+  "receipt": {
+    "kind": "ainglish.reader-qualification.v1",
+    "lineage": {
+      "basis": "Existing local model family and Q4_K_M artifact; Ollama /api/tags binds the full Modelfile manifest. Native Ollama 0.33.3/Vulkan on RTX 3090, not the previous Ubuntu/CUDA serving configuration. No claim of independent training data.",
+      "key": "gemma3:12b"
+    },
+    "qualified_at": "2026-09-13T08:56:43+00:00",
+    "reader": {
+      "digest_source": "ollama:/api/tags",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "precision": "Q4_K_M-ollama0333-vulkan",
+      "provider": "ollama"
+    },
+    "result": {
+      "detectable_correct": 4,
+      "detectable_total": 4,
+      "min_gap_bps": 1250,
+      "min_recovered_bps": 5000,
+      "other_correct": 1,
+      "other_total": 4,
+      "passed": true
+    },
+    "roster_id": "Dex-Native-gemma-20260913@Q4_K_M-ollama0333-vulkan",
+    "screen_sha256": "63ffa2ff64214ba2af5703b74dea616734bbe5ea0bcdf83391b52369e378a3fb",
+    "settings_sha256": "c39733ea6f6ef9d1797f85f0db81e6a385272d98120cf7da5e69f6f34f8ec236",
+    "valid_until": "2026-09-20T08:56:43+00:00"
+  },
+  "screen": {
+    "controls": 4,
+    "kind": "ainglish.reader-qualification-screen.v1",
+    "ordering": "detectable then other; one call per cell; no retry",
+    "sha256": "63ffa2ff64214ba2af5703b74dea616734bbe5ea0bcdf83391b52369e378a3fb"
+  },
+  "status": "passed",
+  "truth_boundary": "Qualification tests this exact reader/settings combination on target-independent controls. It is not target evidence, model-family independence, or a promise of future provider stability."
+}
