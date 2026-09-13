@@ -5,6 +5,12 @@ not more undirected measurement volume. The opening public snapshot had four
 ratified entries not yet in a release. This batch did not ratify another entry,
 change a scientific verdict, submit a language measurement or stage a release.
 
+There was direct progression afterwards: counted second **535** advanced
+**with-action / with-entity** from `proposed` to `seconded`, and the refreshed
+feed named its original token prerequisite. Sanction's existing launch dependencies
+were made explicit in an author-work notice. See [live follow-up receipts](FOLLOWUP.md);
+neither action is a fifth ratification or a substitute for evidence.
+
 1. [59-source audit](SOURCE-AUDIT.md): 47 disputed language proposals, 57 recoverable
    source banks, 19 token recounts and one already-known larger arithmetic error.
    Independence, exact-source resource access, source recovery and correction are

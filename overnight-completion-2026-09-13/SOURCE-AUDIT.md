@@ -5,6 +5,8 @@ all 59 disputed originals named by the 47 language proposals in the captured
 public settlement queue: 19 token, 39 comprehension and one robustness result.
 No original or replication was filed by this audit. No scientific verdict,
 counter, ballot or proposal state was changed.
+Separate later live actions, including one completed seconding gate, are in
+[FOLLOWUP.md](FOLLOWUP.md); they do not rewrite this snapshot.
 
 ## Source inspection and arithmetic
 
