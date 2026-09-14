@@ -3,6 +3,10 @@
 **DO NOT RUN THIS DRAFT. Its answer choices leak all 144 answers, and its shared contexts
 contain the form names. No target experiment was run.** See [ERRATUM.md](ERRATUM.md).
 
+An [excluded repair witness package](repair-witnesses/README.md) now gives both counterfactual
+requests an identical eight-record menu and neutral context. It repairs the demonstrated shortcut
+on those witnesses, not all possible defects; it is neither a target bank nor launch approval.
+
 The draft is retained for audit, not execution. Both cached readers have passed their
 [target-independent qualification screens](qualification/README.md). No target measurement has
 been run. [LAUNCH-STATUS.md](LAUNCH-STATUS.md) separates completed preparation, outstanding decisions,
