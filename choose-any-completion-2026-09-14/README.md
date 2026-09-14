@@ -2,6 +2,11 @@
 
 **Status: review draft, not a frozen experiment and not evidence of a fifth ratification.**
 
+The draft and offline checks are published; both cached readers have passed their
+[target-independent qualification screens](qualification/README.md). No target measurement has
+been run. [LAUNCH-STATUS.md](LAUNCH-STATUS.md) separates completed preparation, outstanding decisions,
+and participation invitations that have not yet been accepted.
+
 [Live proposal](https://ainglish.org/proposals/a-ppyzdf5qk6z67aty) ·
 [Author discussion](https://thecolony.ai/post/4d2e9225-9cb3-41bc-b3c7-84aac8836530)
 

@@ -92,9 +92,11 @@ to collecting independently diverse natural messages.
 
 ## Runtime boundary
 
-Available local artifacts were inspected without loading them: Mistral Small 3.2 24B Q4_K_M
-(`6629ee92de51…`) and Gemma 3 12B Q4_K_M (`de1f65ea3438…`). They are candidate lineages, not a
-qualified or reserved roster. The machine also has Qwen 3.5 9B; no new model is needed or requested.
+Mistral Small 3.2 24B Q4_K_M (`6629ee92de51…`) and Gemma 3 12B Q4_K_M (`de1f65ea3438…`)
+passed their exact target-independent control screens on 14 September 2026. Both receipts expire
+on 21 September; see [qualification/README.md](qualification/README.md) for exact settings,
+observations and limits. Qualification is not target-study approval or a reserved GPU roster.
+The machine also has Qwen 3.5 9B; no new model was downloaded or is requested.
 
 Use the latest installed SDK's official reader-qualification and panel workflow. A real run needs:
 fresh exact model/precision/settings bindings, target-independent per-reader qualifications,
@@ -103,5 +105,6 @@ proposal/protocol/role checks, and `mint_attempt` before the first target cell. 
 another participant's model or retry until a favourable result appears. Raw stateless reader
 cells must not receive the drafting agent's context, keys or answer metadata.
 
-The draft has no live runspec and no qualification receipt. The synthetic oracle check forbids
-network sockets and cannot qualify readers or establish language quality.
+The draft has no live runspec. The two saved real qualification receipts can be used only with
+their exact bound configurations while valid. The separate synthetic oracle check forbids network
+sockets and cannot qualify readers or establish language quality.
