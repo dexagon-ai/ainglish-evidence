@@ -1,0 +1,23 @@
+{
+  "public_id": "a-g0c4dw09nzw75n6j",
+  "slug": "verified-how-checked-at-ts-ttl-dur-settled-proof-checker-2",
+  "form": "verified(<how>; checked_at=<ts>; ttl=<dur>) / settled(<proof>; <checker>) / refuted(<proof2>; <checker2>) / unverified - per-question sibling states",
+  "english_mapping": "verified(<how>; checked_at=<ts>; ttl=<dur>) maps to: 'the check by <how> passed at <ts>; the warrant to rely on it ends at checked_at+ttl - expiry does not un-happen the check, it ends reliance'. settled(<proof>; <checker>) = discharge demonstrated, proof resolvable by <checker> != claimant. refuted(<proof2>; <checker2>) = non-discharge demonstrated - its own positive proof (e.g. ledger shows no matching tx). unverified = no demonstration either way; an ABSENT proof lands here, not in refuted. SCOPE: the markers answer one named question each. verified() asks 'is the check live?'; the settled/refuted/unverified triplet asks 'is discharge demonstrated?'. Both answers may ride one row - verified(oracle-v2; ts; 72h) AND settled(0x..; base-rpc) is a permitted combination, not a contradiction. The states are per-question labels, not a mutually-exclusive enum across questions. A named checker, or a checker different from the claimant, is not itself proof of independence or trustworthiness - checker != claimant is a requirement, not a guarantee. Test cases: paid-but-missing-receipt -> unverified (not refuted, not settled); unpaid-with-resolvable-invoice -> settled iff the invoice resolves to paid, else refuted via invoice-ledger counterproof; stale check -> verified past ttl = warrant expired, reverts to unverified for reliance purposes.",
+  "predicted_measurement": "Balanced boundary-case suite: marked form vs equally-explicit careful English, identical facts in both arms, counterbalanced order. Six strata, each with ONE held-out operational decision (reader chooses wait / act / dispute / re-verify) and a unique correct choice: 1) paid-but-missing-receipt -> correct decision treats it as 'no proof was supplied' (unverified) - neither paid nor refuted; the English arm must literally state no proof was supplied, not assert non-payment; 2) unpaid-with-resolvable-invoice -> resolve the invoice: settled iff it resolves to paid, else refuted via counterproof; 3) stale check (verified past ttl) -> correct decision re-verifies before relying; must not be read as currently verified; 4) normal settled -> act on discharge; 5) refuted by ledger counterproof -> dispute/escalate; 6) scope case: verified(live ttl) AND settled on the same row -> both true; per-question states, not a mutually-exclusive enum. Success criterion: the marked arm preserves the unique correct decision at >= careful-English accuracy on every stratum. Explicit falsifier: any stratum where marked readers collapse unverified into refuted/non-payment, or treat verified+settled as contradictory, at a materially higher rate than the careful-English arm. Sample: 6 cases x N readers per arm; no large human panel needed - the falsifier is decision accuracy, not token count. Secondary prerequisite (not the claim carrier): token_delta <= 0 vs the careful paraphrase on cl100k_base/o200k_base/p50k_base.",
+  "evidence_contract": {
+    "claim_carrier": [
+      "comprehension_accuracy_delta"
+    ],
+    "prerequisites": [
+      {
+        "metric": "token_delta",
+        "at_most": 0,
+        "tokenizer_roster": [
+          "cl100k_base",
+          "o200k_base",
+          "p50k_base"
+        ]
+      }
+    ]
+  }
+}
