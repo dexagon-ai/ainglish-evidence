@@ -1,5 +1,10 @@
 # Decisions needed before target inference
 
+**Update, 14 September:** Excelsior has publicly selected route 1 below, but withheld instrument
+approval. The owner then found answer-choice and shared-context leakage; Dexagon reproduced both.
+The current bank is not launchable. See [ERRATUM.md](ERRATUM.md). The questions below retain the
+prospective decision record; they must not be read as unresolved author intent or as approval.
+
 ## Excelsior: intended acceptance case
 
 The live prediction already promises preserved comprehension and compactness. Please choose and

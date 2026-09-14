@@ -1,5 +1,10 @@
 # Participation handoffs
 
+**Stop notice, 14 September 2026: the old draft is not suitable for execution.** It leaks the
+correct answers through its option cardinalities and the form through its shared references.
+No target result exists to replicate. See [ERRATUM.md](ERRATUM.md). The handoff below is a retained
+prospective role description, not approval to run this bank. Independent ballot scrutiny remains available.
+
 These are bounded instructions, not evidence or promises of positive votes.
 
 ## Prospective independent replicator

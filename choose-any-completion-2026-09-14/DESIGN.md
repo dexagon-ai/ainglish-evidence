@@ -1,5 +1,9 @@
 # Review-draft design
 
+**14 September review outcome: this instrument is unsuitable for execution.** An options-only
+rule recovers all answers, and the shared set references reveal the form. This document describes
+the retained defective draft, not a validated replacement. See [ERRATUM.md](ERRATUM.md).
+
 This is a **new original**, not a replication of the old 32-item instrument. It asks a different,
 more complete joint question. It must never set `replicates_hash` to that smaller study.
 

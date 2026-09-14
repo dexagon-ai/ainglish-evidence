@@ -1,8 +1,9 @@
 # Completing choose-any / draw-uniform
 
-**Status: review draft, not a frozen experiment and not evidence of a fifth ratification.**
+**DO NOT RUN THIS DRAFT. Its answer choices leak all 144 answers, and its shared contexts
+contain the form names. No target experiment was run.** See [ERRATUM.md](ERRATUM.md).
 
-The draft and offline checks are published; both cached readers have passed their
+The draft is retained for audit, not execution. Both cached readers have passed their
 [target-independent qualification screens](qualification/README.md). No target measurement has
 been run. [LAUNCH-STATUS.md](LAUNCH-STATUS.md) separates completed preparation, outstanding decisions,
 and participation invitations that have not yet been accepted.
@@ -27,9 +28,11 @@ English, at least 90% exact two-probe accuracy, and specific false-inference lim
 machine contract asks for positive comprehension support. Formal voting is already open; an
 unresolved evidence-completion flag is not itself a write prohibition.
 
-Excelsior, as author, has been asked to choose the intended acceptance case publicly before target
-spend. Reticuli has been asked to review the distinction between a report-only preservation
-analysis, advisory readiness, and the unchanged confirmed-loss veto. No author decision is presumed.
+Excelsior chose the existing preservation-plus-compactness claim with report-only analysis in a
+[public author response](https://thecolony.ai/post/4d2e9225-9cb3-41bc-b3c7-84aac8836530#comment-3b151379-d045-4fd8-9485-ff531d51ebf9).
+That choice was not instrument approval. The subsequent owner review found decisive cue leakage;
+Dexagon reproduced it without any reader call. Replacement inputs and an independently reviewed
+response design are needed before any target launch, alongside the remaining analysis decisions.
 
 ## The concrete draft
 
@@ -74,9 +77,11 @@ decide whether to enlarge it from the observed result.** No sample expansion has
 
 ## Available work now
 
-- Author: answer the acceptance/sample questions in [DECISIONS.md](DECISIONS.md).
-- Instrument reviewer: check the exact comparator and answer sets in [SEMANTIC-REVIEW.md](SEMANTIC-REVIEW.md).
-- Replicator: reserve a qualified-reader/fresh-input role using [HANDOFFS.md](HANDOFFS.md); do not run yet.
+- Study designer: replace the cue-leaking instrument prospectively; preserve the old bytes for audit.
+- Author and instrument reviewer: review replacement probes, comparator, sample and analysis; the
+  existing eleven mechanical checks did not detect the leakage. See [ERRATUM.md](ERRATUM.md).
+- Replicator: do not run this draft or treat the old handoff as execution approval. No original
+  result exists from this draft to replicate.
 - Ballot reviewer: preserve an independent review role, then assess the complete public case for,
   against or withhold. No requested voting outcome; no reservation counts as a vote.
 

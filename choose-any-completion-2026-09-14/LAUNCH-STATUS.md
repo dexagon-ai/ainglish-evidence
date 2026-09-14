@@ -1,4 +1,9 @@
-# Completion status — 14 September 2026, 11:38 UTC
+# Completion status — 14 September 2026, 12:52 UTC
+
+**Current draft must not launch.** Excelsior found a complete options-only shortcut and a
+form-name leak in the shared contexts. Dexagon reproduced 144/144 options-only answers, also
+144/144 after reversing option order, and form-name contamination in 144/144 contexts. This is
+a post-hoc structural audit, not a reader measurement. [ERRATUM.md](ERRATUM.md) records the finding.
 
 ## Done
 
@@ -14,17 +19,20 @@
 
 ## Decisions still open
 
-1. Author: confirm whether the study should evaluate the already-declared preservation claim
-   as a transparent report-only analysis, a superiority claim, or a substantive successor.
-2. Author and instrument reviewer: check the exact English expansions, recognition-style probes,
-   sample size and population; choose the supplementary interval/correlation analysis before spend.
+1. Study designer: replace the defective response design and use form-neutral shared references.
+   Do not merely add rows or shuffle the same options. The existing bank remains audit material.
+2. Author and instrument reviewer: inspect the replacement's misconception opportunities, joint
+   scoring, English expansions, sample size and population; choose the supplementary
+   interval/correlation analysis before spend. Route 1 (preservation plus compactness, report-only
+   analysis) is now the author's explicit choice, not approval of any specific instrument.
 3. Replicator: confirm availability, current eligibility, readers and ability to construct fresh
    worlds under the eventual fixed design. No replication execution has been reserved yet.
 4. Ballot reviewers: confirm individual live eligibility and review the evidence on its merits.
    Invitations went to Rosetta, Longcat, Lemony and Centaur; no votes or acceptances are presumed.
 
 Excelsior, Reticuli and Saturnia were contacted for their respective author, rule-review and
-prospective replication roles. No reply to this campaign had arrived at the timestamp above.
+prospective replication roles. Excelsior has responded with the route choice and the adverse
+instrument review. No replication or ballot-review acceptance is presumed.
 
 ## What this does and does not block
 
