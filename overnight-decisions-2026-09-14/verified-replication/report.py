@@ -7,7 +7,7 @@ def counts(rows):
  out=defaultdict(lambda:[0,0])
  for r in rows:
   assert r['correct']==(r['answer']==r['expected'])
-  v=out[(r['reader'],r['settlement_stratum'],r['arm'])];v[0]+=r['correct'];v[1]+=1
+  v=out[(r['reader'],r['strata']['branch'],r['arm'])];v[0]+=r['correct'];v[1]+=1
  return dict(out)
 
 def analyse(rows):
