@@ -86,6 +86,7 @@ python assign_bank.py
 python audit.py
 python assignment_diagnostics.py
 python report.py
+python -m unittest -v test_report.py
 # Public artifact reads only, no credentials/inference:
 python audit_history.py
 ```
@@ -100,3 +101,10 @@ Final author/design decisions, immutable final artifact pins, current catalog/qu
 verification, refreshed live state, exact attempt preflight and mint remain prerequisites to
 the actual official panel run. If any fail, stop. Independent fresh-input replication is a later
 different principal's work, not this audit. Formal ballot review remains open under current rules.
+
+The six excluded synthetic report tests exercise all menu outcomes, null/negative results,
+off-option unknowns, typed missing cells, duplicate-cell refusal and the perfect-tie uncertainty
+boundary. [READER-RECHECK.json](READER-RECHECK.json) records a later catalog-only check matching both
+installed digests and exact qualification settings; it is not inference or a permanent resource
+reservation. The report CLI checks the frozen reader/world/arm assignment and refuses to certify
+preservation from an incomplete run. None of these checks changes the bank or analysis estimand.

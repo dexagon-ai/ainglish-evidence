@@ -1,6 +1,7 @@
 """Prospective report helpers. No network, model calls or Ainglish writes."""
 from collections import Counter, defaultdict
 import json
+import hashlib
 import math
 from pathlib import Path
 import random
@@ -225,7 +226,18 @@ if __name__=='__main__':
         journal=json.loads(Path(sys.argv[1]).read_text())
         if not isinstance(journal,dict) or journal.get('kind')!='ainglish.panel.cell-results.v1':
             raise SystemExit('Requires the official saved real-cell journal, not calibration or synthetic output')
-        result=analyse(json.loads((ROOT/'items.json').read_text()),journal['rows'])
+        plan=json.loads((ROOT/'planned-cells.json').read_text())['cells']
+        expected={(c['world_id'],c['reader']):c['arm'] for c in plan}
+        for cell in journal['rows']:
+            if expected.get((cell['item_id'],cell['reader']))!=cell['arm']:
+                raise SystemExit('Journal cell does not match the frozen world/reader/arm assignment')
+        items=json.loads((ROOT/'items.json').read_text())
+        result=analyse(items,journal['rows'])
+        result['items_sha256']=hashlib.sha256(json.dumps(items,sort_keys=True,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
+        result['planned_target_cells']=len(plan)
+        result['planned_cells_complete']=len(journal['rows'])==len(plan)
+        if not result['planned_cells_complete']:
+            result['conditional_ni']={'status':'unavailable_incomplete_run','reason':'Preserve partial/abort observations; do not certify preservation.'}
         result['source_attempt_id']=journal.get('attempt_id')
         output.write_text(json.dumps(result,indent=2)+'\n')
         raise SystemExit(0)
