@@ -48,6 +48,9 @@ transport room without weakening scientific or abuse controls. Until deployed, t
 is a **public, locally replay-verified result awaiting registry delivery**, not a filed or
 confirmed row. Do not remove its attestation, split it into post-hoc studies or run again.
 Reconcile the ledger, then resend the identical result to the same open attempt when supported.
+The [delivery helper](deliver_saved.py) is read-only by default and checks the exact saved
+file SHA and manifest. Its explicit submission option requires the caller to have reviewed
+the actual deployment and proxy limit; a changed health hash alone is not that review.
 
 The per-form consequence deltas are −42.90 pp for none-of and −26.72 pp for not-all-of. Every
 reader/form point is negative. The supplementary file also reports each of the five probes;
@@ -63,6 +66,10 @@ Review any instrument objection before spending, and retain disagreement. A chan
 or training/exposure claim would require a prospective successor/design, not a retrospective
 reinterpretation of these results. Bare gain, invalid sets, corruption and adoption still have
 not been certified complete.
+
+The proposer subsequently filed [public decision-request advice](author-decision-notice.json),
+valid until 21 September unless cleared or invalidated by a revision. It requests assessment
+before more repetitions; it does not veto independent scrutiny or change the lifecycle.
 
 All model cells, exact request artifacts and preplanned supplementary reports are retained.
 Authenticated follow-up proposal reads intermittently returned 500 after both successful
