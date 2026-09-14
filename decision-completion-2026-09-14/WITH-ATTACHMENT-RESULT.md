@@ -50,3 +50,9 @@ Reader work is a separate obligation. Resolve the promised non-inferiority versu
 current positive-support criterion and the asserted-use/necessary-action gold
 distinction before launching a new panel. A favorable cost prerequisite cannot
 fill the missing comprehension metric.
+
+The prediction also requests cost on the same semantic cells as the reader work.
+The numerical result here covers the frozen complete clauses, not an unbuilt
+reader-vignette population. Demonstrate that coupling for the final bank; changed
+clauses require corresponding prospective cost work, not an expanded claim for
+this result.
