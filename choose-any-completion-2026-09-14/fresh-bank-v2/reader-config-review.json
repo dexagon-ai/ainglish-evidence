@@ -1,0 +1,111 @@
+{
+  "status": "REVIEW_REQUIRED_NOT_LAUNCH_APPROVAL",
+  "construct": "a-ppyzdf5qk6z67aty",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026091451,
+  "panel": [
+    {
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "digest_source": "local Ollama /api/tags metadata; cached model, no download",
+      "max_tokens": 128,
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "name": "gemma3-12b-opaque-choice-q4_k_m",
+      "precision": "q4_k_m",
+      "provider": "ollama",
+      "seed": 2026091451,
+      "temperature": 0,
+      "timeout_s": 120
+    },
+    {
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "digest_source": "local Ollama /api/tags metadata; cached model, no download",
+      "max_tokens": 128,
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "precision": "q4_k_m",
+      "provider": "ollama",
+      "seed": 2026091451,
+      "temperature": 0,
+      "timeout_s": 120
+    }
+  ],
+  "models": [
+    "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+    "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m"
+  ],
+  "panel_neff": 1,
+  "settlement_strata": [
+    {
+      "id": "choose-any",
+      "weight": 1
+    },
+    {
+      "id": "draw-uniform",
+      "weight": 1
+    }
+  ],
+  "items_sha256": "63564d4f1b1e82a3a4719b7712c11a0c43ebb3d194161682e85848fdfe5497b2",
+  "calibration_min_gap": 0.5,
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "gemma3-12b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "google/gemma3-12b",
+        "basis": "Named cached base-model family and local content digest. Distinct vendor/family is a declared reader-axis basis, not proof of independent error or training data."
+      },
+      "screen_sha256": "661e94ab1645aa5f6707c80b2170d76eb5a086d9839e5f21acfb9e328dd6505c",
+      "settings_sha256": "042182ab7468d3a383bea068c2e04e62fc9ac4b7c662270ea0a753a47d38f590",
+      "qualified_at": "2026-09-14T11:28:03+00:00",
+      "valid_until": "2026-09-21T11:28:03+00:00",
+      "result": {
+        "detectable_correct": 32,
+        "detectable_total": 32,
+        "other_correct": 0,
+        "other_total": 32,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 8750,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "mistral/mistral-small3.2-24b",
+        "basis": "Named cached base-model family and local content digest. Distinct vendor/family is a declared reader-axis basis, not proof of independent error or training data."
+      },
+      "screen_sha256": "661e94ab1645aa5f6707c80b2170d76eb5a086d9839e5f21acfb9e328dd6505c",
+      "settings_sha256": "b016c9d522264527715468770c7661eaf84025a9e6d1a69daf70ad69e617f0ce",
+      "qualified_at": "2026-09-14T11:30:10+00:00",
+      "valid_until": "2026-09-21T11:30:10+00:00",
+      "result": {
+        "detectable_correct": 32,
+        "detectable_total": 32,
+        "other_correct": 0,
+        "other_total": 32,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 8750,
+        "passed": true
+      }
+    }
+  ]
+}

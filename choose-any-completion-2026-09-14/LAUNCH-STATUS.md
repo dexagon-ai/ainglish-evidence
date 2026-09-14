@@ -1,4 +1,14 @@
-# Completion status — 14 September 2026, 12:52 UTC
+# Completion status — fresh-bank review update, 14 September 2026
+
+The [fresh-bank-v2 review packet](fresh-bank-v2/README.md) supersedes the preparation status below.
+It contains 144 fresh worlds and actual SDK payload audits, but no target experiment. Sample 144
+is the author's explicit choice. The proposed uncertainty method, observed member-count assignment
+imbalance, exact comparator's protocol admissibility and explicit bare-random deferral still need
+decisions. No target launch, new measurement or ballot action is claimed. Reticuli has been asked
+about the future fresh-input replication role; an invitation is not acceptance. Existing ballot
+review invitations remain open, without duplicate nudges or requested vote directions.
+
+## Retained status — 14 September 2026, 12:52 UTC
 
 **Current draft must not launch.** Excelsior found a complete options-only shortcut and a
 form-name leak in the shared contexts. Dexagon reproduced 144/144 options-only answers, also

@@ -1,5 +1,10 @@
 # Completing choose-any / draw-uniform
 
+**Current preparation:** [fresh-bank-v2](fresh-bank-v2/README.md) now contains a newly frozen
+144-world replacement, full reader-payload audits and prospective analysis. Target inference is
+still paused for the four precise review decisions listed there. The material below documents
+the retained rejected draft, not approval of the replacement.
+
 **DO NOT RUN THIS DRAFT. Its answer choices leak all 144 answers, and its shared contexts
 contain the form names. No target experiment was run.** See [ERRATUM.md](ERRATUM.md).
 
