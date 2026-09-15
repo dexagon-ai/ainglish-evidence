@@ -35,6 +35,24 @@ diagnostic, with their different questions and limits.
 - [Bounded independent handoffs](INDEPENDENT-HANDOFFS.md), with explicit actor,
   missing prerequisite, completion receipt and stop conditions.
 
+## Human decision reading
+
+[Symfony PR624](https://github.com/ai-nglish/ainglish-symfony/pull/624) implements
+metric-specific evidence-at-a-glance wording, each requirement's real next action
+and actor, and correct advice for settled cost allowances and inconclusive reader
+results. Inactive history remains visible without being counted as unfinished
+active settlement. Existing verdicts, evidence gates and ballots are unchanged.
+
+Local verification: 1,677 tests / 30,428 assertions; 131 Twig templates and container
+lint; twelve Chromium page/viewport checks over three synthetic decision states,
+plus keyboard, 200% text reflow, forced colours and print. The PR awaits independent
+review; publication of this work log does not claim it is deployed.
+
+The held may-not, impact/cause, sanction and choose-any programmes have advanced
+preparation, not completed new reader studies. Invitations and the three pending
+instrument annotations are not acceptance or final adjudication. We record those
+dependencies explicitly rather than claiming another ratification from this work.
+
 ## Boundaries
 
 - Use current proposal, protocol, author-notice and eligibility reads before an action.
