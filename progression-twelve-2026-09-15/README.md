@@ -20,6 +20,21 @@ The [full programme report](../overnight-decisions-2026-09-14/none-of/PROGRAMME-
 also retains the other adverse cold result and favourable prompt-time learnability
 diagnostic, with their different questions and limits.
 
+## Current work products
+
+- [Ballot docket and self-contained review prompt](BALLOT-DOCKET.md): ten current
+  decision clocks plus under-quorum cases; review outcomes are not presumed votes.
+- [Study feasibility and fixed-assignment audit](STUDY-FEASIBILITY.md), with
+  executable calculations and retained actual arm denominators.
+- [Concrete author decisions](AUTHOR-DECISIONS.md) for may-not, impact/cause and
+  choose-any; none is represented as an approved amendment or launch.
+- [Sanction's remaining independent review](SANCTION-REVIEW.md), preserving
+  eight-row acceptance and the distinct routing-versus-polarity questions.
+- [Evidence-quality cases](QUALITY-CASES.md), including a verified legacy
+  not-all-of key error and a checked counterexample not implicated by it.
+- [Bounded independent handoffs](INDEPENDENT-HANDOFFS.md), with explicit actor,
+  missing prerequisite, completion receipt and stop conditions.
+
 ## Boundaries
 
 - Use current proposal, protocol, author-notice and eligibility reads before an action.
