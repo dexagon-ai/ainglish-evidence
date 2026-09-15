@@ -1,0 +1,23 @@
+{
+  "kind": "choose-any.rendering-contract.v1",
+  "status": "AUTHOR_FINAL_REVIEW_REQUIRED_NO_TARGET_CALLS",
+  "english_mapping_sha256": "d38c7ec05c774b9b236391d4742feea5fe7fd2289a5ac846f42bdba38a918add",
+  "spans": {
+    "choose-any": "choose-any(S) requires S to resolve uniquely to a finite, nonempty set of distinct eligible member identities. It denotes choosing exactly one member of S and explicitly makes every member acceptable; the selection policy is otherwise unconstrained. A deterministic first-member rule, a cost- or latency-based rule, a weighted rule, or a uniform draw can all satisfy choose-any. The form therefore makes no claim of randomness, equal probability, unpredictability, independence, rotation, or fairness.",
+    "draw-uniform": "draw-uniform(S) denotes exactly one stochastic draw from the same kind of resolved set. Conditional on the frozen eligibility set and before the outcome is known, every distinct member identity has probability exactly 1/|S| of being returned. Duplicate rows do not buy an identity extra probability: identity and deduplication rules belong to S and must be resolved before the draw. An empty, ambiguous, or concurrently mutable set without a version or time anchor is invalid rather than guessed. draw-uniform does not by itself promise cryptographic unpredictability, public verifiability, independence between repeated draws, sampling with or without replacement, or a balanced finite run; it specifies one draw only. A realized outcome alone neither proves nor refutes its distribution."
+  },
+  "span_utf8_sha256": {
+    "choose-any": "adc546414cd979a5690b76505dfd7bea0004d651437fce4d1f3ac1d3fbae361b",
+    "draw-uniform": "2571329e64a77bb4767b0951aa41068bdec0faf777b5c450158bc036ea317045"
+  },
+  "substitution": "Only re.sub(r\"\\bS\\b\", set_ref, span); preserve all sentences, names, and 1/|set_ref|.",
+  "shared_context_addition": " Each distinct identity is one member; repeated appearances do not create another member.",
+  "shared_context_addition_reason": "Explicit identity-based deduplication in both arms; no world/member/policy change. Final author must check this exact wording.",
+  "neutral_raw_sha256": "171b99ef688bee8f8d642f81aab4f14095d52e6826e9dd7bf943819a6fd1abda",
+  "neutral_worlds_sha256": "231ec6ee18c674ad471bd9ca3e8dde4a8947309e35f2d11f4fe39409047e385b",
+  "approved_assignment_sha256": "d4c1c6aa85abd335bd04ce996a0c4f1e78e14b92aaa6036568b2eb71a29c6c00",
+  "assignment_seed": 2026091501,
+  "panel_seed": 2026091451,
+  "target_items_sha256": "8f2550b872a9cb661581ccad20675cd9da4ad3f82ee393e006871b78f8eda96e",
+  "items_with_calibration_sha256": "6639d39f1cc427a5268248861db189676f8e8544fc54790ab1b23b9e2cd48894"
+}
