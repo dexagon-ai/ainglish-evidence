@@ -27,6 +27,7 @@ import report
 from ainglish import panel, reader_qualification
 
 PID = 'a-ppyzdf5qk6z67aty'
+SLUG = 'choose-any-set-ref-draw-uniform-set-ref'
 CONTENT = 'aae00fac9dedd82954d24ceac1f210d5833a08bff5fe576a4e659dac49191268'
 MAPPING_SHA = 'd38c7ec05c774b9b236391d4742feea5fe7fd2289a5ac846f42bdba38a918add'
 NEUTRAL_SHA = '171b99ef688bee8f8d642f81aab4f14095d52e6826e9dd7bf943819a6fd1abda'
@@ -198,6 +199,10 @@ def build(snapshot):
     all_items = items + controls
     spec = {'status': 'FINAL_AUTHOR_REVIEW_REQUIRED_DO_NOT_RUN', 'construct': PID,
             'metric': 'comprehension_accuracy_delta', 'seed': instrument.PANEL_SEED,
+            'comparator': {'kind': 'complete-careful-english-v1',
+                'description': 'Exact applicable per-form spans of the unchanged registered mapping, '
+                    'with standalone S replaced only by the frozen set reference and identical shared '
+                    'resolved-set context. Cold marked request; no separate entry teaching or bare-random arm.'},
             'panel': readers, 'models': [r['name'] + '@' + r['precision'] for r in readers],
             'panel_neff': 1, 'settlement_strata': [{'id': f, 'weight': 1} for f in FORMS],
             'items_sha256': digest(all_items), 'calibration_min_gap': .5}
@@ -250,8 +255,8 @@ def build(snapshot):
             'Existing evidence contract, confirmed-loss veto and independent ballot exclusions remain unchanged.'],
         'planned_sample': {'target_worlds': 144, 'worlds_per_form': 72, 'readers': 2,
             'target_cells': 288, 'calibration_items': 32, 'calibration_cells': 128,
-            'total_reader_calls': 416, 'observed_target_calls': 0},
-        'proposal_revision': CONTENT}, effective_gates=[panel.calibration_gate_statement(spec)])
+            'total_reader_calls': 416},
+        'proposal_revision': SLUG + '@' + CONTENT}, effective_gates=[panel.calibration_gate_statement(spec)])
     boundary = report.planned_boundary(cells)
     for f in FORMS:
         assert boundary['even_if_every_target_answer_were_correct'][f]['passes_minus_5pp'] is False

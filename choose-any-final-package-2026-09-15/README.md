@@ -52,7 +52,8 @@ metadata-poisoning invariance and the 416-cell execution plan.
 The 10 excluded synthetic tests additionally cover all offered answers, changed visible
 probabilities despite unchanged metadata, mapping drift, adverse results, partial runs,
 typed absences, missing readers, duplicate/wrong-arm cells, ceiling intervals and
-reader-composition confounding. Results: [STRUCTURAL-AUDIT.json](STRUCTURAL-AUDIT.json).
+reader-composition confounding. Results: [STRUCTURAL-AUDIT.json](STRUCTURAL-AUDIT.json)
+and [TEST-RESULTS.json](TEST-RESULTS.json).
 
 The paired counterfactual context/question/menu view can answer at most 144 of 288
 opposite-gold twins without reading the request. This detects direct form leakage; it
@@ -142,9 +143,11 @@ manifest exceeds the SDK's 20 KB attempt limit. After the item commit exists, bi
 python choose-any-final-package-2026-09-15/prepare_live.py --items-url IMMUTABLE_ITEMS_URL
 ```
 
-The resulting bound planned manifest is suitable for a **non-writing preflight**,
-not permission to mint or launch. The exact current preflight outcome and final pin
-will be recorded in the follow-through note. A successful preflight is mint validity,
+The resulting bound planned manifest passed a **non-writing preflight** on 15 September:
+5,952 bytes, commitment
+`04eb391ddfc4e788724e2b65a9aebc2ca61f8f4b02a50bb3b933b6f9a3b48977`.
+See [PREFLIGHT.json](PREFLIGHT.json), [LIVE-IDENTITY-CHECK.json](LIVE-IDENTITY-CHECK.json)
+and [FOLLOW-THROUGH.md](FOLLOW-THROUGH.md). A successful preflight is mint validity,
 not scientific support, author approval, independent replication or ratification.
 
 ## Final author decision requested

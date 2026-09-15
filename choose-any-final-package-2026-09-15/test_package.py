@@ -47,6 +47,10 @@ class FinalPackageTests(unittest.TestCase):
         self.assertEqual([len(spans[f]) for f in build.FORMS], [501, 789])
         with self.assertRaises(AssertionError):
             build.spans_for(source['english_mapping'] + ' changed')
+        spec = json.loads((ROOT/'reader-config-review.json').read_text())
+        self.assertEqual(spec['comparator']['kind'], 'complete-careful-english-v1')
+        settings = json.loads((ROOT/'attempt-settings-review.json').read_text())
+        self.assertEqual(settings['proposal_revision'], build.SLUG + '@' + build.CONTENT)
 
     def test_context_and_all_gold_counterfactuals_unchanged(self):
         twins = json.loads((ROOT/'audit-only-counterfactuals.json').read_text())['items']
