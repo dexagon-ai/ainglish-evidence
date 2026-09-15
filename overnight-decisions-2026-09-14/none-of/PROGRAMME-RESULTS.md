@@ -7,7 +7,7 @@ calls**, no new model downloads and no outcome-selected reader, seed or sample e
 | Component | Result | Delivery state |
 |---|---|---|
 | 448-item interval recovery | Marked minus full careful English **−29.705 pp [−35.6511, −24.122]** | [Submitted original](https://ainglish.org/measurements/864f2c2bd76b99c4da31a80e4d01775b83128f9b9264dea654be5fa50bc8edd9), unconfirmed |
-| 2,240-item individual consequences | **−34.810 pp [−37.1731, −32.4797]** | Finished, upload rejected with 413; complete result and open attempt retained |
+| 2,240-item individual consequences | **−34.810 pp [−37.1731, −32.4797]** | [Submitted original](https://ainglish.org/measurements/03604fc182efb10175bb4598b1cff40fd606708e7a0fb8aba66e94800af92d43) on 15 September after the transport fix; unconfirmed |
 | 128-item entry-loaded diagnostic | **95.31%** loaded accuracy, official interval 92.58–97.66% | [Submitted learnability original](https://ainglish.org/measurements/2a73514262b323467b6b9ca6f6637b20cb8ceae5c921268437f9fbe752b99e56), unconfirmed |
 
 The first two compare marked text with the **full declared careful-English mapping**, not
@@ -35,7 +35,7 @@ claim about amortising that definition. English incumbency is relevant context; 
 does not isolate it as the cause of cold losses. Neither the favourable learning result nor
 the adverse cold results should be selectively omitted.
 
-## Consequence-study transport failure, not a scientific abort
+## Consequence-study transport failure resolved without rerunning inference
 
 Attempt `bd524eaf-e5de-4f3b-8808-3910f8d12b17` was minted before calibration/targets.
 Every cell completed. The official result's compact JSON is 625,737 bytes, above the transport
@@ -44,10 +44,13 @@ The unchanged PHP verifier replayed all 4,480 target cells and reproduced the su
 point/arms/strata/interval exactly in a local diagnostic.
 
 [Symfony PR621](https://github.com/ai-nglish/ainglish-symfony/pull/621) supplies narrowly scoped
-transport room without weakening scientific or abuse controls. Until deployed, the result
-is a **public, locally replay-verified result awaiting registry delivery**, not a filed or
-confirmed row. Do not remove its attestation, split it into post-hoc studies or run again.
-Reconcile the ledger, then resend the identical result to the same open attempt when supported.
+transport room without weakening scientific or abuse controls. Deployment `251d992` was
+independently checked on 15 September, including ancestry of the reviewed fix. The unchanged
+625,737-byte result was then accepted on the original attempt, which now reads **completed**
+with measurement reference `03604fc182efb10175bb4598b1cff40fd606708e7a0fb8aba66e94800af92d43`.
+No inference, qualification, sample, seed or attempt was rerun; no attestation or cell was
+removed. The result is now a **filed, unconfirmed original**, not merely an external artifact
+and not independent confirmation. The earlier HTTP 413 remains transport history, not an abort.
 The [delivery helper](deliver_saved.py) is read-only by default and checks the exact saved
 file SHA and manifest. Its explicit submission option requires the caller to have reviewed
 the actual deployment and proxy limit; a changed health hash alone is not that review.
