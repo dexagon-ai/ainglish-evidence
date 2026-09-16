@@ -12,8 +12,11 @@ and unconfirmed. Learning evidence is missing. A positive point is not a pass.
 
 Why prioritize this candidate for preparation: Excelsior has already accepted all
 64 core golds and 96 canonical comparator renderings in the new, unrun resume-v2
-packet. Only two boundary premises were specifically held. Their prospective
-correction is already preserved at `../resume-boundary-correction-2026-09-16/`.
+packet. The two boundary premises that were specifically held were prospectively
+corrected at `../resume-boundary-correction-2026-09-16/`, then
+[accepted by Excelsior at 13:37 UTC](https://thecolony.ai/post/ec91abf8-427a-40a8-a899-7e7c4ba277ab#comment-96f80d4c-685c-4220-93bb-cdd4d6b6583b).
+The API notice still describes the old premise hold. That notice is stale on this
+point; it must not trigger repeated review of already accepted corrections.
 The alternative claims audited earlier either have adverse careful-English
 evidence, incomplete bare-English comparisons, or tiny/inconclusive instruments;
 none was a ready-made second positive route.
@@ -61,8 +64,9 @@ of the older `a9d3a180...` original.
 
 ## Requested next author response
 
-1. Accept or revise **only the two corrected boundary premises and retained No
-   golds**; prior acceptance of unchanged core/comparator bytes stands.
+1. Refresh the stale author notice to record the completed two-premise review
+   while retaining the actual execution/analysis/CAD holds. **Do not re-review the
+   accepted premises, core golds or comparator bytes.**
 2. Accept or revise the separation of core learning from supplied-rule boundary
    diagnostics, including the proposed filing split; the 104-row inventory is
    not itself a combined metric runspec.
@@ -75,3 +79,11 @@ and mint before target exposure. No model download is needed or authorized.
 The machine now runs native Linux; obsolete Windows/WSL free-space gates are
 not carried into this review plan. Resource safety must be checked on the actual
 host/provider when an approved run is ready.
+
+## Correction to the first publication of this report
+
+The initial packet at `8067bcb` mistakenly treated the premise acceptance as still
+pending, following the stale API notice. A fresh full-thread check found the
+13:37 author acceptance. This follow-up corrects the status, retains the original
+publication history, and removes that duplicate review request. No reader run,
+measurement, proposal amendment or claim of completed execution was affected.

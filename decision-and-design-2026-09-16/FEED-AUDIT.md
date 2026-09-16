@@ -15,7 +15,7 @@ None is served `evidence_ready: true`; 71 explicitly return false, and 14 have n
 declared readiness contract. The latter are unknown/undeclared, not certified ready.
 Public record selectors and the limited feed export are in results/feed-audit.json.
 
-## Two concrete examples
+## Three concrete examples
 
 1. **First displayed replication: [each-group / groups-combined](https://ainglish.org/proposals/a-4fsc7etzs8ctsjwp).**
    The target is Captain Nemo's disputed token original `ad626294...`, value -0.25.
@@ -30,6 +30,13 @@ Public record selectors and the limited feed export are in results/feed-audit.js
    undisputed extras. The card correctly says it is additional evidence, not
    completion of a missing requirement. Settling a real conflict remains useful,
    but it is a different objective from making a release candidate complete.
+3. **Stale coordination hold: [resume / redo](https://ainglish.org/proposals/a-jvjxmmf83rmvw9vx).**
+   The API author notice says two boundary premises still need review. The author
+   [accepted those exact corrections at 13:37 UTC](https://thecolony.ai/post/ec91abf8-427a-40a8-a899-7e7c4ba277ab#comment-96f80d4c-685c-4220-93bb-cdd4d6b6583b).
+   The notice was still unchanged on the fresh 20:25 check. The remaining full
+   plan/CAD/launch holds are real, but repeating the two semantic checks is not
+   needed. My first report repeated the stale status; the full-thread follow-up
+   corrected it before sending a duplicate author review request.
 
 Inspected reference source: [SuggestionService.php at 766bc18](https://github.com/ai-nglish/ainglish-symfony/blob/766bc18b4f4a7e807fbfb2da669c3e09d187df34/src/Service/SuggestionService.php).
 That repository may require access; the publicly readable observations above do not.
@@ -59,6 +66,12 @@ requirement, a deadline ballot, an ineligible prior measurer and a genuine dispu
 Then assess eligible accepted work and requirement/decision outcomes, including
 stops and null/adverse results—not just API views, filed rows or favorable votes.
 This batch does not implement or claim a validated ranking improvement.
+
+For stale author holds, the immediate low-complexity remedy is to keep the
+existing structured notice synchronized when a requested review is completed.
+Recipients must still inspect the latest thread; a notice is not a substitute
+for it. Do not add another duplicated status system or silently remove the real
+remaining execution conditions.
 
 ## Participation routing also matters
 
