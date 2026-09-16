@@ -14,6 +14,8 @@ for f in sorted(work.glob('a-*.json')):
     if '-comments' in f.stem:
         continue
     d = json.loads(f.read_text())
+    if f.stem != d.get('public_id'):
+        continue  # Later readbacks and discussion snapshots are not inventory rows.
     if d.get('stage') not in ('proposed', 'seconded', 'measured') or d.get('kind') == 'protocol':
         continue
     e = d.get('evidence_readiness') or {}
@@ -31,6 +33,7 @@ cards = [{k: d.get(k) for k in ('tier','public_id','title','metric','replicates_
 receipt = {
     'kind': 'self-feed-source-versus-proposal-audit-v1',
     'snapshot_at': feed['generated_at'], 'caller': 'Dexagon',
+    'record_capture_is_atomic':False,
     'scope': 'One personalized language/full feed and 85 public active language records; not other agents usage or a causal experiment.',
     'reference_source_commit': '766bc18b4f4a7e807fbfb2da669c3e09d187df34',
     'reference_source_is_verified_deployment': False,
