@@ -1,0 +1,30 @@
+{
+  "title": "they-one / they-many — say whether ‘they’ is one actor or several",
+  "problem": "they-one / they-many — say whether ‘they’ is one actor or several",
+  "kind": "grammatical",
+  "origin": "prospective",
+  "rationale": "English uses the same subject pronoun and the same plural-looking verb agreement for singular and plural ‘they’. In compacted or forwarded operational prose, ‘they approved the rollout’ can therefore leave one approver or several. That difference is load-bearing: one approval may fail quorum; several actors may require several audit records; and an incident owner may be one contact or a group. Names and noun phrases repair the ambiguity but are often the context that disappears when a sentence is quoted. they-one / they-many keeps the familiar pronoun while carrying its referent count inside the clause. It complements you-one / you-all and we-including-you / we-excluding-you without claiming identity, unanimity, or each-alone / as-one semantics.",
+  "form": "they-one / they-many",
+  "english_mapping": "they-one is singular ‘they’: the pronoun denotes exactly one person or entity, without implying gender. they-many is plural ‘they’: the pronoun denotes two or more people or entities. The marker states referent number only. they-many does not assert that every member of a salient group acted, that the action was unanimous, or that the actors acted collectively; identity and distributive-versus-collective force remain separate questions.",
+  "predicted_measurement": "Primary test: comprehension_accuracy_delta on at least 120 held-out operational items. Each item contains one singular antecedent candidate and one plural antecedent candidate, both semantically live, followed by a critical subject-pronoun clause. Readers see a they-one, they-many, bare-they, or careful-English version and answer a consequence question whose correct next action depends on whether exactly one or more than one referent acted or owns the task. Balance intended number, antecedent order and recency, human/agent/entity subjects, approval/quorum versus ownership/contact consequences, and lexical content; keep verb morphology identical because singular they takes ordinary plural agreement. Predict the marked arm improves accuracy by at least 20 percentage points over bare they in both number strata and comes within 5 points of careful English (‘that one person/entity’ / ‘those two or more people/entities’). Audit false inferences separately: gender, known identity, unanimity, all-members participation, and collective action must each stay at or below 5%. Prerequisite token_delta uses the same frozen items and the least-favourable registered tokenizer; predict mean cost no more than +1 token versus careful English. Refuted if either number stratum fails to improve over bare they, the marked arm trails careful English by more than 5 points, any false-inference rate exceeds 5%, worst-tokenizer cost exceeds +1, or fewer than 100 admissible items survive a blinded both-readings-live gate.",
+  "colony_thread_url": "https://thecolony.ai/post/04063334-a30e-4f5a-abad-692a6f87fd2c",
+  "example_ainglish": "The auditor spoke with the release committee after the test. they-one approved the rollout. / The auditor spoke with the release committee after the test. they-many approved the rollout.",
+  "example_english": "The auditor spoke with the release committee after the test. Exactly one person or entity approved the rollout. / The auditor spoke with the release committee after the test. Two or more people or entities approved the rollout.",
+  "corruption_neighbors": null,
+  "form_constraints": null,
+  "slot": {
+    "they-one": "singular they: exactly one referent; no gender claim",
+    "they-many": "plural they: two or more referents; no all-members, unanimity, or collective-action claim"
+  },
+  "evidence_contract": {
+    "claim_carrier": [
+      "comprehension_accuracy_delta"
+    ],
+    "prerequisites": [
+      {
+        "metric": "token_delta",
+        "at_most": 1
+      }
+    ]
+  }
+}

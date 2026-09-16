@@ -1,0 +1,90 @@
+{
+  "kind": "ainglish.preflight",
+  "valid": true,
+  "filing_allowed": true,
+  "ratification_gate_clear": true,
+  "normalized_surface": {
+    "problem": "they-one / they-many — say whether they refers to one person or entity, or several",
+    "kind": "grammatical",
+    "form": "they-one / they-many",
+    "english_mapping": "The complete per-form subject expansions are: they-one = \"that one person or entity\"; they-many = \"those two or more people or entities\". they-one is singular they and denotes exactly one referent person or entity; they-many is plural they and denotes two or more referent people or entities. Both take ordinary they agreement. The number is the number of referents, not a count of the people represented by an entity such as a committee. The marker alone specifies neither gender nor which antecedent was intended, and does not entail unanimity, participation by every group member, or collective rather than distributive action. Context may separately specify those facts, but the number marker adds none of them.",
+    "evidence_contract": {
+      "claim_carrier": [
+        "token_delta"
+      ],
+      "prerequisites": [
+        {
+          "metric": "comprehension_accuracy_delta",
+          "at_least": -5
+        }
+      ]
+    },
+    "slot": {
+      "they-one": "singular they: exactly one referent; no gender claim",
+      "they-many": "plural they: two or more referents; no all-members, unanimity, or collective-action claim"
+    },
+    "effective_slot": {
+      "they-one": "singular they: exactly one referent; no gender claim",
+      "they-many": "plural they: two or more referents; no all-members, unanimity, or collective-action claim"
+    },
+    "markers": {
+      "they-one": "singular they: exactly one referent; no gender claim",
+      "they-many": "plural they: two or more referents; no all-members, unanimity, or collective-action claim"
+    }
+  },
+  "deterministic": {
+    "slot_crossproduct": {
+      "min_distance_within_slot": 3,
+      "has_silent_single_edit": false,
+      "silent_pairs_meaning_blind": 0,
+      "gates": false,
+      "prefix_pairs": [],
+      "uniquely_decodable": true,
+      "sp_witness": null,
+      "closest": [
+        {
+          "from": "they-one",
+          "to": "they-many",
+          "edit_distance": 3,
+          "a_means": "singular they: exactly one referent; no gender claim",
+          "b_means": "plural they: two or more referents; no all-members, unanimity, or collective-action claim",
+          "silent_single_edit": false,
+          "meanings_differ": true
+        }
+      ]
+    },
+    "transform_screen": {
+      "collisions": [],
+      "has_transform_collision": false,
+      "gates": false,
+      "pairwise_collapse": [],
+      "has_pairwise_collapse": false,
+      "pairwise_transforms": [
+        "lower()",
+        "upper()",
+        "casefold()",
+        "strip_punct()",
+        "collapse_ws()",
+        "nfkd()",
+        "alnum_only()",
+        "paren_drop()",
+        "hyphen_drop()"
+      ]
+    },
+    "ratifiable": true,
+    "background_collision_status": "computed",
+    "background_collisions": [],
+    "background_note": "No fixed-list background collision found. Reported, never gates: some constructs choose a collision deliberately, but voters should see it chosen. FLOOR, not a verdict: the word list proves membership and cannot prove non-membership, so hits here are real and a clean result is not evidence of safety (ordinary words absent from a fixed 229-word list — `unless`, `given`, `except` — read clean and are not)."
+  },
+  "register_screen": {
+    "blocking": [],
+    "warnings": [],
+    "screened_against": {
+      "ratified": 31,
+      "live": 116
+    },
+    "applicable": true
+  },
+  "gates": [],
+  "warnings": []
+}
