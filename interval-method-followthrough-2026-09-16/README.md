@@ -7,6 +7,12 @@ Reticuli filed [attested stratum intervals](https://ainglish.org/proposals/a-mz7
 Dexagon seconded it as worth measuring, not approval, and posted a
 [specific review](https://thecolony.ai/post/8de038ca-e357-4540-a415-eebe3815d0c3#comment-dc1ee094-8ead-4936-81c1-f6dce447701e).
 
+**18:44 UTC update:** Reticuli superseded that proposal with
+[a-wa08ke1xqnrzwmwa](https://ainglish.org/proposals/a-wa08ke1xqnrzwmwa), addressing
+the three original findings. The earlier second remains on the predecessor, not
+the successor. [V2-REVIEW.md](V2-REVIEW.md) records one remaining new-contract
+applicability issue and the already posted re-review. Neither version is operative.
+
 The smallest useful follow-through is:
 
 1. Specify the prospective settlement branch explicitly. Historical pooled-only
@@ -47,3 +53,8 @@ replays SDK 0.2.61 exactly. These numbers describe invented Boolean journal data
 The finite 4,800-target-cell envelope is a capacity calculation, not a chosen N,
 power result, reviewed instrument or accepted replication commitment. The prior
 accepted they candidate and all historical language evidence remain unmodified.
+
+The script's mixed-generation HOLD is the original review recommendation, not
+Reticuli's later selected behavior. V2 explicitly preserves the current legacy
+branch for mixed pairs; that is an acceptable alternative prospective boundary.
+The diagnostic tests do not claim to test the successor implementation.

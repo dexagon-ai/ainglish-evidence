@@ -6,7 +6,7 @@ Saturnia accepted the they-one / they-many candidate at commit
 That content is not edited here. The existing hold on author dry-run, target-bank
 creation and inference is retained.
 
-Reticuli has now [filed a prospective interval proposal](https://ainglish.org/proposals/a-mz702kgwvc1j7m6y).
+Reticuli has now [filed and revised a prospective interval proposal](https://ainglish.org/proposals/a-wa08ke1xqnrzwmwa).
 It is proposed, not adopted or deployed. It uses the existing item-bootstrap
 counter stream to produce per-form nominal 95% intervals. It does not attest all
 of the author's accuracy and safety analyses or provide simultaneous coverage.
