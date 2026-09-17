@@ -1,5 +1,10 @@
 # A second route under existing rules: resume / redo
 
+17 September follow-through: [the bounded core-only first-phase decision](../execution-decisions-2026-09-17/RESUME-PHASE-ONE.md)
+now pins locally available instruments, valid qualification receipts, allocation
+and a 160-call scope. It remains held; the 704-call table below is an earlier
+conditional illustration, not an accepted or launched programme.
+
 [resume-from / redo-from-start](https://ainglish.org/proposals/a-jvjxmmf83rmvw9vx)
 is a **conditional next study candidate**, not an evidence-ready fifth ratification.
 It does not require adoption of Reticuli's prospective per-form interval rule.
