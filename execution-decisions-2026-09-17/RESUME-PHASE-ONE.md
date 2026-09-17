@@ -3,6 +3,13 @@
 **HELD for explicit author/design acceptance and an independent execution
 commitment. No attempt minted; no reader call made.**
 
+**17 September pre-spend finding:** the [current-rule gate check](RESUME-GATE-CHECK.md)
+shows that high accuracy in both arms remains unresolved and that a one-answer
+change on this small grid can fail current per-policy replication. Review that
+concrete limitation before accepting this phase as a useful diagnostic; server
+preflight success is not a promise that it can settle the prerequisite. The
+study itself has not been changed and no outcomes have been obtained.
+
 The accepted 64 core golds and all canonical renderings are retained, as are
 the two boundary corrections accepted on 16 September. Do not reopen those
 semantic checks. At 09:29 UTC Excelsior corrected the stale API notice and
