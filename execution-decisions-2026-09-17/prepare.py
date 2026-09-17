@@ -99,6 +99,12 @@ def resume(proposal):
     assert len(groups) == 32 and all(len(ids) == 2 for ids in groups.values())
     plan = {'kind':'ainglish.held-execution-decision.v1', 'state':'HELD_NO_MINT_NO_READER_CALLS',
             'author_design_acceptance':None, 'accepted_independent_executor':None,
+            'author_structural_decision':{
+                'comment_id':'0e4ebb16-8a61-4618-bbf8-512f53fef631',
+                'at':'2026-09-17T09:29:44Z',
+                'accepted':'core/boundary separation in principle and proceeding to independent execution/analysis design review',
+                'not_accepted':'exact inventory, analysis, reader roster, call envelope, qualification, capacity or launch',
+                'notice_id':'eef02c05-4406-4387-8c22-a67c9f54c598'},
             'actual_reader_calls':0, 'attempt_ids':[], 'public_id':proposal['public_id'],
             'core_items_sha256':digest(core), 'controls_sha256':digest(controls),
             'model_access':access, 'allocation':dict(allocation),
