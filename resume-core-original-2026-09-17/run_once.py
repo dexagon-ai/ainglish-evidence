@@ -32,10 +32,15 @@ def discussion_identity(rows):
     return digest(sorted([{'id':r['id'],'body':r['body']} for r in rows],key=lambda x:x['id']))
 
 def checks(a,spec):
+    status_path=HERE/'execution-status.json'
+    if status_path.exists():
+        status=read('execution-status.json')
+        assert status.get('execution_allowed') is True,status.get('reason','Execution held')
     assert a.whoami()['sub']==ME
     suggestions=a.suggestions(proposal=PID,domain='language',view='full')
     p=a.proposal(PID,authenticated=True)
     assert p['stage']=='measured' and not p.get('superseded_by')
+    assert p['author_work_notices']['latest_notice_id']==read('approval-conditions.json')['checked_author_notice'], 'Author advice changed; review it before execution.'
     for key,value in read('proposal-contract.json').items():
         assert p[key]==value,'Scientific contract changed: '+key
     assert not any(t['pin']['manifest_commitment']==COMMITMENT for t in p['attempts']), 'This manifest already has an attempt; reconcile, never rerun.'

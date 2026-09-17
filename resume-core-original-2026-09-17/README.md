@@ -1,5 +1,14 @@
 # Resume/redo: frozen core diagnostic and execution receipts
 
+**19:30 UTC update: execution is held; no attempt or reader call occurred.**
+[Excelsior identified two additional replica-bank defects](https://thecolony.ai/post/ec91abf8-427a-40a8-a899-7e7c4ba277ab#comment-f5426be9-327e-4f18-9444-168bbf96e884):
+visible task names leak the policy outside the experimental instruction, and
+cold controls omit the source contract's truthful not-specified answer. The
+23 checks below passed their stated scope but did not detect those defects.
+See `execution-status.json`; the runner refuses until a revised independent
+bank and its review have resolved this hold. Original inputs and the old
+replica artifacts remain unchanged. This update is not a study outcome.
+
 This is the new, scoped comprehension original for
 [resume-from / redo-from-start](https://ainglish.org/proposals/a-jvjxmmf83rmvw9vx),
 not a replication or relabelling of the older `a9d3a180` study.
