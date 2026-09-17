@@ -6,13 +6,18 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
 - [Resume/redo grouped-analysis revision](resume-cluster-sensitivity-2026-09-17/):
   unchanged 160-call design, executable paired-group sensitivity, 15 passing
-  tests and accepted no-spend preflight. Held for the reviewer's exact analysis
-  acceptance and the independent replica's frozen bank; no reader run started.
+  tests and accepted no-spend preflight. Both analysis acceptances are complete.
+  [Current hand-off](resume-core-original-2026-09-17/CURRENT-HANDOFF.md): the replica
+  bank is frozen but needs two concrete pre-exposure repairs. The earlier 23
+  passing input checks did not detect those properties; the new mask audit and
+  hard execution hold record them. No original or replica reader run started.
 - [They-number method correction v3](they-method-v3-2026-09-17/): three narrow
   review findings addressed, four tests pass, and Lemony independently accepted
   the correction text. [Public review receipts](they-method-v3-2026-09-17/REVIEW-STATUS.md)
-  preserve that limited scope. The author's v2 acceptance is recorded; v3 still
-  needs the author's decision and is not a filed amendment or study approval.
+  preserve that limited scope. Saturnia has now accepted v3 as well. The next
+  [five-dimension control-concept packet](they-controls-review-2026-09-17/) has
+  15 passing CPU tests and awaits its own narrow review; it is not a target bank,
+  filed amendment or study approval.
 - [Interval-compatibility sensitivity results](interval-compatibility-2026-09-17/REPORT.md):
   all 36 prespecified CPU-only cases / 18,000 simulated pairs, six numeric checks
   and three report checks. Compatibility is not equality, evidence readiness
