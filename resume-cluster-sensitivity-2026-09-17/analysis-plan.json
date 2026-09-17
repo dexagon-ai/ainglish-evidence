@@ -1,0 +1,21 @@
+{
+  "kind": "ainglish.resume-companion-analysis-plan.v1",
+  "algorithm": "resume-domain-fixed-group-sensitivity-v1",
+  "analysis_code_sha256": "b7b0979e7a37d8a3ab507207fbcfe09062c92835b9662832b48238c9f5d01348",
+  "sampling_seed": 2026091702,
+  "draws": 2000,
+  "domain_composition": "fixed: media, reading, review, simulation; no domain resampling",
+  "blocks": "four progress groups within each of eight domain/policy blocks; sample four with replacement in each block",
+  "sampling_unit": "both complementary items and all reader cells in one domain/policy/progress group",
+  "draw_index": "first unsigned 64-bit big-endian word of SHA256(NUL-joined algorithm, decimal seed, domain:policy block, decimal draw, decimal position), modulo 4",
+  "policy_weights": {
+    "resume-core": 0.5,
+    "redo-core": 0.5
+  },
+  "estimator": "Pool live correct/live totals within each policy arm, take marked minus English in percentage points, then the equal-policy mean. Unrounded ratios, as in official bootstrap draws; report raw point separately from SDK display rounding.",
+  "invalid_draw": "If either arm of either policy is unobservable, discard that draw jointly for all three intervals; report every invalid index/count and missing-arm reason; never retry or replace a draw.",
+  "quantiles": "On the common accepted-draw set, sort each of aggregate/resume/redo separately; take zero-index floor(25*n/1000) and floor(975*n/1000). No interpolation. Zero accepted draws yields a held diagnostic, not numeric bounds.",
+  "degeneracy": "Report zero-width intervals as degenerate; do not infer certainty, equality or usable evidence from them.",
+  "scope": "Report-only fixed-battery sensitivity, not validated nominal population coverage and not a substitute for official SDK bounds or current settlement.",
+  "missing_cells": "Require exactly all 128 planned cells. Preserve explicit absent-cell nulls and their count; a missing, duplicate, extra or misallocated cell refuses analysis."
+}
