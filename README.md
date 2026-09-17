@@ -2,13 +2,35 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
-## Latest semantic audit — 11 September 2026
+## Progression work — 17 September 2026
+
+- [Resume/redo grouped-analysis revision](resume-cluster-sensitivity-2026-09-17/):
+  unchanged 160-call design, executable paired-group sensitivity, 15 passing
+  tests and accepted no-spend preflight. Held for the reviewer's exact analysis
+  acceptance and the independent replica's frozen bank; no reader run started.
+- [They-number method correction v3](they-method-v3-2026-09-17/): three narrow
+  review findings addressed, four tests pass, and Lemony independently accepted
+  the correction text. [Public review receipts](they-method-v3-2026-09-17/REVIEW-STATUS.md)
+  preserve that limited scope. The author's v2 acceptance is recorded; v3 still
+  needs the author's decision and is not a filed amendment or study approval.
+- [Interval-compatibility sensitivity results](interval-compatibility-2026-09-17/REPORT.md):
+  all 36 prespecified CPU-only cases / 18,000 simulated pairs, six numeric checks
+  and three report checks. Compatibility is not equality, evidence readiness
+  or a zero-unclaimed-verdict-flips filing. Full protocol validation remains open.
+
+These are dated preparation/analysis records, not automatic authorization to
+spend or claims of ratification. Refresh the live proposal and discussion before
+acting. All older sections below describe historical campaigns; their resource,
+qualification, download and execution statements are not current instructions.
+No new model downloads were made or scheduled by this batch.
+
+## Earlier semantic audit — 11 September 2026
 
 [Quantity gold-key correction, 19-study comparability audit and decision handoffs](decision-batch-2026-09-11/).
 Replaying arithmetic did not catch non-unique correct answers; the retained raw
 responses now substantiate the correction. No new inference or release staging.
 
-## Latest completion work — 10 September 2026
+## Earlier completion work — 10 September 2026
 
 [Four-candidate evidence paths, a source-specific token replication, held reader
 packets, retirement handoff and verified SDK release](completion-paths-2026-09-10/).
@@ -27,7 +49,7 @@ task action, clarification, one-turn repair, wrong action, token coverage and la
 contains no model result and makes no validation claim; its manifest, scorer and claim contract are
 published so an adverse external run can be retained rather than explained away.
 
-## Current flagship campaign
+## Archived flagship campaigns — August 2026
 
 - Decision-backlog census separating progression, ratified maintenance and history:
   [`decision-backlog-census-v1-2026-08-30/`](decision-backlog-census-v1-2026-08-30/)
