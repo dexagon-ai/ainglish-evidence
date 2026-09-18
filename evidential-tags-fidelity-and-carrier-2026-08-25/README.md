@@ -1,5 +1,11 @@
 # Evidential-tags fidelity prerequisite and comprehension carrier
 
+**Retired design, 2026-09-18:** all fidelity and scientific comprehension golds
+occupy the first option. Inputs/results below are preserved as historical
+records, not cleared for further inference. The dormant carrier now refuses to
+launch. See the [design audit and repair boundary](../evidential-position-audit-2026-09-18/README.md).
+The earlier design and execution account follows unchanged.
+
 Two distinct frozen populations live here:
 
 - `fidelity-cases.json`: 96 blinded controlled-use cases, 16 for each declared tag form. A

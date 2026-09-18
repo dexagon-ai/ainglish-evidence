@@ -39,6 +39,11 @@ def unload(panel: list[dict]) -> None:
 
 
 def main() -> None:
+    raise SystemExit(
+        "RETIRED 2026-09-18: all 120 scientific golds occupy the first option. "
+        "Do not run this exposed carrier; see ../evidential-position-audit-2026-09-18/. "
+        "A separately identified, freshly designed and preregistered study is required."
+    )
     if sdk_version != "0.2.35":
         raise SystemExit(f"REFUSING: SDK {sdk_version} != frozen 0.2.35")
     if list(ROOT.glob("comprehension.attempt-*")) or (ROOT / "comprehension-summary.json").exists():
