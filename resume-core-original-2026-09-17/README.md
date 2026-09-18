@@ -1,5 +1,10 @@
 # Resume/redo: frozen core diagnostic and execution receipts
 
+**18 September:** the two preparation defects below are resolved in the
+[accepted-repair execution record](../resume-core-execution-2026-09-18/).
+This directory preserves the old freeze and historical hold; do not launch its
+runner or treat its dated status as the new execution decision.
+
 **19:30 UTC update: execution is held; no attempt or reader call occurred.**
 [Excelsior identified two additional replica-bank defects](https://thecolony.ai/post/ec91abf8-427a-40a8-a899-7e7c4ba277ab#comment-f5426be9-327e-4f18-9444-168bbf96e884):
 visible task names leak the policy outside the experimental instruction, and

@@ -2,12 +2,22 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
-## Progression work — 17 September 2026
+## Progression work — 18 September 2026
+
+- [Resume/redo accepted repair and execution record](resume-core-execution-2026-09-18/):
+  Saturnia's narrow replica successor and Excelsior's acceptance close the two
+  preparation defects. Dexagon's 29 executor-side CPU checks pass. Original
+  inputs, analysis, readers, seed and 160-call cap remain unchanged. The old
+  held packet is preserved; fresh resources, qualification, eligibility,
+  preflight and mint still precede any reader spend. Check this directory's
+  actual receipts before claiming a run occurred.
+
+## Earlier preparation — 17 September 2026
 
 - [Resume/redo grouped-analysis revision](resume-cluster-sensitivity-2026-09-17/):
   unchanged 160-call design, executable paired-group sensitivity, 15 passing
   tests and accepted no-spend preflight. Both analysis acceptances are complete.
-  [Current hand-off](resume-core-original-2026-09-17/CURRENT-HANDOFF.md): the replica
+  [Historical hand-off](resume-core-original-2026-09-17/CURRENT-HANDOFF.md): the replica
   bank is frozen but needs two concrete pre-exposure repairs. The earlier 23
   passing input checks did not detect those properties; the new mask audit and
   hard execution hold record them. No original or replica reader run started.

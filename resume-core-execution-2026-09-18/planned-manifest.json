@@ -1,0 +1,214 @@
+{
+  "construct": "<ACTION>, resume-from(<checkpoint>) | <ACTION>, redo-from-start — retain saved completion credit, or begin a fresh pass",
+  "metric": "comprehension_accuracy_delta",
+  "seed": 2026091701,
+  "comparator": {
+    "kind": "complete-canonical-concise-english-v1",
+    "description": "Exact registered concise templates; task and checkpoint facts unchanged in both arms. Core-only scope."
+  },
+  "study_purpose": "claim_test",
+  "study_scope": "Fixed accepted 64-item core battery only; not boundary learning, independent world sampling, or a replication of the old differently scoped reader population. Report-only grouped sensitivity resume-domain-fixed-group-sensitivity-v1; code_sha256=b7b0979e7a37d8a3ab507207fbcfe09062c92835b9662832b48238c9f5d01348; plan_sha256=575efff8815d6cc636f1636dc5974eb7fd5a6e1b1cf5b9e15088ed6879e5c050; group_index_sha256=6a84cdd176077f32974ce09ec5f77b1ad8d779661cbe7b325891a641d1eacfe6. Fixed domains, paired items and all reader cells retained. No validated coverage or changed settlement rule.",
+  "items_sha256": "0a7cf3c482bd5b30ab37c61c7f253d655e40200ebf00ae87475b691de9aef8cc",
+  "items_url": "https://raw.githubusercontent.com/dexagon-ai/ainglish-evidence/5a9f85664b4edf4f84ceb1a878769e0908ddd1b4/execution-decisions-2026-09-17/resume-core-items.json",
+  "models": [
+    "Saturnia-Verified-Gemma12@q4_k_m",
+    "Saturnia-Verified-Mistral24@q4_k_m"
+  ],
+  "reader_qualifications": [
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "Saturnia-Verified-Gemma12@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "google/gemma3-12b",
+        "basis": "Named cached base-model family and local content digest. Distinct vendor/family is a declared reader-axis basis, not proof of independent error or training data."
+      },
+      "screen_sha256": "661e94ab1645aa5f6707c80b2170d76eb5a086d9839e5f21acfb9e328dd6505c",
+      "settings_sha256": "f5bcb7a563fd592893214bcc512c52f74bcb614316e372cbd214d99c222f52b3",
+      "qualified_at": "2026-09-14T22:28:48+00:00",
+      "valid_until": "2026-09-21T22:28:48+00:00",
+      "result": {
+        "detectable_correct": 32,
+        "detectable_total": 32,
+        "other_correct": 0,
+        "other_total": 32,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 8750,
+        "passed": true
+      }
+    },
+    {
+      "kind": "ainglish.reader-qualification.v1",
+      "roster_id": "Saturnia-Verified-Mistral24@q4_k_m",
+      "reader": {
+        "provider": "ollama",
+        "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+        "precision": "q4_k_m",
+        "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+        "digest_source": "ollama:/api/tags"
+      },
+      "lineage": {
+        "key": "mistral/mistral-small3.2-24b",
+        "basis": "Named cached base-model family and local content digest. Distinct vendor/family is a declared reader-axis basis, not proof of independent error or training data."
+      },
+      "screen_sha256": "661e94ab1645aa5f6707c80b2170d76eb5a086d9839e5f21acfb9e328dd6505c",
+      "settings_sha256": "577087f60cd0ff0d89300f14da490d407198fba3a0335d6e1cce483b814606ca",
+      "qualified_at": "2026-09-14T22:29:09+00:00",
+      "valid_until": "2026-09-21T22:29:09+00:00",
+      "result": {
+        "detectable_correct": 32,
+        "detectable_total": 32,
+        "other_correct": 0,
+        "other_total": 32,
+        "min_gap_bps": 5000,
+        "min_recovered_bps": 8750,
+        "passed": true
+      }
+    }
+  ],
+  "readers": [
+    {
+      "name": "Saturnia-Verified-Gemma12",
+      "provider": "ollama",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "digest_source": "ollama:/api/tags",
+      "instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      },
+      "answer_protocol": "opaque-choice-v1",
+      "max_tokens": 128,
+      "timeout_s": 180,
+      "temperature": 0,
+      "seed": 202609131645,
+      "top_p": "provider-default",
+      "top_k": "provider-default",
+      "num_ctx": "provider-default",
+      "reasoning_effort": "provider-default"
+    },
+    {
+      "name": "Saturnia-Verified-Mistral24",
+      "provider": "ollama",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "precision": "q4_k_m",
+      "api": "openai",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "digest_source": "ollama:/api/tags",
+      "instrument_preparation": {
+        "entry_point": "prepare_reader_instruments",
+        "binding": "ollama:/api/tags"
+      },
+      "answer_protocol": "opaque-choice-v1",
+      "max_tokens": 128,
+      "timeout_s": 180,
+      "temperature": 0,
+      "seed": 202609131645,
+      "top_p": "provider-default",
+      "top_k": "provider-default",
+      "num_ctx": "provider-default",
+      "reasoning_effort": "provider-default"
+    }
+  ],
+  "instrument_preparation": {
+    "entry_point": "prepare_reader_instruments",
+    "binding": [
+      {
+        "reader": "Saturnia-Verified-Gemma12@q4_k_m",
+        "digest_source": "ollama:/api/tags"
+      },
+      {
+        "reader": "Saturnia-Verified-Mistral24@q4_k_m",
+        "digest_source": "ollama:/api/tags"
+      }
+    ]
+  },
+  "item_counts": {
+    "real": 64,
+    "calibration": 8
+  },
+  "interval_kind": "bootstrap_items",
+  "interval_estimator": {
+    "kind": "ainglish.panel.bootstrap-items-attestation.v1",
+    "algorithm": "sha256-counter-modulo-v1",
+    "draws": 2000,
+    "sampling_unit": "item",
+    "quantiles": [
+      "0.025",
+      "0.975"
+    ],
+    "items_index_sha256": "d30b174a3aa78202f34d4d8aaafea91918a89df16172197a156fd4f061edbf7b"
+  },
+  "settlement_strata": [
+    {
+      "id": "resume-core",
+      "weight": 1
+    },
+    {
+      "id": "redo-core",
+      "weight": 1
+    }
+  ],
+  "settlement_item_field": "settlement_stratum",
+  "settlement_rule": "manifest-weighted arms and value; every stratum load-bearing",
+  "calibration": {
+    "planted_arm": "ainglish",
+    "min_gap": 0.5,
+    "min_recovered": null,
+    "rule": "absolute-gap-v1",
+    "ordering": "calibration-first",
+    "arm_exposure": "both-arms-per-reader-item",
+    "cells": 32
+  },
+  "difficulty": {
+    "annotated": false
+  },
+  "harness": "ainglish-panel/0.2.61",
+  "transport": {
+    "Saturnia-Verified-Gemma12@q4_k_m": {
+      "max_tokens": 128,
+      "timeout_s": 180,
+      "temperature": 0,
+      "seed": 202609131645,
+      "top_p": "provider-default",
+      "top_k": "provider-default",
+      "num_ctx": "provider-default",
+      "reasoning_effort": "provider-default"
+    },
+    "Saturnia-Verified-Mistral24@q4_k_m": {
+      "max_tokens": 128,
+      "timeout_s": 180,
+      "temperature": 0,
+      "seed": 202609131645,
+      "top_p": "provider-default",
+      "top_k": "provider-default",
+      "num_ctx": "provider-default",
+      "reasoning_effort": "provider-default"
+    }
+  },
+  "concurrency": {
+    "max_in_flight": 1,
+    "per_reader_max_in_flight": {
+      "Saturnia-Verified-Gemma12": 1,
+      "Saturnia-Verified-Mistral24": 1
+    },
+    "result_order": "deterministic-plan-order",
+    "calibration_barrier": true,
+    "automatic_retries": false
+  },
+  "transport_observations": {
+    "schema": "panel-transport-v1",
+    "location": "calibration"
+  },
+  "protocol": "panel.py counterbalanced real arms + both-arms-per-reader-item planted-effect calibration gate"
+}
