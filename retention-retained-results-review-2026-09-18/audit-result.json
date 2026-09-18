@@ -1,0 +1,380 @@
+{
+  "kind": "dexagon.retention-retained-journal-audit.v1",
+  "scope": "Offline arithmetic and item audit, not a measurement or confirmation",
+  "measurement_hash": "9fc36a6792d1d69be1ac066d71164d09039c79f8759d7468974cbc67d8693b9e",
+  "items_sha256": "4adb16219ab03ecf04c0c633394966c15ab007e68d000533778b9bb23ad10428",
+  "attestation_sha256": "9691ec154f6091a321e69ec9de147bdf981dc9358dba35b2749ea27fc7b3407d",
+  "items_bytes_sha256": "eb0ae5d6a35105f51c554e94eda9b97a52e351159021ceecb3cf1527c6f0efd8",
+  "scientific_items": 64,
+  "calibration_items": 16,
+  "public_journal_cells": 128,
+  "counts": {
+    "english": {
+      "correct": 64,
+      "total": 64
+    },
+    "ainglish": {
+      "correct": 59,
+      "total": 64
+    }
+  },
+  "delta_pp": -7.8125,
+  "replayed_pooled_bounds": [
+    -13.450292397660824,
+    -1.8518518518518545
+  ],
+  "accepted_bootstrap_draws": 2000,
+  "strata": {
+    "all-or-nothing": {
+      "counts": {
+        "english": {
+          "correct": 32,
+          "total": 32
+        },
+        "ainglish": {
+          "correct": 28,
+          "total": 32
+        }
+      },
+      "delta_pp": -12.5,
+      "by_reader": {
+        "Saturnia-Retention-Gemma12": {
+          "english": {
+            "correct": 16,
+            "total": 16
+          },
+          "ainglish": {
+            "correct": 13,
+            "total": 16
+          }
+        },
+        "Saturnia-Retention-Mistral24": {
+          "english": {
+            "correct": 16,
+            "total": 16
+          },
+          "ainglish": {
+            "correct": 15,
+            "total": 16
+          }
+        }
+      }
+    },
+    "keep-successes": {
+      "counts": {
+        "english": {
+          "correct": 32,
+          "total": 32
+        },
+        "ainglish": {
+          "correct": 31,
+          "total": 32
+        }
+      },
+      "delta_pp": -3.125,
+      "by_reader": {
+        "Saturnia-Retention-Gemma12": {
+          "english": {
+            "correct": 16,
+            "total": 16
+          },
+          "ainglish": {
+            "correct": 16,
+            "total": 16
+          }
+        },
+        "Saturnia-Retention-Mistral24": {
+          "english": {
+            "correct": 16,
+            "total": 16
+          },
+          "ainglish": {
+            "correct": 15,
+            "total": 16
+          }
+        }
+      }
+    }
+  },
+  "failures": [
+    {
+      "item_id": "retention-policy-atomic-01",
+      "reader": "Saturnia-Retention-Mistral24",
+      "arm": "ainglish",
+      "correct": false,
+      "form": "all-or-nothing",
+      "gold_position": 1,
+      "item": {
+        "id": "retention-policy-atomic-01",
+        "english": "For batch 1, grant Atlas access, Beacon access, and Cedar access. If any member fails, leave none of the other member effects committed or safe to rely on as the terminal result.",
+        "ainglish": "For batch 1, grant Atlas access, Beacon access, and Cedar access, all-or-nothing.",
+        "question": "Suppose one member (Beacon access) fails after another member provisionally succeeds. What may remain authoritative at the terminal outcome?",
+        "options": [
+          "none of the successful effects may remain authoritative",
+          "the successful effects remain authoritative",
+          "the whole set is treated as successful",
+          "the retention policy is not specified"
+        ],
+        "answer": "none of the successful effects may remain authoritative",
+        "form": "all-or-nothing",
+        "settlement_stratum": "all-or-nothing",
+        "strata": {
+          "members": 3,
+          "probe": "terminal successful-effect retention"
+        }
+      },
+      "observed_response": "not present in the public attestation"
+    },
+    {
+      "item_id": "retention-policy-atomic-03",
+      "reader": "Saturnia-Retention-Gemma12",
+      "arm": "ainglish",
+      "correct": false,
+      "form": "all-or-nothing",
+      "gold_position": 3,
+      "item": {
+        "id": "retention-policy-atomic-03",
+        "english": "For batch 3, download mirror A, mirror B, and mirror C. If any member fails, leave none of the other member effects committed or safe to rely on as the terminal result.",
+        "ainglish": "For batch 3, download mirror A, mirror B, and mirror C, all-or-nothing.",
+        "question": "Suppose one member (mirror A) fails after another member provisionally succeeds. What may remain authoritative at the terminal outcome?",
+        "options": [
+          "the whole set is treated as successful",
+          "the retention policy is not specified",
+          "none of the successful effects may remain authoritative",
+          "the successful effects remain authoritative"
+        ],
+        "answer": "none of the successful effects may remain authoritative",
+        "form": "all-or-nothing",
+        "settlement_stratum": "all-or-nothing",
+        "strata": {
+          "members": 3,
+          "probe": "terminal successful-effect retention"
+        }
+      },
+      "observed_response": "not present in the public attestation"
+    },
+    {
+      "item_id": "retention-policy-atomic-11",
+      "reader": "Saturnia-Retention-Gemma12",
+      "arm": "ainglish",
+      "correct": false,
+      "form": "all-or-nothing",
+      "gold_position": 3,
+      "item": {
+        "id": "retention-policy-atomic-11",
+        "english": "For batch 11, download mirror A, mirror B, and mirror C. If any member fails, leave none of the other member effects committed or safe to rely on as the terminal result.",
+        "ainglish": "For batch 11, download mirror A, mirror B, and mirror C, all-or-nothing.",
+        "question": "Suppose one member (mirror C) fails after another member provisionally succeeds. What may remain authoritative at the terminal outcome?",
+        "options": [
+          "the whole set is treated as successful",
+          "the retention policy is not specified",
+          "none of the successful effects may remain authoritative",
+          "the successful effects remain authoritative"
+        ],
+        "answer": "none of the successful effects may remain authoritative",
+        "form": "all-or-nothing",
+        "settlement_stratum": "all-or-nothing",
+        "strata": {
+          "members": 3,
+          "probe": "terminal successful-effect retention"
+        }
+      },
+      "observed_response": "not present in the public attestation"
+    },
+    {
+      "item_id": "retention-policy-atomic-19",
+      "reader": "Saturnia-Retention-Gemma12",
+      "arm": "ainglish",
+      "correct": false,
+      "form": "all-or-nothing",
+      "gold_position": 3,
+      "item": {
+        "id": "retention-policy-atomic-19",
+        "english": "For batch 19, download mirror A, mirror B, and mirror C. If any member fails, leave none of the other member effects committed or safe to rely on as the terminal result.",
+        "ainglish": "For batch 19, download mirror A, mirror B, and mirror C, all-or-nothing.",
+        "question": "Suppose one member (mirror B) fails after another member provisionally succeeds. What may remain authoritative at the terminal outcome?",
+        "options": [
+          "the whole set is treated as successful",
+          "the retention policy is not specified",
+          "none of the successful effects may remain authoritative",
+          "the successful effects remain authoritative"
+        ],
+        "answer": "none of the successful effects may remain authoritative",
+        "form": "all-or-nothing",
+        "settlement_stratum": "all-or-nothing",
+        "strata": {
+          "members": 3,
+          "probe": "terminal successful-effect retention"
+        }
+      },
+      "observed_response": "not present in the public attestation"
+    },
+    {
+      "item_id": "retention-policy-partial-01",
+      "reader": "Saturnia-Retention-Mistral24",
+      "arm": "ainglish",
+      "correct": false,
+      "form": "keep-successes",
+      "gold_position": 4,
+      "item": {
+        "id": "retention-policy-partial-01",
+        "english": "For batch 1, grant Atlas access, Beacon access, and Cedar access. If one member fails, keep every other member effect that succeeded and report the failed member separately.",
+        "ainglish": "For batch 1, grant Atlas access, Beacon access, and Cedar access, keep-successes.",
+        "question": "Suppose one member (Beacon access) fails after another member succeeds. What may remain authoritative at the terminal outcome?",
+        "options": [
+          "none of the successful effects may remain authoritative",
+          "the whole set is treated as successful",
+          "the retention policy is not specified",
+          "the successful effects remain authoritative"
+        ],
+        "answer": "the successful effects remain authoritative",
+        "form": "keep-successes",
+        "settlement_stratum": "keep-successes",
+        "strata": {
+          "members": 3,
+          "probe": "terminal successful-effect retention"
+        }
+      },
+      "observed_response": "not present in the public attestation"
+    }
+  ],
+  "gold_positions_in_bank": {
+    "all-or-nothing": {
+      "1": 8,
+      "4": 8,
+      "3": 8,
+      "2": 8
+    },
+    "keep-successes": {
+      "4": 8,
+      "3": 8,
+      "2": 8,
+      "1": 8
+    }
+  },
+  "gold_positions_by_actual_exposure": {
+    "all-or-nothing/Saturnia-Retention-Gemma12/ainglish": {
+      "1": 3,
+      "4": 5,
+      "3": 4,
+      "2": 4
+    },
+    "all-or-nothing/Saturnia-Retention-Mistral24/ainglish": {
+      "1": 5,
+      "3": 4,
+      "2": 4,
+      "4": 3
+    },
+    "all-or-nothing/Saturnia-Retention-Mistral24/english": {
+      "4": 5,
+      "1": 3,
+      "2": 4,
+      "3": 4
+    },
+    "all-or-nothing/Saturnia-Retention-Gemma12/english": {
+      "2": 4,
+      "1": 5,
+      "4": 3,
+      "3": 4
+    },
+    "keep-successes/Saturnia-Retention-Gemma12/ainglish": {
+      "4": 5,
+      "3": 4,
+      "2": 4,
+      "1": 3
+    },
+    "keep-successes/Saturnia-Retention-Mistral24/ainglish": {
+      "4": 4,
+      "2": 5,
+      "1": 3,
+      "3": 4
+    },
+    "keep-successes/Saturnia-Retention-Mistral24/english": {
+      "3": 4,
+      "2": 3,
+      "1": 5,
+      "4": 4
+    },
+    "keep-successes/Saturnia-Retention-Gemma12/english": {
+      "2": 4,
+      "1": 5,
+      "3": 4,
+      "4": 3
+    }
+  },
+  "domain_action_sets_per_form": {
+    "all-or-nothing": 8,
+    "keep-successes": 8
+  },
+  "distinct_pairs_ignoring_batch_number": 48,
+  "repeated_pairs_ignoring_batch_number": [
+    [
+      "retention-policy-atomic-01",
+      "retention-policy-atomic-25"
+    ],
+    [
+      "retention-policy-partial-01",
+      "retention-policy-partial-25"
+    ],
+    [
+      "retention-policy-atomic-02",
+      "retention-policy-atomic-26"
+    ],
+    [
+      "retention-policy-partial-02",
+      "retention-policy-partial-26"
+    ],
+    [
+      "retention-policy-atomic-03",
+      "retention-policy-atomic-27"
+    ],
+    [
+      "retention-policy-partial-03",
+      "retention-policy-partial-27"
+    ],
+    [
+      "retention-policy-atomic-04",
+      "retention-policy-atomic-28"
+    ],
+    [
+      "retention-policy-partial-04",
+      "retention-policy-partial-28"
+    ],
+    [
+      "retention-policy-atomic-05",
+      "retention-policy-atomic-29"
+    ],
+    [
+      "retention-policy-partial-05",
+      "retention-policy-partial-29"
+    ],
+    [
+      "retention-policy-atomic-06",
+      "retention-policy-atomic-30"
+    ],
+    [
+      "retention-policy-partial-06",
+      "retention-policy-partial-30"
+    ],
+    [
+      "retention-policy-atomic-07",
+      "retention-policy-atomic-31"
+    ],
+    [
+      "retention-policy-partial-07",
+      "retention-policy-partial-31"
+    ],
+    [
+      "retention-policy-atomic-08",
+      "retention-policy-atomic-32"
+    ],
+    [
+      "retention-policy-partial-08",
+      "retention-policy-partial-32"
+    ]
+  ],
+  "raw_response_audit_complete": false,
+  "reader_calls": 0,
+  "new_attempts": 0,
+  "submitted_measurements": 0
+}

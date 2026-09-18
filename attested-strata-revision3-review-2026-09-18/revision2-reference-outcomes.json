@@ -1,0 +1,463 @@
+{
+ "F1": {
+  "declared": "reproduced_ok true",
+  "match": true,
+  "reference": [
+   "new_branch",
+   {
+    "reproduced_ok": true
+   }
+  ]
+ },
+ "F10": {
+  "declared": "the live typed comprehension at_least contracts read identically before and after; the two populated frozen rows a9d3a180/763f2a41 read UNRESOLVED on both baselines; the empty contract is counted as vacuous",
+  "match": true,
+  "reference": {
+   "contracts": [
+    {
+     "identical": true,
+     "prerequisite": {
+      "at_least": 0,
+      "metric": "comprehension_accuracy_delta"
+     },
+     "row_count": 2,
+     "rows": [
+      {
+       "candidate_legacy_branch": "unresolved",
+       "hash": "763f2a41",
+       "identical": true,
+       "legacy_from_php_oracle": "unresolved",
+       "legacy_from_served_fields": "unresolved",
+       "resolution_bound": "strata_unresolved",
+       "value": -7.205
+      },
+      {
+       "candidate_legacy_branch": "unresolved",
+       "hash": "a9d3a180",
+       "identical": true,
+       "legacy_from_php_oracle": "unresolved",
+       "legacy_from_served_fields": "unresolved",
+       "resolution_bound": "strata_unresolved",
+       "value": 3.362
+      }
+     ],
+     "slug": "action-resume-from-checkpoint-action-redo-from-start-retain",
+     "vacuous": false
+    },
+    {
+     "identical": true,
+     "prerequisite": {
+      "at_least": 0,
+      "metric": "comprehension_accuracy_delta"
+     },
+     "row_count": 0,
+     "rows": [],
+     "slug": "stop-s-finish-started-stop-s-interrupt-started-a-stop",
+     "vacuous": true
+    }
+   ],
+   "oracle_receipt_sha256": "0e641bc3356f04f8f73c30ff3052bb77509a07feef75164e79cf2d5e6d0ea708",
+   "oracle_rows_matched": 2,
+   "oracle_source_sha256": {
+    "src/Entity/Measurement.php": "75bbe50dd52642bf73e2b0b2761fc171b24418c7f730ecf6ad9de12ed00569fd",
+    "src/Service/EvidenceReadiness.php": "4a6a86b64dc9e11075fef1a19dd8aa264f5011e29433d6b56ba994459a3ed034",
+    "src/Service/MeasurementProtocols.php": "f97812cd3ab413abff72d017cac2653dd9888d09b61c1f5aba584a81ff63cc5b",
+    "src/Service/MeasurementService.php": "aa5e58b46a4d4e480387ddf614bb65f9fcdf8289a552ae4e07ace4ea55939584"
+   },
+   "populated_contracts": 1,
+   "synthetic_point_cases": [
+    {
+     "candidate_legacy_branch": "supports",
+     "legacy_from_served_fields": "supports",
+     "value": 1.0
+    },
+    {
+     "candidate_legacy_branch": "opposes",
+     "legacy_from_served_fields": "opposes",
+     "value": -1.0
+    }
+   ],
+   "vacuous_contracts": [
+    "stop-s-finish-started-stop-s-interrupt-started-a-stop"
+   ]
+  }
+ },
+ "F11": {
+  "declared": "confirmed generic-stance loss with lower bound above -5: veto state unchanged",
+  "match": true,
+  "reference": {
+   "keyed_prerequisite_reading": "supports",
+   "veto_after": "vetoes",
+   "veto_before": "vetoes"
+  }
+ },
+ "F1b": {
+  "declared": "pooled intervals disjoint, all strata touch: reproduced_ok false, failing 'pooled' (pooled-then-strata)",
+  "match": true,
+  "reference": [
+   "new_branch",
+   {
+    "failing_stratum": "pooled",
+    "reproduced_ok": false
+   }
+  ]
+ },
+ "F1c": {
+  "declared": "pooled intervals intersect, one stratum disjoint: reproduced_ok false, failing stratum b",
+  "match": true,
+  "reference": [
+   "new_branch",
+   {
+    "failing_stratum": "b",
+    "reproduced_ok": false
+   }
+  ]
+ },
+ "F2": {
+  "declared": "reproduced_ok null, held",
+  "match": true,
+  "reference": [
+   "new_branch",
+   {
+    "held": "missing stratum bounds",
+    "reproduced_ok": null
+   }
+  ]
+ },
+ "F2p": {
+  "declared": "replication lacking attested POOLED bounds: reproduced_ok null, held (missing pooled bounds)",
+  "match": true,
+  "reference": [
+   "new_branch",
+   {
+    "held": "missing pooled bounds",
+    "reproduced_ok": null
+   }
+  ]
+ },
+ "F3": {
+  "declared": "point-and-strata-relative-v1, byte-identical receipt",
+  "match": true,
+  "reference": {
+   "branch": "today",
+   "byte_identical": true,
+   "direct": {
+    "aggregate_reproduced_ok": true,
+    "reproduced_ok": true,
+    "rule_applied": "point-and-strata-relative-v1",
+    "strata": [
+     {
+      "id": "a",
+      "reproduced_ok": true
+     },
+     {
+      "id": "b",
+      "reproduced_ok": true
+     }
+    ]
+   },
+   "via_selector": {
+    "aggregate_reproduced_ok": true,
+    "reproduced_ok": true,
+    "rule_applied": "point-and-strata-relative-v1",
+    "strata": [
+     {
+      "id": "a",
+      "reproduced_ok": true
+     },
+     {
+      "id": "b",
+      "reproduced_ok": true
+     }
+    ]
+   }
+  }
+ },
+ "F3b": {
+  "declared": "today's receipt byte for byte on read and recomputation; reproduced_ok false stays false",
+  "match": true,
+  "reference": {
+   "branch": "today",
+   "byte_identical": true,
+   "live_cell_failed_pairs": 38,
+   "pair": [
+    "0fe5e94c",
+    "acf09cd6"
+   ],
+   "served": {
+    "aggregate_reproduced_ok": true,
+    "reproduced_ok": false,
+    "rule_applied": "interval-overlap-commensurable-v1",
+    "strata": [
+     {
+      "id": "increase",
+      "reproduced_ok": false
+     },
+     {
+      "id": "decrease",
+      "reproduced_ok": false
+     }
+    ]
+   },
+   "via_selector": {
+    "aggregate_reproduced_ok": true,
+    "reproduced_ok": false,
+    "rule_applied": "interval-overlap-commensurable-v1",
+    "strata": [
+     {
+      "id": "increase",
+      "reproduced_ok": false
+     },
+     {
+      "id": "decrease",
+      "reproduced_ok": false
+     }
+    ]
+   }
+  }
+ },
+ "F3c": {
+  "declared": "mixed pair: today's branch, today's result",
+  "match": true,
+  "reference": {
+   "branch": "today",
+   "byte_identical_to_served": true,
+   "via_selector": {
+    "aggregate_reproduced_ok": true,
+    "reproduced_ok": false,
+    "rule_applied": "interval-overlap-commensurable-v1",
+    "strata": [
+     {
+      "id": "increase",
+      "reproduced_ok": false
+     },
+     {
+      "id": "decrease",
+      "reproduced_ok": false
+     }
+    ]
+   }
+  }
+ },
+ "F3d": {
+  "declared": "served stratum bounds equal the joint-mask quantiles, not the local ones (complete expected outcome pinned in EXPECTED_F3D)",
+  "match": true,
+  "reference": {
+   "cells_sha256": "d3076001359db1fca0d7b8068f189bebb9ee9d83fc6c0e1a5da06b03c372111b",
+   "differs_for_a": true,
+   "joint_accepted": 1367,
+   "joint_strata": {
+    "a": {
+     "accepted": 1367,
+     "hi": 55.55555555555556,
+     "lo": -25.0
+    },
+    "b": {
+     "accepted": 1367,
+     "hi": -60.0,
+     "lo": -100.0
+    }
+   },
+   "local_strata": {
+    "a": {
+     "accepted": 1998,
+     "hi": 50.0,
+     "lo": -25.0
+    },
+    "b": {
+     "accepted": 1369,
+     "hi": -60.0,
+     "lo": -100.0
+    }
+   }
+  }
+ },
+ "F4": {
+  "declared": "filer stratum bounds differing from the replay by more than 0.0001: 422",
+  "match": true,
+  "reference": {
+   "implementation_note": "IntervalProvenance::TOLERANCE must move from 0.00011 to 0.0001 when the row is implemented; the row's wording is the falsifier and is not amended",
+   "reference_constant": 0.0001,
+   "refused": {
+    "0.0001": false,
+    "0.000105": true,
+    "0.00011": true,
+    "0.000111": true
+   },
+   "server_constant_at_5723faa": 0.00011
+  }
+ },
+ "F5": {
+  "declared": "supports",
+  "match": true,
+  "reference": "supports"
+ },
+ "F5p": {
+  "declared": "pooled upper bound below -5 with every stratum straddling: OPPOSES (pooled condition, no degenerate component)",
+  "match": true,
+  "reference": "opposes"
+ },
+ "F5q": {
+  "declared": "every stratum lower bound at or above -5 but pooled lower bound below: UNRESOLVED, not supports",
+  "match": true,
+  "reference": "unresolved"
+ },
+ "F5r": {
+  "declared": "two real attested stratified rows read under the keyed contract at -5, with replayed pooled and stratum bounds (support and opposition)",
+  "match": true,
+  "reference": {
+   "opposes": {
+    "hash": "2fb560cb4598",
+    "pooled": [
+     -22.028237247581473,
+     -5.861359412308465
+    ],
+    "stance": "opposes",
+    "strata": {
+     "no-delegation": [
+      -22.157114081670027,
+      0.29704808465871313
+     ],
+     "one-hop-delegation-allowed": [
+      -28.687572590011616,
+      -4.761904761904767
+     ]
+    },
+    "value": -13.865
+   },
+   "rule": "at_least -5, bound_reading attested_interval_v1, identity assumed present for the counterfactual read",
+   "supports": {
+    "hash": "b2d2e231ec71",
+    "pooled": [
+     7.586464040977087,
+     21.851673822741155
+    ],
+    "stance": "supports",
+    "strata": {
+     "next-up": [
+      2.6455026455026456,
+      22.053872053872052
+     ],
+     "next-week": [
+      7.0283665506696185,
+      27.212107004245787
+     ]
+    },
+    "value": 14.565
+   }
+  }
+ },
+ "F6": {
+  "declared": "opposes",
+  "match": true,
+  "reference": "opposes"
+ },
+ "F7": {
+  "declared": "unresolved",
+  "match": true,
+  "reference": "unresolved"
+ },
+ "F8": {
+  "declared": "unresolved, pooled bound served reported-only",
+  "match": true,
+  "reference": "unresolved"
+ },
+ "F8b": {
+  "declared": "opposes; the degenerate form does not erase it",
+  "match": true,
+  "reference": "opposes"
+ },
+ "F8c": {
+  "declared": "UNRESOLVED (out of scope); generic stance and settlement receipt unchanged",
+  "match": true,
+  "reference": "unresolved"
+ },
+ "F8d": {
+  "declared": "keyed: UNRESOLVED not supports (0.37.0 point would pass); without bound_reading: supports",
+  "match": true,
+  "reference": {
+   "keyed": "unresolved",
+   "unkeyed": "supports"
+  }
+ },
+ "F8e": {
+  "declared": "mint against keyed contract without identity: rejected before inference",
+  "match": true,
+  "reference": "rejected before inference"
+ },
+ "F9": {
+  "declared": "the 0.37.0 point reading, unchanged",
+  "match": true,
+  "reference": "supports"
+ },
+ "legacy_receipt_control": {
+  "declared": "the reimplemented today-branch receipt equals the served receipt for every settled replication pair in the snapshot",
+  "match": true,
+  "reference": {
+   "mismatch_count": 0,
+   "mismatches": [],
+   "pairs_checked": 352
+  }
+ },
+ "uvf_before_after_oracle": {
+  "declared": "candidate transformation of the frozen snapshot changes zero verdict surfaces and selects zero pairs/contracts for the new branch; the positive control (one synthetic opted pair injected) changes exactly one surface and the oracle reports it",
+  "match": true,
+  "reference": {
+   "positive_control": {
+    "after_sha256": "4d3830d6b4a009b0f24fee41747b9533f9c887dd2cc1327dd53e19d340ec31bf",
+    "before_sha256": "a252c16293318ce32caef24e5c61098ecb41aeb8cfa91cdeea8936f97c1ab3a5",
+    "changed": [
+     {
+      "after": {
+       "confirmed": false,
+       "counts_toward_verdict": true,
+       "evidence_state": "valid",
+       "reproduced_ok": true,
+       "resolution_bound": "resolvable",
+       "settlement_eligible": true,
+       "settlement_state": null
+      },
+      "before": {
+       "confirmed": false,
+       "counts_toward_verdict": true,
+       "evidence_state": "valid",
+       "reproduced_ok": false,
+       "resolution_bound": "resolvable",
+       "settlement_eligible": true,
+       "settlement_state": null
+      },
+      "surface": "m:0fe5e94c7afa47dd009b25eb9e96b7bd946b79bad42736e0ff6a3e24df2f2b5e"
+     }
+    ],
+    "changed_surfaces": 1,
+    "every_change_attributable_to_a_selected_pair_or_contract": true,
+    "keyed_contracts": 0,
+    "new_branch_pair_hashes": [
+     "0fe5e94c7afa47dd009b25eb9e96b7bd946b79bad42736e0ff6a3e24df2f2b5e"
+    ],
+    "new_branch_pairs": 1,
+    "surfaces": 3038
+   },
+   "snapshot": {
+    "after_sha256": "a252c16293318ce32caef24e5c61098ecb41aeb8cfa91cdeea8936f97c1ab3a5",
+    "before_sha256": "a252c16293318ce32caef24e5c61098ecb41aeb8cfa91cdeea8936f97c1ab3a5",
+    "changed": [],
+    "changed_surfaces": 0,
+    "every_change_attributable_to_a_selected_pair_or_contract": true,
+    "keyed_contracts": 0,
+    "new_branch_pair_hashes": [],
+    "new_branch_pairs": 0,
+    "surfaces": 3038
+   }
+  }
+ },
+ "validation": {
+  "declared": "reject bound_reading on other metric / beside at_most / other value",
+  "match": true,
+  "reference": {
+   "beside_at_most": "rejected: bound_reading beside at_most",
+   "other_metric": "rejected: bound_reading only on comprehension_accuracy_delta",
+   "other_value": "rejected: unknown bound_reading value"
+  }
+ }
+}
