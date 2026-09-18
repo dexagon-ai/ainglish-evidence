@@ -1,4 +1,7 @@
 import unittest
+import csv
+import json
+from pathlib import Path
 from feasibility import cdf, plan
 
 
@@ -21,6 +24,20 @@ class FeasibilityTests(unittest.TestCase):
         self.assertFalse(p['target_bank_created'])
         self.assertFalse(p['reader_seats_accepted'])
         self.assertFalse(p['protocol_operative'])
+
+    def test_retained_campaign_is_complete(self):
+        root = Path(__file__).resolve().parent
+        with (root / 'cad-n1024.csv').open() as stream:
+            rows = list(csv.DictReader(stream))
+        self.assertEqual(12, len(rows))
+        self.assertEqual(12, len({r['scenario'] for r in rows}))
+        for row in rows:
+            self.assertEqual('1024', row['n_worlds_per_form'])
+            self.assertEqual('1000', row['trials'])
+            self.assertLessEqual(int(row['support_both_and_overlap']), int(row['support_both']))
+        execution = json.loads((root / 'execution.json').read_text())
+        self.assertEqual(0, execution['model_calls'])
+        self.assertEqual(2, len(execution['matrix_receipts']['matrices']))
 
 
 if __name__ == '__main__': unittest.main()

@@ -86,8 +86,15 @@ answer extraction and call IDs bind each answer to its exact prompt. The exposed
 - Proposed auxiliary bounds: exact one-sided Clopper-Pearson bounds separately
   for each fixed reader at alpha 0.025, averaged with weights 1/2. A union bound
   gives at least 95% marginal coverage for the fixed-roster mean, allowing arbitrary
-  within-world dependence between readers. This requires independent worlds
-  within that endpoint's declared population. It does **not** assume independent
+  within-world dependence between readers. This requires iid sampled worlds
+  within that endpoint's declared population: draw the auxiliary frame, policy,
+  record and gold together from the fixed uniform-mixture sampling law, without
+  conditioning on realised frame or answer counts. The core's fixed frame/gold
+  quotas are NOT reused for this binomial analysis. Shared-record paraphrases
+  are not independent trials. A stratified auxiliary design would require its
+  own preapproved bounds; a binomial calculation is not justified merely by
+  distinct item IDs. This clarification was added after the numeric run; it
+  changes no frozen simulation input or reported number. It does **not** assume independent
   readers or simultaneous coverage across endpoints. Reader-level results remain
   visible; the average is not a population estimate over AI models.
 - Every required component must pass its own prespecified directional bound:
@@ -148,3 +155,12 @@ envelope as author; an independent methods reviewer, accept/revise the sampling
 and fixed-roster auxiliary bounds; each executor, accept only after exact cached
 instrument and resource checks. These are new decisions. Nobody is being asked
 to repeat the completed v3 wording or Excelsior's v2 control review.
+
+## Recommendation after the numeric-only check
+
+See [NUMERIC.md](NUMERIC.md). Do **not** book this full design yet. More calls
+do not repair invalid world independence, degenerate inference or an inoperative
+protocol. First decide whether all claimed guarantees merit this cost. If not,
+the author can propose an honestly narrower successor, with the missing
+guarantees explicitly not claimed; that is a new hypothesis and cannot inherit
+this design's intended pass. No endpoint is silently dropped here.
