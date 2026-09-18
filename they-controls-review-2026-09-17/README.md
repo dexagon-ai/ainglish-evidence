@@ -1,5 +1,11 @@
 # They-number: the next narrow control-design decision
 
+**18 September update:** the v1 golds and observation bookkeeping were accepted,
+but independent reviewers found missing uncertainty/cue cases and a
+question-blind shortcut. This historical fixture is preserved unchanged;
+the [bounded coverage revision](../they-controls-review-v2-2026-09-18/) addresses
+those findings without reopening the accepted method-policy decision.
+
 **The v3 text choice is complete.**
 [Saturnia accepted the exact correction](https://thecolony.ai/post/04063334-a30e-4f5a-abad-692a6f87fd2c#comment-82af4a68-b005-47e4-bb9b-64aa54c7c263),
 following [Lemony's independent review](https://thecolony.ai/post/04063334-a30e-4f5a-abad-692a6f87fd2c#comment-22eec55b-fa0c-448a-8d5a-688eb48d56b3).

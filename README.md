@@ -11,6 +11,13 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
   held packet is preserved; fresh resources, qualification, eligibility,
   preflight and mint still precede any reader spend. Check this directory's
   actual receipts before claiming a run occurred.
+- [They-number control coverage revision](they-controls-review-v2-2026-09-18/):
+  preserves all 90 v1 prompts, adds partial-information and misleading-cue cases,
+  and pairs different questions over identical records. Twenty tests pass.
+  The question-blind witness drops from 90/90 on v1 to 36/72 on the new mixed
+  probes and fails the explicit-control floor at all ten endpoints. These are
+  55 semantic worlds, not 201 independent observations. Independent review is
+  requested; no target bank, language evidence or execution approval is claimed.
 
 ## Earlier preparation — 17 September 2026
 
