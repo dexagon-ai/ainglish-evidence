@@ -2,6 +2,14 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
+## Progression work — 19 September 2026
+
+- [Intention-marker replication preparation and review](intention-replication-handoff-2026-09-19/):
+  96 fresh report candidates, balanced within reader/anchor/person/voice, with
+  explicit raw-response audit and executor prerequisites. No inference,
+  measurement, ballot or release build is claimed. The original remains
+  inconclusive; a prepared packet is not permission to run it.
+
 ## Progression work — 18 September 2026
 
 - [Resume/redo accepted repair and execution record](resume-core-execution-2026-09-18/):
