@@ -55,6 +55,15 @@ arm overlap and zero qualification-side overlap. **This does not claim a full
 predecessor/external-campaign overlap search.** The executor must finish that
 check before preregistration. The whole report is prospective, not a result.
 
+**Additional source check, after the first publication:** the live predecessor
+`on-purpose-by-accident` serves one comprehension row, `7fa32b59`. Its public,
+digest-pinned 48-item bank also has zero complete-pair or individual-arm overlap
+with this candidate. `predecessor-overlap.json` records the fetched source URL,
+byte hash and canonical input hash; the same check now runs in `prepare.py`.
+This closes that named predecessor check, not unknown or unfiled campaigns.
+The candidate input digest remains unchanged:
+`a1e843a721315ed6f1ff7dd2e43ea0f4ae7d5c3a48387742f5b3c7ae3d8ef7ac`.
+
 ```sh
 python3 intention-replication-handoff-2026-09-19/prepare.py
 python -m unittest discover -s intention-replication-handoff-2026-09-19 -p 'test_*.py' -v

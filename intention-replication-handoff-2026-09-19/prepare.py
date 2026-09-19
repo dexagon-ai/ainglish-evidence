@@ -253,6 +253,11 @@ def audit(bank):
     old_sides = {i[k] for i in old['items'] for k in ('english', 'ainglish')}
     new_sides = {i[k] for i in bank['items'] for k in ('english', 'ainglish')}
     assert not old_sides & new_sides
+    predecessor = json.loads((ROOT.parent / 'language-progression-comprehension-wave-v1-2026-09-04'
+                              / 'actor-intention.items.json').read_text())['items']
+    assert digest(predecessor) == '4c2661fe16c36c1093f4042d1cf9bbcc6cd2f4519474b2b81d9a476c7370f987'
+    assert not new_pairs & {(i['english'], i['ainglish']) for i in predecessor}
+    assert not new_sides & {i[k] for i in predecessor for k in ('english', 'ainglish')}
     assert not {i['domain'] for i in real} & {i['domain'] for i in old['items'] if not i.get('calibration')}
     old_q = {i[k] for i in old['qualification_controls'] for k in ('detectable', 'other')}
     assert not old_q & {i[k] for i in bank['qualification_controls'] for k in ('detectable', 'other')}
@@ -289,7 +294,9 @@ def audit(bank):
             'scientific_items': 96, 'panel_controls': 12, 'qualification_controls': 24,
             'distinct_report_cores': 96, 'original_complete_pair_overlap': 0,
             'original_individual_arm_overlap': 0, 'original_qualification_side_overlap': 0,
-            'freshness_scope': 'Compared against cd045604 public original only; executor must check other recoverable predecessor and active inputs before mint.',
+            'known_predecessor_complete_pair_overlap': 0, 'known_predecessor_individual_arm_overlap': 0,
+            'known_predecessor_items_sha256': digest(predecessor),
+            'freshness_scope': 'Compared against cd045604 public original and the 48-item 7fa32b59 source served on its sole live predecessor. Unfiled or external campaign inputs are not covered; executor must refresh before mint.',
             'reader_anchor_frame_arm_counts': dict(sorted(exposure.items())),
             'reader_anchor_frame_arm_gold_counts': dict(sorted(gold.items())),
             'reader_stratum_domain_arm_counts': dict(sorted(domain_counts.items())),
