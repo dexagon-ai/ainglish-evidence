@@ -10,9 +10,11 @@ SOURCE = ROOT.parent / 'intention-reader-review-2026-09-18' / 'items.json'
 TARGET = 'cd045604bc95ddc33befcdeb1185ea4f73fb2f5af192767b735fb6824254950c'
 SEED = 2026091911
 READERS = (
-    'mistral-small3.2-24b-opaque-choice-q4_k_m@q4_k_m',
-    'gemma3-12b-opaque-choice-q4_k_m@q4_k_m',
+    'mistral-small3.2-24b-opaque-choice-q4_k_m',
+    'gemma3-12b-opaque-choice-q4_k_m',
 )
+# The SDK deals arms by endpoint.name, NOT the name@precision roster identity.
+ROSTER_IDENTIFIERS = tuple(name + '@q4_k_m' for name in READERS)
 ANCHORS = ('plan-a', 'plan-b', 'unforeseen', 'accepted-risk')
 FRAMES = ('first-active', 'first-passive', 'third-active', 'third-passive')
 STRATA = ('on-purpose-plan-match', 'by-accident-unforeseen-slip', 'by-accident-accepted-risk')
@@ -225,14 +227,21 @@ def make_bank():
             'question': f'Who is the receiving clerk on dispatch docket DD-{7420+n}?',
             'options': options, 'answer': qnames[n % 6],
         })
-    return {'kind': 'dexagon.intention-replication-input-candidate.v1',
+    return {'kind': 'dexagon.intention-replication-input-candidate.v2',
             'status': 'prepared_not_execution_authorised', 'target_hash': TARGET,
-            'seed': SEED, 'readers': list(READERS), 'items': items,
+            'seed': SEED, 'readers': list(READERS),
+            'assignment_key': 'panel[].name',
+            'roster_identifiers': list(ROSTER_IDENTIFIERS), 'items': items,
             'sha256': digest(items), 'qualification_controls': controls}
 
 
 def audit(bank):
     assert bank['seed'] == SEED and bank['readers'] == list(READERS)
+    assert bank['assignment_key'] == 'panel[].name'
+    assert bank['roster_identifiers'] == list(ROSTER_IDENTIFIERS)
+    source_readers = json.loads((SOURCE.parent / 'measurement.json').read_text())['manifest']['readers']
+    assert [reader['name'] for reader in source_readers] == list(READERS)
+    assert [reader['name'] + '@' + reader['precision'] for reader in source_readers] == list(ROSTER_IDENTIFIERS)
     assert bank['target_hash'] == TARGET and bank['status'] == 'prepared_not_execution_authorised'
     old = json.loads(SOURCE.read_text())
     real = [i for i in bank['items'] if not i.get('calibration')]
@@ -288,8 +297,8 @@ def audit(bank):
     assert all(x['english'] == x['ainglish'] for x in domain_counts.values())
     assert digest(bank['items']) == bank['sha256']
     # Exact original roster only. This candidate does not inherit its qualification receipts.
-    return {'kind': 'dexagon.intention-replication-design-audit.v1',
-            'status': 'cpu_preparation_only_raw_audit_and_executor_gates_pending',
+    return {'kind': 'dexagon.intention-replication-design-audit.v2',
+            'status': 'reproducibility_preparation_only_not_adoption_gate_work',
             'target_hash': TARGET, 'items_sha256': bank['sha256'], 'seed': SEED,
             'scientific_items': 96, 'panel_controls': 12, 'qualification_controls': 24,
             'distinct_report_cores': 96, 'original_complete_pair_overlap': 0,
@@ -311,7 +320,7 @@ if __name__ == '__main__':
     report = audit(bank)
     original = json.loads((SOURCE.parent / 'measurement.json').read_text())['manifest']
     handoff = {
-        'kind': 'dexagon.intention-replication-handoff.v1',
+        'kind': 'dexagon.intention-replication-handoff.v2',
         'status': 'preparation_only_not_an_attempt_payload',
         'proposal': 'a-ef4rsdm2ksnkdz2r', 'canonical_slug': 'on-purpose-by-accident-2',
         'replicates_hash': TARGET, 'metric': 'comprehension_accuracy_delta',
@@ -321,7 +330,9 @@ if __name__ == '__main__':
         'settlement_item_field': original['settlement_item_field'],
         'interval_estimator': {k: v for k, v in original['interval_estimator'].items()
                                if k != 'items_index_sha256'},
-        'prerequisite_stop': 'Original retained-response audit unresolved; no inference or mint authorised by this packet.',
+        'assignment_key': 'panel[].name (precision remains part of the instrument identity, not the arm assignment key)',
+        'prerequisite_stop': 'Retained parsed-answer audit closed with raw-response limits. This reproduction cannot satisfy the current strict-positive carrier: its fixed source is strata_unresolved. No inference or mint authorised; a new original design is being considered instead.',
+        'purpose': 'reproducibility_only_not_a_resolving_original',
         'qualification_receipts': None,
         'qualification_note': 'Executor supplies their own current exact-roster receipts; source submitter receipts are not copied.',
         'planned_calls': {'scientific': 192, 'calibration': 48, 'qualification_if_required': 96},

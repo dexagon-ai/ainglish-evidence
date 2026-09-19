@@ -3,6 +3,7 @@ import copy
 import hashlib
 import json
 import unittest
+from unittest.mock import patch
 import prepare as p
 
 
@@ -28,6 +29,28 @@ class DesignTests(unittest.TestCase):
         for item in self.bank['items'][:96]:
             for reader in p.READERS:
                 self.assertEqual(p.arm(p.SEED, reader, item['id']), arm_for(p.SEED, reader, item['id']))
+
+    def test_actual_sdk_runner_matches_plan_not_only_helper(self):
+        from runner_assignment_audit import runner_assignments, report
+        actual = report(self.bank, runner_assignments(self.bank))
+        self.assertEqual(actual['actual_plan_disagreements'], 0)
+        self.assertEqual(actual['balanced_reader_anchor_frame_blocks'], 32)
+        self.assertEqual(actual['opposite_arm_items'], 96)
+
+    def test_historical_name_precision_error_is_detected_by_actual_runner(self):
+        from runner_assignment_audit import runner_assignments
+        with patch.object(p, 'READERS', p.ROSTER_IDENTIFIERS):
+            historical = p.make_bank()
+        self.assertEqual(historical['sha256'], 'a1e843a721315ed6f1ff7dd2e43ea0f4ae7d5c3a48387742f5b3c7ae3d8ef7ac')
+        actual = [row for row in runner_assignments(historical) if not row['calibration']]
+        wrong = sum(row['arm'] != p.arm(p.SEED, row['reader'] + '@q4_k_m', row['item_id']) for row in actual)
+        self.assertEqual(wrong, 106)
+        with self.assertRaises(AssertionError):
+            p.audit(historical)
+
+    def test_precision_is_retained_as_separate_instrument_identity(self):
+        self.assertEqual(self.bank['roster_identifiers'], [r + '@q4_k_m' for r in self.bank['readers']])
+        self.reject(lambda b: b.update(assignment_key='name@precision'))
 
     def test_reproducible_bytes(self):
         self.assertEqual(p.make_bank(), self.bank)

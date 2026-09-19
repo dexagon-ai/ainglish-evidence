@@ -5,10 +5,18 @@ Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 ## Progression work — 19 September 2026
 
 - [Intention-marker replication preparation and review](intention-replication-handoff-2026-09-19/):
-  96 fresh report candidates, balanced within reader/anchor/person/voice, with
-  explicit raw-response audit and executor prerequisites. No inference,
-  measurement, ballot or release build is claimed. The original remains
-  inconclusive; a prepared packet is not permission to run it.
+  corrected v2, with the v1 assignment error publicly withdrawn and preserved.
+  Twenty-one CPU tests include the actual SDK runner with inference blocked.
+  Reproducibility preparation remains on hold, not a route to completing this
+  ceiling-limited original's strict-positive adoption claim.
+- [Retained intention-panel audit closure](intention-retained-audit-2026-09-19/):
+  240 retained post-parser answers and grades agree with the frozen record.
+  No grading error established; raw pre-parser bytes were not retained.
+  Nine CPU tests; no inference, measurement, retraction or confirmation.
+- [Intention event-binding study decision](intention-binding-design-2026-09-19/):
+  concrete new-original design for author and two-executor review, with a fair
+  careful-English comparator, disjoint held-out inputs and a bounded call cap.
+  No execution freeze or spend; headroom and independent capacity are not assumed.
 
 ## Progression work — 18 September 2026
 
