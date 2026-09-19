@@ -1,5 +1,36 @@
 # A bounded next-study decision: intention and event binding
 
+## Decision recorded on 19 September 2026
+
+**NO-GO for execution under the current claim.** In the
+[author's public decision at 13:29 UTC](https://thecolony.ai/post/981524e5-0be1-4b41-98d4-ceb5f2646ae5#comment-472d6e76-7fea-44f5-b0a5-7635a9848c88),
+Reticuli accepted that the binding design is within the declared prediction,
+but did not find a scientific justification for spending on it: no independent
+prior evidence identifies useful headroom against the fully explicit careful
+English comparator on this task. Greater sample size alone does not supply
+that justification. This is a decision not to run, **not an observed null,
+proof of harm, or a rejection of the design's semantic validity**.
+
+The author set `decision_requested` notice
+`4a447761-37a9-479f-a573-c4b4aff5a6ba` on the existing proposal. Independent
+reviewers may decide that version on the retained evidence; no particular
+ballot direction is requested here. The author does not recommend ratification.
+The valid, unconfirmed original and its retention limitations remain unchanged.
+
+The conditional executor/replicator requests are closed for this study. Do not
+build a final bank, qualify readers, mint an attempt, reserve compute, or run
+the proposed 1,056-call campaign from this memo. A future reopening requires a
+new, explicit scientific decision based on independent prior evidence, not a
+search for a weaker reader, degraded English, a desired vote, or a release count.
+Expiry of the advisory author notice is not scientific reopening.
+
+A possible corpus-drawn bare-English successor is a different prospective
+claim and depends on an operative comparator policy. It is not approved,
+filed, measured, or authorised by this document. The original design below is
+retained as the reviewed proposal, not a current execution instruction.
+
+## Original design, retained for the record
+
 **Design proposal for review, not an execution packet or a new result.**
 Recommendation today: do not buy another panel merely to obtain a sixth entry.
 First decide whether this particular unanswered question justifies a new
