@@ -1,0 +1,1733 @@
+{
+  "construct": "finish-started / interrupt-started",
+  "slug": "stop-s-finish-started-stop-s-interrupt-started-a-stop",
+  "form": "Stop <S>, finish-started. | Stop <S>, interrupt-started. — a stop directive scoped to a named set of task instances",
+  "metric": "learnability",
+  "seed": 2026091981,
+  "planted_arm": "ainglish",
+  "calibration_min_gap": "0.5",
+  "calibration_min_recovered": "0.5",
+  "panel": [
+    {
+      "name": "mistral-small3.2-24b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "model": "dexagon-mistral-small3.2-24b-pp-task:ctx4k",
+      "precision": "Q4_K_M",
+      "model_digest": "sha256:6629ee92de51c9a1367e1331cfa9ef6a77058a44a6a3e18ab524b2d0404252de",
+      "digest_source": "Local Ollama /api/tags, verified before any launch",
+      "max_tokens": 64,
+      "temperature": 0,
+      "timeout_s": 120,
+      "seed": 2026091981,
+      "answer_protocol": "opaque-choice-v1"
+    },
+    {
+      "name": "gemma3-12b-opaque-choice-q4_k_m",
+      "provider": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "model": "dexagon-gemma3-12b-pp-task:ctx4k",
+      "precision": "Q4_K_M",
+      "model_digest": "sha256:de1f65ea3438dfcc7c3387802b9425a140fb01ecc79edf4924a13fab051eb68f",
+      "digest_source": "Local Ollama /api/tags, verified before any launch",
+      "max_tokens": 64,
+      "temperature": 0,
+      "timeout_s": 120,
+      "seed": 2026091981,
+      "answer_protocol": "opaque-choice-v1"
+    }
+  ],
+  "admissibility": {
+    "kind": "ainglish.panel.admissibility.v1",
+    "per_reader_calibration": true,
+    "max_off_option_cells": 304,
+    "max_absent_cells": 0,
+    "max_truncated_cells": 0,
+    "max_transport_fault_cells": 0
+  },
+  "entry": {
+    "text": "Two trailing qualifiers distinguish how a stop directive treats work already running. Use exactly one in an affirmative directive: Stop <S>, finish-started. / Stop <S>, interrupt-started. S names one bounded set of task instances, such as downloads D1-D4 or batch B. The task unit and the point at which the directive takes effect must be recoverable from the shared context. 'Started' means execution actually began before that point and the task is still running; being submitted, queued, scheduled, or reserved is not enough.\n\nCanonical concise English templates, substituting S unchanged:\nStop <S>, finish-started. <=> In <S>, start no new tasks; let running tasks finish.\nStop <S>, interrupt-started. <=> In <S>, start no new tasks; interrupt running tasks.\n\nBoth policies forbid starting not-yet-running members of S after the stop takes effect. finish-started keeps the already-running members eligible to continue their existing execution to a normal terminal outcome; it does not demand that they succeed, restart a failed member, or drain the waiting queue. interrupt-started asks the executor to interrupt those already-running members promptly, rather than deliberately let their ordinary work finish. Interruption follows the already applicable safe, authorised mechanism; it is not permission to kill an unsafe process, bypass a constraint, or destroy an artifact. If interruption is unsupported, delayed, or unsafe, report that constraint and the actual remaining work rather than claiming everything stopped. The same external constraints apply to both the marked and English templates.\n\nFor example, batch B contains four report downloads. D1 has finished, D2 is running, and D3-D4 are queued when the stop takes effect. With finish-started, D2 may continue; D3-D4 must not start. With interrupt-started, D2 is to be interrupted and D3-D4 must not start. Neither instruction changes D1's completed status. A directive is not a receipt that the requested stopping has happened.\n\nScope and boundary rules: several running members all fall within the chosen policy; 'finish-started' does not pick just the one currently being watched. Tasks outside S are unaffected. A completion ordered before the stop is already finished; a start ordered after it is prohibited. If simultaneous events or missing records leave that ordering unknown, clarify it rather than inventing a race winner. If there are no running members, the two policies have the same immediate running-work effect, but still forbid new starts in S. Task granularity is fixed by the stated job definitions; neither qualifier relabels queued jobs as internal subtasks to evade the stop.\n\nNeither form says to delete queued records, roll back completed effects, discard partial files, issue refunds, save a checkpoint, retry, or restart later. Those policies require separate instructions. The stop remains in force for the named instances until changed by an authorised instruction; it is not a standing rule for every future batch. An authorised safety rule or failure can still terminate work under finish-started. Already completed or partially produced effects do not disappear merely because a running task is interrupted.\n\nThis is the stop/continuation axis, not the register's stopped/done completion-report axis, all-or-nothing/keep-successes effect-retention axis, resume-from/redo-from-start restart axis, or in-parallel/in-sequence scheduling axis. Bare 'stop', 'cancel', or 'finish up' remains legal but does not select this convention. Quoting a directive does not issue it. The literal lowercase hyphenated forms are the registered spellings; spaced words are intelligible English, not extra machine-parsed aliases. A damaged or missing qualifier does not license guessing the other policy. This entry claims neither reliable typo correction nor successful remote cancellation.",
+    "sha256": "32a41fa4ce018fa3cd2b467150f75335cef79b7e23b638dadc3c188937ad2790",
+    "source_url": "https://ainglish.org/proposals/a-7x91n7c1yr2n8gfp",
+    "proposal_revision": "stop-s-finish-started-stop-s-interrupt-started-a-stop"
+  },
+  "items": [
+    {
+      "id": "cal-route-01",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which chute receives the parcel. Its alternatives are upper chute and lower chute. The assignment of 'calvex1' is not otherwise specified. The recorded code is 'calvex1'.",
+      "ainglish": "A private two-value dictionary determines which chute receives the parcel. Its alternatives are upper chute and lower chute. Dictionary: 'calvex1' selects upper chute, not lower chute. The recorded code is 'calvex1'.",
+      "question": "Using this dictionary, which chute receives the parcel?",
+      "options": [
+        "upper chute",
+        "lower chute",
+        "cannot determine from the supplied dictionary"
+      ],
+      "answer": "upper chute"
+    },
+    {
+      "id": "cal-cover-02",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which cover the notebook receives. Its alternatives are linen cover and cork cover. The assignment of 'calvex2' is not otherwise specified. The recorded code is 'calvex2'.",
+      "ainglish": "A private two-value dictionary determines which cover the notebook receives. Its alternatives are linen cover and cork cover. Dictionary: 'calvex2' selects cork cover, not linen cover. The recorded code is 'calvex2'.",
+      "question": "Using this dictionary, which cover the notebook receives?",
+      "options": [
+        "cork cover",
+        "cannot determine from the supplied dictionary",
+        "linen cover"
+      ],
+      "answer": "cork cover"
+    },
+    {
+      "id": "cal-visit-03",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which day the visitor is booked. Its alternatives are Tuesday and Thursday. The assignment of 'calvex3' is not otherwise specified. The recorded code is 'calvex3'.",
+      "ainglish": "A private two-value dictionary determines which day the visitor is booked. Its alternatives are Tuesday and Thursday. Dictionary: 'calvex3' selects Tuesday, not Thursday. The recorded code is 'calvex3'.",
+      "question": "Using this dictionary, which day the visitor is booked?",
+      "options": [
+        "cannot determine from the supplied dictionary",
+        "Tuesday",
+        "Thursday"
+      ],
+      "answer": "Tuesday"
+    },
+    {
+      "id": "cal-signal-04",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which lamp displays the signal. Its alternatives are violet lamp and amber lamp. The assignment of 'calvex4' is not otherwise specified. The recorded code is 'calvex4'.",
+      "ainglish": "A private two-value dictionary determines which lamp displays the signal. Its alternatives are violet lamp and amber lamp. Dictionary: 'calvex4' selects amber lamp, not violet lamp. The recorded code is 'calvex4'.",
+      "question": "Using this dictionary, which lamp displays the signal?",
+      "options": [
+        "violet lamp",
+        "amber lamp",
+        "cannot determine from the supplied dictionary"
+      ],
+      "answer": "amber lamp"
+    },
+    {
+      "id": "cal-shelf-05",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which shelf receives the book. Its alternatives are east shelf and west shelf. The assignment of 'calvex5' is not otherwise specified. The recorded code is 'calvex5'.",
+      "ainglish": "A private two-value dictionary determines which shelf receives the book. Its alternatives are east shelf and west shelf. Dictionary: 'calvex5' selects east shelf, not west shelf. The recorded code is 'calvex5'.",
+      "question": "Using this dictionary, which shelf receives the book?",
+      "options": [
+        "west shelf",
+        "cannot determine from the supplied dictionary",
+        "east shelf"
+      ],
+      "answer": "east shelf"
+    },
+    {
+      "id": "cal-meal-06",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which dish the ticket selects. Its alternatives are bean stew and rice salad. The assignment of 'calvex6' is not otherwise specified. The recorded code is 'calvex6'.",
+      "ainglish": "A private two-value dictionary determines which dish the ticket selects. Its alternatives are bean stew and rice salad. Dictionary: 'calvex6' selects rice salad, not bean stew. The recorded code is 'calvex6'.",
+      "question": "Using this dictionary, which dish the ticket selects?",
+      "options": [
+        "cannot determine from the supplied dictionary",
+        "bean stew",
+        "rice salad"
+      ],
+      "answer": "rice salad"
+    },
+    {
+      "id": "cal-desk-07",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which desk receives the letter. Its alternatives are stone desk and wood desk. The assignment of 'calvex7' is not otherwise specified. The recorded code is 'calvex7'.",
+      "ainglish": "A private two-value dictionary determines which desk receives the letter. Its alternatives are stone desk and wood desk. Dictionary: 'calvex7' selects stone desk, not wood desk. The recorded code is 'calvex7'.",
+      "question": "Using this dictionary, which desk receives the letter?",
+      "options": [
+        "stone desk",
+        "wood desk",
+        "cannot determine from the supplied dictionary"
+      ],
+      "answer": "stone desk"
+    },
+    {
+      "id": "cal-fabric-08",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which fabric is allocated. Its alternatives are cotton and wool. The assignment of 'calvex8' is not otherwise specified. The recorded code is 'calvex8'.",
+      "ainglish": "A private two-value dictionary determines which fabric is allocated. Its alternatives are cotton and wool. Dictionary: 'calvex8' selects wool, not cotton. The recorded code is 'calvex8'.",
+      "question": "Using this dictionary, which fabric is allocated?",
+      "options": [
+        "wool",
+        "cannot determine from the supplied dictionary",
+        "cotton"
+      ],
+      "answer": "wool"
+    },
+    {
+      "id": "cal-gate-09",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which gate the pass selects. Its alternatives are garden gate and canal gate. The assignment of 'calvex9' is not otherwise specified. The recorded code is 'calvex9'.",
+      "ainglish": "A private two-value dictionary determines which gate the pass selects. Its alternatives are garden gate and canal gate. Dictionary: 'calvex9' selects garden gate, not canal gate. The recorded code is 'calvex9'.",
+      "question": "Using this dictionary, which gate the pass selects?",
+      "options": [
+        "cannot determine from the supplied dictionary",
+        "garden gate",
+        "canal gate"
+      ],
+      "answer": "garden gate"
+    },
+    {
+      "id": "cal-tone-10",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which sound the notice selects. Its alternatives are bell and whistle. The assignment of 'calvex10' is not otherwise specified. The recorded code is 'calvex10'.",
+      "ainglish": "A private two-value dictionary determines which sound the notice selects. Its alternatives are bell and whistle. Dictionary: 'calvex10' selects whistle, not bell. The recorded code is 'calvex10'.",
+      "question": "Using this dictionary, which sound the notice selects?",
+      "options": [
+        "bell",
+        "whistle",
+        "cannot determine from the supplied dictionary"
+      ],
+      "answer": "whistle"
+    },
+    {
+      "id": "cal-tray-11",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which tray receives the sample. Its alternatives are glass tray and steel tray. The assignment of 'calvex11' is not otherwise specified. The recorded code is 'calvex11'.",
+      "ainglish": "A private two-value dictionary determines which tray receives the sample. Its alternatives are glass tray and steel tray. Dictionary: 'calvex11' selects glass tray, not steel tray. The recorded code is 'calvex11'.",
+      "question": "Using this dictionary, which tray receives the sample?",
+      "options": [
+        "steel tray",
+        "cannot determine from the supplied dictionary",
+        "glass tray"
+      ],
+      "answer": "glass tray"
+    },
+    {
+      "id": "cal-room-12",
+      "calibration": true,
+      "calibration_scope": "target-independent",
+      "calibration_construct": "cal-private-assignment",
+      "english": "A private two-value dictionary determines which room hosts the meeting. Its alternatives are attic room and cellar room. The assignment of 'calvex12' is not otherwise specified. The recorded code is 'calvex12'.",
+      "ainglish": "A private two-value dictionary determines which room hosts the meeting. Its alternatives are attic room and cellar room. Dictionary: 'calvex12' selects cellar room, not attic room. The recorded code is 'calvex12'.",
+      "question": "Using this dictionary, which room hosts the meeting?",
+      "options": [
+        "cannot determine from the supplied dictionary",
+        "attic room",
+        "cellar room"
+      ],
+      "answer": "cellar room"
+    },
+    {
+      "id": "mixed-archive-output--finish-started",
+      "calibration": false,
+      "world_id": "mixed-archive-output",
+      "family": "mixed-status",
+      "tested_form": "finish-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "mixed-archive-output",
+        "family": "mixed-status",
+        "form": "finish-started",
+        "policy_changes_answer": true
+      },
+      "english": "Archive set Cedar contains C1, C2 and C3. At the effective boundary C1 is complete, C2 is executing and C3 has never executed. C2 needs ten more minutes to emit its final archive. A safe interrupt can halt C2 within one minute. No failure or separate safety order is present.\nDirective: Stop archive set Cedar, finish-started.",
+      "ainglish": "Archive set Cedar contains C1, C2 and C3. At the effective boundary C1 is complete, C2 is executing and C3 has never executed. C2 needs ten more minutes to emit its final archive. A safe interrupt can halt C2 within one minute. No failure or separate safety order is present.\nDirective: Stop archive set Cedar, finish-started.",
+      "question": "Which plan for the final archive respects the directive?",
+      "options": [
+        "Let C2 produce it through its existing execution; do not open C3.",
+        "Cut C2 short using the available safe mechanism; do not open C3.",
+        "Open C3 as a replacement for C2."
+      ],
+      "answer": "Let C2 produce it through its existing execution; do not open C3."
+    },
+    {
+      "id": "mixed-archive-output--interrupt-started",
+      "calibration": false,
+      "world_id": "mixed-archive-output",
+      "family": "mixed-status",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "mixed-archive-output",
+        "family": "mixed-status",
+        "form": "interrupt-started",
+        "policy_changes_answer": true
+      },
+      "english": "Archive set Cedar contains C1, C2 and C3. At the effective boundary C1 is complete, C2 is executing and C3 has never executed. C2 needs ten more minutes to emit its final archive. A safe interrupt can halt C2 within one minute. No failure or separate safety order is present.\nDirective: Stop archive set Cedar, interrupt-started.",
+      "ainglish": "Archive set Cedar contains C1, C2 and C3. At the effective boundary C1 is complete, C2 is executing and C3 has never executed. C2 needs ten more minutes to emit its final archive. A safe interrupt can halt C2 within one minute. No failure or separate safety order is present.\nDirective: Stop archive set Cedar, interrupt-started.",
+      "question": "Which plan for the final archive respects the directive?",
+      "options": [
+        "Let C2 produce it through its existing execution; do not open C3.",
+        "Cut C2 short using the available safe mechanism; do not open C3.",
+        "Open C3 as a replacement for C2."
+      ],
+      "answer": "Cut C2 short using the available safe mechanism; do not open C3."
+    },
+    {
+      "id": "mixed-submitted-is-not-executing--finish-started",
+      "calibration": false,
+      "world_id": "mixed-submitted-is-not-executing",
+      "family": "mixed-status",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "mixed-submitted-is-not-executing",
+        "family": "mixed-status",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Print group Maple contains M1, M2 and M3. At the boundary M1 has ejected its last sheet, M2 has only a submission receipt and a reserved printer, and M3 is actively printing. M2 has not executed any step. The executor proposes to give M2 its first sheet after the boundary.\nDirective: Stop print group Maple, finish-started.",
+      "ainglish": "Print group Maple contains M1, M2 and M3. At the boundary M1 has ejected its last sheet, M2 has only a submission receipt and a reserved printer, and M3 is actively printing. M2 has not executed any step. The executor proposes to give M2 its first sheet after the boundary.\nDirective: Stop print group Maple, finish-started.",
+      "question": "How should that proposed first sheet be assessed?",
+      "options": [
+        "The reservation authorises it under either qualifier.",
+        "It violates the directive under either qualifier.",
+        "M1's completion authorises it under either qualifier."
+      ],
+      "answer": "It violates the directive under either qualifier."
+    },
+    {
+      "id": "mixed-submitted-is-not-executing--interrupt-started",
+      "calibration": false,
+      "world_id": "mixed-submitted-is-not-executing",
+      "family": "mixed-status",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "mixed-submitted-is-not-executing",
+        "family": "mixed-status",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Print group Maple contains M1, M2 and M3. At the boundary M1 has ejected its last sheet, M2 has only a submission receipt and a reserved printer, and M3 is actively printing. M2 has not executed any step. The executor proposes to give M2 its first sheet after the boundary.\nDirective: Stop print group Maple, interrupt-started.",
+      "ainglish": "Print group Maple contains M1, M2 and M3. At the boundary M1 has ejected its last sheet, M2 has only a submission receipt and a reserved printer, and M3 is actively printing. M2 has not executed any step. The executor proposes to give M2 its first sheet after the boundary.\nDirective: Stop print group Maple, interrupt-started.",
+      "question": "How should that proposed first sheet be assessed?",
+      "options": [
+        "M1's completion authorises it under either qualifier.",
+        "The reservation authorises it under either qualifier.",
+        "It violates the directive under either qualifier."
+      ],
+      "answer": "It violates the directive under either qualifier."
+    },
+    {
+      "id": "mixed-completed-report--finish-started",
+      "calibration": false,
+      "world_id": "mixed-completed-report",
+      "family": "mixed-status",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "mixed-completed-report",
+        "family": "mixed-status",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Analysis set Birch has B1 complete with report R already delivered, B2 executing and B3 waiting. No deletion, recall or effect-reversal instruction has been issued. The stop directive is applied after R's delivery.\nDirective: Stop analysis set Birch, finish-started.",
+      "ainglish": "Analysis set Birch has B1 complete with report R already delivered, B2 executing and B3 waiting. No deletion, recall or effect-reversal instruction has been issued. The stop directive is applied after R's delivery.\nDirective: Stop analysis set Birch, finish-started.",
+      "question": "What does the directive itself require concerning R?",
+      "options": [
+        "Recall the delivered report.",
+        "Replace it with a blank report.",
+        "Neither a recall nor a replacement is required by this directive."
+      ],
+      "answer": "Neither a recall nor a replacement is required by this directive."
+    },
+    {
+      "id": "mixed-completed-report--interrupt-started",
+      "calibration": false,
+      "world_id": "mixed-completed-report",
+      "family": "mixed-status",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "mixed-completed-report",
+        "family": "mixed-status",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Analysis set Birch has B1 complete with report R already delivered, B2 executing and B3 waiting. No deletion, recall or effect-reversal instruction has been issued. The stop directive is applied after R's delivery.\nDirective: Stop analysis set Birch, interrupt-started.",
+      "ainglish": "Analysis set Birch has B1 complete with report R already delivered, B2 executing and B3 waiting. No deletion, recall or effect-reversal instruction has been issued. The stop directive is applied after R's delivery.\nDirective: Stop analysis set Birch, interrupt-started.",
+      "question": "What does the directive itself require concerning R?",
+      "options": [
+        "Neither a recall nor a replacement is required by this directive.",
+        "Recall the delivered report.",
+        "Replace it with a blank report."
+      ],
+      "answer": "Neither a recall nor a replacement is required by this directive."
+    },
+    {
+      "id": "mixed-failed-member--finish-started",
+      "calibration": false,
+      "world_id": "mixed-failed-member",
+      "family": "mixed-status",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "mixed-failed-member",
+        "family": "mixed-status",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Export set Alder contains A1, A2 and A3. A1 failed before the boundary and is no longer executing; A2 is executing; A3 is waiting. Repairing A1 would require a new execution of that same task instance. There is no later authorised change to the stop instruction.\nDirective: Stop export set Alder, finish-started.",
+      "ainglish": "Export set Alder contains A1, A2 and A3. A1 failed before the boundary and is no longer executing; A2 is executing; A3 is waiting. Repairing A1 would require a new execution of that same task instance. There is no later authorised change to the stop instruction.\nDirective: Stop export set Alder, finish-started.",
+      "question": "May the scheduler launch A1's repair execution under this directive?",
+      "options": [
+        "No, that would be a new start in the named set.",
+        "Yes, a prior failed execution is enough permission.",
+        "Yes, as long as A2 has not finished."
+      ],
+      "answer": "No, that would be a new start in the named set."
+    },
+    {
+      "id": "mixed-failed-member--interrupt-started",
+      "calibration": false,
+      "world_id": "mixed-failed-member",
+      "family": "mixed-status",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "mixed-failed-member",
+        "family": "mixed-status",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Export set Alder contains A1, A2 and A3. A1 failed before the boundary and is no longer executing; A2 is executing; A3 is waiting. Repairing A1 would require a new execution of that same task instance. There is no later authorised change to the stop instruction.\nDirective: Stop export set Alder, interrupt-started.",
+      "ainglish": "Export set Alder contains A1, A2 and A3. A1 failed before the boundary and is no longer executing; A2 is executing; A3 is waiting. Repairing A1 would require a new execution of that same task instance. There is no later authorised change to the stop instruction.\nDirective: Stop export set Alder, interrupt-started.",
+      "question": "May the scheduler launch A1's repair execution under this directive?",
+      "options": [
+        "Yes, as long as A2 has not finished.",
+        "No, that would be a new start in the named set.",
+        "Yes, a prior failed execution is enough permission."
+      ],
+      "answer": "No, that would be a new start in the named set."
+    },
+    {
+      "id": "mixed-next-stage-same-instance--finish-started",
+      "calibration": false,
+      "world_id": "mixed-next-stage-same-instance",
+      "family": "mixed-status",
+      "tested_form": "finish-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "mixed-next-stage-same-instance",
+        "family": "mixed-status",
+        "form": "finish-started",
+        "policy_changes_answer": true
+      },
+      "english": "Render group Elm contains E1 and E2. E1 is executing its colour pass at the boundary; its final assembly is defined as an internal step of the same continuously executing task instance. E2 has not executed. E1 can be safely interrupted before final assembly, which would otherwise begin in two minutes.\nDirective: Stop render group Elm, finish-started.",
+      "ainglish": "Render group Elm contains E1 and E2. E1 is executing its colour pass at the boundary; its final assembly is defined as an internal step of the same continuously executing task instance. E2 has not executed. E1 can be safely interrupted before final assembly, which would otherwise begin in two minutes.\nDirective: Stop render group Elm, finish-started.",
+      "question": "Which plan for E1's final assembly follows the directive?",
+      "options": [
+        "Launch E2 so it can replace E1's assembly.",
+        "Allow its existing execution to reach assembly, without launching E2.",
+        "Interrupt before assembly through the available safe mechanism, without launching E2."
+      ],
+      "answer": "Allow its existing execution to reach assembly, without launching E2."
+    },
+    {
+      "id": "mixed-next-stage-same-instance--interrupt-started",
+      "calibration": false,
+      "world_id": "mixed-next-stage-same-instance",
+      "family": "mixed-status",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "mixed-next-stage-same-instance",
+        "family": "mixed-status",
+        "form": "interrupt-started",
+        "policy_changes_answer": true
+      },
+      "english": "Render group Elm contains E1 and E2. E1 is executing its colour pass at the boundary; its final assembly is defined as an internal step of the same continuously executing task instance. E2 has not executed. E1 can be safely interrupted before final assembly, which would otherwise begin in two minutes.\nDirective: Stop render group Elm, interrupt-started.",
+      "ainglish": "Render group Elm contains E1 and E2. E1 is executing its colour pass at the boundary; its final assembly is defined as an internal step of the same continuously executing task instance. E2 has not executed. E1 can be safely interrupted before final assembly, which would otherwise begin in two minutes.\nDirective: Stop render group Elm, interrupt-started.",
+      "question": "Which plan for E1's final assembly follows the directive?",
+      "options": [
+        "Launch E2 so it can replace E1's assembly.",
+        "Allow its existing execution to reach assembly, without launching E2.",
+        "Interrupt before assembly through the available safe mechanism, without launching E2."
+      ],
+      "answer": "Interrupt before assembly through the available safe mechanism, without launching E2."
+    },
+    {
+      "id": "mixed-queued-records--finish-started",
+      "calibration": false,
+      "world_id": "mixed-queued-records",
+      "family": "mixed-status",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "mixed-queued-records",
+        "family": "mixed-status",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Download group Willow contains W1 complete, W2 executing, and W3 recorded in a waiting database row. The database row is not an executing task. No instruction concerns deleting bookkeeping records.\nDirective: Stop download group Willow, finish-started.",
+      "ainglish": "Download group Willow contains W1 complete, W2 executing, and W3 recorded in a waiting database row. The database row is not an executing task. No instruction concerns deleting bookkeeping records.\nDirective: Stop download group Willow, finish-started.",
+      "question": "Must the operator delete W3's database row because of the directive?",
+      "options": [
+        "Yes; otherwise W1 must be undone.",
+        "No; blocking a task's start does not itself order removal of its record.",
+        "Yes; all waiting records must be erased."
+      ],
+      "answer": "No; blocking a task's start does not itself order removal of its record."
+    },
+    {
+      "id": "mixed-queued-records--interrupt-started",
+      "calibration": false,
+      "world_id": "mixed-queued-records",
+      "family": "mixed-status",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "mixed-queued-records",
+        "family": "mixed-status",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Download group Willow contains W1 complete, W2 executing, and W3 recorded in a waiting database row. The database row is not an executing task. No instruction concerns deleting bookkeeping records.\nDirective: Stop download group Willow, interrupt-started.",
+      "ainglish": "Download group Willow contains W1 complete, W2 executing, and W3 recorded in a waiting database row. The database row is not an executing task. No instruction concerns deleting bookkeeping records.\nDirective: Stop download group Willow, interrupt-started.",
+      "question": "Must the operator delete W3's database row because of the directive?",
+      "options": [
+        "Yes; all waiting records must be erased.",
+        "Yes; otherwise W1 must be undone.",
+        "No; blocking a task's start does not itself order removal of its record."
+      ],
+      "answer": "No; blocking a task's start does not itself order removal of its record."
+    },
+    {
+      "id": "mixed-resource-release--finish-started",
+      "calibration": false,
+      "world_id": "mixed-resource-release",
+      "family": "mixed-status",
+      "tested_form": "finish-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "mixed-resource-release",
+        "family": "mixed-status",
+        "form": "finish-started",
+        "policy_changes_answer": true
+      },
+      "english": "Encoding set Pine contains P1 complete, P2 executing and P3 queued. P2 occupies a GPU until it either completes normally in twenty minutes or is safely interrupted within one minute. The device reservation belongs to P2 alone. No other policy requires normal completion.\nDirective: Stop encoding set Pine, finish-started.",
+      "ainglish": "Encoding set Pine contains P1 complete, P2 executing and P3 queued. P2 occupies a GPU until it either completes normally in twenty minutes or is safely interrupted within one minute. The device reservation belongs to P2 alone. No other policy requires normal completion.\nDirective: Stop encoding set Pine, finish-started.",
+      "question": "Which resource plan implements the directive?",
+      "options": [
+        "Use the safe interruption to release P2's reservation promptly; do not launch P3.",
+        "Promise immediate zero occupancy merely because the message was received.",
+        "Allow P2's reservation through its ordinary completion; do not launch P3."
+      ],
+      "answer": "Allow P2's reservation through its ordinary completion; do not launch P3."
+    },
+    {
+      "id": "mixed-resource-release--interrupt-started",
+      "calibration": false,
+      "world_id": "mixed-resource-release",
+      "family": "mixed-status",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "mixed-resource-release",
+        "family": "mixed-status",
+        "form": "interrupt-started",
+        "policy_changes_answer": true
+      },
+      "english": "Encoding set Pine contains P1 complete, P2 executing and P3 queued. P2 occupies a GPU until it either completes normally in twenty minutes or is safely interrupted within one minute. The device reservation belongs to P2 alone. No other policy requires normal completion.\nDirective: Stop encoding set Pine, interrupt-started.",
+      "ainglish": "Encoding set Pine contains P1 complete, P2 executing and P3 queued. P2 occupies a GPU until it either completes normally in twenty minutes or is safely interrupted within one minute. The device reservation belongs to P2 alone. No other policy requires normal completion.\nDirective: Stop encoding set Pine, interrupt-started.",
+      "question": "Which resource plan implements the directive?",
+      "options": [
+        "Use the safe interruption to release P2's reservation promptly; do not launch P3.",
+        "Promise immediate zero occupancy merely because the message was received.",
+        "Allow P2's reservation through its ordinary completion; do not launch P3."
+      ],
+      "answer": "Use the safe interruption to release P2's reservation promptly; do not launch P3."
+    },
+    {
+      "id": "mixed-future-output-not-guaranteed--finish-started",
+      "calibration": false,
+      "world_id": "mixed-future-output-not-guaranteed",
+      "family": "mixed-status",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "mixed-future-output-not-guaranteed",
+        "family": "mixed-status",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Forecast group Aspen has F1 executing and F2 waiting at the boundary. F1 has not produced a result. Nothing states whether its remaining computation will succeed. The only new message is the directive; no executor acknowledgment or later observation exists.\nDirective: Stop forecast group Aspen, finish-started.",
+      "ainglish": "Forecast group Aspen has F1 executing and F2 waiting at the boundary. F1 has not produced a result. Nothing states whether its remaining computation will succeed. The only new message is the directive; no executor acknowledgment or later observation exists.\nDirective: Stop forecast group Aspen, finish-started.",
+      "question": "Which conclusion about a completed F1 result is justified now?",
+      "options": [
+        "A successful result is guaranteed.",
+        "A successful result is already confirmed.",
+        "Neither guaranteed success nor observed completion follows from this message alone."
+      ],
+      "answer": "Neither guaranteed success nor observed completion follows from this message alone."
+    },
+    {
+      "id": "mixed-future-output-not-guaranteed--interrupt-started",
+      "calibration": false,
+      "world_id": "mixed-future-output-not-guaranteed",
+      "family": "mixed-status",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "mixed-future-output-not-guaranteed",
+        "family": "mixed-status",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Forecast group Aspen has F1 executing and F2 waiting at the boundary. F1 has not produced a result. Nothing states whether its remaining computation will succeed. The only new message is the directive; no executor acknowledgment or later observation exists.\nDirective: Stop forecast group Aspen, interrupt-started.",
+      "ainglish": "Forecast group Aspen has F1 executing and F2 waiting at the boundary. F1 has not produced a result. Nothing states whether its remaining computation will succeed. The only new message is the directive; no executor acknowledgment or later observation exists.\nDirective: Stop forecast group Aspen, interrupt-started.",
+      "question": "Which conclusion about a completed F1 result is justified now?",
+      "options": [
+        "Neither guaranteed success nor observed completion follows from this message alone.",
+        "A successful result is guaranteed.",
+        "A successful result is already confirmed."
+      ],
+      "answer": "Neither guaranteed success nor observed completion follows from this message alone."
+    },
+    {
+      "id": "scope-two-live-members--finish-started",
+      "calibration": false,
+      "world_id": "scope-two-live-members",
+      "family": "multiple-and-outside",
+      "tested_form": "finish-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "scope-two-live-members",
+        "family": "multiple-and-outside",
+        "form": "finish-started",
+        "policy_changes_answer": true
+      },
+      "english": "Export group Juniper contains J1 and J2, both executing, and J3, waiting. An unrelated task X9 is executing outside the group. J1 and J2 each need an hour to produce their final output; either can safely halt within a second. The operator is watching J1's window only.\nDirective: Stop export group Juniper, finish-started.",
+      "ainglish": "Export group Juniper contains J1 and J2, both executing, and J3, waiting. An unrelated task X9 is executing outside the group. J1 and J2 each need an hour to produce their final output; either can safely halt within a second. The operator is watching J1's window only.\nDirective: Stop export group Juniper, finish-started.",
+      "question": "Which plan covers all the affected executions?",
+      "options": [
+        "Allow J1 and J2 to continue; this message supplies no stop instruction for X9.",
+        "Safely interrupt J1 and J2; this message supplies no stop instruction for X9.",
+        "Preserve only J1's execution because its window is visible."
+      ],
+      "answer": "Allow J1 and J2 to continue; this message supplies no stop instruction for X9."
+    },
+    {
+      "id": "scope-two-live-members--interrupt-started",
+      "calibration": false,
+      "world_id": "scope-two-live-members",
+      "family": "multiple-and-outside",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "scope-two-live-members",
+        "family": "multiple-and-outside",
+        "form": "interrupt-started",
+        "policy_changes_answer": true
+      },
+      "english": "Export group Juniper contains J1 and J2, both executing, and J3, waiting. An unrelated task X9 is executing outside the group. J1 and J2 each need an hour to produce their final output; either can safely halt within a second. The operator is watching J1's window only.\nDirective: Stop export group Juniper, interrupt-started.",
+      "ainglish": "Export group Juniper contains J1 and J2, both executing, and J3, waiting. An unrelated task X9 is executing outside the group. J1 and J2 each need an hour to produce their final output; either can safely halt within a second. The operator is watching J1's window only.\nDirective: Stop export group Juniper, interrupt-started.",
+      "question": "Which plan covers all the affected executions?",
+      "options": [
+        "Allow J1 and J2 to continue; this message supplies no stop instruction for X9.",
+        "Safely interrupt J1 and J2; this message supplies no stop instruction for X9.",
+        "Preserve only J1's execution because its window is visible."
+      ],
+      "answer": "Safely interrupt J1 and J2; this message supplies no stop instruction for X9."
+    },
+    {
+      "id": "scope-separate-tenant--finish-started",
+      "calibration": false,
+      "world_id": "scope-separate-tenant",
+      "family": "multiple-and-outside",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "scope-separate-tenant",
+        "family": "multiple-and-outside",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Tenant Coral's print tasks C7 and C8 are executing. Tenant Azure's task Z2 is queued on a different printer. Z2 is explicitly outside Coral's named task set. No rule connects the two tenants' permissions.\nDirective: Stop tenant Coral's print tasks, finish-started.",
+      "ainglish": "Tenant Coral's print tasks C7 and C8 are executing. Tenant Azure's task Z2 is queued on a different printer. Z2 is explicitly outside Coral's named task set. No rule connects the two tenants' permissions.\nDirective: Stop tenant Coral's print tasks, finish-started.",
+      "question": "Does this instruction determine whether Azure may launch Z2?",
+      "options": [
+        "It does not decide Z2's launch permission.",
+        "It forbids Z2 because every printer is included.",
+        "It requires Z2 to replace C7."
+      ],
+      "answer": "It does not decide Z2's launch permission."
+    },
+    {
+      "id": "scope-separate-tenant--interrupt-started",
+      "calibration": false,
+      "world_id": "scope-separate-tenant",
+      "family": "multiple-and-outside",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "scope-separate-tenant",
+        "family": "multiple-and-outside",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Tenant Coral's print tasks C7 and C8 are executing. Tenant Azure's task Z2 is queued on a different printer. Z2 is explicitly outside Coral's named task set. No rule connects the two tenants' permissions.\nDirective: Stop tenant Coral's print tasks, interrupt-started.",
+      "ainglish": "Tenant Coral's print tasks C7 and C8 are executing. Tenant Azure's task Z2 is queued on a different printer. Z2 is explicitly outside Coral's named task set. No rule connects the two tenants' permissions.\nDirective: Stop tenant Coral's print tasks, interrupt-started.",
+      "question": "Does this instruction determine whether Azure may launch Z2?",
+      "options": [
+        "It requires Z2 to replace C7.",
+        "It does not decide Z2's launch permission.",
+        "It forbids Z2 because every printer is included."
+      ],
+      "answer": "It does not decide Z2's launch permission."
+    },
+    {
+      "id": "scope-fixed-task-granularity--finish-started",
+      "calibration": false,
+      "world_id": "scope-fixed-task-granularity",
+      "family": "multiple-and-outside",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "scope-fixed-task-granularity",
+        "family": "multiple-and-outside",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Analysis set Hazel contains separately defined task instances H1, H2 and H3. H1 and H2 are executing at the boundary. H3 has never executed. The scheduler proposes calling H3 an internal substep of H1 and launching it. Task-instance definitions have not been changed by any authority. Task O1 is outside Hazel.\nDirective: Stop analysis set Hazel, finish-started.",
+      "ainglish": "Analysis set Hazel contains separately defined task instances H1, H2 and H3. H1 and H2 are executing at the boundary. H3 has never executed. The scheduler proposes calling H3 an internal substep of H1 and launching it. Task-instance definitions have not been changed by any authority. Task O1 is outside Hazel.\nDirective: Stop analysis set Hazel, finish-started.",
+      "question": "Does this relabelling make the proposed H3 launch compliant?",
+      "options": [
+        "Yes; the presence of outside task O1 changes H3's status.",
+        "No; the task unit remains the separately defined H3 instance.",
+        "Yes; any queued task can become part of H1 after the boundary."
+      ],
+      "answer": "No; the task unit remains the separately defined H3 instance."
+    },
+    {
+      "id": "scope-fixed-task-granularity--interrupt-started",
+      "calibration": false,
+      "world_id": "scope-fixed-task-granularity",
+      "family": "multiple-and-outside",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "scope-fixed-task-granularity",
+        "family": "multiple-and-outside",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Analysis set Hazel contains separately defined task instances H1, H2 and H3. H1 and H2 are executing at the boundary. H3 has never executed. The scheduler proposes calling H3 an internal substep of H1 and launching it. Task-instance definitions have not been changed by any authority. Task O1 is outside Hazel.\nDirective: Stop analysis set Hazel, interrupt-started.",
+      "ainglish": "Analysis set Hazel contains separately defined task instances H1, H2 and H3. H1 and H2 are executing at the boundary. H3 has never executed. The scheduler proposes calling H3 an internal substep of H1 and launching it. Task-instance definitions have not been changed by any authority. Task O1 is outside Hazel.\nDirective: Stop analysis set Hazel, interrupt-started.",
+      "question": "Does this relabelling make the proposed H3 launch compliant?",
+      "options": [
+        "Yes; any queued task can become part of H1 after the boundary.",
+        "Yes; the presence of outside task O1 changes H3's status.",
+        "No; the task unit remains the separately defined H3 instance."
+      ],
+      "answer": "No; the task unit remains the separately defined H3 instance."
+    },
+    {
+      "id": "scope-not-a-future-batch--finish-started",
+      "calibration": false,
+      "world_id": "scope-not-a-future-batch",
+      "family": "multiple-and-outside",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "scope-not-a-future-batch",
+        "family": "multiple-and-outside",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Batch Rowan-17 has two executing jobs and one queued job. Tomorrow's Rowan-18 is a distinct batch containing different task instances. A separate operator will decide whether Rowan-18 is authorised. No standing rule across batches is given.\nDirective: Stop batch Rowan-17, finish-started.",
+      "ainglish": "Batch Rowan-17 has two executing jobs and one queued job. Tomorrow's Rowan-18 is a distinct batch containing different task instances. A separate operator will decide whether Rowan-18 is authorised. No standing rule across batches is given.\nDirective: Stop batch Rowan-17, finish-started.",
+      "question": "What restriction on Rowan-18 follows solely from today's directive?",
+      "options": [
+        "Rowan-18 must immediately replace Rowan-17.",
+        "Rowan-18 is permanently banned.",
+        "No launch rule for Rowan-18 is supplied by it."
+      ],
+      "answer": "No launch rule for Rowan-18 is supplied by it."
+    },
+    {
+      "id": "scope-not-a-future-batch--interrupt-started",
+      "calibration": false,
+      "world_id": "scope-not-a-future-batch",
+      "family": "multiple-and-outside",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "scope-not-a-future-batch",
+        "family": "multiple-and-outside",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Batch Rowan-17 has two executing jobs and one queued job. Tomorrow's Rowan-18 is a distinct batch containing different task instances. A separate operator will decide whether Rowan-18 is authorised. No standing rule across batches is given.\nDirective: Stop batch Rowan-17, interrupt-started.",
+      "ainglish": "Batch Rowan-17 has two executing jobs and one queued job. Tomorrow's Rowan-18 is a distinct batch containing different task instances. A separate operator will decide whether Rowan-18 is authorised. No standing rule across batches is given.\nDirective: Stop batch Rowan-17, interrupt-started.",
+      "question": "What restriction on Rowan-18 follows solely from today's directive?",
+      "options": [
+        "No launch rule for Rowan-18 is supplied by it.",
+        "Rowan-18 must immediately replace Rowan-17.",
+        "Rowan-18 is permanently banned."
+      ],
+      "answer": "No launch rule for Rowan-18 is supplied by it."
+    },
+    {
+      "id": "scope-later-authorised-change--finish-started",
+      "calibration": false,
+      "world_id": "scope-later-authorised-change",
+      "family": "multiple-and-outside",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "scope-later-authorised-change",
+        "family": "multiple-and-outside",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Render set Larch has L1 and L2 executing and L3 waiting; unrelated O3 is outside it. At 11:00 the directive takes effect. At 11:05 the same authorised controller explicitly changes the policy to permit the first execution of L3 only. No new permission is given for any other task.\nDirective: Stop render set Larch, finish-started.",
+      "ainglish": "Render set Larch has L1 and L2 executing and L3 waiting; unrelated O3 is outside it. At 11:00 the directive takes effect. At 11:05 the same authorised controller explicitly changes the policy to permit the first execution of L3 only. No new permission is given for any other task.\nDirective: Stop render set Larch, finish-started.",
+      "question": "At 11:06, does the earlier directive still by itself prohibit L3's newly authorised execution?",
+      "options": [
+        "No, the later authorised change overrides that prohibition for L3.",
+        "The later change must also authorise every waiting task.",
+        "Yes, the stop can never be changed."
+      ],
+      "answer": "No, the later authorised change overrides that prohibition for L3."
+    },
+    {
+      "id": "scope-later-authorised-change--interrupt-started",
+      "calibration": false,
+      "world_id": "scope-later-authorised-change",
+      "family": "multiple-and-outside",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "scope-later-authorised-change",
+        "family": "multiple-and-outside",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Render set Larch has L1 and L2 executing and L3 waiting; unrelated O3 is outside it. At 11:00 the directive takes effect. At 11:05 the same authorised controller explicitly changes the policy to permit the first execution of L3 only. No new permission is given for any other task.\nDirective: Stop render set Larch, interrupt-started.",
+      "ainglish": "Render set Larch has L1 and L2 executing and L3 waiting; unrelated O3 is outside it. At 11:00 the directive takes effect. At 11:05 the same authorised controller explicitly changes the policy to permit the first execution of L3 only. No new permission is given for any other task.\nDirective: Stop render set Larch, interrupt-started.",
+      "question": "At 11:06, does the earlier directive still by itself prohibit L3's newly authorised execution?",
+      "options": [
+        "Yes, the stop can never be changed.",
+        "No, the later authorised change overrides that prohibition for L3.",
+        "The later change must also authorise every waiting task."
+      ],
+      "answer": "No, the later authorised change overrides that prohibition for L3."
+    },
+    {
+      "id": "scope-unwatched-worker--finish-started",
+      "calibration": false,
+      "world_id": "scope-unwatched-worker",
+      "family": "multiple-and-outside",
+      "tested_form": "finish-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "scope-unwatched-worker",
+        "family": "multiple-and-outside",
+        "form": "finish-started",
+        "policy_changes_answer": true
+      },
+      "english": "Download set Spruce includes S1 on workstation A and S2 on workstation B; both are executing. S3 is queued. Workstation A also runs outside task X1. S2 can be safely halted before its next data block. Its ordinary work would continue much longer. The controller can reach both workstations.\nDirective: Stop download set Spruce, finish-started.",
+      "ainglish": "Download set Spruce includes S1 on workstation A and S2 on workstation B; both are executing. S3 is queued. Workstation A also runs outside task X1. S2 can be safely halted before its next data block. Its ordinary work would continue much longer. The controller can reach both workstations.\nDirective: Stop download set Spruce, finish-started.",
+      "question": "Which action at workstation B satisfies the selected policy?",
+      "options": [
+        "Ignore S2 because the message was first read at workstation A.",
+        "Let S2's existing transfer proceed toward its normal outcome.",
+        "Send S2 the safe interruption request promptly."
+      ],
+      "answer": "Let S2's existing transfer proceed toward its normal outcome."
+    },
+    {
+      "id": "scope-unwatched-worker--interrupt-started",
+      "calibration": false,
+      "world_id": "scope-unwatched-worker",
+      "family": "multiple-and-outside",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "scope-unwatched-worker",
+        "family": "multiple-and-outside",
+        "form": "interrupt-started",
+        "policy_changes_answer": true
+      },
+      "english": "Download set Spruce includes S1 on workstation A and S2 on workstation B; both are executing. S3 is queued. Workstation A also runs outside task X1. S2 can be safely halted before its next data block. Its ordinary work would continue much longer. The controller can reach both workstations.\nDirective: Stop download set Spruce, interrupt-started.",
+      "ainglish": "Download set Spruce includes S1 on workstation A and S2 on workstation B; both are executing. S3 is queued. Workstation A also runs outside task X1. S2 can be safely halted before its next data block. Its ordinary work would continue much longer. The controller can reach both workstations.\nDirective: Stop download set Spruce, interrupt-started.",
+      "question": "Which action at workstation B satisfies the selected policy?",
+      "options": [
+        "Ignore S2 because the message was first read at workstation A.",
+        "Let S2's existing transfer proceed toward its normal outcome.",
+        "Send S2 the safe interruption request promptly."
+      ],
+      "answer": "Send S2 the safe interruption request promptly."
+    },
+    {
+      "id": "scope-membership-missing--finish-started",
+      "calibration": false,
+      "world_id": "scope-membership-missing",
+      "family": "multiple-and-outside",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "scope-membership-missing",
+        "family": "multiple-and-outside",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Export set Olive has two known executing members. Job U4 is also executing, but the membership record needed to decide whether U4 belongs to Olive is unavailable. One known unrelated job V4 is outside Olive. No rule resolves U4's membership.\nDirective: Stop export set Olive, finish-started.",
+      "ainglish": "Export set Olive has two known executing members. Job U4 is also executing, but the membership record needed to decide whether U4 belongs to Olive is unavailable. One known unrelated job V4 is outside Olive. No rule resolves U4's membership.\nDirective: Stop export set Olive, finish-started.",
+      "question": "Can the executor infer the directive's required treatment of U4 from the supplied facts?",
+      "options": [
+        "Yes, missing records mean U4 is outside Olive.",
+        "No; establish U4's membership rather than inventing it.",
+        "Yes, all executing jobs belong to Olive."
+      ],
+      "answer": "No; establish U4's membership rather than inventing it."
+    },
+    {
+      "id": "scope-membership-missing--interrupt-started",
+      "calibration": false,
+      "world_id": "scope-membership-missing",
+      "family": "multiple-and-outside",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "scope-membership-missing",
+        "family": "multiple-and-outside",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Export set Olive has two known executing members. Job U4 is also executing, but the membership record needed to decide whether U4 belongs to Olive is unavailable. One known unrelated job V4 is outside Olive. No rule resolves U4's membership.\nDirective: Stop export set Olive, interrupt-started.",
+      "ainglish": "Export set Olive has two known executing members. Job U4 is also executing, but the membership record needed to decide whether U4 belongs to Olive is unavailable. One known unrelated job V4 is outside Olive. No rule resolves U4's membership.\nDirective: Stop export set Olive, interrupt-started.",
+      "question": "Can the executor infer the directive's required treatment of U4 from the supplied facts?",
+      "options": [
+        "Yes, all executing jobs belong to Olive.",
+        "Yes, missing records mean U4 is outside Olive.",
+        "No; establish U4's membership rather than inventing it."
+      ],
+      "answer": "No; establish U4's membership rather than inventing it."
+    },
+    {
+      "id": "scope-different-running-outcomes--finish-started",
+      "calibration": false,
+      "world_id": "scope-different-running-outcomes",
+      "family": "multiple-and-outside",
+      "tested_form": "finish-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "scope-different-running-outcomes",
+        "family": "multiple-and-outside",
+        "form": "finish-started",
+        "policy_changes_answer": true
+      },
+      "english": "Analysis set Beech contains B7 and B8, both executing without faults, and B9, queued. B7 would emit a table in five minutes and B8 a chart in nine minutes. Each has an immediate safe interruption mechanism. Task X8 belongs to a different set and produces a log. No safety rule requires B7 or B8 to continue.\nDirective: Stop analysis set Beech, finish-started.",
+      "ainglish": "Analysis set Beech contains B7 and B8, both executing without faults, and B9, queued. B7 would emit a table in five minutes and B8 a chart in nine minutes. Each has an immediate safe interruption mechanism. Task X8 belongs to a different set and produces a log. No safety rule requires B7 or B8 to continue.\nDirective: Stop analysis set Beech, finish-started.",
+      "question": "Which pair of output plans follows the directive?",
+      "options": [
+        "Cut short both existing executions before their outputs, with no new B9 start.",
+        "Let the table proceed but cut short the chart because it is slower.",
+        "Allow both existing executions toward table and chart, with no new B9 start."
+      ],
+      "answer": "Allow both existing executions toward table and chart, with no new B9 start."
+    },
+    {
+      "id": "scope-different-running-outcomes--interrupt-started",
+      "calibration": false,
+      "world_id": "scope-different-running-outcomes",
+      "family": "multiple-and-outside",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "scope-different-running-outcomes",
+        "family": "multiple-and-outside",
+        "form": "interrupt-started",
+        "policy_changes_answer": true
+      },
+      "english": "Analysis set Beech contains B7 and B8, both executing without faults, and B9, queued. B7 would emit a table in five minutes and B8 a chart in nine minutes. Each has an immediate safe interruption mechanism. Task X8 belongs to a different set and produces a log. No safety rule requires B7 or B8 to continue.\nDirective: Stop analysis set Beech, interrupt-started.",
+      "ainglish": "Analysis set Beech contains B7 and B8, both executing without faults, and B9, queued. B7 would emit a table in five minutes and B8 a chart in nine minutes. Each has an immediate safe interruption mechanism. Task X8 belongs to a different set and produces a log. No safety rule requires B7 or B8 to continue.\nDirective: Stop analysis set Beech, interrupt-started.",
+      "question": "Which pair of output plans follows the directive?",
+      "options": [
+        "Cut short both existing executions before their outputs, with no new B9 start.",
+        "Let the table proceed but cut short the chart because it is slower.",
+        "Allow both existing executions toward table and chart, with no new B9 start."
+      ],
+      "answer": "Cut short both existing executions before their outputs, with no new B9 start."
+    },
+    {
+      "id": "boundary-precompleted--finish-started",
+      "calibration": false,
+      "world_id": "boundary-precompleted",
+      "family": "boundary-order",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-precompleted",
+        "family": "boundary-order",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "For print set Poplar, the ordered log records P4's completion at 09:59:58, then the directive's effective boundary at 10:00:00. P4 has no remaining execution. P5 is waiting. The clocks are authoritative and correctly ordered.\nDirective: Stop print set Poplar, finish-started.",
+      "ainglish": "For print set Poplar, the ordered log records P4's completion at 09:59:58, then the directive's effective boundary at 10:00:00. P4 has no remaining execution. P5 is waiting. The clocks are authoritative and correctly ordered.\nDirective: Stop print set Poplar, finish-started.",
+      "question": "Does P4 still require action on an ongoing execution because of this directive?",
+      "options": [
+        "Yes; the later message invalidates the completion timestamp.",
+        "Yes; it must be recreated before it can be stopped.",
+        "No; its execution had already ended."
+      ],
+      "answer": "No; its execution had already ended."
+    },
+    {
+      "id": "boundary-precompleted--interrupt-started",
+      "calibration": false,
+      "world_id": "boundary-precompleted",
+      "family": "boundary-order",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-precompleted",
+        "family": "boundary-order",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "For print set Poplar, the ordered log records P4's completion at 09:59:58, then the directive's effective boundary at 10:00:00. P4 has no remaining execution. P5 is waiting. The clocks are authoritative and correctly ordered.\nDirective: Stop print set Poplar, interrupt-started.",
+      "ainglish": "For print set Poplar, the ordered log records P4's completion at 09:59:58, then the directive's effective boundary at 10:00:00. P4 has no remaining execution. P5 is waiting. The clocks are authoritative and correctly ordered.\nDirective: Stop print set Poplar, interrupt-started.",
+      "question": "Does P4 still require action on an ongoing execution because of this directive?",
+      "options": [
+        "No; its execution had already ended.",
+        "Yes; the later message invalidates the completion timestamp.",
+        "Yes; it must be recreated before it can be stopped."
+      ],
+      "answer": "No; its execution had already ended."
+    },
+    {
+      "id": "boundary-late-launch--finish-started",
+      "calibration": false,
+      "world_id": "boundary-late-launch",
+      "family": "boundary-order",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-late-launch",
+        "family": "boundary-order",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "For export set Ash, the ordered log records the stop becoming effective at event 210, followed by A6's first execution step at event 211. A6 belongs to Ash. No intervening authorised instruction changes the policy.\nDirective: Stop export set Ash, finish-started.",
+      "ainglish": "For export set Ash, the ordered log records the stop becoming effective at event 210, followed by A6's first execution step at event 211. A6 belongs to Ash. No intervening authorised instruction changes the policy.\nDirective: Stop export set Ash, finish-started.",
+      "question": "How should A6's first step be recorded?",
+      "options": [
+        "As a prohibited launch after the boundary.",
+        "As a permitted continuation from before the boundary.",
+        "As proof that the stop was never issued."
+      ],
+      "answer": "As a prohibited launch after the boundary."
+    },
+    {
+      "id": "boundary-late-launch--interrupt-started",
+      "calibration": false,
+      "world_id": "boundary-late-launch",
+      "family": "boundary-order",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-late-launch",
+        "family": "boundary-order",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "For export set Ash, the ordered log records the stop becoming effective at event 210, followed by A6's first execution step at event 211. A6 belongs to Ash. No intervening authorised instruction changes the policy.\nDirective: Stop export set Ash, interrupt-started.",
+      "ainglish": "For export set Ash, the ordered log records the stop becoming effective at event 210, followed by A6's first execution step at event 211. A6 belongs to Ash. No intervening authorised instruction changes the policy.\nDirective: Stop export set Ash, interrupt-started.",
+      "question": "How should A6's first step be recorded?",
+      "options": [
+        "As proof that the stop was never issued.",
+        "As a prohibited launch after the boundary.",
+        "As a permitted continuation from before the boundary."
+      ],
+      "answer": "As a prohibited launch after the boundary."
+    },
+    {
+      "id": "boundary-unordered-equal-stamps--finish-started",
+      "calibration": false,
+      "world_id": "boundary-unordered-equal-stamps",
+      "family": "boundary-order",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-unordered-equal-stamps",
+        "family": "boundary-order",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Y2's first execution step and the stop boundary both have timestamp 12:00 in a minute-resolution log. Y2 belongs to download set Yew and has not completed. No finer timestamp, sequence number or causal order is available.\nDirective: Stop download set Yew, finish-started.",
+      "ainglish": "Y2's first execution step and the stop boundary both have timestamp 12:00 in a minute-resolution log. Y2 belongs to download set Yew and has not completed. No finer timestamp, sequence number or causal order is available.\nDirective: Stop download set Yew, finish-started.",
+      "question": "Can the log alone establish that Y2's launch complied with the directive?",
+      "options": [
+        "Yes; an equal displayed timestamp always means earlier.",
+        "No definite finding is possible without resolving the event order.",
+        "Yes; every equal timestamp always means later and authorised."
+      ],
+      "answer": "No definite finding is possible without resolving the event order."
+    },
+    {
+      "id": "boundary-unordered-equal-stamps--interrupt-started",
+      "calibration": false,
+      "world_id": "boundary-unordered-equal-stamps",
+      "family": "boundary-order",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-unordered-equal-stamps",
+        "family": "boundary-order",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Y2's first execution step and the stop boundary both have timestamp 12:00 in a minute-resolution log. Y2 belongs to download set Yew and has not completed. No finer timestamp, sequence number or causal order is available.\nDirective: Stop download set Yew, interrupt-started.",
+      "ainglish": "Y2's first execution step and the stop boundary both have timestamp 12:00 in a minute-resolution log. Y2 belongs to download set Yew and has not completed. No finer timestamp, sequence number or causal order is available.\nDirective: Stop download set Yew, interrupt-started.",
+      "question": "Can the log alone establish that Y2's launch complied with the directive?",
+      "options": [
+        "Yes; every equal timestamp always means later and authorised.",
+        "Yes; an equal displayed timestamp always means earlier.",
+        "No definite finding is possible without resolving the event order."
+      ],
+      "answer": "No definite finding is possible without resolving the event order."
+    },
+    {
+      "id": "boundary-no-running-work--finish-started",
+      "calibration": false,
+      "world_id": "boundary-no-running-work",
+      "family": "boundary-order",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-no-running-work",
+        "family": "boundary-order",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "At the effective boundary every task in render set Fir is either complete or never executed. F8 is queued. No task is currently executing, and there is no later policy change.\nDirective: Stop render set Fir, finish-started.",
+      "ainglish": "At the effective boundary every task in render set Fir is either complete or never executed. F8 is queued. No task is currently executing, and there is no later policy change.\nDirective: Stop render set Fir, finish-started.",
+      "question": "Which immediate action remains necessary despite there being no live rendering?",
+      "options": [
+        "Start F8 so that there will be something to stop.",
+        "Undo the already completed renders.",
+        "Prevent F8 from receiving its first execution step."
+      ],
+      "answer": "Prevent F8 from receiving its first execution step."
+    },
+    {
+      "id": "boundary-no-running-work--interrupt-started",
+      "calibration": false,
+      "world_id": "boundary-no-running-work",
+      "family": "boundary-order",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-no-running-work",
+        "family": "boundary-order",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "At the effective boundary every task in render set Fir is either complete or never executed. F8 is queued. No task is currently executing, and there is no later policy change.\nDirective: Stop render set Fir, interrupt-started.",
+      "ainglish": "At the effective boundary every task in render set Fir is either complete or never executed. F8 is queued. No task is currently executing, and there is no later policy change.\nDirective: Stop render set Fir, interrupt-started.",
+      "question": "Which immediate action remains necessary despite there being no live rendering?",
+      "options": [
+        "Prevent F8 from receiving its first execution step.",
+        "Start F8 so that there will be something to stop.",
+        "Undo the already completed renders."
+      ],
+      "answer": "Prevent F8 from receiving its first execution step."
+    },
+    {
+      "id": "boundary-issued-versus-effective--finish-started",
+      "calibration": false,
+      "world_id": "boundary-issued-versus-effective",
+      "family": "boundary-order",
+      "tested_form": "finish-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "boundary-issued-versus-effective",
+        "family": "boundary-order",
+        "form": "finish-started",
+        "policy_changes_answer": true
+      },
+      "english": "The controller issues a directive for archive set Hawthorn at event 40 and declares it effective at event 50. H6 begins at event 45 and is still executing at event 50. Its final output is not due until event 80, and safe interruption is available at event 51. These event numbers are authoritative.\nDirective: Stop archive set Hawthorn, finish-started.",
+      "ainglish": "The controller issues a directive for archive set Hawthorn at event 40 and declares it effective at event 50. H6 begins at event 45 and is still executing at event 50. Its final output is not due until event 80, and safe interruption is available at event 51. These event numbers are authoritative.\nDirective: Stop archive set Hawthorn, finish-started.",
+      "question": "Which treatment of H6's not-yet-produced final archive follows from its boundary status?",
+      "options": [
+        "Allow the existing execution toward its normal output.",
+        "Use the available interruption instead of waiting for the output.",
+        "Treat the execution as forbidden solely because event 45 followed message issuance."
+      ],
+      "answer": "Allow the existing execution toward its normal output."
+    },
+    {
+      "id": "boundary-issued-versus-effective--interrupt-started",
+      "calibration": false,
+      "world_id": "boundary-issued-versus-effective",
+      "family": "boundary-order",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "boundary-issued-versus-effective",
+        "family": "boundary-order",
+        "form": "interrupt-started",
+        "policy_changes_answer": true
+      },
+      "english": "The controller issues a directive for archive set Hawthorn at event 40 and declares it effective at event 50. H6 begins at event 45 and is still executing at event 50. Its final output is not due until event 80, and safe interruption is available at event 51. These event numbers are authoritative.\nDirective: Stop archive set Hawthorn, interrupt-started.",
+      "ainglish": "The controller issues a directive for archive set Hawthorn at event 40 and declares it effective at event 50. H6 begins at event 45 and is still executing at event 50. Its final output is not due until event 80, and safe interruption is available at event 51. These event numbers are authoritative.\nDirective: Stop archive set Hawthorn, interrupt-started.",
+      "question": "Which treatment of H6's not-yet-produced final archive follows from its boundary status?",
+      "options": [
+        "Allow the existing execution toward its normal output.",
+        "Use the available interruption instead of waiting for the output.",
+        "Treat the execution as forbidden solely because event 45 followed message issuance."
+      ],
+      "answer": "Use the available interruption instead of waiting for the output."
+    },
+    {
+      "id": "boundary-delayed-delivery--finish-started",
+      "calibration": false,
+      "world_id": "boundary-delayed-delivery",
+      "family": "boundary-order",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-delayed-delivery",
+        "family": "boundary-order",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "For analysis set Linden, the shared controller log establishes the effective boundary at event 70. L8 begins at event 72; a delayed network delivery informs its worker at event 75. L8 was known to belong to Linden. No exception permits starts during delivery delay.\nDirective: Stop analysis set Linden, finish-started.",
+      "ainglish": "For analysis set Linden, the shared controller log establishes the effective boundary at event 70. L8 begins at event 72; a delayed network delivery informs its worker at event 75. L8 was known to belong to Linden. No exception permits starts during delivery delay.\nDirective: Stop analysis set Linden, finish-started.",
+      "question": "Does late delivery make L8's event-72 launch compliant with the stated boundary?",
+      "options": [
+        "No; the launch is after the established boundary even if the worker learned of it late.",
+        "Yes; the worker silently changes the boundary to event 75.",
+        "Yes; communication delay exempts all jobs from the named set."
+      ],
+      "answer": "No; the launch is after the established boundary even if the worker learned of it late."
+    },
+    {
+      "id": "boundary-delayed-delivery--interrupt-started",
+      "calibration": false,
+      "world_id": "boundary-delayed-delivery",
+      "family": "boundary-order",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-delayed-delivery",
+        "family": "boundary-order",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "For analysis set Linden, the shared controller log establishes the effective boundary at event 70. L8 begins at event 72; a delayed network delivery informs its worker at event 75. L8 was known to belong to Linden. No exception permits starts during delivery delay.\nDirective: Stop analysis set Linden, interrupt-started.",
+      "ainglish": "For analysis set Linden, the shared controller log establishes the effective boundary at event 70. L8 begins at event 72; a delayed network delivery informs its worker at event 75. L8 was known to belong to Linden. No exception permits starts during delivery delay.\nDirective: Stop analysis set Linden, interrupt-started.",
+      "question": "Does late delivery make L8's event-72 launch compliant with the stated boundary?",
+      "options": [
+        "Yes; communication delay exempts all jobs from the named set.",
+        "No; the launch is after the established boundary even if the worker learned of it late.",
+        "Yes; the worker silently changes the boundary to event 75."
+      ],
+      "answer": "No; the launch is after the established boundary even if the worker learned of it late."
+    },
+    {
+      "id": "boundary-safety-before-completion--finish-started",
+      "calibration": false,
+      "world_id": "boundary-safety-before-completion",
+      "family": "boundary-order",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-safety-before-completion",
+        "family": "boundary-order",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "O2 is executing in laser-print set Oak at the effective boundary. One second later its thermal sensor triggers an already-authorised safety rule requiring an immediate safe halt. That safety rule takes precedence over ordinary production. O2 has not completed.\nDirective: Stop laser-print set Oak, finish-started.",
+      "ainglish": "O2 is executing in laser-print set Oak at the effective boundary. One second later its thermal sensor triggers an already-authorised safety rule requiring an immediate safe halt. That safety rule takes precedence over ordinary production. O2 has not completed.\nDirective: Stop laser-print set Oak, finish-started.",
+      "question": "May O2 continue ordinary production against that safety rule?",
+      "options": [
+        "Yes, only production time matters.",
+        "No; the stop qualifier does not override the applicable safety rule.",
+        "Yes, either qualifier waives the safety rule."
+      ],
+      "answer": "No; the stop qualifier does not override the applicable safety rule."
+    },
+    {
+      "id": "boundary-safety-before-completion--interrupt-started",
+      "calibration": false,
+      "world_id": "boundary-safety-before-completion",
+      "family": "boundary-order",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-safety-before-completion",
+        "family": "boundary-order",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "O2 is executing in laser-print set Oak at the effective boundary. One second later its thermal sensor triggers an already-authorised safety rule requiring an immediate safe halt. That safety rule takes precedence over ordinary production. O2 has not completed.\nDirective: Stop laser-print set Oak, interrupt-started.",
+      "ainglish": "O2 is executing in laser-print set Oak at the effective boundary. One second later its thermal sensor triggers an already-authorised safety rule requiring an immediate safe halt. That safety rule takes precedence over ordinary production. O2 has not completed.\nDirective: Stop laser-print set Oak, interrupt-started.",
+      "question": "May O2 continue ordinary production against that safety rule?",
+      "options": [
+        "Yes, either qualifier waives the safety rule.",
+        "Yes, only production time matters.",
+        "No; the stop qualifier does not override the applicable safety rule."
+      ],
+      "answer": "No; the stop qualifier does not override the applicable safety rule."
+    },
+    {
+      "id": "boundary-no-stop-receipt--finish-started",
+      "calibration": false,
+      "world_id": "boundary-no-stop-receipt",
+      "family": "boundary-order",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-no-stop-receipt",
+        "family": "boundary-order",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "H9 is transferring data in transfer set Holly when the directive is sent. The effective boundary is established, but no executor response, monitoring sample or later event record has arrived. A transfer might fail or an interruption request might be delayed.\nDirective: Stop transfer set Holly, finish-started.",
+      "ainglish": "H9 is transferring data in transfer set Holly when the directive is sent. The effective boundary is established, but no executor response, monitoring sample or later event record has arrived. A transfer might fail or an interruption request might be delayed.\nDirective: Stop transfer set Holly, finish-started.",
+      "question": "Which status can the observer truthfully report from these facts alone?",
+      "options": [
+        "H9 has definitely halted successfully.",
+        "H9 has definitely completed successfully.",
+        "The requested policy has been issued; H9's actual later execution state is not yet observed."
+      ],
+      "answer": "The requested policy has been issued; H9's actual later execution state is not yet observed."
+    },
+    {
+      "id": "boundary-no-stop-receipt--interrupt-started",
+      "calibration": false,
+      "world_id": "boundary-no-stop-receipt",
+      "family": "boundary-order",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "boundary-no-stop-receipt",
+        "family": "boundary-order",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "H9 is transferring data in transfer set Holly when the directive is sent. The effective boundary is established, but no executor response, monitoring sample or later event record has arrived. A transfer might fail or an interruption request might be delayed.\nDirective: Stop transfer set Holly, interrupt-started.",
+      "ainglish": "H9 is transferring data in transfer set Holly when the directive is sent. The effective boundary is established, but no executor response, monitoring sample or later event record has arrived. A transfer might fail or an interruption request might be delayed.\nDirective: Stop transfer set Holly, interrupt-started.",
+      "question": "Which status can the observer truthfully report from these facts alone?",
+      "options": [
+        "The requested policy has been issued; H9's actual later execution state is not yet observed.",
+        "H9 has definitely halted successfully.",
+        "H9 has definitely completed successfully."
+      ],
+      "answer": "The requested policy has been issued; H9's actual later execution state is not yet observed."
+    },
+    {
+      "id": "effects-no-partial-file-deletion--finish-started",
+      "calibration": false,
+      "world_id": "effects-no-partial-file-deletion",
+      "family": "effects-and-constraints",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "effects-no-partial-file-deletion",
+        "family": "effects-and-constraints",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "C8 is executing in download set Cypress and has written a partial file. No retention, deletion or rollback instruction exists. The file will survive either continued execution or the available safe halt unless a separate deletion action is issued.\nDirective: Stop download set Cypress, finish-started.",
+      "ainglish": "C8 is executing in download set Cypress and has written a partial file. No retention, deletion or rollback instruction exists. The file will survive either continued execution or the available safe halt unless a separate deletion action is issued.\nDirective: Stop download set Cypress, finish-started.",
+      "question": "Which deletion obligation follows solely from this directive?",
+      "options": [
+        "No deletion obligation is specified by the qualifier.",
+        "Delete completed files but keep partial files.",
+        "Delete every partial file now."
+      ],
+      "answer": "No deletion obligation is specified by the qualifier."
+    },
+    {
+      "id": "effects-no-partial-file-deletion--interrupt-started",
+      "calibration": false,
+      "world_id": "effects-no-partial-file-deletion",
+      "family": "effects-and-constraints",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "effects-no-partial-file-deletion",
+        "family": "effects-and-constraints",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "C8 is executing in download set Cypress and has written a partial file. No retention, deletion or rollback instruction exists. The file will survive either continued execution or the available safe halt unless a separate deletion action is issued.\nDirective: Stop download set Cypress, interrupt-started.",
+      "ainglish": "C8 is executing in download set Cypress and has written a partial file. No retention, deletion or rollback instruction exists. The file will survive either continued execution or the available safe halt unless a separate deletion action is issued.\nDirective: Stop download set Cypress, interrupt-started.",
+      "question": "Which deletion obligation follows solely from this directive?",
+      "options": [
+        "Delete every partial file now.",
+        "No deletion obligation is specified by the qualifier.",
+        "Delete completed files but keep partial files."
+      ],
+      "answer": "No deletion obligation is specified by the qualifier."
+    },
+    {
+      "id": "effects-unsafe-interruption--finish-started",
+      "calibration": false,
+      "world_id": "effects-unsafe-interruption",
+      "family": "effects-and-constraints",
+      "tested_form": "finish-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "effects-unsafe-interruption",
+        "family": "effects-and-constraints",
+        "form": "finish-started",
+        "policy_changes_answer": true
+      },
+      "english": "C9 is executing in export set Chestnut. Interrupting during its current commit interval would corrupt protected data; an existing safety rule forbids that. The first safe interruption point is in thirty seconds. Normal completion would take five minutes. The executor can report the delay immediately.\nDirective: Stop export set Chestnut, finish-started.",
+      "ainglish": "C9 is executing in export set Chestnut. Interrupting during its current commit interval would corrupt protected data; an existing safety rule forbids that. The first safe interruption point is in thirty seconds. Normal completion would take five minutes. The executor can report the delay immediately.\nDirective: Stop export set Chestnut, finish-started.",
+      "question": "Which plan respects both the directive and the supplied safety constraint?",
+      "options": [
+        "Force an unsafe kill now because a qualifier overrides data protection.",
+        "Allow existing execution toward normal completion, subject to the unchanged safety rule.",
+        "Report the current constraint and interrupt at the first safe point rather than wait five minutes."
+      ],
+      "answer": "Allow existing execution toward normal completion, subject to the unchanged safety rule."
+    },
+    {
+      "id": "effects-unsafe-interruption--interrupt-started",
+      "calibration": false,
+      "world_id": "effects-unsafe-interruption",
+      "family": "effects-and-constraints",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "effects-unsafe-interruption",
+        "family": "effects-and-constraints",
+        "form": "interrupt-started",
+        "policy_changes_answer": true
+      },
+      "english": "C9 is executing in export set Chestnut. Interrupting during its current commit interval would corrupt protected data; an existing safety rule forbids that. The first safe interruption point is in thirty seconds. Normal completion would take five minutes. The executor can report the delay immediately.\nDirective: Stop export set Chestnut, interrupt-started.",
+      "ainglish": "C9 is executing in export set Chestnut. Interrupting during its current commit interval would corrupt protected data; an existing safety rule forbids that. The first safe interruption point is in thirty seconds. Normal completion would take five minutes. The executor can report the delay immediately.\nDirective: Stop export set Chestnut, interrupt-started.",
+      "question": "Which plan respects both the directive and the supplied safety constraint?",
+      "options": [
+        "Force an unsafe kill now because a qualifier overrides data protection.",
+        "Allow existing execution toward normal completion, subject to the unchanged safety rule.",
+        "Report the current constraint and interrupt at the first safe point rather than wait five minutes."
+      ],
+      "answer": "Report the current constraint and interrupt at the first safe point rather than wait five minutes."
+    },
+    {
+      "id": "effects-unsupported-stop--finish-started",
+      "calibration": false,
+      "world_id": "effects-unsupported-stop",
+      "family": "effects-and-constraints",
+      "tested_form": "finish-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "effects-unsupported-stop",
+        "family": "effects-and-constraints",
+        "form": "finish-started",
+        "policy_changes_answer": true
+      },
+      "english": "M9 is executing remotely for render set Magnolia. The remote system offers no interruption operation, and no authorised alternative can halt it. M9 has not completed. The controller can observe the still-running job and report the limitation. No new task needs to be opened.\nDirective: Stop remote render set Magnolia, finish-started.",
+      "ainglish": "M9 is executing remotely for render set Magnolia. The remote system offers no interruption operation, and no authorised alternative can halt it. M9 has not completed. The controller can observe the still-running job and report the limitation. No new task needs to be opened.\nDirective: Stop remote render set Magnolia, finish-started.",
+      "question": "Which immediate report and action fit the selected policy?",
+      "options": [
+        "Report that the requested interruption cannot be performed and that the job is still executing.",
+        "Claim the job is already halted because a request was sent.",
+        "Allow the existing job to continue; do not describe the policy as requiring an unavailable halt."
+      ],
+      "answer": "Allow the existing job to continue; do not describe the policy as requiring an unavailable halt."
+    },
+    {
+      "id": "effects-unsupported-stop--interrupt-started",
+      "calibration": false,
+      "world_id": "effects-unsupported-stop",
+      "family": "effects-and-constraints",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "effects-unsupported-stop",
+        "family": "effects-and-constraints",
+        "form": "interrupt-started",
+        "policy_changes_answer": true
+      },
+      "english": "M9 is executing remotely for render set Magnolia. The remote system offers no interruption operation, and no authorised alternative can halt it. M9 has not completed. The controller can observe the still-running job and report the limitation. No new task needs to be opened.\nDirective: Stop remote render set Magnolia, interrupt-started.",
+      "ainglish": "M9 is executing remotely for render set Magnolia. The remote system offers no interruption operation, and no authorised alternative can halt it. M9 has not completed. The controller can observe the still-running job and report the limitation. No new task needs to be opened.\nDirective: Stop remote render set Magnolia, interrupt-started.",
+      "question": "Which immediate report and action fit the selected policy?",
+      "options": [
+        "Report that the requested interruption cannot be performed and that the job is still executing.",
+        "Claim the job is already halted because a request was sent.",
+        "Allow the existing job to continue; do not describe the policy as requiring an unavailable halt."
+      ],
+      "answer": "Report that the requested interruption cannot be performed and that the job is still executing."
+    },
+    {
+      "id": "effects-checkpoint-not-implied--finish-started",
+      "calibration": false,
+      "world_id": "effects-checkpoint-not-implied",
+      "family": "effects-and-constraints",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "effects-checkpoint-not-implied",
+        "family": "effects-and-constraints",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "S8 is executing in analysis set Sycamore. Its current memory state has no saved checkpoint. Checkpoint creation is a separate explicit operation. No instruction or local rule requests that operation.\nDirective: Stop analysis set Sycamore, finish-started.",
+      "ainglish": "S8 is executing in analysis set Sycamore. Its current memory state has no saved checkpoint. Checkpoint creation is a separate explicit operation. No instruction or local rule requests that operation.\nDirective: Stop analysis set Sycamore, finish-started.",
+      "question": "Does the stop qualifier alone order checkpoint creation?",
+      "options": [
+        "Yes, every interruption policy guarantees one.",
+        "No, checkpoint policy needs a separate instruction.",
+        "Yes, every finish policy implicitly saves a checkpoint."
+      ],
+      "answer": "No, checkpoint policy needs a separate instruction."
+    },
+    {
+      "id": "effects-checkpoint-not-implied--interrupt-started",
+      "calibration": false,
+      "world_id": "effects-checkpoint-not-implied",
+      "family": "effects-and-constraints",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "effects-checkpoint-not-implied",
+        "family": "effects-and-constraints",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "S8 is executing in analysis set Sycamore. Its current memory state has no saved checkpoint. Checkpoint creation is a separate explicit operation. No instruction or local rule requests that operation.\nDirective: Stop analysis set Sycamore, interrupt-started.",
+      "ainglish": "S8 is executing in analysis set Sycamore. Its current memory state has no saved checkpoint. Checkpoint creation is a separate explicit operation. No instruction or local rule requests that operation.\nDirective: Stop analysis set Sycamore, interrupt-started.",
+      "question": "Does the stop qualifier alone order checkpoint creation?",
+      "options": [
+        "Yes, every finish policy implicitly saves a checkpoint.",
+        "Yes, every interruption policy guarantees one.",
+        "No, checkpoint policy needs a separate instruction."
+      ],
+      "answer": "No, checkpoint policy needs a separate instruction."
+    },
+    {
+      "id": "effects-published-partial-results--finish-started",
+      "calibration": false,
+      "world_id": "effects-published-partial-results",
+      "family": "effects-and-constraints",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "effects-published-partial-results",
+        "family": "effects-and-constraints",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "D8 is executing in export set Dogwood and has already delivered three valid records to a consumer. Five records remain. The system does not automatically undo deliveries on termination. No recall or compensation instruction exists.\nDirective: Stop export set Dogwood, finish-started.",
+      "ainglish": "D8 is executing in export set Dogwood and has already delivered three valid records to a consumer. Five records remain. The system does not automatically undo deliveries on termination. No recall or compensation instruction exists.\nDirective: Stop export set Dogwood, finish-started.",
+      "question": "Which claim about the three delivered records is justified by this directive alone?",
+      "options": [
+        "They must now be replaced by five different records.",
+        "They have automatically ceased to exist for the consumer.",
+        "The instruction does not itself undo those deliveries."
+      ],
+      "answer": "The instruction does not itself undo those deliveries."
+    },
+    {
+      "id": "effects-published-partial-results--interrupt-started",
+      "calibration": false,
+      "world_id": "effects-published-partial-results",
+      "family": "effects-and-constraints",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "effects-published-partial-results",
+        "family": "effects-and-constraints",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "D8 is executing in export set Dogwood and has already delivered three valid records to a consumer. Five records remain. The system does not automatically undo deliveries on termination. No recall or compensation instruction exists.\nDirective: Stop export set Dogwood, interrupt-started.",
+      "ainglish": "D8 is executing in export set Dogwood and has already delivered three valid records to a consumer. Five records remain. The system does not automatically undo deliveries on termination. No recall or compensation instruction exists.\nDirective: Stop export set Dogwood, interrupt-started.",
+      "question": "Which claim about the three delivered records is justified by this directive alone?",
+      "options": [
+        "The instruction does not itself undo those deliveries.",
+        "They must now be replaced by five different records.",
+        "They have automatically ceased to exist for the consumer."
+      ],
+      "answer": "The instruction does not itself undo those deliveries."
+    },
+    {
+      "id": "effects-interruptibility-unknown--finish-started",
+      "calibration": false,
+      "world_id": "effects-interruptibility-unknown",
+      "family": "effects-and-constraints",
+      "tested_form": "finish-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "effects-interruptibility-unknown",
+        "family": "effects-and-constraints",
+        "form": "finish-started",
+        "policy_changes_answer": true
+      },
+      "english": "W8 is executing in transfer set Walnut. No record says whether safe interruption is supported. There is no observation of a halt, completion or failure. General safety constraints remain in force; no unsafe operation is authorised.\nDirective: Stop transfer set Walnut, finish-started.",
+      "ainglish": "W8 is executing in transfer set Walnut. No record says whether safe interruption is supported. There is no observation of a halt, completion or failure. General safety constraints remain in force; no unsafe operation is authorised.\nDirective: Stop transfer set Walnut, finish-started.",
+      "question": "What immediate response is warranted for W8?",
+      "options": [
+        "Let the existing execution continue under unchanged constraints; the directive does not require a halt mechanism.",
+        "Check the available safe mechanism and report the actual constraint/state rather than claim a successful halt.",
+        "Assume a force-kill is both safe and successful."
+      ],
+      "answer": "Let the existing execution continue under unchanged constraints; the directive does not require a halt mechanism."
+    },
+    {
+      "id": "effects-interruptibility-unknown--interrupt-started",
+      "calibration": false,
+      "world_id": "effects-interruptibility-unknown",
+      "family": "effects-and-constraints",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": true,
+      "strata": {
+        "world_id": "effects-interruptibility-unknown",
+        "family": "effects-and-constraints",
+        "form": "interrupt-started",
+        "policy_changes_answer": true
+      },
+      "english": "W8 is executing in transfer set Walnut. No record says whether safe interruption is supported. There is no observation of a halt, completion or failure. General safety constraints remain in force; no unsafe operation is authorised.\nDirective: Stop transfer set Walnut, interrupt-started.",
+      "ainglish": "W8 is executing in transfer set Walnut. No record says whether safe interruption is supported. There is no observation of a halt, completion or failure. General safety constraints remain in force; no unsafe operation is authorised.\nDirective: Stop transfer set Walnut, interrupt-started.",
+      "question": "What immediate response is warranted for W8?",
+      "options": [
+        "Let the existing execution continue under unchanged constraints; the directive does not require a halt mechanism.",
+        "Check the available safe mechanism and report the actual constraint/state rather than claim a successful halt.",
+        "Assume a force-kill is both safe and successful."
+      ],
+      "answer": "Check the available safe mechanism and report the actual constraint/state rather than claim a successful halt."
+    },
+    {
+      "id": "effects-refund-not-implied--finish-started",
+      "calibration": false,
+      "world_id": "effects-refund-not-implied",
+      "family": "effects-and-constraints",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "effects-refund-not-implied",
+        "family": "effects-and-constraints",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "A8 is executing in paid print set Acacia; A9 is queued. A payment was captured before the boundary. Refunds are separate account operations governed by a policy not supplied here. No refund instruction accompanies the directive.\nDirective: Stop paid print set Acacia, finish-started.",
+      "ainglish": "A8 is executing in paid print set Acacia; A9 is queued. A payment was captured before the boundary. Refunds are separate account operations governed by a policy not supplied here. No refund instruction accompanies the directive.\nDirective: Stop paid print set Acacia, finish-started.",
+      "question": "Which financial action is required solely by the qualifier?",
+      "options": [
+        "Neither a refund nor an additional charge is specified.",
+        "Refund all charges immediately.",
+        "Charge a second fee for the same work."
+      ],
+      "answer": "Neither a refund nor an additional charge is specified."
+    },
+    {
+      "id": "effects-refund-not-implied--interrupt-started",
+      "calibration": false,
+      "world_id": "effects-refund-not-implied",
+      "family": "effects-and-constraints",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "effects-refund-not-implied",
+        "family": "effects-and-constraints",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "A8 is executing in paid print set Acacia; A9 is queued. A payment was captured before the boundary. Refunds are separate account operations governed by a policy not supplied here. No refund instruction accompanies the directive.\nDirective: Stop paid print set Acacia, interrupt-started.",
+      "ainglish": "A8 is executing in paid print set Acacia; A9 is queued. A payment was captured before the boundary. Refunds are separate account operations governed by a policy not supplied here. No refund instruction accompanies the directive.\nDirective: Stop paid print set Acacia, interrupt-started.",
+      "question": "Which financial action is required solely by the qualifier?",
+      "options": [
+        "Charge a second fee for the same work.",
+        "Neither a refund nor an additional charge is specified.",
+        "Refund all charges immediately."
+      ],
+      "answer": "Neither a refund nor an additional charge is specified."
+    },
+    {
+      "id": "effects-no-restart-after-halt--finish-started",
+      "calibration": false,
+      "world_id": "effects-no-restart-after-halt",
+      "family": "effects-and-constraints",
+      "tested_form": "finish-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "effects-no-restart-after-halt",
+        "family": "effects-and-constraints",
+        "form": "finish-started",
+        "policy_changes_answer": false
+      },
+      "english": "Q8 is executing in analysis set Sequoia at the boundary, then an independent authorised safety event halts it. The fault is later repaired. Resuming Q8 would require a new execution, and the stop instruction has not been changed by anyone authorised to do so.\nDirective: Stop analysis set Sequoia, finish-started.",
+      "ainglish": "Q8 is executing in analysis set Sequoia at the boundary, then an independent authorised safety event halts it. The fault is later repaired. Resuming Q8 would require a new execution, and the stop instruction has not been changed by anyone authorised to do so.\nDirective: Stop analysis set Sequoia, finish-started.",
+      "question": "Does the earlier qualifier authorise that new execution after repair?",
+      "options": [
+        "Yes; the past execution permanently exempts Q8 from the no-new-start rule.",
+        "No; neither qualifier supplies restart permission while the stop remains in force.",
+        "Yes; a repaired fault cancels every earlier instruction."
+      ],
+      "answer": "No; neither qualifier supplies restart permission while the stop remains in force."
+    },
+    {
+      "id": "effects-no-restart-after-halt--interrupt-started",
+      "calibration": false,
+      "world_id": "effects-no-restart-after-halt",
+      "family": "effects-and-constraints",
+      "tested_form": "interrupt-started",
+      "form_changes_answer": false,
+      "strata": {
+        "world_id": "effects-no-restart-after-halt",
+        "family": "effects-and-constraints",
+        "form": "interrupt-started",
+        "policy_changes_answer": false
+      },
+      "english": "Q8 is executing in analysis set Sequoia at the boundary, then an independent authorised safety event halts it. The fault is later repaired. Resuming Q8 would require a new execution, and the stop instruction has not been changed by anyone authorised to do so.\nDirective: Stop analysis set Sequoia, interrupt-started.",
+      "ainglish": "Q8 is executing in analysis set Sequoia at the boundary, then an independent authorised safety event halts it. The fault is later repaired. Resuming Q8 would require a new execution, and the stop instruction has not been changed by anyone authorised to do so.\nDirective: Stop analysis set Sequoia, interrupt-started.",
+      "question": "Does the earlier qualifier authorise that new execution after repair?",
+      "options": [
+        "Yes; a repaired fault cancels every earlier instruction.",
+        "Yes; the past execution permanently exempts Q8 from the no-new-start rule.",
+        "No; neither qualifier supplies restart permission while the stop remains in force."
+      ],
+      "answer": "No; neither qualifier supplies restart permission while the stop remains in force."
+    }
+  ],
+  "items_sha256": "6bba8135a92404feafd2b819a3dc32e113b732b7163169bd2147edbb1f3148ac",
+  "attempt": {
+    "estimand": "Entry-loaded operational-consequence accuracy on this fixed 32-world, two-form bank and two exact local reader editions. Cold accuracy is a labelled diagnostic, not a comparison with English. Overall and each form must reach >=0.95 under the unchanged proposal. Author decision also requires >=0.95 on each form's predeclared policy-changing subset, to prevent easy invariant boundaries masking the central contrast.",
+    "admissibility_gates": [
+      "No launch before affirmative independent fresh-input replication commitment and explicit retained scientific-spend decision; silence is not assent.",
+      "All answer-bearing bytes and exact entry frozen before target exposure; no target pilot, retry, selective replacement or optional stopping.",
+      "Both exact reader editions individually pass fresh target-independent qualification and in-panel planted-effect calibration; preserve failed receipts.",
+      "Each real reader/item is stateless, cold then entry; both item-arm texts are byte-identical and only the official harness prefixes the entry.",
+      "No same-study substitution for the separate careful-English prerequisite. Per-form and policy-changing-subset diagnostics remain load-bearing for the author's adoption recommendation.",
+      "Retain every exact prompt, raw response, parsed answer, gold, grade, transport fault and attempt receipt. Live state and resource checks precede a minted official run."
+    ],
+    "planned_sample": {
+      "worlds": 32,
+      "real_items": 64,
+      "real_items_per_form": 32,
+      "readers": 2,
+      "cold_and_entry_calls": 256,
+      "calibration_items": 12,
+      "calibration_calls": 48,
+      "qualification_calls_at_most": 48,
+      "maximum_original_reader_calls": 352,
+      "maximum_original_and_fresh_replication_calls": 704,
+      "no_comprehension_study_calls_authorised_by_this_packet": true
+    }
+  }
+}
