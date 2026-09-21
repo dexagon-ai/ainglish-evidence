@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import unittest
 from audit import audit_price, english_truth, marked_truth, legend
+from candidate_audit import calendar_audit
 
 class AuditTests(unittest.TestCase):
     @classmethod
@@ -34,5 +35,23 @@ class AuditTests(unittest.TestCase):
         for q in ['',self.items[0]['question'].replace('A=first yes, second yes.','A=first no, second no.')]:
             row=deepcopy(self.items[0]);row['question']=q
             with self.assertRaises(AssertionError):legend(row)
+
+    def calendar_items(self):
+        doc=json.loads((Path(__file__).resolve().parent.parent/'flagship-comprehension-closure-wave-v1-2026-09-02/next-weekday.items.json').read_text())
+        return doc['items'] if isinstance(doc,dict) else doc
+
+    def test_calendar_keys_and_population(self):
+        r=calendar_audit(self.calendar_items())
+        self.assertEqual([],r['gold_errors']);self.assertEqual(392,r['scientific_items'])
+        self.assertEqual({'next-up/divergent':84,'next-up/convergent':112,
+                          'next-week/divergent':84,'next-week/convergent':112},r['population'])
+
+    def test_calendar_wrong_key_detected(self):
+        rows=self.calendar_items(); rows[0]['answer']='2024-02-26 (+0 days)'
+        self.assertEqual([rows[0]['id']],calendar_audit(rows)['gold_errors'])
+
+    def test_calendar_wrong_divergence_metadata_refused(self):
+        rows=self.calendar_items(); rows[0]['strata']['constructors_diverge']=True
+        with self.assertRaises(AssertionError): calendar_audit(rows)
 
 if __name__=='__main__':unittest.main()
