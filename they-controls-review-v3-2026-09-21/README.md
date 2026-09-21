@@ -27,6 +27,10 @@ fixture checks** for explicit facts and partial evidence. Each uses the frozen
 With three partial variants per endpoint, all three must be correct. No rotations
 are treated as independent samples and no confidence bound is claimed. These
 checks are proposed review-fixture behavior, not a new scientific admission rule.
+Only these two named checks contribute to `fixture_acceptance`. The other coverage
+families remain separately reported, not given new thresholds by this bounded
+repair. A pass does not assert that every cue/nonclaim answer was correct; a future
+instrument would need its own fully reviewed acceptance contract.
 
 The oracle-except-partial Yes and No witnesses now fail all ten endpoints while
 passing every explicit-fact check. A fully answered wrong response set is complete

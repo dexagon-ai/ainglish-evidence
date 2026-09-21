@@ -73,6 +73,13 @@ class RepairTests(unittest.TestCase):
                 self.assertEqual('fail', result['fixture_acceptance']['status'])
                 self.assertEqual(10, len(result['fixture_acceptance']['failed_endpoints']))
 
+    def test_other_families_remain_visible_without_an_invented_new_threshold(self):
+        result = score(self.f, BASE.fixture_answers(self.f, lambda x: 'Yes' if x.get('coverage_family') == 'name_not_gender' else x['gold']))
+        self.assertEqual(6, result['coverage_families']['name_not_gender']['incorrect'])
+        self.assertEqual('pass', result['fixture_acceptance']['status'])
+        self.assertEqual(['explicit_fact', 'partial_information'], result['fixture_acceptance']['required_checks'])
+        self.assertFalse(result['fixture_acceptance']['instrument_qualified'])
+
     def test_rule_cannot_be_silently_lowered(self):
         for replacement in (None, {}, {'explicit_fact': {'numerator':0,'denominator':10}}):
             self.f['fixture_rule'] = replacement

@@ -88,6 +88,8 @@ def score(fixtures, observations):
         'failed_endpoints': [x['form_slot'] + '/' + x['dimension'] for x in result['endpoints'] if x['fixture_status'] == 'fail'],
         'incomplete_endpoints': [x['form_slot'] + '/' + x['dimension'] for x in result['endpoints'] if x['fixture_status'] == 'incomplete' or not x['complete']],
         'instrument_qualified': False,
+        'required_checks': ['explicit_fact', 'partial_information'],
+        'other_coverage_families': 'reported, not independently thresholded by this bounded repair',
         'boundary': 'Synthetic review-fixture decision only. These small exposed worlds and rotations do not certify accuracy, uncertainty, fresh inputs, provenance or execution. The author shelved the full study.',
     }
     return result
