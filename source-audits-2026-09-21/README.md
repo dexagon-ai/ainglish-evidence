@@ -4,7 +4,8 @@ CPU-only examination of already-public evidence. No new reader calls, attempt,
 measurement, ballot, corrected score or change to a historical key. Run
 `python -m unittest -v test_audit.py` and `python audit.py` in this directory.
 The latter fetches public receipts and verifies the canonical item digests. It
-generates [audit-result.json](audit-result.json). Five regression tests pass.
+generates [audit-result.json](audit-result.json). Eight regression tests pass,
+including the separate calendar population audit in `candidate_audit.py`.
 
 ## Price / availability: the reported 41 impossible keys do not reproduce
 
