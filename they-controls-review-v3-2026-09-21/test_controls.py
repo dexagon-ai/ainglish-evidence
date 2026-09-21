@@ -1,7 +1,7 @@
 from copy import deepcopy
 from collections import Counter
 import unittest
-from controls import BASE, V2, FORMS, SPECS, LABELS, build, score, witnesses
+from controls import BASE, V2, FORMS, SPECS, LABELS, build, score, witnesses, fixture_digest, FROZEN_FIXTURE_SHA256
 
 
 class RepairTests(unittest.TestCase):
@@ -55,9 +55,49 @@ class RepairTests(unittest.TestCase):
 
     def test_missing_partial_family_cannot_pass(self):
         self.f['items'] = [x for x in self.f['items'] if x.get('coverage_family') != 'partial_information']
-        result = score(self.f, BASE.fixture_answers(self.f))
-        self.assertEqual('incomplete', result['fixture_acceptance']['status'])
-        self.assertEqual(10, len(result['fixture_acceptance']['incomplete_endpoints']))
+        with self.assertRaisesRegex(ValueError, 'Changed frozen'):
+            score(self.f, BASE.fixture_answers(self.f))
+
+    def test_frozen_generator_and_loaded_artifact_have_same_commitment(self):
+        import json
+        from pathlib import Path
+        saved = json.loads(Path(__file__).with_name('control-prototypes.json').read_text())
+        self.assertEqual(FROZEN_FIXTURE_SHA256, fixture_digest(saved))
+        self.assertEqual(FROZEN_FIXTURE_SHA256, fixture_digest(self.f))
+
+    def test_one_of_three_partial_rotations_is_refused_even_with_updated_counts(self):
+        self.f['items'] = [x for x in self.f['items'] if
+                          x.get('coverage_family') != 'partial_information' or x['id'].endswith('/order-0')]
+        self.assertEqual(196, len(self.f['items']))
+        for rewrite_count in (False, True):
+            if rewrite_count: self.f['prompt_variants'] = 196
+            with self.assertRaisesRegex(ValueError, 'Changed frozen'):
+                score(self.f, BASE.fixture_answers(self.f))
+
+    def test_any_changed_answer_bearing_or_planning_field_is_refused(self):
+        for field, value in [('gold','Yes'), ('question','Different?'), ('text','Different record'),
+                             ('id','different'), ('world_id','different'), ('role','explicit_fact'),
+                             ('form_slot','they-many'), ('dimension','gender'),
+                             ('coverage_family','explicit_fact'), ('options',list(reversed(LABELS)))]:
+            with self.subTest(field=field):
+                changed = deepcopy(self.f)
+                # The final row is plural all-members participation, not gender.
+                changed['items'][-1][field] = value
+                if changed == self.f: changed['items'][-1][field] = 'changed'
+                with self.assertRaisesRegex(ValueError, 'Changed frozen'): score(changed, [])
+        for mutation in ('duplicate','reorder','invented_digest','metadata'):
+            changed = deepcopy(self.f)
+            if mutation == 'duplicate': changed['items'][-1] = deepcopy(changed['items'][0])
+            elif mutation == 'reorder': changed['items'].reverse()
+            elif mutation == 'invented_digest': changed['fixture_sha256'] = fixture_digest(changed)
+            else: changed['semantic_worlds'] = 1
+            with self.subTest(mutation=mutation), self.assertRaisesRegex(ValueError, 'Changed frozen'):
+                score(changed, [])
+
+    def test_object_key_order_does_not_change_commitment(self):
+        changed = dict(reversed(list(self.f.items())))
+        changed['items'] = [dict(reversed(list(x.items()))) for x in self.f['items']]
+        self.assertEqual('pass', score(changed, BASE.fixture_answers(changed))['fixture_acceptance']['status'])
 
     def test_oracle_passes_only_fixture_checks(self):
         result = score(self.f, BASE.fixture_answers(self.f))

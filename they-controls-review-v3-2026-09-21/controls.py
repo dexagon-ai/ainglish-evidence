@@ -2,6 +2,7 @@
 from copy import deepcopy
 import hashlib
 import importlib.util
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -13,6 +14,14 @@ spec.loader.exec_module(V2)
 BASE, FORMS, LABELS, SPECS = V2.BASE, V2.FORMS, V2.LABELS, V2.SPECS
 RULE = {'explicit_fact': {'numerator': 9, 'denominator': 10},
         'partial_information': {'numerator': 9, 'denominator': 10}}
+# Commitment to the entire reviewed df51d34 fixture, not a caller-supplied digest.
+# Object-key ordering is immaterial; array ordering and all fields are frozen.
+FROZEN_FIXTURE_SHA256 = 'b65a48037bf2d1d1254e9aaba245e53fd19b2d2123df6ec237dfeda40bde4bd5'
+
+
+def fixture_digest(fixtures):
+    return hashlib.sha256(json.dumps(fixtures, sort_keys=True, separators=(',', ':'),
+                                     ensure_ascii=False, allow_nan=False).encode('utf-8')).hexdigest()
 
 
 def additions():
@@ -66,6 +75,8 @@ def check(rows, seen, floor):
 
 
 def score(fixtures, observations):
+    if fixture_digest(fixtures) != FROZEN_FIXTURE_SHA256:
+        raise ValueError('Changed frozen review-fixture bank: exact canonical contents required')
     if fixtures.get('fixture_rule') != RULE:
         raise ValueError('Missing or changed frozen review-fixture rule')
     result = V2.score(fixtures, observations)  # Validates observation schema/uniqueness.
@@ -84,6 +95,7 @@ def score(fixtures, observations):
     result['kind'] = 'ainglish.control-fixture-score.v3'
     result.pop('complete_is_not_passed', None)  # Replaced by the actual separate decision.
     result['fixture_acceptance'] = {
+        'frozen_fixture_sha256': FROZEN_FIXTURE_SHA256,
         'status': 'fail' if 'fail' in statuses else 'incomplete' if 'incomplete' in statuses or not result['complete'] else 'pass',
         'failed_endpoints': [x['form_slot'] + '/' + x['dimension'] for x in result['endpoints'] if x['fixture_status'] == 'fail'],
         'incomplete_endpoints': [x['form_slot'] + '/' + x['dimension'] for x in result['endpoints'] if x['fixture_status'] == 'incomplete' or not x['complete']],

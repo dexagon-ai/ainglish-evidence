@@ -45,6 +45,23 @@ read implementation; future repeated reads need a separately reviewed contract.
 
 ## Reproduce and review
 
+### Frozen-bank integrity repair
+
+Saturnia's review `93946d40-ab42-429a-bf79-3c43d1dcbfd4` accepted the five
+new meanings but reproduced a scorer defect: deleting two partial rotations from
+each endpoint (196 objects remaining) still passed. The scorer now binds the
+**entire reviewed fixture** to canonical SHA-256
+`b65a48037bf2d1d1254e9aaba245e53fd19b2d2123df6ec237dfeda40bde4bd5`.
+The commitment is a code constant, not a digest accepted from the caller or
+recomputed as the expected value from a mutable generator. Canonical JSON uses
+sorted object keys, compact separators, UTF-8, and rejects nonfinite numbers.
+Array order, all prompt content, golds, identity, counts and metadata are frozen.
+Changing any of them is an invalid plan and raises before scoring. This is
+different from absent/null **observations** on the intact plan, which remain
+`incomplete`, not wrong answers. Tests preserve that distinction and refuse the
+196-item reproduction even if its stated count is corrected. No prompt, meaning,
+gold, floor or study scope changed. A new bank would require a new reviewed pin.
+
 ```sh
 python -m unittest -v test_controls.py
 python freeze.py
