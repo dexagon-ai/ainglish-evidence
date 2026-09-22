@@ -1,0 +1,90 @@
+--- a/no-undo-rstar-2026-09-22/noundo_rstar.py
++++ b/no-undo-rstar-2026-09-22/noundo_rstar.py
+@@ -55,7 +55,7 @@
+ BANK_SIZE = 32
+ TOKENIZERS = ["cl100k_base", "o200k_base", "p50k_base"]   # tiktoken; the manifest pins the library version
+ SEED_POLICY = "authored census, no random draw; the schedule above is the sampling frame; a replica authors fresh ACTIONs into the same cells"
+-CLAIM = "token_delta of the marked arm against rendering R* is at most +2 (equal-cell mean over the 32 pairs, per tokenizer; the settlement value is the roster mean; every stratum reported)"
++CLAIM = "token_delta of the marked arm against rendering R* is at most +2 (equal-cell mean over the 32 pairs per tokenizer; settlement is least_favourable, the maximum tokenizer mean; every stratum reported)"
+ 
+ # sha256 of lowercased, whitespace-collapsed ACTION strings from the three filed banks (Lemony 6a5e62a8,
+ # Dexagon 2341c235, Saturnia 0f5219f3), so a replica can check freshness without this file quoting them.
+@@ -64,16 +64,28 @@
+ WIN = re.compile(r"^(\d+)([mhd])$")
+ UNITS = {"m": "minute", "h": "hour", "d": "day"}
+ 
++def validate_text(value, label):
++    if not isinstance(value, str) or not value.strip():
++        raise ValueError(f"{label} must not be empty")
++    if re.search(r"[;()\r\n\x00-\x1f]", value):
++        raise ValueError(f"{label} contains a delimiter or control character")
++    if label == "action" and re.search(r"[.!?]\s*$", value):
++        raise ValueError("ACTION carries no terminal punctuation")
++
+ def parse_marked(s):
+     """Parse a marked arm into (shape-agnostic) fields, or raise ValueError naming the rule broken."""
+     m = re.fullmatch(r"(.+), no-undo\.", s)
+     if m:
++        validate_text(m.group(1), "action")
+         return {"stratum": "no-undo", "action": m.group(1)}
+     m = re.fullmatch(r"(.+), can-undo\((.+)\)\.", s)
+     if not m:
+         raise ValueError("not a marked arm: expected '<ACTION>, no-undo.' or '<ACTION>, can-undo(<how>).'")
+     action, how = m.group(1), m.group(2)
+     parts = [p.strip() for p in how.split(";")]
++    validate_text(action, "action")
++    for part in parts:
++        validate_text(part, "recovery field")
+     if not parts or not parts[0]:
+         raise ValueError("can-undo needs a PATH as its first argument")
+     f = {"stratum": "can-undo", "action": action, "path": parts[0]}
+@@ -88,12 +100,12 @@
+         else:
+             if "holder" in f: raise ValueError("HOLDER given twice")
+             if "window" in f or "cost" in f: raise ValueError("slot order is PATH; HOLDER; WINDOW; COST")
+-            if re.search(r"\bonly\b", p) or p.endswith("-only"): raise ValueError("non-exclusive grammar: no 'only' in HOLDER")
+-            if p.startswith("by "): raise ValueError("HOLDER is a bare noun phrase, no 'by'")
++            if re.search(r"\bonly\b", p, re.I): raise ValueError("non-exclusive grammar: no 'only' in HOLDER")
++            if re.match(r"by\b", p, re.I): raise ValueError("HOLDER is a bare noun phrase, no 'by'")
+             f["holder"] = p
+     for k in ("action", "path"):
+         if re.search(r"[;)]", f[k]): raise ValueError(f"{k} may not contain ';' or ')'")
+-    if re.search(r"\b(loss|lost|partial)\b", f.get("path", "")): raise ValueError("no loss slot: a partial return is no-undo")
++    if re.search(r"\b(loss|lost|partial)\b", f.get("path", ""), re.I): raise ValueError("no loss slot: a partial return is no-undo")
+     return f
+ 
+ def render_rstar(f):
+@@ -145,7 +157,32 @@
+     if cu != CAN_UNDO_SCHEDULE: raise ValueError(f"can-undo joint schedule mismatch: got {cu}, want {CAN_UNDO_SCHEDULE}")
+     if shapes != SHAPE_SCHEDULE: raise ValueError(f"shape schedule mismatch: got {shapes}, want {SHAPE_SCHEDULE}")
+     if words != ACTION_WORDS_SCHEDULE: raise ValueError(f"ACTION word-length schedule mismatch: got {words}, want {ACTION_WORDS_SCHEDULE}")
+-    return {"pairs": len(pairs), "can_undo_joint": cu, "shapes": shapes, "action_words": words, "fresh": True}
++    return {"pairs": len(pairs), "can_undo_joint": cu, "shapes": shapes, "action_words": words, "fresh": True,
++            "structural_validation_only": True, "semantic_review_required": True,
++            "sampling_profile": sampling_profile(pairs)}
++
++def sampling_profile(pairs):
++    """Materialise the JOINT authored population before counting, not just its marginals.
++
++    This describes supplied strings; it does not certify report/imperative grammar,
++    restoration meaning, representative sampling or semantic input disjointness.
++    A source and prospective replica must agree the actual profile before either run.
++    """
++    counts = {}
++    for pair in pairs:
++        f = parse_marked(pair['ainglish'])
++        cell = (category(f), pair['shape'], len(f['action'].split()),
++                len(f.get('path', '').split()), len(f.get('holder', '').split()),
++                f.get('window', ''), f.get('cost', ''))
++        key = json.dumps(cell, separators=(',', ':'))
++        counts[key] = counts.get(key, 0) + 1
++    return dict(sorted(counts.items()))
++
++def validate_frozen_profile(pairs, expected):
++    result = validate_bank(pairs)
++    if not isinstance(expected, dict) or not expected or result['sampling_profile'] != expected:
++        raise ValueError('joint population differs from the prospectively frozen profile')
++    return result
+ 
+ def every_legal_combination():
+     """Render every legal slot combination once with placeholders: the grammar's own exhaustive fixture."""
