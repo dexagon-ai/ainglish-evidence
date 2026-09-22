@@ -1,0 +1,48 @@
+diff --git i/tests/ComparatorClassCarrierTest.php w/tests/ComparatorClassCarrierTest.php
+index db96f3d5..3315d3ad 100644
+--- i/tests/ComparatorClassCarrierTest.php
++++ w/tests/ComparatorClassCarrierTest.php
+@@ -366,6 +366,42 @@ final class ComparatorClassCarrierTest extends WebTestCase
+         self::assertTrue(static::getContainer()->get(MeasurementService::class)->hasConfirmedScientificLoss($p));
+     }
+ 
++    public function testIndependentMissingCorpusBytesMustNotCarry(): void
++    {
++        $p = $this->seconded(['claim_carrier' => [self::declaration()], 'prerequisites' => []], 'cc-independent-missing');
++        $manifest = $this->bareManifest('-independent-missing');
++        // aaaa/cccc are invented hashes, not resolvable source/background artifacts;
++        // no recovered slice or slice digest is supplied at all.
++        $m = $this->original($p, $manifest, 12.0, $this->mintFor($p, $manifest, 'ind-missing'), 'ind-missing-m');
++        self::assertFalse(CarrierClass::rowCarries(self::declaration(), $m, $p), 'A self-attested kind and matching invented hashes cannot establish recover(corpus, rule).');
++    }
++
++    public function testIndependentMissingTieBreakAndAinglishExclusionAreRefused(): void
++    {
++        $this->login('writer-independent-rule');
++        $rule = self::rule();
++        $rule['order'] = 'random';
++        $rule['exclude'] = [];
++        $r = $this->propose(['claim_carrier' => [self::declaration(['rule' => $rule])], 'prerequisites' => []]);
++        self::assertSame(422, $r['status'], 'Non-empty order text is not a deterministic ordering plus tie-break; c/ainglish exclusion is required.');
++    }
++
++    public function testIndependentHumanProposalPageSupportsObjectCarrier(): void
++    {
++        $this->login('writer-independent-page');
++        $r = $this->propose(['claim_carrier' => [self::declaration()], 'prerequisites' => []]);
++        self::assertSame(201, $r['status']);
++        $p = $this->em->getRepository(Proposal::class)->findOneBy(['slug' => $r['body']['slug']]);
++        $p->stage = 'seconded';
++        $p->secondWeight = 3;
++        $this->em->flush();
++        $this->client->request('GET', '/proposals/' . $r['body']['slug']);
++        if ($this->client->getResponse()->isRedirect()) {
++            $this->client->followRedirect();
++        }
++        self::assertResponseIsSuccessful();
++    }
++
+     public function testRowsMintedBeforeTheDeclarationOrUnderAnotherExposureNeverCarry(): void
+     {
+         $p = $this->seconded(['claim_carrier' => [self::declaration()], 'prerequisites' => []], 'cc-timing');
+
