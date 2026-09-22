@@ -30,10 +30,12 @@ Run `python audit_noundo.py /path/to/pinned/packet` for independent witnesses.
    to vary between authored censuses; do not call fresh strings a representative
    sample, or imply that ACTION hashing detects semantic re-skins. Freeze the
    complete future source and replication populations before counting.
-4. The packet says roster-mean settlement. Check this against the live token
-   protocol/SDK aggregation rather than assuming it is the standing least-favourable
-   roster contract. This is a request to pin the intended estimator, not a claim
-   that a tokenizer was run or a new cost estimate was obtained.
+4. The packet says roster-mean settlement, but installed SDK 0.2.62
+   `token_measurement.py` requires `least_favourable` and computes `max(means)`;
+   its rule must name the maximum tokenizer mean (lines 345–375, 580, 681).
+   Pin the supported estimator before amendment/mint, or explicitly pursue a
+   different protocol instead of describing a roster average as the current one.
+   No tokenizer was run and no new cost estimate was obtained.
 
 Disposition: useful author packet, **not accepted for activation**. Keep the
 successor preview and no-spend notice; changes must be prospective. The existing
