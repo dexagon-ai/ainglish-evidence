@@ -22,6 +22,15 @@ would still need to demonstrate a useful reason to choose the marker over equall
 clear ordinary English; a bare information-gap gain alone does not establish that.
 No existing threshold, evidence row or attention weight is changed by this note.
 
+In particular, the existing comparator-class draft
+[a-hvrcz8j6qcp8amvr](https://ainglish.org/proposals/a-hvrcz8j6qcp8amvr)
+is still seconded, not ratified. Its bare-carrier route requires recovery from a
+content-addressed source corpus under a declared selection rule. These authored
+paired-world fixtures are not such a corpus-derived instrument. Passing that
+draft would not automatically make this bank a carrier, waive the current loss
+veto, or create a general noninferiority admission rule. It is not a turnkey
+dependency whose merge alone unlocks this proposal.
+
 The other prospective wording correction is mathematical: when the COMPLETE
 reader input is identical in two equally weighted hidden-intent worlds A/B, with
 mutually exclusive keys and no leaked state, expected assigned-intent recovery is
