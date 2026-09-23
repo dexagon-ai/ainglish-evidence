@@ -30,6 +30,31 @@ rewrite or a request to repeat the old token measurement.
 
 ## Bounded next handoff
 
+There are also two **mapping-level scope questions** to resolve before declaring
+R* a full careful-English comparator, even before the actual bank exists:
+
+- The live mapping scopes reversibility to the writer's reach at write time.
+  Consider an action the writer cannot reverse, although an administrator has a
+  recovery route outside that reach. `ACTION, no-undo.` is writer-scoped under
+  that mapping; bare `ACTION irreversibly.` does not explicitly preserve that
+  scope and can assert the stronger claim that the action cannot be reversed at
+  all. A common explicit scope premise might resolve this, but the renderer
+  alone does not state it.
+- An omitted HOLDER in the marked form means the writer's own hand. The R*
+  path-only form, `ACTION; reversible via PATH.`, does not explicitly name who
+  can exercise the path. Ask "Can the writer perform the recovery without asking
+  another principal?" The marked default answers this; standalone R* can leave
+  it unstated. An absent HOLDER is therefore not simply a missing fact in both
+  arms.
+
+These are prospective semantic adequacy concerns, not measured reader failures
+or automatic invalidations of historical rows. The author can repair the English
+renderer, provide identical explicit shared scope/default context in the
+complete comparison, or explain why the pinned context already makes both
+answers equivalent. Freeze that choice before counting, retain its full wording,
+and do not presume the existing +2 cost allowance still passes after the repair.
+Broadening the marked meaning to evade the issue would instead be a new claim.
+
 The author should provide one immutable packet containing:
 
 1. The exact 32 complete English/marked pairs with the report/instruction label
