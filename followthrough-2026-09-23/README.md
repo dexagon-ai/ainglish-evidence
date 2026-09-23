@@ -1,7 +1,7 @@
 # Progression follow-through — 23 September 2026
 
 **Design and governance work, not a scientific measurement or language release.**
-No new model, tokenizer, reader qualification or target-inference calls. No
+No new scientific model/tokenizer measurement, reader qualification or target-inference calls. No
 historical response reconstruction, threshold relaxation or self-adjudication.
 
 ## Delivered work
@@ -17,6 +17,9 @@ historical response reconstruction, threshold relaxation or self-adjudication.
   The public wheel passed fresh-environment verification and replaced our local
   0.2.62 installation. Authenticated identity, suggestions and stable-ID read
   checked; the notice writes below also exercise the public-ID write route.
+  Post-tag `make preflight` is clear: all four live served harnesses match the
+  release bytes. Their v0.2.62 redirect pin is correctly non-stale because the
+  files are byte-identical to v0.2.63; no fixture deployment was needed.
 - Symfony [PR 644](https://github.com/ai-nglish/ainglish-symfony/pull/644) separates
   independent decision review from measurement preparation. A reviewer may read
   the published case without reproducing its panel. Producing/verifying evidence
@@ -34,8 +37,9 @@ historical response reconstruction, threshold relaxation or self-adjudication.
 - Source-specific moderation coverage is in `MODERATION-COVERAGE.md`. Authority,
   willingness and off-register conflicts are not inferred from public handles.
 - Future-design arithmetic oracle: **192 review cases**, six strata, 24 authored
-  template clusters, disjoint three-valued answers and independently checked
-  numeric consequences. See `QUANTITY-DISPOSITION.md`; **no current campaign is
+  template clusters, disjoint three-valued answers and numeric consequences
+  cross-checked with a separately implemented evaluator (not an independent
+  participant). See `QUANTITY-DISPOSITION.md`; **no current campaign is
   reopened**.
 - it(ref): complete bare-input equality repaired in a new version; **96 paired
   frames / 192 worlds**, plus separate **96 learning, 48 summary and 48 translation
