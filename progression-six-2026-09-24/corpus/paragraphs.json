@@ -1,0 +1,962 @@
+[
+  {
+    "source": "Doc/tutorial/appendix.rst",
+    "first_line": 62,
+    "last_line": 63,
+    "text": "On BSD'ish Unix systems, Python scripts can be made directly executable, like shell scripts, by putting the line ::"
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 7,
+    "last_line": 11,
+    "text": "If you do much work on computers, eventually you find that there's some task you'd like to automate.  For example, you may wish to perform a search-and-replace over a large number of text files, or rename and rearrange a bunch of photo files in a complicated way. Perhaps you'd like to write a small custom database, or a specialized GUI application, or a simple game."
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 13,
+    "last_line": 18,
+    "text": "If you're a professional software developer, you may have to work with several C/C++/Java libraries but find the usual write/compile/test/re-compile cycle is too slow.  Perhaps you're writing a test suite for such a library and find writing the testing code a tedious task.  Or maybe you've written a program that could use an extension language, and you don't want to design and implement a whole new language for your application."
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 22,
+    "last_line": 27,
+    "text": "You could write a Unix shell script or Windows batch files for some of these tasks, but shell scripts are best at moving around files and changing text data, not well-suited for GUI applications or games. You could write a C/C++/Java program, but it can take a lot of development time to get even a first-draft program.  Python is simpler to use, available on Windows, macOS, and Unix operating systems, and will help you get the job done more quickly."
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 29,
+    "last_line": 35,
+    "text": "Python is simple to use, but it is a real programming language, offering much more structure and support for large programs than shell scripts or batch files can offer.  On the other hand, Python also offers much more error checking than C, and, being a *very-high-level language*, it has high-level data types built in, such as flexible arrays and dictionaries.  Because of its more general data types Python is applicable to a much larger problem domain than Awk or even Perl, yet many things are at least as easy in Python as in those languages."
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 37,
+    "last_line": 42,
+    "text": "Python allows you to split your program into modules that can be reused in other Python programs.  It comes with a large collection of standard modules that you can use as the basis of your programs --- or as examples to start learning to program in Python.  Some of these modules provide things like file I/O, system calls, sockets, and even interfaces to graphical user interface toolkits like Tk."
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 44,
+    "last_line": 48,
+    "text": "Python is an interpreted language, which can save you considerable time during program development because no compilation and linking is necessary.  The interpreter can be used interactively, which makes it easy to experiment with features of the language, to write throw-away programs, or to test functions during bottom-up program development. It is also a handy desk calculator."
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 50,
+    "last_line": 52,
+    "text": "Python enables programs to be written compactly and readably.  Programs written in Python are typically much shorter than equivalent C,  C++, or Java programs, for several reasons:"
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 62,
+    "last_line": 68,
+    "text": "Python is *extensible*: if you know how to program in C it is easy to add a new built-in function or module to the interpreter, either to perform critical operations at maximum speed, or to link Python programs to libraries that may only be available in binary form (such as a vendor-specific graphics library). Once you are really hooked, you can link the Python interpreter into an application written in C and use it as an extension or command language for that application."
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 70,
+    "last_line": 72,
+    "text": "By the way, the language is named after the BBC show \"Monty Python's Flying Circus\" and has nothing to do with reptiles.  Making references to Monty Python skits in documentation is not only allowed, it is encouraged!"
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 74,
+    "last_line": 76,
+    "text": "Now that you are all excited about Python, you'll want to examine it in some more detail.  Since the best way to learn a language is to use it, the tutorial invites you to play with the Python interpreter as you read."
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 78,
+    "last_line": 80,
+    "text": "In the next chapter, the mechanics of using the interpreter are explained.  This is rather mundane information, but essential for trying out the examples shown later."
+  },
+  {
+    "source": "Doc/tutorial/appetite.rst",
+    "first_line": 82,
+    "last_line": 85,
+    "text": "The rest of the tutorial introduces various features of the Python language and system through examples, beginning with simple expressions, statements and data types, through functions and modules, and finally touching upon advanced concepts like exceptions and user-defined classes."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 7,
+    "last_line": 11,
+    "text": "Classes provide a means of bundling data and functionality together.  Creating a new class creates a new *type* of object, allowing new *instances* of that type to be made.  Each class instance can have attributes attached to it for maintaining its state.  Class instances can also have methods (defined by its class) for modifying its state."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 13,
+    "last_line": 21,
+    "text": "Compared with other programming languages, Python's class mechanism adds classes with a minimum of new syntax and semantics.  It is a mixture of the class mechanisms found in C++ and Modula-3.  Python classes provide all the standard features of Object Oriented Programming: the class inheritance mechanism allows multiple base classes, a derived class can override any methods of its base class or classes, and a method can call the method of a base class with the same name.  Objects can contain arbitrary amounts and kinds of data.  As is true for modules, classes partake of the dynamic nature of Python: they are created at runtime, and can be modified further after creation."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 63,
+    "last_line": 67,
+    "text": "Before introducing classes, I first have to tell you something about Python's scope rules.  Class definitions play some neat tricks with namespaces, and you need to know how scopes and namespaces work to fully understand what's going on. Incidentally, knowledge about this subject is useful for any advanced Python programmer."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 106,
+    "last_line": 110,
+    "text": "The local namespace for a function is created when the function is called, and deleted when the function returns or raises an exception that is not handled within the function.  (Actually, forgetting would be a better way to describe what actually happens.)  Of course, recursive invocations each have their own local namespace."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 112,
+    "last_line": 114,
+    "text": "A *scope* is a textual region of a Python program where a namespace is directly accessible.  \"Directly accessible\" here means that an unqualified reference to a name attempts to find the name in the namespace."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 116,
+    "last_line": 118,
+    "text": "Although scopes are determined statically, they are used dynamically. At any time during execution, there are 3 or 4 nested scopes whose namespaces are directly accessible:"
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 133,
+    "last_line": 136,
+    "text": "Usually, the local scope references the local names of the (textually) current function.  Outside functions, the local scope references the same namespace as the global scope: the module's namespace. Class definitions place yet another namespace in the local scope."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 138,
+    "last_line": 144,
+    "text": "It is important to realize that scopes are determined textually: the global scope of a function defined in a module is that module's namespace, no matter from where or by what alias the function is called.  On the other hand, the actual search for names is done dynamically, at run time --- however, the language definition is evolving towards static name resolution, at \"compile\" time, so don't rely on dynamic name resolution!  (In fact, local variables are already determined statically.)"
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 214,
+    "last_line": 215,
+    "text": "Classes introduce a little bit of new syntax, three new object types, and some new semantics."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 236,
+    "last_line": 240,
+    "text": "In practice, the statements inside a class definition will usually be function definitions, but other statements are allowed, and sometimes useful --- we'll come back to this later.  The function definitions inside a class normally have a peculiar form of argument list, dictated by the calling conventions for methods --- again, this is explained later."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 242,
+    "last_line": 245,
+    "text": "When a class definition is entered, a new namespace is created, and used as the local scope --- thus, all assignments to local variables go into this new namespace.  In particular, function definitions bind the name of the new function here."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 282,
+    "last_line": 284,
+    "text": "Class *instantiation* uses function notation.  Just pretend that the class object is a parameterless function that returns a new instance of the class. For example (assuming the above class)::"
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 324,
+    "last_line": 326,
+    "text": "Now what can we do with instance objects?  The only operations understood by instance objects are attribute references.  There are two kinds of valid attribute names: data attributes and methods."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 340,
+    "last_line": 341,
+    "text": "The other kind of instance attribute reference is a *method*. A method is a function that \"belongs to\" an object."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 385,
+    "last_line": 392,
+    "text": "In general, methods work as follows.  When a non-data attribute of an instance is referenced, the instance's class is searched. If the name denotes a valid class attribute that is a function object, references to both the instance object and the function object are packed into a method object.  When the method object is called with an argument list, a new argument list is constructed from the instance object and the argument list, and the function object is called with this new argument list."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 400,
+    "last_line": 402,
+    "text": "Generally speaking, instance variables are for data unique to each instance and class variables are for attributes and methods shared by all instances of the class::"
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 473,
+    "last_line": 474,
+    "text": "If the same attribute name occurs in both an instance and in a class, then attribute lookup prioritizes the instance::"
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 488,
+    "last_line": 494,
+    "text": "Data attributes may be referenced by methods as well as by ordinary users (\"clients\") of an object.  In other words, classes are not usable to implement pure abstract data types.  In fact, nothing in Python makes it possible to enforce data hiding --- it is all based upon convention.  (On the other hand, the Python implementation, written in C, can completely hide implementation details and control access to an object if necessary; this can be used by extensions to Python written in C.)"
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 496,
+    "last_line": 500,
+    "text": "Clients should use data attributes with care --- clients may mess up invariants maintained by the methods by stamping on their data attributes.  Note that clients may add data attributes of their own to an instance object without affecting the validity of the methods, as long as name conflicts are avoided --- again, a naming convention can save a lot of headaches here."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 502,
+    "last_line": 505,
+    "text": "There is no shorthand for referencing data attributes (or other methods!) from within methods.  I find that this actually increases the readability of methods: there is no chance of confusing local variables and instance variables when glancing through a method."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 513,
+    "last_line": 516,
+    "text": "Any function object that is a class attribute defines a method for instances of that class.  It is not necessary that the function definition is textually enclosed in the class definition: assigning a function object to a local variable in the class is also ok.  For example::"
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 549,
+    "last_line": 557,
+    "text": "Methods may reference global names in the same way as ordinary functions.  The global scope associated with a method is the module containing its definition.  (A class is never used as a global scope.)  While one rarely encounters a good reason for using global data in a method, there are many legitimate uses of the global scope: for one thing, functions and modules imported into the global scope can be used by methods, as well as functions and classes defined in it.  Usually, the class containing the method is itself defined in this global scope, and in the next section we'll find some good reasons why a method would want to reference its own class."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 568,
+    "last_line": 570,
+    "text": "Of course, a language feature would not be worthy of the name \"class\" without supporting inheritance.  The syntax for a derived class definition looks like this::"
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 587,
+    "last_line": 591,
+    "text": "Execution of a derived class definition proceeds the same as for a base class. When the class object is constructed, the base class is remembered.  This is used for resolving attribute references: if a requested attribute is not found in the class, the search proceeds to look in the base class.  This rule is applied recursively if the base class itself is derived from some other class."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 630,
+    "last_line": 631,
+    "text": "Python supports a form of multiple inheritance as well.  A class definition with multiple base classes looks like this::"
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 696,
+    "last_line": 697,
+    "text": "Name mangling is helpful for letting subclasses override methods without breaking intraclass method calls.  For example::"
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 723,
+    "last_line": 725,
+    "text": "Note that the mangling rules are designed mostly to avoid accidents; it still is possible to access or modify a variable that is considered private.  This can even be useful in special circumstances, such as in the debugger."
+  },
+  {
+    "source": "Doc/tutorial/classes.rst",
+    "first_line": 904,
+    "last_line": 909,
+    "text": "Some simple generators can be coded succinctly as expressions using a syntax similar to list comprehensions but with parentheses instead of square brackets. These expressions are designed for situations where the generator is used right away by an enclosing function.  Generator expressions are more compact but less versatile than full generator definitions and tend to be more memory friendly than equivalent list comprehensions."
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 72,
+    "last_line": 74,
+    "text": "Code that modifies a collection while iterating over that same collection can be tricky to get right.  Instead, it is usually more straight-forward to loop over a copy of the collection or to create a new collection::"
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 338,
+    "last_line": 340,
+    "text": "If you are using classes to structure your data you can use the class name followed by an argument list resembling a constructor, but with the ability to capture attributes into variables::"
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 505,
+    "last_line": 510,
+    "text": "The actual parameters (arguments) to a function call are introduced in the local symbol table of the called function when it is called; thus, arguments are passed using *call by value* (where the *value* is always an object *reference*, not the value of the object). [#]_ When a function calls another function, or calls itself recursively, a new local symbol table is created for that call."
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 512,
+    "last_line": 515,
+    "text": "A function definition associates the function name with the function object in the current symbol table.  The interpreter recognizes the object pointed to by that name as a user-defined function.  Other names can also point to that same function object and can also be used to access the function::"
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 534,
+    "last_line": 535,
+    "text": "It is simple to write a function that returns a list of the numbers of the Fibonacci series, instead of printing it::"
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 573,
+    "last_line": 574,
+    "text": "It is also possible to define functions with a variable number of arguments. There are three forms, which can be combined."
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 582,
+    "last_line": 584,
+    "text": "The most useful form is to specify a default value for one or more arguments. This creates a function that can be called with fewer arguments than it is defined to allow.  For example::"
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 610,
+    "last_line": 611,
+    "text": "The default values are evaluated at the point of function definition in the *defining* scope, so that ::"
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 642,
+    "last_line": 643,
+    "text": "If you don't want the default to be shared between subsequent calls, you can write the function like this instead::"
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 738,
+    "last_line": 739,
+    "text": "Note that the order in which the keyword arguments are printed is guaranteed to match the order in which they were provided in the function call."
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 744,
+    "last_line": 748,
+    "text": "By default, arguments may be passed to a Python function either by position or explicitly by keyword. For readability and performance, it makes sense to restrict the way arguments can be passed so that a developer need only look at the function definition to determine if items are passed by position, by position or keyword, or by keyword."
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 1023,
+    "last_line": 1027,
+    "text": "The first line should always be a short, concise summary of the object's purpose.  For brevity, it should not explicitly state the object's name or type, since these are available by other means (except if the name happens to be a verb describing a function's operation).  This line should begin with a capital letter and end with a period."
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 1029,
+    "last_line": 1032,
+    "text": "If there are more lines in the documentation string, the second line should be blank, visually separating the summary from the rest of the description.  The following lines should be one or more paragraphs describing the object's calling conventions, its side effects, etc."
+  },
+  {
+    "source": "Doc/tutorial/controlflow.rst",
+    "first_line": 1103,
+    "last_line": 1107,
+    "text": "Now that you are about to write longer, more complex pieces of Python, it is a good time to talk about *coding style*.  Most languages can be written (or more concise, *formatted*) in different styles; some are more readable than others. Making it easy for others to read your code is always a good idea, and adopting a nice coding style helps tremendously for that."
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 7,
+    "last_line": 8,
+    "text": "This chapter describes some things you've learned about already in more detail, and adds some new things as well."
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 15,
+    "last_line": 16,
+    "text": "The list data type has some more methods.  Here are all of the methods of list objects:"
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 172,
+    "last_line": 176,
+    "text": "It is also possible to use a list as a queue, where the first element added is the first element retrieved (\"first-in, first-out\"); however, lists are not efficient for this purpose.  While appends and pops from the end of list are fast, doing inserts or pops from the beginning of a list is slow (because all of the other elements have to be shifted by one)."
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 198,
+    "last_line": 201,
+    "text": "List comprehensions provide a concise way to create lists. Common applications are to make new lists where each element is the result of some operations applied to each member of another sequence or iterable, or to create a subsequence of those elements that satisfy a certain condition."
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 288,
+    "last_line": 289,
+    "text": "The initial expression in a list comprehension can be any arbitrary expression, including another list comprehension."
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 291,
+    "last_line": 292,
+    "text": "Consider the following example of a 3x4 matrix implemented as a list of 3 lists of length 4::"
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 400,
+    "last_line": 405,
+    "text": "As you see, on output tuples are always enclosed in parentheses, so that nested tuples are interpreted correctly; they may be input with or without surrounding parentheses, although often parentheses are necessary anyway (if the tuple is part of a larger expression).  It is not possible to assign to the individual items of a tuple, however it is possible to create tuples which contain mutable objects, such as lists."
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 415,
+    "last_line": 419,
+    "text": "A special problem is the construction of tuples containing 0 or 1 items: the syntax has some extra quirks to accommodate these.  Empty tuples are constructed by an empty pair of parentheses; a tuple with one item is constructed by following a value with a comma (it is not sufficient to enclose a single value in parentheses). Ugly, but effective.  For example::"
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 436,
+    "last_line": 440,
+    "text": "This is called, appropriately enough, *sequence unpacking* and works for any sequence on the right-hand side.  Sequence unpacking requires that there are as many variables on the left side of the equals sign as there are elements in the sequence.  Note that multiple assignment is really just a combination of tuple packing and sequence unpacking."
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 448,
+    "last_line": 451,
+    "text": "Python also includes a data type for *sets*.  A set is an unordered collection with no duplicate elements.  Basic uses include membership testing and eliminating duplicate entries.  Set objects also support mathematical operations like union, intersection, difference, and symmetric difference."
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 550,
+    "last_line": 551,
+    "text": "In addition, dict comprehensions can be used to create dictionaries from arbitrary key and value expressions::"
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 556,
+    "last_line": 557,
+    "text": "When the keys are simple strings, it is sometimes easier to specify pairs using keyword arguments::"
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 639,
+    "last_line": 640,
+    "text": "It is sometimes tempting to change a list while you are looping over it; however, it is often simpler and safer to create a new list instead. ::"
+  },
+  {
+    "source": "Doc/tutorial/datastructures.rst",
+    "first_line": 685,
+    "last_line": 686,
+    "text": "It is possible to assign the result of a comparison or other Boolean expression to a variable.  For example, ::"
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 7,
+    "last_line": 9,
+    "text": "Until now error messages haven't been more than mentioned, but if you have tried out the examples you have probably seen some.  There are (at least) two distinguishable kinds of errors: *syntax errors* and *exceptions*."
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 17,
+    "last_line": 18,
+    "text": "Syntax errors, also known as parsing errors, are perhaps the most common kind of complaint you get while you are still learning Python::"
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 40,
+    "last_line": 44,
+    "text": "Even if a statement or expression is syntactically correct, it may cause an error when an attempt is made to execute it. Errors detected during execution are called *exceptions* and are not unconditionally fatal: you will soon learn how to handle them in Python programs.  Most exceptions are not handled by programs, however, and result in error messages as shown here::"
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 73,
+    "last_line": 74,
+    "text": "The rest of the line provides detail based on the type of exception and what caused it."
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 76,
+    "last_line": 79,
+    "text": "The preceding part of the error message shows the context where the exception occurred, in the form of a stack traceback. In general it contains a stack traceback listing source lines; however, it will not display lines read from standard input."
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 156,
+    "last_line": 158,
+    "text": "When an exception occurs, it may have associated values, also known as the exception's *arguments*. The presence and types of the arguments depend on the exception type."
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 236,
+    "last_line": 238,
+    "text": "Exception handlers do not handle only exceptions that occur immediately in the *try clause*, but also those that occur inside functions that are called (even indirectly) in the *try clause*. For example::"
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 372,
+    "last_line": 374,
+    "text": "Exception classes can be defined which do anything any other class can do, but are usually kept simple, often only offering a number of attributes that allow information about the error to be extracted by handlers for the exception."
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 376,
+    "last_line": 377,
+    "text": "Most exceptions are defined with names that end in \"Error\", similar to the naming of the standard exceptions."
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 379,
+    "last_line": 380,
+    "text": "Many standard modules define their own exceptions to report errors that may occur in functions they define."
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 490,
+    "last_line": 493,
+    "text": "Some objects define standard clean-up actions to be undertaken when the object is no longer needed, regardless of whether or not the operation using the object succeeded or failed. Look at the following example, which tries to open a file and print its contents to the screen. ::"
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 508,
+    "last_line": 510,
+    "text": "After the statement is executed, the file *f* is always closed, even if a problem was encountered while processing the lines. Objects which, like files, provide predefined clean-up actions will indicate this in their documentation."
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 518,
+    "last_line": 522,
+    "text": "There are situations where it is necessary to report several exceptions that have occurred. This is often the case in concurrency frameworks, when several tasks may have failed in parallel, but there are also other use cases where it is desirable to continue execution and collect multiple errors rather than raise the first exception."
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 601,
+    "last_line": 604,
+    "text": "Note that the exceptions nested in an exception group must be instances, not types. This is because in practice the exceptions would typically be ones that have already been raised and caught by the program, along the following pattern::"
+  },
+  {
+    "source": "Doc/tutorial/errors.rst",
+    "first_line": 645,
+    "last_line": 647,
+    "text": "For example, when collecting exceptions into an exception group, we may want to add context information for the individual errors. In the following each exception in the group has a note indicating when this error has occurred. ::"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 23,
+    "last_line": 26,
+    "text": "Unfortunately, most decimal fractions cannot be represented exactly as binary fractions.  A consequence is that, in general, the decimal floating-point numbers you enter are only approximated by the binary floating-point numbers actually stored in the machine."
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 28,
+    "last_line": 29,
+    "text": "The problem is easier to understand at first in base 10.  Consider the fraction 1/3.  You can approximate that as a base 10 fraction::"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 41,
+    "last_line": 43,
+    "text": "and so on.  No matter how many digits you're willing to write down, the result will never be exactly 1/3, but will be an increasingly better approximation of 1/3."
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 45,
+    "last_line": 47,
+    "text": "In the same way, no matter how many base 2 digits you're willing to use, the decimal value 0.1 cannot be represented exactly as a base 2 fraction.  In base 2, 1/10 is the infinitely repeating fraction ::"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 58,
+    "last_line": 62,
+    "text": "Many users are not aware of the approximation because of the way values are displayed.  Python only prints a decimal approximation to the true decimal value of the binary approximation stored by the machine.  On most machines, if Python were to print the true decimal value of the binary approximation stored for 0.1, it would have to display::"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 67,
+    "last_line": 68,
+    "text": "That is more digits than most people find useful, so Python keeps the number of digits manageable by displaying a rounded value instead:"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 75,
+    "last_line": 76,
+    "text": "Just remember, even though the printed result looks like the exact value of 1/10, the actual stored value is the nearest representable binary fraction."
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 91,
+    "last_line": 95,
+    "text": "Note that this is in the very nature of binary floating point: this is not a bug in Python, and it is not a bug in your code either.  You'll see the same kind of thing in all languages that support your hardware's floating-point arithmetic (although some languages may not *display* the difference by default, or in all output modes)."
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 97,
+    "last_line": 98,
+    "text": "For more pleasant output, you may wish to use string formatting to produce a limited number of significant digits:"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 111,
+    "last_line": 112,
+    "text": "It's important to realize that this is, in a real sense, an illusion: you're simply rounding the *display* of the true machine value."
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 114,
+    "last_line": 115,
+    "text": "One illusion may beget another.  For example, since 0.1 is not exactly 1/10, summing three values of 0.1 may not yield exactly 0.3, either:"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 156,
+    "last_line": 161,
+    "text": "As that says near the end, \"there are no easy answers.\"  Still, don't be unduly wary of floating point!  The errors in Python float operations are inherited from the floating-point hardware, and on most machines are on the order of no more than 1 part in 2\\*\\*53 per operation.  That's more than adequate for most tasks, but you do need to keep in mind that it's not decimal arithmetic and that every float operation can suffer a new rounding error."
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 177,
+    "last_line": 179,
+    "text": "If you are a heavy user of floating-point operations you should take a look at the NumPy package and many other packages for mathematical and statistical operations supplied by the SciPy project. See <https://scipy.org>."
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 192,
+    "last_line": 193,
+    "text": "Since the ratio is exact, it can be used to losslessly recreate the original value:"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 216,
+    "last_line": 218,
+    "text": "Since the representation is exact, it is useful for reliably porting values across different versions of Python (platform independence) and exchanging data with other languages that support the same format (such as Java and C99)."
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 262,
+    "last_line": 264,
+    "text": "This section explains the \"0.1\" example in detail, and shows how you can perform an exact analysis of cases like this yourself.  Basic familiarity with binary floating-point representation is assumed."
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 294,
+    "last_line": 295,
+    "text": "That is, 56 is the only value for *N* that leaves *J* with exactly 53 bits.  The best possible value for *J* is then that quotient rounded:"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 303,
+    "last_line": 304,
+    "text": "Since the remainder is more than half of 10, the best approximation is obtained by rounding up:"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 322,
+    "last_line": 324,
+    "text": "Note that since we rounded up, this is actually a little bit larger than 1/10; if we had not rounded up, the quotient would have been a little bit smaller than 1/10.  But in no case can it be *exactly* 1/10!"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 326,
+    "last_line": 327,
+    "text": "So the computer never \"sees\" 1/10:  what it sees is the exact fraction given above, the best IEEE 754 double approximation it can get:"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 334,
+    "last_line": 335,
+    "text": "If we multiply that fraction by 10\\*\\*55, we can see the value out to 55 decimal digits:"
+  },
+  {
+    "source": "Doc/tutorial/floatingpoint.rst",
+    "first_line": 342,
+    "last_line": 345,
+    "text": "meaning that the exact number stored in the computer is equal to the decimal value 0.1000000000000000055511151231257827021181583404541015625. Instead of displaying the full decimal value, many languages (including older versions of Python), round the result to 17 significant digits:"
+  },
+  {
+    "source": "Doc/tutorial/index.rst",
+    "first_line": 11,
+    "last_line": 15,
+    "text": "Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python's elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms."
+  },
+  {
+    "source": "Doc/tutorial/index.rst",
+    "first_line": 17,
+    "last_line": 21,
+    "text": "The Python interpreter and the extensive standard library are freely available in source or binary form for all major platforms from the Python web site, https://www.python.org/, and may be freely distributed. The same site also contains distributions of and pointers to many free third party Python modules, programs and tools, and additional documentation."
+  },
+  {
+    "source": "Doc/tutorial/index.rst",
+    "first_line": 23,
+    "last_line": 25,
+    "text": "The Python interpreter is easily extended with new functions and data types implemented in C or C++ (or other languages callable from C). Python is also suitable as an extension language for customizable applications."
+  },
+  {
+    "source": "Doc/tutorial/index.rst",
+    "first_line": 27,
+    "last_line": 31,
+    "text": "This tutorial introduces the reader informally to the basic concepts and features of the Python language and system. Be aware that it expects you to have a basic understanding of programming in general. It helps to have a Python interpreter handy for hands-on experience, but all examples are self-contained, so the tutorial can be read off-line as well."
+  },
+  {
+    "source": "Doc/tutorial/inputoutput.rst",
+    "first_line": 7,
+    "last_line": 9,
+    "text": "There are several ways to present the output of a program; data can be printed in a human-readable form, or written to a file for future use. This chapter will discuss some of the possibilities."
+  },
+  {
+    "source": "Doc/tutorial/inputoutput.rst",
+    "first_line": 22,
+    "last_line": 23,
+    "text": "Often you'll want more control over the formatting of your output than simply printing space-separated values. There are several ways to format output."
+  },
+  {
+    "source": "Doc/tutorial/inputoutput.rst",
+    "first_line": 121,
+    "last_line": 123,
+    "text": "An optional format specifier can follow the expression. This allows greater control over how the value is formatted. The following example rounds pi to three places after the decimal::"
+  },
+  {
+    "source": "Doc/tutorial/inputoutput.rst",
+    "first_line": 221,
+    "last_line": 222,
+    "text": "As an example, the following lines produce a tidily aligned set of columns giving integers and their squares and cubes::"
+  },
+  {
+    "source": "Doc/tutorial/inputoutput.rst",
+    "first_line": 425,
+    "last_line": 426,
+    "text": "For reading lines from a file, you can loop over the file object. This is memory efficient, fast, and leads to simple code::"
+  },
+  {
+    "source": "Doc/tutorial/inputoutput.rst",
+    "first_line": 443,
+    "last_line": 444,
+    "text": "Other types of objects need to be converted -- either to a string (in text mode) or a bytes object (in binary mode) -- before writing them::"
+  },
+  {
+    "source": "Doc/tutorial/interactive.rst",
+    "first_line": 45,
+    "last_line": 49,
+    "text": "One alternative enhanced interactive interpreter that has been around for quite some time is IPython_, which features tab completion, object exploration and advanced history management.  It can also be thoroughly customized and embedded into other applications.  Another similar enhanced interactive environment is bpython_."
+  },
+  {
+    "source": "Doc/tutorial/interpreter.rst",
+    "first_line": 46,
+    "last_line": 49,
+    "text": "The interpreter operates somewhat like the Unix shell: when called with standard input connected to a tty device, it reads and executes commands interactively; when called with a file name argument or with a file as standard input, it reads and executes a *script* from that file."
+  },
+  {
+    "source": "Doc/tutorial/interpreter.rst",
+    "first_line": 132,
+    "last_line": 138,
+    "text": "By default, Python source files are treated as encoded in UTF-8.  In that encoding, characters of most languages in the world can be used simultaneously in string literals, identifiers and comments --- although the standard library only uses ASCII characters for identifiers, a convention that any portable code should follow.  To display all these characters properly, your editor must recognize that the file is UTF-8, and it must use a font that supports all the characters in the file."
+  },
+  {
+    "source": "Doc/tutorial/interpreter.rst",
+    "first_line": 140,
+    "last_line": 141,
+    "text": "To declare an encoding other than the default one, a special comment line should be added as the *first* line of the file.  The syntax is as follows::"
+  },
+  {
+    "source": "Doc/tutorial/interpreter.rst",
+    "first_line": 147,
+    "last_line": 148,
+    "text": "For example, to declare that Windows-1252 encoding is to be used, the first line of your source code file should be::"
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 100,
+    "last_line": 101,
+    "text": "If a variable is not \"defined\" (assigned a value), trying to use it will give you an error::"
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 108,
+    "last_line": 109,
+    "text": "There is full support for floating point; operators with mixed type operands convert the integer operand to floating point::"
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 127,
+    "last_line": 129,
+    "text": "This variable should be treated as read-only by the user.  Don't explicitly assign a value to it --- you would create an independent local variable with the same name masking the built-in variable with its magic behavior."
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 222,
+    "last_line": 223,
+    "text": "Two or more *string literals* (i.e. the ones enclosed between quotes) next to each other are automatically concatenated. ::"
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 254,
+    "last_line": 256,
+    "text": "Strings can be *indexed* (subscripted), with the first character having index 0. There is no separate character type; a character is simply a string of size one::"
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 275,
+    "last_line": 276,
+    "text": "In addition to indexing, *slicing* is also supported.  While indexing is used to obtain individual characters, *slicing* allows you to obtain a substring::"
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 283,
+    "last_line": 284,
+    "text": "Slice indices have useful defaults; an omitted first index defaults to zero, an omitted second index defaults to the size of the string being sliced. ::"
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 301,
+    "last_line": 304,
+    "text": "One way to remember how slices work is to think of the indices as pointing *between* characters, with the left edge of the first character numbered 0. Then the right edge of the last character of a string of *n* characters has index *n*, for example::"
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 312,
+    "last_line": 315,
+    "text": "The first row of numbers gives the position of the indices 0...6 in the string; the second row gives the corresponding negative indices. The slice from *i* to *j* consists of all characters between the edges labeled *i* and *j*, respectively."
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 388,
+    "last_line": 391,
+    "text": "Python knows a number of *compound* data types, used to group together other values.  The most versatile is the *list*, which can be written as a list of comma-separated values (items) between square brackets.  Lists might contain items of different types, but usually the items all have the same type. ::"
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 430,
+    "last_line": 433,
+    "text": "Simple assignment in Python never copies data. When you assign a list to a variable, the variable refers to the *existing list*. Any changes you make to the list through one variable will be seen through all other variables that refer to it.::"
+  },
+  {
+    "source": "Doc/tutorial/introduction.rst",
+    "first_line": 454,
+    "last_line": 455,
+    "text": "Assignment to slices is also possible, and this can even change the size of the list or clear it entirely::"
+  },
+  {
+    "source": "Doc/tutorial/modules.rst",
+    "first_line": 7,
+    "last_line": 14,
+    "text": "If you quit from the Python interpreter and enter it again, the definitions you have made (functions and variables) are lost. Therefore, if you want to write a somewhat longer program, you are better off using a text editor to prepare the input for the interpreter and running it with that file as input instead.  This is known as creating a *script*.  As your program gets longer, you may want to split it into several files for easier maintenance.  You may also want to use a handy function that you've written in several programs without copying its definition into each program."
+  },
+  {
+    "source": "Doc/tutorial/modules.rst",
+    "first_line": 16,
+    "last_line": 20,
+    "text": "To support this, Python has a way to put definitions in a file and use them in a script or in an interactive instance of the interpreter. Such a file is called a *module*; definitions from a module can be *imported* into other modules or into the *main* module (the collection of variables that you have access to in a script executed at the top level and in calculator mode)."
+  },
+  {
+    "source": "Doc/tutorial/modules.rst",
+    "first_line": 64,
+    "last_line": 64,
+    "text": "If you intend to use a function often you can assign it to a local name::"
+  },
+  {
+    "source": "Doc/tutorial/modules.rst",
+    "first_line": 76,
+    "last_line": 79,
+    "text": "A module can contain executable statements as well as function definitions. These statements are intended to initialize the module. They are executed only the *first* time the module name is encountered in an import statement. [#]_ (They are also run if the file is executed as a script.)"
+  },
+  {
+    "source": "Doc/tutorial/modules.rst",
+    "first_line": 163,
+    "last_line": 165,
+    "text": "you can make the file usable as a script as well as an importable module, because the code that parses the command line only runs if the module is executed as the \"main\" file:"
+  },
+  {
+    "source": "Doc/tutorial/modules.rst",
+    "first_line": 177,
+    "last_line": 178,
+    "text": "This is often used either to provide a convenient user interface to a module, or for testing purposes (running the module as a script executes a test suite)."
+  },
+  {
+    "source": "Doc/tutorial/modules.rst",
+    "first_line": 231,
+    "last_line": 234,
+    "text": "Python checks the modification date of the source against the compiled version to see if it's out of date and needs to be recompiled.  This is a completely automatic process.  Also, the compiled modules are platform-independent, so the same library can be shared among systems with different architectures."
+  },
+  {
+    "source": "Doc/tutorial/modules.rst",
+    "first_line": 236,
+    "last_line": 241,
+    "text": "Python does not check the cache in two circumstances.  First, it always recompiles and does not store the result for the module that's loaded directly from the command line.  Second, it does not check the cache if there is no source module.  To support a non-source (compiled only) distribution, the compiled module must be in the source directory, and there must not be a source module."
+  },
+  {
+    "source": "Doc/tutorial/modules.rst",
+    "first_line": 582,
+    "last_line": 584,
+    "text": "Note that relative imports are based on the name of the current module's package. Since the main module does not have a package, modules intended for use as the main module of a Python application must always use absolute imports."
+  },
+  {
+    "source": "Doc/tutorial/modules.rst",
+    "first_line": 597,
+    "last_line": 598,
+    "text": "While this feature is not often needed, it can be used to extend the set of modules found in a package."
+  },
+  {
+    "source": "Doc/tutorial/stdlib.rst",
+    "first_line": 128,
+    "last_line": 129,
+    "text": "When only simple capabilities are needed, string methods are preferred because they are easier to read and debug::"
+  },
+  {
+    "source": "Doc/tutorial/stdlib.rst",
+    "first_line": 260,
+    "last_line": 262,
+    "text": "Some Python users develop a deep interest in knowing the relative performance of different approaches to the same problem. Python provides a measurement tool that answers those questions immediately."
+  },
+  {
+    "source": "Doc/tutorial/stdlib.rst",
+    "first_line": 284,
+    "last_line": 286,
+    "text": "One approach for developing high quality software is to write tests for each function as it is developed and to run those tests frequently during the development process."
+  },
+  {
+    "source": "Doc/tutorial/stdlib.rst",
+    "first_line": 330,
+    "last_line": 331,
+    "text": "Python has a \"batteries included\" philosophy.  This is best seen through the sophisticated and robust capabilities of its larger packages. For example:"
+  },
+  {
+    "source": "Doc/tutorial/stdlib2.rst",
+    "first_line": 7,
+    "last_line": 8,
+    "text": "This second tour covers more advanced modules that support professional programming needs.  These modules rarely occur in small scripts."
+  },
+  {
+    "source": "Doc/tutorial/stdlib2.rst",
+    "first_line": 103,
+    "last_line": 105,
+    "text": "Template subclasses can specify a custom delimiter.  For example, a batch renaming utility for a photo browser may elect to use percent signs for placeholders such as the current date, image sequence number, or file format::"
+  },
+  {
+    "source": "Doc/tutorial/stdlib2.rst",
+    "first_line": 126,
+    "last_line": 128,
+    "text": "Another application for templating is separating program logic from the details of multiple output formats.  This makes it possible to substitute custom templates for XML files, plain text reports, and HTML web reports."
+  },
+  {
+    "source": "Doc/tutorial/stdlib2.rst",
+    "first_line": 169,
+    "last_line": 172,
+    "text": "Threading is a technique for decoupling tasks which are not sequentially dependent.  Threads can be used to improve the responsiveness of applications that accept user input while other tasks run in the background.  A related use case is running I/O in parallel with computations in another thread."
+  },
+  {
+    "source": "Doc/tutorial/stdlib2.rst",
+    "first_line": 198,
+    "last_line": 201,
+    "text": "The principal challenge of multi-threaded applications is coordinating threads that share data or other resources.  To that end, the threading module provides a number of synchronization primitives including locks, events, condition variables, and semaphores."
+  },
+  {
+    "source": "Doc/tutorial/stdlib2.rst",
+    "first_line": 241,
+    "last_line": 243,
+    "text": "The logging system can be configured directly from Python or can be loaded from a user editable configuration file for customized logging without altering the application."
+  },
+  {
+    "source": "Doc/tutorial/stdlib2.rst",
+    "first_line": 292,
+    "last_line": 294,
+    "text": "Many data structure needs can be met with the built-in list type. However, sometimes there is a need for alternative implementations with different performance trade-offs."
+  },
+  {
+    "source": "Doc/tutorial/stdlib2.rst",
+    "first_line": 370,
+    "last_line": 372,
+    "text": "For example, calculating a 5% tax on a 70 cent phone charge gives different results in decimal floating point and binary floating point. The difference becomes significant if the results are rounded to the nearest cent::"
+  },
+  {
+    "source": "Doc/tutorial/venv.rst",
+    "first_line": 11,
+    "last_line": 15,
+    "text": "Python applications will often use packages and modules that don't come as part of the standard library.  Applications will sometimes need a specific version of a library, because the application may require that a particular bug has been fixed or the application may be written using an obsolete version of the library's interface."
+  },
+  {
+    "source": "Doc/tutorial/venv.rst",
+    "first_line": 17,
+    "last_line": 21,
+    "text": "This means it may not be possible for one Python installation to meet the requirements of every application.  If application A needs version 1.0 of a particular module but application B needs version 2.0, then the requirements are in conflict and installing either version 1.0 or 2.0 will leave one application unable to run."
+  },
+  {
+    "source": "Doc/tutorial/venv.rst",
+    "first_line": 27,
+    "last_line": 32,
+    "text": "Different applications can then use different virtual environments. To resolve the earlier example of conflicting requirements, application A can have its own virtual environment with version 1.0 installed while application B has another virtual environment with version 2.0. If application B requires a library be upgraded to version 3.0, this will not affect application A's environment."
+  },
+  {
+    "source": "Doc/tutorial/whatnow.rst",
+    "first_line": 7,
+    "last_line": 9,
+    "text": "Reading this tutorial has probably reinforced your interest in using Python --- you should be eager to apply Python to solving your real-world problems. Where should you go to learn more?"
+  },
+  {
+    "source": "Doc/tutorial/whatnow.rst",
+    "first_line": 11,
+    "last_line": 12,
+    "text": "This tutorial is part of Python's documentation set.   Some other documents in the set are:"
+  }
+]

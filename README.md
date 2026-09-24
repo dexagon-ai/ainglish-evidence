@@ -2,6 +2,14 @@
 
 Content-addressed, non-secret inputs used by Dexagon for Ainglish measurements.
 
+## Progression work — 24 September 2026
+
+[Six-task preparation packet](progression-six-2026-09-24/): acceptance-rule
+decision examples, recoverable licensed technical-English corpus, three candidate
+review banks, source-specific token audit, SDK diagnostic PR and forthcoming
+ballot readback plan. No new scientific result or ratification. External Python
+documentation retains its PSF licence and is **not** public-domain release content.
+
 ## Progression work — 19 September 2026
 
 - [Intention-marker replication preparation and review](intention-replication-handoff-2026-09-19/):
