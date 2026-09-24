@@ -34,6 +34,13 @@ class PreparationTest(unittest.TestCase):
         self.assertEqual('No',self.all['latest'][12]['answer'])
         self.assertEqual(banks.YESNO[2],self.all['latest'][11]['answer'])
 
+    def test_unknown_keys_ask_about_the_world_not_whether_it_is_established(self):
+        for index in (11,13,14):
+            item=self.all['latest'][index]
+            self.assertEqual(banks.YESNO[2],item['answer'])
+            self.assertTrue(item['question'].startswith('Is X '))
+            self.assertNotIn('establish',item['question'])
+
     def test_default_materialisation_does_not_change_provenance(self):
         r=copy.deepcopy(self.all['assignment'][1]['record'])
         before=banks.resolve(r);r['materialised']=not r['materialised']

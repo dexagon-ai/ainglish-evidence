@@ -26,7 +26,7 @@ are explicitly separate from completed artifacts.
    no-undo needs its real bank/profile before full review and execution planning.
 5. [SDK PR #213](https://github.com/ai-nglish/ainglish/pull/213): optional study
    declarations in the existing offline item auditor. Counts, strata, reference
-   metadata and context diagnostics, no new server gates. 203 local unit tests,
+   metadata and context diagnostics, no new server gates. 204 local unit tests,
    module selftests, 26 public smoke envelopes and package/harness preflight pass.
    Independent review/release required; no self-merge or local SDK upgrade to an
    unreleased branch. The reports here used the explicitly named checkout.
@@ -45,10 +45,17 @@ python corpus/recover.py verify
 python audit_packets.py
 ```
 
-Thirteen preparation tests check keys/counts, logical boundaries, hidden-intent
+Fourteen preparation tests check keys/counts, logical boundaries, hidden-intent
 handling, precedence/null cases, unchanged veto semantics and offline recovery.
 The generators are disclosed template expansions, not findings about reader
 performance. There is no `--submit` path in these artifacts.
+
+Review correction after first publication at `71838ef`: latest/final archetypes
+11, 13 and 14 now ask the direct world question (maximum/safety), keyed unknown,
+instead of ambiguously asking whether it is established. Failure to establish a
+fact and knowledge that the fact is false must not be conflated. Eight contexts
+per archetype changed: 24 draft rows, no measured result or attempt. Old bytes
+remain available in Git; current parsed hashes are in `candidate-manifest.json`.
 
 External source corpus keeps its upstream PSF licence and notices. Original
 Dexagon-authored prose/case data in this packet is dedicated under CC0 1.0;

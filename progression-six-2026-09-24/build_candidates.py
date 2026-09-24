@@ -86,13 +86,13 @@ def latest_bank():
             elif k==10:
                 facts+=f'Rank {x+1} exists only as an unadmitted draft.';q='Is X the admitted maximum at the named observation point?'
             elif k==11:
-                r['order_available']=False;facts=f'{seq} identifies two incompatible order rules. No disambiguating order record is supplied. X and Y are members.';q='Can X be identified as the current maximum from these records?'
+                r['order_available']=False;facts=f'{seq} identifies two incompatible order rules. At {time}, X and Y are members; no disambiguating order record is supplied.';q='Is X the admitted maximum at the named observation point?'
             elif k==12:
                 r['closure_sequence']=seq+'-other';facts+=f'{c} is an authorised operative closure of {seq}-other only, not of {seq}.';q='Does the supplied closure establish operative closure of this sequence?'
             elif k==13:
-                facts+='No quality or safety assessment is supplied.';q='Does the information establish that X is safe?'
+                facts+='No quality or safety assessment is supplied.';q='Is X safe?'
             elif k==14:
-                facts+='A later deployment replaced X. No safety assessment is supplied.';q='Does the information establish that X is safe?'
+                facts+='A later deployment replaced X. No safety assessment is supplied.';q='Is X safe?'
             else:
                 facts+=f'Authorised operative closure {c} makes X terminal at that same point.';q='Was X also the admitted maximum at that closure point?'
             marked=f'X is latest-so-far({seq}, {time}).' if form=='latest' else f'X is final-in-sequence({seq}, {c}).'
