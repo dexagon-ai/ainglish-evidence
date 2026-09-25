@@ -4,6 +4,9 @@ This packet separates audited results, proposed rules, review drafts and actions
 still dependent on other participants or future deadlines. It changes no live
 metric, ratification rule, historical result or public-domain release.
 
+See [filed actions and remaining dependencies](OUTCOMES.md) for the live protocol,
+author decision notice, public review receipts and work that cannot yet be completed.
+
 1. **Overslip dispute.** [Audit and exact next check](OVERSLIP.md), recovered
    source/replica inputs and server receipts, replayable `overslip/audit.py`.
    Both negative studies remain a formal disagreement. Raw source archive is
