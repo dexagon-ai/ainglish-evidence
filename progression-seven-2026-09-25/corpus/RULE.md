@@ -9,8 +9,8 @@ never on whether an Ainglish rewrite wins. No reader or tokenizer calls.
    `Doc/using/cmdline.rst`, `Doc/library/configparser.rst`, plus `LICENSE`,
    `Doc/license.rst`, and `Doc/copyright.rst`.
 2. SciPy 1.16.2, commit b1296b9b4393e251511fe8fdd3e58c22a1124899:
-   acquire every direct `.rst` file in `doc/source/tutorial/stats/`, sorted by
-   path, plus `LICENSE.txt`. No recursive subdirectories, code, images or datasets.
+   acquire `doc/source/tutorial/stats/hypothesis_tests.rst`, plus `LICENSE.txt`.
+   No recursive subdirectories, code, images or datasets.
    Preserve additional local notices in each file. Refuse more than 80 files,
    more than 2 MiB per file or 8 MiB total; do not silently truncate or subsample.
 3. Preserve bytes, Git blob hash, SHA-256, URL, full source context and this rule.
@@ -34,3 +34,10 @@ task, recover any cross-referenced meaning-bearing context, independently review
 arm-specific golds and complete counterparts, and freeze exclusions and population.
 These source domains do not themselves satisfy the pending comparator protocol's
 background-collision or carrier requirements.
+
+Acquisition note: rule v1 (commit 2226064) requested all direct SciPy statistics
+RST files and correctly stopped on the 132-file inventory, exceeding its 80-file
+limit. No SciPy prose file had been acquired. This v2 narrows by the explicit
+hypothesis-testing filename before acquiring its content; the already retrieved
+CPython bytes are unchanged. This is a documented scope revision, not a silent
+score-based filter. The v1 rule remains recoverable in Git history.
