@@ -1,0 +1,563 @@
+{
+  "kind": "prospective-profile-planning.v2",
+  "live_gate_changes": 0,
+  "scientific_reader_calls": 0,
+  "inventory": {
+    "kind": "prospective-fixed-endpoint-inventory.v1",
+    "alpha": 0.05,
+    "margin": 0.05,
+    "accuracy_floor": 0.9,
+    "error_cap": 0.05,
+    "endpoints": [
+      {
+        "id": "reader-A/form-1/accuracy-marked",
+        "reader": "reader-A",
+        "form": "form-1",
+        "endpoint": "accuracy-marked"
+      },
+      {
+        "id": "reader-A/form-1/accuracy-english",
+        "reader": "reader-A",
+        "form": "form-1",
+        "endpoint": "accuracy-english"
+      },
+      {
+        "id": "reader-A/form-1/semantic-error-one-marked",
+        "reader": "reader-A",
+        "form": "form-1",
+        "endpoint": "semantic-error-one-marked"
+      },
+      {
+        "id": "reader-A/form-1/semantic-error-one-english",
+        "reader": "reader-A",
+        "form": "form-1",
+        "endpoint": "semantic-error-one-english"
+      },
+      {
+        "id": "reader-A/form-1/semantic-error-two-marked",
+        "reader": "reader-A",
+        "form": "form-1",
+        "endpoint": "semantic-error-two-marked"
+      },
+      {
+        "id": "reader-A/form-1/semantic-error-two-english",
+        "reader": "reader-A",
+        "form": "form-1",
+        "endpoint": "semantic-error-two-english"
+      },
+      {
+        "id": "reader-A/form-2/accuracy-marked",
+        "reader": "reader-A",
+        "form": "form-2",
+        "endpoint": "accuracy-marked"
+      },
+      {
+        "id": "reader-A/form-2/accuracy-english",
+        "reader": "reader-A",
+        "form": "form-2",
+        "endpoint": "accuracy-english"
+      },
+      {
+        "id": "reader-A/form-2/semantic-error-one-marked",
+        "reader": "reader-A",
+        "form": "form-2",
+        "endpoint": "semantic-error-one-marked"
+      },
+      {
+        "id": "reader-A/form-2/semantic-error-one-english",
+        "reader": "reader-A",
+        "form": "form-2",
+        "endpoint": "semantic-error-one-english"
+      },
+      {
+        "id": "reader-A/form-2/semantic-error-two-marked",
+        "reader": "reader-A",
+        "form": "form-2",
+        "endpoint": "semantic-error-two-marked"
+      },
+      {
+        "id": "reader-A/form-2/semantic-error-two-english",
+        "reader": "reader-A",
+        "form": "form-2",
+        "endpoint": "semantic-error-two-english"
+      },
+      {
+        "id": "reader-B/form-1/accuracy-marked",
+        "reader": "reader-B",
+        "form": "form-1",
+        "endpoint": "accuracy-marked"
+      },
+      {
+        "id": "reader-B/form-1/accuracy-english",
+        "reader": "reader-B",
+        "form": "form-1",
+        "endpoint": "accuracy-english"
+      },
+      {
+        "id": "reader-B/form-1/semantic-error-one-marked",
+        "reader": "reader-B",
+        "form": "form-1",
+        "endpoint": "semantic-error-one-marked"
+      },
+      {
+        "id": "reader-B/form-1/semantic-error-one-english",
+        "reader": "reader-B",
+        "form": "form-1",
+        "endpoint": "semantic-error-one-english"
+      },
+      {
+        "id": "reader-B/form-1/semantic-error-two-marked",
+        "reader": "reader-B",
+        "form": "form-1",
+        "endpoint": "semantic-error-two-marked"
+      },
+      {
+        "id": "reader-B/form-1/semantic-error-two-english",
+        "reader": "reader-B",
+        "form": "form-1",
+        "endpoint": "semantic-error-two-english"
+      },
+      {
+        "id": "reader-B/form-2/accuracy-marked",
+        "reader": "reader-B",
+        "form": "form-2",
+        "endpoint": "accuracy-marked"
+      },
+      {
+        "id": "reader-B/form-2/accuracy-english",
+        "reader": "reader-B",
+        "form": "form-2",
+        "endpoint": "accuracy-english"
+      },
+      {
+        "id": "reader-B/form-2/semantic-error-one-marked",
+        "reader": "reader-B",
+        "form": "form-2",
+        "endpoint": "semantic-error-one-marked"
+      },
+      {
+        "id": "reader-B/form-2/semantic-error-one-english",
+        "reader": "reader-B",
+        "form": "form-2",
+        "endpoint": "semantic-error-one-english"
+      },
+      {
+        "id": "reader-B/form-2/semantic-error-two-marked",
+        "reader": "reader-B",
+        "form": "form-2",
+        "endpoint": "semantic-error-two-marked"
+      },
+      {
+        "id": "reader-B/form-2/semantic-error-two-english",
+        "reader": "reader-B",
+        "form": "form-2",
+        "endpoint": "semantic-error-two-english"
+      }
+    ],
+    "token_forms": [
+      "form-1",
+      "form-2"
+    ],
+    "tokenizers": [
+      "cl100k_base",
+      "o200k_base",
+      "p50k_base"
+    ],
+    "sampling": "independent world clusters within each endpoint; repeated questions or template copies are not new independent trials"
+  },
+  "inventory_sha256": "2ba536edc8d456dd21b829dcce344396f1b21ba55be330ead8816924a8823fe3",
+  "fixtures": [
+    {
+      "name": "complete_frozen_inventory",
+      "actual": "profile_satisfied"
+    },
+    {
+      "name": "omit_bad_endpoint_cannot_reduce_M",
+      "actual": "incomplete_or_duplicate_endpoint_inventory"
+    },
+    {
+      "name": "duplicate_endpoint",
+      "actual": "incomplete_or_duplicate_endpoint_inventory"
+    },
+    {
+      "name": "substitute_reader",
+      "actual": "incomplete_or_duplicate_endpoint_inventory"
+    },
+    {
+      "name": "rewrite_inventory_afterward",
+      "actual": "inventory_commitment_changed"
+    },
+    {
+      "name": "perfect_but_too_small",
+      "actual": "unresolved"
+    },
+    {
+      "name": "one_bad_reader_form",
+      "actual": "opposes_profile"
+    },
+    {
+      "name": "delete_the_harmful_endpoint",
+      "actual": "incomplete_or_duplicate_endpoint_inventory"
+    },
+    {
+      "name": "delete_the_whole_harmful_cell",
+      "actual": "incomplete_or_duplicate_endpoint_inventory"
+    },
+    {
+      "name": "one_semantic_error_endpoint_fails",
+      "actual": "opposes_profile"
+    },
+    {
+      "name": "delete_the_harmful_second_error_only",
+      "actual": "incomplete_or_duplicate_endpoint_inventory"
+    },
+    {
+      "name": "bool_is_not_count",
+      "actual": "invalid_counts"
+    },
+    {
+      "name": "complete_token_inventory",
+      "actual": "compactness_demonstrated"
+    },
+    {
+      "name": "one_token_form_costs_more",
+      "actual": "no_demonstrated_compactness_benefit"
+    },
+    {
+      "name": "delete_harmful_token_form",
+      "actual": "incomplete_or_duplicate_token_inventory"
+    },
+    {
+      "name": "drop_a_tokenizer_everywhere",
+      "actual": "incomplete_or_duplicate_token_inventory"
+    },
+    {
+      "name": "prospective_transition_0",
+      "actual": "awaiting_original"
+    },
+    {
+      "name": "prospective_transition_1",
+      "actual": "awaiting_fresh_replica"
+    },
+    {
+      "name": "prospective_transition_2",
+      "actual": "settlement_unresolved"
+    },
+    {
+      "name": "prospective_transition_3",
+      "actual": "not_ready_replica_profile"
+    },
+    {
+      "name": "prospective_transition_4",
+      "actual": "no_demonstrated_compactness_benefit"
+    },
+    {
+      "name": "prospective_transition_5",
+      "actual": "other_promises_incomplete"
+    },
+    {
+      "name": "prospective_transition_6",
+      "actual": "ready_for_existing_independent_ballot_not_ratified"
+    },
+    {
+      "name": "prospective_transition_7",
+      "actual": "existing_confirmed_loss_veto"
+    },
+    {
+      "name": "prospective_transition_8",
+      "actual": "legacy_unchanged"
+    }
+  ],
+  "all_correct_floors": [
+    {
+      "M": 8,
+      "tail": 0.003125,
+      "accuracy_only_perfect_minimum": 55,
+      "full_profile_perfect_minimum": 113,
+      "accuracy_only_n_cannot_pass_delta": true,
+      "core_calls_two_readers_two_forms_two_arms_one_original": 904,
+      "core_calls_original_and_fresh_replica": 1808,
+      "controls_qualification_and_retries_excluded": true
+    },
+    {
+      "M": 12,
+      "tail": 0.0020833333333333333,
+      "accuracy_only_perfect_minimum": 59,
+      "full_profile_perfect_minimum": 121,
+      "accuracy_only_n_cannot_pass_delta": true,
+      "core_calls_two_readers_two_forms_two_arms_one_original": 968,
+      "core_calls_original_and_fresh_replica": 1936,
+      "controls_qualification_and_retries_excluded": true
+    },
+    {
+      "M": 16,
+      "tail": 0.0015625,
+      "accuracy_only_perfect_minimum": 62,
+      "full_profile_perfect_minimum": 126,
+      "accuracy_only_n_cannot_pass_delta": true,
+      "core_calls_two_readers_two_forms_two_arms_one_original": 1008,
+      "core_calls_original_and_fresh_replica": 2016,
+      "controls_qualification_and_retries_excluded": true
+    },
+    {
+      "M": 20,
+      "tail": 0.00125,
+      "accuracy_only_perfect_minimum": 64,
+      "full_profile_perfect_minimum": 131,
+      "accuracy_only_n_cannot_pass_delta": true,
+      "core_calls_two_readers_two_forms_two_arms_one_original": 1048,
+      "core_calls_original_and_fresh_replica": 2096,
+      "controls_qualification_and_retries_excluded": true
+    },
+    {
+      "M": 24,
+      "tail": 0.0010416666666666667,
+      "accuracy_only_perfect_minimum": 66,
+      "full_profile_perfect_minimum": 134,
+      "accuracy_only_n_cannot_pass_delta": true,
+      "core_calls_two_readers_two_forms_two_arms_one_original": 1072,
+      "core_calls_original_and_fresh_replica": 2144,
+      "controls_qualification_and_retries_excluded": true
+    },
+    {
+      "M": 40,
+      "tail": 0.000625,
+      "accuracy_only_perfect_minimum": 71,
+      "full_profile_perfect_minimum": 144,
+      "accuracy_only_n_cannot_pass_delta": true,
+      "core_calls_two_readers_two_forms_two_arms_one_original": 1152,
+      "core_calls_original_and_fresh_replica": 2304,
+      "controls_qualification_and_retries_excluded": true
+    }
+  ],
+  "power_scenarios": [
+    {
+      "n_per_endpoint": 128,
+      "assumed_accuracy_both_arms": 0.95,
+      "assumed_error_rate": 0.01,
+      "NI_pair_power": {
+        "power_lower": 0.003509339671504727,
+        "power_upper": 0.0035093396715092117,
+        "omitted_probability_mass": 4.484560461422704e-15
+      },
+      "accuracy_endpoint_power": {
+        "critical_successes": 125,
+        "power": 0.11267670131110734
+      },
+      "error_endpoint_power": {
+        "maximum_events": -1,
+        "power": 0.0
+      },
+      "one_study_all_conditions_power_lower": 0,
+      "one_study_all_conditions_power_upper": 0.0,
+      "both_studies_all_conditions_power_lower": 0,
+      "core_calls_original_and_fresh_replica": 2048,
+      "excluded_costs": "auxiliary probes/controls, qualification, retries; not settlement agreement power"
+    },
+    {
+      "n_per_endpoint": 256,
+      "assumed_accuracy_both_arms": 0.95,
+      "assumed_error_rate": 0.01,
+      "NI_pair_power": {
+        "power_lower": 0.027689506734306556,
+        "power_upper": 0.0276895067343096,
+        "omitted_probability_mass": 3.042902373138618e-15
+      },
+      "accuracy_endpoint_power": {
+        "critical_successes": 245,
+        "power": 0.36891928646348027
+      },
+      "error_endpoint_power": {
+        "maximum_events": 3,
+        "power": 0.7451580302074718
+      },
+      "one_study_all_conditions_power_lower": 0,
+      "one_study_all_conditions_power_upper": 0.0276895067343096,
+      "both_studies_all_conditions_power_lower": 0,
+      "core_calls_original_and_fresh_replica": 4096,
+      "excluded_costs": "auxiliary probes/controls, qualification, retries; not settlement agreement power"
+    },
+    {
+      "n_per_endpoint": 512,
+      "assumed_accuracy_both_arms": 0.95,
+      "assumed_error_rate": 0.01,
+      "NI_pair_power": {
+        "power_lower": 0.21388176968084224,
+        "power_upper": 0.21388176968084716,
+        "omitted_probability_mass": 4.9234091975946765e-15
+      },
+      "accuracy_endpoint_power": {
+        "critical_successes": 481,
+        "power": 0.8821797151433256
+      },
+      "error_endpoint_power": {
+        "maximum_events": 11,
+        "power": 0.9937610160477945
+      },
+      "one_study_all_conditions_power_lower": 0,
+      "one_study_all_conditions_power_upper": 0.21388176968084716,
+      "both_studies_all_conditions_power_lower": 0,
+      "core_calls_original_and_fresh_replica": 8192,
+      "excluded_costs": "auxiliary probes/controls, qualification, retries; not settlement agreement power"
+    },
+    {
+      "n_per_endpoint": 1024,
+      "assumed_accuracy_both_arms": 0.95,
+      "assumed_error_rate": 0.01,
+      "NI_pair_power": {
+        "power_lower": 0.7682160090470421,
+        "power_upper": 0.7682160090470557,
+        "omitted_probability_mass": 1.3505815091566638e-14
+      },
+      "accuracy_endpoint_power": {
+        "critical_successes": 951,
+        "power": 0.9987790203602942
+      },
+      "error_endpoint_power": {
+        "maximum_events": 30,
+        "power": 0.9999998924781778
+      },
+      "one_study_all_conditions_power_lower": 0.06309447872136653,
+      "one_study_all_conditions_power_upper": 0.7682160090470557,
+      "both_studies_all_conditions_power_lower": 0,
+      "core_calls_original_and_fresh_replica": 16384,
+      "excluded_costs": "auxiliary probes/controls, qualification, retries; not settlement agreement power"
+    },
+    {
+      "n_per_endpoint": 2048,
+      "assumed_accuracy_both_arms": 0.95,
+      "assumed_error_rate": 0.01,
+      "NI_pair_power": {
+        "power_lower": 0.9980591825372355,
+        "power_upper": 0.9980591825372588,
+        "omitted_probability_mass": 2.336922094543522e-14
+      },
+      "accuracy_endpoint_power": {
+        "critical_successes": 1885,
+        "power": 0.9999999951734664
+      },
+      "error_endpoint_power": {
+        "maximum_events": 72,
+        "power": 1.0
+      },
+      "one_study_all_conditions_power_lower": 0.9922366915366729,
+      "one_study_all_conditions_power_upper": 0.9980591825372588,
+      "both_studies_all_conditions_power_lower": 0.9844733830733459,
+      "core_calls_original_and_fresh_replica": 32768,
+      "excluded_costs": "auxiliary probes/controls, qualification, retries; not settlement agreement power"
+    }
+  ],
+  "exact_binomial_coverage_checks": [
+    {
+      "n": 8,
+      "p": 0.01,
+      "marginal_noncoverage": 5.393332119789994e-05,
+      "fixed_M_joint_union_bound": 0.0012943997087495986
+    },
+    {
+      "n": 8,
+      "p": 0.05,
+      "marginal_noncoverage": 0.0003717513671874999,
+      "fixed_M_joint_union_bound": 0.008922032812499998
+    },
+    {
+      "n": 8,
+      "p": 0.5,
+      "marginal_noncoverage": 0,
+      "fixed_M_joint_union_bound": 0
+    },
+    {
+      "n": 8,
+      "p": 0.9,
+      "marginal_noncoverage": 0.0004316499999999987,
+      "fixed_M_joint_union_bound": 0.010359599999999969
+    },
+    {
+      "n": 8,
+      "p": 0.95,
+      "marginal_noncoverage": 0.00037175136718750124,
+      "fixed_M_joint_union_bound": 0.008922032812500029
+    },
+    {
+      "n": 8,
+      "p": 0.99,
+      "marginal_noncoverage": 5.393332119790004e-05,
+      "fixed_M_joint_union_bound": 0.001294399708749601
+    },
+    {
+      "n": 32,
+      "p": 0.01,
+      "marginal_noncoverage": 0.0002874736447956922,
+      "fixed_M_joint_union_bound": 0.006899367475096613
+    },
+    {
+      "n": 32,
+      "p": 0.05,
+      "marginal_noncoverage": 0.0008684987174075763,
+      "fixed_M_joint_union_bound": 0.02084396921778183
+    },
+    {
+      "n": 32,
+      "p": 0.5,
+      "marginal_noncoverage": 0.0005350527353584672,
+      "fixed_M_joint_union_bound": 0.012841265648603214
+    },
+    {
+      "n": 32,
+      "p": 0.9,
+      "marginal_noncoverage": 0.0008094330563990608,
+      "fixed_M_joint_union_bound": 0.01942639335357746
+    },
+    {
+      "n": 32,
+      "p": 0.95,
+      "marginal_noncoverage": 0.0008684987174075808,
+      "fixed_M_joint_union_bound": 0.02084396921778194
+    },
+    {
+      "n": 32,
+      "p": 0.99,
+      "marginal_noncoverage": 0.0002874736447956943,
+      "fixed_M_joint_union_bound": 0.006899367475096663
+    },
+    {
+      "n": 128,
+      "p": 0.01,
+      "marginal_noncoverage": 0.0003295050435596373,
+      "fixed_M_joint_union_bound": 0.007908121045431295
+    },
+    {
+      "n": 128,
+      "p": 0.05,
+      "marginal_noncoverage": 0.0006866769680854847,
+      "fixed_M_joint_union_bound": 0.016480247234051632
+    },
+    {
+      "n": 128,
+      "p": 0.5,
+      "marginal_noncoverage": 0.0018624685242991095,
+      "fixed_M_joint_union_bound": 0.04469924458317863
+    },
+    {
+      "n": 128,
+      "p": 0.9,
+      "marginal_noncoverage": 0.0016589859721641094,
+      "fixed_M_joint_union_bound": 0.039815663331938624
+    },
+    {
+      "n": 128,
+      "p": 0.95,
+      "marginal_noncoverage": 0.0006866769680854823,
+      "fixed_M_joint_union_bound": 0.016480247234051577
+    },
+    {
+      "n": 128,
+      "p": 0.99,
+      "marginal_noncoverage": 0.0003295050435596282,
+      "fixed_M_joint_union_bound": 0.007908121045431076
+    }
+  ],
+  "scope": "Computational witnesses, not implemented server behavior, validated language evidence, IID-world certification or a proposal amendment.",
+  "proof_boundary": "Each of M two-sided CP intervals fails with probability at most 2t under its fixed IID binomial model. Union bound gives at most 2Mt=0.05, with no independence requirement across endpoints. Clustering within endpoints can invalidate their binomial models. Missing endpoints cannot be silently dropped.",
+  "perfect_floor_warning": "Necessary best-case sample floor, not power, budget recommendation, population validation or a guarantee of pass. M=8 omits semantic-error endpoints for a two-reader/two-form design and is an arithmetic illustration only."
+}

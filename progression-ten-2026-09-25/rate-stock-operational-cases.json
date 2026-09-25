@@ -1,0 +1,287 @@
+{
+  "kind": "rate-stock-operational-review.v1",
+  "measurement": false,
+  "reader_calls": 0,
+  "cases": [
+    {
+      "id": "clock-reset",
+      "cluster_id": "clock-reset",
+      "context": "At 10:59 UTC, Cedar has made two calls since 10:00. It makes no more before 11:00. Assess one call at 11:00.",
+      "ainglish": "Case: At 10:59 UTC, Cedar has made two calls since 10:00. It makes no more before 11:00. Assess one call at 11:00.\nPolicy: Cedar calls rate-cap(2; per-clock(hour)).",
+      "english": "Case: At 10:59 UTC, Cedar has made two calls since 10:00. It makes no more before 11:00. Assess one call at 11:00.\nPolicy: At most two Cedar calls can fit the limit in each UTC clock hour.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "capacity available under the stated caps",
+      "basis": "The old aligned hour ends; this is a rate renewal."
+    },
+    {
+      "id": "rolling-no-expiry",
+      "cluster_id": "rolling-no-expiry",
+      "context": "Cedar made two calls at 10:55 and 10:56 UTC. Assess one more at 11:00; no other calls exist.",
+      "ainglish": "Case: Cedar made two calls at 10:55 and 10:56 UTC. Assess one more at 11:00; no other calls exist.\nPolicy: Cedar calls rate-cap(2; per-any(60m)).",
+      "english": "Case: Cedar made two calls at 10:55 and 10:56 UTC. Assess one more at 11:00; no other calls exist.\nPolicy: The limit is at most two Cedar calls in any rolling sixty-minute interval.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "no capacity under the stated caps",
+      "basis": "Changing the clock hour is not a rolling-window reset."
+    },
+    {
+      "id": "rolling-old-call-leaves",
+      "cluster_id": "rolling-old-call-leaves",
+      "context": "Cedar made two calls at 09:59 and 10:30 UTC. Assess one more at 11:00; no other calls exist.",
+      "ainglish": "Case: Cedar made two calls at 09:59 and 10:30 UTC. Assess one more at 11:00; no other calls exist.\nPolicy: Cedar calls rate-cap(2; per-any(60m)).",
+      "english": "Case: Cedar made two calls at 09:59 and 10:30 UTC. Assess one more at 11:00; no other calls exist.\nPolicy: The limit is at most two Cedar calls in any rolling sixty-minute interval.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "capacity available under the stated caps",
+      "basis": "Exactly one previous call remains inside the relevant rolling window."
+    },
+    {
+      "id": "stock-waiting",
+      "cluster_id": "stock-waiting",
+      "context": "Two build jobs remain active. One hour passes; neither completes or leaves the active set. Assess admitting one more active job.",
+      "ainglish": "Case: Two build jobs remain active. One hour passes; neither completes or leaves the active set. Assess admitting one more active job.\nPolicy: Build jobs stock-cap(2; active jobs).",
+      "english": "Case: Two build jobs remain active. One hour passes; neither completes or leaves the active set. Assess admitting one more active job.\nPolicy: At most two build jobs may be active at once.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "no capacity under the stated caps",
+      "basis": "Time alone does not remove a held member."
+    },
+    {
+      "id": "stock-completion",
+      "cluster_id": "stock-completion",
+      "context": "Two build jobs were active. One completes and leaves the active set. Assess admitting one new active job.",
+      "ainglish": "Case: Two build jobs were active. One completes and leaves the active set. Assess admitting one new active job.\nPolicy: Build jobs stock-cap(2; active jobs).",
+      "english": "Case: Two build jobs were active. One completes and leaves the active set. Assess admitting one new active job.\nPolicy: At most two build jobs may be active at once.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "capacity available under the stated caps",
+      "basis": "Completion changes membership and releases capacity."
+    },
+    {
+      "id": "stock-automatic-expiry",
+      "cluster_id": "stock-automatic-expiry",
+      "context": "Two leases are active. The case policy automatically removes one lease at its expiry, and that removal has now completed. Assess one new active lease.",
+      "ainglish": "Case: Two leases are active. The case policy automatically removes one lease at its expiry, and that removal has now completed. Assess one new active lease.\nPolicy: Leases stock-cap(2; active leases).",
+      "english": "Case: Two leases are active. The case policy automatically removes one lease at its expiry, and that removal has now completed. Assess one new active lease.\nPolicy: At most two leases may be active at once.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "capacity available under the stated caps",
+      "basis": "Automatic expiry is a membership change even if the actor does nothing."
+    },
+    {
+      "id": "rate-cancellation",
+      "cluster_id": "rate-cancellation",
+      "context": "Cedar made two calls in this UTC clock hour, then cancelled both responses. The ledger still counts the calls. Assess a third call in this same hour.",
+      "ainglish": "Case: Cedar made two calls in this UTC clock hour, then cancelled both responses. The ledger still counts the calls. Assess a third call in this same hour.\nPolicy: Cedar calls rate-cap(2; per-clock(hour)).",
+      "english": "Case: Cedar made two calls in this UTC clock hour, then cancelled both responses. The ledger still counts the calls. Assess a third call in this same hour.\nPolicy: The limit is at most two Cedar calls in each UTC clock hour.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "no capacity under the stated caps",
+      "basis": "Ending or cancelling the action does not erase its event from the rate ledger."
+    },
+    {
+      "id": "stock-counted-set",
+      "cluster_id": "stock-counted-set",
+      "context": "The project has ten archived tasks and one active task. Archived tasks are not active. Assess one new active task.",
+      "ainglish": "Case: The project has ten archived tasks and one active task. Archived tasks are not active. Assess one new active task.\nPolicy: Project tasks stock-cap(2; active tasks).",
+      "english": "Case: The project has ten archived tasks and one active task. Archived tasks are not active. Assess one new active task.\nPolicy: At most two project tasks may be active at once.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "capacity available under the stated caps",
+      "basis": "Only the named held set counts, not all historical tasks."
+    },
+    {
+      "id": "mixed-holding-full",
+      "cluster_id": "mixed-holding-full",
+      "context": "One job was started this hour and two jobs are still active. Assess starting one more job now.",
+      "ainglish": "Case: One job was started this hour and two jobs are still active. Assess starting one more job now.\nPolicy: Jobs rate-cap(3; per-clock(hour)). Jobs stock-cap(2; active jobs).",
+      "english": "Case: One job was started this hour and two jobs are still active. Assess starting one more job now.\nPolicy: At most three jobs may be started per clock hour, and at most two jobs may be active at once.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "no capacity under the stated caps",
+      "basis": "Both constraints must hold; rate capacity does not defeat a full holding set."
+    },
+    {
+      "id": "mixed-rate-full",
+      "cluster_id": "mixed-rate-full",
+      "context": "Three jobs were started this hour and no jobs remain active. Assess starting one more now.",
+      "ainglish": "Case: Three jobs were started this hour and no jobs remain active. Assess starting one more now.\nPolicy: Jobs rate-cap(3; per-clock(hour)). Jobs stock-cap(2; active jobs).",
+      "english": "Case: Three jobs were started this hour and no jobs remain active. Assess starting one more now.\nPolicy: At most three jobs may be started per clock hour, and at most two jobs may be active at once.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "no capacity under the stated caps",
+      "basis": "Freeing holding capacity does not refund rate capacity."
+    },
+    {
+      "id": "mixed-both-fit",
+      "cluster_id": "mixed-both-fit",
+      "context": "One job was started this hour and one job remains active. Assess starting one more now.",
+      "ainglish": "Case: One job was started this hour and one job remains active. Assess starting one more now.\nPolicy: Jobs rate-cap(3; per-clock(hour)). Jobs stock-cap(2; active jobs).",
+      "english": "Case: One job was started this hour and one job remains active. Assess starting one more now.\nPolicy: At most three jobs may be started per clock hour, and at most two jobs may be active at once.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "capacity available under the stated caps",
+      "basis": "Both numerical constraints permit one; no authorization conclusion follows."
+    },
+    {
+      "id": "untyped-hour",
+      "cluster_id": "untyped-hour",
+      "context": "Two calls occurred at 10:55 and 10:56. Assess a third at 11:00, but the policy never identifies clock-aligned versus rolling hours.",
+      "ainglish": "Case: Two calls occurred at 10:55 and 10:56. Assess a third at 11:00, but the policy never identifies clock-aligned versus rolling hours.\nPolicy: Calls rate-cap(2; hour).",
+      "english": "Case: Two calls occurred at 10:55 and 10:56. Assess a third at 11:00, but the policy never identifies clock-aligned versus rolling hours.\nPolicy: The call limit is two per hour; its alignment is unspecified.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "need missing policy or current state",
+      "basis": "The missing window type must be resolved, not guessed."
+    },
+    {
+      "id": "ambiguous-held-set",
+      "cluster_id": "ambiguous-held-set",
+      "context": "Two sessions are connected and one is idle; the policy does not define whether idle connected sessions count as active. Assess another session.",
+      "ainglish": "Case: Two sessions are connected and one is idle; the policy does not define whether idle connected sessions count as active. Assess another session.\nPolicy: Sessions stock-cap(2; active sessions).",
+      "english": "Case: Two sessions are connected and one is idle; the policy does not define whether idle connected sessions count as active. Assess another session.\nPolicy: At most two active sessions may be held at once.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "need missing policy or current state",
+      "basis": "The named membership predicate is unresolved."
+    },
+    {
+      "id": "stale-membership",
+      "cluster_id": "stale-membership",
+      "context": "A dashboard last showed two active jobs. It has not refreshed since a completion request, and actual completion is unknown. Assess another active job.",
+      "ainglish": "Case: A dashboard last showed two active jobs. It has not refreshed since a completion request, and actual completion is unknown. Assess another active job.\nPolicy: Jobs stock-cap(2; active jobs).",
+      "english": "Case: A dashboard last showed two active jobs. It has not refreshed since a completion request, and actual completion is unknown. Assess another active job.\nPolicy: At most two jobs may be active at once.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "need missing policy or current state",
+      "basis": "A requested transition and a stale observation do not prove release."
+    },
+    {
+      "id": "token-bucket",
+      "cluster_id": "token-bucket",
+      "context": "The policy accumulates one token per minute up to a burst reservoir of ten tokens, and accepts a call by spending one token.",
+      "ainglish": "Case: The policy accumulates one token per minute up to a burst reservoir of ten tokens, and accepts a call by spending one token.\nPolicy: The operator asks whether a single rate-cap or stock-cap statement specifies this whole token-bucket policy.",
+      "english": "Case: The policy accumulates one token per minute up to a burst reservoir of ten tokens, and accepts a call by spending one token.\nPolicy: The operator asks whether a simple rolling-rate limit or concurrent-count limit specifies this whole token-bucket policy.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "outside proposed notation v1",
+      "basis": "Accumulating tokens and burst capacity are outside the proposed two-operator v1."
+    },
+    {
+      "id": "paid-refill",
+      "cluster_id": "paid-refill",
+      "context": "The policy permits buying additional call credits immediately without any event aging out or member leaving a held set.",
+      "ainglish": "Case: The policy permits buying additional call credits immediately without any event aging out or member leaving a held set.\nPolicy: The operator asks whether a single rate-cap or stock-cap statement specifies this entire paid-refill policy.",
+      "english": "Case: The policy permits buying additional call credits immediately without any event aging out or member leaving a held set.\nPolicy: The operator asks whether a simple rolling-rate limit or concurrent-count limit specifies this entire paid-refill policy.",
+      "question": "For the requested assessment, what follows from the stated cap policy and available case facts?",
+      "options": [
+        "capacity available under the stated caps",
+        "no capacity under the stated caps",
+        "need missing policy or current state",
+        "outside proposed notation v1"
+      ],
+      "answer": "outside proposed notation v1",
+      "basis": "Payment-based replenishment needs a further rule, not a forced binary classification."
+    }
+  ],
+  "authorization_controls": [
+    {
+      "id": "capacity-is-not-permission-0",
+      "context": "The cap has spare capacity. No authorization policy or permission is supplied.",
+      "question": "Is permission for this operation established?",
+      "answer": "not established",
+      "purpose": "Shared-fact positive/negative control, not an Ainglish advantage."
+    },
+    {
+      "id": "capacity-is-not-permission-1",
+      "context": "The cap has spare capacity. The administrator expressly authorizes this exact operation.",
+      "question": "Is permission for this operation established?",
+      "answer": "yes",
+      "purpose": "Shared-fact positive/negative control, not an Ainglish advantage."
+    }
+  ],
+  "status": "Prospective author review only. Current combined claim failed its declared cost prerequisite after eligible replication; no current reader campaign is recommended.",
+  "limits": [
+    "One operator per statement; conjunction requires all caps, never automatic permission.",
+    "Expiry is removal from a held set, so a do-nothing-versus-act mnemonic is insufficient.",
+    "No enforcement-latency promise. Unknown current membership and missing predicates remain unresolved.",
+    "These designed examples are neither a random corpus nor an independent scientific sample.",
+    "These count-noun examples expose the need to make the rate event explicit (calls made/jobs started); author must approve that scope before any future protocol freeze."
+  ]
+}
