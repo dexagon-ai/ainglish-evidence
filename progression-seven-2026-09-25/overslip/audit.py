@@ -10,6 +10,12 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parent
+INTENT_PATTERNS = {
+    ('source','accidental'):r'meant to include .+, but missed it without realizing it\. The final version omitted it\.',
+    ('source','deliberate'):r'knew .+ was required .+, considered including it, and chose to leave it out\. The final version omitted it\.',
+    ('replica','accidental'):r'planned to carry over .+\. A later audit found that .+ overlooked it and did not know it was missing when the document was released\.',
+    ('replica','deliberate'):r'saw .+, discussed whether to retain it, and intentionally removed it before the document was released\.',
+}
 
 
 def canonical(x):
@@ -28,6 +34,8 @@ def audit():
         banks[label] = items
         for r in items.values():
             assert r['answer'] == ('yes' if r['settlement_stratum']=='accidental' else 'no')
+            # Check the actual case wording, not only answer-versus-stratum labels.
+            assert re.search(INTENT_PATTERNS[(label,r['settlement_stratum'])],r['english'])
             assert r['english'].replace('an unintentional omission','an overslip') == r['ainglish']
             assert sorted(r['options']) == ['no','yes']
         att = m['interval_provenance_attestation']
@@ -50,6 +58,7 @@ def audit():
             assert abs(value-served)<.011
             deltas[s]={'ainglish':[a,na],'english':[e,ne],'delta_unrounded':value,'served':served}
         out['studies'][label]={'input_hash_verified':True,'64_gold_intent_labels_verified':True,
+            '64_case_text_intent_templates_verified':True,
             'exact_arm_substitution_verified':True,'all_reader_domain_intent_blocks_balanced':True,
             'strata':deltas, 'reader_strata':{'/'.join(k[1:]):v for k,v in counts.items() if k[0]=='reader_stratum'},
             'domains':sorted({r['domain'] for r in items.values()}),
