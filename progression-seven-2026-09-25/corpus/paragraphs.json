@@ -1,0 +1,520 @@
+[
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 24,
+    "last_line": 27,
+    "text": "This module provides the :class:`ConfigParser` class which implements a basic\nconfiguration language which provides a structure similar to what's found in\nMicrosoft Windows INI files.  You can use this to write Python programs which\ncan be customized by end users easily."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 80,
+    "last_line": 84,
+    "text": "The structure of INI files is described `in the following section\n<#supported-ini-file-structure>`_.  Essentially, the file\nconsists of sections, each of which contains keys with values.\n:mod:`configparser` classes can read and write such files.  Let's start by\ncreating the above configuration file programmatically."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 104,
+    "last_line": 106,
+    "text": "As you can see, we can treat a config parser much like a dictionary.\nThere are differences, `outlined later <#mapping-protocol-access>`_, but\nthe behavior is very close to what you would expect from a dictionary."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 108,
+    "last_line": 109,
+    "text": "Now that we have created and saved a configuration file, let's read it\nback and explore the data it holds."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 143,
+    "last_line": 146,
+    "text": "As we can see above, the API is pretty straightforward.  The only bit of magic\ninvolves the ``DEFAULT`` section which provides default values for all other\nsections [1]_.  Note also that keys in sections are\ncase-insensitive and stored in lowercase [1]_."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 148,
+    "last_line": 153,
+    "text": "It is possible to read several configurations into a single\n:class:`ConfigParser`, where the most recently added configuration has the\nhighest priority. Any conflicting keys are taken from the more recent\nconfiguration while the previously existing keys are retained. The example\nbelow reads in an ``override.ini`` file, which will override any conflicting\nkeys from the ``example.ini`` file."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 174,
+    "last_line": 175,
+    "text": "This behaviour is equivalent to a :meth:`ConfigParser.read` call with several\nfiles passed to the *filenames* parameter."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 181,
+    "last_line": 183,
+    "text": "Config parsers do not guess datatypes of values in configuration files, always\nstoring them internally as strings.  This means that if you need other\ndatatypes, you should convert on your own:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 192,
+    "last_line": 198,
+    "text": "Since this task is so common, config parsers provide a range of handy getter\nmethods to handle integers, floats and booleans.  The last one is the most\ninteresting because simply passing the value to ``bool()`` would do no good\nsince ``bool('False')`` is still ``True``.  This is why config parsers also\nprovide :meth:`~ConfigParser.getboolean`.  This method is case-insensitive and\nrecognizes Boolean values from ``'yes'``/``'no'``, ``'on'``/``'off'``,\n``'true'``/``'false'`` and ``'1'``/``'0'`` [1]_.  For example:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 209,
+    "last_line": 212,
+    "text": "Apart from :meth:`~ConfigParser.getboolean`, config parsers also\nprovide equivalent :meth:`~ConfigParser.getint` and\n:meth:`~ConfigParser.getfloat` methods.  You can register your own\nconverters and customize the provided ones. [1]_"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 217,
+    "last_line": 218,
+    "text": "As with a dictionary, you can use a section's :meth:`~ConfigParser.get` method to\nprovide fallback values:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 230,
+    "last_line": 234,
+    "text": "Please note that default values have precedence over fallback values.\nFor instance, in our example the ``'CompressionLevel'`` key was\nspecified only in the ``'DEFAULT'`` section.  If we try to get it from\nthe section ``'topsecret.server.example'``, we will always get the default,\neven if we specify a fallback:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 241,
+    "last_line": 244,
+    "text": "One more thing to be aware of is that the parser-level :meth:`~ConfigParser.get` method\nprovides a custom, more complex interface, maintained for backwards\ncompatibility.  When using this method, a fallback value can be provided via\nthe ``fallback`` keyword-only argument:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 252,
+    "last_line": 254,
+    "text": "The same ``fallback`` argument can be used with the\n:meth:`~ConfigParser.getint`, :meth:`~ConfigParser.getfloat` and\n:meth:`~ConfigParser.getboolean` methods, for example:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 270,
+    "last_line": 278,
+    "text": "A configuration file consists of sections, each led by a ``[section]`` header,\nfollowed by key/value entries separated by a specific string (``=`` or ``:`` by\ndefault [1]_).  By default, section names are case sensitive but keys are not\n[1]_.  Leading and trailing whitespace is removed from keys and values.\nValues can be omitted if the parser is configured to allow it [1]_,\nin which case the key/value delimiter may also be left\nout.  Values can also span multiple lines, as long as they are indented deeper\nthan the first line of the value.  Depending on the parser's mode, blank lines\nmay be treated as parts of multiline values or ignored."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 280,
+    "last_line": 281,
+    "text": "By default, a valid section name can be any string that does not contain '\\\\n'.\nTo change this, see :attr:`ConfigParser.SECTCRE`."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 283,
+    "last_line": 286,
+    "text": "The first section name may be omitted if the parser is configured to allow an\nunnamed top level section with ``allow_unnamed_section=True``. In this case,\nthe keys/values may be retrieved by :const:`UNNAMED_SECTION` as in\n``config[UNNAMED_SECTION]``."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 288,
+    "last_line": 290,
+    "text": "Configuration files may include comments, prefixed by specific\ncharacters (``#`` and ``;`` by default [1]_).  Comments may appear on\ntheir own on an otherwise empty line, possibly indented. [1]_"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 344,
+    "last_line": 345,
+    "text": "The name of the first section (or unique) may be omitted and values\nretrieved by the :const:`UNNAMED_SECTION` attribute."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 363,
+    "last_line": 365,
+    "text": "On top of the core functionality, :class:`ConfigParser` supports\ninterpolation.  This means values can be preprocessed before returning them\nfrom ``get()`` calls."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 451,
+    "last_line": 454,
+    "text": "Mapping protocol access is a generic name for functionality that enables using\ncustom objects as if they were dictionaries.  In case of :mod:`configparser`,\nthe mapping interface implementation is using the\n``parser['section']['option']`` notation."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 501,
+    "last_line": 503,
+    "text": "The mapping protocol is implemented on top of the existing legacy API so that\nsubclasses overriding the original interface still should have mappings working\nas expected."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 509,
+    "last_line": 513,
+    "text": "There are nearly as many INI format variants as there are applications using it.\n:mod:`configparser` goes a long way to provide support for the largest sensible\nset of INI styles available.  The default functionality is mainly dictated by\nhistorical background and it's very likely that you will want to customize some\nof the features."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 515,
+    "last_line": 516,
+    "text": "The most common way to change the way a specific config parser works is to use\nthe :meth:`!__init__` options:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 742,
+    "last_line": 744,
+    "text": "More advanced customization may be achieved by overriding default values of\nthese parser attributes.  The defaults are defined on the classes, so they may\nbe overridden by subclasses or by attribute assignment."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 845,
+    "last_line": 849,
+    "text": "Mainly because of backwards compatibility concerns, :mod:`configparser`\nprovides also a legacy API with explicit ``get``/``set`` methods.  While there\nare valid use cases for the methods outlined below, mapping protocol access is\npreferred for new projects.  The legacy API is at times more advanced,\nlow-level and downright counterintuitive."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 925,
+    "last_line": 926,
+    "text": "Default values are available in both types of ConfigParsers.  They are used in\ninterpolation if an option used is not defined elsewhere. ::"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/using/cmdline.rst",
+    "first_line": 39,
+    "last_line": 40,
+    "text": "The interpreter interface resembles that of the UNIX shell, but provides some\nadditional methods of invocation:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/using/cmdline.rst",
+    "first_line": 58,
+    "last_line": 61,
+    "text": "An interface option terminates the list of options consumed by the interpreter,\nall consecutive arguments will end up in :data:`sys.argv` -- note that the first\nelement, subscript zero (``sys.argv[0]``), is a string reflecting the program's\nsource."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/using/cmdline.rst",
+    "first_line": 175,
+    "last_line": 179,
+    "text": "If no interface option is given, :option:`-i` is implied, ``sys.argv[0]`` is\nan empty string (``\"\"``) and the current directory will be added to the\nstart of :data:`sys.path`.  Also, tab-completion and history editing is\nautomatically enabled, if available on your platform (see\n:ref:`rlcompleter-config`)."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/using/cmdline.rst",
+    "first_line": 647,
+    "last_line": 649,
+    "text": "The Python interpreter is configured by default to use colors to highlight\noutput in certain situations such as when displaying tracebacks. This\nbehavior can be controlled by setting different environment variables."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/using/cmdline.rst",
+    "first_line": 653,
+    "last_line": 655,
+    "text": "If the |FORCE_COLOR|_ environment variable is set, then color will be\nenabled regardless of the value of TERM. This is useful on CI systems which\naren’t terminals but can still display ANSI escape sequences."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/using/cmdline.rst",
+    "first_line": 657,
+    "last_line": 658,
+    "text": "If the |NO_COLOR|_ environment variable is set, Python will disable all color\nin the output. This takes precedence over ``FORCE_COLOR``."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/using/cmdline.rst",
+    "first_line": 660,
+    "last_line": 664,
+    "text": "All these environment variables are used also by other tools to control color\noutput. To control the color output only in the Python interpreter, the\n:envvar:`PYTHON_COLORS` environment variable can be used. This variable takes\nprecedence over ``NO_COLOR``, which in turn takes precedence over\n``FORCE_COLOR``."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/using/cmdline.rst",
+    "first_line": 689,
+    "last_line": 692,
+    "text": "These environment variables influence Python's behavior, they are processed\nbefore the command-line switches other than -E or -I.  It is customary that\ncommand-line switches override environmental variables where there is a\nconflict."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 48,
+    "last_line": 50,
+    "text": "This article explains the new features in Python 3.12, compared to 3.11.\nPython 3.12 was released on October 2, 2023.\nFor full details, see the :ref:`changelog <changelog>`."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 62,
+    "last_line": 67,
+    "text": "Python 3.12 is a stable release of the Python programming language,\nwith a mix of changes to the language and the standard library.\nThe library changes focus on cleaning up deprecated APIs, usability, and correctness.\nOf note, the :mod:`!distutils` package has been removed from the standard library.\nFilesystem support in :mod:`os` and :mod:`pathlib` has seen a number of improvements,\nand several modules have better performance."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 69,
+    "last_line": 74,
+    "text": "The language changes focus on usability,\nas :term:`f-strings <f-string>` have had many limitations removed\nand 'Did you mean ...' suggestions continue to improve.\nThe new :ref:`type parameter syntax <whatsnew312-pep695>`\nand :keyword:`type` statement improve ergonomics for using :term:`generic types\n<generic type>` and :term:`type aliases <type alias>` with static type checkers."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 76,
+    "last_line": 84,
+    "text": "This article doesn't attempt to provide a complete specification of all new features,\nbut instead gives a convenient overview.\nFor full details, you should refer to the documentation,\nsuch as the  :ref:`Library Reference <library-index>`\nand :ref:`Language Reference <reference-index>`.\nIf you want to understand the complete implementation and design rationale for a change,\nrefer to the PEP for a particular new feature;\nbut note that PEPs usually are not kept up-to-date\nonce a feature has been fully implemented."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 183,
+    "last_line": 185,
+    "text": "Generic classes and functions under :pep:`484` were declared using a verbose syntax\nthat left the scope of type parameters unclear and required explicit declarations of\nvariance."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 200,
+    "last_line": 202,
+    "text": "In addition, the PEP introduces a new way to declare :ref:`type aliases <type-aliases>`\nusing the :keyword:`type` statement, which creates an instance of\n:class:`~typing.TypeAliasType`::"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 210,
+    "last_line": 212,
+    "text": "The new syntax allows declaring :class:`~typing.TypeVarTuple`\nand :class:`~typing.ParamSpec` parameters, as well as :class:`~typing.TypeVar`\nparameters with bounds or constraints::"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 219,
+    "last_line": 222,
+    "text": "The value of type aliases and the bound and constraints of type variables\ncreated through this syntax are evaluated only on demand (see\n:ref:`lazy evaluation <lazy-evaluation>`). This means type aliases are able to\nrefer to other types defined later in the file."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 224,
+    "last_line": 229,
+    "text": "Type parameters declared through a type parameter list are visible within the\nscope of the declaration and any nested scopes, but not in the outer scope. For\nexample, they can be used in the type annotations for the methods of a generic\nclass or in the class body. However, they cannot be used in the module scope after\nthe class is defined. See :ref:`type-params` for a detailed description of the\nruntime semantics of type parameters."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 231,
+    "last_line": 235,
+    "text": "In order to support these scoping semantics, a new kind of scope is introduced,\nthe :ref:`annotation scope <annotation-scopes>`. Annotation scopes behave for the\nmost part like function scopes, but interact differently with enclosing class scopes.\nIn Python 3.13, :term:`annotations <annotation>` will also be evaluated in\nannotation scopes."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 305,
+    "last_line": 308,
+    "text": "As a positive side-effect of how this feature has been implemented (by parsing f-strings\nwith :pep:`the PEG parser <617>`), now error messages for f-strings are more precise\nand include the exact location of the error. For example, in Python 3.11, the following\nf-string raises a :exc:`SyntaxError`:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 318,
+    "last_line": 320,
+    "text": "but the error message doesn't include the exact location of the error within the line and\nalso has the expression artificially surrounded by parentheses. In Python 3.12, as f-strings\nare parsed with the PEG parser, error messages can be more precise and show the entire line:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 361,
+    "last_line": 362,
+    "text": "For further examples how to use the C-API for sub-interpreters with a\nper-interpreter GIL, see ``Modules/_xxsubinterpretersmodule.c``."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 390,
+    "last_line": 394,
+    "text": "The new :class:`collections.abc.Buffer` ABC provides a standard\nway to represent buffer objects, for example in type annotations.\nThe new :class:`inspect.BufferFlags` enum represents the flags that\ncan be used to customize buffer creation.\n(Contributed by Jelle Zijlstra in :gh:`102500`.)"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 401,
+    "last_line": 404,
+    "text": "Dictionary, list, and set comprehensions are now inlined, rather than creating a\nnew single-use function object for each execution of the comprehension. This\nspeeds up execution of a comprehension by up to two times.\nSee :pep:`709` for further details."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 406,
+    "last_line": 408,
+    "text": "Comprehension iteration variables remain isolated and don't overwrite a\nvariable of the same name in the outer scope, nor are they visible after the\ncomprehension. Inlining does result in a few visible behavior changes:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 490,
+    "last_line": 492,
+    "text": "Typing ``**kwargs`` in a function signature as introduced by :pep:`484` allowed\nfor valid annotations only in cases where all of the ``**kwargs`` were of the\nsame type."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 514,
+    "last_line": 518,
+    "text": "A new decorator :func:`typing.override` has been added to the :mod:`typing`\nmodule. It indicates to type checkers that the method is intended to override\na method in a superclass. This allows type checkers to catch mistakes where\na method that is intended to override something in a base class\ndoes not in fact do so."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.12.rst",
+    "first_line": 1680,
+    "last_line": 1681,
+    "text": "This section lists previously described changes and other bugfixes\nthat may require changes to your code."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 48,
+    "last_line": 50,
+    "text": "This article explains the new features in Python 3.13, compared to 3.12.\nPython 3.13 was released on October 7, 2024.\nFor full details, see the :ref:`changelog <changelog>`."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 63,
+    "last_line": 70,
+    "text": "Python 3.13 is the latest stable release of the Python programming\nlanguage, with a mix of changes to the language, the implementation\nand the standard library.\nThe biggest changes include a new `interactive interpreter\n<whatsnew313-better-interactive-interpreter_>`_,\nexperimental support for running in a `free-threaded mode\n<whatsnew313-free-threaded-cpython_>`_ (:pep:`703`),\nand a `Just-In-Time compiler <whatsnew313-jit-compiler_>`_ (:pep:`744`)."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 72,
+    "last_line": 75,
+    "text": "Error messages continue to improve, with tracebacks now highlighted in color\nby default. The :func:`locals` builtin now has :ref:`defined semantics\n<whatsnew313-locals-semantics>` for changing the returned mapping,\nand type parameters now support default values."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 77,
+    "last_line": 80,
+    "text": "The library changes contain removal of deprecated APIs and modules,\nas well as the usual improvements in user-friendliness and correctness.\nSeveral legacy standard library modules have now `been removed\n<whatsnew313-pep594_>`_ following their deprecation in Python 3.11 (:pep:`594`)."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 82,
+    "last_line": 92,
+    "text": "This article doesn't attempt to provide a complete specification\nof all new features, but instead gives a convenient overview.\nFor full details refer to the documentation,\nsuch as the :ref:`Library Reference <library-index>`\nand :ref:`Language Reference <reference-index>`.\nTo understand the complete implementation and design rationale for a change,\nrefer to the PEP for a particular new feature;\nbut note that PEPs usually are not kept up-to-date\nonce a feature has been fully implemented.\nSee `Porting to Python 3.13`_ for guidance on upgrading from\nearlier versions of Python."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 216,
+    "last_line": 219,
+    "text": "Python now uses a new :term:`interactive` shell by default, based on code\nfrom the `PyPy project`_.\nWhen the user starts the :term:`REPL` from an interactive terminal,\nthe following new features are now supported:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 233,
+    "last_line": 235,
+    "text": "To disable the new interactive shell,\nset the :envvar:`PYTHON_BASIC_REPL` environment variable.\nFor more on interactive mode, see :ref:`tut-interac`."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 316,
+    "last_line": 324,
+    "text": "CPython now has experimental support for running in a free-threaded mode,\nwith the :term:`global interpreter lock` (GIL) disabled.\nThis is an experimental feature and therefore is not enabled by default.\nThe free-threaded mode requires a different executable,\nusually called ``python3.13t`` or ``python3.13t.exe``.\nPre-built binaries marked as *free-threaded* can be installed as part of\nthe official :ref:`Windows <install-freethreaded-windows>`\nand :ref:`macOS <install-freethreaded-macos>` installers,\nor CPython can be built from source with the :option:`--disable-gil` option."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 326,
+    "last_line": 334,
+    "text": "Free-threaded execution allows for full utilization of the available\nprocessing power by running threads in parallel on available CPU cores.\nWhile not all software will benefit from this automatically, programs\ndesigned with threading in mind will run faster on multi-core hardware.\n**The free-threaded mode is experimental** and work is ongoing to improve it:\nexpect some bugs and a substantial single-threaded performance hit.\nFree-threaded builds of CPython support optionally running with the GIL\nenabled at runtime using the environment variable :envvar:`PYTHON_GIL` or\nthe command-line option :option:`-X gil=1`."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 336,
+    "last_line": 339,
+    "text": "To check if the current interpreter supports free-threading, :option:`python -VV <-V>`\nand :data:`sys.version` contain \"experimental free-threading build\".\nThe new :func:`!sys._is_gil_enabled` function can be used to check whether\nthe GIL is actually disabled in the running process."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 341,
+    "last_line": 350,
+    "text": "C-API extension modules need to be built specifically for the free-threaded\nbuild. Extensions that support running with the :term:`GIL` disabled should\nuse the :c:data:`Py_mod_gil` slot. Extensions using single-phase init should\nuse :c:func:`PyUnstable_Module_SetGIL` to indicate whether they support\nrunning with the GIL disabled. Importing C extensions that don't use these\nmechanisms will cause the GIL to be enabled, unless the GIL was explicitly\ndisabled with the :envvar:`PYTHON_GIL` environment variable or the\n:option:`-X gil=0` option.\npip 24.1 or newer is required to install packages with C extensions in the\nfree-threaded build."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 352,
+    "last_line": 360,
+    "text": "This work was made possible thanks to many individuals and\norganizations, including the large community of contributors to Python\nand third-party projects to test and enable free-threading support.\nNotable contributors include:\nSam Gross, Ken Jin, Donghee Na, Itamar Oren, Matt Page, Brett Simmers,\nDino Viehland, Carl Meyer, Nathan Goldbaum, Ralf Gommers,\nLysandros Nikolaou, and many others.\nMany of these contributors are employed by Meta, which has\nprovided significant engineering resources to support this project."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 377,
+    "last_line": 383,
+    "text": "When CPython is configured and built using\nthe :option:`!--enable-experimental-jit` option,\na just-in-time (JIT) compiler is added which may speed up some Python programs.\nOn Windows, use ``PCbuild/build.bat --experimental-jit`` to enable the JIT\nor ``--experimental-jit-interpreter`` to enable the Tier 2 interpreter.\nBuild requirements and further supporting information `are contained at`__\n:file:`Tools/jit/README.md`."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 387,
+    "last_line": 389,
+    "text": "The :option:`!--enable-experimental-jit` option takes these (optional) values,\ndefaulting to ``yes`` if :option:`!--enable-experimental-jit` is present\nwithout the optional value."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 432,
+    "last_line": 439,
+    "text": "Historically, the expected result of mutating the return value of\n:func:`locals` has been left to individual Python implementations to define.\nStarting from Python 3.13, :pep:`667` standardises\nthe historical behavior of CPython for most code execution scopes,\nbut changes :term:`optimized scopes <optimized scope>`\n(functions, generators, coroutines, comprehensions, and generator expressions)\nto explicitly return independent snapshots of the currently assigned local\nvariables, including locally referenced nonlocal variables captured in closures."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 460,
+    "last_line": 464,
+    "text": "To ensure debuggers and similar tools can reliably update local variables in\nscopes affected by this change, :attr:`FrameType.f_locals <frame.f_locals>` now\nreturns a write-through proxy to the frame's local and locally referenced\nnonlocal variables in these scopes, rather than returning an inconsistently\nupdated shared ``dict`` instance with undefined runtime semantics."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 466,
+    "last_line": 469,
+    "text": "See :pep:`667` for more details, including related C API changes\nand deprecations. Porting notes are also provided below for the affected\n:ref:`Python APIs <pep667-porting-notes-py>` and :ref:`C APIs\n<pep667-porting-notes-c>`."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 2625,
+    "last_line": 2626,
+    "text": "This section lists previously described changes and other bugfixes\nthat may require changes to your code."
+  },
+  {
+    "repository": "scipy/scipy",
+    "path": "doc/source/tutorial/stats/hypothesis_tests.rst",
+    "first_line": 4,
+    "last_line": 6,
+    "text": "Statistical hypothesis tests are used to decide whether data sufficiently\nsupport a particular hypothesis. SciPy defines a number of hypothesis tests,\nlisted in :ref:`hypotests`."
+  },
+  {
+    "repository": "scipy/scipy",
+    "path": "doc/source/tutorial/stats/hypothesis_tests.rst",
+    "first_line": 8,
+    "last_line": 9,
+    "text": "You can find simple examples to each test in the corresponding docstring. For\nmore detailed examples, see the following sections."
+  }
+]

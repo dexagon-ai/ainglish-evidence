@@ -1,0 +1,800 @@
+[
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_bartlett.md",
+    "first_line": 27,
+    "last_line": 30,
+    "text": "In [^1], the influence of vitamin C on the tooth growth of guinea pigs was\ninvestigated. In a control study, 60 subjects were divided into small dose,\nmedium dose, and large dose groups that received daily doses of 0.5, 1.0 and\n2.0 mg of vitamin C, respectively. After 42 days, the tooth growth was measured."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_bartlett.md",
+    "first_line": 32,
+    "last_line": 33,
+    "text": "The `small_dose`, `medium_dose`, and `large_dose` arrays below record\ntooth growth measurements of the three groups in microns."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_bartlett.md",
+    "first_line": 60,
+    "last_line": 61,
+    "text": "The value of the statistic tends to be high when there is a large difference in\nvariances."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_bartlett.md",
+    "first_line": 63,
+    "last_line": 66,
+    "text": "We can test for inequality of variance among the groups by comparing the\nobserved value of the statistic against the null distribution: the distribution\nof statistic values derived under the null hypothesis that the population\nvariances of the three groups are equal."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_bartlett.md",
+    "first_line": 91,
+    "last_line": 92,
+    "text": "The comparison is quantified by the p-value: the proportion of values in the\nnull distribution greater than or equal to the observed value of the statistic."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_bartlett.md",
+    "first_line": 110,
+    "last_line": 114,
+    "text": "If the p-value is \"small\" - that is, if there is a low probability of sampling\ndata from distributions with identical variances that produces such an extreme\nvalue of the statistic - this may be taken as evidence against the null\nhypothesis in favor of the alternative: the variances of the groups are not\nequal. Note that:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_bartlett.md",
+    "first_line": 126,
+    "last_line": 133,
+    "text": "Note that the chi-square distribution provides the null distribution when the\nobservations are normally distributed. For small samples drawn from non-normal\npopulations, it may be more appropriate to perform a permutation test: Under the\nnull hypothesis that all three samples were drawn from the same population, each\nof the measurements is equally likely to have been observed in any of the three\nsamples. Therefore, we can form a randomized null distribution by calculating\nthe statistic under many randomly-generated partitionings of the observations\ninto the three samples."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_bartlett.md",
+    "first_line": 158,
+    "last_line": 162,
+    "text": "Note that there is significant disagreement between the p-value calculated here\nand the asymptotic approximation returned by {func}`scipy.stats.bartlett` above.\nThe statistical inferences that can be drawn rigorously from a permutation test\nare limited; nonetheless, they may be the preferred approach in many\ncircumstances [^3]."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_chi2_contingency.md",
+    "first_line": 27,
+    "last_line": 28,
+    "text": "In [^1], the use of aspirin to prevent cardiovascular events in women and men\nwas investigated. The study notably concluded:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_chi2_contingency.md",
+    "first_line": 34,
+    "last_line": 35,
+    "text": "The article lists studies of various cardiovascular events. Let's focus on the\nischemic stoke in women."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_chi2_contingency.md",
+    "first_line": 37,
+    "last_line": 39,
+    "text": "The following table summarizes the results of the experiment in which\nparticipants took aspirin or a placebo on a regular basis for several years.\nCases of ischemic stroke were recorded::"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_chi2_contingency.md",
+    "first_line": 46,
+    "last_line": 47,
+    "text": "Is there evidence that the aspirin reduces the risk of ischemic stroke? We begin\nby formulating a null hypothesis $H_0$:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_chi2_contingency.md",
+    "first_line": 51,
+    "last_line": 54,
+    "text": "Let's assess the plausibility of this hypothesis with a\n{class}`chi-square test <scipy.stats.contingency.chi2_contingency>` with the\nobserved [contingency table](https://en.wikipedia.org/wiki/Contingency_table)\nas our input."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_chi2_contingency.md",
+    "first_line": 68,
+    "last_line": 73,
+    "text": "Using a significance level of 5%, we would reject the null hypothesis in favor\nof the alternative hypothesis: \"the effect of aspirin is not equivalent to the\neffect of placebo\". Because {class}`scipy.stats.contingency.chi2_contingency`\nperforms a two-sided test, the alternative hypothesis does not indicate the\ndirection of the effect. We can use {class}`scipy.stats.contingency.odds_ratio`\nto support the conclusion that aspirin *reduces* the risk of ischemic stroke."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_chisquare.md",
+    "first_line": 27,
+    "last_line": 28,
+    "text": "The {class}`chi-square test <scipy.stats.chisquare>` tests the null hypothesis\nthat a given set of categorical data has the given frequencies."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_chisquare.md",
+    "first_line": 30,
+    "last_line": 36,
+    "text": "In [^1], bird foraging behavior was investigated in an old-growth forest of\nOregon. In the forest, 44% of the canopy volume was Douglas fir, 24% was\nponderosa pine, 29% was grand fir, and 3% was western larch. The authors\nobserved the behavior of several species of birds, one of which was the\nred-breasted nuthatch. They made 189 observations of this species foraging,\nrecording 43 (\"23%\") of observations in Douglas fir, 52 (\"28%\") in ponderosa\npine, 54 (\"29%\") in grand fir, and 40 (\"21%\") in western larch."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_chisquare.md",
+    "first_line": 38,
+    "last_line": 40,
+    "text": "Using a chi-square test, we can test the null hypothesis that the proportions of\nforaging events are equal to the proportions of canopy volume. The authors of\nthe paper considered a p-value less than 1% to be significant."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_chisquare.md",
+    "first_line": 42,
+    "last_line": 43,
+    "text": "Using the above proportions of canopy volume and observed events, we can infer\nexpected frequencies."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_chisquare.md",
+    "first_line": 63,
+    "last_line": 66,
+    "text": "The p-value is well below the chosen significance level. Hence, the authors\nconsidered the difference to be significant and concluded that the relative\nproportions of foraging events were not the same as the relative proportions of\ntree canopy volume."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_dunnett.md",
+    "first_line": 27,
+    "last_line": 29,
+    "text": "Dunnett's test compares the means of multiple experimental groups against a\nsingle control group. In [^1], the influence of drugs on blood count\nmeasurements on three groups of animals is investigated."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_dunnett.md",
+    "first_line": 31,
+    "last_line": 33,
+    "text": "The following table summarizes the results of the experiment in which two groups\nreceived different drugs, and one group acted as a control. Blood counts (in\nmillions of cells per cubic millimeter) were recorded:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_dunnett.md",
+    "first_line": 42,
+    "last_line": 43,
+    "text": "We would like to see if the means between any of the groups are\nsignificantly different. First, visually examine a box and whisker plot."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_dunnett.md",
+    "first_line": 54,
+    "last_line": 55,
+    "text": "Note the overlapping interquartile ranges of the drug A group and control group\nand the apparent separation between the drug B group and control group."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_dunnett.md",
+    "first_line": 57,
+    "last_line": 59,
+    "text": "Next, we will use {func}`Dunnett's test <scipy.stats.dunnett>` to assess whether\nthe difference between group means is significant while controlling the\nfamily-wise error rate: the probability of making any false discoveries."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_dunnett.md",
+    "first_line": 61,
+    "last_line": 64,
+    "text": "Let the null hypothesis be that the experimental groups have the same mean as\nthe control and the alternative be that an experimental group does not have the\nsame mean as the control. We will consider a 5% family-wise error rate to be\nacceptable, and therefore we choose 0.05 as the threshold for significance."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_dunnett.md",
+    "first_line": 72,
+    "last_line": 77,
+    "text": "The p-value corresponding with the comparison between group A and control\nexceeds 0.05, so we do not reject the null hypothesis for that comparison.\nHowever, the p-value corresponding with the comparison between group B and\ncontrol is less than 0.05, so we consider the experimental results to be\nevidence against the null hypothesis in favor of the alternative: group B has a\ndifferent mean than the control group."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fisher_exact.md",
+    "first_line": 27,
+    "last_line": 28,
+    "text": "In [^1], the effective dose of acetazolamide for the prophylaxis of acute\nmountain sickness was investigated. The study notably concluded:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fisher_exact.md",
+    "first_line": 34,
+    "last_line": 36,
+    "text": "The following table summarizes the results of the experiment in which\nsome participants took a daily dose of acetazolamide 250 mg while others\ntook a placebo."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fisher_exact.md",
+    "first_line": 45,
+    "last_line": 46,
+    "text": "Is there evidence that the acetazolamide 250 mg reduces the risk of\nacute mountain sickness?"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fisher_exact.md",
+    "first_line": 66,
+    "last_line": 69,
+    "text": "Using a significance level of 5%, we would reject the null hypothesis in\nfavor of the alternative hypothesis: \"The odds of experiencing acute\nmountain sickness with acetazolamide treatment are less than the odds of\nexperiencing acute mountain sickness with placebo.\""
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fisher_exact.md",
+    "first_line": 73,
+    "last_line": 76,
+    "text": "Because the null distribution of Fisher's exact test is formed under\nthe assumption that both row and column sums are fixed, the result of\nthe test are conservative when applied to an experiment in which the\nrow sums are not fixed."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fisher_exact.md",
+    "first_line": 78,
+    "last_line": 81,
+    "text": "In this case, the column sums are fixed; there are 22 subjects in each\ngroup. But the number of cases of acute mountain sickness is not\n(and cannot be) fixed before conducting the experiment. It is a\nconsequence."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fligner.md",
+    "first_line": 27,
+    "last_line": 30,
+    "text": "In [^1], the influence of vitamin C on the tooth growth of guinea pigs was\ninvestigated. In a control study, 60 subjects were divided into small dose,\nmedium dose, and large dose groups that received daily doses of 0.5, 1.0 and\n2.0 mg of vitamin C, respectively. After 42 days, the tooth growth was measured."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fligner.md",
+    "first_line": 32,
+    "last_line": 33,
+    "text": "The `small_dose`, `medium_dose`, and `large_dose` arrays below record\ntooth growth measurements of the three groups in microns."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fligner.md",
+    "first_line": 60,
+    "last_line": 61,
+    "text": "The value of the statistic tends to be high when there is a large difference in\nvariances."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fligner.md",
+    "first_line": 63,
+    "last_line": 66,
+    "text": "We can test for inequality of variance among the groups by comparing the\nobserved value of the statistic against the null distribution: the distribution\nof statistic values derived under the null hypothesis that the population\nvariances of the three groups are equal."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fligner.md",
+    "first_line": 91,
+    "last_line": 92,
+    "text": "The comparison is quantified by the p-value: the proportion of values in the\nnull distribution greater than or equal to the observed value of the statistic."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fligner.md",
+    "first_line": 110,
+    "last_line": 114,
+    "text": "If the p-value is \"small\" - that is, if there is a low probability of sampling\ndata from distributions with identical variances that produces such an extreme\nvalue of the statistic - this may be taken as evidence against the null\nhypothesis in favor of the alternative: the variances of the groups are not\nequal. Note that:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fligner.md",
+    "first_line": 126,
+    "last_line": 132,
+    "text": "Note that the chi-square distribution provides an asymptotic approximation of\nthe null distribution. For small samples, it may be more appropriate to perform\na permutation test: Under the null hypothesis that all three samples were drawn\nfrom the same population, each of the measurements is equally likely to have\nbeen observed in any of the three samples. Therefore, we can form a randomized\nnull distribution by calculating the statistic under many randomly-generated\npartitionings of the observations into the three samples."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_fligner.md",
+    "first_line": 157,
+    "last_line": 161,
+    "text": "Note that there is significant disagreement between the p-value calculated here\nand the asymptotic approximation returned by {func}`scipy.stats.fligner` above.\nThe statistical inferences that can be drawn rigorously from a permutation test\nare limited; nonetheless, they may be the preferred approach in many\ncircumstances [^3]."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_friedmanchisquare.md",
+    "first_line": 27,
+    "last_line": 30,
+    "text": "In [^1], the pulse rate (per minute) of a group of seven students was measured\nbefore exercise, immediately after exercise and 5 minutes after exercise. Is\nthere evidence to suggest that the pulse rates on these three occasions are\nsimilar?"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_friedmanchisquare.md",
+    "first_line": 52,
+    "last_line": 54,
+    "text": "Using a significance level of 5%, we would reject the null hypothesis in favor\nof the alternative hypothesis: \"the pulse rates are different on these three\noccasions\"."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_jarque_bera.md",
+    "first_line": 27,
+    "last_line": 29,
+    "text": "Suppose we wish to infer from measurements whether the weights of adult human\nmales in a medical study are not normally distributed [^1]. The weights (lbs)\nare recorded in the array `x` below."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_jarque_bera.md",
+    "first_line": 36,
+    "last_line": 37,
+    "text": "The Jarque-Bera test {class}`scipy.stats.jarque_bera` begins by computing a\nstatistic based on the sample skewness and kurtosis."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_jarque_bera.md",
+    "first_line": 45,
+    "last_line": 47,
+    "text": "Because the normal distribution has zero skewness and zero (\"excess\" or\n\"Fisher\") kurtosis, the value of this statistic tends to be low for samples\ndrawn from a normal distribution."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_jarque_bera.md",
+    "first_line": 49,
+    "last_line": 51,
+    "text": "The test is performed by comparing the observed value of the statistic against\nthe null distribution: the distribution of statistic values derived under the\nnull hypothesis that the weights were drawn from a normal distribution."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_jarque_bera.md",
+    "first_line": 53,
+    "last_line": 54,
+    "text": "For the Jarque-Bera test, the null distribution for very large samples is the\n{class}`chi-squared distribution <scipy.stats.chi2>` with two degrees of freedom."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_jarque_bera.md",
+    "first_line": 74,
+    "last_line": 75,
+    "text": "The comparison is quantified by the p-value: the proportion of values in the\nnull distribution greater than or equal to the observed value of the statistic."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_jarque_bera.md",
+    "first_line": 95,
+    "last_line": 99,
+    "text": "If the p-value is \"small\" - that is, if there is a low probability of sampling\ndata from a normally distributed population that produces such an extreme value\nof the statistic - this may be taken as evidence against the null hypothesis in\nfavor of the alternative: the weights were not drawn from a normal distribution.\nNote that:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_jarque_bera.md",
+    "first_line": 108,
+    "last_line": 112,
+    "text": "Note that the chi-squared distribution provides an asymptotic approximation\nof the null distribution; it is only accurate for samples with many\nobservations. For small samples like ours, {class}`scipy.stats.monte_carlo_test`\nmay provide a more accurate, albeit stochastic, approximation of the\nexact p-value."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_jarque_bera.md",
+    "first_line": 136,
+    "last_line": 138,
+    "text": "Furthermore, despite their stochastic nature, p-values computed in this way\ncan be used to exactly control the rate of false rejections of the null\nhypothesis [^3]."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+    "first_line": 29,
+    "last_line": 31,
+    "text": "Consider the following data from [^1], which studied the relationship between\nfree proline (an amino acid) and total collagen (a protein often found in\nconnective tissue) in unhealthy human livers."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+    "first_line": 33,
+    "last_line": 35,
+    "text": "The `x` and `y` arrays below record measurements of the two compounds. The\nobservations are paired: each free proline measurement was taken from the same\nliver as the total collagen measurement at the same index."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+    "first_line": 45,
+    "last_line": 48,
+    "text": "These data were analyzed in [^2] using Spearman's correlation coefficient,\na statistic similar to Kendall's tau in that it is also sensitive to\nordinal correlation between the samples. Let's perform an analogous study\nusing {func}`Kendall's tau <scipy.stats.kendalltau>`."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+    "first_line": 56,
+    "last_line": 59,
+    "text": "The value of this statistic tends to be high (close to 1) for samples with a\nstrongly positive ordinal correlation, low (close to -1) for samples with a\nstrongly negative ordinal correlation, and small in magnitude (close to zero)\nfor samples with weak ordinal correlation."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+    "first_line": 61,
+    "last_line": 64,
+    "text": "The test is performed by comparing the observed value of the statistic against\nthe null distribution: the distribution of statistic values derived under the\nnull hypothesis that total collagen and free proline measurements are\nindependent."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+    "first_line": 66,
+    "last_line": 68,
+    "text": "For this test, the null distribution for large samples without ties is\napproximated as the normal distribution with variance\n`(2*(2*n + 5))/(9*n*(n - 1))`, where `n = len(x)`."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+    "first_line": 89,
+    "last_line": 94,
+    "text": "The comparison is quantified by the p-value: the proportion of values in the\nnull distribution as extreme or more extreme than the observed value of the\nstatistic. In a two-sided test in which the statistic is positive, elements of\nthe null distribution greater than the transformed statistic and elements of the\nnull distribution less than the negative of the observed statistic are both\nconsidered \"more extreme\"."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+    "first_line": 116,
+    "last_line": 121,
+    "text": "Note that there is slight disagreement between the shaded area of the curve and\nthe p-value returned by {func}`scipy.stats.kendalltau`. This is because our data\nhas ties, and we have neglected a tie correction to the null distribution\nvariance that {func}`scipy.stats.kendalltau` performs. For samples without ties,\nthe shaded areas of our plot and p-value returned by\n{func}`scipy.stats.kendalltau` would match exactly."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+    "first_line": 123,
+    "last_line": 127,
+    "text": "If the p-value is \"small\" - that is, if there is a low probability of sampling\ndata from independent distributions that produces such an extreme value of the\nstatistic - this may be taken as evidence against the null hypothesis in favor\nof the alternative: the distribution of total collagen and free proline are\n*not* independent. Note that:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+    "first_line": 139,
+    "last_line": 147,
+    "text": "For samples without ties of moderate size, {func}`scipy.stats.kendalltau` can\ncompute the p-value exactly. However, in the presence of ties,\n{func}`scipy.stats.kendalltau` resorts to an asymptotic approximation.\nNonetheless, we can use a permutation test to compute the null distribution\nexactly: Under the null hypothesis that total collagen and free proline are\nindependent, each of the free proline measurements were equally likely to have\nbeen observed with any of the total collagen measurements. Therefore, we can\nform an *exact* null distribution by calculating the statistic under each\npossible pairing of elements between `x` and `y`."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kendalltau.md",
+    "first_line": 168,
+    "last_line": 171,
+    "text": "Note that there is significant disagreement between the exact p-value calculated\nhere and the approximation returned by {func}`scipy.stats.kendalltau` above. For\nsmall samples with ties, consider performing a permutation test for more\naccurate results."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kurtosistest.md",
+    "first_line": 27,
+    "last_line": 29,
+    "text": "The kurtosis test {func}`scipy.stats.kurtosistest` function tests the null\nhypothesis that the kurtosis of the population from which the sample was drawn\nis that of the normal distribution."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kurtosistest.md",
+    "first_line": 31,
+    "last_line": 33,
+    "text": "Suppose we wish to infer from measurements whether the weights of adult human\nmales in a medical study are not normally distributed [^1]. The weights (lbs)\nare recorded in the array `x` below."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kurtosistest.md",
+    "first_line": 40,
+    "last_line": 41,
+    "text": "The kurtosis test from [^2] begins by computing a statistic based on the sample\n(excess/Fisher) kurtosis."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kurtosistest.md",
+    "first_line": 54,
+    "last_line": 56,
+    "text": "The test is performed by comparing the observed value of the statistic against\nthe null distribution: the distribution of statistic values derived under the\nnull hypothesis that the weights were drawn from a normal distribution."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kurtosistest.md",
+    "first_line": 58,
+    "last_line": 59,
+    "text": "For this test, the null distribution of the statistic for very large samples is\nthe standard normal distribution."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kurtosistest.md",
+    "first_line": 78,
+    "last_line": 83,
+    "text": "The comparison is quantified by the p-value: the proportion of values in the\nnull distribution as extreme or more extreme than the observed value of the\nstatistic. In a two-sided test in which the statistic is positive, elements of\nthe null distribution greater than the observed statistic and elements of the\nnull distribution less than the negative of the observed statistic are both\nconsidered \"more extreme\"."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kurtosistest.md",
+    "first_line": 105,
+    "last_line": 109,
+    "text": "If the p-value is \"small\" - that is, if there is a low probability of sampling\ndata from a normally distributed population that produces such an extreme value\nof the statistic - this may be taken as evidence against the null hypothesis in\nfavor of the alternative: the weights were not drawn from a normal distribution.\nNote that:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kurtosistest.md",
+    "first_line": 118,
+    "last_line": 123,
+    "text": "Note that the standard normal distribution provides an asymptotic approximation\nof the null distribution; it is only accurate for samples with many\nobservations. This is the reason we received a warning at the beginning of the\nexample; our sample is quite small. In this case,\n{class}`scipy.stats.monte_carlo_test` may provide a more accurate, albeit\nstochastic, approximation of the exact p-value."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_kurtosistest.md",
+    "first_line": 143,
+    "last_line": 144,
+    "text": "Furthermore, despite their stochastic nature, p-values computed in this way can\nbe used to exactly control the rate of false rejections of the null hypothesis [^4]."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_levene.md",
+    "first_line": 27,
+    "last_line": 30,
+    "text": "The Levene test {func}`scipy.stats.levene` tests the null hypothesis that all\ninput samples are from populations with equal variances. Levene’s test is an\nalternative to Bartlett’s test {func}`scipy.stats.bartlett` in the case where\nthere are significant deviations from normality."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_levene.md",
+    "first_line": 32,
+    "last_line": 35,
+    "text": "In [^1], the influence of vitamin C on the tooth growth of guinea pigs was\ninvestigated. In a control study, 60 subjects were divided into small dose,\nmedium dose, and large dose groups that received daily doses of 0.5, 1.0 and\n2.0 mg of vitamin C, respectively. After 42 days, the tooth growth was measured."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_levene.md",
+    "first_line": 37,
+    "last_line": 38,
+    "text": "The `small_dose`, `medium_dose`, and `large_dose` arrays below record\ntooth growth measurements of the three groups in microns."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_levene.md",
+    "first_line": 65,
+    "last_line": 66,
+    "text": "The value of the statistic tends to be high when there is a large difference in\nvariances."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_levene.md",
+    "first_line": 68,
+    "last_line": 71,
+    "text": "We can test for inequality of variance among the groups by comparing the\nobserved value of the statistic against the null distribution: the distribution\nof statistic values derived under the null hypothesis that the population\nvariances of the three groups are equal."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_levene.md",
+    "first_line": 95,
+    "last_line": 96,
+    "text": "The comparison is quantified by the p-value: the proportion of values in the\nnull distribution greater than or equal to the observed value of the statistic."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_levene.md",
+    "first_line": 114,
+    "last_line": 118,
+    "text": "If the p-value is \"small\" - that is, if there is a low probability of sampling\ndata from distributions with identical variances that produces such an extreme\nvalue of the statistic - this may be taken as evidence against the null\nhypothesis in favor of the alternative: the variances of the groups are not\nequal. Note that:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_levene.md",
+    "first_line": 130,
+    "last_line": 136,
+    "text": "Note that the F distribution provides an asymptotic approximation of the null\ndistribution. For small samples, it may be more appropriate to perform a\npermutation test: Under the null hypothesis that all three samples were drawn\nfrom the same population, each of the measurements is equally likely to have\nbeen observed in any of the three samples. Therefore, we can form a randomized\nnull distribution by calculating the statistic under many randomly-generated\npartitionings of the observations into the three samples."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_levene.md",
+    "first_line": 161,
+    "last_line": 165,
+    "text": "Note that there is significant disagreement between the p-value calculated here\nand the asymptotic approximation returned by {func}`scipy.stats.levene` above.\nThe statistical inferences that can be drawn rigorously from a permutation test\nare limited; nonetheless, they may be the preferred approach in many\ncircumstances [^3]."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_normaltest.md",
+    "first_line": 27,
+    "last_line": 30,
+    "text": "The {func}`scipy.stats.normaltest` function tests the null hypothesis that a\nsample comes from a normal distribution. It is based on D’Agostino and\nPearson’s [^1] [^2] test that combines skew and kurtosis to produce an omnibus\ntest of normality."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_normaltest.md",
+    "first_line": 32,
+    "last_line": 34,
+    "text": "Suppose we wish to infer from measurements whether the weights of adult human\nmales in a medical study are not normally distributed [^3]. The weights (lbs)\nare recorded in the array `x` below."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_normaltest.md",
+    "first_line": 41,
+    "last_line": 42,
+    "text": "The normality test {func}`scipy.stats.normaltest` of [^1] and [^2] begins by\ncomputing a statistic based on the sample skewness and kurtosis."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_normaltest.md",
+    "first_line": 55,
+    "last_line": 59,
+    "text": "The test is performed by comparing the observed value of the statistic against\nthe null distribution: the distribution of statistic values derived under the\nnull hypothesis that the weights were drawn from a normal distribution. For this\nnormality test, the null distribution for very large samples is the chi-squared\ndistribution with two degrees of freedom."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_normaltest.md",
+    "first_line": 78,
+    "last_line": 79,
+    "text": "The comparison is quantified by the p-value: the proportion of values in the\nnull distribution greater than or equal to the observed value of the statistic."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_normaltest.md",
+    "first_line": 99,
+    "last_line": 103,
+    "text": "If the p-value is \"small\" - that is, if there is a low probability of sampling\ndata from a normally distributed population that produces such an extreme value\nof the statistic - this may be taken as evidence against the null hypothesis in\nfavor of the alternative: the weights were not drawn from a normal distribution.\nNote that:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_normaltest.md",
+    "first_line": 112,
+    "last_line": 117,
+    "text": "Note that the chi-squared distribution provides an asymptotic approximation of\nthe null distribution; it is only accurate for samples with many observations.\nThis is the reason we received a warning at the beginning of the example; our\nsample is quite small. In this case,\n{class}`scipy.stats.monte_carlo_test` may provide a more accurate, albeit\nstochastic, approximation of the exact p-value."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_normaltest.md",
+    "first_line": 139,
+    "last_line": 140,
+    "text": "Furthermore, despite their stochastic nature, p-values computed in this way can\nbe used to exactly control the rate of false rejections of the null hypothesis [^5]."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_odds_ratio.md",
+    "first_line": 27,
+    "last_line": 28,
+    "text": "In [^1], the use of aspirin to prevent cardiovascular events in women and men\nwas investigated. The study notably concluded:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_odds_ratio.md",
+    "first_line": 34,
+    "last_line": 35,
+    "text": "The article lists studies of various cardiovascular events. Let's focus on the\nischemic stoke in women."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_odds_ratio.md",
+    "first_line": 37,
+    "last_line": 39,
+    "text": "The following table summarizes the results of the experiment in which\nparticipants took aspirin or a placebo on a regular basis for several years.\nCases of ischemic stroke were recorded::"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_odds_ratio.md",
+    "first_line": 46,
+    "last_line": 47,
+    "text": "The question we ask is \"Is there evidence that the aspirin reduces the risk of\nischemic stroke?\""
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_odds_ratio.md",
+    "first_line": 58,
+    "last_line": 59,
+    "text": "For this sample, the odds of getting an ischemic stroke for those who have been\ntaking aspirin are 0.76 times that of those who have received the placebo."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_odds_ratio.md",
+    "first_line": 61,
+    "last_line": 62,
+    "text": "To make statistical inferences about the population under study, we can compute\nthe 95% confidence interval for the odds ratio:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_odds_ratio.md",
+    "first_line": 71,
+    "last_line": 73,
+    "text": "The fact that the entire 95% confidence interval falls below 1 supports the\nauthors' conclusion that the aspirin was associated with a statistically\nsignificant reduction in ischemic stroke."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+    "first_line": 27,
+    "last_line": 27,
+    "text": "Consider the following data from [^1], which studied the relationship between free proline (an amino acid) and total collagen (a protein often found in connective tissue) in unhealthy human livers."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+    "first_line": 29,
+    "last_line": 29,
+    "text": "The `x` and `y` arrays below record measurements of the two compounds. The observations are paired: each free proline measurement was taken from the same liver as the total collagen measurement at the same index."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+    "first_line": 48,
+    "last_line": 48,
+    "text": "These data were analyzed in [^2] using Spearman’s correlation coefficient, a statistic sensitive to monotonic correlation between the samples. Here, we will analyze the data using Pearson's correlation coefficient (`{class}`scipy.stats.pearsonr`) which is sensitive to linear correlation."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+    "first_line": 56,
+    "last_line": 56,
+    "text": "The value of this statistic tends to be high (close to 1) for samples with a strongly positive linear correlation, low (close to -1) for samples with a strongly negative linear correlation, and small in magnitude (close to zero) for samples with weak linear correlation."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+    "first_line": 58,
+    "last_line": 58,
+    "text": "The test is performed by comparing the observed value of the statistic against the null distribution: the distribution of statistic values derived under the null hypothesis that total collagen and free proline measurements are drawn from independent normal distributions."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+    "first_line": 60,
+    "last_line": 60,
+    "text": "Under the null hypothesis, the population correlation coefficient is zero, and the sample correlation coefficent follows the beta distribution on the interval $(-1, 1)$ with shape parameters $a = b = \\frac{n}{2}-1$, where $n$ is the number of observations in each sample."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+    "first_line": 79,
+    "last_line": 79,
+    "text": "The comparison is quantified by the p-value: the proportion of values in the null distribution as extreme or more extreme than the observed value of the statistic. In a two-sided test in which the statistic is positive, elements of the null distribution greater than the transformed statistic and elements of the null distribution less than the negative of the observed statistic are both considered \"more extreme\"."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+    "first_line": 102,
+    "last_line": 102,
+    "text": "If the p-value is \"small\" - that is, if there is a low probability of sampling data from independent normal distributions that produces such an extreme value of the statistic - this may be taken as evidence against the null hypothesis in favor of the alternative: the distribution of total collagen and free proline are not independent. Note that:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+    "first_line": 108,
+    "last_line": 108,
+    "text": "Suppose that before performing the experiment, the authors had reason to predict a positive linear correlation between the total collagen and free proline measurements, and that they had chosen to assess the plausibility of the null hypothesis against a one-sided alternative: free proline has a positive linear correlation with total collagen. In this case, only those values in the null distribution that are as great or greater than the observed statistic would be considered more extreme."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+    "first_line": 130,
+    "last_line": 130,
+    "text": "Note that the beta distribution is the exact null distribution for samples of any size under this null hypothesis. We can check this by computing a Monte Carlo null distribution: explicitly drawing samples from independent normal distributions and computing Pearson's statistic for each pair."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_pearsonr.md",
+    "first_line": 149,
+    "last_line": 149,
+    "text": "This is often a reasonable null hypothesis to test, but in other cases, it may be more appropriate to perform a permutation test: Under the null hypothesis that total collagen and free proline are independent (but not necessarily normally distributed), each of the free proline measurements are equally likely to be observed with any of the total collagen measurements. Therefore, we can form an exact null distribution by calculating the statistic under each possible pairing of elements between `x` and `y`. This is the null distribution used when we provide `pearsonr` with `method=stats.PermutationMethod()`."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_shapiro.md",
+    "first_line": 27,
+    "last_line": 29,
+    "text": "Suppose we wish to infer from measurements whether the weights of adult human\nmales in a medical study are not normally distributed [^1]. The weights (lbs)\nare recorded in the array `x` below."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_shapiro.md",
+    "first_line": 36,
+    "last_line": 38,
+    "text": "The normality test {func}`scipy.stats.shapiro` of [^1] and [^2] begins by\ncomputing a statistic based on the relationship between the observations and the\nexpected order statistics of a normal distribution."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_shapiro.md",
+    "first_line": 46,
+    "last_line": 47,
+    "text": "The value of this statistic tends to be high (close to 1) for samples drawn from\na normal distribution."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_shapiro.md",
+    "first_line": 49,
+    "last_line": 55,
+    "text": "The test is performed by comparing the observed value of the statistic against\nthe null distribution: the distribution of statistic values formed under the\nnull hypothesis that the weights were drawn from a normal distribution. For this\nnormality test, the null distribution is not easy to calculate exactly, so it is\nusually approximated by Monte Carlo methods, that is, drawing many samples of\nthe same size as `x` from a normal distribution and computing the values of the\nstatistic for each."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_shapiro.md",
+    "first_line": 78,
+    "last_line": 79,
+    "text": "The comparison is quantified by the p-value: the proportion of values in the\nnull distribution less than or equal to the observed value of the statistic."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_shapiro.md",
+    "first_line": 99,
+    "last_line": 103,
+    "text": "If the p-value is \"small\" - that is, if there is a low probability of sampling\ndata from a normally distributed population that produces such an extreme value\nof the statistic - this may be taken as evidence against the null hypothesis in\nfavor of the alternative: the weights were not drawn from a normal distribution.\nNote that:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_skewtest.md",
+    "first_line": 27,
+    "last_line": 29,
+    "text": "This function tests the null hypothesis that the skewness of the population that\nthe sample was drawn from is the same as that of a corresponding normal\ndistribution."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_skewtest.md",
+    "first_line": 31,
+    "last_line": 33,
+    "text": "Suppose we wish to infer from measurements whether the weights of adult human\nmales in a medical study are not normally distributed [^1]. The weights (lbs)\nare recorded in the array `x` below."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_skewtest.md",
+    "first_line": 40,
+    "last_line": 41,
+    "text": "The skewness test {func}`scipy.stats.skewtest` from [^2] begins by computing a\nstatistic based on the sample skewness."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_skewtest.md",
+    "first_line": 49,
+    "last_line": 50,
+    "text": "Because normal distributions have zero skewness, the magnitude of this statistic\ntends to be low for samples drawn from a normal distribution."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_skewtest.md",
+    "first_line": 52,
+    "last_line": 54,
+    "text": "The test is performed by comparing the observed value of the statistic against\nthe null distribution: the distribution of statistic values derived under the\nnull hypothesis that the weights were drawn from a normal distribution."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_skewtest.md",
+    "first_line": 56,
+    "last_line": 57,
+    "text": "For this test, the null distribution of the statistic for very large samples is\nthe standard normal distribution."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_skewtest.md",
+    "first_line": 76,
+    "last_line": 80,
+    "text": "The comparison is quantified by the p-value: the proportion of values in the\nnull distribution as extreme or more extreme than the observed value of the\nstatistic. In a two-sided test, elements of the null distribution greater than\nthe observed statistic and elements of the null distribution less than the\nnegative of the observed statistic are both considered \"more extreme\"."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_skewtest.md",
+    "first_line": 102,
+    "last_line": 106,
+    "text": "If the p-value is \"small\" - that is, if there is a low probability of sampling\ndata from a normally distributed population that produces such an extreme value\nof the statistic - this may be taken as evidence against the null hypothesis in\nfavor of the alternative: the weights were not drawn from a normal distribution.\nNote that:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_skewtest.md",
+    "first_line": 115,
+    "last_line": 119,
+    "text": "Note that the standard normal distribution provides an asymptotic approximation\nof the null distribution; it is only accurate for samples with many\nobservations. For small samples like ours, {class}`scipy.stats.monte_carlo_test`\nmay provide a more accurate, albeit stochastic, approximation of the exact\np-value."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_skewtest.md",
+    "first_line": 140,
+    "last_line": 141,
+    "text": "In this case, the asymptotic approximation and Monte Carlo approximation agree\nfairly closely, even for our small sample."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+    "first_line": 27,
+    "last_line": 28,
+    "text": "The Spearman rank-order correlation coefficient is a nonparametric measure of\nthe monotonicity of the relationship between two datasets."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+    "first_line": 30,
+    "last_line": 32,
+    "text": "Consider the following data from [^1], which studied the relationship between\nfree proline (an amino acid) and total collagen (a protein often found in\nconnective tissue) in unhealthy human livers."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+    "first_line": 34,
+    "last_line": 36,
+    "text": "The `x` and `y` arrays below record measurements of the two compounds. The\nobservations are paired: each free proline measurement was taken from the same\nliver as the total collagen measurement at the same index."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+    "first_line": 46,
+    "last_line": 48,
+    "text": "These data were analyzed in [^2] using Spearman's correlation coefficient, a\nstatistic sensitive to monotonic correlation between the samples, implemented\nas {func}`scipy.stats.spearmanr`."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+    "first_line": 56,
+    "last_line": 59,
+    "text": "The value of this statistic tends to be high (close to 1) for samples with a\nstrongly positive ordinal correlation, low (close to -1) for samples with a\nstrongly negative ordinal correlation, and small in magnitude (close to zero)\nfor samples with weak ordinal correlation."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+    "first_line": 61,
+    "last_line": 64,
+    "text": "The test is performed by comparing the observed value of the statistic against\nthe null distribution: the distribution of statistic values derived under the\nnull hypothesis that total collagen and free proline measurements are\nindependent."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+    "first_line": 66,
+    "last_line": 67,
+    "text": "For this test, the statistic can be transformed such that the null distribution\nfor large samples is Student's t distribution with `len(x) - 2` degrees of freedom."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+    "first_line": 87,
+    "last_line": 92,
+    "text": "The comparison is quantified by the p-value: the proportion of values in the\nnull distribution as extreme or more extreme than the observed value of the\nstatistic. In a two-sided test in which the statistic is positive, elements of\nthe null distribution greater than the transformed statistic and elements of the\nnull distribution less than the negative of the observed statistic are both\nconsidered \"more extreme\"."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+    "first_line": 116,
+    "last_line": 120,
+    "text": "If the p-value is \"small\" - that is, if there is a low probability of sampling\ndata from independent distributions that produces such an extreme value of the\nstatistic - this may be taken as evidence against the null hypothesis in favor\nof the alternative: the distribution of total collagen and free proline are\n*not* independent. Note that:"
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+    "first_line": 132,
+    "last_line": 138,
+    "text": "Suppose that before performing the experiment, the authors had reason to predict\na positive correlation between the total collagen and free proline measurements,\nand that they had chosen to assess the plausibility of the null hypothesis\nagainst a one-sided alternative: free proline has a positive ordinal correlation\nwith total collagen. In this case, only those values in the null distribution\nthat are as great or greater than the observed statistic are considered to be\nmore extreme."
+  },
+  {
+    "path": "doc/source/tutorial/stats/hypothesis_spearmanr.md",
+    "first_line": 163,
+    "last_line": 170,
+    "text": "Note that the t-distribution provides an asymptotic approximation of the null\ndistribution; it is only accurate for samples with many observations. For small\nsamples, it may be more appropriate to perform a permutation test [^4]: Under the\nnull hypothesis that total collagen and free proline are independent, each of\nthe free proline measurements were equally likely to have been observed with any\nof the total collagen measurements. Therefore, we can form an *exact* null\ndistribution by calculating the statistic under each possible pairing of\nelements between `x` and `y`."
+  }
+]

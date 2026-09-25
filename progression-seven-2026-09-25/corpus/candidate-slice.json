@@ -1,0 +1,114 @@
+[
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 143,
+    "last_line": 146,
+    "text": "As we can see above, the API is pretty straightforward.  The only bit of magic\ninvolves the ``DEFAULT`` section which provides default values for all other\nsections [1]_.  Note also that keys in sections are\ncase-insensitive and stored in lowercase [1]_."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 192,
+    "last_line": 198,
+    "text": "Since this task is so common, config parsers provide a range of handy getter\nmethods to handle integers, floats and booleans.  The last one is the most\ninteresting because simply passing the value to ``bool()`` would do no good\nsince ``bool('False')`` is still ``True``.  This is why config parsers also\nprovide :meth:`~ConfigParser.getboolean`.  This method is case-insensitive and\nrecognizes Boolean values from ``'yes'``/``'no'``, ``'on'``/``'off'``,\n``'true'``/``'false'`` and ``'1'``/``'0'`` [1]_.  For example:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 230,
+    "last_line": 234,
+    "text": "Please note that default values have precedence over fallback values.\nFor instance, in our example the ``'CompressionLevel'`` key was\nspecified only in the ``'DEFAULT'`` section.  If we try to get it from\nthe section ``'topsecret.server.example'``, we will always get the default,\neven if we specify a fallback:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 270,
+    "last_line": 278,
+    "text": "A configuration file consists of sections, each led by a ``[section]`` header,\nfollowed by key/value entries separated by a specific string (``=`` or ``:`` by\ndefault [1]_).  By default, section names are case sensitive but keys are not\n[1]_.  Leading and trailing whitespace is removed from keys and values.\nValues can be omitted if the parser is configured to allow it [1]_,\nin which case the key/value delimiter may also be left\nout.  Values can also span multiple lines, as long as they are indented deeper\nthan the first line of the value.  Depending on the parser's mode, blank lines\nmay be treated as parts of multiline values or ignored."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 280,
+    "last_line": 281,
+    "text": "By default, a valid section name can be any string that does not contain '\\\\n'.\nTo change this, see :attr:`ConfigParser.SECTCRE`."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 288,
+    "last_line": 290,
+    "text": "Configuration files may include comments, prefixed by specific\ncharacters (``#`` and ``;`` by default [1]_).  Comments may appear on\ntheir own on an otherwise empty line, possibly indented. [1]_"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 509,
+    "last_line": 513,
+    "text": "There are nearly as many INI format variants as there are applications using it.\n:mod:`configparser` goes a long way to provide support for the largest sensible\nset of INI styles available.  The default functionality is mainly dictated by\nhistorical background and it's very likely that you will want to customize some\nof the features."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 742,
+    "last_line": 744,
+    "text": "More advanced customization may be achieved by overriding default values of\nthese parser attributes.  The defaults are defined on the classes, so they may\nbe overridden by subclasses or by attribute assignment."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/library/configparser.rst",
+    "first_line": 925,
+    "last_line": 926,
+    "text": "Default values are available in both types of ConfigParsers.  They are used in\ninterpolation if an option used is not defined elsewhere. ::"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/using/cmdline.rst",
+    "first_line": 647,
+    "last_line": 649,
+    "text": "The Python interpreter is configured by default to use colors to highlight\noutput in certain situations such as when displaying tracebacks. This\nbehavior can be controlled by setting different environment variables."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 63,
+    "last_line": 70,
+    "text": "Python 3.13 is the latest stable release of the Python programming\nlanguage, with a mix of changes to the language, the implementation\nand the standard library.\nThe biggest changes include a new `interactive interpreter\n<whatsnew313-better-interactive-interpreter_>`_,\nexperimental support for running in a `free-threaded mode\n<whatsnew313-free-threaded-cpython_>`_ (:pep:`703`),\nand a `Just-In-Time compiler <whatsnew313-jit-compiler_>`_ (:pep:`744`)."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 72,
+    "last_line": 75,
+    "text": "Error messages continue to improve, with tracebacks now highlighted in color\nby default. The :func:`locals` builtin now has :ref:`defined semantics\n<whatsnew313-locals-semantics>` for changing the returned mapping,\nand type parameters now support default values."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 216,
+    "last_line": 219,
+    "text": "Python now uses a new :term:`interactive` shell by default, based on code\nfrom the `PyPy project`_.\nWhen the user starts the :term:`REPL` from an interactive terminal,\nthe following new features are now supported:"
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 316,
+    "last_line": 324,
+    "text": "CPython now has experimental support for running in a free-threaded mode,\nwith the :term:`global interpreter lock` (GIL) disabled.\nThis is an experimental feature and therefore is not enabled by default.\nThe free-threaded mode requires a different executable,\nusually called ``python3.13t`` or ``python3.13t.exe``.\nPre-built binaries marked as *free-threaded* can be installed as part of\nthe official :ref:`Windows <install-freethreaded-windows>`\nand :ref:`macOS <install-freethreaded-macos>` installers,\nor CPython can be built from source with the :option:`--disable-gil` option."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 352,
+    "last_line": 360,
+    "text": "This work was made possible thanks to many individuals and\norganizations, including the large community of contributors to Python\nand third-party projects to test and enable free-threading support.\nNotable contributors include:\nSam Gross, Ken Jin, Donghee Na, Itamar Oren, Matt Page, Brett Simmers,\nDino Viehland, Carl Meyer, Nathan Goldbaum, Ralf Gommers,\nLysandros Nikolaou, and many others.\nMany of these contributors are employed by Meta, which has\nprovided significant engineering resources to support this project."
+  },
+  {
+    "repository": "python/cpython",
+    "path": "Doc/whatsnew/3.13.rst",
+    "first_line": 432,
+    "last_line": 439,
+    "text": "Historically, the expected result of mutating the return value of\n:func:`locals` has been left to individual Python implementations to define.\nStarting from Python 3.13, :pep:`667` standardises\nthe historical behavior of CPython for most code execution scopes,\nbut changes :term:`optimized scopes <optimized scope>`\n(functions, generators, coroutines, comprehensions, and generator expressions)\nto explicitly return independent snapshots of the currently assigned local\nvariables, including locally referenced nonlocal variables captured in closures."
+  }
+]
