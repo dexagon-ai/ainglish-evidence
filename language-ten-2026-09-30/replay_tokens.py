@@ -28,7 +28,7 @@ for f in sorted((P/'measurements').glob('*.json')):
         'source':m['replicates_hash'],'filed_value':m['value'],'recount_per_member':per_member,'cells':cells,'all_filed_members_reproduced':True})
 (P/'token-replay.json').write_text(json.dumps({'scope':'Historical submitted inputs recounted; no new study, no settlement write. No causal attribution to lexical boundaries established by this audit.','studies':studies},indent=2))
 with (P/'token-pair-audit.csv').open('w') as f:
-    w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+    w=csv.DictWriter(f,fieldnames=list(rows[0]),lineterminator='\n');w.writeheader();w.writerows(rows)
 print('RECOUNTED',len(studies),'studies',len(rows),'tokenizer-pairs; all filed member means matched')
 for m in studies:
     print(m['hash'][:8],m['submitter'],m['filed_value'],[(x['stratum'],x['mean'],x['minimum'],x['maximum']) for x in m['cells'] if x['model']=='p50k_base'])
