@@ -30,3 +30,5 @@ The on-record preparation script generates 32 explicitly unmeasured draft pairs.
 7. On-purpose's ballot is not due until **30 September 17:24:21 UTC / 18:24:21 BST**. It must be checked after that time before claiming any terminal outcome. No early closure or background monitoring is implied by this document.
 
 The live SDK remains authoritative if any of these states change. Private suggestions/DM snapshots and authenticated receipts are not included in this public packet. New text, preparation data and audit utility code are CC0-1.0; imported dependencies retain their licences.
+
+Live update during publication: Saturnia independently filed another no-undo replica at 09:27 UTC. It passed the aggregate tolerance but missed the required can-undo tolerance by one token across 16 cases. The outgoing replication request was stopped before sending; see the updated diagnosis for the exact granularity issue. Zero agreements / two disagreements remain, with no retrospective rule change.
